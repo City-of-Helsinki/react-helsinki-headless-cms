@@ -3,15 +3,13 @@ name: publish canary
 on:
   push:
     branches:
-      - develop
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          ref: develop
       - uses: actions/setup-node@v1
         with:
           node-version: 12
