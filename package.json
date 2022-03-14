@@ -10,7 +10,8 @@
     "test": "jest",
     "build": "rollup -c",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "publish-canary": "node ./scripts/publish-canary.js"
   },
   "repository": "https://github.com/City-of-Helsinki/react-helsinki-headless-cms.git",
   "license": "MIT",
