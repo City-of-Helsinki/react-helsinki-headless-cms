@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "module": "ES2015",
+    "moduleResolution": "Node",
+    "target": "es5",
+    "lib": ["dom", "es2015"],
+    "outDir": "lib",
+    "allowSyntheticDefaultImports": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "forceConsistentCasingInFileNames": true,
+    "sourceMap": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "resolveJsonModule": true,
+    "alwaysStrict": true
+  },
+  "include": ["src"],
+  "compileOnSave": false,
+  "buildOnSave": false
+}

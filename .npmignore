@@ -1,0 +1,5 @@
+*
+!/lib/**/*
+!/lib-esm/**/*
+**/*.stories.d.ts
+**/*.test.d.ts
