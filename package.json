@@ -6,7 +6,7 @@
   "module": "lib-esm/index.js",
   "scripts": {
     "dev": "yarn storybook",
-    "lint": "yarn eslint \"src/**/*.{ts,tsx}\"",
+    "lint": "yarn eslint \"src/**/*.{ts,tsx}\" && yarn prettier ./src -c",
     "test": "jest",
     "build": "rollup -c",
     "storybook": "start-storybook -p 6006",
