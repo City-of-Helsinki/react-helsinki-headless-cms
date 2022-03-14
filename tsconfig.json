@@ -11,11 +11,11 @@
     "sourceMap": true,
     "declaration": true,
     "esModuleInterop": true,
-    "jsx": "react-jsx",
+    "jsx": "react",
     "resolveJsonModule": true,
     "alwaysStrict": true
   },
-  "include": ["src"],
+  "include": ["src", "jest-setup.ts"],
   "compileOnSave": false,
   "buildOnSave": false
 }
