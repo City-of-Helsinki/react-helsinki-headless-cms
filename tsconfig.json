@@ -13,7 +13,8 @@
     "esModuleInterop": true,
     "jsx": "react",
     "resolveJsonModule": true,
-    "alwaysStrict": true
+    "alwaysStrict": true,
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
   "include": ["src", "jest-setup.ts"],
   "compileOnSave": false,
