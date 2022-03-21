@@ -20,7 +20,7 @@ async function publishCanary() {
     autosave: true,
   });
   const originalVersion = file.get("version");
-  const canaryVersion = `canary-${currentGitCommit.short()}`;
+  const canaryVersion = `${originalVersion}-canary-${currentGitCommit.short()}`;
 
   file.set("version", canaryVersion);
 
