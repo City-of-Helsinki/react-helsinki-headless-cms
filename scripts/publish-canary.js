@@ -34,6 +34,7 @@ async function publishCanary() {
   } catch (e) {
     // eslint-disable-next-line no-console
     console.error(e);
+    process.exit(1);
   } finally {
     file.set("version", originalVersion);
   }
