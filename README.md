@@ -4,7 +4,9 @@ Demo:
 
 ## Quick Start
 
-**Note:** This component does not inject the Helsinki Grotesk font for you--you must add it yourself.
+**Note:** This library does not inject the Helsinki Grotesk font for you--you must add it yourself.
+
+**Note:** This library uses HDS design tokens through the SCSS interface so that mitch matching design token versions does not lead to unexpected results.
 
 ### 1. Install
 
@@ -18,21 +20,51 @@ yarn add react-helsinki-headless-cms
 
 ```tsx
 // ...
-import { HelloWorld } from "react-helsinki-headless-cms";
+import {
+  Page,
+  PageContent,
+  ConfigProvider,
+  defaultConfig,
+} from "react-helsinki-headless-cms";
 
 function App() {
-  return <HelloWorld />;
+  const page = ...;
+
+  return (
+    <ConfigProvider config={defaultConfig}>
+      <Page
+        navigation={...}
+        content={<PageContent page={page} breadcrumbs={[...]} />}
+        navigation={...}
+      />
+    </ConfigProvider>
+  );
 }
 ```
 
 ## For Developers of Library
 
-| Name         | Purpose                                                                                                  | Useful Options                |
-| ------------ | -------------------------------------------------------------------------------------------------------- | ----------------------------- |
-| `yarn dev`   | Starts storybook environment that can be used for developing components.                                 |                               |
-| `yarn lint`  | Lints the application to be according to quality standards (eslint) and formatting standards (prettier). | `--fix`: fix fixable problems |
-| `yarn test`  | Runs tests with jest.                                                                                    | `--watch`: enable watch mode  |
-| `yarn build` | Builds application with rollup.                                                                          |                               |
+| Name                  | Purpose                                                                                                                    | Useful Options                |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
+| `yarn dev`            | Starts storybook environment that can be used for developing components.                                                   |                               |
+| `yarn lint`           | Lints the application to be according to quality standards (eslint) and formatting standards (prettier).                   | `--fix`: fix fixable problems |
+| `yarn test`           | Runs tests with jest.                                                                                                      | `--watch`: enable watch mode  |
+| `yarn build`          | Builds application with rollup.                                                                                            |                               |
+| `yarn publish-canary` | Publishes a canary tagged version of the application. CD is configured to run this script on additions tot he main branch. |                               |
+
+### CI
+
+Checks
+
+- Tests pass
+- Lint pass
+- Build completes
+
+### CD
+
+On additions to main, a canary version gets published to npm.
+
+On a new release, a new version is released to npm.
 
 ### Storybook
 

@@ -1,0 +1,11 @@
+.imageContainer {
+  & img {
+    max-width: 100%;
+  }
+}
+
+.mainContent {
+  figure {
+    margin: 0;
+  }
+}

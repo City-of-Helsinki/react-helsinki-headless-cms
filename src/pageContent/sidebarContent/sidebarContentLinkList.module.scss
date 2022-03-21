@@ -1,0 +1,22 @@
+@import "spacing";
+@import "color";
+
+.descriptionContainer {
+  margin-bottom: $spacing-m;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  padding: $spacing-m;
+
+  color: $color-black-90;
+  text-decoration: none;
+  font-weight: 500;
+
+  background: $color-engel-medium-light;
+
+  & > svg {
+    margin-right: $spacing-2-xs;
+  }
+}

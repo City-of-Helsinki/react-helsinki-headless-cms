@@ -1,3 +1,5 @@
+const path = require("path");
+
 module.exports = {
   stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
@@ -10,6 +12,11 @@ module.exports = {
         cssLoaderOptions: {
           modules: {
             localIdentName: "[name]__[local]--[hash:base64:5]",
+          },
+        },
+        sassLoaderOptions: {
+          sassOptions: {
+            includePaths: [path.join(__dirname, "..", "src/common/styles")],
           },
         },
       },
