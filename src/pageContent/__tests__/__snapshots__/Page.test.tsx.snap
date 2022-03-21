@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders page with expected content 1`] = `
+<article
+  class="mainContent"
+>
+  <header>
+    <h1
+      class="text h2 "
+    >
+      Kulttuurikasvatus
+    </h1>
+    <figure
+      class="imageContainer"
+    >
+      <img
+        alt="Picture with content"
+        src="https://api.hel.fi/linkedevents-test/media/images/a-sip_netin_tapahtumakuva.1080x648_T3brYn4.jpg"
+      />
+    </figure>
+  </header>
+  
+  
+  <p
+    class="text body "
+  >
+    <strong>
+      Taiteen ja kulttuurin Helsinki
+    </strong>
+  </p>
+  
+  
+  <p
+    class="text body "
+  >
+    Taiteen ja kulttuurin näkökulmasta helsinkiläiset lapset ja nuoret ovat poikkeuksellisessa asemassa. Kaupungissamme on valtavasti uusia ja yllätyksellisiä ympäristöjä aistia, kokea, oppia uutta ja osallistua maailmanmenoon. Kaupungissa toimii laaja joukko taiteen ja kulttuuriperinnön toimijoita, joista lukuisat tarjoavat sisältöjä lapsille ja nuorille, myös varhaiskasvatus- tai koulupäivän yhteyteen. Monipuolisten kokemusten äärelle pääsee kuitenkin vain osa lapsista ja nuorista. Taustalla ovat mm. huoltajien sosioekonominen tilanne sekä perheen kiinnostus ja tieto taide- ja kulttuurisisällöistä. Kulttuurikasvatusta ja kulttuurikasvatussuunnitelmaa tarvitaan, jotta taide ja kulttuuri olisivat tasapuolisesti osa jokaisen lapsen ja nuoren arkea ja elämänikänen yhteys taiteeseen ja kulttuuriin saa hyvän pohjan.
+  </p>
+  
+  
+  <p
+    class="text body "
+  >
+    <strong>
+      Lapsi ja nuori keskiössä
+    </strong>
+  </p>
+  
+  
+  <p
+    class="text body "
+  >
+    Jokainen lapsi on syntyessään aktiivinen ympäristönsä tutkija. Lapsuus on tässä ja nyt. Lapsi tai nuori on aktiivinen toimija, kokija ja näkijä. Lapsuus ja nuoruus ovat ihmisen elinkaaressa itsessään ainutlaatuisia, merkittäviä ja herkkiä ajanjaksoja. Lapsuuden aika vaikuttaa koko elinkaaren ajan, nuoruuteen, aikuisuuteen ja vanhuuteen asti. Lapsen ja nuoren kasvu kohti vahvaa, ilmaisevaa ja omaa elämäänsä hallitsevaa tulevaisuutta edellyttää turvallista, monipuolista ja toimijuutta vahvistavaa kasvuympäristöä.
+  </p>
+  
+  
+  <p
+    class="text body "
+  >
+    <strong>
+      Kulttuurikasvatussuunnitelma 
+    </strong>
+  </p>
+  
+  
+  <p
+    class="text body "
+  >
+    Kulttuurikasvatussuunnitelma Helsingissä toimii Kulttuuri- ja vapaa-aika -toimialan, Kasvatus ja koulutus -toimialan (sis. yksityisen koulut) sekä taide- ja kulttuuritoimijoiden välisenä ohjaavana suunnitelmana. Yhteistyön tavoitteena on säännöllisten ja helposti lähestyttävien toimintatapojen, kuten kulttuuripolkujen, viestintäpalveluiden (esim. Kultus.fi) ja alan verkostojen kehittäminen ja ylläpitäminen. Suunnitelma koskee varhaiskasvatusta ja kouluja. Taide- ja taitoaineiden tavoitteet määritellään opetussuunnitelmissa ja varhaiskasvatussuunnitelmissa. Kulttuurikasvatusta voi sisältyä myös näiden kokonaisuuksien sisään. 
+  </p>
+  
+  
+  <p
+    class="text body "
+  >
+    Helsingin kulttuurikasvatussuunnitelma koskee kulttuuriperinnön, kulttuuriperintökasvatuksen, taiteen ja taidekasvatuksen sisältöjä, menetelmiä ja paikkoja. Se ei kuitenkaan ohjaa lapsen, nuoren tai perheen vapaa-ajan kulttuuri- ja taidekasvatuksen yhteistyön muotoja.
+  </p>
+  
+  
+</article>
+`;

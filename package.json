@@ -20,9 +20,9 @@
   },
   "homepage": "https://github.com/City-of-Helsinki/react-helsinki-headless-cms#readme",
   "peerDependencies": {
-    "hds-react": "^1.11.1",
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0"
+    "hds-react": ">=1.11.1",
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
@@ -46,12 +46,14 @@
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^14.0.0-beta",
+    "@types/dompurify": "^2.3.3",
     "@types/jest": "^27.4.1",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.13",
     "@typescript-eslint/eslint-plugin": "^5.14.0",
     "@typescript-eslint/parser": "^5.14.0",
     "babel-loader": "^8.2.3",
+    "classnames": "^2.3.1",
     "css-loader": "^6.7.1",
     "edit-json-file": "^1.7.0",
     "eslint": "^8.10.0",
@@ -71,14 +73,18 @@
     "react-dom": "^17.0.2",
     "rollup": "^2.70.0",
     "rollup-plugin-includepaths": "^0.2.4",
+    "rollup-plugin-polyfill-node": "^0.8.0",
     "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-typescript2": "^0.31.2",
+    "rollup-plugin-ts": "^2.0.5",
     "sass": "^1.49.9",
     "sass-loader": "^12.6.0",
     "style-loader": "^3.3.1",
     "typescript": "^4.6.2",
-    "typescript-plugin-css-modules": "^3.4.0",
     "webpack": "^5.70.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "hds-design-tokens": "^1.11.1",
+    "html-react-parser": "^1.4.8",
+    "isomorphic-dompurify": "^0.18.0"
+  }
 }
