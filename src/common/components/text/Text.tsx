@@ -23,15 +23,11 @@ type Props = {
 function getElement(variant: TextVariant) {
   switch (variant) {
     case "h1":
-      return "h1";
     case "h2":
-      return "h2";
     case "h3":
-      return "h3";
     case "h4":
-      return "h4";
     case "h5":
-      return "h5";
+      return variant;
     case "body":
     case "body-l":
     default:
