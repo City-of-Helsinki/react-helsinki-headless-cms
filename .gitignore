@@ -7,3 +7,5 @@ yarn-error.log
 lib
 lib-esm
 storybook-static
+
+.env

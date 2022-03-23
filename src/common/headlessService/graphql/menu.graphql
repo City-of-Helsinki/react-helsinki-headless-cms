@@ -1,0 +1,19 @@
+fragment MenuItem on MenuItem {
+  id
+  order
+  target
+  title
+  url
+  label
+}
+
+query menu {
+  menu(idType: NAME, id: "MAIN") {
+    id
+    menuItems {
+      nodes {
+        ...MenuItem
+      }
+    }
+  }
+}

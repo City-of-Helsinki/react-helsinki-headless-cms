@@ -1,5 +1,6 @@
 {
   "parser": "@typescript-eslint/parser",
+  "plugins": ["react", "@typescript-eslint", "import"],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
@@ -12,7 +13,6 @@
     "airbnb",
     "prettier" // this should always be the last item on this array
   ],
-  "plugins": ["react", "@typescript-eslint", "import"],
   "parserOptions": {
     "ecmaVersion": 2018,
     "ecmaFeatures": {
@@ -36,6 +36,8 @@
     "jest": true
   },
   "rules": {
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["error"],
     "import/no-extraneous-dependencies": [
       "error",
       {

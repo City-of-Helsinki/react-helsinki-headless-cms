@@ -1,5 +1,6 @@
 import React from "react";
 
+import { MAIN_CONTENT_ID } from "../constants";
 import styles from "./pageContentLayout.module.scss";
 
 type Props = {
@@ -16,7 +17,7 @@ export default function PageContentLayout({
   return (
     <div className={styles.contentLayout}>
       {breadcrumbs && <div className={styles.breadcrumbs}>{breadcrumbs}</div>}
-      <main className={styles.mainLayout}>
+      <main id={MAIN_CONTENT_ID} className={styles.mainLayout}>
         {content}
         <aside>{sidebarContent}</aside>
       </main>

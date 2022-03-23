@@ -1,0 +1,8 @@
+overwrite: true
+generates:
+  ./src/common/headlessService/__generated__.ts:
+    documents: ./src/common/headlessService/graphql/*.graphql
+    schema: ${CMS_GRAPHQL_ENDPOINT}
+    plugins:
+      - typescript
+      - typescript-operations
