@@ -1,8 +1,11 @@
+import { gql } from '@apollo/client';
+import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -10224,7 +10227,103 @@ export type LanguagesQuery = { __typename?: 'RootQuery', languages?: Array<{ __t
 
 export type MenuItemFragment = { __typename?: 'MenuItem', id: string, order?: number | null, target?: string | null, title?: string | null, url?: string | null, label?: string | null };
 
-export type MenuQueryVariables = Exact<{ [key: string]: never; }>;
+export type MenuQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
 
 
 export type MenuQuery = { __typename?: 'RootQuery', menu?: { __typename?: 'Menu', id: string, menuItems?: { __typename?: 'MenuToMenuItemConnection', nodes?: Array<{ __typename?: 'MenuItem', id: string, order?: number | null, target?: string | null, title?: string | null, url?: string | null, label?: string | null } | null> | null } | null } | null };
+
+export const LanguageFragmentDoc = gql`
+    fragment Language on Language {
+  code
+  id
+  locale
+  name
+  slug
+}
+    `;
+export const MenuItemFragmentDoc = gql`
+    fragment MenuItem on MenuItem {
+  id
+  order
+  target
+  title
+  url
+  label
+}
+    `;
+export const LanguagesDocument = gql`
+    query languages {
+  languages {
+    ...Language
+  }
+}
+    ${LanguageFragmentDoc}`;
+
+/**
+ * __useLanguagesQuery__
+ *
+ * To run a query within a React component, call `useLanguagesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useLanguagesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useLanguagesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useLanguagesQuery(baseOptions?: Apollo.QueryHookOptions<LanguagesQuery, LanguagesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<LanguagesQuery, LanguagesQueryVariables>(LanguagesDocument, options);
+      }
+export function useLanguagesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<LanguagesQuery, LanguagesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<LanguagesQuery, LanguagesQueryVariables>(LanguagesDocument, options);
+        }
+export type LanguagesQueryHookResult = ReturnType<typeof useLanguagesQuery>;
+export type LanguagesLazyQueryHookResult = ReturnType<typeof useLanguagesLazyQuery>;
+export type LanguagesQueryResult = Apollo.QueryResult<LanguagesQuery, LanguagesQueryVariables>;
+export const MenuDocument = gql`
+    query menu($id: ID!) {
+  menu(idType: NAME, id: $id) {
+    id
+    menuItems {
+      nodes {
+        ...MenuItem
+      }
+    }
+  }
+}
+    ${MenuItemFragmentDoc}`;
+
+/**
+ * __useMenuQuery__
+ *
+ * To run a query within a React component, call `useMenuQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMenuQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useMenuQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useMenuQuery(baseOptions: Apollo.QueryHookOptions<MenuQuery, MenuQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<MenuQuery, MenuQueryVariables>(MenuDocument, options);
+      }
+export function useMenuLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MenuQuery, MenuQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<MenuQuery, MenuQueryVariables>(MenuDocument, options);
+        }
+export type MenuQueryHookResult = ReturnType<typeof useMenuQuery>;
+export type MenuLazyQueryHookResult = ReturnType<typeof useMenuLazyQuery>;
+export type MenuQueryResult = Apollo.QueryResult<MenuQuery, MenuQueryVariables>;

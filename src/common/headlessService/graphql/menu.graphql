@@ -7,8 +7,8 @@ fragment MenuItem on MenuItem {
   label
 }
 
-query menu {
-  menu(idType: NAME, id: "MAIN") {
+query menu($id: ID!) {
+  menu(idType: NAME, id: $id) {
     id
     menuItems {
       nodes {
