@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Page component
 - PageContent component
 - Navigation component
+- Navigation component that can request its own data in an Apollo project
 
 ### Fixed
 

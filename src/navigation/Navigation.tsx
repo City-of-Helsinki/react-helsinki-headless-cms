@@ -9,9 +9,9 @@ import {
 import useConfig from "../configProvider/useConfig";
 import { MAIN_CONTENT_ID } from "../constants";
 
-type Props = {
-  menu: Menu;
-  languages: Language[];
+export type NavigationProps = {
+  menu?: Menu;
+  languages?: Language[];
   currentLanguageCode: LanguageCodeEnum;
   className?: string;
   onTitleClick: () => void;
@@ -29,19 +29,19 @@ export default function Navigation({
   className,
   onTitleClick,
   getUrlForLanguage,
-}: Props) {
+}: NavigationProps) {
   const {
     siteName,
     copy: { menuToggleAriaLabel, skipToContentLabel },
     components: { A },
   } = useConfig();
 
-  const currentLanguage = languages.find(
+  const currentLanguage = languages?.find(
     (language) => language.code === currentLanguageCode
   );
 
   // Error out if language props are inconsistent
-  if (!currentLanguage) {
+  if (languages && !currentLanguage) {
     throw Error(
       "Could not find a language from languages with currentLanguageCode"
     );
@@ -69,8 +69,8 @@ export default function Navigation({
         ))}
       </HDSNavigation.Row>
       <HDSNavigation.Actions>
-        <HDSNavigation.LanguageSelector label={currentLanguage.name}>
-          {languages.map((language) => (
+        <HDSNavigation.LanguageSelector label={currentLanguage?.name}>
+          {languages?.map((language) => (
             <HDSNavigation.Item
               key={language.id}
               as={A}

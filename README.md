@@ -51,6 +51,26 @@ function App() {
 }
 ```
 
+## Use provided queries
+
+This can handle data queries for you if you are using a supported library to fetch your data.
+
+### Apollo
+
+By importing data dependent components from `react-helsinki-headless-cms/apollo`, this library will request the data fo you.
+
+**Note:** An Apollo client linked to s graphql endpoint with a supported schema (headless CMS) must be available in the context.
+
+**Simplified example**
+
+```tsx
+import { Navigation } from "react-helsinki-headless-cms/apollo";
+
+<ApolloProvider client={client}>
+  <Page navigation={<Navigation menuName="Name of menu in headless CMS" />} />
+</ApolloProvider>;
+```
+
 ## For Developers of Library
 
 | Name                  | Purpose                                                                                                                    | Useful Options                |
