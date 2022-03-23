@@ -23,7 +23,13 @@
   "peerDependencies": {
     "hds-react": ">=1.11.1",
     "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "react-dom": ">=16.8.0",
+    "@apollo/client": "^3.5.10"
+  },
+  "peerDependenciesMeta": {
+    "@apollo/client": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@apollo/client": "^3.5.10",
