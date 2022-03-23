@@ -1,9 +1,9 @@
 import React from "react";
 
-import { PageOrPost } from "../types";
+import { LayoutArticle, LayoutPage } from "../../common/headlessService/types";
 import SidebarContentCard from "./SidebarContentCard";
 
-type Props = PageOrPost;
+type Props = LayoutArticle["articles"][number] | LayoutPage["pages"][number];
 
 export default function PostListItem({
   id,
