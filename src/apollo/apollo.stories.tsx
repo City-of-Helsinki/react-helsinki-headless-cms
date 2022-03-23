@@ -8,8 +8,7 @@ import { LanguageCodeEnum } from "../common/headlessService/types";
 import ConfigProvider, {
   defaultConfig,
 } from "../configProvider/ConfigProvider";
-import pageMock from "../pageContent/__mocks__/page.mock";
-import PageContent from "../pageContent/PageContent";
+import PageContent from "./pageContent/PageContent";
 import Navigation from "./navigation/Navigation";
 import Page from "../page/Page";
 
@@ -41,7 +40,7 @@ ApolloExample.args = {
   navigation: (
     <Navigation
       menuName="Palvelutarjotin-UI Header"
-      currentLanguageCode={LanguageCodeEnum.En}
+      currentLanguageCode={LanguageCodeEnum.Fi}
       onTitleClick={() => {
         // eslint-disable-next-line no-console
         console.log("I should navigate");
@@ -68,7 +67,8 @@ ApolloExample.args = {
   ),
   content: (
     <PageContent
-      page={pageMock}
+      currentLanguage={LanguageCodeEnum.Fi}
+      uri="/kulttuurikasvatus"
       breadcrumbs={[
         { title: "Root", link: "/" },
         { title: "Nested", link: "/nested" },

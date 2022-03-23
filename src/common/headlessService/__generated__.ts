@@ -10234,6 +10234,24 @@ export type MenuQueryVariables = Exact<{
 
 export type MenuQuery = { __typename?: 'RootQuery', menu?: { __typename?: 'Menu', id: string, menuItems?: { __typename?: 'MenuToMenuItemConnection', nodes?: Array<{ __typename?: 'MenuItem', id: string, order?: number | null, target?: string | null, title?: string | null, url?: string | null, label?: string | null } | null> | null } | null } | null };
 
+export type SeoFragment = { __typename?: 'SEO', title?: string | null, description?: string | null, openGraphTitle?: string | null, openGraphDescription?: string | null, openGraphType?: string | null, twitterTitle?: string | null, twitterDescription?: string | null };
+
+export type LayoutLinkListFragment = { __typename?: 'LayoutLinkList', anchor?: string | null, title?: string | null, description?: string | null, links?: Array<{ __typename?: 'Link', target?: string | null, title?: string | null, url?: string | null } | null> | null };
+
+export type LayoutArticlesFragment = { __typename?: 'LayoutArticles', articles?: Array<{ __typename?: 'Post', id: string, title?: string | null, link?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node?: { __typename?: 'MediaItem', altText?: string | null, mediaItemUrl?: string | null } | null } | null } | null> | null };
+
+export type LayoutPagesFragment = { __typename?: 'LayoutPages', pages?: Array<{ __typename?: 'Page', id: string, title?: string | null, link?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node?: { __typename?: 'MediaItem', altText?: string | null, mediaItemUrl?: string | null } | null } | null } | null> | null };
+
+export type PageFragment = { __typename?: 'Page', id: string, content?: string | null, slug?: string | null, title?: string | null, uri?: string | null, link?: string | null, lead?: string | null, seo?: { __typename?: 'SEO', title?: string | null, description?: string | null, openGraphTitle?: string | null, openGraphDescription?: string | null, openGraphType?: string | null, twitterTitle?: string | null, twitterDescription?: string | null } | null, language?: { __typename?: 'Language', code?: LanguageCodeEnum | null, slug?: string | null, locale?: string | null, name?: string | null } | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node?: { __typename?: 'MediaItem', mediaItemUrl?: string | null, link?: string | null, altText?: string | null, mimeType?: string | null, title?: string | null, uri?: string | null } | null } | null, sidebar?: Array<{ __typename?: 'LayoutArticles', articles?: Array<{ __typename?: 'Post', id: string, title?: string | null, link?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node?: { __typename?: 'MediaItem', altText?: string | null, mediaItemUrl?: string | null } | null } | null } | null> | null } | { __typename?: 'LayoutLinkList', anchor?: string | null, title?: string | null, description?: string | null, links?: Array<{ __typename?: 'Link', target?: string | null, title?: string | null, url?: string | null } | null> | null } | { __typename?: 'LayoutPages', pages?: Array<{ __typename?: 'Page', id: string, title?: string | null, link?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node?: { __typename?: 'MediaItem', altText?: string | null, mediaItemUrl?: string | null } | null } | null } | null> | null } | null> | null };
+
+export type PageQueryVariables = Exact<{
+  id: Scalars['ID'];
+  language: LanguageCodeEnum;
+}>;
+
+
+export type PageQuery = { __typename?: 'RootQuery', page?: { __typename?: 'Page', id: string, translation?: { __typename?: 'Page', id: string, content?: string | null, slug?: string | null, title?: string | null, uri?: string | null, link?: string | null, lead?: string | null, seo?: { __typename?: 'SEO', title?: string | null, description?: string | null, openGraphTitle?: string | null, openGraphDescription?: string | null, openGraphType?: string | null, twitterTitle?: string | null, twitterDescription?: string | null } | null, language?: { __typename?: 'Language', code?: LanguageCodeEnum | null, slug?: string | null, locale?: string | null, name?: string | null } | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node?: { __typename?: 'MediaItem', mediaItemUrl?: string | null, link?: string | null, altText?: string | null, mimeType?: string | null, title?: string | null, uri?: string | null } | null } | null, sidebar?: Array<{ __typename?: 'LayoutArticles', articles?: Array<{ __typename?: 'Post', id: string, title?: string | null, link?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node?: { __typename?: 'MediaItem', altText?: string | null, mediaItemUrl?: string | null } | null } | null } | null> | null } | { __typename?: 'LayoutLinkList', anchor?: string | null, title?: string | null, description?: string | null, links?: Array<{ __typename?: 'Link', target?: string | null, title?: string | null, url?: string | null } | null> | null } | { __typename?: 'LayoutPages', pages?: Array<{ __typename?: 'Page', id: string, title?: string | null, link?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node?: { __typename?: 'MediaItem', altText?: string | null, mediaItemUrl?: string | null } | null } | null } | null> | null } | null> | null } | null } | null };
+
 export const LanguageFragmentDoc = gql`
     fragment Language on Language {
   code
@@ -10253,6 +10271,103 @@ export const MenuItemFragmentDoc = gql`
   label
 }
     `;
+export const SeoFragmentDoc = gql`
+    fragment SEO on SEO {
+  title
+  description
+  openGraphTitle
+  openGraphDescription
+  openGraphType
+  twitterTitle
+  twitterDescription
+}
+    `;
+export const LayoutLinkListFragmentDoc = gql`
+    fragment LayoutLinkList on LayoutLinkList {
+  anchor
+  title
+  description
+  links {
+    target
+    title
+    url
+  }
+}
+    `;
+export const LayoutArticlesFragmentDoc = gql`
+    fragment LayoutArticles on LayoutArticles {
+  articles {
+    id
+    title
+    link
+    featuredImage {
+      node {
+        altText
+        mediaItemUrl
+      }
+    }
+  }
+}
+    `;
+export const LayoutPagesFragmentDoc = gql`
+    fragment LayoutPages on LayoutPages {
+  pages {
+    id
+    title
+    link
+    featuredImage {
+      node {
+        altText
+        mediaItemUrl
+      }
+    }
+  }
+}
+    `;
+export const PageFragmentDoc = gql`
+    fragment Page on Page {
+  id
+  content
+  slug
+  title
+  uri
+  link
+  lead
+  seo {
+    ...SEO
+  }
+  language {
+    code
+    slug
+    locale
+    name
+  }
+  featuredImage {
+    node {
+      mediaItemUrl
+      link
+      altText
+      mimeType
+      title
+      uri
+    }
+  }
+  sidebar {
+    ... on LayoutLinkList {
+      ...LayoutLinkList
+    }
+    ... on LayoutArticles {
+      ...LayoutArticles
+    }
+    ... on LayoutPages {
+      ...LayoutPages
+    }
+  }
+}
+    ${SeoFragmentDoc}
+${LayoutLinkListFragmentDoc}
+${LayoutArticlesFragmentDoc}
+${LayoutPagesFragmentDoc}`;
 export const LanguagesDocument = gql`
     query languages {
   languages {
@@ -10327,3 +10442,42 @@ export function useMenuLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MenuQ
 export type MenuQueryHookResult = ReturnType<typeof useMenuQuery>;
 export type MenuLazyQueryHookResult = ReturnType<typeof useMenuLazyQuery>;
 export type MenuQueryResult = Apollo.QueryResult<MenuQuery, MenuQueryVariables>;
+export const PageDocument = gql`
+    query page($id: ID!, $language: LanguageCodeEnum!) {
+  page(id: $id, idType: URI) {
+    id
+    translation(language: $language) {
+      ...Page
+    }
+  }
+}
+    ${PageFragmentDoc}`;
+
+/**
+ * __usePageQuery__
+ *
+ * To run a query within a React component, call `usePageQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePageQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePageQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *      language: // value for 'language'
+ *   },
+ * });
+ */
+export function usePageQuery(baseOptions: Apollo.QueryHookOptions<PageQuery, PageQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<PageQuery, PageQueryVariables>(PageDocument, options);
+      }
+export function usePageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PageQuery, PageQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<PageQuery, PageQueryVariables>(PageDocument, options);
+        }
+export type PageQueryHookResult = ReturnType<typeof usePageQuery>;
+export type PageLazyQueryHookResult = ReturnType<typeof usePageLazyQuery>;
+export type PageQueryResult = Apollo.QueryResult<PageQuery, PageQueryVariables>;

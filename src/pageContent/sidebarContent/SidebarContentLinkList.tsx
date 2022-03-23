@@ -4,7 +4,7 @@ import React from "react";
 import ExternalLink from "../../common/components/externalLink/ExternalLink";
 import HtmlToReact from "../../common/components/htmlToReact/HtmlToReact";
 import List from "../../common/components/list/List";
-import { LayoutLinkList } from "../types";
+import { LayoutLinkList } from "../../common/headlessService/types";
 import styles from "./sidebarContentLinkList.module.scss";
 
 type Link = {

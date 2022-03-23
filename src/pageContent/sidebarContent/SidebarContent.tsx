@@ -1,7 +1,7 @@
 import React from "react";
 
 import List from "../../common/components/list/List";
-import { SidebarContentType } from "../types";
+import { SidebarContent as SidebarContentType } from "../../common/headlessService/types";
 import SidebarContentLinkList from "./SidebarContentLinkList";
 import SidebarPostListItem from "./SidebarPostListItem";
 

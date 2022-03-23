@@ -1,17 +1,18 @@
 import React from "react";
 
+import { PageQuery } from "../common/headlessService/page";
 import SidebarContent from "./sidebarContent/SidebarContent";
 import PageContentLayout from "./PageContentLayout";
 import PageMainContent from "./PageMainContent";
 import PageContentBreadcrumbs from "./PageContentBreadcrumbs";
-import { Page as PageType, Breadcrumb } from "./types";
+import { Breadcrumb } from "./types";
 
-type PageProps = {
-  page: PageType;
+export type PageContentProps = {
+  page?: PageQuery["page"];
   breadcrumbs?: Breadcrumb[];
 };
 
-export default function PageContent({ page, breadcrumbs }: PageProps) {
+export default function PageContent({ page, breadcrumbs }: PageContentProps) {
   return (
     <PageContentLayout
       breadcrumbs={
@@ -19,13 +20,13 @@ export default function PageContent({ page, breadcrumbs }: PageProps) {
       }
       content={
         <PageMainContent
-          title={page.title}
-          content={page.content}
-          imageSrc={page.featuredImage?.node?.mediaItemUrl}
-          imageAlt={page.featuredImage?.node?.altText}
+          title={page?.translation?.title}
+          content={page?.translation?.content}
+          imageSrc={page?.translation?.featuredImage?.node?.mediaItemUrl}
+          imageAlt={page?.translation?.featuredImage?.node?.altText}
         />
       }
-      sidebarContent={<SidebarContent content={page.sidebar} />}
+      sidebarContent={<SidebarContent content={page?.translation?.sidebar} />}
     />
   );
 }

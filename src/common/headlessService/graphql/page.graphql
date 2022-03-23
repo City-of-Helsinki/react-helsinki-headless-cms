@@ -1,0 +1,97 @@
+fragment SEO on SEO {
+  title
+  description
+  openGraphTitle
+  openGraphDescription
+  openGraphType
+  twitterTitle
+  twitterDescription
+}
+
+fragment LayoutLinkList on LayoutLinkList {
+  anchor
+  title
+  description
+  links {
+    target
+    title
+    url
+  }
+}
+
+fragment LayoutArticles on LayoutArticles {
+  articles {
+    id
+    title
+    link
+    featuredImage {
+      node {
+        altText
+        mediaItemUrl
+      }
+    }
+  }
+}
+
+fragment LayoutPages on LayoutPages {
+  pages {
+    id
+    title
+    link
+    featuredImage {
+      node {
+        altText
+        mediaItemUrl
+      }
+    }
+  }
+}
+
+fragment Page on Page {
+  id
+  content
+  slug
+  title
+  uri
+  link
+  lead
+  seo {
+    ...SEO
+  }
+  language {
+    code
+    slug
+    locale
+    name
+  }
+  featuredImage {
+    node {
+      mediaItemUrl
+      link
+      altText
+      mimeType
+      title
+      uri
+    }
+  }
+  sidebar {
+    ... on LayoutLinkList {
+      ...LayoutLinkList
+    }
+    ... on LayoutArticles {
+      ...LayoutArticles
+    }
+    ... on LayoutPages {
+      ...LayoutPages
+    }
+  }
+}
+
+query page($id: ID!, $language: LanguageCodeEnum!) {
+  page(id: $id, idType: URI) {
+    id
+    translation(language: $language) {
+      ...Page
+    }
+  }
+}
