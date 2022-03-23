@@ -83,6 +83,7 @@ function buildConfig({ input, out }) {
       "classnames",
       "html-react-parser",
       "isomorphic-dompurify",
+      "@apollo/client",
     ],
   };
 }
