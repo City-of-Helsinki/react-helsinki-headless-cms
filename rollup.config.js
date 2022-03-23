@@ -11,7 +11,11 @@ import postcss from "rollup-plugin-postcss";
 import ts from "rollup-plugin-ts";
 import nodePolyfills from "rollup-plugin-polyfill-node";
 
-export default [buildConfig("index"), buildConfig("apollo/index")];
+export default [
+  buildConfig("index"),
+  buildConfig("apollo/index"),
+  buildConfig("nextjs/index"),
+];
 
 function buildConfig(subModule) {
   const extensions = [".js", ".jsx", ".ts", ".tsx"];

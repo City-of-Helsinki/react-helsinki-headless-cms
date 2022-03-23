@@ -71,6 +71,10 @@ import { Navigation } from "react-helsinki-headless-cms/apollo";
 </ApolloProvider>;
 ```
 
+### NextJS
+
+We provide utilities for fetching headless data for NextJs in `react-helsinki-headless-cms/nextjs`. These can be used when generating static pages.
+
 ## For Developers of Library
 
 | Name                  | Purpose                                                                                                                    | Useful Options                |
