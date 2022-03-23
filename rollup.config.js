@@ -38,9 +38,7 @@ function buildConfig({ input, out }) {
       includePaths({ paths: ["src"], extensions }),
       resolve(),
       ts(),
-      commonjs({
-        include: "../../node_modules/**",
-      }),
+      commonjs(),
       json(),
       postcss({
         modules: true,
