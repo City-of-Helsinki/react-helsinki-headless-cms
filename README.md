@@ -14,7 +14,7 @@ Demo:
 yarn add react-helsinki-headless-cms
 ```
 
-### 1. Import
+### 2. Import
 
 `App.tsx`
 
@@ -33,9 +33,18 @@ function App() {
   return (
     <ConfigProvider config={defaultConfig}>
       <Page
-        navigation={...}
+        navigation={
+          <Navigation
+            languages={...}
+            currentLanguageCode="EN"
+            menu={...}
+            onTitleClick={() => ...}
+            getUrlForLanguage={(language, currentLanguage) => new URL(...)
+            }
+          />
+        }
         content={<PageContent page={page} breadcrumbs={[...]} />}
-        navigation={...}
+        footer={...}
       />
     </ConfigProvider>
   );

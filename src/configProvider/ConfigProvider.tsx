@@ -1,10 +1,13 @@
 import React, { createContext, useContext } from "react";
 
 type Config = {
+  siteName: string;
   copy: {
     externalLink: string;
     breadcrumbNavigationLabel: string;
     breadcrumbListLabel: string;
+    menuToggleAriaLabel: string;
+    skipToContentLabel: string;
   };
   components: {
     // eslint-disable-next-line no-unused-vars
@@ -15,10 +18,13 @@ type Config = {
 };
 
 export const defaultConfig = {
+  siteName: "Test site",
   copy: {
     externalLink: "opens in a new window",
     breadcrumbNavigationLabel: "Breadcrumb navigation",
     breadcrumbListLabel: "breadcrumbs",
+    menuToggleAriaLabel: "toggle menu",
+    skipToContentLabel: "skip to content",
   },
   components: {
     A: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (

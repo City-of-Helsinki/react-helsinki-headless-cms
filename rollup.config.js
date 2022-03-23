@@ -30,9 +30,7 @@ export default {
     includePaths({ paths: ["src"], extensions }),
     resolve(),
     ts(),
-    commonjs({
-      include: "../../node_modules/**",
-    }),
+    commonjs(),
     json(),
     postcss({
       modules: true,
@@ -71,6 +69,7 @@ export default {
     "debounce",
     "react-fast-compare",
     "react-popper",
+    "react-use-measure",
     "classnames",
     "html-react-parser",
     "isomorphic-dompurify",

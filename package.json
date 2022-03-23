@@ -11,7 +11,8 @@
     "build": "rollup -c",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "publish-canary": "node ./scripts/publish-canary.js"
+    "publish-canary": "node ./scripts/publish-canary.js",
+    "generate:graphql": "DOTENV_CONFIG_PATH=./.env graphql-codegen -r dotenv/config --config codegen.yml"
   },
   "repository": "https://github.com/City-of-Helsinki/react-helsinki-headless-cms.git",
   "license": "MIT",
@@ -30,6 +31,9 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
+    "@graphql-codegen/cli": "^2.6.2",
+    "@graphql-codegen/typescript": "^2.4.8",
+    "@graphql-codegen/typescript-operations": "^2.3.5",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^21.0.2",
     "@rollup/plugin-json": "^4.1.0",
@@ -64,6 +68,7 @@
     "eslint-plugin-react": "^7.29.3",
     "eslint-plugin-react-hooks": "^4.3.0",
     "git-rev-sync": "^3.0.2",
+    "graphql": "^16.3.0",
     "hds-react": "^1.11.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",

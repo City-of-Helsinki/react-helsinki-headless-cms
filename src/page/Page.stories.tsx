@@ -3,11 +3,15 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
+import { LanguageCodeEnum } from "../common/headlessService/types";
 import ConfigProvider, {
   defaultConfig,
 } from "../configProvider/ConfigProvider";
 import pageMock from "../pageContent/__mocks__/page.mock";
 import PageContent from "../pageContent/PageContent";
+import navigationLanguages from "../navigation/__mocks__/navigationLanguages.mock";
+import navigationMenu from "../navigation/__mocks__/navigationMenu.mock";
+import Navigation from "../navigation/Navigation";
 import Page from "./Page";
 
 export default {
@@ -19,6 +23,7 @@ const Template: ComponentStory<typeof Page> = (args) => (
   <ConfigProvider
     config={{
       ...defaultConfig,
+      siteName: "RHHC Example",
     }}
   >
     <Page {...args} />
@@ -27,13 +32,41 @@ const Template: ComponentStory<typeof Page> = (args) => (
 
 export const PageDefault = Template.bind({});
 PageDefault.args = {
-  navigation: <>TODO: Implement navigation</>,
+  navigation: (
+    <Navigation
+      languages={navigationLanguages}
+      currentLanguageCode={LanguageCodeEnum.En}
+      menu={navigationMenu}
+      onTitleClick={() => {
+        // eslint-disable-next-line no-console
+        console.log("I should navigate");
+      }}
+      getUrlForLanguage={({ slug, code }, currentLanguage) => {
+        const baseUrl = "http://localhost:3000";
+        const currentRatherComplexUrl = new URL(
+          "http://localhost:3000/en/cms-page/page-slug"
+        );
+
+        if (code === LanguageCodeEnum.Fi) {
+          return new URL(
+            currentRatherComplexUrl.pathname.replace(currentLanguage.slug, ""),
+            baseUrl
+          );
+        }
+
+        return new URL(
+          currentRatherComplexUrl.pathname.replace(currentLanguage.slug, slug),
+          baseUrl
+        );
+      }}
+    />
+  ),
   content: (
     <PageContent
       page={pageMock}
       breadcrumbs={[
-        { title: "Root", uri: "/" },
-        { title: "Nested", uri: "/nested" },
+        { title: "Root", link: "/" },
+        { title: "Nested", link: "/nested" },
       ]}
     />
   ),
