@@ -4,8 +4,7 @@ node_modules
 
 yarn-error.log
 
-lib
-lib-esm
+dist
 storybook-static
 
 .env

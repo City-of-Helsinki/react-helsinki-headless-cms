@@ -1,22 +1,15 @@
-const { exec } = require("child_process");
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable @typescript-eslint/no-var-requires */
 
 const editJsonFile = require("edit-json-file");
 const currentGitCommit = require("git-rev-sync");
 
-function execShellCommand(cmd) {
-  return new Promise((resolve, reject) => {
-    exec(cmd, (error, stdout, stderr) => {
-      if (error) {
-        reject(error);
-      } else {
-        resolve([stdout, stderr]);
-      }
-    });
-  });
-}
+const { execShellCommand, prepareToPublish } = require("./utils");
 
 async function publishCanary() {
-  const file = editJsonFile(`${__dirname}/../package.json`, {
+  await prepareToPublish();
+
+  const file = editJsonFile(`./package.json`, {
     autosave: true,
   });
   const originalVersion = file.get("version");
@@ -28,7 +21,6 @@ async function publishCanary() {
     const [stdout, stderr] = await execShellCommand(
       "npm publish --tag canary --color always --registry=https://registry.npmjs.org/"
     );
-
     process.stdout.write(stdout);
     process.stderr.write(stderr);
   } catch (e) {
