@@ -1,4 +1,5 @@
 import React, { createContext, useContext } from "react";
+import { ApolloClient, NormalizedCacheObject } from "@apollo/client";
 
 import { LanguageCodeEnum } from "../common/headlessService/types";
 
@@ -18,6 +19,7 @@ type Config = {
     // eslint-disable-next-line no-unused-vars
     Img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => JSX.Element;
   };
+  apolloClient?: ApolloClient<NormalizedCacheObject>;
 };
 
 export const defaultConfig = {

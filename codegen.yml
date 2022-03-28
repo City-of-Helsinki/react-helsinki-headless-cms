@@ -11,3 +11,6 @@ generates:
       withHooks: true
       withComponent: false
       flattenSelectionSet: true
+    hooks:
+      afterOneFileWrite:
+        - prettier --write
