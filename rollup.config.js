@@ -10,6 +10,7 @@ import includePaths from "rollup-plugin-includepaths";
 import postcss from "rollup-plugin-postcss";
 import ts from "rollup-plugin-ts";
 import nodePolyfills from "rollup-plugin-polyfill-node";
+import copy from "rollup-plugin-copy";
 
 export default buildConfig();
 
@@ -24,12 +25,12 @@ function buildConfig() {
     },
     output: [
       {
-        dir: "lib",
+        dir: "dist",
         format: "cjs",
-        entryFileNames: "[name].js",
+        entryFileNames: "cjs/[name].js",
       },
       {
-        dir: "lib-esm",
+        dir: "dist",
         format: "esm",
         entryFileNames: "[name].js",
       },
@@ -66,6 +67,11 @@ function buildConfig() {
         exclude: "node_modules/**",
         presets: ["@babel/preset-react"],
         extensions,
+      }),
+      copy({
+        // Copy package.json into dist so that we can release from the dist
+        // folder and have a flatter import structure
+        targets: [{ src: "package.json", dest: "dist/" }],
       }),
     ],
     external: [
