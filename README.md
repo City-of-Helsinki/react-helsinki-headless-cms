@@ -58,16 +58,22 @@ This can handle data queries for you if you are using a supported library to fet
 
 By importing data dependent components from `react-helsinki-headless-cms/apollo`, this library will request the data fo you.
 
-**Note:** An Apollo client linked to s graphql endpoint with a supported schema (headless CMS) must be available in the context.
+**Note:** An Apollo client linked to a graphql endpoint with a supported schema (headless CMS) must be provided in the `apolloClient` field of the `config` object.
 
 **Simplified example**
 
 ```tsx
 import { Navigation } from "react-helsinki-headless-cms/apollo";
 
-<ApolloProvider client={client}>
+<ConfigProvider
+  config={{
+    // ...
+    apolloClient: client,
+    // ...
+  }}
+>
   <Page navigation={<Navigation menuName="Name of menu in headless CMS" />} />
-</ApolloProvider>;
+</ConfigProvider>;
 ```
 
 ### NextJS

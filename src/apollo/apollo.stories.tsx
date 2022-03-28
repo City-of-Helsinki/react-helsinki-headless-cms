@@ -2,7 +2,7 @@
 
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { ApolloClient, InMemoryCache } from "@apollo/client";
 
 import { LanguageCodeEnum } from "../common/headlessService/types";
 import ConfigProvider, {
@@ -23,16 +23,15 @@ export default {
 } as ComponentMeta<typeof Page>;
 
 const Template: ComponentStory<typeof Page> = (args) => (
-  <ApolloProvider client={client}>
-    <ConfigProvider
-      config={{
-        ...defaultConfig,
-        siteName: "RHHC Example",
-      }}
-    >
-      <Page {...args} />
-    </ConfigProvider>
-  </ApolloProvider>
+  <ConfigProvider
+    config={{
+      ...defaultConfig,
+      siteName: "RHHC Example",
+      apolloClient: client,
+    }}
+  >
+    <Page {...args} />
+  </ConfigProvider>
 );
 
 export const ApolloExample = Template.bind({});
