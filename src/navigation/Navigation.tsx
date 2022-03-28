@@ -13,6 +13,7 @@ export type NavigationProps = {
   menu?: Menu;
   languages?: Language[];
   className?: string;
+  userNavigation?: React.ReactNode;
   onTitleClick: () => void;
   getUrlForLanguage: (
     language: Language,
@@ -25,6 +26,7 @@ export default function Navigation({
   menu,
   languages,
   className,
+  userNavigation,
   onTitleClick,
   getUrlForLanguage,
 }: NavigationProps) {
@@ -68,6 +70,7 @@ export default function Navigation({
         ))}
       </HDSNavigation.Row>
       <HDSNavigation.Actions>
+        {userNavigation && userNavigation}
         <HDSNavigation.LanguageSelector label={currentLanguage?.name}>
           {languages?.map((language) => (
             <HDSNavigation.Item
