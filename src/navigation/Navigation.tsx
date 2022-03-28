@@ -12,7 +12,6 @@ import { MAIN_CONTENT_ID } from "../constants";
 export type NavigationProps = {
   menu?: Menu;
   languages?: Language[];
-  currentLanguageCode: LanguageCodeEnum;
   className?: string;
   onTitleClick: () => void;
   getUrlForLanguage: (
@@ -25,13 +24,13 @@ export type NavigationProps = {
 export default function Navigation({
   menu,
   languages,
-  currentLanguageCode,
   className,
   onTitleClick,
   getUrlForLanguage,
 }: NavigationProps) {
   const {
     siteName,
+    currentLanguageCode,
     copy: { menuToggleAriaLabel, skipToContentLabel },
     components: { A },
   } = useConfig();

@@ -36,7 +36,6 @@ function App() {
         navigation={
           <Navigation
             languages={...}
-            currentLanguageCode="EN"
             menu={...}
             onTitleClick={() => ...}
             getUrlForLanguage={(language, currentLanguage) => new URL(...)
