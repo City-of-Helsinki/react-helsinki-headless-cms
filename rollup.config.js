@@ -11,25 +11,27 @@ import postcss from "rollup-plugin-postcss";
 import ts from "rollup-plugin-ts";
 import nodePolyfills from "rollup-plugin-polyfill-node";
 
-export default [
-  buildConfig({ input: "index", out: "index" }),
-  buildConfig({ input: "apollo/index", out: "apollo" }),
-  buildConfig({ input: "nextjs/index", out: "nextjs" }),
-];
+export default buildConfig();
 
-function buildConfig({ input, out }) {
+function buildConfig() {
   const extensions = [".js", ".jsx", ".ts", ".tsx"];
 
   return {
-    input: `src/${input}.ts`,
+    input: {
+      index: "src/index.ts",
+      apollo: "src/apollo/index.ts",
+      nextjs: "src/nextjs/index.ts",
+    },
     output: [
       {
-        file: `lib/${out}.js`,
+        dir: "lib",
         format: "cjs",
+        entryFileNames: "[name].js",
       },
       {
-        file: `lib-esm/${out}.js`,
+        dir: "lib-esm",
         format: "esm",
+        entryFileNames: "[name].js",
       },
     ],
     plugins: [
