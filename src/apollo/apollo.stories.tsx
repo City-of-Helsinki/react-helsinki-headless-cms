@@ -40,7 +40,6 @@ ApolloExample.args = {
   navigation: (
     <Navigation
       menuName="Palvelutarjotin-UI Header"
-      currentLanguageCode={LanguageCodeEnum.Fi}
       onTitleClick={() => {
         // eslint-disable-next-line no-console
         console.log("I should navigate");
@@ -67,7 +66,6 @@ ApolloExample.args = {
   ),
   content: (
     <PageContent
-      currentLanguage={LanguageCodeEnum.Fi}
       uri="/kulttuurikasvatus"
       breadcrumbs={[
         { title: "Root", link: "/" },

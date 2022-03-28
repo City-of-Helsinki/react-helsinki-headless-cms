@@ -35,7 +35,6 @@ PageDefault.args = {
   navigation: (
     <Navigation
       languages={navigationLanguages}
-      currentLanguageCode={LanguageCodeEnum.En}
       menu={navigationMenu}
       onTitleClick={() => {
         // eslint-disable-next-line no-console

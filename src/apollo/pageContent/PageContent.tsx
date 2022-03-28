@@ -1,25 +1,21 @@
 import React from "react";
 
-import { LanguageCodeEnum } from "../../common/headlessService/types";
 import { usePageQuery } from "../../common/headlessService/page";
 import PageContentWithoutData, {
   PageContentProps as PageContentPropsWithoutData,
 } from "../../pageContent/PageContent";
+import useConfig from "../../configProvider/useConfig";
 
 export type PageProps = Omit<PageContentPropsWithoutData, "page"> & {
   uri: string;
-  currentLanguage: LanguageCodeEnum;
 };
 
-export default function PageContent({
-  uri,
-  currentLanguage,
-  ...delegatedProps
-}: PageProps) {
+export default function PageContent({ uri, ...delegatedProps }: PageProps) {
+  const { currentLanguageCode } = useConfig();
   const pageQuery = usePageQuery({
     variables: {
       id: uri,
-      language: currentLanguage,
+      language: currentLanguageCode,
     },
   });
 

@@ -1,7 +1,10 @@
 import React, { createContext, useContext } from "react";
 
+import { LanguageCodeEnum } from "../common/headlessService/types";
+
 type Config = {
   siteName: string;
+  currentLanguageCode: LanguageCodeEnum;
   copy: {
     externalLink: string;
     breadcrumbNavigationLabel: string;
@@ -19,6 +22,7 @@ type Config = {
 
 export const defaultConfig = {
   siteName: "Test site",
+  currentLanguageCode: LanguageCodeEnum.Fi,
   copy: {
     externalLink: "opens in a new window",
     breadcrumbNavigationLabel: "Breadcrumb navigation",
