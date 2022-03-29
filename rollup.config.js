@@ -11,6 +11,7 @@ import postcss from "rollup-plugin-postcss";
 import ts from "rollup-plugin-ts";
 import nodePolyfills from "rollup-plugin-polyfill-node";
 import copy from "rollup-plugin-copy";
+import del from "rollup-plugin-delete";
 
 export default buildConfig();
 
@@ -36,6 +37,7 @@ function buildConfig() {
       },
     ],
     plugins: [
+      del({ targets: "dist/*" }),
       // Include polyfills for consistent behavior between server and client
       nodePolyfills(),
       includePaths({ paths: ["src"], extensions }),
