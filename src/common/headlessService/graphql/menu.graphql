@@ -3,7 +3,7 @@ fragment MenuItem on MenuItem {
   order
   target
   title
-  url
+  path
   label
 }
 

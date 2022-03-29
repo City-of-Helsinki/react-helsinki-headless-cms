@@ -10152,7 +10152,7 @@ export type MenuItemFragment = {
   order?: number | null;
   target?: string | null;
   title?: string | null;
-  url?: string | null;
+  path?: string | null;
   label?: string | null;
 };
 
@@ -10173,7 +10173,7 @@ export type MenuQuery = {
         order?: number | null;
         target?: string | null;
         title?: string | null;
-        url?: string | null;
+        path?: string | null;
         label?: string | null;
       } | null> | null;
     } | null;
@@ -10445,7 +10445,7 @@ export const MenuItemFragmentDoc = gql`
     order
     target
     title
-    url
+    path
     label
   }
 `;
