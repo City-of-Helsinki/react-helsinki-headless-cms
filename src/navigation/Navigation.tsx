@@ -65,7 +65,7 @@ export default function Navigation({
             as={A}
             label={navigationItem.label}
             title={navigationItem.title}
-            href={navigationItem.url}
+            href={navigationItem.path}
           />
         ))}
       </HDSNavigation.Row>
