@@ -9,6 +9,8 @@ import {
 import useConfig from "../configProvider/useConfig";
 import { MAIN_CONTENT_ID } from "../constants";
 
+type MenuItem = Omit<Menu["menuItems"]["nodes"][0], "__typename">;
+
 export type NavigationProps = {
   menu?: Menu;
   languages?: Language[];
@@ -20,6 +22,7 @@ export type NavigationProps = {
     currentLanguage: Language,
     allLanguages: Language[]
   ) => URL;
+  getIsItemActive?: (menuItem: MenuItem) => boolean;
 };
 
 export default function Navigation({
@@ -29,6 +32,7 @@ export default function Navigation({
   userNavigation,
   onTitleClick,
   getUrlForLanguage,
+  getIsItemActive,
 }: NavigationProps) {
   const {
     siteName,
@@ -66,6 +70,7 @@ export default function Navigation({
             label={navigationItem.label}
             title={navigationItem.title}
             href={navigationItem.path}
+            active={getIsItemActive?.(navigationItem) ?? false}
           />
         ))}
       </HDSNavigation.Row>

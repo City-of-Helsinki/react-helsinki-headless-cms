@@ -35,6 +35,9 @@ const Template: ComponentStory<typeof Page> = (args) => (
 );
 
 export const ApolloExample = Template.bind({});
+
+const currentPage = "/kulttuurikasvatus/";
+
 ApolloExample.args = {
   navigation: (
     <Navigation
@@ -43,6 +46,7 @@ ApolloExample.args = {
         // eslint-disable-next-line no-console
         console.log("I should navigate");
       }}
+      getIsItemActive={({ path }) => path === currentPage}
       getUrlForLanguage={({ slug, code }, currentLanguage) => {
         const baseUrl = "http://localhost:3000";
         const currentRatherComplexUrl = new URL(
@@ -65,7 +69,7 @@ ApolloExample.args = {
   ),
   content: (
     <PageContent
-      uri="/kulttuurikasvatus"
+      uri={currentPage}
       breadcrumbs={[
         { title: "Root", link: "/" },
         { title: "Nested", link: "/nested" },
