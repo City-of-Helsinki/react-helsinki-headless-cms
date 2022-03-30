@@ -3,7 +3,6 @@ import DOMPurify from "isomorphic-dompurify";
 import parse, {
   DOMNode,
   domToReact,
-  Element,
   HTMLReactParserOptions,
   attributesToProps,
 } from "html-react-parser";
@@ -36,7 +35,12 @@ function replaceDomNodeWithReactComponent(
   options?: HTMLReactParserOptions,
   { p: P = DefaultP, h2: H2 = DefaultH2, a: A = "a" }: Components = {}
 ) {
-  if (domNode instanceof Element && domNode.name === "p") {
+  // html-react-parser advices to do an instanceof check
+  // domNode instanceof Element
+  // However, this will fail between contexts. As this code is meant to be used
+  // as a dependency, different contexts are likely.
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof#instanceof_and_multiple_context_e.g._frames_or_windows
+  if ("attribs" in domNode && domNode.name === "p") {
     return (
       <P {...attributesToProps(domNode.attribs)}>
         {domToReact(domNode.children, options)}
@@ -44,7 +48,7 @@ function replaceDomNodeWithReactComponent(
     );
   }
 
-  if (domNode instanceof Element && domNode.name === "h2") {
+  if ("attribs" in domNode && domNode.name === "h2") {
     return (
       <H2 {...attributesToProps(domNode.attribs)}>
         {domToReact(domNode.children)}
@@ -52,7 +56,7 @@ function replaceDomNodeWithReactComponent(
     );
   }
 
-  if (domNode instanceof Element && domNode.name === "a") {
+  if ("attribs" in domNode && domNode.name === "a") {
     return (
       <A {...attributesToProps(domNode.attribs)}>
         {domToReact(domNode.children)}
