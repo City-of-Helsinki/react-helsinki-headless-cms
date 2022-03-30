@@ -6,7 +6,9 @@ async function publish() {
   await prepareToPublish();
 
   try {
-    const [stdout, stderr] = await execShellCommand("npm publish");
+    const [stdout, stderr] = await execShellCommand(
+      "npm publish --color always --registry=https://registry.npmjs.org/"
+    );
     process.stdout.write(stdout);
     process.stderr.write(stderr);
   } catch (e) {
