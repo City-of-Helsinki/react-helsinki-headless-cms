@@ -29,7 +29,9 @@ export default function PageContent({
     },
   });
 
-  const pageNotFound = pageQuery?.data?.page === null;
+  const pageNotFound =
+    pageQuery?.data?.page === null ||
+    pageQuery?.data?.page?.translation === null;
 
   if (pageNotFound) {
     return notFoundPageContent;
