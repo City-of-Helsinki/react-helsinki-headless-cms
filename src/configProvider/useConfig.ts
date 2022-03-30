@@ -1,3 +1,7 @@
-import { useConfig } from "./ConfigProvider";
+import { useContext } from "react";
 
-export default useConfig;
+import configContext from "./configContext";
+
+export default function useConfig() {
+  return useContext(configContext);
+}

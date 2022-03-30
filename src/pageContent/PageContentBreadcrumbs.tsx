@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useConfig } from "../configProvider/ConfigProvider";
+import useConfig from "../configProvider/useConfig";
 import { Breadcrumb } from "./types";
 import styles from "./pageContentBreadcrumbs.module.scss";
 

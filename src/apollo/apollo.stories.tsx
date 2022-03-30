@@ -5,9 +5,8 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 
 import { LanguageCodeEnum } from "../common/headlessService/types";
-import ConfigProvider, {
-  defaultConfig,
-} from "../configProvider/ConfigProvider";
+import ConfigProvider from "../configProvider/ConfigProvider";
+import defaultConfig from "../configProvider/defaultConfig";
 import PageContent from "./pageContent/PageContent";
 import Navigation from "./navigation/Navigation";
 import Page from "../page/Page";

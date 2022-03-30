@@ -1,7 +1,12 @@
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
 import { render, RenderOptions } from "@testing-library/react";
 
-const AllTheProviders = ({ children }) => children;
+import ConfigProvider from "../../configProvider/ConfigProvider";
+import defaultConfig from "../../configProvider/defaultConfig";
+
+function AllTheProviders({ children }) {
+  return <ConfigProvider config={defaultConfig}>{children}</ConfigProvider>;
+}
 
 const customRender = (
   ui: ReactElement,
