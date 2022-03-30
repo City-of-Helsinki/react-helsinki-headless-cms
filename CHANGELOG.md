@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - NextJS getLanguageStaticProps and getMenuStaticProps utilities that can be used to fetch hydrated data when using static page generation
 - PageContent component that can request its own data in an Apollo project
 - NextJS getLanguageStaticProps that can be used to fetch data when generating static pages
+- Link component for easy interoperability between anchor props and HDS Link component
 
 ### Fixed
 

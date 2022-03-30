@@ -1,12 +1,21 @@
 import React, { useMemo } from "react";
 import DOMPurify from "isomorphic-dompurify";
-import parse, { DOMNode, domToReact, Element } from "html-react-parser";
+import parse, {
+  DOMNode,
+  domToReact,
+  Element,
+  HTMLReactParserOptions,
+  attributesToProps,
+} from "html-react-parser";
 
 import Text from "../text/Text";
 
 type Components = {
   p?: React.ComponentType<{ children: React.ReactNode }>;
   h2?: React.ComponentType<{ children: React.ReactNode }>;
+  a?:
+    | React.ComponentType<React.AnchorHTMLAttributes<HTMLAnchorElement>>
+    | string;
 };
 
 type Props = {
@@ -24,14 +33,31 @@ function DefaultH2({ children }: { children: React.ReactNode }) {
 
 function replaceDomNodeWithReactComponent(
   domNode: DOMNode,
-  { p: P = DefaultP, h2: H2 = DefaultH2 }: Components = {}
+  options?: HTMLReactParserOptions,
+  { p: P = DefaultP, h2: H2 = DefaultH2, a: A = "a" }: Components = {}
 ) {
   if (domNode instanceof Element && domNode.name === "p") {
-    return <P>{domToReact(domNode.children)}</P>;
+    return (
+      <P {...attributesToProps(domNode.attribs)}>
+        {domToReact(domNode.children, options)}
+      </P>
+    );
   }
 
   if (domNode instanceof Element && domNode.name === "h2") {
-    return <H2>{domToReact(domNode.children)}</H2>;
+    return (
+      <H2 {...attributesToProps(domNode.attribs)}>
+        {domToReact(domNode.children)}
+      </H2>
+    );
+  }
+
+  if (domNode instanceof Element && domNode.name === "a") {
+    return (
+      <A {...attributesToProps(domNode.attribs)}>
+        {domToReact(domNode.children)}
+      </A>
+    );
   }
 
   return domNode;
@@ -42,6 +68,7 @@ export default function HtmlToReact({ children: dirty, components }: Props) {
     () =>
       DOMPurify.sanitize(dirty, {
         USE_PROFILES: { html: true },
+        ADD_ATTR: ["target"],
         ALLOWED_TAGS: [
           // Content sectioning
           "h1",
@@ -111,13 +138,14 @@ export default function HtmlToReact({ children: dirty, components }: Props) {
       }),
     [dirty]
   );
+  const htmlReactParserOptions = {
+    replace: (domNode) =>
+      replaceDomNodeWithReactComponent(
+        domNode,
+        htmlReactParserOptions,
+        components
+      ),
+  };
 
-  return (
-    <>
-      {parse(clean, {
-        replace: (domNode) =>
-          replaceDomNodeWithReactComponent(domNode, components),
-      })}
-    </>
-  );
+  return <>{parse(clean, htmlReactParserOptions)}</>;
 }

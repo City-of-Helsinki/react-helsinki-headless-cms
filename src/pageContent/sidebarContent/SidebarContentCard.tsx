@@ -2,7 +2,7 @@ import React from "react";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from "classnames";
 
-import { useConfig } from "../../configProvider/ConfigProvider";
+import useConfig from "../../configProvider/useConfig";
 import styles from "./sidebarContentCard.module.scss";
 
 type Props = {

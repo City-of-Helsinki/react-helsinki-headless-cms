@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { useConfig } from "../../../configProvider/ConfigProvider";
+import useConfig from "../../../configProvider/useConfig";
 import styles from "./externalLink.module.scss";
 
 type Props = React.AnchorHTMLAttributes<HTMLAnchorElement>;

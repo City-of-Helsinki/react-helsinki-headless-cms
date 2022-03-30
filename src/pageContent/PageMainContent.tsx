@@ -2,7 +2,7 @@ import React from "react";
 
 import HtmlToReact from "../common/components/htmlToReact/HtmlToReact";
 import Text from "../common/components/text/Text";
-import { useConfig } from "../configProvider/ConfigProvider";
+import useConfig from "../configProvider/useConfig";
 import styles from "./pageMainContent.module.scss";
 
 type Props = {
@@ -19,7 +19,7 @@ export default function PageMainContent({
   imageAlt = "",
 }: Props) {
   const {
-    components: { Img },
+    components: { Img, Link },
   } = useConfig();
 
   return (
@@ -34,7 +34,13 @@ export default function PageMainContent({
           </figure>
         )}
       </header>
-      <HtmlToReact>{content}</HtmlToReact>
+      <HtmlToReact
+        components={{
+          a: Link,
+        }}
+      >
+        {content}
+      </HtmlToReact>
     </article>
   );
 }
