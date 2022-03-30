@@ -9,7 +9,6 @@ const defaultConfig: Config = {
   siteName: "Test site",
   currentLanguageCode: LanguageCodeEnum.Fi,
   copy: {
-    externalLink: "opens in a new window",
     breadcrumbNavigationLabel: "Breadcrumb navigation",
     breadcrumbListLabel: "breadcrumbs",
     menuToggleAriaLabel: "toggle menu",

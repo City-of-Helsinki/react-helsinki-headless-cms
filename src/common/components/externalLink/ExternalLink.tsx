@@ -1,20 +1,31 @@
 import * as React from "react";
 
 import useConfig from "../../../configProvider/useConfig";
-import styles from "./externalLink.module.scss";
 
-type Props = React.AnchorHTMLAttributes<HTMLAnchorElement>;
+type Props = Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "children"> & {
+  children: string;
+  iconLeft?: JSX.Element;
+};
 
-export default function ExternalLink({ children, ...props }: Props) {
+export default function ExternalLink({
+  children: label,
+  iconLeft,
+  ...props
+}: Props) {
   const {
     components: { A },
-    copy: { externalLink },
+    copy: { openInNewTabAriaLabel },
   } = useConfig();
 
   return (
-    <A {...props} target="_blank" rel="noreferrer">
-      {children}
-      <span className={styles.srOnly}>{externalLink}</span>
+    <A
+      {...props}
+      target="_blank"
+      rel="noreferrer"
+      aria-label={`${label} ${openInNewTabAriaLabel}`}
+    >
+      {iconLeft && iconLeft}
+      {label}
     </A>
   );
 }
