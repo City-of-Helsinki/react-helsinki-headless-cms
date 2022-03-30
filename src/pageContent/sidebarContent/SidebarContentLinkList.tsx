@@ -39,8 +39,9 @@ export default function SidebarContentLinkList({
                 key={link.title}
                 href={link.url || "#"}
                 className={styles.link}
+                iconLeft={<IconLinkExternal aria-hidden="true" />}
               >
-                <IconLinkExternal aria-hidden="true" /> {link.title}
+                {link.title}
               </ExternalLink>
             ) : (
               <a

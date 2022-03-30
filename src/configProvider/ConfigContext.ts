@@ -7,7 +7,6 @@ export type Config = {
   siteName: string;
   currentLanguageCode: LanguageCodeEnum;
   copy: {
-    externalLink: string;
     breadcrumbNavigationLabel: string;
     breadcrumbListLabel: string;
     menuToggleAriaLabel: string;

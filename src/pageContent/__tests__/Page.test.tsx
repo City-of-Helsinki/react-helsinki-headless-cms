@@ -1,6 +1,6 @@
 import React from "react";
 
-import { render, screen, within } from "../../common/utils/testingLibrary";
+import { render, screen } from "../../common/utils/testingLibrary";
 import pageMock, { linkList } from "../__mocks__/page.mock";
 import Page from "../PageContent";
 
@@ -29,7 +29,6 @@ test("renders page with expected content", () => {
   linkList.links.forEach((link) => {
     const linkElement = screen.getByRole("link", {
       name: new RegExp(link.title),
-      // exact: false,
     });
 
     expect(linkElement).toBeInTheDocument();
@@ -38,7 +37,10 @@ test("renders page with expected content", () => {
     if (link.target === "_blank") {
       expect(linkElement).toHaveAttribute("target", "_blank");
       expect(linkElement).toHaveAttribute("rel", "noreferrer");
-      within(linkElement).getByText("opens in a new window");
+      expect(linkElement).toHaveAttribute(
+        "aria-label",
+        expect.stringContaining("opens in a new tab")
+      );
     }
   });
 });
