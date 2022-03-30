@@ -1,10 +1,12 @@
 import React from "react";
+import { LoadingSpinner } from "hds-react";
 
 import { usePageQuery } from "../../common/headlessService/page";
 import PageContentWithoutData, {
   PageContentProps as PageContentPropsWithoutData,
 } from "../../pageContent/PageContent";
 import useConfig from "../../configProvider/useConfig";
+import styles from "./pageContent.module.scss";
 
 export type PageProps = Omit<PageContentPropsWithoutData, "page"> & {
   uri: string;
@@ -28,6 +30,14 @@ export default function PageContent({
       language: currentLanguageCode,
     },
   });
+
+  if (pageQuery.loading) {
+    return (
+      <div className={styles.loadingSpinnerContainer}>
+        <LoadingSpinner />
+      </div>
+    );
+  }
 
   const pageNotFound =
     pageQuery?.data?.page === null ||
