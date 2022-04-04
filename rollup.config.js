@@ -83,6 +83,7 @@ function buildConfig() {
       "html-react-parser",
       "isomorphic-dompurify",
       "@apollo/client",
+      "date-fns",
     ],
   };
 }

@@ -3,11 +3,22 @@ export { default as defaultConfig } from "./configProvider/defaultConfig";
 
 export * from "./common/headlessService/types";
 
-export { default as Link } from "./link/Link";
+export { default as Link, LinkProps } from "./link/Link";
 
-export { default as Navigation } from "./navigation/Navigation";
+export {
+  default as Navigation,
+  NavigationProps,
+} from "./navigation/Navigation";
 
-export { default as Page } from "./page/Page";
+export {
+  default as Notification,
+  NotificationProps,
+} from "./notification/Notification";
 
-export { default as PageContent } from "./pageContent/PageContent";
+export { default as Page, PageProps } from "./page/Page";
+
+export {
+  default as PageContent,
+  PageContentProps,
+} from "./pageContent/PageContent";
 export type { Breadcrumb } from "./pageContent/types";

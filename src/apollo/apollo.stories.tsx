@@ -9,6 +9,7 @@ import ConfigProvider from "../configProvider/ConfigProvider";
 import defaultConfig from "../configProvider/defaultConfig";
 import PageContent from "./pageContent/PageContent";
 import Navigation from "./navigation/Navigation";
+import Notification from "./notification/Notification";
 import Page from "../page/Page";
 
 const client = new ApolloClient({
@@ -66,6 +67,7 @@ ApolloExample.args = {
       }}
     />
   ),
+  notification: <Notification />,
   content: (
     <PageContent
       uri={currentPage}

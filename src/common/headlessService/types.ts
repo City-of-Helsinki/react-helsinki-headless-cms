@@ -10,5 +10,6 @@ export type {
   LayoutLinkListFragment as LayoutLinkList,
   LayoutArticlesFragment as LayoutArticle,
   LayoutPagesFragment as LayoutPage,
+  Notification as NotificationType,
 } from "./__generated__";
 export { LanguageCodeEnum, MenuNodeIdTypeEnum } from "./__generated__";
