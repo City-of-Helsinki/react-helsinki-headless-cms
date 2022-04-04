@@ -63,6 +63,7 @@ By importing data dependent components from `react-helsinki-headless-cms/apollo`
 **Simplified example**
 
 ```tsx
+import { Page } from "react-helsinki-headless-cms/apollo";
 import { Navigation } from "react-helsinki-headless-cms/apollo";
 
 <ConfigProvider
@@ -72,7 +73,10 @@ import { Navigation } from "react-helsinki-headless-cms/apollo";
     // ...
   }}
 >
-  <Page navigation={<Navigation menuName="Name of menu in headless CMS" />} />
+  <Page
+    uri="/en/url"
+    navigation={<Navigation menuName="Name of menu in headless CMS" />}
+  />
 </ConfigProvider>;
 ```
 

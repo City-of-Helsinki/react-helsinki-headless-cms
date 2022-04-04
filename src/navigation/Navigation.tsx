@@ -17,11 +17,11 @@ export type NavigationProps = {
   className?: string;
   userNavigation?: React.ReactNode;
   onTitleClick: () => void;
-  getUrlForLanguage: (
+  getPathnameForLanguage: (
     language: Language,
     currentLanguage: Language,
     allLanguages: Language[]
-  ) => URL;
+  ) => string;
   getIsItemActive?: (menuItem: MenuItem) => boolean;
 };
 
@@ -31,7 +31,7 @@ export default function Navigation({
   className,
   userNavigation,
   onTitleClick,
-  getUrlForLanguage,
+  getPathnameForLanguage,
   getIsItemActive,
 }: NavigationProps) {
   const {
@@ -83,9 +83,11 @@ export default function Navigation({
               as={A}
               label={language.name}
               lang={language.slug}
-              href={
-                getUrlForLanguage(language, currentLanguage, languages).pathname
-              }
+              href={getPathnameForLanguage(
+                language,
+                currentLanguage,
+                languages
+              )}
             />
           ))}
         </HDSNavigation.LanguageSelector>

@@ -6,6 +6,10 @@ fragment SEO on SEO {
   openGraphType
   twitterTitle
   twitterDescription
+  canonicalUrl
+  socialImage {
+    mediaItemUrl
+  }
 }
 
 fragment LayoutLinkList on LayoutLinkList {
@@ -59,10 +63,7 @@ fragment Page on Page {
     ...SEO
   }
   language {
-    code
-    slug
-    locale
-    name
+    ...Language
   }
   featuredImage {
     node {
@@ -87,11 +88,20 @@ fragment Page on Page {
   }
 }
 
-query page($id: ID!, $language: LanguageCodeEnum!) {
+query page($id: ID!) {
   page(id: $id, idType: URI) {
     id
-    translation(language: $language) {
-      ...Page
+    ...Page
+    # Contains language versions other than the language the $id or type URI
+    # targets
+    translations {
+      uri
+      language {
+        ...Language
+      }
+      seo {
+        ...SEO
+      }
     }
   }
 }

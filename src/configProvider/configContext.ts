@@ -21,6 +21,7 @@ export type Config = {
     Link?: (
       props: React.AnchorHTMLAttributes<HTMLAnchorElement>
     ) => JSX.Element;
+    Head?: (props: { children: React.ReactNode }) => JSX.Element;
   };
   apolloClient?: ApolloClient<NormalizedCacheObject>;
   utils: {

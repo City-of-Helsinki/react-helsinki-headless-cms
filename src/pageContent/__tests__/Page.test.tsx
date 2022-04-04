@@ -9,12 +9,12 @@ test("renders page with expected content", () => {
 
   // Title of page is presented correctly
   expect(
-    screen.getByRole("heading", { name: pageMock.translation.title, level: 1 })
+    screen.getByRole("heading", { name: pageMock.title, level: 1 })
   ).toBeInTheDocument();
   // Featured image is included on the page
   expect(
     screen.getByRole("img", {
-      name: pageMock.translation.featuredImage.node.altText,
+      name: pageMock.featuredImage.node.altText,
     })
   ).toBeInTheDocument();
   // Check content

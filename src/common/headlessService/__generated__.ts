@@ -10207,6 +10207,11 @@ export type SeoFragment = {
   openGraphType?: string | null;
   twitterTitle?: string | null;
   twitterDescription?: string | null;
+  canonicalUrl?: string | null;
+  socialImage?: {
+    __typename?: "MediaItem";
+    mediaItemUrl?: string | null;
+  } | null;
 };
 
 export type LayoutLinkListFragment = {
@@ -10276,13 +10281,19 @@ export type PageFragment = {
     openGraphType?: string | null;
     twitterTitle?: string | null;
     twitterDescription?: string | null;
+    canonicalUrl?: string | null;
+    socialImage?: {
+      __typename?: "MediaItem";
+      mediaItemUrl?: string | null;
+    } | null;
   } | null;
   language?: {
     __typename?: "Language";
     code?: LanguageCodeEnum | null;
-    slug?: string | null;
+    id: string;
     locale?: string | null;
     name?: string | null;
+    slug?: string | null;
   } | null;
   featuredImage?: {
     __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
@@ -10349,7 +10360,6 @@ export type PageFragment = {
 
 export type PageQueryVariables = Exact<{
   id: Scalars["ID"];
-  language: LanguageCodeEnum;
 }>;
 
 export type PageQuery = {
@@ -10357,15 +10367,23 @@ export type PageQuery = {
   page?: {
     __typename?: "Page";
     id: string;
-    translation?: {
+    content?: string | null;
+    slug?: string | null;
+    title?: string | null;
+    uri?: string | null;
+    link?: string | null;
+    lead?: string | null;
+    translations?: Array<{
       __typename?: "Page";
-      id: string;
-      content?: string | null;
-      slug?: string | null;
-      title?: string | null;
       uri?: string | null;
-      link?: string | null;
-      lead?: string | null;
+      language?: {
+        __typename?: "Language";
+        code?: LanguageCodeEnum | null;
+        id: string;
+        locale?: string | null;
+        name?: string | null;
+        slug?: string | null;
+      } | null;
       seo?: {
         __typename?: "SEO";
         title?: string | null;
@@ -10375,88 +10393,100 @@ export type PageQuery = {
         openGraphType?: string | null;
         twitterTitle?: string | null;
         twitterDescription?: string | null;
-      } | null;
-      language?: {
-        __typename?: "Language";
-        code?: LanguageCodeEnum | null;
-        slug?: string | null;
-        locale?: string | null;
-        name?: string | null;
-      } | null;
-      featuredImage?: {
-        __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
-        node?: {
+        canonicalUrl?: string | null;
+        socialImage?: {
           __typename?: "MediaItem";
           mediaItemUrl?: string | null;
-          link?: string | null;
-          altText?: string | null;
-          mimeType?: string | null;
-          title?: string | null;
-          uri?: string | null;
         } | null;
       } | null;
-      sidebar?: Array<
-        | {
-            __typename?: "LayoutArticles";
-            articles?: Array<{
-              __typename?: "Post";
-              id: string;
-              title?: string | null;
-              link?: string | null;
-              featuredImage?: {
-                __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
-                node?: {
-                  __typename?: "MediaItem";
-                  altText?: string | null;
-                  mediaItemUrl?: string | null;
-                } | null;
-              } | null;
-            } | null> | null;
-          }
-        | {
-            __typename?: "LayoutLinkList";
-            anchor?: string | null;
-            title?: string | null;
-            description?: string | null;
-            links?: Array<{
-              __typename?: "Link";
-              target?: string | null;
-              title?: string | null;
-              url?: string | null;
-            } | null> | null;
-          }
-        | {
-            __typename?: "LayoutPages";
-            pages?: Array<{
-              __typename?: "Page";
-              id: string;
-              title?: string | null;
-              link?: string | null;
-              featuredImage?: {
-                __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
-                node?: {
-                  __typename?: "MediaItem";
-                  altText?: string | null;
-                  mediaItemUrl?: string | null;
-                } | null;
-              } | null;
-            } | null> | null;
-          }
-        | null
-      > | null;
+    } | null> | null;
+    seo?: {
+      __typename?: "SEO";
+      title?: string | null;
+      description?: string | null;
+      openGraphTitle?: string | null;
+      openGraphDescription?: string | null;
+      openGraphType?: string | null;
+      twitterTitle?: string | null;
+      twitterDescription?: string | null;
+      canonicalUrl?: string | null;
+      socialImage?: {
+        __typename?: "MediaItem";
+        mediaItemUrl?: string | null;
+      } | null;
     } | null;
+    language?: {
+      __typename?: "Language";
+      code?: LanguageCodeEnum | null;
+      id: string;
+      locale?: string | null;
+      name?: string | null;
+      slug?: string | null;
+    } | null;
+    featuredImage?: {
+      __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+      node?: {
+        __typename?: "MediaItem";
+        mediaItemUrl?: string | null;
+        link?: string | null;
+        altText?: string | null;
+        mimeType?: string | null;
+        title?: string | null;
+        uri?: string | null;
+      } | null;
+    } | null;
+    sidebar?: Array<
+      | {
+          __typename?: "LayoutArticles";
+          articles?: Array<{
+            __typename?: "Post";
+            id: string;
+            title?: string | null;
+            link?: string | null;
+            featuredImage?: {
+              __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+              node?: {
+                __typename?: "MediaItem";
+                altText?: string | null;
+                mediaItemUrl?: string | null;
+              } | null;
+            } | null;
+          } | null> | null;
+        }
+      | {
+          __typename?: "LayoutLinkList";
+          anchor?: string | null;
+          title?: string | null;
+          description?: string | null;
+          links?: Array<{
+            __typename?: "Link";
+            target?: string | null;
+            title?: string | null;
+            url?: string | null;
+          } | null> | null;
+        }
+      | {
+          __typename?: "LayoutPages";
+          pages?: Array<{
+            __typename?: "Page";
+            id: string;
+            title?: string | null;
+            link?: string | null;
+            featuredImage?: {
+              __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+              node?: {
+                __typename?: "MediaItem";
+                altText?: string | null;
+                mediaItemUrl?: string | null;
+              } | null;
+            } | null;
+          } | null> | null;
+        }
+      | null
+    > | null;
   } | null;
 };
 
-export const LanguageFragmentDoc = gql`
-  fragment Language on Language {
-    code
-    id
-    locale
-    name
-    slug
-  }
-`;
 export const MenuItemFragmentDoc = gql`
   fragment MenuItem on MenuItem {
     id
@@ -10476,6 +10506,19 @@ export const SeoFragmentDoc = gql`
     openGraphType
     twitterTitle
     twitterDescription
+    canonicalUrl
+    socialImage {
+      mediaItemUrl
+    }
+  }
+`;
+export const LanguageFragmentDoc = gql`
+  fragment Language on Language {
+    code
+    id
+    locale
+    name
+    slug
   }
 `;
 export const LayoutLinkListFragmentDoc = gql`
@@ -10533,10 +10576,7 @@ export const PageFragmentDoc = gql`
       ...SEO
     }
     language {
-      code
-      slug
-      locale
-      name
+      ...Language
     }
     featuredImage {
       node {
@@ -10561,6 +10601,7 @@ export const PageFragmentDoc = gql`
     }
   }
   ${SeoFragmentDoc}
+  ${LanguageFragmentDoc}
   ${LayoutLinkListFragmentDoc}
   ${LayoutArticlesFragmentDoc}
   ${LayoutPagesFragmentDoc}
@@ -10731,15 +10772,24 @@ export type NotificationQueryResult = Apollo.QueryResult<
   NotificationQueryVariables
 >;
 export const PageDocument = gql`
-  query page($id: ID!, $language: LanguageCodeEnum!) {
+  query page($id: ID!) {
     page(id: $id, idType: URI) {
       id
-      translation(language: $language) {
-        ...Page
+      ...Page
+      translations {
+        uri
+        language {
+          ...Language
+        }
+        seo {
+          ...SEO
+        }
       }
     }
   }
   ${PageFragmentDoc}
+  ${LanguageFragmentDoc}
+  ${SeoFragmentDoc}
 `;
 
 /**
@@ -10755,7 +10805,6 @@ export const PageDocument = gql`
  * const { data, loading, error } = usePageQuery({
  *   variables: {
  *      id: // value for 'id'
- *      language: // value for 'language'
  *   },
  * });
  */
