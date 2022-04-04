@@ -9,6 +9,9 @@ import {
 import Notification from "../Notification";
 import notificationMock from "../__mocks__/notification.mock";
 
+const extractContentStringFromContent = (rawContent: string) =>
+  rawContent.replace("<p>", "").replace("</p>", "");
+
 test("should render notification with expected content", () => {
   render(<Notification notification={notificationMock} />);
 
@@ -16,9 +19,7 @@ test("should render notification with expected content", () => {
     screen.getByRole("heading", { level: 2, name: notificationMock.title })
   ).toBeInTheDocument();
   expect(
-    screen.getByText(
-      notificationMock.content.replace("<p>", "").replace("</p>", "")
-    )
+    screen.getByText(extractContentStringFromContent(notificationMock.content))
   ).toBeInTheDocument();
 
   const link = screen.getByRole("link", {
