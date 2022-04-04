@@ -10180,6 +10180,24 @@ export type MenuQuery = {
   } | null;
 };
 
+export type NotificationQueryVariables = Exact<{
+  language?: Scalars["String"];
+}>;
+
+export type NotificationQuery = {
+  __typename?: "RootQuery";
+  notification?: {
+    __typename?: "Notification";
+    content?: string | null;
+    title?: string | null;
+    level?: string | null;
+    startDate?: string | null;
+    endDate?: string | null;
+    linkText?: string | null;
+    linkUrl?: string | null;
+  } | null;
+};
+
 export type SeoFragment = {
   __typename?: "SEO";
   title?: string | null;
@@ -10648,6 +10666,70 @@ export function useMenuLazyQuery(
 export type MenuQueryHookResult = ReturnType<typeof useMenuQuery>;
 export type MenuLazyQueryHookResult = ReturnType<typeof useMenuLazyQuery>;
 export type MenuQueryResult = Apollo.QueryResult<MenuQuery, MenuQueryVariables>;
+export const NotificationDocument = gql`
+  query notification($language: String! = "fi") {
+    notification(language: $language) {
+      content
+      title
+      level
+      startDate
+      endDate
+      linkText
+      linkUrl
+    }
+  }
+`;
+
+/**
+ * __useNotificationQuery__
+ *
+ * To run a query within a React component, call `useNotificationQuery` and pass it any options that fit your needs.
+ * When your component renders, `useNotificationQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useNotificationQuery({
+ *   variables: {
+ *      language: // value for 'language'
+ *   },
+ * });
+ */
+export function useNotificationQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    NotificationQuery,
+    NotificationQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<NotificationQuery, NotificationQueryVariables>(
+    NotificationDocument,
+    options
+  );
+}
+export function useNotificationLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    NotificationQuery,
+    NotificationQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<NotificationQuery, NotificationQueryVariables>(
+    NotificationDocument,
+    options
+  );
+}
+export type NotificationQueryHookResult = ReturnType<
+  typeof useNotificationQuery
+>;
+export type NotificationLazyQueryHookResult = ReturnType<
+  typeof useNotificationLazyQuery
+>;
+export type NotificationQueryResult = Apollo.QueryResult<
+  NotificationQuery,
+  NotificationQueryVariables
+>;
 export const PageDocument = gql`
   query page($id: ID!, $language: LanguageCodeEnum!) {
     page(id: $id, idType: URI) {

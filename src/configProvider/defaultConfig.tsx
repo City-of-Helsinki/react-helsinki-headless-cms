@@ -15,6 +15,7 @@ const defaultConfig: Config = {
     skipToContentLabel: "skip to content",
     openInExternalDomainAriaLabel: "Opens a different website.",
     openInNewTabAriaLabel: "Opens in a new tab.",
+    closeButtonLabelText: "close",
   },
   components: {
     A: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (

@@ -13,6 +13,7 @@ export type Config = {
     skipToContentLabel: string;
     openInExternalDomainAriaLabel: string;
     openInNewTabAriaLabel: string;
+    closeButtonLabelText: string;
   };
   components: {
     A: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => JSX.Element;

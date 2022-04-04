@@ -2,16 +2,25 @@ import React from "react";
 
 import styles from "./page.module.scss";
 
-type Props = {
+export type PageProps = {
   navigation: React.ReactNode;
+  notification?: React.ReactNode;
   content: React.ReactNode;
   footer: React.ReactNode;
 };
 
-export default function Page({ navigation, content, footer }: Props) {
+export default function Page({
+  navigation,
+  notification,
+  content,
+  footer,
+}: PageProps) {
   return (
     <div className={styles.pageLayout}>
-      {navigation}
+      <div>
+        {navigation}
+        {notification}
+      </div>
       {content}
       {footer}
     </div>

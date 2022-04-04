@@ -1,0 +1,11 @@
+query notification($language: String! = "fi") {
+  notification(language: $language) {
+    content
+    title
+    level
+    startDate
+    endDate
+    linkText
+    linkUrl
+  }
+}

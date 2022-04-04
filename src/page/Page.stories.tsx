@@ -11,6 +11,8 @@ import PageContent from "../pageContent/PageContent";
 import navigationLanguages from "../navigation/__mocks__/navigationLanguages.mock";
 import navigationMenu from "../navigation/__mocks__/navigationMenu.mock";
 import Navigation from "../navigation/Navigation";
+import Notification from "../notification/Notification";
+import notificationMock from "../notification/__mocks__/notification.mock";
 import Page from "./Page";
 
 export default {
@@ -59,6 +61,7 @@ PageDefault.args = {
       }}
     />
   ),
+  notification: <Notification notification={notificationMock} />,
   content: (
     <PageContent
       page={pageMock}
