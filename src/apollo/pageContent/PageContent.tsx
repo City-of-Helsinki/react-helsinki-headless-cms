@@ -5,16 +5,14 @@ import { usePageQuery } from "../../common/headlessService/page";
 import PageContentWithoutData, {
   PageContentProps as PageContentPropsWithoutData,
 } from "../../pageContent/PageContent";
-import useConfig from "../../configProvider/useConfig";
 import styles from "./pageContent.module.scss";
+import useApolloPageContext from "../page/useApolloPageContext";
 
 export type PageProps = Omit<PageContentPropsWithoutData, "page"> & {
-  uri: string;
   notFoundPageContent?: JSX.Element;
 };
 
 export default function PageContent({
-  uri,
   notFoundPageContent = (
     <div>
       404 - Page not found. Provide the notFoundPageContent prop to PageContent
@@ -23,11 +21,10 @@ export default function PageContent({
   ),
   ...delegatedProps
 }: PageProps) {
-  const { currentLanguageCode } = useConfig();
+  const { uri } = useApolloPageContext();
   const pageQuery = usePageQuery({
     variables: {
       id: uri,
-      language: currentLanguageCode,
     },
   });
 
@@ -39,9 +36,7 @@ export default function PageContent({
     );
   }
 
-  const pageNotFound =
-    pageQuery?.data?.page === null ||
-    pageQuery?.data?.page?.translation === null;
+  const pageNotFound = pageQuery?.data?.page === null;
 
   if (pageNotFound) {
     return notFoundPageContent;

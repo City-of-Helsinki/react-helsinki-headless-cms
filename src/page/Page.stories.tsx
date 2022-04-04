@@ -2,6 +2,7 @@
 
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 import { LanguageCodeEnum } from "../common/headlessService/types";
 import ConfigProvider from "../configProvider/ConfigProvider";
@@ -21,14 +22,22 @@ export default {
 } as ComponentMeta<typeof Page>;
 
 const Template: ComponentStory<typeof Page> = (args) => (
-  <ConfigProvider
-    config={{
-      ...defaultConfig,
-      siteName: "RHHC Example",
-    }}
-  >
-    <Page {...args} />
-  </ConfigProvider>
+  <HelmetProvider>
+    <ConfigProvider
+      config={{
+        ...defaultConfig,
+        siteName: "RHHC Example",
+        components: {
+          ...defaultConfig.components,
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          Head: Helmet,
+        },
+      }}
+    >
+      <Page {...args} />
+    </ConfigProvider>
+  </HelmetProvider>
 );
 
 export const PageDefault = Template.bind({});
@@ -41,7 +50,7 @@ PageDefault.args = {
         // eslint-disable-next-line no-console
         console.log("I should navigate");
       }}
-      getUrlForLanguage={({ slug, code }, currentLanguage) => {
+      getPathnameForLanguage={({ slug, code }, currentLanguage) => {
         const baseUrl = "http://localhost:3000";
         const currentRatherComplexUrl = new URL(
           "http://localhost:3000/en/cms-page/page-slug"
@@ -51,13 +60,13 @@ PageDefault.args = {
           return new URL(
             currentRatherComplexUrl.pathname.replace(currentLanguage.slug, ""),
             baseUrl
-          );
+          ).pathname;
         }
 
         return new URL(
           currentRatherComplexUrl.pathname.replace(currentLanguage.slug, slug),
           baseUrl
-        );
+        ).pathname;
       }}
     />
   ),
