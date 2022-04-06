@@ -71,9 +71,14 @@ function buildConfig() {
         extensions,
       }),
       copy({
-        // Copy package.json into dist so that we can release from the dist
-        // folder and have a flatter import structure
-        targets: [{ src: "package.json", dest: "dist/" }],
+        targets: [
+          // Copy package.json into dist so that we can release from the dist
+          // folder and have a flatter import structure
+          { src: "package.json", dest: "dist/" },
+          // Include README in the package for documentation
+          { src: "README.md", dest: "dist/" },
+          { src: "LICENSE", dest: "dist/" },
+        ],
       }),
     ],
     external: [
