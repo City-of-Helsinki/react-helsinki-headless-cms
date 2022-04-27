@@ -1,6 +1,6 @@
 import * as Apollo from "@apollo/client";
 
-import useApolloClientFromConfig from "../../configProvider/useApolloClientFromConfig";
+import useApolloClientFromConfig from "../../core/configProvider/useApolloClientFromConfig";
 
 type UseQuery<Q, V> = (
   baseOptions?: Apollo.QueryHookOptions<Q, V>

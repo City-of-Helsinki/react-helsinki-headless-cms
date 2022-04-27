@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import useConfig from "../../../configProvider/useConfig";
+import useConfig from "../../../core/configProvider/useConfig";
 
 type Props = Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "children"> & {
   children: string;

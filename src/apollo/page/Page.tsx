@@ -2,7 +2,7 @@ import React from "react";
 
 import PageWithoutData, {
   PageProps as PagePropsWithoutData,
-} from "../../page/Page";
+} from "../../core/page/Page";
 import ApolloPageContextProvider from "./ApolloPageContextProvider";
 
 export type PageProps = PagePropsWithoutData & {

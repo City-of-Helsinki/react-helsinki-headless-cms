@@ -15,6 +15,20 @@
     "publish-stable": "node ./scripts/publish-stable.js",
     "generate:graphql": "DOTENV_CONFIG_PATH=./.env graphql-codegen -r dotenv/config --config codegen.yml"
   },
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "default": "./cjs/index.js"
+    },
+    "./apollo": {
+      "import": "./apollo.js",
+      "default": "./cjs/apollo.js"
+    },
+    "./nextjs": {
+      "import": "./nextjs.js",
+      "default": "./cjs/nextjs.js"
+    }
+  },
   "repository": "https://github.com/City-of-Helsinki/react-helsinki-headless-cms.git",
   "license": "MIT",
   "bugs": {
