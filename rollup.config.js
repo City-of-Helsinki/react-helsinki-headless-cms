@@ -26,9 +26,9 @@ function buildConfig() {
     },
     output: [
       {
-        dir: "dist",
+        dir: "dist/cjs",
         format: "cjs",
-        entryFileNames: "cjs/[name].js",
+        entryFileNames: "[name].js",
       },
       {
         dir: "dist",
