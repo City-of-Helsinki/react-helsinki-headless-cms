@@ -94,6 +94,14 @@ We provide utilities for fetching headless data for NextJs in `react-helsinki-he
 | `yarn build`          | Builds application with rollup.                                                                                            |                               |
 | `yarn publish-canary` | Publishes a canary tagged version of the application. CD is configured to run this script on additions tot he main branch. |                               |
 
+### Module structure
+
+This library consists of three modules.
+
+- Core module that includes data naive components.
+- Apollo module that wraps core module components with logic that is able to fetch data with the help of an `ApolloClient` instance.
+- Nextjs module that provides utilities when working with Nextjs and Apollo.
+
 ### CI
 
 Checks
@@ -119,3 +127,7 @@ This project uses `rollup` for its final bundle.
 ### Releasing new versions
 
 A new version of the `npm` package is automatically released when a new release is created in GitHub. Additionally, a new canary release is created after each new push into master.
+
+### Known issues
+
+- Jest has difficulties loading this library. When this library is required in a test file, it's possible that some imports are cjs and some are esm. These two variants do not share a react context which can result in `useConfig` calls that return an empty config object even though `<ConfigProvider>` is declared correctly. I.e. `<ConfigProvider>` sets values for `context1` and `useConfig` reads `context2`.
