@@ -20,7 +20,7 @@ function buildConfig() {
 
   return {
     input: {
-      index: "src/index.ts",
+      index: "src/core/index.ts",
       apollo: "src/apollo/index.ts",
       nextjs: "src/nextjs/index.ts",
     },

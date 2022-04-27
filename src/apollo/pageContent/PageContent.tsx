@@ -4,7 +4,7 @@ import { LoadingSpinner } from "hds-react";
 import { usePageQuery } from "../../common/headlessService/page";
 import PageContentWithoutData, {
   PageContentProps as PageContentPropsWithoutData,
-} from "../../pageContent/PageContent";
+} from "../../core/pageContent/PageContent";
 import styles from "./pageContent.module.scss";
 import useApolloPageContext from "../page/useApolloPageContext";
 

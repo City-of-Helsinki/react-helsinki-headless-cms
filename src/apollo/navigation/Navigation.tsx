@@ -5,7 +5,7 @@ import { useLanguagesQuery } from "../../common/headlessService/languages";
 import { useMenuQuery } from "../../common/headlessService/menu";
 import NavigationWithoutData, {
   NavigationProps as NavigationPropsWithoutData,
-} from "../../navigation/Navigation";
+} from "../../core/navigation/Navigation";
 import useApolloPageContext from "../page/useApolloPageContext";
 
 export type NavigationProps = Omit<
