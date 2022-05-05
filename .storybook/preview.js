@@ -1,12 +1,14 @@
 // Enable hds-design-tokens in storybook
-import "hds-design-tokens/lib/all.min.css";
+import 'hds-design-tokens/lib/all.min.css'
+
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
 
 // Enable HelsinkiGrotesk font in storybook
-import "./helsinkiGrotesk.css";
-import "./storybookOverrides.css";
+import './helsinkiGrotesk.css'
+import './storybookOverrides.css'
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
+  actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     matchers: {
       color: /(background|color)$/i,
@@ -14,15 +16,7 @@ export const parameters = {
     },
   },
   viewport: {
-    defaultViewport: "extraSmall",
-    viewports: {
-      extraSmall: {
-        name: "Extra small",
-        styles: {
-          width: "320px",
-          height: "100%",
-        },
-      },
-    },
+    defaultViewport: 'extraSmall',
+    viewports: INITIAL_VIEWPORTS,
   },
-};
+}

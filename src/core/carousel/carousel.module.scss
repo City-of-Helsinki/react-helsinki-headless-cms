@@ -1,0 +1,107 @@
+@import "color";
+
+.container {
+  margin: 100px -60px 0;
+  box-sizing: border-box;
+
+  .carouselWrapper {
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+
+    .btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 2px 4px 0 rgb(0 0 0 / 50%);
+      width: 44px;
+      height: 44px;
+      padding: 5px;
+      border-radius: 50%;
+      background: $color-white;
+      top: 50%;
+      z-index: 5;
+      border: none;
+      position: absolute;
+      cursor: pointer;
+      margin-top: -12px;
+
+      &.btnPrev {
+        margin-left: 55px;
+      }
+
+      &.btnNext {
+        right: 0;
+        margin-right: 55px;
+      }
+    }
+
+    .root {
+      outline: none;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+
+      .slider {
+        position: relative;
+        width: 100%;
+        overflow: visible;
+        padding: 0 60px;
+        margin: 30px auto 0;
+        box-sizing: border-box;
+
+        .sliderWrapper {
+          overflow: visible;
+          margin: auto;
+          width: 100%;
+          transition: height 0.15s ease-in;
+          box-sizing: border-box;
+
+          //ul
+          .sliderAnimated {
+            display: flex;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            list-style: none;
+            width: 100%;
+            background: transparent;
+            height: auto;
+            box-sizing: border-box;
+            transition-duration: 250ms;
+
+            //li
+            .slide {
+              flex-flow: column;
+              transition: opacity 0.25s ease-in, padding 0.25s ease-in;
+              min-width: 100%;
+              margin: 0;
+              position: relative;
+              text-align: center;
+              background: transparent;
+              box-sizing: border-box;
+              opacity: 0.5;
+
+              .slideItems {
+                display: flex;
+                height: 100%;
+                box-sizing: border-box;
+
+                .slideItem {
+                  padding: 0 5px;
+                  position: relative;
+                  box-sizing: border-box;
+                }
+              }
+            }
+
+            .slideSelected {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+}
