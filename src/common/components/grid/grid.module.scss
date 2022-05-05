@@ -1,0 +1,18 @@
+@import "breakpoints";
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+
+  @include respond_above(s) {
+    display: grid;
+    grid-gap: 2rem;
+  }
+}
+
+@for $i from 1 through 12 {
+  .cols#{$i} {
+    grid-template-columns: repeat(#{$i}, 1fr);
+  }
+}
