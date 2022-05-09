@@ -55,10 +55,12 @@ test("should not render notification when it has been dismissed", async () => {
     screen.getByRole("heading", { level: 2, name: notificationMock.title })
   ).toBeInTheDocument();
 
-  userEvent.click(
-    screen.getByRole("button", {
-      name: "close",
-    })
+  await waitFor(() =>
+    userEvent.click(
+      screen.getByRole("button", {
+        name: "close",
+      })
+    )
   );
 
   await waitFor(() =>
