@@ -1,49 +1,104 @@
-import { IconArrowRight } from "hds-react";
+import { IconArrowRight, Tag } from "hds-react";
 import React from "react";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from "classnames";
 
 import styles from "./card.module.scss";
+import LinkWrapper from "../../common/components/linkWrapper/LinkWrapper";
 
 export type CardProps = {
+  ariaLabel?: string;
+  className?: string;
   imageUrl?: string;
+  imageLabel?: string;
+  title?: string;
   subTitle?: string;
   text?: string;
-  title?: string;
+  customContent?: React.ReactNode | string;
+  hasLink?: boolean;
   url?: string;
-  className?: string;
+  withBorder?: boolean;
+  withShadow?: boolean;
+  direction?: "fixed-horisontal" | "fixed-vertical" | "responsive";
+  clampText?: boolean;
+  target?: "_blank" | "_self";
 };
 
 export default function Card({
+  ariaLabel,
+  className,
   imageUrl,
+  imageLabel,
+  title,
   subTitle,
   text,
-  title,
+  customContent,
+  hasLink,
   url,
-  className,
+  withBorder,
+  withShadow,
+  direction = "responsive",
+  clampText,
+  target,
 }: CardProps) {
   return (
-    <div className={classNames(styles.cardWrapper, className)}>
-      {imageUrl && (
-        <div
-          className={styles.imageWrapper}
-          style={{
-            backgroundImage: `url(${imageUrl})`,
-          }}
-        />
-      )}
-      <div className={styles.textWrapper}>
-        {title && <div className={styles.title}>{title}</div>}
-        {subTitle && <div className={styles.subTitle}>{subTitle}</div>}
-        {text && <div className={styles.text}>{text}</div>}
-        {url && (
-          <div className={styles.buttonWrapper}>
-            <a href={url}>
-              <IconArrowRight aria-hidden="true" />
-            </a>
+    <LinkWrapper
+      href={url}
+      className={className}
+      ariaLabel={ariaLabel || ""}
+      target={target}
+    >
+      <div
+        className={classNames(
+          styles.cardWrapper,
+          withBorder && styles.withBorder,
+          withShadow && styles.withShadow,
+          direction && styles[direction]
+        )}
+      >
+        {imageUrl && (
+          <div
+            className={classNames(
+              styles.imageWrapper,
+              direction && styles[direction]
+            )}
+            style={{
+              backgroundImage: `url(${imageUrl})`,
+            }}
+          >
+            {imageLabel && (
+              <div className={styles.imageLabel}>
+                <Tag className={styles.tag}>{imageLabel}</Tag>
+              </div>
+            )}
           </div>
         )}
+        <div>
+          <div className={styles.textWrapper}>
+            {title && <div className={styles.title}>{title}</div>}
+            {subTitle && <div className={styles.subTitle}>{subTitle}</div>}
+            {text && (
+              <div
+                className={classNames(styles.text, clampText && styles.clamp)}
+              >
+                {text}
+              </div>
+            )}
+            {customContent && (
+              <div className={styles.customContent}>{customContent}</div>
+            )}
+            {url && hasLink && (
+              <div className={styles.buttonWrapper}>
+                <LinkWrapper
+                  href={url}
+                  target={target}
+                  iconLeft={<IconArrowRight aria-hidden="true" />}
+                />
+              </div>
+            )}
+          </div>
+        </div>
       </div>
-    </div>
+    </LinkWrapper>
   );
 }

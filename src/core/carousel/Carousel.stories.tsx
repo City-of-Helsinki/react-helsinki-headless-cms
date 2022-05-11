@@ -16,13 +16,13 @@ const Template: ComponentStory<typeof Carousel> = (args) => (
   <div>
     <div style={{ overflow: "hidden", padding: 24 }}>
       <Carousel {...args}>
-        <Card {...card} title="1" />
-        <Card {...card} title="2" />
-        <Card {...card} title="3" />
-        <Card {...card} title="4" />
-        <Card {...card} title="5" />
-        <Card {...card} title="6" />
-        <Card {...card} title="7" />
+        <Card {...card} title="1" direction="fixed-vertical" />
+        <Card {...card} title="2" direction="fixed-vertical" />
+        <Card {...card} title="3" direction="fixed-vertical" />
+        <Card {...card} title="4" direction="fixed-vertical" />
+        <Card {...card} title="5" direction="fixed-vertical" />
+        <Card {...card} title="6" direction="fixed-vertical" />
+        <Card {...card} title="7" direction="fixed-vertical" />
       </Carousel>
     </div>
   </div>

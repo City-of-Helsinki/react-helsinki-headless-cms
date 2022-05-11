@@ -11,6 +11,7 @@ export type CarouselProps<T> = {
   itemsDesktop?: 1 | 2 | 3 | 4 | 5;
   itemsMobile?: 1 | 2;
   className?: string;
+  withDots?: boolean;
 };
 
 export default function Carousel({
@@ -18,6 +19,7 @@ export default function Carousel({
   itemsDesktop = 4,
   itemsMobile = 2,
   className = "",
+  withDots = true,
 }) {
   const MOBILE_WIDTH = 640;
 
@@ -40,10 +42,14 @@ export default function Carousel({
     setItemsPerSlide(
       Math.ceil(width > MOBILE_WIDTH ? itemsDesktop : itemsMobile)
     );
+    setCurrentSlide(0);
+    setTransformValue("0px");
   }, [width, itemsDesktop, itemsMobile]);
 
   useEffect(() => {
-    setNumberOfSlides(Math.ceil(children.length / itemsPerSlide));
+    if (itemsPerSlide > 0) {
+      setNumberOfSlides(Math.ceil(children.length / itemsPerSlide));
+    }
   }, [itemsPerSlide, children.length]);
 
   const handleUpdateSlideProps = (value: number): void => {
@@ -131,6 +137,18 @@ export default function Carousel({
                 </ul>
               </div>
             </div>
+            {withDots && (
+              <div className={styles.dotsContainer}>
+                {[...Array(numberOfSlides)].map((e, i) => (
+                  <div
+                    className={classNames(
+                      styles.dot,
+                      i === currentSlide && styles.selected
+                    )}
+                  />
+                ))}
+              </div>
+            )}
           </div>
         )}
       </div>

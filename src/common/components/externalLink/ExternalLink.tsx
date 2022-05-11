@@ -3,13 +3,15 @@ import * as React from "react";
 import useConfig from "../../../core/configProvider/useConfig";
 
 type Props = Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "children"> & {
-  children: string;
+  children: JSX.Element | string;
   iconLeft?: JSX.Element;
+  ariaLabel?: string;
 };
 
 export default function ExternalLink({
   children: label,
   iconLeft,
+  ariaLabel,
   ...props
 }: Props) {
   const {
@@ -22,7 +24,9 @@ export default function ExternalLink({
       {...props}
       target="_blank"
       rel="noreferrer"
-      aria-label={`${label} ${openInNewTabAriaLabel}`}
+      aria-label={`${
+        ariaLabel || (typeof label === "string" ? label : "")
+      } ${openInNewTabAriaLabel}`}
     >
       {iconLeft && iconLeft}
       {label}
