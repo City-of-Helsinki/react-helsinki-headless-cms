@@ -78,7 +78,6 @@
               min-width: 100%;
               margin: 0;
               position: relative;
-              text-align: center;
               background: transparent;
               box-sizing: border-box;
               opacity: 0.5;
@@ -99,6 +98,23 @@
             .slideSelected {
               opacity: 1;
             }
+          }
+        }
+      }
+
+      .dotsContainer {
+        display: flex;
+        justify-content: center;
+        margin: 8px;
+        .dot {
+          border: 2px solid var(--color-black-50);
+          border-radius: 50%;
+          width: 8px;
+          height: 8px;
+          margin: 0 2px;
+
+          &.selected {
+            background-color: var(--color-black-50);
           }
         }
       }
