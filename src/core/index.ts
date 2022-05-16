@@ -21,4 +21,14 @@ export {
   default as PageContent,
   PageContentProps,
 } from "./pageContent/PageContent";
+
+export { getCollections, getCollectionCards } from "./pageContent/utils";
+
 export type { Breadcrumb } from "./pageContent/types";
+
+export {
+  default as Collection,
+  CollectionProps,
+} from "./collection/Collection";
+
+export { default as Carousel, CarouselProps } from "./carousel/Carousel";
