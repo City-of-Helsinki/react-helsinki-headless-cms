@@ -1,0 +1,19 @@
+@import "spacing";
+@import "typography";
+
+.collection {
+  --spacing: #{$spacing-4-xl};
+  display: block;
+  margin: var(--spacing) auto;
+  padding: 0 var(--padding);
+  width: 100%;
+  max-width: var(--max-width);
+
+  & > .heading {
+    font-size: $fontsize-heading-l;
+  }
+
+  & > .carousel {
+    margin: 0 0 var(--spacing) 0;
+  }
+}

@@ -24,10 +24,12 @@ fragment LayoutLinkList on LayoutLinkList {
 }
 
 fragment LayoutArticles on LayoutArticles {
+  title
   articles {
     id
     title
     link
+    lead
     featuredImage {
       node {
         altText
@@ -38,10 +40,12 @@ fragment LayoutArticles on LayoutArticles {
 }
 
 fragment LayoutPages on LayoutPages {
+  title
   pages {
     id
     title
     link
+    lead
     featuredImage {
       node {
         altText
@@ -79,6 +83,15 @@ fragment Page on Page {
     ... on LayoutLinkList {
       ...LayoutLinkList
     }
+    ... on LayoutArticles {
+      ...LayoutArticles
+    }
+    ... on LayoutPages {
+      ...LayoutPages
+    }
+  }
+  modules {
+    # TODO: HCRC-13 - Support Event search and Event selection -modules
     ... on LayoutArticles {
       ...LayoutArticles
     }

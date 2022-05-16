@@ -3,6 +3,8 @@ import { MenuQuery, PageQuery } from "./__generated__";
 export type Menu = MenuQuery["menu"];
 export type PageType = PageQuery["page"];
 export type SidebarContent = PageQuery["page"]["sidebar"];
+export type PageModule = PageQuery["page"]["modules"][number];
+export type PageSidebarModule = PageQuery["page"]["sidebar"][number];
 
 export type {
   MenuItemFragment as MenuItem,
