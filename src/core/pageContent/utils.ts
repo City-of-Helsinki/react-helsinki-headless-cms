@@ -1,4 +1,4 @@
-import { PageQuery } from "../../common/headlessService/page";
+import { PageModule } from "../../common/headlessService/types";
 import {
   isLayoutArticle,
   isLayoutPage,
@@ -6,9 +6,7 @@ import {
 import { CardProps } from "../card/Card";
 import { CollectionType } from "../collection/types";
 
-export function getCollections(
-  pageModules: PageQuery["page"]["modules"]
-): CollectionType[] {
+export function getCollections(pageModules: PageModule[]): CollectionType[] {
   return (
     pageModules
       ?.map((module, index) => {
