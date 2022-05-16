@@ -1,6 +1,6 @@
 import { PageQuery } from "../../../common/headlessService/page";
 
-export const linkList = {
+export const sidebarLinkList = {
   anchor: "#interesting-links",
   title: "Interesting links",
   description: "Short description about the purpose of the links",
@@ -17,6 +17,7 @@ export const linkList = {
   ],
 };
 export const articleList = {
+  title: "Cherry Picked Articles",
   articles: [
     {
       id: "bdf",
@@ -37,7 +38,8 @@ export const articleList = {
     },
   ],
 };
-export const postList = {
+export const pageList = {
+  title: "Collected pages",
   pages: [
     {
       id: "dfg",
@@ -46,7 +48,9 @@ export const postList = {
     },
   ],
 };
-const sidebar = [linkList, articleList, postList];
+const sidebar = [sidebarLinkList, articleList, pageList];
+
+const modules = [articleList, pageList];
 
 const mockPage: PageQuery["page"] = {
   id: "abc",
@@ -69,6 +73,7 @@ const mockPage: PageQuery["page"] = {
     },
   },
   sidebar,
+  modules,
 };
 
 export default mockPage;

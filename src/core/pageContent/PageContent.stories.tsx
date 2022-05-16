@@ -8,6 +8,9 @@ import defaultConfig from "../configProvider/defaultConfig";
 import pageMock from "./__mocks__/page.mock";
 import pageWithDiverseContent from "./__mocks__/pageWithDiverseContent.mock";
 import PageContent from "./PageContent";
+import Collection from "../collection/Collection";
+import Card from "../card/Card";
+import { getCollectionCards, getCollections } from "./utils";
 
 export default {
   title: "Example/PageContent",
@@ -27,6 +30,22 @@ const Template: ComponentStory<typeof PageContent> = (args) => (
 export const PageContentDefault = Template.bind({});
 PageContentDefault.args = {
   page: pageMock,
+  collections: getCollections(pageMock.modules)?.map((collection) => (
+    <Collection
+      key={`collection-${Math.random()}`}
+      title={collection.title}
+      cards={getCollectionCards(collection).map((cardProps) => (
+        <Card
+          key={cardProps.id}
+          {...cardProps}
+          imageUrl={
+            cardProps.imageUrl || pageMock.featuredImage?.node?.mediaItemUrl
+          }
+        />
+      ))}
+      carouselProps={{ withDots: false }}
+    />
+  )),
 };
 
 export const PageContentWithSupportedContentTypes = Template.bind({});

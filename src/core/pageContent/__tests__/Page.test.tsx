@@ -1,7 +1,7 @@
 import React from "react";
 
 import { render, screen } from "../../../common/utils/testingLibrary";
-import pageMock, { linkList } from "../__mocks__/page.mock";
+import pageMock, { sidebarLinkList } from "../__mocks__/page.mock";
 import Page from "../PageContent";
 
 test("renders page with expected content", () => {
@@ -22,11 +22,11 @@ test("renders page with expected content", () => {
 
   // Sidebar contains expected links
   expect(
-    screen.getByRole("heading", { name: linkList.title, level: 2 })
+    screen.getByRole("heading", { name: sidebarLinkList.title, level: 2 })
   ).toBeInTheDocument();
-  expect(screen.getByText(linkList.description)).toBeInTheDocument();
-  expect(document.getElementById(linkList.anchor)).toBeInTheDocument();
-  linkList.links.forEach((link) => {
+  expect(screen.getByText(sidebarLinkList.description)).toBeInTheDocument();
+  expect(document.getElementById(sidebarLinkList.anchor)).toBeInTheDocument();
+  sidebarLinkList.links.forEach((link) => {
     const linkElement = screen.getByRole("link", {
       name: new RegExp(link.title),
     });

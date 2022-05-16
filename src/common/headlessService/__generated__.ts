@@ -115,6 +115,8 @@ export type Category = DatabaseIdentifier &
     slug?: Maybe<Scalars["String"]>;
     /** Connection between the category type and the Taxonomy type */
     taxonomy?: Maybe<CategoryToTaxonomyConnectionEdge>;
+    /** The name of the taxonomy that the object is associated with */
+    taxonomyName?: Maybe<Scalars["String"]>;
     /** The ID of the term group that this term object belongs to */
     termGroupId?: Maybe<Scalars["Int"]>;
     /** The taxonomy ID that the object is associated with */
@@ -459,6 +461,8 @@ export type Collection = ContentNode &
     collectionId: Scalars["Int"];
     /** Connection between the ContentNode type and the ContentType type */
     contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
+    /** The name of the Content Type the node belongs to */
+    contentTypeName: Scalars["String"];
     /** The unique identifier stored in the database */
     databaseId: Scalars["Int"];
     /** Post publishing date. */
@@ -796,6 +800,8 @@ export type CommentRepliesArgs = {
 export type CommentAuthor = Commenter &
   Node & {
     __typename?: "CommentAuthor";
+    /** Avatar object for user. The avatar object can be retrieved in different sizes by specifying the size argument. */
+    avatar?: Maybe<Avatar>;
     /** Identifies the primary key from the database. */
     databaseId: Scalars["Int"];
     /** The email for the comment author */
@@ -809,6 +815,13 @@ export type CommentAuthor = Commenter &
     /** The url the comment author. */
     url?: Maybe<Scalars["String"]>;
   };
+
+/** A Comment Author object */
+export type CommentAuthorAvatarArgs = {
+  forceDefault?: InputMaybe<Scalars["Boolean"]>;
+  rating?: InputMaybe<AvatarRatingEnum>;
+  size?: InputMaybe<Scalars["Int"]>;
+};
 
 /** Connection between the Comment type and the Comment type */
 export type CommentToCommentConnection = {
@@ -977,6 +990,8 @@ export type CommentToParentCommentConnectionWhereArgs = {
 
 /** The author of a comment */
 export type Commenter = {
+  /** Avatar object for user. The avatar object can be retrieved in different sizes by specifying the size argument. */
+  avatar?: Maybe<Avatar>;
   /** Identifies the primary key from the database. */
   databaseId: Scalars["Int"];
   /** The email address of the author of a comment. */
@@ -1044,6 +1059,8 @@ export type Contact = ContentNode &
     contactId: Scalars["Int"];
     /** Connection between the ContentNode type and the ContentType type */
     contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
+    /** The name of the Content Type the node belongs to */
+    contentTypeName: Scalars["String"];
     /** The unique identifier stored in the database */
     databaseId: Scalars["Int"];
     /** Post publishing date. */
@@ -1319,6 +1336,8 @@ export type ContactToTermNodeConnectionWhereArgs = {
 export type ContentNode = {
   /** Connection between the ContentNode type and the ContentType type */
   contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
+  /** The name of the Content Type the node belongs to */
+  contentTypeName: Scalars["String"];
   /** The ID of the node in the database. */
   databaseId: Scalars["Int"];
   /** Post publishing date. */
@@ -2721,6 +2740,8 @@ export type LandingPage = ContentNode &
     boxColor?: Maybe<Scalars["String"]>;
     /** Connection between the ContentNode type and the ContentType type */
     contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
+    /** The name of the Content Type the node belongs to */
+    contentTypeName: Scalars["String"];
     /** The unique identifier stored in the database */
     databaseId: Scalars["Int"];
     /** Post publishing date. */
@@ -3354,6 +3375,8 @@ export type MediaItem = ContentNode &
     children?: Maybe<HierarchicalContentNodeToContentNodeChildrenConnection>;
     /** Connection between the ContentNode type and the ContentType type */
     contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
+    /** The name of the Content Type the node belongs to */
+    contentTypeName: Scalars["String"];
     /** The unique identifier stored in the database */
     databaseId: Scalars["Int"];
     /** Post publishing date. */
@@ -4020,6 +4043,8 @@ export type NodeWithContentEditorContentArgs = {
 export type NodeWithFeaturedImage = {
   /** Connection between the ContentNode type and the ContentType type */
   contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
+  /** The name of the Content Type the node belongs to */
+  contentTypeName: Scalars["String"];
   /** The unique identifier stored in the database */
   databaseId: Scalars["Int"];
   /** Post publishing date. */
@@ -4193,6 +4218,8 @@ export type Page = ContentNode &
     content?: Maybe<Scalars["String"]>;
     /** Connection between the ContentNode type and the ContentType type */
     contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
+    /** The name of the Content Type the node belongs to */
+    contentTypeName: Scalars["String"];
     /** The unique resource identifier path */
     databaseId: Scalars["Int"];
     /** Post publishing date. */
@@ -4550,6 +4577,28 @@ export type Plugin = Node & {
   version?: Maybe<Scalars["String"]>;
 };
 
+/** The status of the WordPress plugin. */
+export enum PluginStatusEnum {
+  /** The plugin is currently active. */
+  Active = "ACTIVE",
+  /** The plugin is a drop-in plugin. */
+  DropIn = "DROP_IN",
+  /** The plugin is currently inactive. */
+  Inactive = "INACTIVE",
+  /** The plugin is a must-use plugin. */
+  MustUse = "MUST_USE",
+  /** The plugin is activated on the multisite network. */
+  NetworkActivated = "NETWORK_ACTIVATED",
+  /** The plugin is installed on the multisite network, but is currently inactive. */
+  NetworkInactive = "NETWORK_INACTIVE",
+  /** The plugin is technically active but was paused while loading. */
+  Paused = "PAUSED",
+  /** The plugin was active recently. */
+  RecentlyActive = "RECENTLY_ACTIVE",
+  /** The plugin has an upgrade available. */
+  Upgrade = "UPGRADE",
+}
+
 /** The post type */
 export type Post = ContentNode &
   DatabaseIdentifier &
@@ -4575,6 +4624,8 @@ export type Post = ContentNode &
     content?: Maybe<Scalars["String"]>;
     /** Connection between the ContentNode type and the ContentType type */
     contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
+    /** The name of the Content Type the node belongs to */
+    contentTypeName: Scalars["String"];
     /** The unique resource identifier path */
     databaseId: Scalars["Int"];
     /** Post publishing date. */
@@ -4807,6 +4858,8 @@ export type PostFormat = DatabaseIdentifier &
     slug?: Maybe<Scalars["String"]>;
     /** Connection between the postFormat type and the Taxonomy type */
     taxonomy?: Maybe<PostFormatToTaxonomyConnectionEdge>;
+    /** The name of the taxonomy that the object is associated with */
+    taxonomyName?: Maybe<Scalars["String"]>;
     /** The ID of the term group that this term object belongs to */
     termGroupId?: Maybe<Scalars["Int"]>;
     /** The taxonomy ID that the object is associated with */
@@ -5642,6 +5695,8 @@ export type Release = ContentNode &
     content?: Maybe<Scalars["String"]>;
     /** Connection between the ContentNode type and the ContentType type */
     contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
+    /** The name of the Content Type the node belongs to */
+    contentTypeName: Scalars["String"];
     /** The unique identifier stored in the database */
     databaseId: Scalars["Int"];
     /** Post publishing date. */
@@ -6672,6 +6727,7 @@ export type RootQueryPluginsArgs = {
   before?: InputMaybe<Scalars["String"]>;
   first?: InputMaybe<Scalars["Int"]>;
   last?: InputMaybe<Scalars["Int"]>;
+  where?: InputMaybe<RootQueryToPluginConnectionWhereArgs>;
 };
 
 /** The root entry point into the Graph */
@@ -7612,6 +7668,16 @@ export type RootQueryToPluginConnectionEdge = {
   node?: Maybe<Plugin>;
 };
 
+/** Arguments for filtering the RootQueryToPluginConnection connection */
+export type RootQueryToPluginConnectionWhereArgs = {
+  /** Show plugin based on a keyword search. */
+  search?: InputMaybe<Scalars["String"]>;
+  /** Retrieve plugins where plugin status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PluginStatusEnum>>>;
+  /** Show plugins with a specific status. */
+  status?: InputMaybe<PluginStatusEnum>;
+};
+
 /** Connection between the RootQuery type and the post type */
 export type RootQueryToPostConnection = {
   __typename?: "RootQueryToPostConnection";
@@ -8271,6 +8337,8 @@ export type Tag = DatabaseIdentifier &
     tagId?: Maybe<Scalars["Int"]>;
     /** Connection between the tag type and the Taxonomy type */
     taxonomy?: Maybe<TagToTaxonomyConnectionEdge>;
+    /** The name of the taxonomy that the object is associated with */
+    taxonomyName?: Maybe<Scalars["String"]>;
     /** The ID of the term group that this term object belongs to */
     termGroupId?: Maybe<Scalars["Int"]>;
     /** The taxonomy ID that the object is associated with */
@@ -8606,6 +8674,8 @@ export type TermNode = {
   name?: Maybe<Scalars["String"]>;
   /** An alphanumeric identifier for the object unique to its type. */
   slug?: Maybe<Scalars["String"]>;
+  /** The name of the taxonomy that the object is associated with */
+  taxonomyName?: Maybe<Scalars["String"]>;
   /** The ID of the term group that this term object belongs to */
   termGroupId?: Maybe<Scalars["Int"]>;
   /** The taxonomy ID that the object is associated with */
@@ -8740,6 +8810,8 @@ export type Translation = ContentNode &
     __typename?: "Translation";
     /** Connection between the ContentNode type and the ContentType type */
     contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
+    /** The name of the Content Type the node belongs to */
+    contentTypeName: Scalars["String"];
     /** The unique identifier stored in the database */
     databaseId: Scalars["Int"];
     /** Post publishing date. */
@@ -9321,13 +9393,13 @@ export type UpdateSettingsPayload = {
   allSettings?: Maybe<Settings>;
   /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
   clientMutationId?: Maybe<Scalars["String"]>;
-  /** Update the discussion setting. */
+  /** Update the DiscussionSettings setting. */
   discussionSettings?: Maybe<DiscussionSettings>;
-  /** Update the general setting. */
+  /** Update the GeneralSettings setting. */
   generalSettings?: Maybe<GeneralSettings>;
-  /** Update the reading setting. */
+  /** Update the ReadingSettings setting. */
   readingSettings?: Maybe<ReadingSettings>;
-  /** Update the writing setting. */
+  /** Update the WritingSettings setting. */
   writingSettings?: Maybe<WritingSettings>;
 };
 
@@ -10229,11 +10301,13 @@ export type LayoutLinkListFragment = {
 
 export type LayoutArticlesFragment = {
   __typename?: "LayoutArticles";
+  title?: string | null;
   articles?: Array<{
     __typename?: "Post";
     id: string;
     title?: string | null;
     link?: string | null;
+    lead?: string | null;
     featuredImage?: {
       __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
       node?: {
@@ -10247,11 +10321,13 @@ export type LayoutArticlesFragment = {
 
 export type LayoutPagesFragment = {
   __typename?: "LayoutPages";
+  title?: string | null;
   pages?: Array<{
     __typename?: "Page";
     id: string;
     title?: string | null;
     link?: string | null;
+    lead?: string | null;
     featuredImage?: {
       __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
       node?: {
@@ -10310,11 +10386,13 @@ export type PageFragment = {
   sidebar?: Array<
     | {
         __typename?: "LayoutArticles";
+        title?: string | null;
         articles?: Array<{
           __typename?: "Post";
           id: string;
           title?: string | null;
           link?: string | null;
+          lead?: string | null;
           featuredImage?: {
             __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
             node?: {
@@ -10339,11 +10417,58 @@ export type PageFragment = {
       }
     | {
         __typename?: "LayoutPages";
+        title?: string | null;
         pages?: Array<{
           __typename?: "Page";
           id: string;
           title?: string | null;
           link?: string | null;
+          lead?: string | null;
+          featuredImage?: {
+            __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+            node?: {
+              __typename?: "MediaItem";
+              altText?: string | null;
+              mediaItemUrl?: string | null;
+            } | null;
+          } | null;
+        } | null> | null;
+      }
+    | null
+  > | null;
+  modules?: Array<
+    | { __typename?: "EventSearch" }
+    | { __typename?: "EventSelected" }
+    | {
+        __typename?: "LayoutArticles";
+        title?: string | null;
+        articles?: Array<{
+          __typename?: "Post";
+          id: string;
+          title?: string | null;
+          link?: string | null;
+          lead?: string | null;
+          featuredImage?: {
+            __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+            node?: {
+              __typename?: "MediaItem";
+              altText?: string | null;
+              mediaItemUrl?: string | null;
+            } | null;
+          } | null;
+        } | null> | null;
+      }
+    | { __typename?: "LayoutCollection" }
+    | { __typename?: "LayoutContact" }
+    | {
+        __typename?: "LayoutPages";
+        title?: string | null;
+        pages?: Array<{
+          __typename?: "Page";
+          id: string;
+          title?: string | null;
+          link?: string | null;
+          lead?: string | null;
           featuredImage?: {
             __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
             node?: {
@@ -10438,11 +10563,13 @@ export type PageQuery = {
     sidebar?: Array<
       | {
           __typename?: "LayoutArticles";
+          title?: string | null;
           articles?: Array<{
             __typename?: "Post";
             id: string;
             title?: string | null;
             link?: string | null;
+            lead?: string | null;
             featuredImage?: {
               __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
               node?: {
@@ -10467,11 +10594,58 @@ export type PageQuery = {
         }
       | {
           __typename?: "LayoutPages";
+          title?: string | null;
           pages?: Array<{
             __typename?: "Page";
             id: string;
             title?: string | null;
             link?: string | null;
+            lead?: string | null;
+            featuredImage?: {
+              __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+              node?: {
+                __typename?: "MediaItem";
+                altText?: string | null;
+                mediaItemUrl?: string | null;
+              } | null;
+            } | null;
+          } | null> | null;
+        }
+      | null
+    > | null;
+    modules?: Array<
+      | { __typename?: "EventSearch" }
+      | { __typename?: "EventSelected" }
+      | {
+          __typename?: "LayoutArticles";
+          title?: string | null;
+          articles?: Array<{
+            __typename?: "Post";
+            id: string;
+            title?: string | null;
+            link?: string | null;
+            lead?: string | null;
+            featuredImage?: {
+              __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+              node?: {
+                __typename?: "MediaItem";
+                altText?: string | null;
+                mediaItemUrl?: string | null;
+              } | null;
+            } | null;
+          } | null> | null;
+        }
+      | { __typename?: "LayoutCollection" }
+      | { __typename?: "LayoutContact" }
+      | {
+          __typename?: "LayoutPages";
+          title?: string | null;
+          pages?: Array<{
+            __typename?: "Page";
+            id: string;
+            title?: string | null;
+            link?: string | null;
+            lead?: string | null;
             featuredImage?: {
               __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
               node?: {
@@ -10535,10 +10709,12 @@ export const LayoutLinkListFragmentDoc = gql`
 `;
 export const LayoutArticlesFragmentDoc = gql`
   fragment LayoutArticles on LayoutArticles {
+    title
     articles {
       id
       title
       link
+      lead
       featuredImage {
         node {
           altText
@@ -10550,10 +10726,12 @@ export const LayoutArticlesFragmentDoc = gql`
 `;
 export const LayoutPagesFragmentDoc = gql`
   fragment LayoutPages on LayoutPages {
+    title
     pages {
       id
       title
       link
+      lead
       featuredImage {
         node {
           altText
@@ -10592,6 +10770,14 @@ export const PageFragmentDoc = gql`
       ... on LayoutLinkList {
         ...LayoutLinkList
       }
+      ... on LayoutArticles {
+        ...LayoutArticles
+      }
+      ... on LayoutPages {
+        ...LayoutPages
+      }
+    }
+    modules {
       ... on LayoutArticles {
         ...LayoutArticles
       }

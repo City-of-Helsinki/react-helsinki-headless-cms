@@ -7,6 +7,7 @@ import styles from "./card.module.scss";
 import LinkWrapper from "../../common/components/linkWrapper/LinkWrapper";
 
 export type CardProps = {
+  id?: string;
   ariaLabel?: string;
   className?: string;
   imageUrl?: string;
@@ -25,6 +26,7 @@ export type CardProps = {
 };
 
 export default function Card({
+  id,
   ariaLabel,
   className,
   imageUrl,
@@ -43,6 +45,7 @@ export default function Card({
 }: CardProps) {
   return (
     <LinkWrapper
+      id={id}
       href={url}
       className={className}
       ariaLabel={ariaLabel || ""}

@@ -6,12 +6,14 @@ import styles from "./pageContentLayout.module.scss";
 type Props = {
   breadcrumbs?: React.ReactNode;
   content: React.ReactNode;
+  collections?: React.ReactNode;
   sidebarContent: React.ReactNode;
 };
 
 export default function PageContentLayout({
   breadcrumbs,
   content,
+  collections,
   sidebarContent,
 }: Props) {
   return (
@@ -21,6 +23,7 @@ export default function PageContentLayout({
         {content}
         <aside>{sidebarContent}</aside>
       </main>
+      {collections}
     </div>
   );
 }

@@ -2,6 +2,11 @@ import React from "react";
 
 import List from "../../../common/components/list/List";
 import { SidebarContent as SidebarContentType } from "../../../common/headlessService/types";
+import {
+  isLayoutArticle,
+  isLayoutLinkList,
+  isLayoutPage,
+} from "../../../common/headlessService/utils";
 import SidebarContentLinkList from "./SidebarContentLinkList";
 import SidebarPostListItem from "./SidebarPostListItem";
 
@@ -15,7 +20,7 @@ export default function SidebarContent({ content }: Props) {
       variant="spacing-3-xl"
       items={
         content?.map((item) => {
-          if ("title" in item) {
+          if (isLayoutLinkList(item)) {
             return (
               <SidebarContentLinkList
                 key={item.title}
@@ -27,7 +32,7 @@ export default function SidebarContent({ content }: Props) {
             );
           }
 
-          if ("pages" in item) {
+          if (isLayoutPage(item)) {
             return (
               <List
                 key="pages"
@@ -39,7 +44,7 @@ export default function SidebarContent({ content }: Props) {
             );
           }
 
-          if ("articles" in item) {
+          if (isLayoutArticle(item)) {
             return (
               <List
                 key="articles"

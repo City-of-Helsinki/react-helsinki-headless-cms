@@ -8,17 +8,22 @@ import PageMainContent from "./PageMainContent";
 import PageContentBreadcrumbs from "./PageContentBreadcrumbs";
 import { Breadcrumb } from "./types";
 import PageMeta from "./meta/PageMeta";
+import Collection from "../collection/Collection";
 
 export type PageContentProps = {
   page?: PageQuery["page"];
   breadcrumbs?: Breadcrumb[];
+  collections?: React.ReactElement<typeof Collection>[];
 };
 
-export default function PageContent({ page, breadcrumbs }: PageContentProps) {
+export default function PageContent({
+  page,
+  breadcrumbs,
+  collections,
+}: PageContentProps) {
   const {
     components: { Head },
   } = useConfig();
-
   return (
     <>
       {Head && <PageMeta headComponent={Head} page={page} />}
@@ -34,6 +39,7 @@ export default function PageContent({ page, breadcrumbs }: PageContentProps) {
             imageAlt={page?.featuredImage?.node?.altText}
           />
         }
+        collections={collections}
         sidebarContent={<SidebarContent content={page?.sidebar} />}
       />
     </>

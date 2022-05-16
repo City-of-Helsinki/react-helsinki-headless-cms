@@ -15,6 +15,9 @@ import Navigation from "../navigation/Navigation";
 import Notification from "../notification/Notification";
 import notificationMock from "../notification/__mocks__/notification.mock";
 import Page from "./Page";
+import Collection from "../collection/Collection";
+import { getCollectionCards, getCollections } from "../pageContent/utils";
+import Card from "../card/Card";
 
 export default {
   title: "Example/Page",
@@ -78,6 +81,21 @@ PageDefault.args = {
         { title: "Root", link: "/" },
         { title: "Nested", link: "/nested" },
       ]}
+      collections={getCollections(pageMock.modules)?.map((collection) => (
+        <Collection
+          key={`collection-${Math.random()}`}
+          title={collection.title}
+          cards={getCollectionCards(collection).map((cardProps) => (
+            <Card
+              key={cardProps.id}
+              {...cardProps}
+              imageUrl={
+                cardProps.imageUrl || pageMock.featuredImage?.node?.mediaItemUrl
+              }
+            />
+          ))}
+        />
+      ))}
     />
   ),
   footer: <>TODO: Implement footer</>,

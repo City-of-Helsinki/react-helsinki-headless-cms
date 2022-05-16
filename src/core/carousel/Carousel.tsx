@@ -4,7 +4,12 @@ import classNames from "classnames";
 import { IconAngleLeft, IconAngleRight } from "hds-react";
 
 import styles from "./carousel.module.scss";
-import splitArrayIntoChunksOfLen from "./utils/utils";
+import {
+  splitArrayIntoChunksOfLen,
+  getItemSetItemKey,
+  getItemSetKey,
+  getSlideDotKey,
+} from "./utils/utils";
 
 export type CarouselProps<T> = {
   children: React.ReactElement<T>[];
@@ -22,7 +27,6 @@ export default function Carousel({
   withDots = true,
 }) {
   const MOBILE_WIDTH = 640;
-
   const [isReady] = useState<boolean>(true);
   const [transformValue, setTransformValue] = useState("0px");
   const [numberOfSlides, setNumberOfSlides] = useState<number>(0);
@@ -108,16 +112,22 @@ export default function Carousel({
                     transform: `translateX(${transformValue})`,
                   }}
                 >
-                  {itemSets.map((itemSet, i) => (
+                  {itemSets.map((itemSet, itemSetIndex) => (
                     <li
+                      key={getItemSetKey(itemSet, itemSetIndex)}
                       className={classNames(
                         styles.slide,
-                        i === currentSlide && styles.slideSelected
+                        itemSetIndex === currentSlide && styles.slideSelected
                       )}
                     >
                       <div className={styles.slideItems}>
-                        {itemSet.map((item) => (
+                        {itemSet.map((item, itemIndex) => (
                           <div
+                            key={getItemSetItemKey(
+                              item,
+                              itemSetIndex,
+                              itemIndex
+                            )}
                             className={styles.slideItem}
                             style={{
                               width: `${
@@ -141,6 +151,7 @@ export default function Carousel({
               <div className={styles.dotsContainer}>
                 {[...Array(numberOfSlides)].map((e, i) => (
                   <div
+                    key={getSlideDotKey(e, i)}
                     className={classNames(
                       styles.dot,
                       i === currentSlide && styles.selected
