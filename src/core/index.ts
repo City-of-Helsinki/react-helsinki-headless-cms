@@ -34,3 +34,5 @@ export {
 export type { CollectionType, CollectionItemType } from "./collection/types";
 
 export { default as Carousel, CarouselProps } from "./carousel/Carousel";
+
+export { default as Card, CardProps } from "./card/Card";
