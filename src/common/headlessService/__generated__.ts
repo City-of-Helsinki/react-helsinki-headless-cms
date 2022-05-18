@@ -10195,6 +10195,29 @@ export type WritingSettings = {
   useSmilies?: Maybe<Scalars["Boolean"]>;
 };
 
+export type PostsQueryVariables = Exact<{
+  first?: InputMaybe<Scalars["Int"]>;
+}>;
+
+export type PostsQuery = {
+  __typename?: "RootQuery";
+  posts?: {
+    __typename?: "RootQueryToPostConnection";
+    edges?: Array<{
+      __typename?: "RootQueryToPostConnectionEdge";
+      node?: {
+        __typename?: "Post";
+        id: string;
+        title?: string | null;
+        date?: string | null;
+        lead?: string | null;
+        slug?: string | null;
+        uri?: string | null;
+      } | null;
+    } | null> | null;
+  } | null;
+};
+
 export type LanguageFragment = {
   __typename?: "Language";
   code?: LanguageCodeEnum | null;
@@ -10792,6 +10815,63 @@ export const PageFragmentDoc = gql`
   ${LayoutArticlesFragmentDoc}
   ${LayoutPagesFragmentDoc}
 `;
+export const PostsDocument = gql`
+  query posts($first: Int) {
+    posts(first: $first) {
+      edges {
+        node {
+          id
+          title
+          date
+          lead
+          slug
+          uri
+        }
+      }
+    }
+  }
+`;
+
+/**
+ * __usePostsQuery__
+ *
+ * To run a query within a React component, call `usePostsQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePostsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePostsQuery({
+ *   variables: {
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export function usePostsQuery(
+  baseOptions?: Apollo.QueryHookOptions<PostsQuery, PostsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<PostsQuery, PostsQueryVariables>(
+    PostsDocument,
+    options
+  );
+}
+export function usePostsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<PostsQuery, PostsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<PostsQuery, PostsQueryVariables>(
+    PostsDocument,
+    options
+  );
+}
+export type PostsQueryHookResult = ReturnType<typeof usePostsQuery>;
+export type PostsLazyQueryHookResult = ReturnType<typeof usePostsLazyQuery>;
+export type PostsQueryResult = Apollo.QueryResult<
+  PostsQuery,
+  PostsQueryVariables
+>;
 export const LanguagesDocument = gql`
   query languages {
     languages {

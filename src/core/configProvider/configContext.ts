@@ -27,6 +27,12 @@ export type Config = {
   utils: {
     getIsHrefExternal: (href: string) => boolean;
   };
+  articlesSearch?: {
+    searchTextPlaceholder: string;
+    searchButtonLabelText: string;
+    loadMoreButtonLabelText: string;
+    noResultsText: string;
+  };
 };
 
 const configContext = createContext<Config>({} as Config);

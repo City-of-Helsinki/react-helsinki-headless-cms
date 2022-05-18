@@ -10,6 +10,7 @@ type Props = {
   className?: string;
   featured?: boolean;
   variant?: "default" | "card" | "search";
+  onClick?: (tag: string) => void;
 };
 
 export default function Tag({
@@ -17,13 +18,25 @@ export default function Tag({
   variant = "default",
   children,
   featured,
+  onClick,
 }: Props) {
+  const [selected, setSelected] = React.useState<boolean>(false);
+
+  const handleClick = (): void => {
+    if (onClick) {
+      setSelected((prev) => !prev);
+      onClick(children as string);
+    }
+  };
+
   return (
     <HDSTag
+      onClick={handleClick}
       className={classNames(
         styles.tag,
         styles[`variant-${variant}`],
         featured && styles.featured,
+        selected && styles.selected,
         className
       )}
     >
