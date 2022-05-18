@@ -22,13 +22,13 @@ export const CardListDefault = Template.bind({});
 CardListDefault.args = {
   children: (
     <>
-      <Card {...card} />
-      <Card {...card} />
-      <Card {...card} />
-      <Card {...card} />
-      <Card {...card} />
-      <Card {...card} />
-      <Card {...card} />
+      <Card {...card} hasLink />
+      <Card {...card} hasLink />
+      <Card {...card} hasLink />
+      <Card {...card} hasLink />
+      <Card {...card} hasLink />
+      <Card {...card} hasLink />
+      <Card {...card} hasLink />
     </>
   ),
 };

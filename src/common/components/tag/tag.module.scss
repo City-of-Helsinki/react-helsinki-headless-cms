@@ -24,4 +24,14 @@
   &.featured {
     --tag-background: var(--color-tram-light);
   }
+
+  &.selected {
+    --tag-background: var(--color-tram-light) !important;
+  }
+
+  &.variant-search {
+    font-weight: 600;
+    --tag-background: var(--color-fog-light);
+    cursor: pointer;
+  }
 }

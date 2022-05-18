@@ -45,6 +45,12 @@ const defaultConfig: Config = {
       return false;
     },
   },
+  articlesSearch: {
+    searchTextPlaceholder: "Search text",
+    searchButtonLabelText: "Search",
+    loadMoreButtonLabelText: "Load more",
+    noResultsText: "No results",
+  },
 };
 
 export default defaultConfig;

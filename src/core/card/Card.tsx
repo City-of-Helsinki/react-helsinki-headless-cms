@@ -76,20 +76,24 @@ export default function Card({
             )}
           </div>
         )}
-        <div>
-          <div className={styles.textWrapper}>
-            {title && <div className={styles.title}>{title}</div>}
-            {subTitle && <div className={styles.subTitle}>{subTitle}</div>}
-            {text && (
-              <div
-                className={classNames(styles.text, clampText && styles.clamp)}
-              >
-                {text}
-              </div>
-            )}
-            {customContent && (
-              <div className={styles.customContent}>{customContent}</div>
-            )}
+        <div className={styles.contentWrapper}>
+          <div>
+            <div className={styles.textWrapper}>
+              {title && <div className={styles.title}>{title}</div>}
+              {subTitle && <div className={styles.subTitle}>{subTitle}</div>}
+              {text && (
+                <div
+                  className={classNames(styles.text, clampText && styles.clamp)}
+                >
+                  {text}
+                </div>
+              )}
+              {customContent && (
+                <div className={styles.customContent}>{customContent}</div>
+              )}
+            </div>
+          </div>
+          <div>
             {url && hasLink && (
               <div className={styles.buttonWrapper}>
                 <LinkWrapper
