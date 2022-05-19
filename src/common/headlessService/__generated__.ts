@@ -10213,6 +10213,14 @@ export type PostsQuery = {
         lead?: string | null;
         slug?: string | null;
         uri?: string | null;
+        featuredImage?: {
+          __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+          node?: {
+            __typename?: "MediaItem";
+            altText?: string | null;
+            mediaItemUrl?: string | null;
+          } | null;
+        } | null;
       } | null;
     } | null> | null;
   } | null;
@@ -10826,6 +10834,12 @@ export const PostsDocument = gql`
           lead
           slug
           uri
+          featuredImage {
+            node {
+              altText
+              mediaItemUrl
+            }
+          }
         }
       }
     }

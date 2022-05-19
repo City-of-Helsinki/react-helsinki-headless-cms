@@ -122,11 +122,17 @@
           -webkit-box-orient: vertical;
         }
       }
+      p {
+        margin: 0;
+      }
     }
 
     .customContent {
       order: 4;
       margin: var(--spacing-2-xs) 0;
+      p {
+        margin: 0;
+      }
     }
   }
   .buttonWrapper {
