@@ -17,7 +17,7 @@ export default {
 } as ComponentMeta<typeof Collection>;
 
 const Template: ComponentStory<typeof Collection> = (args) => (
-  <div style={{ margin: 24, overflow: "hidden" }}>
+  <div style={{ margin: 24 }}>
     <ConfigProvider
       config={{
         ...defaultConfig,
@@ -30,15 +30,21 @@ const Template: ComponentStory<typeof Collection> = (args) => (
 
 export const CollectionDefault = Template.bind({});
 const collection = getCollections([page?.modules[0]])[0];
-const cards = getCollectionCards(collection).map((cardProps) => (
+const cards = [
+  ...getCollectionCards(collection),
+  ...getCollectionCards(collection),
+  ...getCollectionCards(collection),
+  ...getCollectionCards(collection),
+  ...getCollectionCards(collection),
+].map((cardProps, index) => (
   <Card
-    key={cardProps.id}
+    key={`${cardProps.id}-${index.toString()}`}
     {...cardProps}
+    title={`${(index + 1).toString()}: ${cardProps.title}`}
     imageUrl={cardProps.imageUrl || cardMock.imageUrl}
   />
 ));
 CollectionDefault.args = {
   cards,
   title: "Collection Heading",
-  colsCount: 4,
 };

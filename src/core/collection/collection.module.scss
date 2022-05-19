@@ -1,19 +1,26 @@
 @import "spacing";
 @import "typography";
 
-.collection {
-  --spacing: #{$spacing-4-xl};
+.collectionWrapper {
   display: block;
+  --spacing: #{$spacing-layout-2-xs};
   margin: var(--spacing) auto;
   padding: 0 var(--padding);
-  width: 100%;
-  max-width: var(--max-width);
+  max-width: calc(var(--max-width) - (2 * var(--padding)));
+  width: calc(100% - (2 * var(--padding)));
+  overflow: hidden;
+}
 
+.collection {
   & > .heading {
     font-size: $fontsize-heading-l;
+    margin: 0;
   }
 
-  & > .carousel {
-    margin: 0 0 var(--spacing) 0;
+  & > .carouselWrapper {
+    .carousel {
+      max-width: calc(100% + 2 * var(--padding));
+      margin-top: 0;
+    }
   }
 }

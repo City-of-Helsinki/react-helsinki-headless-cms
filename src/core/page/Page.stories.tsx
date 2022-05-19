@@ -85,6 +85,7 @@ PageDefault.args = {
         <Collection
           key={`collection-${Math.random()}`}
           title={collection.title}
+          carouselProps={{ withDots: false }}
           cards={getCollectionCards(collection).map((cardProps) => (
             <Card
               key={cardProps.id}
@@ -92,6 +93,8 @@ PageDefault.args = {
               imageUrl={
                 cardProps.imageUrl || pageMock.featuredImage?.node?.mediaItemUrl
               }
+              direction="fixed-vertical"
+              clampText
             />
           ))}
         />
