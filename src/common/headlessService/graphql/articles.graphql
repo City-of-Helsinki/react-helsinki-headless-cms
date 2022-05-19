@@ -8,6 +8,12 @@ query posts($first: Int) {
         lead
         slug
         uri
+        featuredImage {
+          node {
+            altText
+            mediaItemUrl
+          }
+        }
       }
     }
   }

@@ -104,17 +104,23 @@
       .searchResultsContainerInner {
         display: flex;
         flex-direction: column;
-        align-items: center;
         width: 100%;
         max-width: var(--max-width);
         margin: 0 auto;
         padding: 0 var(--padding);
         box-sizing: border-box;
 
-        .loadMoreButton,
-        .loadingSpinner {
-          margin: $spacing-layout-2-xs;
+        .bottomActions {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          .loadMoreButton,
+          .loadingSpinner {
+           
+            margin: $spacing-layout-2-xs;
+          }
         }
+       
       }
     }
   }
