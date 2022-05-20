@@ -93,17 +93,15 @@ export default function Card({
               )}
             </div>
           </div>
-          <div>
-            {url && hasLink && (
-              <div className={styles.buttonWrapper}>
-                <LinkWrapper
-                  href={url}
-                  target={target}
-                  iconLeft={<IconArrowRight aria-hidden="true" />}
-                />
-              </div>
-            )}
-          </div>
+          {url && hasLink && (
+            <div className={styles.buttonWrapper}>
+              <LinkWrapper
+                href={url}
+                target={target}
+                iconLeft={<IconArrowRight aria-hidden="true" />}
+              />
+            </div>
+          )}
         </div>
       </div>
     </LinkWrapper>

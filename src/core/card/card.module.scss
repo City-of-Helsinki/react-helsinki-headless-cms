@@ -1,12 +1,13 @@
 @import "breakpoints";
 
 .cardWrapper {
+  display: flex;
+  flex-direction: column;
   --height-image: 8rem;
   --height-image-desktop: 14.5rem;
   --width-image: 8rem;
 
   &.responsive {
-    display: flex;
     flex-direction: row;
   }
 
