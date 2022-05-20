@@ -30,7 +30,7 @@ const pageWithDiverseContent: PageQuery["page"] = {
   <pre>function name() {
     return "Hello";
   }</pre>
-
+  <figure><table><thead><tr><th>Tämä on otsake 1</th><th>Otsake 2</th></tr></thead><tbody><tr><td>taulukon rivi 1 solu 1</td><td>solu 2</td></tr><tr><td>solu 1</td><td>taulukon rivi 2 solu 2</td></tr></tbody></table></figure>
   <p><a href="https://hel.fi">Link</a></p>
   <p><abbr title="City of Helsinki">CoH</abbr></p>
   <p><b>Bold</b></p>

@@ -4,7 +4,7 @@
 .contentLayout {
   --padding: #{$spacing-layout-2-xs};
   --max-width: calc(#{breakpoints.$container-width-xl} + (2 * var(--padding)));
-
+  overflow: hidden;
   display: flex;
   flex-direction: column;
 

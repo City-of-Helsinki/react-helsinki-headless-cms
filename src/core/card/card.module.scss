@@ -1,12 +1,13 @@
 @import "breakpoints";
 
 .cardWrapper {
+  display: flex;
+  flex-direction: column;
   --height-image: 8rem;
   --height-image-desktop: 14.5rem;
   --width-image: 8rem;
 
   &.responsive {
-    display: flex;
     flex-direction: row;
   }
 
@@ -89,10 +90,12 @@
       margin: var(--spacing-2-xs) 0;
       text-decoration: none;
       padding: 0;
+      word-wrap: break-word;
 
       @include respond_above(s) {
         margin-top: var(--spacing-2-xs);
         font-size: var(--fontsize-heading-m);
+        word-wrap: initial;
       }
     }
 
@@ -136,7 +139,11 @@
     }
   }
   .buttonWrapper {
-    padding: var(--spacing-s);
+    padding: 0 var(--spacing-s);
+    padding-bottom: var(--spacing-2-xs);
+    @include respond_above(s) {
+      padding: var(--spacing-s);
+    }
     order: 5;
     a {
       color: var(--color-black);

@@ -16,7 +16,7 @@ export const sidebarLinkList = {
     },
   ],
 };
-export const articleList = {
+export const sidebarArticleList = {
   title: "Cherry Picked Articles",
   articles: [
     {
@@ -38,7 +38,28 @@ export const articleList = {
     },
   ],
 };
-export const pageList = {
+export const articleList = {
+  title: "Cherry Picked Articles",
+  articles: [
+    ...sidebarArticleList.articles,
+    {
+      id: "asdf",
+      title: "Alakoulu artikkeli 2",
+      link: "/alakoulu/alakoulu-artikkeli",
+    },
+    {
+      id: "sdfg",
+      title: "Alakoulu artikkeli 3",
+      link: "/alakoulu/alakoulu-artikkeli",
+    },
+    {
+      id: "dfgh",
+      title: "Alakoulu artikkeli 4",
+      link: "/alakoulu/alakoulu-artikkeli",
+    },
+  ],
+};
+export const sidebarPageList = {
   title: "Collected pages",
   pages: [
     {
@@ -48,7 +69,23 @@ export const pageList = {
     },
   ],
 };
-const sidebar = [sidebarLinkList, articleList, pageList];
+export const pageList = {
+  title: "Collected pages",
+  pages: [
+    ...sidebarPageList.pages,
+    {
+      id: "zxcv",
+      title: "Testisivu",
+      link: "/testisivu",
+    },
+    {
+      id: "cvbn",
+      title: "Mikä kultus",
+      link: "/mika-kultus",
+    },
+  ],
+};
+const sidebar = [sidebarLinkList, sidebarArticleList, sidebarPageList];
 
 const modules = [articleList, pageList];
 

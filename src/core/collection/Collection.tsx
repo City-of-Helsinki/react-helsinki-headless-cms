@@ -20,11 +20,15 @@ export default function Collection({
   carouselProps,
 }: CollectionProps) {
   return (
-    <div className={classNames(styles.collection, className)}>
-      <h1 className={styles.heading}>{title}</h1>
-      <Carousel className={styles.carousel} {...carouselProps}>
-        {cards}
-      </Carousel>
+    <div className={classNames(styles.collectionWrapper, className)}>
+      <div className={styles.collection}>
+        {title && <h1 className={styles.heading}>{title}</h1>}
+        <div className={styles.carouselWrapper}>
+          <Carousel className={styles.carousel} {...carouselProps}>
+            {cards}
+          </Carousel>
+        </div>
+      </div>
     </div>
   );
 }
