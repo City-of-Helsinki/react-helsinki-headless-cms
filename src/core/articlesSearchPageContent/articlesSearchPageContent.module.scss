@@ -1,0 +1,125 @@
+@use "breakpoints";
+@import "spacing";
+
+.contentLayout {
+  --padding: #{$spacing-layout-2-xs};
+  --max-width: calc(#{breakpoints.$container-width-xl} + (2 * var(--padding)));
+
+  display: flex;
+  flex-direction: column;
+
+  & > *:not(:last-child) {
+    margin-bottom: $spacing-layout-2-xs;
+  }
+
+  @media screen and (min-width: breakpoints.$breakpoint-m) {
+    --padding: #{$spacing-layout-xs};
+  }
+
+  .mainLayout {
+    .searchFormContainer {
+      display: flex;
+      flex-direction: column;
+      background-color: var(--color-black-5);
+      padding-top: $spacing-layout-xs;
+      position: relative;
+
+      .koros {
+        fill: var(--color-black-5);
+        position: absolute;
+        bottom: -24px;
+      }
+
+      .searchFormContainerInner {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 var(--padding);
+        box-sizing: border-box;
+        z-index: 1;
+      }
+    }
+
+    .searchForm {
+      display: flex;
+      flex-direction: column;
+      padding: $spacing-layout-2-xs 0;
+
+      & > *:not(:last-child) {
+        margin-bottom: $spacing-m;
+      }
+
+      @media screen and (min-width: breakpoints.$breakpoint-m) {
+        padding-top: $spacing-layout-2-xs;
+      }
+
+      @media screen and (min-width: breakpoints.$breakpoint-l) {
+        display: grid;
+        align-items: flex-end;
+        column-gap: $spacing-xs;
+        row-gap: $spacing-xs;
+        grid-template-columns: 5fr 1fr;
+
+        & > *:not(:last-child) {
+          margin-bottom: unset;
+        }
+      }
+    }
+
+    .inputWithIcon {
+      position: relative;
+
+      & > div > input {
+        padding-left: calc((2 * #{$spacing-s}) + 1.5rem) !important;
+      }
+
+      & > div > svg {
+        position: absolute;
+        left: $spacing-layout-2-xs;
+        bottom: $spacing-layout-2-xs;
+
+        & * {
+          color: var(--color-black-90);
+        }
+      }
+    }
+
+    .hdsTextInputOverrides {
+      & > div > input {
+        border-color: var(--color-black-20);
+      }
+    }
+
+    .searchResultsContainer {
+      display: flex;
+      flex-direction: column;
+      padding: $spacing-xl 0;
+
+      @media screen and (min-width: breakpoints.$breakpoint-m) {
+        padding: $spacing-4-xl 0;
+      }
+
+      .searchResultsContainerInner {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 var(--padding);
+        box-sizing: border-box;
+
+        .bottomActions {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          .loadMoreButton,
+          .loadingSpinner {
+            margin: $spacing-layout-2-xs;
+          }
+        }
+      }
+    }
+  }
+}

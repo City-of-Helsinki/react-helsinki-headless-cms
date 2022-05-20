@@ -1,0 +1,20 @@
+query posts($first: Int) {
+  posts(first: $first) {
+    edges {
+      node {
+        id
+        title
+        date
+        lead
+        slug
+        uri
+        featuredImage {
+          node {
+            altText
+            mediaItemUrl
+          }
+        }
+      }
+    }
+  }
+}
