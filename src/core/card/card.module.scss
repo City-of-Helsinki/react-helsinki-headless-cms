@@ -89,10 +89,12 @@
       margin: var(--spacing-2-xs) 0;
       text-decoration: none;
       padding: 0;
+      word-wrap: break-word;
 
       @include respond_above(s) {
         margin-top: var(--spacing-2-xs);
         font-size: var(--fontsize-heading-m);
+        word-wrap: initial;
       }
     }
 
