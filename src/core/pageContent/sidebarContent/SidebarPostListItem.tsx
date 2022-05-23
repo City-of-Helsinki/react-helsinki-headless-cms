@@ -6,14 +6,16 @@ import {
 } from "../../../common/headlessService/types";
 import SidebarContentCard from "./SidebarContentCard";
 
-type Props = LayoutArticle["articles"][number] | LayoutPage["pages"][number];
+type PostListItemProps =
+  | LayoutArticle["articles"][number]
+  | LayoutPage["pages"][number];
 
 export default function PostListItem({
   id,
   title,
   link,
   featuredImage,
-}: Props) {
+}: PostListItemProps) {
   if (!title || !link) {
     return null;
   }

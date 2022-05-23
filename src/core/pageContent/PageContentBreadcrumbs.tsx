@@ -4,11 +4,13 @@ import useConfig from "../configProvider/useConfig";
 import { Breadcrumb } from "./types";
 import styles from "./pageContentBreadcrumbs.module.scss";
 
-type Props = {
+type PageContentBreadcrumbsProps = {
   breadcrumbs: Breadcrumb[];
 };
 
-export default function PageContentBreadcrumbs({ breadcrumbs }: Props) {
+export default function PageContentBreadcrumbs({
+  breadcrumbs,
+}: PageContentBreadcrumbsProps) {
   const {
     copy: { breadcrumbNavigationLabel, breadcrumbListLabel },
     components: { A },

@@ -2,12 +2,12 @@ import React from "react";
 
 import { PageType } from "../../../common/headlessService/types";
 
-export type Props = {
+export type PageMetaProps = {
   page?: PageType;
   headComponent: React.ComponentType<{ children: React.ReactNode }>;
 };
 
-export default function PageMeta({ page, headComponent: Head }: Props) {
+export default function PageMeta({ page, headComponent: Head }: PageMetaProps) {
   const seoForCurrentLanguage = page?.seo;
   const {
     title,

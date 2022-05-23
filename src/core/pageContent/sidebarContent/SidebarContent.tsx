@@ -10,11 +10,11 @@ import {
 import SidebarContentLinkList from "./SidebarContentLinkList";
 import SidebarPostListItem from "./SidebarPostListItem";
 
-type Props = {
+type SidebarContentProps = {
   content?: SidebarContentType;
 };
 
-export default function SidebarContent({ content }: Props) {
+export default function SidebarContent({ content }: SidebarContentProps) {
   return (
     <List
       variant="spacing-3-xl"
