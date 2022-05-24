@@ -15,12 +15,12 @@ import Card from "../card/Card";
 import Grid from "../../common/components/grid/Grid";
 import LargeCard from "../card/LargeCard";
 import useConfig from "../configProvider/useConfig";
-import { Articles } from "../../common/headlessService/types";
+import { Articles, Pages } from "../../common/headlessService/types";
 import HtmlToReact from "../../common/components/htmlToReact/HtmlToReact";
 import { formatDateTimeFromString } from "../../common/utils/dates";
 
 export interface SearchPageContentProps {
-  articles?: Articles;
+  items?: Articles | Pages;
   isLoading?: boolean;
   hasMore?: boolean;
   cardsClampText?: boolean;
@@ -37,7 +37,7 @@ export interface SearchPageContentProps {
 
 export default function SearchPageContent({
   className,
-  articles,
+  items,
   hasMore,
   cardsClampText,
   cardsWithBorder,
@@ -50,7 +50,7 @@ export default function SearchPageContent({
   onSearch,
   onLoadMore,
 }: SearchPageContentProps) {
-  const { articlesSearch } = useConfig();
+  const { archiveSearch } = useConfig();
 
   const [searchText, setSearchText] = useState<string>("");
   const [searchTags, setSearchTags] = useState<string[]>([]);
@@ -94,7 +94,7 @@ export default function SearchPageContent({
                   )}
                   name="q"
                   id="q"
-                  placeholder={articlesSearch?.searchTextPlaceholder || ""}
+                  placeholder={archiveSearch?.searchTextPlaceholder || ""}
                   onChange={handleChange}
                   value={searchText}
                 >
@@ -106,7 +106,7 @@ export default function SearchPageContent({
                   iconLeft={<IconSearch aria-hidden="true" />}
                   className={styles.hdsButtonOverrides}
                 >
-                  {articlesSearch?.searchButtonLabelText || ""}
+                  {archiveSearch?.searchButtonLabelText || ""}
                 </Button>
               </form>
             </div>
@@ -126,34 +126,34 @@ export default function SearchPageContent({
         <div className={styles.searchResultsContainer}>
           <div className={styles.searchResultsContainerInner}>
             {noResults ? (
-              <h1>{articlesSearch.noResultsText || ""}</h1>
+              <h1>{archiveSearch.noResultsText || ""}</h1>
             ) : (
               <>
-                {articles && (
+                {items && (
                   <>
                     <LargeCard
-                      id={articles.edges[0].node?.id}
-                      ariaLabel={articles.edges[0].node?.title || ""}
-                      title={articles.edges[0].node?.title || ""}
+                      id={items.edges[0].node?.id}
+                      ariaLabel={items.edges[0].node?.title || ""}
+                      title={items.edges[0].node?.title || ""}
                       subTitle={formatDateTimeFromString(
-                        articles.edges[0].node?.date || ""
+                        items.edges[0].node?.date || ""
                       )}
                       customContent={
                         <HtmlToReact>
-                          {articles.edges[0].node?.lead || ""}
+                          {items.edges[0].node?.lead || ""}
                         </HtmlToReact>
                       }
-                      url={articles.edges[0].node?.slug || ""}
+                      url={items.edges[0].node?.slug || ""}
                       imageUrl={
-                        articles.edges[0].node?.featuredImage?.node
-                          .mediaItemUrl || ""
+                        items.edges[0].node?.featuredImage?.node.mediaItemUrl ||
+                        ""
                       }
                       clampText={cardsClampText}
                       hasLink={cardsHasLink}
                       target={cardsTarget}
                     />
                     <Grid>
-                      {articles?.edges.map((article, i) => {
+                      {items?.edges.map((article, i) => {
                         if (i > 0) {
                           return (
                             <Card
@@ -201,7 +201,7 @@ export default function SearchPageContent({
                         className={styles.hdsButtonOverrides}
                         onClick={onLoadMore}
                       >
-                        {articlesSearch?.loadMoreButtonLabelText || ""}
+                        {archiveSearch?.loadMoreButtonLabelText || ""}
                       </Button>
                     </div>
                   )}

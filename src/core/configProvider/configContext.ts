@@ -27,7 +27,7 @@ export type Config = {
   utils: {
     getIsHrefExternal: (href: string) => boolean;
   };
-  articlesSearch?: {
+  archiveSearch?: {
     searchTextPlaceholder: string;
     searchButtonLabelText: string;
     loadMoreButtonLabelText: string;

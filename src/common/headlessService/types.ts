@@ -1,8 +1,9 @@
 import {
   MenuQuery,
   PageQuery,
-  PostsQuery,
   ArticleQuery,
+  PagesQuery,
+  PostsQuery,
 } from "./__generated__";
 
 export type Menu = MenuQuery["menu"];
@@ -12,6 +13,7 @@ export type SidebarContent = PageQuery["page"]["sidebar"];
 export type PageModule = PageQuery["page"]["modules"][number];
 export type PageSidebarModule = PageQuery["page"]["sidebar"][number];
 export type Articles = PostsQuery["posts"];
+export type Pages = PagesQuery["pages"];
 
 export type {
   MenuItemFragment as MenuItem,

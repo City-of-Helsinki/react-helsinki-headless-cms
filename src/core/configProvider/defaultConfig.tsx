@@ -45,7 +45,7 @@ const defaultConfig: Config = {
       return false;
     },
   },
-  articlesSearch: {
+  archiveSearch: {
     searchTextPlaceholder: "Search text",
     searchButtonLabelText: "Search",
     loadMoreButtonLabelText: "Load more",
