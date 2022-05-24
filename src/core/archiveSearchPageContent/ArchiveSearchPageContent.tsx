@@ -68,7 +68,7 @@ export function SearchTags({
   return (
     <div>
       {tags.map((tag) => (
-        <Tag variant="search" onClick={handleTagClick}>
+        <Tag key={`tag-${tag}`} variant="search" onClick={handleTagClick}>
           {tag}
         </Tag>
       ))}
@@ -90,6 +90,57 @@ export interface SearchPageContentProps {
   tags?: string[];
   onSearch?: (freeSearch: string, tags: string[]) => void;
   onLoadMore?: () => void;
+}
+
+export function ArchiveCollection({
+  items,
+  cardsClampText,
+  cardsWithBorder,
+  cardsWithShadow,
+  cardsHasLink,
+  cardsTarget,
+}: Partial<SearchPageContentProps>) {
+  if (!items || !items.edges?.length) {
+    return null;
+  }
+  const firstItem = items.edges[0].node;
+  return (
+    <>
+      <LargeCard
+        id={firstItem.id}
+        ariaLabel={firstItem.title || ""}
+        title={firstItem.title || ""}
+        subTitle={formatDateTimeFromString(firstItem.date || "")}
+        customContent={<HtmlToReact>{firstItem.lead || ""}</HtmlToReact>}
+        url={firstItem.slug || ""}
+        imageUrl={firstItem.featuredImage?.node.mediaItemUrl || ""}
+        clampText={cardsClampText}
+        hasLink={cardsHasLink}
+        target={cardsTarget}
+      />
+      <Grid>
+        {items.edges.slice(1).map((articleEdge) => {
+          const article = articleEdge.node;
+          return (
+            <Card
+              id={article.id}
+              ariaLabel={article.title || ""}
+              title={article.title || ""}
+              subTitle={formatDateTimeFromString(article.date || "")}
+              customContent={<HtmlToReact>{article.lead || ""}</HtmlToReact>}
+              url={article.slug || ""}
+              imageUrl={article.featuredImage?.node.mediaItemUrl || ""}
+              clampText={cardsClampText}
+              withBorder={cardsWithBorder}
+              withShadow={cardsWithShadow}
+              hasLink={cardsHasLink}
+              target={cardsTarget}
+            />
+          );
+        })}
+      </Grid>
+    </>
+  );
 }
 
 export default function SearchPageContent({
@@ -156,86 +207,35 @@ export default function SearchPageContent({
             {noResults ? (
               <h1>{archiveSearch.noResultsText || ""}</h1>
             ) : (
-              <>
-                {items && (
-                  <>
-                    <LargeCard
-                      id={items.edges[0].node?.id}
-                      ariaLabel={items.edges[0].node?.title || ""}
-                      title={items.edges[0].node?.title || ""}
-                      subTitle={formatDateTimeFromString(
-                        items.edges[0].node?.date || ""
-                      )}
-                      customContent={
-                        <HtmlToReact>
-                          {items.edges[0].node?.lead || ""}
-                        </HtmlToReact>
-                      }
-                      url={items.edges[0].node?.slug || ""}
-                      imageUrl={
-                        items.edges[0].node?.featuredImage?.node.mediaItemUrl ||
-                        ""
-                      }
-                      clampText={cardsClampText}
-                      hasLink={cardsHasLink}
-                      target={cardsTarget}
-                    />
-                    <Grid>
-                      {items?.edges.map((article, i) => {
-                        if (i > 0) {
-                          return (
-                            <Card
-                              id={article.node?.id}
-                              ariaLabel={article.node?.title || ""}
-                              title={article.node?.title || ""}
-                              subTitle={formatDateTimeFromString(
-                                article.node?.date || ""
-                              )}
-                              customContent={
-                                <HtmlToReact>
-                                  {article.node?.lead || ""}
-                                </HtmlToReact>
-                              }
-                              url={article.node?.slug || ""}
-                              imageUrl={
-                                article.node?.featuredImage?.node
-                                  .mediaItemUrl || ""
-                              }
-                              clampText={cardsClampText}
-                              withBorder={cardsWithBorder}
-                              withShadow={cardsWithShadow}
-                              hasLink={cardsHasLink}
-                              target={cardsTarget}
-                            />
-                          );
-                        }
-                        return null;
-                      })}
-                    </Grid>
-                  </>
-                )}
-                <div className={styles.bottomActions}>
-                  {isLoading && (
-                    <div className={styles.loadingSpinner}>
-                      <LoadingSpinner />
-                    </div>
-                  )}
-                  {hasMore && (
-                    <div className={styles.loadMoreButton}>
-                      <Button
-                        theme="coat"
-                        variant="secondary"
-                        type="button"
-                        className={styles.hdsButtonOverrides}
-                        onClick={onLoadMore}
-                      >
-                        {archiveSearch?.loadMoreButtonLabelText || ""}
-                      </Button>
-                    </div>
-                  )}
-                </div>
-              </>
+              <ArchiveCollection
+                items={items}
+                cardsClampText={cardsClampText}
+                cardsWithBorder={cardsWithBorder}
+                cardsWithShadow={cardsWithShadow}
+                cardsHasLink={cardsHasLink}
+                cardsTarget={cardsTarget}
+              />
             )}
+            <div className={styles.bottomActions}>
+              {isLoading && (
+                <div className={styles.loadingSpinner}>
+                  <LoadingSpinner />
+                </div>
+              )}
+              {hasMore && (
+                <div className={styles.loadMoreButton}>
+                  <Button
+                    theme="coat"
+                    variant="secondary"
+                    type="button"
+                    className={styles.hdsButtonOverrides}
+                    onClick={onLoadMore}
+                  >
+                    {archiveSearch?.loadMoreButtonLabelText || ""}
+                  </Button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
