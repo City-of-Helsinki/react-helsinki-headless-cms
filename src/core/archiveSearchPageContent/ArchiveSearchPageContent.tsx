@@ -18,6 +18,63 @@ import useConfig from "../configProvider/useConfig";
 import { Articles, Pages } from "../../common/headlessService/types";
 import HtmlToReact from "../../common/components/htmlToReact/HtmlToReact";
 import { formatDateTimeFromString } from "../../common/utils/dates";
+import { Config } from "../configProvider/configContext";
+
+export function SearchForm({
+  archiveSearch,
+  handleSearch,
+  handleChange,
+  searchText,
+}: {
+  archiveSearch: Config["archiveSearch"];
+  handleSearch: (e: React.FormEvent) => void;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  searchText: string;
+}) {
+  return (
+    <form role="search" className={styles.searchForm} onSubmit={handleSearch}>
+      <TextInput
+        className={classNames(
+          styles.inputWithIcon,
+          styles.hdsTextInputOverrides
+        )}
+        name="q"
+        id="q"
+        placeholder={archiveSearch?.searchTextPlaceholder || ""}
+        onChange={handleChange}
+        value={searchText}
+      >
+        <IconSearch aria-hidden="true" />
+      </TextInput>
+      <Button
+        theme="coat"
+        type="submit"
+        iconLeft={<IconSearch aria-hidden="true" />}
+        className={styles.hdsButtonOverrides}
+      >
+        {archiveSearch?.searchButtonLabelText || ""}
+      </Button>
+    </form>
+  );
+}
+
+export function SearchTags({
+  tags,
+  handleTagClick,
+}: {
+  tags: string[];
+  handleTagClick: (tag: string) => void;
+}) {
+  return (
+    <div>
+      {tags.map((tag) => (
+        <Tag variant="search" onClick={handleTagClick}>
+          {tag}
+        </Tag>
+      ))}
+    </div>
+  );
+}
 
 export interface SearchPageContentProps {
   items?: Articles | Pages;
@@ -82,43 +139,14 @@ export default function SearchPageContent({
         <div className={styles.searchFormContainer}>
           <div className={styles.searchFormContainerInner}>
             <div>
-              <form
-                role="search"
-                className={styles.searchForm}
-                onSubmit={handleSearch}
-              >
-                <TextInput
-                  className={classNames(
-                    styles.inputWithIcon,
-                    styles.hdsTextInputOverrides
-                  )}
-                  name="q"
-                  id="q"
-                  placeholder={archiveSearch?.searchTextPlaceholder || ""}
-                  onChange={handleChange}
-                  value={searchText}
-                >
-                  <IconSearch aria-hidden="true" />
-                </TextInput>
-                <Button
-                  theme="coat"
-                  type="submit"
-                  iconLeft={<IconSearch aria-hidden="true" />}
-                  className={styles.hdsButtonOverrides}
-                >
-                  {archiveSearch?.searchButtonLabelText || ""}
-                </Button>
-              </form>
+              <SearchForm
+                archiveSearch={archiveSearch}
+                handleSearch={handleSearch}
+                handleChange={handleChange}
+                searchText={searchText}
+              />
             </div>
-            {tags && (
-              <div>
-                {tags.map((tag) => (
-                  <Tag variant="search" onClick={handleTagClick}>
-                    {tag}
-                  </Tag>
-                ))}
-              </div>
-            )}
+            {tags && <SearchTags tags={tags} handleTagClick={handleTagClick} />}
           </div>
           <Koros className={styles.koros} flipHorizontal />
         </div>
