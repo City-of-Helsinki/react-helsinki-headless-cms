@@ -2,10 +2,10 @@ import React from "react";
 
 import { render, screen } from "../../../common/utils/testingLibrary";
 import pageMock, { sidebarLinkList } from "../__mocks__/page.mock";
-import Page from "../PageContent";
+import { PageContent } from "../PageContent";
 
 test("renders page with expected content", () => {
-  render(<Page page={pageMock} />);
+  render(<PageContent page={pageMock} />);
 
   // Title of page is presented correctly
   expect(

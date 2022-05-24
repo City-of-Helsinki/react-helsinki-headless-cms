@@ -7,7 +7,7 @@ import ConfigProvider from "../configProvider/ConfigProvider";
 import defaultConfig from "../configProvider/defaultConfig";
 import pageMock from "./__mocks__/page.mock";
 import pageWithDiverseContent from "./__mocks__/pageWithDiverseContent.mock";
-import PageContent from "./PageContent";
+import { PageContent } from "./PageContent";
 import Collection from "../collection/Collection";
 import Card from "../card/Card";
 import { getCollectionCards, getCollections } from "./utils";
