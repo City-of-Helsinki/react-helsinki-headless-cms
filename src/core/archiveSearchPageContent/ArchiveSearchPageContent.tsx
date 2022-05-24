@@ -9,7 +9,7 @@ import {
   TextInput,
 } from "hds-react";
 
-import styles from "./articlesSearchPageContent.module.scss";
+import styles from "./archiveSearchPageContent.module.scss";
 import Tag from "../../common/components/tag/Tag";
 import Card from "../card/Card";
 import Grid from "../../common/components/grid/Grid";

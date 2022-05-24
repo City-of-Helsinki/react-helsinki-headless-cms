@@ -7,19 +7,19 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import { LanguageCodeEnum } from "../../common/headlessService/types";
 import ConfigProvider from "../configProvider/ConfigProvider";
 import defaultConfig from "../configProvider/defaultConfig";
-import ArticlesSearchPageContent from "../articlesSearchPageContent/ArticlesSearchPageContent";
+import ArchiveSearchPageContent from "../archiveSearchPageContent/ArchiveSearchPageContent";
 import navigationLanguages from "../navigation/__mocks__/navigationLanguages.mock";
 import navigationMenu from "../navigation/__mocks__/navigationMenu.mock";
 import Navigation from "../navigation/Navigation";
-import ArticlesSearchPage from "./ArticlesSearchPage";
-import articles from "../articlesSearchPageContent/__mocks__/articles.mock";
+import ArchiveSearchPage from "./ArchiveSearchPage";
+import articles from "../archiveSearchPageContent/__mocks__/articles.mock";
 
 export default {
-  title: "Example/ArticlesSearchPage",
-  component: ArticlesSearchPage,
-} as ComponentMeta<typeof ArticlesSearchPage>;
+  title: "Example/ArchiveSearchPage",
+  component: ArchiveSearchPage,
+} as ComponentMeta<typeof ArchiveSearchPage>;
 
-const Template: ComponentStory<typeof ArticlesSearchPage> = (args) => (
+const Template: ComponentStory<typeof ArchiveSearchPage> = (args) => (
   <HelmetProvider>
     <ConfigProvider
       config={{
@@ -33,13 +33,13 @@ const Template: ComponentStory<typeof ArticlesSearchPage> = (args) => (
         },
       }}
     >
-      <ArticlesSearchPage {...args} />
+      <ArchiveSearchPage {...args} />
     </ConfigProvider>
   </HelmetProvider>
 );
 
-export const ArticlesSearchPageDefault = Template.bind({});
-ArticlesSearchPageDefault.args = {
+export const ArchiveSearchPageDefault = Template.bind({});
+ArchiveSearchPageDefault.args = {
   navigation: (
     <Navigation
       languages={navigationLanguages}
@@ -69,7 +69,7 @@ ArticlesSearchPageDefault.args = {
     />
   ),
   content: (
-    <ArticlesSearchPageContent
+    <ArchiveSearchPageContent
       articles={articles}
       tags={["label1", "label2", "label3"]}
       onSearch={(freeSearch, tags) => {

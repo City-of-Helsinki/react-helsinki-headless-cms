@@ -1,18 +1,18 @@
 import React from "react";
 
-import styles from "./articlesSearchPage.module.scss";
+import styles from "./archiveSearchPage.module.scss";
 
-export type ArticleSearchPageProps = {
+export type ArchiveSearchPageProps = {
   navigation: React.ReactNode;
   content: React.ReactNode;
   footer: React.ReactNode;
 };
 
-export default function Page({
+export default function ArchivePage({
   navigation,
   content,
   footer,
-}: ArticleSearchPageProps) {
+}: ArchiveSearchPageProps) {
   return (
     <div className={styles.pageLayout}>
       <div>{navigation}</div>
