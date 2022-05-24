@@ -90,6 +90,8 @@ export interface SearchPageContentProps {
   tags?: string[];
   onSearch?: (freeSearch: string, tags: string[]) => void;
   onLoadMore?: () => void;
+  LargeCardComponent?: typeof LargeCard;
+  CardComponent?: typeof Card;
 }
 
 export function ArchiveCollection({
@@ -99,6 +101,8 @@ export function ArchiveCollection({
   cardsWithShadow,
   cardsHasLink,
   cardsTarget,
+  LargeCardComponent = LargeCard,
+  CardComponent = Card,
 }: Partial<SearchPageContentProps>) {
   if (!items || !items.edges?.length) {
     return null;
@@ -106,7 +110,7 @@ export function ArchiveCollection({
   const firstItem = items.edges[0].node;
   return (
     <>
-      <LargeCard
+      <LargeCardComponent
         id={firstItem.id}
         ariaLabel={firstItem.title || ""}
         title={firstItem.title || ""}
@@ -119,17 +123,17 @@ export function ArchiveCollection({
         target={cardsTarget}
       />
       <Grid>
-        {items.edges.slice(1).map((articleEdge) => {
-          const article = articleEdge.node;
+        {items.edges.slice(1).map((edge) => {
+          const item = edge.node;
           return (
-            <Card
-              id={article.id}
-              ariaLabel={article.title || ""}
-              title={article.title || ""}
-              subTitle={formatDateTimeFromString(article.date || "")}
-              customContent={<HtmlToReact>{article.lead || ""}</HtmlToReact>}
-              url={article.slug || ""}
-              imageUrl={article.featuredImage?.node.mediaItemUrl || ""}
+            <CardComponent
+              id={item.id}
+              ariaLabel={item.title || ""}
+              title={item.title || ""}
+              subTitle={formatDateTimeFromString(item.date || "")}
+              customContent={<HtmlToReact>{item.lead || ""}</HtmlToReact>}
+              url={item.slug || ""}
+              imageUrl={item.featuredImage?.node.mediaItemUrl || ""}
               clampText={cardsClampText}
               withBorder={cardsWithBorder}
               withShadow={cardsWithShadow}
@@ -143,21 +147,16 @@ export function ArchiveCollection({
   );
 }
 
-export default function SearchPageContent({
-  className,
-  items,
-  hasMore,
-  cardsClampText,
-  cardsWithBorder,
-  cardsWithShadow,
-  cardsHasLink,
-  cardsTarget,
-  isLoading,
-  noResults,
-  tags,
-  onSearch,
-  onLoadMore,
-}: SearchPageContentProps) {
+export default function SearchPageContent(props: SearchPageContentProps) {
+  const {
+    className,
+    hasMore,
+    isLoading,
+    noResults,
+    tags,
+    onSearch,
+    onLoadMore,
+  } = props;
   const { archiveSearch } = useConfig();
 
   const [searchText, setSearchText] = useState<string>("");
@@ -207,14 +206,7 @@ export default function SearchPageContent({
             {noResults ? (
               <h1>{archiveSearch.noResultsText || ""}</h1>
             ) : (
-              <ArchiveCollection
-                items={items}
-                cardsClampText={cardsClampText}
-                cardsWithBorder={cardsWithBorder}
-                cardsWithShadow={cardsWithShadow}
-                cardsHasLink={cardsHasLink}
-                cardsTarget={cardsTarget}
-              />
+              <ArchiveCollection {...props} />
             )}
             <div className={styles.bottomActions}>
               {isLoading && (
