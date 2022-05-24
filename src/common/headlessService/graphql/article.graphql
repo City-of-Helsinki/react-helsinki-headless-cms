@@ -1,5 +1,27 @@
-fragment Article on Article {
-  ...PageBase
+fragment Post on Post {
+  id
+  content
+  slug
+  title
+  uri
+  link
+  lead
+  seo {
+    ...SEO
+  }
+  language {
+    ...Language
+  }
+  featuredImage {
+    node {
+      mediaItemUrl
+      link
+      altText
+      mimeType
+      title
+      uri
+    }
+  }
   modules {
     # TODO: HCRC-13 - Support Event search and Event selection -modules
     ... on LayoutArticles {
@@ -14,6 +36,17 @@ fragment Article on Article {
 query article($id: ID!) {
   post(id: $id, idType: URI) {
     id
-    ...Article
+    ...Post
+    # Contains language versions other than the language the $id or type URI
+    # targets
+    translations {
+      uri
+      language {
+        ...Language
+      }
+      seo {
+        ...SEO
+      }
+    }
   }
 }

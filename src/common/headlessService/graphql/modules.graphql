@@ -1,0 +1,42 @@
+fragment LayoutLinkList on LayoutLinkList {
+  anchor
+  title
+  description
+  links {
+    target
+    title
+    url
+  }
+}
+
+fragment LayoutArticles on LayoutArticles {
+  title
+  articles {
+    id
+    title
+    link
+    lead
+    featuredImage {
+      node {
+        altText
+        mediaItemUrl
+      }
+    }
+  }
+}
+
+fragment LayoutPages on LayoutPages {
+  title
+  pages {
+    id
+    title
+    link
+    lead
+    featuredImage {
+      node {
+        altText
+        mediaItemUrl
+      }
+    }
+  }
+}

@@ -1,7 +1,37 @@
 fragment Page on Page {
-  ...PageBase
+  id
+  content
+  slug
+  title
+  uri
+  link
+  lead
+  seo {
+    ...SEO
+  }
+  language {
+    ...Language
+  }
+  featuredImage {
+    node {
+      mediaItemUrl
+      link
+      altText
+      mimeType
+      title
+      uri
+    }
+  }
   sidebar {
-    ...Sidebar
+    ... on LayoutLinkList {
+      ...LayoutLinkList
+    }
+    ... on LayoutArticles {
+      ...LayoutArticles
+    }
+    ... on LayoutPages {
+      ...LayoutPages
+    }
   }
   modules {
     # TODO: HCRC-13 - Support Event search and Event selection -modules
@@ -18,5 +48,16 @@ query page($id: ID!) {
   page(id: $id, idType: URI) {
     id
     ...Page
+    # Contains language versions other than the language the $id or type URI
+    # targets
+    translations {
+      uri
+      language {
+        ...Language
+      }
+      seo {
+        ...SEO
+      }
+    }
   }
 }

@@ -1,0 +1,13 @@
+fragment SEO on SEO {
+  title
+  description
+  openGraphTitle
+  openGraphDescription
+  openGraphType
+  twitterTitle
+  twitterDescription
+  canonicalUrl
+  socialImage {
+    mediaItemUrl
+  }
+}
