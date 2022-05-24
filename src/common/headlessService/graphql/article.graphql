@@ -1,11 +1,24 @@
+fragment Categories on PostToCategoryConnection {
+  edges {
+    node {
+      id
+      name
+    }
+  }
+}
+
 fragment Post on Post {
   id
+  date
   content
   slug
   title
   uri
   link
   lead
+  categories {
+    ...Categories
+  }
   seo {
     ...SEO
   }

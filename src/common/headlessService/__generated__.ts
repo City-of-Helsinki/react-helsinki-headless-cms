@@ -10195,6 +10195,254 @@ export type WritingSettings = {
   useSmilies?: Maybe<Scalars["Boolean"]>;
 };
 
+export type CategoriesFragment = {
+  __typename?: "PostToCategoryConnection";
+  edges?: Array<{
+    __typename?: "PostToCategoryConnectionEdge";
+    node?: { __typename?: "Category"; id: string; name?: string | null } | null;
+  } | null> | null;
+};
+
+export type PostFragment = {
+  __typename?: "Post";
+  id: string;
+  date?: string | null;
+  content?: string | null;
+  slug?: string | null;
+  title?: string | null;
+  uri?: string | null;
+  link?: string | null;
+  lead?: string | null;
+  categories?: {
+    __typename?: "PostToCategoryConnection";
+    edges?: Array<{
+      __typename?: "PostToCategoryConnectionEdge";
+      node?: {
+        __typename?: "Category";
+        id: string;
+        name?: string | null;
+      } | null;
+    } | null> | null;
+  } | null;
+  seo?: {
+    __typename?: "SEO";
+    title?: string | null;
+    description?: string | null;
+    openGraphTitle?: string | null;
+    openGraphDescription?: string | null;
+    openGraphType?: string | null;
+    twitterTitle?: string | null;
+    twitterDescription?: string | null;
+    canonicalUrl?: string | null;
+    socialImage?: {
+      __typename?: "MediaItem";
+      mediaItemUrl?: string | null;
+    } | null;
+  } | null;
+  language?: {
+    __typename?: "Language";
+    code?: LanguageCodeEnum | null;
+    id: string;
+    locale?: string | null;
+    name?: string | null;
+    slug?: string | null;
+  } | null;
+  featuredImage?: {
+    __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+    node?: {
+      __typename?: "MediaItem";
+      mediaItemUrl?: string | null;
+      link?: string | null;
+      altText?: string | null;
+      mimeType?: string | null;
+      title?: string | null;
+      uri?: string | null;
+    } | null;
+  } | null;
+  modules?: Array<
+    | { __typename?: "EventSearch" }
+    | { __typename?: "EventSelected" }
+    | {
+        __typename?: "LayoutArticles";
+        title?: string | null;
+        articles?: Array<{
+          __typename?: "Post";
+          id: string;
+          title?: string | null;
+          link?: string | null;
+          lead?: string | null;
+          featuredImage?: {
+            __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+            node?: {
+              __typename?: "MediaItem";
+              altText?: string | null;
+              mediaItemUrl?: string | null;
+            } | null;
+          } | null;
+        } | null> | null;
+      }
+    | { __typename?: "LayoutCollection" }
+    | { __typename?: "LayoutContact" }
+    | {
+        __typename?: "LayoutPages";
+        title?: string | null;
+        pages?: Array<{
+          __typename?: "Page";
+          id: string;
+          title?: string | null;
+          link?: string | null;
+          lead?: string | null;
+          featuredImage?: {
+            __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+            node?: {
+              __typename?: "MediaItem";
+              altText?: string | null;
+              mediaItemUrl?: string | null;
+            } | null;
+          } | null;
+        } | null> | null;
+      }
+    | null
+  > | null;
+};
+
+export type ArticleQueryVariables = Exact<{
+  id: Scalars["ID"];
+}>;
+
+export type ArticleQuery = {
+  __typename?: "RootQuery";
+  post?: {
+    __typename?: "Post";
+    id: string;
+    date?: string | null;
+    content?: string | null;
+    slug?: string | null;
+    title?: string | null;
+    uri?: string | null;
+    link?: string | null;
+    lead?: string | null;
+    translations?: Array<{
+      __typename?: "Post";
+      uri?: string | null;
+      language?: {
+        __typename?: "Language";
+        code?: LanguageCodeEnum | null;
+        id: string;
+        locale?: string | null;
+        name?: string | null;
+        slug?: string | null;
+      } | null;
+      seo?: {
+        __typename?: "SEO";
+        title?: string | null;
+        description?: string | null;
+        openGraphTitle?: string | null;
+        openGraphDescription?: string | null;
+        openGraphType?: string | null;
+        twitterTitle?: string | null;
+        twitterDescription?: string | null;
+        canonicalUrl?: string | null;
+        socialImage?: {
+          __typename?: "MediaItem";
+          mediaItemUrl?: string | null;
+        } | null;
+      } | null;
+    } | null> | null;
+    categories?: {
+      __typename?: "PostToCategoryConnection";
+      edges?: Array<{
+        __typename?: "PostToCategoryConnectionEdge";
+        node?: {
+          __typename?: "Category";
+          id: string;
+          name?: string | null;
+        } | null;
+      } | null> | null;
+    } | null;
+    seo?: {
+      __typename?: "SEO";
+      title?: string | null;
+      description?: string | null;
+      openGraphTitle?: string | null;
+      openGraphDescription?: string | null;
+      openGraphType?: string | null;
+      twitterTitle?: string | null;
+      twitterDescription?: string | null;
+      canonicalUrl?: string | null;
+      socialImage?: {
+        __typename?: "MediaItem";
+        mediaItemUrl?: string | null;
+      } | null;
+    } | null;
+    language?: {
+      __typename?: "Language";
+      code?: LanguageCodeEnum | null;
+      id: string;
+      locale?: string | null;
+      name?: string | null;
+      slug?: string | null;
+    } | null;
+    featuredImage?: {
+      __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+      node?: {
+        __typename?: "MediaItem";
+        mediaItemUrl?: string | null;
+        link?: string | null;
+        altText?: string | null;
+        mimeType?: string | null;
+        title?: string | null;
+        uri?: string | null;
+      } | null;
+    } | null;
+    modules?: Array<
+      | { __typename?: "EventSearch" }
+      | { __typename?: "EventSelected" }
+      | {
+          __typename?: "LayoutArticles";
+          title?: string | null;
+          articles?: Array<{
+            __typename?: "Post";
+            id: string;
+            title?: string | null;
+            link?: string | null;
+            lead?: string | null;
+            featuredImage?: {
+              __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+              node?: {
+                __typename?: "MediaItem";
+                altText?: string | null;
+                mediaItemUrl?: string | null;
+              } | null;
+            } | null;
+          } | null> | null;
+        }
+      | { __typename?: "LayoutCollection" }
+      | { __typename?: "LayoutContact" }
+      | {
+          __typename?: "LayoutPages";
+          title?: string | null;
+          pages?: Array<{
+            __typename?: "Page";
+            id: string;
+            title?: string | null;
+            link?: string | null;
+            lead?: string | null;
+            featuredImage?: {
+              __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+              node?: {
+                __typename?: "MediaItem";
+                altText?: string | null;
+                mediaItemUrl?: string | null;
+              } | null;
+            } | null;
+          } | null> | null;
+        }
+      | null
+    > | null;
+  } | null;
+};
+
 export type PostsQueryVariables = Exact<{
   first?: InputMaybe<Scalars["Int"]>;
 }>;
@@ -10283,40 +10531,6 @@ export type MenuQuery = {
   } | null;
 };
 
-export type NotificationQueryVariables = Exact<{
-  language?: Scalars["String"];
-}>;
-
-export type NotificationQuery = {
-  __typename?: "RootQuery";
-  notification?: {
-    __typename?: "Notification";
-    content?: string | null;
-    title?: string | null;
-    level?: string | null;
-    startDate?: string | null;
-    endDate?: string | null;
-    linkText?: string | null;
-    linkUrl?: string | null;
-  } | null;
-};
-
-export type SeoFragment = {
-  __typename?: "SEO";
-  title?: string | null;
-  description?: string | null;
-  openGraphTitle?: string | null;
-  openGraphDescription?: string | null;
-  openGraphType?: string | null;
-  twitterTitle?: string | null;
-  twitterDescription?: string | null;
-  canonicalUrl?: string | null;
-  socialImage?: {
-    __typename?: "MediaItem";
-    mediaItemUrl?: string | null;
-  } | null;
-};
-
 export type LayoutLinkListFragment = {
   __typename?: "LayoutLinkList";
   anchor?: string | null;
@@ -10368,6 +10582,24 @@ export type LayoutPagesFragment = {
       } | null;
     } | null;
   } | null> | null;
+};
+
+export type NotificationQueryVariables = Exact<{
+  language?: Scalars["String"];
+}>;
+
+export type NotificationQuery = {
+  __typename?: "RootQuery";
+  notification?: {
+    __typename?: "Notification";
+    content?: string | null;
+    title?: string | null;
+    level?: string | null;
+    startDate?: string | null;
+    endDate?: string | null;
+    linkText?: string | null;
+    linkUrl?: string | null;
+  } | null;
 };
 
 export type PageFragment = {
@@ -10692,14 +10924,30 @@ export type PageQuery = {
   } | null;
 };
 
-export const MenuItemFragmentDoc = gql`
-  fragment MenuItem on MenuItem {
-    id
-    order
-    target
-    title
-    path
-    label
+export type SeoFragment = {
+  __typename?: "SEO";
+  title?: string | null;
+  description?: string | null;
+  openGraphTitle?: string | null;
+  openGraphDescription?: string | null;
+  openGraphType?: string | null;
+  twitterTitle?: string | null;
+  twitterDescription?: string | null;
+  canonicalUrl?: string | null;
+  socialImage?: {
+    __typename?: "MediaItem";
+    mediaItemUrl?: string | null;
+  } | null;
+};
+
+export const CategoriesFragmentDoc = gql`
+  fragment Categories on PostToCategoryConnection {
+    edges {
+      node {
+        id
+        name
+      }
+    }
   }
 `;
 export const SeoFragmentDoc = gql`
@@ -10724,18 +10972,6 @@ export const LanguageFragmentDoc = gql`
     locale
     name
     slug
-  }
-`;
-export const LayoutLinkListFragmentDoc = gql`
-  fragment LayoutLinkList on LayoutLinkList {
-    anchor
-    title
-    description
-    links {
-      target
-      title
-      url
-    }
   }
 `;
 export const LayoutArticlesFragmentDoc = gql`
@@ -10769,6 +11005,72 @@ export const LayoutPagesFragmentDoc = gql`
           mediaItemUrl
         }
       }
+    }
+  }
+`;
+export const PostFragmentDoc = gql`
+  fragment Post on Post {
+    id
+    date
+    content
+    slug
+    title
+    uri
+    link
+    lead
+    categories {
+      ...Categories
+    }
+    seo {
+      ...SEO
+    }
+    language {
+      ...Language
+    }
+    featuredImage {
+      node {
+        mediaItemUrl
+        link
+        altText
+        mimeType
+        title
+        uri
+      }
+    }
+    modules {
+      ... on LayoutArticles {
+        ...LayoutArticles
+      }
+      ... on LayoutPages {
+        ...LayoutPages
+      }
+    }
+  }
+  ${CategoriesFragmentDoc}
+  ${SeoFragmentDoc}
+  ${LanguageFragmentDoc}
+  ${LayoutArticlesFragmentDoc}
+  ${LayoutPagesFragmentDoc}
+`;
+export const MenuItemFragmentDoc = gql`
+  fragment MenuItem on MenuItem {
+    id
+    order
+    target
+    title
+    path
+    label
+  }
+`;
+export const LayoutLinkListFragmentDoc = gql`
+  fragment LayoutLinkList on LayoutLinkList {
+    anchor
+    title
+    description
+    links {
+      target
+      title
+      url
     }
   }
 `;
@@ -10823,6 +11125,67 @@ export const PageFragmentDoc = gql`
   ${LayoutArticlesFragmentDoc}
   ${LayoutPagesFragmentDoc}
 `;
+export const ArticleDocument = gql`
+  query article($id: ID!) {
+    post(id: $id, idType: URI) {
+      id
+      ...Post
+      translations {
+        uri
+        language {
+          ...Language
+        }
+        seo {
+          ...SEO
+        }
+      }
+    }
+  }
+  ${PostFragmentDoc}
+  ${LanguageFragmentDoc}
+  ${SeoFragmentDoc}
+`;
+
+/**
+ * __useArticleQuery__
+ *
+ * To run a query within a React component, call `useArticleQuery` and pass it any options that fit your needs.
+ * When your component renders, `useArticleQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useArticleQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useArticleQuery(
+  baseOptions: Apollo.QueryHookOptions<ArticleQuery, ArticleQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<ArticleQuery, ArticleQueryVariables>(
+    ArticleDocument,
+    options
+  );
+}
+export function useArticleLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<ArticleQuery, ArticleQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<ArticleQuery, ArticleQueryVariables>(
+    ArticleDocument,
+    options
+  );
+}
+export type ArticleQueryHookResult = ReturnType<typeof useArticleQuery>;
+export type ArticleLazyQueryHookResult = ReturnType<typeof useArticleLazyQuery>;
+export type ArticleQueryResult = Apollo.QueryResult<
+  ArticleQuery,
+  ArticleQueryVariables
+>;
 export const PostsDocument = gql`
   query posts($first: Int) {
     posts(first: $first) {
