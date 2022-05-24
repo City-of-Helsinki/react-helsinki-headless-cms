@@ -70,7 +70,7 @@ ArchiveSearchPageDefault.args = {
   ),
   content: (
     <ArchiveSearchPageContent
-      articles={articles}
+      items={articles}
       tags={["label1", "label2", "label3"]}
       onSearch={(freeSearch, tags) => {
         // eslint-disable-next-line no-console

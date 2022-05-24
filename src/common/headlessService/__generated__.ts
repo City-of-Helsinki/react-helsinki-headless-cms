@@ -10924,6 +10924,37 @@ export type PageQuery = {
   } | null;
 };
 
+export type PagesQueryVariables = Exact<{
+  first?: InputMaybe<Scalars["Int"]>;
+}>;
+
+export type PagesQuery = {
+  __typename?: "RootQuery";
+  pages?: {
+    __typename?: "RootQueryToPageConnection";
+    edges?: Array<{
+      __typename?: "RootQueryToPageConnectionEdge";
+      node?: {
+        __typename?: "Page";
+        id: string;
+        title?: string | null;
+        date?: string | null;
+        lead?: string | null;
+        slug?: string | null;
+        uri?: string | null;
+        featuredImage?: {
+          __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+          node?: {
+            __typename?: "MediaItem";
+            altText?: string | null;
+            mediaItemUrl?: string | null;
+          } | null;
+        } | null;
+      } | null;
+    } | null> | null;
+  } | null;
+};
+
 export type SeoFragment = {
   __typename?: "SEO";
   title?: string | null;
@@ -11469,3 +11500,66 @@ export function usePageLazyQuery(
 export type PageQueryHookResult = ReturnType<typeof usePageQuery>;
 export type PageLazyQueryHookResult = ReturnType<typeof usePageLazyQuery>;
 export type PageQueryResult = Apollo.QueryResult<PageQuery, PageQueryVariables>;
+export const PagesDocument = gql`
+  query pages($first: Int) {
+    pages(first: $first) {
+      edges {
+        node {
+          id
+          title
+          date
+          lead
+          slug
+          uri
+          featuredImage {
+            node {
+              altText
+              mediaItemUrl
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+/**
+ * __usePagesQuery__
+ *
+ * To run a query within a React component, call `usePagesQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePagesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePagesQuery({
+ *   variables: {
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export function usePagesQuery(
+  baseOptions?: Apollo.QueryHookOptions<PagesQuery, PagesQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<PagesQuery, PagesQueryVariables>(
+    PagesDocument,
+    options
+  );
+}
+export function usePagesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<PagesQuery, PagesQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<PagesQuery, PagesQueryVariables>(
+    PagesDocument,
+    options
+  );
+}
+export type PagesQueryHookResult = ReturnType<typeof usePagesQuery>;
+export type PagesLazyQueryHookResult = ReturnType<typeof usePagesLazyQuery>;
+export type PagesQueryResult = Apollo.QueryResult<
+  PagesQuery,
+  PagesQueryVariables
+>;
