@@ -1,0 +1,105 @@
+fragment SEO on SEO {
+  title
+  description
+  openGraphTitle
+  openGraphDescription
+  openGraphType
+  twitterTitle
+  twitterDescription
+  canonicalUrl
+  socialImage {
+    mediaItemUrl
+  }
+}
+
+fragment Sidebar on SideBar {
+  ... on LayoutLinkList {
+    ...LayoutLinkList
+  }
+  ... on LayoutArticles {
+    ...LayoutArticles
+  }
+  ... on LayoutPages {
+    ...LayoutPages
+  }
+}
+
+fragment LayoutLinkList on LayoutLinkList {
+  anchor
+  title
+  description
+  links {
+    target
+    title
+    url
+  }
+}
+
+fragment LayoutArticles on LayoutArticles {
+  title
+  articles {
+    id
+    title
+    link
+    lead
+    featuredImage {
+      node {
+        altText
+        mediaItemUrl
+      }
+    }
+  }
+}
+
+fragment LayoutPages on LayoutPages {
+  title
+  pages {
+    id
+    title
+    link
+    lead
+    featuredImage {
+      node {
+        altText
+        mediaItemUrl
+      }
+    }
+  }
+}
+
+fragment PageBase on Page {
+  id
+  content
+  slug
+  title
+  uri
+  link
+  lead
+  seo {
+    ...SEO
+  }
+  language {
+    ...Language
+  }
+  featuredImage {
+    node {
+      mediaItemUrl
+      link
+      altText
+      mimeType
+      title
+      uri
+    }
+  }
+  # Contains language versions other than the language the $id or type URI
+  # targets
+  translations {
+    uri
+    language {
+      ...Language
+    }
+    seo {
+      ...SEO
+    }
+  }
+}
