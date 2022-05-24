@@ -1,26 +1,22 @@
-import React from "react";
+import React from 'react'
 
-import HtmlToReact from "../../common/components/htmlToReact/HtmlToReact";
-import Text from "../../common/components/text/Text";
-import useConfig from "../configProvider/useConfig";
-import styles from "./pageMainContent.module.scss";
+import HtmlToReact from '../../common/components/htmlToReact/HtmlToReact'
+import Text from '../../common/components/text/Text'
+import useConfig from '../configProvider/useConfig'
+import styles from './pageMainContent.module.scss'
 
 type PageMainContentProps = {
-  title: string;
-  content: string;
-  imageSrc?: string;
-  imageAlt?: string;
-};
+  title: string
+  content: string
+}
 
 export default function PageMainContent({
   title,
   content,
-  imageSrc,
-  imageAlt = "",
 }: PageMainContentProps) {
   const {
-    components: { Img, Link },
-  } = useConfig();
+    components: { Link },
+  } = useConfig()
 
   return (
     <article className={styles.mainContent}>
@@ -28,11 +24,6 @@ export default function PageMainContent({
         <Text as="h1" variant="h2">
           {title}
         </Text>
-        {imageSrc && (
-          <figure className={styles.imageContainer}>
-            <Img src={imageSrc} alt={imageAlt} />
-          </figure>
-        )}
       </header>
       <HtmlToReact
         components={{
@@ -42,5 +33,5 @@ export default function PageMainContent({
         {content}
       </HtmlToReact>
     </article>
-  );
+  )
 }
