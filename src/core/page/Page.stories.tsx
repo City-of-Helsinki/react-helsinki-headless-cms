@@ -8,7 +8,7 @@ import { LanguageCodeEnum } from "../../common/headlessService/types";
 import ConfigProvider from "../configProvider/ConfigProvider";
 import defaultConfig from "../configProvider/defaultConfig";
 import pageMock from "../pageContent/__mocks__/page.mock";
-import PageContent from "../pageContent/PageContent";
+import { PageContent } from "../pageContent/PageContent";
 import navigationLanguages from "../navigation/__mocks__/navigationLanguages.mock";
 import navigationMenu from "../navigation/__mocks__/navigationMenu.mock";
 import Navigation from "../navigation/Navigation";

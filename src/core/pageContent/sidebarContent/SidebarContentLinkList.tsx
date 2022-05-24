@@ -13,14 +13,14 @@ type Link = {
   url?: string | null;
 };
 
-type Props = LayoutLinkList;
+type SidebarContentLinkListProps = LayoutLinkList;
 
 export default function SidebarContentLinkList({
   anchor,
   title,
   description,
   links,
-}: Props) {
+}: SidebarContentLinkListProps) {
   return (
     <div id={anchor || undefined}>
       <h2>{title}</h2>

@@ -17,7 +17,7 @@ type Components = {
     | string;
 };
 
-type Props = {
+type HtmlToReactProps = {
   children: string;
   components?: Components;
 };
@@ -67,7 +67,10 @@ function replaceDomNodeWithReactComponent(
   return domNode;
 }
 
-export default function HtmlToReact({ children: dirty, components }: Props) {
+export default function HtmlToReact({
+  children: dirty,
+  components,
+}: HtmlToReactProps) {
   const clean = useMemo(
     () =>
       DOMPurify.sanitize(dirty, {

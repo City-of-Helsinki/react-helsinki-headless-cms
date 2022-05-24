@@ -5,7 +5,7 @@ import Text from "../../common/components/text/Text";
 import useConfig from "../configProvider/useConfig";
 import styles from "./pageMainContent.module.scss";
 
-type Props = {
+type PageMainContentProps = {
   title: string;
   content: string;
   imageSrc?: string;
@@ -17,7 +17,7 @@ export default function PageMainContent({
   content,
   imageSrc,
   imageAlt = "",
-}: Props) {
+}: PageMainContentProps) {
   const {
     components: { Img, Link },
   } = useConfig();

@@ -16,7 +16,7 @@ export type PageContentProps = {
   collections?: React.ReactElement<typeof Collection>[];
 };
 
-export default function PageContent({
+export function PageContent({
   page,
   breadcrumbs,
   collections,

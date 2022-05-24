@@ -3,7 +3,7 @@ import React from "react";
 import { MAIN_CONTENT_ID } from "../../common/constants";
 import styles from "./pageContentLayout.module.scss";
 
-type Props = {
+type PageContentLayoutProps = {
   breadcrumbs?: React.ReactNode;
   content: React.ReactNode;
   collections?: React.ReactNode;
@@ -15,7 +15,7 @@ export default function PageContentLayout({
   content,
   collections,
   sidebarContent,
-}: Props) {
+}: PageContentLayoutProps) {
   return (
     <div className={styles.contentLayout}>
       {breadcrumbs && <div className={styles.breadcrumbs}>{breadcrumbs}</div>}

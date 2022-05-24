@@ -12,7 +12,7 @@ type TextVariant =
   | "body-l"
   | "body-xl";
 
-type Props = {
+type TextVariantProps = {
   as?: string | React.ComponentType<HTMLAttributes<HTMLElement>>;
   variant?: TextVariant;
   children: ReactNode;
@@ -35,7 +35,13 @@ function getElement(variant: TextVariant) {
   }
 }
 
-function Text({ as, variant = "body", children, className, ...rest }: Props) {
+function Text({
+  as,
+  variant = "body",
+  children,
+  className,
+  ...rest
+}: TextVariantProps) {
   return React.createElement(
     as || getElement(variant),
     {

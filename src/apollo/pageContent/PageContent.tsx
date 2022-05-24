@@ -2,7 +2,8 @@ import React from "react";
 import { LoadingSpinner } from "hds-react";
 
 import { usePageQuery } from "../../common/headlessService/page";
-import PageContentWithoutData, {
+import {
+  PageContent as PageContentWithoutData,
   PageContentProps as PageContentPropsWithoutData,
 } from "../../core/pageContent/PageContent";
 import styles from "./pageContent.module.scss";

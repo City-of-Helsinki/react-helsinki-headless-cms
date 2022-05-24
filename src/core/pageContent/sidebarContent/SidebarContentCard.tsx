@@ -5,7 +5,7 @@ import classNames from "classnames";
 import useConfig from "../../configProvider/useConfig";
 import styles from "./sidebarContentCard.module.scss";
 
-type Props = {
+type SidebarContentCardProps = {
   title: string;
   url: string;
   imageUrl?: string;
@@ -17,7 +17,7 @@ export default function SidebarContentCard({
   url,
   imageUrl,
   imageAlt,
-}: Props) {
+}: SidebarContentCardProps) {
   const {
     components: { A, Img },
   } = useConfig();

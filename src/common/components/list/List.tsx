@@ -8,7 +8,7 @@ function getKey(...elements: JSX.Element[]): string {
   return elements.reduce((acc, element) => `${acc}${element.key}`, "");
 }
 
-type Props = {
+type ListProps = {
   items: (JSX.Element | JSX.Element[] | null | false)[];
   variant?:
     | "spacing-4-xs"
@@ -32,7 +32,7 @@ type Props = {
     | "spacing-layout-2-xl";
 };
 
-export default function List({ items, variant = "spacing-m" }: Props) {
+export default function List({ items, variant = "spacing-m" }: ListProps) {
   return (
     <ul className={classNames(styles.list, styles[variant])}>
       {items.map((item) =>

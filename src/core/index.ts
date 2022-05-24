@@ -17,12 +17,9 @@ export {
 
 export { default as Page, PageProps } from "./page/Page";
 
-export {
-  default as PageContent,
-  PageContentProps,
-} from "./pageContent/PageContent";
+export { PageContent, PageContentProps } from "./pageContent/PageContent";
 
-export { getCollections, getCollectionCards } from "./pageContent/utils";
+export { getCollections } from "./pageContent/utils";
 
 export type { Breadcrumb } from "./pageContent/types";
 
