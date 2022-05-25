@@ -9,12 +9,15 @@ import PageContentBreadcrumbs from './PageContentBreadcrumbs'
 import { Breadcrumb } from './types'
 import PageMeta from './meta/PageMeta'
 import Collection from '../collection/Collection'
+import { ArticleQuery } from '../../common/headlessService/__generated__'
+import { ArticleType, PageType } from '../../common/headlessService/types'
 
 export type PageContentProps = {
-  page?: PageQuery['page']
+  page?: PageQuery['page'] | ArticleQuery['post']
   breadcrumbs?: Breadcrumb[]
   collections?: React.ReactElement<typeof Collection>[]
   heroContainer?: JSX.Element
+  backUrl?: string
 }
 
 export function PageContent({
@@ -22,6 +25,7 @@ export function PageContent({
   breadcrumbs,
   collections,
   heroContainer,
+  backUrl,
 }: PageContentProps) {
   const {
     components: { Head },
@@ -37,12 +41,19 @@ export function PageContent({
         imageSrc={page?.featuredImage?.node?.mediaItemUrl}
         imageAlt={page?.featuredImage?.node?.altText}
         imageLabel={page?.featuredImage?.node?.altText}
-        backUrl="/"
+        backUrl={backUrl}
         content={
-          <PageMainContent title={page?.title} content={page?.content} />
+          <PageMainContent
+            title={page?.title}
+            content={page?.content}
+            date={(page as ArticleType)?.date}
+            categories={(page as ArticleType)?.categories}
+          />
         }
         collections={collections}
-        sidebarContent={<SidebarContent content={page?.sidebar} />}
+        sidebarContent={
+          <SidebarContent content={(page as PageType)?.sidebar} />
+        }
       />
     </>
   )

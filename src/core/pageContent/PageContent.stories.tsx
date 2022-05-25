@@ -7,6 +7,7 @@ import { Koros } from 'hds-react'
 import ConfigProvider from '../configProvider/ConfigProvider'
 import defaultConfig from '../configProvider/defaultConfig'
 import pageMock from './__mocks__/page.mock'
+import articleMock from './__mocks__/article.mock'
 import pageWithDiverseContent from './__mocks__/pageWithDiverseContent.mock'
 import { PageContent } from './PageContent'
 import Collection from '../collection/Collection'
@@ -47,7 +48,6 @@ const KorosWrapperComponent = ({ children = null }) => (
 export const PageContentDefault = Template.bind({})
 PageContentDefault.args = {
   page: pageMock,
-  heroContainer: <KorosWrapperComponent />,
   collections: getCollections(pageMock.modules)?.map((collection) => (
     <Collection
       key={`collection-${Math.random()}`}
@@ -64,6 +64,13 @@ PageContentDefault.args = {
       carouselProps={{ withDots: false }}
     />
   )),
+}
+
+export const PageContentArticle = Template.bind({})
+PageContentArticle.args = {
+  heroContainer: <KorosWrapperComponent />,
+  backUrl: '/',
+  page: articleMock,
 }
 
 export const PageContentWithSupportedContentTypes = Template.bind({})

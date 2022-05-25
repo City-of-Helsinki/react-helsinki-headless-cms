@@ -1,11 +1,12 @@
-import { MenuQuery, PageQuery, PostsQuery } from "./__generated__";
+import { MenuQuery, PageQuery, PostsQuery, ArticleQuery } from './__generated__'
 
-export type Menu = MenuQuery["menu"];
-export type PageType = PageQuery["page"];
-export type SidebarContent = PageQuery["page"]["sidebar"];
-export type PageModule = PageQuery["page"]["modules"][number];
-export type PageSidebarModule = PageQuery["page"]["sidebar"][number];
-export type Articles = PostsQuery["posts"];
+export type Menu = MenuQuery['menu']
+export type PageType = PageQuery['page']
+export type ArticleType = ArticleQuery['post']
+export type SidebarContent = PageQuery['page']['sidebar']
+export type PageModule = PageQuery['page']['modules'][number]
+export type PageSidebarModule = PageQuery['page']['sidebar'][number]
+export type Articles = PostsQuery['posts']
 
 export type {
   MenuItemFragment as MenuItem,
@@ -14,5 +15,5 @@ export type {
   LayoutArticlesFragment as LayoutArticle,
   LayoutPagesFragment as LayoutPage,
   Notification as NotificationType,
-} from "./__generated__";
-export { LanguageCodeEnum, MenuNodeIdTypeEnum } from "./__generated__";
+} from './__generated__'
+export { LanguageCodeEnum, MenuNodeIdTypeEnum } from './__generated__'
