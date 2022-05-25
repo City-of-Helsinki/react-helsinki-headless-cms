@@ -1,7 +1,13 @@
-import { MenuQuery, PageQuery, PostsQuery } from "./__generated__";
+import {
+  MenuQuery,
+  PageQuery,
+  PostsQuery,
+  ArticleQuery,
+} from "./__generated__";
 
 export type Menu = MenuQuery["menu"];
 export type PageType = PageQuery["page"];
+export type ArticleType = ArticleQuery["post"];
 export type SidebarContent = PageQuery["page"]["sidebar"];
 export type PageModule = PageQuery["page"]["modules"][number];
 export type PageSidebarModule = PageQuery["page"]["sidebar"][number];

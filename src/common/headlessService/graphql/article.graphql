@@ -1,11 +1,24 @@
-fragment Page on Page {
+fragment Categories on PostToCategoryConnection {
+  edges {
+    node {
+      id
+      name
+    }
+  }
+}
+
+fragment Post on Post {
   id
+  date
   content
   slug
   title
   uri
   link
   lead
+  categories {
+    ...Categories
+  }
   seo {
     ...SEO
   }
@@ -22,17 +35,6 @@ fragment Page on Page {
       uri
     }
   }
-  sidebar {
-    ... on LayoutLinkList {
-      ...LayoutLinkList
-    }
-    ... on LayoutArticles {
-      ...LayoutArticles
-    }
-    ... on LayoutPages {
-      ...LayoutPages
-    }
-  }
   modules {
     # TODO: HCRC-13 - Support Event search and Event selection -modules
     ... on LayoutArticles {
@@ -44,10 +46,10 @@ fragment Page on Page {
   }
 }
 
-query page($id: ID!) {
-  page(id: $id, idType: URI) {
+query article($id: ID!) {
+  post(id: $id, idType: URI) {
     id
-    ...Page
+    ...Post
     # Contains language versions other than the language the $id or type URI
     # targets
     translations {

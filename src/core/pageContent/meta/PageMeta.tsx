@@ -1,9 +1,9 @@
 import React from "react";
 
-import { PageType } from "../../../common/headlessService/types";
+import { ArticleType, PageType } from "../../../common/headlessService/types";
 
 export type PageMetaProps = {
-  page?: PageType;
+  page?: PageType | ArticleType;
   headComponent: React.ComponentType<{ children: React.ReactNode }>;
 };
 

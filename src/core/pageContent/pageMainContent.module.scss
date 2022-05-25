@@ -57,3 +57,13 @@ blockquote {
   margin: 0 0 1.75em;
   padding-left: 1em;
 }
+
+.articleData {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+
+  .articleDate {
+    margin-right: var(--spacing-xs);
+  }
+}

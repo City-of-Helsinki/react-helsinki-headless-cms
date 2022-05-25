@@ -2,10 +2,12 @@
 
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Koros } from "hds-react";
 
 import ConfigProvider from "../configProvider/ConfigProvider";
 import defaultConfig from "../configProvider/defaultConfig";
 import pageMock from "./__mocks__/page.mock";
+import articleMock from "./__mocks__/article.mock";
 import pageWithDiverseContent from "./__mocks__/pageWithDiverseContent.mock";
 import { PageContent } from "./PageContent";
 import Collection from "../collection/Collection";
@@ -27,6 +29,22 @@ const Template: ComponentStory<typeof PageContent> = (args) => (
   </ConfigProvider>
 );
 
+const KorosWrapperComponent = ({ children = null }) => (
+  <div style={{ position: "relative" }}>
+    {children}
+    <Koros
+      flipHorizontal
+      style={{
+        position: "absolute",
+        bottom: -24,
+        height: 1,
+        lineHeight: 0,
+        fill: "var(--color-black-5)",
+      }}
+    />
+  </div>
+);
+
 export const PageContentDefault = Template.bind({});
 PageContentDefault.args = {
   page: pageMock,
@@ -46,6 +64,13 @@ PageContentDefault.args = {
       carouselProps={{ withDots: false }}
     />
   )),
+};
+
+export const PageContentArticle = Template.bind({});
+PageContentArticle.args = {
+  heroContainer: <KorosWrapperComponent />,
+  backUrl: "/",
+  page: articleMock,
 };
 
 export const PageContentWithSupportedContentTypes = Template.bind({});

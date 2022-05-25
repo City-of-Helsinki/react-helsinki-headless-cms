@@ -77,6 +77,7 @@ PageDefault.args = {
   content: (
     <PageContent
       page={pageMock}
+      backUrl="/"
       breadcrumbs={[
         { title: "Root", link: "/" },
         { title: "Nested", link: "/nested" },

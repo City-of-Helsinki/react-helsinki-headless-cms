@@ -26,6 +26,12 @@
 }
 
 .mainLayout {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.content {
   // Use flex for linear layout
   display: flex;
   flex-direction: column;
