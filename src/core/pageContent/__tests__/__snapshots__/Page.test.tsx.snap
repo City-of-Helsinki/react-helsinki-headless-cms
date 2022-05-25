@@ -10,14 +10,6 @@ exports[`renders page with expected content 1`] = `
     >
       Kulttuurikasvatus
     </h1>
-    <figure
-      class="imageContainer"
-    >
-      <img
-        alt="Picture with content"
-        src="https://api.hel.fi/linkedevents-test/media/images/a-sip_netin_tapahtumakuva.1080x648_T3brYn4.jpg"
-      />
-    </figure>
   </header>
   
   
