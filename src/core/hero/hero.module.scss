@@ -1,0 +1,67 @@
+
+@use "breakpoints";
+@import "spacing";
+
+.hero {
+  margin-top: $spacing-s;
+  margin-bottom: $spacing-l;
+  background-color: var(--color-black-5);
+  position: relative;
+
+  .heroInner {
+    position: relative;
+    display: flex;
+    //flex-direction: column;
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    box-sizing: border-box;
+    & > *:nth-child(1) {
+      @media screen and (min-width: breakpoints.$breakpoint-m) {
+        flex: calc((100% / 3) * 2) 0 1;
+        max-width: calc((100% / 3) * 2);
+        // TODO: Replace with flex-gap when browsers support it
+        margin-right: $spacing-xs;
+        z-index: 1;
+      }
+    }
+
+    & > *:nth-child(2) {
+      @media screen and (min-width: breakpoints.$breakpoint-m) {
+        flex: calc(100% / 3) 0 0;
+        // TODO: Replace with flex-gap when browsers support it
+       // margin-left: $spacing-xs;
+      }
+    }
+
+    .link {
+      a {
+        display: flex;
+        background-color: var(--color-white);
+        padding: var(--spacing-4-xs);
+
+        @media screen and (min-width: breakpoints.$breakpoint-m) {
+          padding: var(--spacing-2-xs);
+        }
+      }
+      position: absolute;
+      left: 32px;
+      top: 32px;
+
+      @media screen and (min-width: breakpoints.$breakpoint-m) {
+        left: -32px;
+        top: 32px;
+      }
+    }
+
+    figure {
+      margin: 0 var(--padding);
+      line-height: 0;
+
+    }
+    img {
+      width: 100%;
+
+    }
+  }
+}

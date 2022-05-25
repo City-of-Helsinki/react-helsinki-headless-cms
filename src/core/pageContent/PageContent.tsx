@@ -36,6 +36,7 @@ export function PageContent({
         heroContainer={heroContainer}
         imageSrc={page?.featuredImage?.node?.mediaItemUrl}
         imageAlt={page?.featuredImage?.node?.altText}
+        backUrl="/"
         content={
           <PageMainContent title={page?.title} content={page?.content} />
         }
