@@ -1,20 +1,20 @@
-import React from 'react'
+import React from "react";
 
-import { MAIN_CONTENT_ID } from '../../common/constants'
-import styles from './pageContentLayout.module.scss'
-import Hero from '../hero/Hero'
+import { MAIN_CONTENT_ID } from "../../common/constants";
+import styles from "./pageContentLayout.module.scss";
+import Hero from "../hero/Hero";
 
 type PageContentLayoutProps = {
-  breadcrumbs?: React.ReactNode
-  heroContainer?: JSX.Element
-  content: React.ReactNode
-  collections?: React.ReactNode
-  sidebarContent: React.ReactNode
-  imageSrc?: string
-  imageAlt?: string
-  imageLabel?: string
-  backUrl?: string
-}
+  breadcrumbs?: React.ReactNode;
+  heroContainer?: JSX.Element;
+  content: React.ReactNode;
+  collections?: React.ReactNode;
+  sidebarContent: React.ReactNode;
+  imageSrc?: string;
+  imageAlt?: string;
+  imageLabel?: string;
+  backUrl?: string;
+};
 
 export default function PageContentLayout({
   breadcrumbs,
@@ -47,5 +47,5 @@ export default function PageContentLayout({
       </main>
       {collections}
     </div>
-  )
+  );
 }

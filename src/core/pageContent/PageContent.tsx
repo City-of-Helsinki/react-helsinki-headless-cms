@@ -1,24 +1,24 @@
-import React from 'react'
+import React from "react";
 
-import { PageQuery } from '../../common/headlessService/page'
-import useConfig from '../configProvider/useConfig'
-import SidebarContent from './sidebarContent/SidebarContent'
-import PageContentLayout from './PageContentLayout'
-import PageMainContent from './PageMainContent'
-import PageContentBreadcrumbs from './PageContentBreadcrumbs'
-import { Breadcrumb } from './types'
-import PageMeta from './meta/PageMeta'
-import Collection from '../collection/Collection'
-import { ArticleQuery } from '../../common/headlessService/__generated__'
-import { ArticleType, PageType } from '../../common/headlessService/types'
+import { PageQuery } from "../../common/headlessService/page";
+import useConfig from "../configProvider/useConfig";
+import SidebarContent from "./sidebarContent/SidebarContent";
+import PageContentLayout from "./PageContentLayout";
+import PageMainContent from "./PageMainContent";
+import PageContentBreadcrumbs from "./PageContentBreadcrumbs";
+import { Breadcrumb } from "./types";
+import PageMeta from "./meta/PageMeta";
+import Collection from "../collection/Collection";
+import { ArticleQuery } from "../../common/headlessService/__generated__";
+import { ArticleType, PageType } from "../../common/headlessService/types";
 
 export type PageContentProps = {
-  page?: PageQuery['page'] | ArticleQuery['post']
-  breadcrumbs?: Breadcrumb[]
-  collections?: React.ReactElement<typeof Collection>[]
-  heroContainer?: JSX.Element
-  backUrl?: string
-}
+  page?: PageQuery["page"] | ArticleQuery["post"];
+  breadcrumbs?: Breadcrumb[];
+  collections?: React.ReactElement<typeof Collection>[];
+  heroContainer?: JSX.Element;
+  backUrl?: string;
+};
 
 export function PageContent({
   page,
@@ -29,7 +29,7 @@ export function PageContent({
 }: PageContentProps) {
   const {
     components: { Head },
-  } = useConfig()
+  } = useConfig();
   return (
     <>
       {Head && <PageMeta headComponent={Head} page={page} />}
@@ -56,5 +56,5 @@ export function PageContent({
         }
       />
     </>
-  )
+  );
 }

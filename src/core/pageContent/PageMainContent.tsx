@@ -1,19 +1,19 @@
-import React from 'react'
+import React from "react";
 
-import HtmlToReact from '../../common/components/htmlToReact/HtmlToReact'
-import Text from '../../common/components/text/Text'
-import { ArticleType } from '../../common/headlessService/types'
-import useConfig from '../configProvider/useConfig'
-import styles from './pageMainContent.module.scss'
-import { formatDateFromString } from '../../common/utils/dates'
-import Tag from '../../common/components/tag/Tag'
+import HtmlToReact from "../../common/components/htmlToReact/HtmlToReact";
+import Text from "../../common/components/text/Text";
+import { ArticleType } from "../../common/headlessService/types";
+import useConfig from "../configProvider/useConfig";
+import styles from "./pageMainContent.module.scss";
+import { formatDateFromString } from "../../common/utils/dates";
+import Tag from "../../common/components/tag/Tag";
 
 type PageMainContentProps = {
-  title: string
-  content: string
-  date?: string
-  categories?: ArticleType['categories']
-}
+  title: string;
+  content: string;
+  date?: string;
+  categories?: ArticleType["categories"];
+};
 
 export default function PageMainContent({
   title,
@@ -23,7 +23,7 @@ export default function PageMainContent({
 }: PageMainContentProps) {
   const {
     components: { Link },
-  } = useConfig()
+  } = useConfig();
 
   return (
     <article className={styles.mainContent}>
@@ -36,7 +36,7 @@ export default function PageMainContent({
         <div className={styles.articleData}>
           {date && (
             <div className={styles.articleDate}>
-              {formatDateFromString(date || '')}
+              {formatDateFromString(date || "")}
             </div>
           )}
           {categories?.edges?.map((category) => (
@@ -52,5 +52,5 @@ export default function PageMainContent({
         {content}
       </HtmlToReact>
     </article>
-  )
+  );
 }

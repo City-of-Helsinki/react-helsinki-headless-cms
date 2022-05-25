@@ -1,4 +1,3 @@
-
 @use "breakpoints";
 @import "spacing";
 
@@ -61,11 +60,9 @@
     figure {
       margin: 0 var(--padding);
       line-height: 0;
-
     }
     img {
       width: 100%;
-
     }
   }
 }

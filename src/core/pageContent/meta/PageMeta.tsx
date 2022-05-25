@@ -1,14 +1,14 @@
-import React from 'react'
+import React from "react";
 
-import { ArticleType, PageType } from '../../../common/headlessService/types'
+import { ArticleType, PageType } from "../../../common/headlessService/types";
 
 export type PageMetaProps = {
-  page?: PageType | ArticleType
-  headComponent: React.ComponentType<{ children: React.ReactNode }>
-}
+  page?: PageType | ArticleType;
+  headComponent: React.ComponentType<{ children: React.ReactNode }>;
+};
 
 export default function PageMeta({ page, headComponent: Head }: PageMetaProps) {
-  const seoForCurrentLanguage = page?.seo
+  const seoForCurrentLanguage = page?.seo;
   const {
     title,
     description,
@@ -18,8 +18,8 @@ export default function PageMeta({ page, headComponent: Head }: PageMetaProps) {
     openGraphType,
     openGraphDescription,
     canonicalUrl,
-  } = seoForCurrentLanguage ?? {}
-  const image = seoForCurrentLanguage?.socialImage?.mediaItemUrl
+  } = seoForCurrentLanguage ?? {};
+  const image = seoForCurrentLanguage?.socialImage?.mediaItemUrl;
 
   return (
     <Head>
@@ -50,5 +50,5 @@ export default function PageMeta({ page, headComponent: Head }: PageMetaProps) {
       />
       <link rel="canonical" href={canonicalUrl} />
     </Head>
-  )
+  );
 }
