@@ -28,7 +28,6 @@ const Template: ComponentStory<typeof Collection> = (args) => (
   </div>
 );
 
-export const CollectionDefault = Template.bind({});
 const collection = getCollections([page?.modules[0]])[0];
 const cards = [
   ...getCollectionCards(collection),
@@ -44,7 +43,19 @@ const cards = [
     imageUrl={cardProps.imageUrl || cardMock.imageUrl}
   />
 ));
-CollectionDefault.args = {
+
+export const CollectionWithGrid = Template.bind({});
+CollectionWithGrid.args = {
   cards,
-  title: "Collection Heading",
+  title: "Grid Collection Heading",
+  type: "grid",
+  collectionContainerProps: { colsCount: 4 },
+};
+
+export const CollectionWithCarousel = Template.bind({});
+CollectionWithCarousel.args = {
+  cards,
+  title: "Carousel Collection Heading",
+  type: "carousel",
+  collectionContainerProps: { itemsDesktop: 5, itemsMobile: 2, withDots: true },
 };
