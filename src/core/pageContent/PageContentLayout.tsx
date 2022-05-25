@@ -12,6 +12,7 @@ type PageContentLayoutProps = {
   sidebarContent: React.ReactNode
   imageSrc?: string
   imageAlt?: string
+  imageLabel?: string
   backUrl?: string
 }
 
@@ -23,6 +24,7 @@ export default function PageContentLayout({
   sidebarContent,
   imageSrc,
   imageAlt,
+  imageLabel,
   backUrl,
 }: PageContentLayoutProps) {
   return (
@@ -34,6 +36,7 @@ export default function PageContentLayout({
             container={heroContainer}
             imageAlt={imageAlt}
             imageUrl={imageSrc}
+            imageLabel={imageLabel}
             backUrl={backUrl}
           />
         )}

@@ -13,6 +13,7 @@ export type HeroProps = {
   backUrl?: string
   imageUrl?: string
   imageAlt?: string
+  imageLabel?: string
   container?: JSX.Element
 }
 
@@ -22,6 +23,7 @@ export default function Hero({
   imageUrl,
   imageAlt,
   container,
+  imageLabel,
 }: HeroProps) {
   const {
     components: { Img },
@@ -35,6 +37,7 @@ export default function Hero({
             <figure className={styles.imageContainer}>
               <Img src={imageUrl} alt={imageAlt} />
             </figure>
+            {imageLabel && <div className={styles.label}>{imageLabel}</div>}
           </div>
           {backUrl && (
             <div className={styles.link}>

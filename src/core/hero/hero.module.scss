@@ -17,6 +17,7 @@
     margin: 0 auto;
     box-sizing: border-box;
     & > *:nth-child(1) {
+      position: relative;
       @media screen and (min-width: breakpoints.$breakpoint-m) {
         flex: calc((100% / 3) * 2) 0 1;
         max-width: calc((100% / 3) * 2);
@@ -24,13 +25,17 @@
         margin-right: $spacing-xs;
         z-index: 1;
       }
-    }
 
-    & > *:nth-child(2) {
-      @media screen and (min-width: breakpoints.$breakpoint-m) {
-        flex: calc(100% / 3) 0 0;
-        // TODO: Replace with flex-gap when browsers support it
-       // margin-left: $spacing-xs;
+      .label {
+        position: absolute;
+        z-index: 1;
+        right: 0;
+        bottom: 0;
+        margin: 0 var(--padding);
+        background-color: var(--color-black-80);
+        color: var(--color-white);
+        padding: 4px var(--spacing-xs);
+        opacity: 0.9;
       }
     }
 
@@ -38,7 +43,6 @@
       a {
         display: flex;
         background-color: var(--color-white);
-        padding: var(--spacing-4-xs);
 
         @media screen and (min-width: breakpoints.$breakpoint-m) {
           padding: var(--spacing-2-xs);
