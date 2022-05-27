@@ -10268,8 +10268,11 @@ export type PostFragment = {
         articles?: Array<{
           __typename?: "Post";
           id: string;
-          title?: string | null;
+          uri?: string | null;
+          slug?: string | null;
           link?: string | null;
+          date?: string | null;
+          title?: string | null;
           lead?: string | null;
           featuredImage?: {
             __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
@@ -10289,8 +10292,11 @@ export type PostFragment = {
         pages?: Array<{
           __typename?: "Page";
           id: string;
-          title?: string | null;
+          uri?: string | null;
+          slug?: string | null;
           link?: string | null;
+          date?: string | null;
+          title?: string | null;
           lead?: string | null;
           featuredImage?: {
             __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
@@ -10404,8 +10410,11 @@ export type ArticleQuery = {
           articles?: Array<{
             __typename?: "Post";
             id: string;
-            title?: string | null;
+            uri?: string | null;
+            slug?: string | null;
             link?: string | null;
+            date?: string | null;
+            title?: string | null;
             lead?: string | null;
             featuredImage?: {
               __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
@@ -10425,8 +10434,11 @@ export type ArticleQuery = {
           pages?: Array<{
             __typename?: "Page";
             id: string;
-            title?: string | null;
+            uri?: string | null;
+            slug?: string | null;
             link?: string | null;
+            date?: string | null;
+            title?: string | null;
             lead?: string | null;
             featuredImage?: {
               __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
@@ -10550,8 +10562,11 @@ export type LayoutArticlesFragment = {
   articles?: Array<{
     __typename?: "Post";
     id: string;
-    title?: string | null;
+    uri?: string | null;
+    slug?: string | null;
     link?: string | null;
+    date?: string | null;
+    title?: string | null;
     lead?: string | null;
     featuredImage?: {
       __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
@@ -10570,8 +10585,11 @@ export type LayoutPagesFragment = {
   pages?: Array<{
     __typename?: "Page";
     id: string;
-    title?: string | null;
+    uri?: string | null;
+    slug?: string | null;
     link?: string | null;
+    date?: string | null;
+    title?: string | null;
     lead?: string | null;
     featuredImage?: {
       __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
@@ -10653,8 +10671,11 @@ export type PageFragment = {
         articles?: Array<{
           __typename?: "Post";
           id: string;
-          title?: string | null;
+          uri?: string | null;
+          slug?: string | null;
           link?: string | null;
+          date?: string | null;
+          title?: string | null;
           lead?: string | null;
           featuredImage?: {
             __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
@@ -10684,8 +10705,11 @@ export type PageFragment = {
         pages?: Array<{
           __typename?: "Page";
           id: string;
-          title?: string | null;
+          uri?: string | null;
+          slug?: string | null;
           link?: string | null;
+          date?: string | null;
+          title?: string | null;
           lead?: string | null;
           featuredImage?: {
             __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
@@ -10708,8 +10732,11 @@ export type PageFragment = {
         articles?: Array<{
           __typename?: "Post";
           id: string;
-          title?: string | null;
+          uri?: string | null;
+          slug?: string | null;
           link?: string | null;
+          date?: string | null;
+          title?: string | null;
           lead?: string | null;
           featuredImage?: {
             __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
@@ -10729,8 +10756,11 @@ export type PageFragment = {
         pages?: Array<{
           __typename?: "Page";
           id: string;
-          title?: string | null;
+          uri?: string | null;
+          slug?: string | null;
           link?: string | null;
+          date?: string | null;
+          title?: string | null;
           lead?: string | null;
           featuredImage?: {
             __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
@@ -10830,8 +10860,11 @@ export type PageQuery = {
           articles?: Array<{
             __typename?: "Post";
             id: string;
-            title?: string | null;
+            uri?: string | null;
+            slug?: string | null;
             link?: string | null;
+            date?: string | null;
+            title?: string | null;
             lead?: string | null;
             featuredImage?: {
               __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
@@ -10861,8 +10894,11 @@ export type PageQuery = {
           pages?: Array<{
             __typename?: "Page";
             id: string;
-            title?: string | null;
+            uri?: string | null;
+            slug?: string | null;
             link?: string | null;
+            date?: string | null;
+            title?: string | null;
             lead?: string | null;
             featuredImage?: {
               __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
@@ -10885,8 +10921,11 @@ export type PageQuery = {
           articles?: Array<{
             __typename?: "Post";
             id: string;
-            title?: string | null;
+            uri?: string | null;
+            slug?: string | null;
             link?: string | null;
+            date?: string | null;
+            title?: string | null;
             lead?: string | null;
             featuredImage?: {
               __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
@@ -10906,8 +10945,11 @@ export type PageQuery = {
           pages?: Array<{
             __typename?: "Page";
             id: string;
-            title?: string | null;
+            uri?: string | null;
+            slug?: string | null;
             link?: string | null;
+            date?: string | null;
+            title?: string | null;
             lead?: string | null;
             featuredImage?: {
               __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
@@ -11010,8 +11052,11 @@ export const LayoutArticlesFragmentDoc = gql`
     title
     articles {
       id
-      title
+      uri
+      slug
       link
+      date
+      title
       lead
       featuredImage {
         node {
@@ -11027,8 +11072,11 @@ export const LayoutPagesFragmentDoc = gql`
     title
     pages {
       id
-      title
+      uri
+      slug
       link
+      date
+      title
       lead
       featuredImage {
         node {
