@@ -28,7 +28,7 @@ export {
   CollectionProps,
 } from "./collection/Collection";
 
-export type { CollectionType, CollectionItemType } from "./collection/types";
+export { CollectionType, CollectionItemType } from "./collection/types";
 
 export { default as Carousel, CarouselProps } from "./carousel/Carousel";
 
