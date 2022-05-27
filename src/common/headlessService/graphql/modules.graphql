@@ -13,8 +13,11 @@ fragment LayoutArticles on LayoutArticles {
   title
   articles {
     id
-    title
+    uri
+    slug
     link
+    date
+    title
     lead
     featuredImage {
       node {
@@ -29,8 +32,11 @@ fragment LayoutPages on LayoutPages {
   title
   pages {
     id
-    title
+    uri
+    slug
     link
+    date
+    title
     lead
     featuredImage {
       node {
