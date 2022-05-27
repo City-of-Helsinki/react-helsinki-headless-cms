@@ -2,6 +2,7 @@ export { default as ConfigProvider } from "./configProvider/ConfigProvider";
 export { default as defaultConfig } from "./configProvider/defaultConfig";
 
 export * from "../common/headlessService/types";
+export * from "../common/headlessService/utils";
 
 export { default as Link, LinkProps } from "./link/Link";
 
