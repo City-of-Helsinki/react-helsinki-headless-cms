@@ -8,6 +8,9 @@
   padding: 0 var(--padding);
   max-width: calc(var(--max-width) - (2 * var(--padding)));
   width: calc(100% - (2 * var(--padding)));
+}
+
+.collectionWrapper.carousel {
   overflow: hidden;
 }
 

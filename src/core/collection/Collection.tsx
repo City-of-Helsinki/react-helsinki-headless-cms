@@ -62,7 +62,9 @@ export default function Collection({
   };
 
   return (
-    <div className={classNames(styles.collectionWrapper, className)}>
+    <div
+      className={classNames(styles.collectionWrapper, styles[type], className)}
+    >
       <div className={styles.collection}>
         {title && <h1 className={styles.heading}>{title}</h1>}
         {componentForType[type]}
