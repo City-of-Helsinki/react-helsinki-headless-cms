@@ -18,6 +18,7 @@ export type PageContentProps = {
   collections?: React.ReactElement<typeof Collection>[];
   heroContainer?: JSX.Element;
   backUrl?: string;
+  sidebarContentProps?: Partial<typeof SidebarContent>;
 };
 
 export function PageContent({
@@ -26,6 +27,7 @@ export function PageContent({
   collections,
   heroContainer,
   backUrl,
+  sidebarContentProps,
 }: PageContentProps) {
   const {
     components: { Head },
@@ -52,7 +54,10 @@ export function PageContent({
         }
         collections={collections}
         sidebarContent={
-          <SidebarContent content={(page as PageType)?.sidebar} />
+          <SidebarContent
+            content={(page as PageType)?.sidebar}
+            {...sidebarContentProps}
+          />
         }
       />
     </>
