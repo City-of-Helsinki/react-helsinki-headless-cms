@@ -12,9 +12,17 @@ import SidebarPostListItem from "./SidebarPostListItem";
 
 type SidebarContentProps = {
   content?: SidebarContentType;
+  SidebarContentLinkListComponent?: typeof SidebarContentLinkList;
+  SidebarPostListComponent?: typeof List;
+  SideBarPostListItemComponent?: typeof SidebarPostListItem;
 };
 
-export default function SidebarContent({ content }: SidebarContentProps) {
+export default function SidebarContent({
+  content,
+  SidebarContentLinkListComponent = SidebarContentLinkList,
+  SidebarPostListComponent = List,
+  SideBarPostListItemComponent = SidebarPostListItem,
+}: SidebarContentProps) {
   return (
     <List
       variant="spacing-3-xl"
@@ -22,7 +30,7 @@ export default function SidebarContent({ content }: SidebarContentProps) {
         content?.map((item) => {
           if (isLayoutLinkList(item)) {
             return (
-              <SidebarContentLinkList
+              <SidebarContentLinkListComponent
                 key={item.title}
                 title={item.title}
                 links={item.links}
@@ -34,11 +42,11 @@ export default function SidebarContent({ content }: SidebarContentProps) {
 
           if (isLayoutPage(item)) {
             return (
-              <List
+              <SidebarPostListComponent
                 key="pages"
                 variant="spacing-3-xl"
                 items={item?.pages?.map((page) => (
-                  <SidebarPostListItem key={page?.id} {...page} />
+                  <SideBarPostListItemComponent key={page?.id} {...page} />
                 ))}
               />
             );
@@ -46,11 +54,14 @@ export default function SidebarContent({ content }: SidebarContentProps) {
 
           if (isLayoutArticle(item)) {
             return (
-              <List
+              <SidebarPostListComponent
                 key="articles"
                 variant="spacing-3-xl"
                 items={item?.articles?.map((article) => (
-                  <SidebarPostListItem key={article?.id} {...article} />
+                  <SideBarPostListItemComponent
+                    key={article?.id}
+                    {...article}
+                  />
                 ))}
               />
             );
