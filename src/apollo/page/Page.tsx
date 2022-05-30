@@ -1,6 +1,7 @@
 import React from "react";
 
-import PageWithoutData, {
+import {
+  Page as PageWithoutData,
   PageProps as PagePropsWithoutData,
 } from "../../core/page/Page";
 import ApolloPageContextProvider from "./ApolloPageContextProvider";

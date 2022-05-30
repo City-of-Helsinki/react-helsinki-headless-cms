@@ -9,12 +9,7 @@ export type PageProps = {
   footer: React.ReactNode;
 };
 
-export default function Page({
-  navigation,
-  notification,
-  content,
-  footer,
-}: PageProps) {
+export function Page({ navigation, notification, content, footer }: PageProps) {
   return (
     <div className={styles.pageLayout}>
       <div>

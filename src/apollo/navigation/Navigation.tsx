@@ -3,7 +3,8 @@ import React from "react";
 import { usePageQuery } from "../../common/headlessService/page";
 import { useLanguagesQuery } from "../../common/headlessService/languages";
 import { useMenuQuery } from "../../common/headlessService/menu";
-import NavigationWithoutData, {
+import {
+  Navigation as NavigationWithoutData,
   NavigationProps as NavigationPropsWithoutData,
 } from "../../core/navigation/Navigation";
 import useApolloPageContext from "../page/useApolloPageContext";

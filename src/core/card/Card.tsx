@@ -25,7 +25,7 @@ export type CardProps = {
   target?: "_blank" | "_self";
 };
 
-export default function Card({
+export function Card({
   id,
   ariaLabel,
   className,
