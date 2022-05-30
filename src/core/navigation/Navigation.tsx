@@ -25,7 +25,7 @@ export type NavigationProps = {
   getIsItemActive?: (menuItem: MenuItem) => boolean;
 };
 
-export default function Navigation({
+export function Navigation({
   menu,
   languages,
   className,

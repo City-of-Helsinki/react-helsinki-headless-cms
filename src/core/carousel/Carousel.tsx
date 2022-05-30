@@ -19,7 +19,7 @@ export type CarouselProps<T> = {
   withDots?: boolean;
 };
 
-export default function Carousel({
+export function Carousel({
   children,
   itemsDesktop = 4,
   itemsMobile = 2,

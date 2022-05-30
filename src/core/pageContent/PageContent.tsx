@@ -8,7 +8,7 @@ import PageMainContent from "./PageMainContent";
 import PageContentBreadcrumbs from "./PageContentBreadcrumbs";
 import { Breadcrumb } from "./types";
 import PageMeta from "./meta/PageMeta";
-import Collection from "../collection/Collection";
+import { Collection } from "../collection/Collection";
 import { ArticleQuery } from "../../common/headlessService/__generated__";
 import { ArticleType, PageType } from "../../common/headlessService/types";
 

@@ -3,8 +3,8 @@ import React from "react";
 import classNames from "classnames";
 
 import styles from "./collection.module.scss";
-import Carousel, { CarouselProps } from "../carousel/Carousel";
-import Card from "../card/Card";
+import { Carousel, CarouselProps } from "../carousel/Carousel";
+import { Card } from "../card/Card";
 import Grid, { GridProps } from "../../common/components/grid/Grid";
 
 export type CollectionProps = {
@@ -47,7 +47,7 @@ export function CollectionCarousel({
   );
 }
 
-export default function Collection({
+export function Collection({
   title,
   cards,
   className,
