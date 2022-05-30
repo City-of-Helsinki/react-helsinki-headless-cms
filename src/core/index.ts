@@ -1,5 +1,6 @@
 export { default as ConfigProvider } from "./configProvider/ConfigProvider";
 export { default as defaultConfig } from "./configProvider/defaultConfig";
+export { default as useHeadlessCmsLink } from "./configProvider/useHeadlessCmsLink";
 
 export * from "../common/headlessService/types";
 export * from "../common/headlessService/utils";
