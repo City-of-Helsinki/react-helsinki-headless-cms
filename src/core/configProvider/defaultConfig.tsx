@@ -7,6 +7,8 @@ import { Config } from "./configContext";
 
 const defaultConfig: Config = {
   siteName: "Test site",
+  // get internal URL origins from environment variables in the client app
+  internalHrefOrigins: [],
   currentLanguageCode: LanguageCodeEnum.Fi,
   copy: {
     breadcrumbNavigationLabel: "Breadcrumb navigation",

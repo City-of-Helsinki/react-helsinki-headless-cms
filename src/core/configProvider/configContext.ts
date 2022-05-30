@@ -5,6 +5,7 @@ import { LanguageCodeEnum } from "../../common/headlessService/types";
 
 export type Config = {
   siteName: string;
+  internalHrefOrigins: string[];
   currentLanguageCode: LanguageCodeEnum;
   copy: {
     breadcrumbNavigationLabel: string;

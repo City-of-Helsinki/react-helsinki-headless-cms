@@ -4,6 +4,7 @@ import {
   LayoutArticle,
   LayoutPage,
 } from "../../../common/headlessService/types";
+import useHeadlessCmsLink from "../../configProvider/useHeadlessCmsLink";
 import SidebarContentCard from "./SidebarContentCard";
 
 type PostListItemProps =
@@ -16,7 +17,9 @@ export default function PostListItem({
   link,
   featuredImage,
 }: PostListItemProps) {
-  if (!title || !link) {
+  const url = useHeadlessCmsLink(link);
+
+  if (!title || !url) {
     return null;
   }
 
@@ -24,7 +27,7 @@ export default function PostListItem({
     <SidebarContentCard
       key={id}
       title={title}
-      url={link}
+      url={url}
       imageUrl={featuredImage?.node?.mediaItemUrl || undefined}
       imageAlt={featuredImage?.node?.altText || undefined}
     />
