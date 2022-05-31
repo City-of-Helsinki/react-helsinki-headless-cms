@@ -1,6 +1,7 @@
 import React from "react";
 
 import List from "../../../common/components/list/List";
+import { ModuleItemTypeEnum } from "../../../common/headlessService/constants";
 import { SidebarContent as SidebarContentType } from "../../../common/headlessService/types";
 import {
   isLayoutArticle,
@@ -46,7 +47,11 @@ export default function SidebarContent({
                 key="pages"
                 variant="spacing-3-xl"
                 items={item?.pages?.map((page) => (
-                  <SideBarPostListItemComponent key={page?.id} {...page} />
+                  <SideBarPostListItemComponent
+                    key={page?.id}
+                    {...page}
+                    moduleItemType={ModuleItemTypeEnum.Page}
+                  />
                 ))}
               />
             );
@@ -61,6 +66,7 @@ export default function SidebarContent({
                   <SideBarPostListItemComponent
                     key={article?.id}
                     {...article}
+                    moduleItemType={ModuleItemTypeEnum.Article}
                   />
                 ))}
               />

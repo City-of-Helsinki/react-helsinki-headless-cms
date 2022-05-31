@@ -1,8 +1,9 @@
 import React from "react";
 
+import { ModuleItemTypeEnum } from "../../common/headlessService/constants";
 import { LanguageCodeEnum } from "../../common/headlessService/types";
 import getIsValidHttpUrl from "../../common/utils/getIsValidHttpUrl";
-import Link, { LinkProps } from "../link/Link";
+import { Link, LinkProps } from "../link/Link";
 import { Config } from "./configContext";
 
 const defaultConfig: Config = {
@@ -46,6 +47,9 @@ const defaultConfig: Config = {
 
       return false;
     },
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    getRoutedInternalHref: (link: string, _type: ModuleItemTypeEnum): string =>
+      link ?? "#",
   },
   archiveSearch: {
     searchTextPlaceholder: "Search text",

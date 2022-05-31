@@ -3,7 +3,7 @@ import React from "react";
 import defaultConfig from "./defaultConfig";
 import configContext, { Config } from "./configContext";
 
-type Props = {
+type ConfigProviderProps = {
   config: Config;
   children: React.ReactNode;
 };
@@ -11,7 +11,7 @@ type Props = {
 export default function ConfigProvider({
   config: userConfig,
   children,
-}: Props) {
+}: ConfigProviderProps) {
   const config = React.useMemo(
     () => ({
       ...defaultConfig,
