@@ -5,12 +5,7 @@ import useConfig from "../configProvider/useConfig";
 
 export type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
-export default function Link({
-  href,
-  target,
-  children,
-  ...delegatedProps
-}: LinkProps) {
+export function Link({ href, target, children, ...delegatedProps }: LinkProps) {
   const {
     copy: { openInExternalDomainAriaLabel, openInNewTabAriaLabel },
     utils: { getIsHrefExternal },

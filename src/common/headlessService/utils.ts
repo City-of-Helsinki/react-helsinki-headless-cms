@@ -35,7 +35,7 @@ export function isPageType(item: CollectionItemType): item is PageType {
   return (<PageType>item).sidebar !== undefined;
 }
 
-export function handleInternalHrefs(
+export function getUri(
   link: string,
   internalHrefOrigins: string[],
   getIsHrefExternal: (href: string) => boolean
@@ -45,11 +45,11 @@ export function handleInternalHrefs(
     return link;
   }
 
-  let url = link;
+  let uri = link;
   // Replace all the internal link origins with empty to make dynamic internal URLs
   internalHrefOrigins.forEach((origin) => {
-    url = url.replace(origin, "");
+    uri = uri.replace(origin, "");
   });
 
-  return url;
+  return uri;
 }

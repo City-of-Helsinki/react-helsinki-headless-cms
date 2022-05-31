@@ -2,6 +2,7 @@ import React, { createContext } from "react";
 import { ApolloClient, NormalizedCacheObject } from "@apollo/client";
 
 import { LanguageCodeEnum } from "../../common/headlessService/types";
+import { ModuleItemTypeEnum } from "../../common/headlessService/constants";
 
 export type Config = {
   siteName: string;
@@ -27,6 +28,7 @@ export type Config = {
   apolloClient?: ApolloClient<NormalizedCacheObject>;
   utils: {
     getIsHrefExternal: (href: string) => boolean;
+    getRoutedInternalHref: (link: string, type: ModuleItemTypeEnum) => string;
   };
   archiveSearch?: {
     searchTextPlaceholder: string;

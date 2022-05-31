@@ -4,15 +4,13 @@ export { default as useHeadlessCmsLink } from "./configProvider/useHeadlessCmsLi
 
 export * from "../common/headlessService/types";
 export * from "../common/headlessService/utils";
+export { ModuleItemTypeEnum } from "../common/headlessService/constants";
 
-export { default as Link, LinkProps } from "./link/Link";
+export { Link, LinkProps } from "./link/Link";
 
 export { Navigation, NavigationProps } from "./navigation/Navigation";
 
-export {
-  default as Notification,
-  NotificationProps,
-} from "./notification/Notification";
+export { Notification, NotificationProps } from "./notification/Notification";
 
 export { Page, PageProps } from "./page/Page";
 

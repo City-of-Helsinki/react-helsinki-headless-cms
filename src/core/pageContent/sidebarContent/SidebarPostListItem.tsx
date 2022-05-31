@@ -1,5 +1,6 @@
 import React from "react";
 
+import { ModuleItemTypeEnum } from "../../../common/headlessService/constants";
 import {
   LayoutArticle,
   LayoutPage,
@@ -7,17 +8,19 @@ import {
 import useHeadlessCmsLink from "../../configProvider/useHeadlessCmsLink";
 import SidebarContentCard from "./SidebarContentCard";
 
-type PostListItemProps =
+type PostListItemProps = (
   | LayoutArticle["articles"][number]
-  | LayoutPage["pages"][number];
+  | LayoutPage["pages"][number]
+) & { moduleItemType: ModuleItemTypeEnum };
 
 export default function PostListItem({
   id,
+  moduleItemType,
   title,
   link,
   featuredImage,
 }: PostListItemProps) {
-  const url = useHeadlessCmsLink(link);
+  const url = useHeadlessCmsLink(link, moduleItemType);
 
   if (!title || !url) {
     return null;

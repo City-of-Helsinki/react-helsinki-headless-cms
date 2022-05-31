@@ -8,7 +8,7 @@ import makeLocaleStorageValue from "../../common/utils/makeLocaleStorageValue";
 import { NotificationType } from "../../common/headlessService/types";
 import HtmlToReact from "../../common/components/htmlToReact/HtmlToReact";
 import useConfig from "../configProvider/useConfig";
-import Link from "../link/Link";
+import { Link } from "../link/Link";
 import getNotificationHash from "./utils/getNotificationHash";
 import getIsNotificationActive from "./utils/getIsNotificationActive";
 import styles from "./notification.module.scss";
@@ -59,7 +59,7 @@ export type NotificationProps = {
   notification?: NotificationType | null;
 };
 
-export default function Notification({ notification }: NotificationProps) {
+export function Notification({ notification }: NotificationProps) {
   const {
     copy: { closeButtonLabelText },
   } = useConfig();

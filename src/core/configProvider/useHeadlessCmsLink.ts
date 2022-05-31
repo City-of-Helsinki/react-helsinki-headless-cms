@@ -1,11 +1,16 @@
-import { handleInternalHrefs } from "../../common/headlessService/utils";
+import { ModuleItemTypeEnum } from "../../common/headlessService/constants";
+import { getUri } from "../../common/headlessService/utils";
 import useConfig from "./useConfig";
 
-export default function useHeadlessCmsLink(link: string) {
+export default function useHeadlessCmsLink(
+  link: string,
+  type: ModuleItemTypeEnum = ModuleItemTypeEnum.Link
+) {
   const {
     internalHrefOrigins,
-    utils: { getIsHrefExternal },
+    utils: { getIsHrefExternal, getRoutedInternalHref },
   } = useConfig();
 
-  return handleInternalHrefs(link, internalHrefOrigins, getIsHrefExternal);
+  const uri = getUri(link, internalHrefOrigins, getIsHrefExternal);
+  return getRoutedInternalHref(uri, type);
 }
