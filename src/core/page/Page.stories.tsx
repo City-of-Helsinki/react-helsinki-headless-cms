@@ -11,13 +11,13 @@ import pageMock from "../pageContent/__mocks__/page.mock";
 import { PageContent } from "../pageContent/PageContent";
 import navigationLanguages from "../navigation/__mocks__/navigationLanguages.mock";
 import navigationMenu from "../navigation/__mocks__/navigationMenu.mock";
-import Navigation from "../navigation/Navigation";
-import Notification from "../notification/Notification";
+import { Navigation } from "../navigation/Navigation";
+import { Notification } from "../notification/Notification";
 import notificationMock from "../notification/__mocks__/notification.mock";
-import Page from "./Page";
-import Collection from "../collection/Collection";
+import { Page } from "./Page";
+import { Collection } from "../collection/Collection";
 import { getCollectionCards, getCollections } from "../pageContent/utils";
-import Card from "../card/Card";
+import { Card } from "../card/Card";
 
 export default {
   title: "Example/Page",
@@ -86,7 +86,8 @@ PageDefault.args = {
         <Collection
           key={`collection-${Math.random()}`}
           title={collection.title}
-          carouselProps={{ withDots: false }}
+          collectionContainerProps={{ withDots: false }}
+          type="grid"
           cards={getCollectionCards(collection).map((cardProps) => (
             <Card
               key={cardProps.id}

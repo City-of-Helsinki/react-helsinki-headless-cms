@@ -4,7 +4,7 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import CardsList from "./CardsList";
-import Card from "../card/Card";
+import { Card } from "../card/Card";
 import card from "../card/__mocks__/card.mock";
 
 export default {
