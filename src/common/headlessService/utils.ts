@@ -1,3 +1,6 @@
+import DOMPurify from "isomorphic-dompurify";
+import parse from "html-react-parser";
+
 import { CollectionItemType } from "../../core/collection/types";
 import {
   ArticleType,
@@ -52,4 +55,16 @@ export function getUri(
   });
 
   return uri;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
+const getNodeText = (node: any): string => {
+  if (["string", "number"].includes(typeof node)) return node;
+  if (node instanceof Array) return node.map(getNodeText).join("");
+  if (typeof node === "object" && node) return getNodeText(node.props.children);
+  return node;
+};
+
+export function getElementTextContent(dirty: string): string {
+  return getNodeText(parse(DOMPurify.sanitize(dirty)));
 }
