@@ -11,7 +11,7 @@ import {
 
 import styles from "./archiveSearchPageContent.module.scss";
 import Tag from "../../common/components/tag/Tag";
-import Card from "../card/Card";
+import { Card } from "../card/Card";
 import Grid from "../../common/components/grid/Grid";
 import LargeCard from "../card/LargeCard";
 import useConfig from "../configProvider/useConfig";

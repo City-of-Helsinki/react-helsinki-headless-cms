@@ -10,8 +10,8 @@ import pageMock from "./__mocks__/page.mock";
 import articleMock from "./__mocks__/article.mock";
 import pageWithDiverseContent from "./__mocks__/pageWithDiverseContent.mock";
 import { PageContent } from "./PageContent";
-import Collection from "../collection/Collection";
-import Card from "../card/Card";
+import { Collection } from "../collection/Collection";
+import { Card } from "../card/Card";
 import { getCollectionCards, getCollections } from "./utils";
 
 export default {
@@ -61,7 +61,8 @@ PageContentDefault.args = {
           }
         />
       ))}
-      carouselProps={{ withDots: false }}
+      type="grid"
+      collectionContainerProps={{ withDots: false }}
     />
   )),
 };

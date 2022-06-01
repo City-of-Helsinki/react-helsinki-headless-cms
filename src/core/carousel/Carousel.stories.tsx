@@ -3,8 +3,8 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import Carousel from "./Carousel";
-import Card from "../card/Card";
+import { Carousel } from "./Carousel";
+import { Card } from "../card/Card";
 import card from "../card/__mocks__/card.mock";
 
 export default {

@@ -10,12 +10,12 @@ import defaultConfig from "../configProvider/defaultConfig";
 import ArchiveSearchPageContent from "../archiveSearchPageContent/ArchiveSearchPageContent";
 import navigationLanguages from "../navigation/__mocks__/navigationLanguages.mock";
 import navigationMenu from "../navigation/__mocks__/navigationMenu.mock";
-import Navigation from "../navigation/Navigation";
+import { Navigation } from "../navigation/Navigation";
 import ArchiveSearchPage from "./ArchiveSearchPage";
 import articles from "../archiveSearchPageContent/__mocks__/articles.mock";
 import pages from "../archiveSearchPageContent/__mocks__/pages.mock";
 import LargeCard from "../card/LargeCard";
-import Card from "../card/Card";
+import { Card } from "../card/Card";
 
 export default {
   title: "Example/ArchiveSearchPage",
