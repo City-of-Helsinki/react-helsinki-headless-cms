@@ -13,7 +13,7 @@ import styles from "./archiveSearchPageContent.module.scss";
 import Tag from "../../common/components/tag/Tag";
 import { Card } from "../card/Card";
 import Grid from "../../common/components/grid/Grid";
-import LargeCard from "../card/LargeCard";
+import { LargeCard } from "../card/LargeCard";
 import useConfig from "../configProvider/useConfig";
 import { Articles, Pages } from "../../common/headlessService/types";
 import HtmlToReact from "../../common/components/htmlToReact/HtmlToReact";
@@ -147,7 +147,7 @@ export function ArchiveCollection({
   );
 }
 
-export default function SearchPageContent(props: SearchPageContentProps) {
+export function SearchPageContent(props: SearchPageContentProps) {
   const {
     className,
     hasMore,

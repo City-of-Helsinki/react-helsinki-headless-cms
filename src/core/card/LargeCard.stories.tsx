@@ -6,7 +6,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import ConfigProvider from "../configProvider/ConfigProvider";
 import defaultConfig from "../configProvider/defaultConfig";
 import card from "./__mocks__/card.mock";
-import LargeCard from "./LargeCard";
+import { LargeCard } from "./LargeCard";
 
 export default {
   title: "Example/LargeCard",

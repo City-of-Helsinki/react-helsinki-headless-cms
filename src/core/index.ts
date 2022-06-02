@@ -27,3 +27,8 @@ export { CollectionType, CollectionItemType } from "./collection/types";
 export { Carousel, CarouselProps } from "./carousel/Carousel";
 
 export { Card, CardProps } from "./card/Card";
+
+export { LargeCard, LargeCardProps } from "./card/LargeCard";
+
+export { ArchivePage } from "./archiveSearchPage/ArchiveSearchPage";
+export { SearchPageContent } from "./archiveSearchPageContent/ArchiveSearchPageContent";

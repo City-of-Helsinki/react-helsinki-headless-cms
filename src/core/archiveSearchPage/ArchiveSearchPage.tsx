@@ -8,7 +8,7 @@ export type ArchiveSearchPageProps = {
   footer: React.ReactNode;
 };
 
-export default function ArchivePage({
+export function ArchivePage({
   navigation,
   content,
   footer,
