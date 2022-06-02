@@ -24,7 +24,7 @@ export type LargeCardProps = {
   target?: "_blank" | "_self";
 };
 
-export default function LargeCard({
+export function LargeCard({
   id,
   ariaLabel,
   className,

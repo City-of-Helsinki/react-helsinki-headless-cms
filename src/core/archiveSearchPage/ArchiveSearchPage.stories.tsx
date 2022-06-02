@@ -7,14 +7,14 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import { LanguageCodeEnum } from "../../common/headlessService/types";
 import ConfigProvider from "../configProvider/ConfigProvider";
 import defaultConfig from "../configProvider/defaultConfig";
-import ArchiveSearchPageContent from "../archiveSearchPageContent/ArchiveSearchPageContent";
+import { SearchPageContent as ArchiveSearchPageContent } from "../archiveSearchPageContent/ArchiveSearchPageContent";
 import navigationLanguages from "../navigation/__mocks__/navigationLanguages.mock";
 import navigationMenu from "../navigation/__mocks__/navigationMenu.mock";
 import { Navigation } from "../navigation/Navigation";
-import ArchiveSearchPage from "./ArchiveSearchPage";
+import { ArchivePage as ArchiveSearchPage } from "./ArchiveSearchPage";
 import articles from "../archiveSearchPageContent/__mocks__/articles.mock";
 import pages from "../archiveSearchPageContent/__mocks__/pages.mock";
-import LargeCard from "../card/LargeCard";
+import { LargeCard } from "../card/LargeCard";
 import { Card } from "../card/Card";
 
 export default {
