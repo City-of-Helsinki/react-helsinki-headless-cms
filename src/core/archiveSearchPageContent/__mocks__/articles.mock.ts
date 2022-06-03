@@ -21,7 +21,7 @@ const mockArticles: PostsQuery["posts"] = {
     },
     {
       node: {
-        id: "bG9zdDo5Mg==",
+        id: "bG9zdDo5Mg2==",
         title: "test 2",
         date: "2022-05-10T15:10:13",
         lead: "<p>Some ingress text for the article</p>\n",
@@ -38,7 +38,7 @@ const mockArticles: PostsQuery["posts"] = {
     },
     {
       node: {
-        id: "cG9zdDo5Mg==",
+        id: "cG9zdDo5Mg3==",
         title: "test 3",
         date: "2022-05-10T15:10:13",
         lead: "<p>Some ingress text for the article</p>\n",
@@ -55,11 +55,11 @@ const mockArticles: PostsQuery["posts"] = {
     },
     {
       node: {
-        id: "dG9zdDo5Mg==",
+        id: "dG9zdDo5Mg4==",
         title: "test 4",
         date: "2022-05-10T15:10:13",
         lead: "<p>Some ingress text for the article</p>\n",
-        slug: "test-3",
+        slug: "test-4",
         uri: "/en/uncategorized-en/test-4/",
         featuredImage: {
           node: {
@@ -72,11 +72,11 @@ const mockArticles: PostsQuery["posts"] = {
     },
     {
       node: {
-        id: "eG9zdDo5Mg==",
+        id: "eG9zdDo5Mg5==",
         title: "test 5",
         date: "2022-05-10T15:10:13",
         lead: "<p>Some ingress text for the article</p>\n",
-        slug: "test-3",
+        slug: "test-5",
         uri: "/en/uncategorized-en/test-5/",
         featuredImage: {
           node: {

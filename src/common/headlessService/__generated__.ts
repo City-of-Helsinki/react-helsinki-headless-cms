@@ -10966,6 +10966,353 @@ export type PageQuery = {
   } | null;
 };
 
+export type PageChildrenSearchQueryVariables = Exact<{
+  id: Scalars["ID"];
+  idType?: InputMaybe<PageIdType>;
+  search: Scalars["String"];
+  first?: InputMaybe<Scalars["Int"]>;
+  after?: InputMaybe<Scalars["String"]>;
+}>;
+
+export type PageChildrenSearchQuery = {
+  __typename?: "RootQuery";
+  page?: {
+    __typename?: "Page";
+    id: string;
+    children?: {
+      __typename?: "HierarchicalContentNodeToContentNodeChildrenConnection";
+      pageInfo?: {
+        __typename?: "WPPageInfo";
+        endCursor?: string | null;
+        hasNextPage: boolean;
+      } | null;
+      edges?: Array<{
+        __typename?: "HierarchicalContentNodeToContentNodeChildrenConnectionEdge";
+        cursor?: string | null;
+        node?:
+          | { __typename?: "Collection" }
+          | { __typename?: "Contact" }
+          | { __typename?: "LandingPage" }
+          | { __typename?: "MediaItem" }
+          | {
+              __typename?: "Page";
+              id: string;
+              content?: string | null;
+              slug?: string | null;
+              title?: string | null;
+              uri?: string | null;
+              link?: string | null;
+              lead?: string | null;
+              translations?: Array<{
+                __typename?: "Page";
+                id: string;
+                content?: string | null;
+                slug?: string | null;
+                title?: string | null;
+                uri?: string | null;
+                link?: string | null;
+                lead?: string | null;
+                seo?: {
+                  __typename?: "SEO";
+                  title?: string | null;
+                  description?: string | null;
+                  openGraphTitle?: string | null;
+                  openGraphDescription?: string | null;
+                  openGraphType?: string | null;
+                  twitterTitle?: string | null;
+                  twitterDescription?: string | null;
+                  canonicalUrl?: string | null;
+                  socialImage?: {
+                    __typename?: "MediaItem";
+                    mediaItemUrl?: string | null;
+                  } | null;
+                } | null;
+                language?: {
+                  __typename?: "Language";
+                  code?: LanguageCodeEnum | null;
+                  id: string;
+                  locale?: string | null;
+                  name?: string | null;
+                  slug?: string | null;
+                } | null;
+                featuredImage?: {
+                  __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+                  node?: {
+                    __typename?: "MediaItem";
+                    mediaItemUrl?: string | null;
+                    link?: string | null;
+                    altText?: string | null;
+                    mimeType?: string | null;
+                    title?: string | null;
+                    uri?: string | null;
+                  } | null;
+                } | null;
+                sidebar?: Array<
+                  | {
+                      __typename?: "LayoutArticles";
+                      title?: string | null;
+                      articles?: Array<{
+                        __typename?: "Post";
+                        id: string;
+                        uri?: string | null;
+                        slug?: string | null;
+                        link?: string | null;
+                        date?: string | null;
+                        title?: string | null;
+                        lead?: string | null;
+                        featuredImage?: {
+                          __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+                          node?: {
+                            __typename?: "MediaItem";
+                            altText?: string | null;
+                            mediaItemUrl?: string | null;
+                          } | null;
+                        } | null;
+                      } | null> | null;
+                    }
+                  | {
+                      __typename?: "LayoutLinkList";
+                      anchor?: string | null;
+                      title?: string | null;
+                      description?: string | null;
+                      links?: Array<{
+                        __typename?: "Link";
+                        target?: string | null;
+                        title?: string | null;
+                        url?: string | null;
+                      } | null> | null;
+                    }
+                  | {
+                      __typename?: "LayoutPages";
+                      title?: string | null;
+                      pages?: Array<{
+                        __typename?: "Page";
+                        id: string;
+                        uri?: string | null;
+                        slug?: string | null;
+                        link?: string | null;
+                        date?: string | null;
+                        title?: string | null;
+                        lead?: string | null;
+                        featuredImage?: {
+                          __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+                          node?: {
+                            __typename?: "MediaItem";
+                            altText?: string | null;
+                            mediaItemUrl?: string | null;
+                          } | null;
+                        } | null;
+                      } | null> | null;
+                    }
+                  | null
+                > | null;
+                modules?: Array<
+                  | { __typename?: "EventSearch" }
+                  | { __typename?: "EventSelected" }
+                  | {
+                      __typename?: "LayoutArticles";
+                      title?: string | null;
+                      articles?: Array<{
+                        __typename?: "Post";
+                        id: string;
+                        uri?: string | null;
+                        slug?: string | null;
+                        link?: string | null;
+                        date?: string | null;
+                        title?: string | null;
+                        lead?: string | null;
+                        featuredImage?: {
+                          __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+                          node?: {
+                            __typename?: "MediaItem";
+                            altText?: string | null;
+                            mediaItemUrl?: string | null;
+                          } | null;
+                        } | null;
+                      } | null> | null;
+                    }
+                  | { __typename?: "LayoutCollection" }
+                  | { __typename?: "LayoutContact" }
+                  | {
+                      __typename?: "LayoutPages";
+                      title?: string | null;
+                      pages?: Array<{
+                        __typename?: "Page";
+                        id: string;
+                        uri?: string | null;
+                        slug?: string | null;
+                        link?: string | null;
+                        date?: string | null;
+                        title?: string | null;
+                        lead?: string | null;
+                        featuredImage?: {
+                          __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+                          node?: {
+                            __typename?: "MediaItem";
+                            altText?: string | null;
+                            mediaItemUrl?: string | null;
+                          } | null;
+                        } | null;
+                      } | null> | null;
+                    }
+                  | null
+                > | null;
+              } | null> | null;
+              seo?: {
+                __typename?: "SEO";
+                title?: string | null;
+                description?: string | null;
+                openGraphTitle?: string | null;
+                openGraphDescription?: string | null;
+                openGraphType?: string | null;
+                twitterTitle?: string | null;
+                twitterDescription?: string | null;
+                canonicalUrl?: string | null;
+                socialImage?: {
+                  __typename?: "MediaItem";
+                  mediaItemUrl?: string | null;
+                } | null;
+              } | null;
+              language?: {
+                __typename?: "Language";
+                code?: LanguageCodeEnum | null;
+                id: string;
+                locale?: string | null;
+                name?: string | null;
+                slug?: string | null;
+              } | null;
+              featuredImage?: {
+                __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+                node?: {
+                  __typename?: "MediaItem";
+                  mediaItemUrl?: string | null;
+                  link?: string | null;
+                  altText?: string | null;
+                  mimeType?: string | null;
+                  title?: string | null;
+                  uri?: string | null;
+                } | null;
+              } | null;
+              sidebar?: Array<
+                | {
+                    __typename?: "LayoutArticles";
+                    title?: string | null;
+                    articles?: Array<{
+                      __typename?: "Post";
+                      id: string;
+                      uri?: string | null;
+                      slug?: string | null;
+                      link?: string | null;
+                      date?: string | null;
+                      title?: string | null;
+                      lead?: string | null;
+                      featuredImage?: {
+                        __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+                        node?: {
+                          __typename?: "MediaItem";
+                          altText?: string | null;
+                          mediaItemUrl?: string | null;
+                        } | null;
+                      } | null;
+                    } | null> | null;
+                  }
+                | {
+                    __typename?: "LayoutLinkList";
+                    anchor?: string | null;
+                    title?: string | null;
+                    description?: string | null;
+                    links?: Array<{
+                      __typename?: "Link";
+                      target?: string | null;
+                      title?: string | null;
+                      url?: string | null;
+                    } | null> | null;
+                  }
+                | {
+                    __typename?: "LayoutPages";
+                    title?: string | null;
+                    pages?: Array<{
+                      __typename?: "Page";
+                      id: string;
+                      uri?: string | null;
+                      slug?: string | null;
+                      link?: string | null;
+                      date?: string | null;
+                      title?: string | null;
+                      lead?: string | null;
+                      featuredImage?: {
+                        __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+                        node?: {
+                          __typename?: "MediaItem";
+                          altText?: string | null;
+                          mediaItemUrl?: string | null;
+                        } | null;
+                      } | null;
+                    } | null> | null;
+                  }
+                | null
+              > | null;
+              modules?: Array<
+                | { __typename?: "EventSearch" }
+                | { __typename?: "EventSelected" }
+                | {
+                    __typename?: "LayoutArticles";
+                    title?: string | null;
+                    articles?: Array<{
+                      __typename?: "Post";
+                      id: string;
+                      uri?: string | null;
+                      slug?: string | null;
+                      link?: string | null;
+                      date?: string | null;
+                      title?: string | null;
+                      lead?: string | null;
+                      featuredImage?: {
+                        __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+                        node?: {
+                          __typename?: "MediaItem";
+                          altText?: string | null;
+                          mediaItemUrl?: string | null;
+                        } | null;
+                      } | null;
+                    } | null> | null;
+                  }
+                | { __typename?: "LayoutCollection" }
+                | { __typename?: "LayoutContact" }
+                | {
+                    __typename?: "LayoutPages";
+                    title?: string | null;
+                    pages?: Array<{
+                      __typename?: "Page";
+                      id: string;
+                      uri?: string | null;
+                      slug?: string | null;
+                      link?: string | null;
+                      date?: string | null;
+                      title?: string | null;
+                      lead?: string | null;
+                      featuredImage?: {
+                        __typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+                        node?: {
+                          __typename?: "MediaItem";
+                          altText?: string | null;
+                          mediaItemUrl?: string | null;
+                        } | null;
+                      } | null;
+                    } | null> | null;
+                  }
+                | null
+              > | null;
+            }
+          | { __typename?: "Post" }
+          | { __typename?: "Release" }
+          | { __typename?: "Translation" }
+          | null;
+      } | null> | null;
+    } | null;
+  } | null;
+};
+
 export type PagesQueryVariables = Exact<{
   first?: InputMaybe<Scalars["Int"]>;
 }>;
@@ -11548,6 +11895,92 @@ export function usePageLazyQuery(
 export type PageQueryHookResult = ReturnType<typeof usePageQuery>;
 export type PageLazyQueryHookResult = ReturnType<typeof usePageLazyQuery>;
 export type PageQueryResult = Apollo.QueryResult<PageQuery, PageQueryVariables>;
+export const PageChildrenSearchDocument = gql`
+  query PageChildrenSearch(
+    $id: ID!
+    $idType: PageIdType
+    $search: String!
+    $first: Int
+    $after: String
+  ) {
+    page(id: $id, idType: $idType) {
+      id
+      children(where: { search: $search }, first: $first, after: $after) {
+        pageInfo {
+          endCursor
+          hasNextPage
+        }
+        edges {
+          cursor
+          node {
+            ... on Page {
+              ...Page
+              translations {
+                ...Page
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  ${PageFragmentDoc}
+`;
+
+/**
+ * __usePageChildrenSearchQuery__
+ *
+ * To run a query within a React component, call `usePageChildrenSearchQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePageChildrenSearchQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePageChildrenSearchQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *      idType: // value for 'idType'
+ *      search: // value for 'search'
+ *      first: // value for 'first'
+ *      after: // value for 'after'
+ *   },
+ * });
+ */
+export function usePageChildrenSearchQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    PageChildrenSearchQuery,
+    PageChildrenSearchQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    PageChildrenSearchQuery,
+    PageChildrenSearchQueryVariables
+  >(PageChildrenSearchDocument, options);
+}
+export function usePageChildrenSearchLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    PageChildrenSearchQuery,
+    PageChildrenSearchQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    PageChildrenSearchQuery,
+    PageChildrenSearchQueryVariables
+  >(PageChildrenSearchDocument, options);
+}
+export type PageChildrenSearchQueryHookResult = ReturnType<
+  typeof usePageChildrenSearchQuery
+>;
+export type PageChildrenSearchLazyQueryHookResult = ReturnType<
+  typeof usePageChildrenSearchLazyQuery
+>;
+export type PageChildrenSearchQueryResult = Apollo.QueryResult<
+  PageChildrenSearchQuery,
+  PageChildrenSearchQueryVariables
+>;
 export const PagesDocument = gql`
   query pages($first: Int) {
     pages(first: $first) {

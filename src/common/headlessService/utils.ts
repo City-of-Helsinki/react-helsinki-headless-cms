@@ -27,15 +27,31 @@ export function isLayoutPage(
 export function isLayoutLinkList(
   module: PageModule | PageSidebarModule
 ): module is LayoutLinkList {
-  return (<LayoutLinkList>module).links !== undefined;
+  return (
+    // eslint-disable-next-line no-underscore-dangle
+    (<LayoutLinkList>module).__typename === "LayoutLinkList" ||
+    (<LayoutLinkList>module).links !== undefined
+  );
 }
 
 export function isArticleType(item: CollectionItemType): item is ArticleType {
-  return (<ArticleType>item).categories !== undefined;
+  return (
+    // eslint-disable-next-line no-underscore-dangle
+    ((<ArticleType>item).__typename === "Post" ||
+      (<ArticleType>item).categories) !== undefined
+  );
 }
 
 export function isPageType(item: CollectionItemType): item is PageType {
-  return (<PageType>item).sidebar !== undefined;
+  return (
+    // eslint-disable-next-line no-underscore-dangle
+    ((<PageType>item).__typename === "Page" || (<PageType>item).sidebar) !==
+    undefined
+  );
+}
+
+export function filterPagesAndArticles(items: CollectionItemType[]) {
+  return items.filter((item) => isArticleType(item) || isPageType(item));
 }
 
 export function getUri(
