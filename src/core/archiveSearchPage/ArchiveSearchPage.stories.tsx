@@ -15,9 +15,12 @@ import { ArchivePage as ArchiveSearchPage } from "./ArchiveSearchPage";
 import articles from "../archiveSearchPageContent/__mocks__/articles.mock";
 import pages from "../archiveSearchPageContent/__mocks__/pages.mock";
 import pageWithChildren from "../archiveSearchPageContent/__mocks__/pageChildrenSearch.mock";
-import { LargeCard } from "../card/LargeCard";
-import { Card } from "../card/Card";
+import { LargeCard, LargeCardProps } from "../card/LargeCard";
+import { Card, CardProps } from "../card/Card";
 import { filterPagesAndArticles } from "../../common/headlessService/utils";
+import HtmlToReact from "../../common/components/htmlToReact/HtmlToReact";
+import { formatDateTimeFromString } from "../../common/utils/dates";
+import { CollectionItemType } from "../collection/types";
 
 export default {
   title: "Example/ArchiveSearchPage",
@@ -53,6 +56,18 @@ const navigation = (
   />
 );
 
+const getCardProps = (
+  item: CollectionItemType
+): CardProps | LargeCardProps => ({
+  id: item.id,
+  ariaLabel: item.title || "",
+  title: item.title || "",
+  subTitle: "date" in item && formatDateTimeFromString(item.date || ""),
+  customContent: <HtmlToReact>{item.lead || ""}</HtmlToReact>,
+  url: item.slug || "",
+  imageUrl: item.featuredImage?.node.mediaItemUrl || "",
+});
+
 const Template: ComponentStory<typeof ArchiveSearchPage> = (args) => (
   <HelmetProvider>
     <ConfigProvider
@@ -87,8 +102,8 @@ ArchiveSearchPageWithArticles.args = {
         // eslint-disable-next-line no-console
         console.log("load more items");
       }}
-      LargeCardComponent={LargeCard}
-      CardComponent={Card}
+      createLargeCard={(item) => <LargeCard {...getCardProps(item)} />}
+      createCard={(item) => <Card {...getCardProps(item)} />}
     />
   ),
   footer: <>TODO: Implement footer</>,
@@ -108,6 +123,8 @@ ArchiveSearchPageWithPages.args = {
         // eslint-disable-next-line no-console
         console.log("load more items");
       }}
+      createLargeCard={(item) => <LargeCard {...getCardProps(item)} />}
+      createCard={(item) => <Card {...getCardProps(item)} withShadow />}
     />
   ),
   footer: <>TODO: Implement footer</>,
@@ -129,6 +146,8 @@ ArchiveSearchPageWithPageSubPages.args = {
         // eslint-disable-next-line no-console
         console.log("load more items");
       }}
+      createLargeCard={(item) => <LargeCard {...getCardProps(item)} />}
+      createCard={(item) => <Card {...getCardProps(item)} />}
     />
   ),
   footer: <>TODO: Implement footer</>,

@@ -15,8 +15,6 @@ import { Card } from "../card/Card";
 import Grid from "../../common/components/grid/Grid";
 import { LargeCard } from "../card/LargeCard";
 import useConfig from "../configProvider/useConfig";
-import HtmlToReact from "../../common/components/htmlToReact/HtmlToReact";
-import { formatDateTimeFromString } from "../../common/utils/dates";
 import { Config } from "../configProvider/configContext";
 import { CollectionItemType } from "../collection/types";
 
@@ -80,29 +78,21 @@ export interface SearchPageContentProps {
   items?: CollectionItemType[];
   isLoading?: boolean;
   hasMore?: boolean;
-  cardsClampText?: boolean;
-  cardsWithBorder?: boolean;
-  cardsWithShadow?: boolean;
-  cardsHasLink?: boolean;
-  cardsTarget?: "_self" | "_blank";
   noResults?: boolean;
   className?: string;
   tags?: string[];
   onSearch?: (freeSearch: string, tags: string[]) => void;
   onLoadMore?: () => void;
-  LargeCardComponent?: typeof LargeCard;
-  CardComponent?: typeof Card;
+  createLargeCard?: (
+    item: CollectionItemType
+  ) => React.ReactElement<typeof LargeCard>;
+  createCard?: (item: CollectionItemType) => React.ReactElement<typeof Card>;
 }
 
 export function ArchiveCollection({
   items,
-  cardsClampText,
-  cardsWithBorder,
-  cardsWithShadow,
-  cardsHasLink,
-  cardsTarget,
-  LargeCardComponent = LargeCard,
-  CardComponent = Card,
+  createLargeCard,
+  createCard,
 }: Partial<SearchPageContentProps>) {
   if (!items?.length) {
     return null;
@@ -110,40 +100,8 @@ export function ArchiveCollection({
   const firstItem = items[0];
   return (
     <>
-      <LargeCardComponent
-        id={firstItem.id}
-        ariaLabel={firstItem.title || ""}
-        title={firstItem.title || ""}
-        subTitle={
-          "date" in firstItem && formatDateTimeFromString(firstItem.date || "")
-        }
-        customContent={<HtmlToReact>{firstItem.lead || ""}</HtmlToReact>}
-        url={firstItem.slug || ""}
-        imageUrl={firstItem.featuredImage?.node.mediaItemUrl || ""}
-        clampText={cardsClampText}
-        hasLink={cardsHasLink}
-        target={cardsTarget}
-      />
-      <Grid>
-        {items.slice(1).map((item) => (
-          <CardComponent
-            id={item.id}
-            ariaLabel={item.title || ""}
-            title={item.title || ""}
-            subTitle={
-              "date" in item && formatDateTimeFromString(item.date || "")
-            }
-            customContent={<HtmlToReact>{item.lead || ""}</HtmlToReact>}
-            url={item.slug || ""}
-            imageUrl={item.featuredImage?.node.mediaItemUrl || ""}
-            clampText={cardsClampText}
-            withBorder={cardsWithBorder}
-            withShadow={cardsWithShadow}
-            hasLink={cardsHasLink}
-            target={cardsTarget}
-          />
-        ))}
-      </Grid>
+      {createLargeCard(firstItem)}
+      <Grid>{items.slice(1).map((item) => createCard(item))}</Grid>
     </>
   );
 }
