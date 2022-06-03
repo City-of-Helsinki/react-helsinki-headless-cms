@@ -4,6 +4,7 @@ import {
   ArticleQuery,
   PagesQuery,
   PostsQuery,
+  PageChildrenSearchQuery,
 } from "./__generated__";
 
 export type Menu = MenuQuery["menu"];
@@ -14,6 +15,7 @@ export type PageModule = PageQuery["page"]["modules"][number];
 export type PageSidebarModule = PageQuery["page"]["sidebar"][number];
 export type Articles = PostsQuery["posts"];
 export type Pages = PagesQuery["pages"];
+export type PageChildren = PageChildrenSearchQuery["page"]["children"];
 
 export type {
   MenuItemFragment as MenuItem,

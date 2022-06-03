@@ -1,0 +1,28 @@
+query PageChildrenSearch(
+  $id: ID!
+  $idType: PageIdType
+  $search: String!
+  $first: Int
+  $after: String
+) {
+  page(id: $id, idType: $idType) {
+    id
+    children(where: { search: $search }, first: $first, after: $after) {
+      pageInfo {
+        endCursor
+        hasNextPage
+      }
+      edges {
+        cursor
+        node {
+          ... on Page {
+            ...Page
+            translations {
+              ...Page
+            }
+          }
+        }
+      }
+    }
+  }
+}

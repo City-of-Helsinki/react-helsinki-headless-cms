@@ -4,7 +4,7 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 
-import { LanguageCodeEnum } from "../../common/headlessService/types";
+import { LanguageCodeEnum, PageType } from "../../common/headlessService/types";
 import ConfigProvider from "../configProvider/ConfigProvider";
 import defaultConfig from "../configProvider/defaultConfig";
 import { SearchPageContent as ArchiveSearchPageContent } from "../archiveSearchPageContent/ArchiveSearchPageContent";
@@ -14,8 +14,10 @@ import { Navigation } from "../navigation/Navigation";
 import { ArchivePage as ArchiveSearchPage } from "./ArchiveSearchPage";
 import articles from "../archiveSearchPageContent/__mocks__/articles.mock";
 import pages from "../archiveSearchPageContent/__mocks__/pages.mock";
+import pageWithChildren from "../archiveSearchPageContent/__mocks__/pageChildrenSearch.mock";
 import { LargeCard } from "../card/LargeCard";
 import { Card } from "../card/Card";
+import { filterPagesAndArticles } from "../../common/headlessService/utils";
 
 export default {
   title: "Example/ArchiveSearchPage",
@@ -75,7 +77,7 @@ ArchiveSearchPageWithArticles.args = {
   navigation,
   content: (
     <ArchiveSearchPageContent
-      items={articles}
+      items={articles.edges.map((edge) => edge.node)}
       tags={["label1", "label2", "label3"]}
       onSearch={(freeSearch, tags) => {
         // eslint-disable-next-line no-console
@@ -97,7 +99,28 @@ ArchiveSearchPageWithPages.args = {
   navigation,
   content: (
     <ArchiveSearchPageContent
-      items={pages}
+      items={pages.edges.map((edge) => edge.node)}
+      onSearch={(freeSearch, tags) => {
+        // eslint-disable-next-line no-console
+        console.log("search params:", freeSearch, tags);
+      }}
+      onLoadMore={() => {
+        // eslint-disable-next-line no-console
+        console.log("load more items");
+      }}
+    />
+  ),
+  footer: <>TODO: Implement footer</>,
+};
+
+export const ArchiveSearchPageWithPageSubPages = Template.bind({});
+ArchiveSearchPageWithPageSubPages.args = {
+  navigation,
+  content: (
+    <ArchiveSearchPageContent
+      items={filterPagesAndArticles(
+        pageWithChildren.edges.map((edge) => edge.node as PageType)
+      )}
       onSearch={(freeSearch, tags) => {
         // eslint-disable-next-line no-console
         console.log("search params:", freeSearch, tags);

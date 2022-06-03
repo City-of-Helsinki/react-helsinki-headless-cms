@@ -15,10 +15,10 @@ import { Card } from "../card/Card";
 import Grid from "../../common/components/grid/Grid";
 import { LargeCard } from "../card/LargeCard";
 import useConfig from "../configProvider/useConfig";
-import { Articles, Pages } from "../../common/headlessService/types";
 import HtmlToReact from "../../common/components/htmlToReact/HtmlToReact";
 import { formatDateTimeFromString } from "../../common/utils/dates";
 import { Config } from "../configProvider/configContext";
+import { CollectionItemType } from "../collection/types";
 
 export function SearchForm({
   archiveSearch,
@@ -77,7 +77,7 @@ export function SearchTags({
 }
 
 export interface SearchPageContentProps {
-  items?: Articles | Pages;
+  items?: CollectionItemType[];
   isLoading?: boolean;
   hasMore?: boolean;
   cardsClampText?: boolean;
@@ -104,17 +104,19 @@ export function ArchiveCollection({
   LargeCardComponent = LargeCard,
   CardComponent = Card,
 }: Partial<SearchPageContentProps>) {
-  if (!items || !items.edges?.length) {
+  if (!items?.length) {
     return null;
   }
-  const firstItem = items.edges[0].node;
+  const firstItem = items[0];
   return (
     <>
       <LargeCardComponent
         id={firstItem.id}
         ariaLabel={firstItem.title || ""}
         title={firstItem.title || ""}
-        subTitle={formatDateTimeFromString(firstItem.date || "")}
+        subTitle={
+          "date" in firstItem && formatDateTimeFromString(firstItem.date || "")
+        }
         customContent={<HtmlToReact>{firstItem.lead || ""}</HtmlToReact>}
         url={firstItem.slug || ""}
         imageUrl={firstItem.featuredImage?.node.mediaItemUrl || ""}
@@ -123,25 +125,24 @@ export function ArchiveCollection({
         target={cardsTarget}
       />
       <Grid>
-        {items.edges.slice(1).map((edge) => {
-          const item = edge.node;
-          return (
-            <CardComponent
-              id={item.id}
-              ariaLabel={item.title || ""}
-              title={item.title || ""}
-              subTitle={formatDateTimeFromString(item.date || "")}
-              customContent={<HtmlToReact>{item.lead || ""}</HtmlToReact>}
-              url={item.slug || ""}
-              imageUrl={item.featuredImage?.node.mediaItemUrl || ""}
-              clampText={cardsClampText}
-              withBorder={cardsWithBorder}
-              withShadow={cardsWithShadow}
-              hasLink={cardsHasLink}
-              target={cardsTarget}
-            />
-          );
-        })}
+        {items.slice(1).map((item) => (
+          <CardComponent
+            id={item.id}
+            ariaLabel={item.title || ""}
+            title={item.title || ""}
+            subTitle={
+              "date" in item && formatDateTimeFromString(item.date || "")
+            }
+            customContent={<HtmlToReact>{item.lead || ""}</HtmlToReact>}
+            url={item.slug || ""}
+            imageUrl={item.featuredImage?.node.mediaItemUrl || ""}
+            clampText={cardsClampText}
+            withBorder={cardsWithBorder}
+            withShadow={cardsWithShadow}
+            hasLink={cardsHasLink}
+            target={cardsTarget}
+          />
+        ))}
       </Grid>
     </>
   );
