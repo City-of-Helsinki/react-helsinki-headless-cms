@@ -22,6 +22,7 @@ import HtmlToReact from "../../common/components/htmlToReact/HtmlToReact";
 import { formatDateTimeFromString } from "../../common/utils/dates";
 import { CollectionItemType } from "../collection/types";
 import mockPage from "../pageContent/__mocks__/page.mock";
+import { PageMainContent } from "../pageContent/PageMainContent";
 
 export default {
   title: "Example/ArchiveSearchPage",
@@ -136,7 +137,9 @@ ArchiveSearchPageWithPageSubPages.args = {
   navigation,
   content: (
     <ArchiveSearchPageContent
-      customContent={<HtmlToReact>{mockPage.content}</HtmlToReact>}
+      customContent={
+        <PageMainContent title={mockPage.title} content={mockPage.content} />
+      }
       items={filterPagesAndArticles(
         pageWithChildren.edges.map((edge) => edge.node as PageType)
       )}

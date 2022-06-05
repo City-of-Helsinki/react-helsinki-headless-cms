@@ -7,7 +7,7 @@ export type PageMetaProps = {
   headComponent: React.ComponentType<{ children: React.ReactNode }>;
 };
 
-export default function PageMeta({ page, headComponent: Head }: PageMetaProps) {
+export function PageMeta({ page, headComponent: Head }: PageMetaProps) {
   const seoForCurrentLanguage = page?.seo;
   const {
     title,
