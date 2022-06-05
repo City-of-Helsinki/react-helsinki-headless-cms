@@ -17,6 +17,20 @@
   }
 
   .mainLayout {
+    .customContentContainer {
+      padding: $spacing-xl 0;
+      @media screen and (min-width: breakpoints.$breakpoint-m) {
+        padding: $spacing-4-xl 0;
+      }
+      .customContentContainerInner {
+        width: 100%;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 var(--padding);
+        box-sizing: border-box;
+      }
+    }
+
     .searchFormContainer {
       display: flex;
       flex-direction: column;
