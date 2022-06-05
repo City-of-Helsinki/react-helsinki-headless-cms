@@ -1,5 +1,6 @@
 export { default as ConfigProvider } from "./configProvider/ConfigProvider";
 export { default as defaultConfig } from "./configProvider/defaultConfig";
+export { default as useConfig } from "./configProvider/useConfig";
 export { default as useHeadlessCmsLink } from "./configProvider/useHeadlessCmsLink";
 
 export * from "../common/headlessService/types";
@@ -15,6 +16,12 @@ export { Notification, NotificationProps } from "./notification/Notification";
 export { Page, PageProps } from "./page/Page";
 
 export { PageContent, PageContentProps } from "./pageContent/PageContent";
+export { PageMeta, PageMetaProps } from "./pageContent/meta/PageMeta";
+
+export {
+  PageMainContent,
+  PageMainContentProps,
+} from "./pageContent/PageMainContent";
 
 export { getCollections } from "./pageContent/utils";
 

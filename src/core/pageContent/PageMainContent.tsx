@@ -8,14 +8,14 @@ import styles from "./pageMainContent.module.scss";
 import { formatDateFromString } from "../../common/utils/dates";
 import Tag from "../../common/components/tag/Tag";
 
-type PageMainContentProps = {
+export type PageMainContentProps = {
   title: string;
   content: string;
   date?: string;
   categories?: ArticleType["categories"];
 };
 
-export default function PageMainContent({
+export function PageMainContent({
   title,
   content,
   date,
