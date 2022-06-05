@@ -75,12 +75,14 @@ export function SearchTags({
 }
 
 export interface SearchPageContentProps {
+  customContent?: string | JSX.Element;
   items?: CollectionItemType[];
   isLoading?: boolean;
   hasMore?: boolean;
   noResults?: boolean;
   className?: string;
   tags?: string[];
+  largeFirstItem?: boolean;
   onSearch?: (freeSearch: string, tags: string[]) => void;
   onLoadMore?: () => void;
   createLargeCard?: (
@@ -89,25 +91,37 @@ export interface SearchPageContentProps {
   createCard?: (item: CollectionItemType) => React.ReactElement<typeof Card>;
 }
 
+export const defaultLargeCard = (item: CollectionItemType) => (
+  <LargeCard {...item} />
+);
+export const defaultCreateCard = (item: CollectionItemType) => (
+  <Card {...item} />
+);
+
 export function ArchiveCollection({
   items,
-  createLargeCard,
-  createCard,
+  createLargeCard = defaultLargeCard,
+  createCard = defaultCreateCard,
+  largeFirstItem = true,
 }: Partial<SearchPageContentProps>) {
   if (!items?.length) {
     return null;
   }
+
   const firstItem = items[0];
+  const gridItems = largeFirstItem ? items.slice(1) : items;
+
   return (
     <>
-      {createLargeCard(firstItem)}
-      <Grid>{items.slice(1).map((item) => createCard(item))}</Grid>
+      {largeFirstItem && createLargeCard(firstItem)}
+      <Grid>{gridItems.map((item) => createCard(item))}</Grid>
     </>
   );
 }
 
 export function SearchPageContent(props: SearchPageContentProps) {
   const {
+    customContent,
     className,
     hasMore,
     isLoading,
@@ -158,6 +172,12 @@ export function SearchPageContent(props: SearchPageContentProps) {
             {tags && <SearchTags tags={tags} handleTagClick={handleTagClick} />}
           </div>
           <Koros className={styles.koros} flipHorizontal />
+        </div>
+
+        <div className={styles.customContentContainer}>
+          <div className={styles.customContentContainerInner}>
+            {customContent}
+          </div>
         </div>
 
         <div className={styles.searchResultsContainer}>
