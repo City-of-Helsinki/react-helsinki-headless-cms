@@ -19,6 +19,12 @@ const defaultConfig: Config = {
     openInExternalDomainAriaLabel: "Opens a different website.",
     openInNewTabAriaLabel: "Opens in a new tab.",
     closeButtonLabelText: "close",
+    archiveSearch: {
+      searchTextPlaceholder: "Search text",
+      searchButtonLabelText: "Search",
+      loadMoreButtonLabelText: "Load more",
+      noResultsText: "No results",
+    },
   },
   components: {
     A: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
@@ -50,12 +56,6 @@ const defaultConfig: Config = {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     getRoutedInternalHref: (link: string, _type: ModuleItemTypeEnum): string =>
       link ?? "#",
-  },
-  archiveSearch: {
-    searchTextPlaceholder: "Search text",
-    searchButtonLabelText: "Search",
-    loadMoreButtonLabelText: "Load more",
-    noResultsText: "No results",
   },
 };
 

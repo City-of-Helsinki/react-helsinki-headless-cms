@@ -16,6 +16,12 @@ export type Config = {
     openInExternalDomainAriaLabel: string;
     openInNewTabAriaLabel: string;
     closeButtonLabelText: string;
+    archiveSearch?: {
+      searchTextPlaceholder: string;
+      searchButtonLabelText: string;
+      loadMoreButtonLabelText: string;
+      noResultsText: string;
+    };
   };
   components: {
     A: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => JSX.Element;
@@ -29,12 +35,6 @@ export type Config = {
   utils: {
     getIsHrefExternal: (href: string) => boolean;
     getRoutedInternalHref: (link: string, type: ModuleItemTypeEnum) => string;
-  };
-  archiveSearch?: {
-    searchTextPlaceholder: string;
-    searchButtonLabelText: string;
-    loadMoreButtonLabelText: string;
-    noResultsText: string;
   };
 };
 
