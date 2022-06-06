@@ -24,7 +24,7 @@ export function SearchForm({
   handleChange,
   searchText,
 }: {
-  archiveSearch: Config["archiveSearch"];
+  archiveSearch: Config["copy"]["archiveSearch"];
   handleSearch: (e: React.FormEvent) => void;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   searchText: string;
@@ -130,7 +130,9 @@ export function SearchPageContent(props: SearchPageContentProps) {
     onSearch,
     onLoadMore,
   } = props;
-  const { archiveSearch } = useConfig();
+  const {
+    copy: { archiveSearch },
+  } = useConfig();
 
   const [searchText, setSearchText] = useState<string>("");
   const [searchTags, setSearchTags] = useState<string[]>([]);
