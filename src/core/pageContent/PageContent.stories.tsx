@@ -48,6 +48,11 @@ const KorosWrapperComponent = ({ children = null }) => (
 export const PageContentDefault = Template.bind({});
 PageContentDefault.args = {
   page: pageMock,
+};
+
+export const PageContentWithDefinedCollections = Template.bind({});
+PageContentWithDefinedCollections.args = {
+  page: pageMock,
   collections: getCollections(pageMock.modules)?.map((collection) => (
     <Collection
       key={`collection-${Math.random()}`}

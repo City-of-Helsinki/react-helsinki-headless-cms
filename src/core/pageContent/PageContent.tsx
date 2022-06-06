@@ -11,6 +11,8 @@ import { PageMeta } from "./meta/PageMeta";
 import { Collection } from "../collection/Collection";
 import { ArticleQuery } from "../../common/headlessService/__generated__";
 import { ArticleType, PageType } from "../../common/headlessService/types";
+import { Card } from "../card/Card";
+import { getCollections, getCollectionCards } from "./utils";
 
 export type PageContentProps = {
   page?: PageQuery["page"] | ArticleQuery["post"];
@@ -20,6 +22,21 @@ export type PageContentProps = {
   backUrl?: string;
   sidebarContentProps?: Partial<typeof SidebarContent>;
 };
+
+export const defaultCollections = (
+  page: PageQuery["page"] | ArticleQuery["post"]
+) =>
+  getCollections(page?.modules)?.map((collection) => (
+    <Collection
+      key={`collection-${Math.random()}`}
+      title={collection.title}
+      cards={getCollectionCards(collection).map((cardProps) => (
+        <Card key={cardProps.id} {...cardProps} />
+      ))}
+      type="grid"
+      collectionContainerProps={{ withDots: false }}
+    />
+  ));
 
 export function PageContent({
   page,
@@ -52,7 +69,7 @@ export function PageContent({
             categories={(page as ArticleType)?.categories}
           />
         }
-        collections={collections}
+        collections={collections ?? defaultCollections(page)}
         sidebarContent={
           <SidebarContent
             content={(page as PageType)?.sidebar}
