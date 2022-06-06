@@ -1,5 +1,6 @@
 import { PageModule } from "../../common/headlessService/types";
 import {
+  getElementTextContent,
   isLayoutArticle,
   isLayoutPage,
 } from "../../common/headlessService/utils";
@@ -39,16 +40,16 @@ export function getCollectionCards(
     title: item.title,
     url: item.link,
     imageUrl: item.featuredImage?.node?.mediaItemUrl || defaultImageUrl,
-    ariaLabel: "",
-    className: "",
-    imageLabel: "",
-    subTitle: "",
-    text: item.lead,
-    customContent: "",
+    ariaLabel: item.title,
+    className: undefined,
+    imageLabel: item.featuredImage?.node?.title,
+    subTitle: undefined,
+    text: getElementTextContent((item.lead || item.content) ?? ""),
+    customContent: undefined,
     hasLink: true,
     withBorder: false,
     withShadow: true,
-    clampText: false,
+    clampText: true,
     direction: "responsive" as CardProps["direction"],
     target: "_self" as CardProps["target"],
   }));
