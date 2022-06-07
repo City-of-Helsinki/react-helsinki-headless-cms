@@ -42,7 +42,8 @@ export function Navigation({
   } = useConfig();
 
   const currentLanguage = languages?.find(
-    (language) => language.code === currentLanguageCode
+    (language) =>
+      language.code?.toLowerCase() === currentLanguageCode?.toLowerCase()
   );
 
   // Error out if language props are inconsistent
