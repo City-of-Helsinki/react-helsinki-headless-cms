@@ -4,7 +4,7 @@ import { MAIN_CONTENT_ID } from "../../common/constants";
 import styles from "./pageContentLayout.module.scss";
 import Hero from "../hero/Hero";
 
-type PageContentLayoutProps = {
+export type PageContentLayoutProps = {
   breadcrumbs?: React.ReactNode;
   heroContainer?: JSX.Element;
   content: React.ReactNode;
@@ -16,7 +16,7 @@ type PageContentLayoutProps = {
   backUrl?: string;
 };
 
-export default function PageContentLayout({
+export function PageContentLayout({
   breadcrumbs,
   heroContainer,
   content,

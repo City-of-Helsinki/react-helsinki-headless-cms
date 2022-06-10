@@ -3,7 +3,7 @@ import React from "react";
 import { PageQuery } from "../../common/headlessService/page";
 import useConfig from "../configProvider/useConfig";
 import SidebarContent from "./sidebarContent/SidebarContent";
-import PageContentLayout from "./PageContentLayout";
+import { PageContentLayout } from "./PageContentLayout";
 import { PageMainContent } from "./PageMainContent";
 import PageContentBreadcrumbs from "./PageContentBreadcrumbs";
 import { Breadcrumb } from "./types";
