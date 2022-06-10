@@ -21,6 +21,7 @@ export type PageContentProps = {
   heroContainer?: JSX.Element;
   backUrl?: string;
   sidebarContentProps?: Partial<typeof SidebarContent>;
+  PageContentLayoutComponent?: typeof PageContentLayout;
 };
 
 export const defaultCollections = (
@@ -45,6 +46,7 @@ export function PageContent({
   heroContainer,
   backUrl,
   sidebarContentProps,
+  PageContentLayoutComponent = PageContentLayout,
 }: PageContentProps) {
   const {
     components: { Head },
@@ -52,7 +54,7 @@ export function PageContent({
   return (
     <>
       {Head && <PageMeta headComponent={Head} page={page} />}
-      <PageContentLayout
+      <PageContentLayoutComponent
         breadcrumbs={
           breadcrumbs && <PageContentBreadcrumbs breadcrumbs={breadcrumbs} />
         }

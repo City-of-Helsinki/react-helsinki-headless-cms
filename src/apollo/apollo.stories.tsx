@@ -11,6 +11,7 @@ import PageContent from "./pageContent/PageContent";
 import Navigation from "./navigation/Navigation";
 import Notification from "./notification/Notification";
 import Page from "./page/Page";
+import PageContentLayout from "../core/pageContent/PageContentLayout";
 
 const client = new ApolloClient({
   uri: "https://hkih.stage.geniem.io/graphql",
@@ -42,11 +43,11 @@ const Template: ComponentStory<typeof Page> = (args) => (
   </HelmetProvider>
 );
 
-export const ApolloExample = Template.bind({});
+export const ApolloBasicExample = Template.bind({});
 
-const currentPage = "/kulttuurikasvatus/";
+const currentPage = "/testisivu/";
 
-ApolloExample.args = {
+ApolloBasicExample.args = {
   uri: currentPage,
   navigation: (
     <Navigation
@@ -66,6 +67,58 @@ ApolloExample.args = {
         { title: "Root", link: "/" },
         { title: "Nested", link: "/nested" },
       ]}
+    />
+  ),
+  footer: <>TODO: Implement footer</>,
+};
+
+const CustomPageContentLayout: typeof PageContentLayout = ({
+  breadcrumbs,
+  content,
+  collections,
+  sidebarContent,
+}) => (
+  <div>
+    <div style={{ marginBottom: 30 }}>
+      <div>Breadcrumbs: {breadcrumbs}</div>
+    </div>
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr 1fr",
+        columnGap: 30,
+      }}
+    >
+      <div>Content: {content}</div>
+      <div>Sidebar: {sidebarContent}</div>
+      <div>Collections: {collections}</div>
+    </div>
+  </div>
+);
+
+export const ApolloCustomLayoutExample = Template.bind({});
+
+ApolloCustomLayoutExample.args = {
+  uri: currentPage,
+  navigation: (
+    <Navigation
+      menuName="Palvelutarjotin-UI Header"
+      onTitleClick={() => {
+        // eslint-disable-next-line no-console
+        console.log("I should navigate");
+      }}
+      getIsItemActive={({ path }) => path === currentPage}
+      getPathnameForLanguage={() => currentPage}
+    />
+  ),
+  notification: <Notification />,
+  content: (
+    <PageContent
+      breadcrumbs={[
+        { title: "Root", link: "/" },
+        { title: "Nested", link: "/nested" },
+      ]}
+      PageContentLayoutComponent={CustomPageContentLayout}
     />
   ),
   footer: <>TODO: Implement footer</>,
