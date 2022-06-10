@@ -22,7 +22,7 @@ export type PageContentProps = {
   backUrl?: string;
   sidebarContentProps?: Partial<typeof SidebarContent>;
   PageContentLayoutComponent?: typeof PageContentLayout;
-};
+} & Partial<typeof PageContentLayout>;
 
 export const defaultCollections = (
   page: PageQuery["page"] | ArticleQuery["post"]
@@ -39,15 +39,18 @@ export const defaultCollections = (
     />
   ));
 
-export function PageContent({
-  page,
-  breadcrumbs,
-  collections,
-  heroContainer,
-  backUrl,
-  sidebarContentProps,
-  PageContentLayoutComponent = PageContentLayout,
-}: PageContentProps) {
+export function PageContent(props: PageContentProps) {
+  const {
+    page,
+    breadcrumbs,
+    collections,
+    heroContainer,
+    backUrl,
+    sidebarContentProps,
+    PageContentLayoutComponent = PageContentLayout,
+    ...pageContentLayoutProps
+  } = props;
+
   const {
     components: { Head },
   } = useConfig();
@@ -55,6 +58,8 @@ export function PageContent({
     <>
       {Head && <PageMeta headComponent={Head} page={page} />}
       <PageContentLayoutComponent
+        {...props}
+        {...pageContentLayoutProps}
         breadcrumbs={
           breadcrumbs && <PageContentBreadcrumbs breadcrumbs={breadcrumbs} />
         }
