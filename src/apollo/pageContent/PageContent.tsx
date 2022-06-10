@@ -11,6 +11,9 @@ import useApolloPageContext from "../page/useApolloPageContext";
 
 export type PageProps = Omit<PageContentPropsWithoutData, "page"> & {
   notFoundPageContent?: JSX.Element;
+  // All other props
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [x: string]: any;
 };
 
 export default function PageContent({
