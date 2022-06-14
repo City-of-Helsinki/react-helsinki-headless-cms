@@ -5,7 +5,7 @@ import {
   ArticleQueryVariables,
 } from "./__generated__";
 
-export const usePageQuery = makeQueryWithApolloClientFromConfig<
+export const useArticleQuery = makeQueryWithApolloClientFromConfig<
   ArticleQuery,
   ArticleQueryVariables
 >(useArticleQueryWithoutClient);
