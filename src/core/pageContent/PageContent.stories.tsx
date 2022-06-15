@@ -72,6 +72,29 @@ PageContentWithDefinedCollections.args = {
   )),
 };
 
+export const PageContentWithCollectionsFunction = Template.bind({});
+PageContentWithCollectionsFunction.args = {
+  page: pageMock,
+  collections: (page) =>
+    getCollections(page.modules)?.map((collection) => (
+      <Collection
+        key={`collection-${Math.random()}`}
+        title={collection.title}
+        cards={getCollectionCards(collection).map((cardProps) => (
+          <Card
+            key={cardProps.id}
+            {...cardProps}
+            imageUrl={
+              cardProps.imageUrl || pageMock.featuredImage?.node?.mediaItemUrl
+            }
+          />
+        ))}
+        type="grid"
+        collectionContainerProps={{ withDots: false }}
+      />
+    )),
+};
+
 export const PageContentArticle = Template.bind({});
 PageContentArticle.args = {
   heroContainer: <KorosWrapperComponent />,

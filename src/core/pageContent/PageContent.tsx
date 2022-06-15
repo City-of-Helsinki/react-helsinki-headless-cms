@@ -13,11 +13,16 @@ import { ArticleQuery } from "../../common/headlessService/__generated__";
 import { ArticleType, PageType } from "../../common/headlessService/types";
 import { Card } from "../card/Card";
 import { getCollections, getCollectionCards } from "./utils";
+import { ModuleItemTypeEnum } from "../../common/headlessService/constants";
 
 export type PageContentProps = {
   page?: PageQuery["page"] | ArticleQuery["post"];
   breadcrumbs?: Breadcrumb[];
-  collections?: React.ReactElement<typeof Collection>[];
+  collections?:
+    | React.ReactElement<typeof Collection>[]
+    | ((
+        page: PageQuery["page"] | ArticleQuery["post"]
+      ) => React.ReactElement<typeof Collection>[]);
   heroContainer?: JSX.Element;
   backUrl?: string;
   sidebarContentProps?: Partial<typeof SidebarContent>;
@@ -25,19 +30,25 @@ export type PageContentProps = {
 } & Partial<typeof PageContentLayout>;
 
 export const defaultCollections = (
-  page: PageQuery["page"] | ArticleQuery["post"]
+  page: PageQuery["page"] | ArticleQuery["post"],
+  getRoutedInternalHref: (link: string, type: ModuleItemTypeEnum) => string
 ) =>
-  getCollections(page?.modules)?.map((collection) => (
-    <Collection
-      key={`collection-${Math.random()}`}
-      title={collection.title}
-      cards={getCollectionCards(collection).map((cardProps) => (
-        <Card key={cardProps.id} {...cardProps} />
-      ))}
-      type="grid"
-      collectionContainerProps={{ withDots: false }}
-    />
-  ));
+  getCollections(page?.modules)?.map((collection) => {
+    const collectionType = null;
+    const cards = getCollectionCards(collection).map((cardProps) => {
+      const url = getRoutedInternalHref(cardProps.url, collectionType);
+      return <Card key={cardProps.id} {...cardProps} url={url} />;
+    });
+    return (
+      <Collection
+        key={`collection-${Math.random()}`}
+        title={collection.title}
+        cards={cards}
+        type="grid"
+        collectionContainerProps={{ withDots: false }}
+      />
+    );
+  });
 
 export function PageContent(props: PageContentProps) {
   const {
@@ -53,6 +64,7 @@ export function PageContent(props: PageContentProps) {
 
   const {
     components: { Head },
+    utils: { getRoutedInternalHref },
   } = useConfig();
   return (
     <>
@@ -76,7 +88,11 @@ export function PageContent(props: PageContentProps) {
             categories={(page as ArticleType)?.categories}
           />
         }
-        collections={collections ?? defaultCollections(page)}
+        collections={
+          typeof collections === "function"
+            ? collections(page)
+            : collections ?? defaultCollections(page, getRoutedInternalHref)
+        }
         sidebarContent={
           <SidebarContent
             content={(page as PageType)?.sidebar}
