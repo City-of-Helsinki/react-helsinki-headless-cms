@@ -1,6 +1,5 @@
 import React from "react";
 
-import { PageQuery } from "../../common/headlessService/page";
 import useConfig from "../configProvider/useConfig";
 import SidebarContent from "./sidebarContent/SidebarContent";
 import { PageContentLayout } from "./PageContentLayout";
@@ -9,19 +8,21 @@ import PageContentBreadcrumbs from "./PageContentBreadcrumbs";
 import { Breadcrumb } from "./types";
 import { PageMeta } from "./meta/PageMeta";
 import { Collection } from "../collection/Collection";
-import { ArticleQuery } from "../../common/headlessService/__generated__";
 import { ArticleType, PageType } from "../../common/headlessService/types";
 import { Card } from "../card/Card";
 import { getCollections, getCollectionCards } from "./utils";
 import { ModuleItemTypeEnum } from "../../common/headlessService/constants";
 
 export type PageContentProps = {
-  page?: PageQuery["page"] | ArticleQuery["post"];
+  page?: PageType | ArticleType;
   breadcrumbs?: Breadcrumb[];
+  content?:
+    | React.ReactNode
+    | ((page: PageType | ArticleType) => React.ReactNode);
   collections?:
     | React.ReactElement<typeof Collection>[]
     | ((
-        page: PageQuery["page"] | ArticleQuery["post"]
+        page: PageType | ArticleType
       ) => React.ReactElement<typeof Collection>[]);
   heroContainer?: JSX.Element;
   backUrl?: string;
@@ -29,8 +30,17 @@ export type PageContentProps = {
   PageContentLayoutComponent?: typeof PageContentLayout;
 } & Partial<typeof PageContentLayout>;
 
+export const defaultContent = (page: PageType | ArticleType) => (
+  <PageMainContent
+    title={page?.title}
+    content={page?.content}
+    date={(page as ArticleType)?.date}
+    categories={(page as ArticleType)?.categories}
+  />
+);
+
 export const defaultCollections = (
-  page: PageQuery["page"] | ArticleQuery["post"],
+  page: PageType | ArticleType,
   getRoutedInternalHref: (link: string, type: ModuleItemTypeEnum) => string
 ) =>
   getCollections(page?.modules)?.map((collection) => {
@@ -59,6 +69,7 @@ export function PageContent(props: PageContentProps) {
     backUrl,
     sidebarContentProps,
     PageContentLayoutComponent = PageContentLayout,
+    content,
     ...pageContentLayoutProps
   } = props;
 
@@ -81,12 +92,9 @@ export function PageContent(props: PageContentProps) {
         imageLabel={page?.featuredImage?.node?.altText}
         backUrl={backUrl}
         content={
-          <PageMainContent
-            title={page?.title}
-            content={page?.content}
-            date={(page as ArticleType)?.date}
-            categories={(page as ArticleType)?.categories}
-          />
+          typeof content === "function"
+            ? content(page)
+            : content ?? defaultContent(page)
         }
         collections={
           typeof collections === "function"

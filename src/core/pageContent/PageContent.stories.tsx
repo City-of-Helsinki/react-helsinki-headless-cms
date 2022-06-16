@@ -13,6 +13,8 @@ import { PageContent } from "./PageContent";
 import { Collection } from "../collection/Collection";
 import { Card } from "../card/Card";
 import { getCollectionCards, getCollections } from "./utils";
+import { PageMainContent } from "./PageMainContent";
+import { ArticleType, PageType } from "../../common/headlessService/types";
 
 export default {
   title: "Example/PageContent",
@@ -72,14 +74,20 @@ PageContentWithDefinedCollections.args = {
   )),
 };
 
-export const PageContentWithCollectionsFunction = Template.bind({});
-PageContentWithCollectionsFunction.args = {
+export const PageContentWithFunctions = Template.bind({});
+PageContentWithFunctions.args = {
   page: pageMock,
-  collections: (page) =>
+  content: (page: PageType | ArticleType) => (
+    <PageMainContent
+      title={`${page?.title} (created with a custom function)`}
+      content={page?.content}
+    />
+  ),
+  collections: (page: PageType | ArticleType) =>
     getCollections(page.modules)?.map((collection) => (
       <Collection
         key={`collection-${Math.random()}`}
-        title={collection.title}
+        title={`${collection.title} (created with a custom function)`}
         cards={getCollectionCards(collection).map((cardProps) => (
           <Card
             key={cardProps.id}
