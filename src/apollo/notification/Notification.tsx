@@ -14,9 +14,9 @@ const languageCodeEnumToNotificationLanguageMap = {
   [LanguageCodeEnum.En]: "en",
 } as const;
 
-type Props = Exclude<NotificationProps, "notification">;
+export type Props = Exclude<NotificationProps, "notification">;
 
-export default function Notification(props: Props) {
+export function Notification(props: Props) {
   const { currentLanguageCode } = useConfig();
   const { data } = useNotificationQuery({
     variables: {

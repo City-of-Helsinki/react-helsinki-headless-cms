@@ -8,6 +8,7 @@ import {
   NavigationProps as NavigationPropsWithoutData,
 } from "../../core/navigation/Navigation";
 import useApolloPageContext from "../page/useApolloPageContext";
+import { useConfig } from "../../core";
 
 export type NavigationProps = Omit<
   NavigationPropsWithoutData,
@@ -17,11 +18,14 @@ export type NavigationProps = Omit<
   getPathnameForLanguage?: NavigationPropsWithoutData["getPathnameForLanguage"];
 };
 
-export default function Navigation({
+export function Navigation({
   menuName,
   getPathnameForLanguage,
   ...delegatedProps
 }: NavigationProps) {
+  const {
+    utils: { getRoutedInternalHref },
+  } = useConfig();
   const languagesQuery = useLanguagesQuery();
   const menuQuery = useMenuQuery({
     variables: {
@@ -47,12 +51,14 @@ export default function Navigation({
         // If page is a CMS page, find other language version from the CMS
         if (isCmsPage) {
           if (language.code === currentLanguage.code) {
-            return pageQuery?.data?.page?.uri;
+            return getRoutedInternalHref(pageQuery?.data?.page?.uri);
           }
 
-          return pageQuery?.data?.page?.translations?.find(
-            (translation) => translation?.language?.code === language.code
-          )?.uri;
+          return getRoutedInternalHref(
+            pageQuery?.data?.page?.translations?.find(
+              (translation) => translation?.language?.code === language.code
+            )?.uri
+          );
         }
 
         // Otherwise use userland implementation

@@ -7,10 +7,10 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 
 import ConfigProvider from "../core/configProvider/ConfigProvider";
 import defaultConfig from "../core/configProvider/defaultConfig";
-import PageContent from "./pageContent/PageContent";
-import Navigation from "./navigation/Navigation";
-import Notification from "./notification/Notification";
-import Page from "./page/Page";
+import { PageContent } from "./pageContent/PageContent";
+import { Navigation } from "./navigation/Navigation";
+import { Notification } from "./notification/Notification";
+import { Page } from "./page/Page";
 import { PageContentLayout } from "../core/pageContent/PageContentLayout";
 
 const client = new ApolloClient({

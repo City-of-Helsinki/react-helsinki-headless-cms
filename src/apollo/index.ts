@@ -1,7 +1,7 @@
-export { default as Navigation } from "./navigation/Navigation";
-export { default as Notification } from "./notification/Notification";
-export { default as Page } from "./page/Page";
-export { default as PageContent } from "./pageContent/PageContent";
+export { Navigation } from "./navigation/Navigation";
+export { Notification } from "./notification/Notification";
+export { Page } from "./page/Page";
+export { PageContent } from "./pageContent/PageContent";
 export * from "../common/headlessService/page";
 export * from "../common/headlessService/pages";
 export * from "../common/headlessService/article";

@@ -16,7 +16,7 @@ export type PageProps = Omit<PageContentPropsWithoutData, "page"> & {
   [x: string]: any;
 };
 
-export default function PageContent({
+export function PageContent({
   notFoundPageContent = (
     <div>
       404 - Page not found. Provide the notFoundPageContent prop to PageContent

@@ -39,6 +39,7 @@ export function Navigation({
     currentLanguageCode,
     copy: { menuToggleAriaLabel, skipToContentLabel },
     components: { A },
+    utils: { getRoutedInternalHref },
   } = useConfig();
 
   const currentLanguage = languages?.find(
@@ -70,7 +71,7 @@ export function Navigation({
             as={A}
             label={navigationItem.label}
             title={navigationItem.title}
-            href={navigationItem.path}
+            href={getRoutedInternalHref(navigationItem.path)}
             active={getIsItemActive?.(navigationItem) ?? false}
           />
         ))}
@@ -84,10 +85,8 @@ export function Navigation({
               as={A}
               label={language.name}
               lang={language.slug}
-              href={getPathnameForLanguage(
-                language,
-                currentLanguage,
-                languages
+              href={getRoutedInternalHref(
+                getPathnameForLanguage(language, currentLanguage, languages)
               )}
             />
           ))}
