@@ -10,7 +10,7 @@ export type PageProps = PagePropsWithoutData & {
   uri: string;
 };
 
-export default function PageContent({ uri, ...delegatedProps }: PageProps) {
+export function Page({ uri, ...delegatedProps }: PageProps) {
   const pageContextValue = React.useMemo(
     () => ({
       uri,
