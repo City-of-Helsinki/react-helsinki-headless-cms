@@ -38,6 +38,4 @@ export type Config = {
   };
 };
 
-const configContext = createContext<Config>({} as Config);
-
-export default configContext;
+export const configContext = createContext<Config>({} as Config);

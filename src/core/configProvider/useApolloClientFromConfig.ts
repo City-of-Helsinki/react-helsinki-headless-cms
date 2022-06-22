@@ -1,4 +1,4 @@
-import useConfig from "./useConfig";
+import { useConfig } from "./useConfig";
 
 export default function useQueryWithApolloClientFromConfig() {
   const { apolloClient } = useConfig();

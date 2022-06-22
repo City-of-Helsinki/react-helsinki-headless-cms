@@ -1,6 +1,6 @@
 import React from "react";
 
-import useConfig from "../configProvider/useConfig";
+import { useConfig } from "../configProvider/useConfig";
 import SidebarContent from "./sidebarContent/SidebarContent";
 import { PageContentLayout } from "./PageContentLayout";
 import { PageMainContent } from "./PageMainContent";

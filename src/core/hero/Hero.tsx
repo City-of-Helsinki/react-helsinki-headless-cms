@@ -3,7 +3,7 @@ import React from "react";
 import classNames from "classnames";
 import { IconArrowLeft } from "hds-react";
 
-import useConfig from "../configProvider/useConfig";
+import { useConfig } from "../configProvider/useConfig";
 import Container from "../../common/components/container/Container";
 import styles from "./hero.module.scss";
 import LinkWrapper from "../../common/components/linkWrapper/LinkWrapper";

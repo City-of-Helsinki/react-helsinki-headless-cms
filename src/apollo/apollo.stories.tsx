@@ -5,8 +5,8 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 
-import ConfigProvider from "../core/configProvider/ConfigProvider";
-import defaultConfig from "../core/configProvider/defaultConfig";
+import { ConfigProvider } from "../core/configProvider/ConfigProvider";
+import { defaultConfig } from "../core/configProvider/defaultConfig";
 import { PageContent } from "./pageContent/PageContent";
 import { Navigation } from "./navigation/Navigation";
 import { Notification } from "./notification/Notification";

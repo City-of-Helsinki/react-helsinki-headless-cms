@@ -6,7 +6,7 @@ import {
   Language,
   LanguageCodeEnum,
 } from "../../common/headlessService/types";
-import useConfig from "../configProvider/useConfig";
+import { useConfig } from "../configProvider/useConfig";
 import { MAIN_CONTENT_ID } from "../../common/constants";
 
 type MenuItem = Omit<Menu["menuItems"]["nodes"][0], "__typename">;

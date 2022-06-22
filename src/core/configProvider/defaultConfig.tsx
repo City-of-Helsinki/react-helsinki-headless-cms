@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import React from "react";
 
 import { ModuleItemTypeEnum } from "../../common/headlessService/constants";
@@ -6,7 +7,7 @@ import getIsValidHttpUrl from "../../common/utils/getIsValidHttpUrl";
 import { Link, LinkProps } from "../link/Link";
 import { Config } from "./configContext";
 
-const defaultConfig: Config = {
+export const defaultConfig: Config = {
   siteName: "Test site",
   // get internal URL origins from environment variables in the client app
   internalHrefOrigins: [],
@@ -58,5 +59,3 @@ const defaultConfig: Config = {
       link ?? "#",
   },
 };
-
-export default defaultConfig;
