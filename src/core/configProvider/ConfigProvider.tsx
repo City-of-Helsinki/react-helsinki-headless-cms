@@ -1,14 +1,14 @@
 import React from "react";
 
-import defaultConfig from "./defaultConfig";
-import configContext, { Config } from "./configContext";
+import { configContext, Config } from "./configContext";
+import { defaultConfig } from "./defaultConfig";
 
-type ConfigProviderProps = {
+export type ConfigProviderProps = {
   config: Config;
   children: React.ReactNode;
 };
 
-export default function ConfigProvider({
+export function ConfigProvider({
   config: userConfig,
   children,
 }: ConfigProviderProps) {

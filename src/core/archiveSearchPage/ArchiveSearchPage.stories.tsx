@@ -5,8 +5,8 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 
 import { LanguageCodeEnum, PageType } from "../../common/headlessService/types";
-import ConfigProvider from "../configProvider/ConfigProvider";
-import defaultConfig from "../configProvider/defaultConfig";
+import { ConfigProvider } from "../configProvider/ConfigProvider";
+import { defaultConfig } from "../configProvider/defaultConfig";
 import { SearchPageContent as ArchiveSearchPageContent } from "../archiveSearchPageContent/ArchiveSearchPageContent";
 import navigationLanguages from "../navigation/__mocks__/navigationLanguages.mock";
 import navigationMenu from "../navigation/__mocks__/navigationMenu.mock";

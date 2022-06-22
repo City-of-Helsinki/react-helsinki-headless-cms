@@ -6,8 +6,8 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { Collection } from "./Collection";
 import page from "../pageContent/__mocks__/page.mock";
 import { getCollections, getCollectionCards } from "../pageContent/utils";
-import defaultConfig from "../configProvider/defaultConfig";
-import ConfigProvider from "../configProvider/ConfigProvider";
+import { defaultConfig } from "../configProvider/defaultConfig";
+import { ConfigProvider } from "../configProvider/ConfigProvider";
 import { Card } from "../card/Card";
 import cardMock from "../card/__mocks__/card.mock";
 

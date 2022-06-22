@@ -5,7 +5,7 @@ import {
   LayoutArticle,
   LayoutPage,
 } from "../../../common/headlessService/types";
-import useHeadlessCmsLink from "../../configProvider/useHeadlessCmsLink";
+import { useHeadlessCmsLink } from "../../configProvider/useHeadlessCmsLink";
 import SidebarContentCard from "./SidebarContentCard";
 
 type PostListItemProps = (

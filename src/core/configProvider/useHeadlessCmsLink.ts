@@ -1,8 +1,9 @@
+/* eslint-disable import/prefer-default-export */
 import { ModuleItemTypeEnum } from "../../common/headlessService/constants";
 import { getUri } from "../../common/headlessService/utils";
-import useConfig from "./useConfig";
+import { useConfig } from "./useConfig";
 
-export default function useHeadlessCmsLink(
+export function useHeadlessCmsLink(
   link: string,
   type: ModuleItemTypeEnum = ModuleItemTypeEnum.Link
 ) {

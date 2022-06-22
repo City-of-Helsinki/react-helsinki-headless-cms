@@ -1,7 +1,7 @@
 import React from "react";
 import { Link as HDSLink } from "hds-react";
 
-import useConfig from "../configProvider/useConfig";
+import { useConfig } from "../configProvider/useConfig";
 
 export type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement>;
 

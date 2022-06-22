@@ -14,7 +14,7 @@ import Tag from "../../common/components/tag/Tag";
 import { Card } from "../card/Card";
 import Grid from "../../common/components/grid/Grid";
 import { LargeCard } from "../card/LargeCard";
-import useConfig from "../configProvider/useConfig";
+import { useConfig } from "../configProvider/useConfig";
 import { Config } from "../configProvider/configContext";
 import { CollectionItemType } from "../collection/types";
 

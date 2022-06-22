@@ -1,7 +1,8 @@
+/* eslint-disable import/prefer-default-export */
 import { useContext } from "react";
 
-import configContext from "./configContext";
+import { configContext } from "./configContext";
 
-export default function useConfig() {
+export function useConfig() {
   return useContext(configContext);
 }
