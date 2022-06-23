@@ -45,7 +45,6 @@ export function Navigation({
       menu={menuQuery.data?.menu}
       getPathnameForLanguage={(...args) => {
         const [language, currentLanguage] = args;
-
         const isCmsPage = Boolean(pageQuery?.data?.page?.uri);
 
         // If page is a CMS page, find other language version from the CMS
@@ -53,14 +52,12 @@ export function Navigation({
           if (language.code === currentLanguage.code) {
             return getRoutedInternalHref(pageQuery?.data?.page?.uri);
           }
-
           return getRoutedInternalHref(
             pageQuery?.data?.page?.translations?.find(
               (translation) => translation?.language?.code === language.code
             )?.uri
           );
         }
-
         // Otherwise use userland implementation
         return getPathnameForLanguage?.(...args);
       }}

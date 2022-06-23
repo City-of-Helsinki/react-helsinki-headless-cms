@@ -24,17 +24,30 @@ export default {
   component: Page,
 } as ComponentMeta<typeof Page>;
 
+const domain = "http://localhost:3000";
+
 const Template: ComponentStory<typeof Page> = (args) => (
   <HelmetProvider>
     <ConfigProvider
       config={{
         ...defaultConfig,
         siteName: "RHHC Example",
+        internalHrefOrigins: [domain],
         components: {
           ...defaultConfig.components,
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           Head: Helmet,
+        },
+        utils: {
+          ...defaultConfig.utils,
+          getRoutedInternalHref: (link) => {
+            let uri = "";
+            [domain].forEach((d) => {
+              uri = link.replace(d, "");
+            });
+            return uri;
+          },
         },
       }}
     >
@@ -54,22 +67,25 @@ PageDefault.args = {
         console.log("I should navigate");
       }}
       getPathnameForLanguage={({ slug, code }, currentLanguage) => {
-        const baseUrl = "http://localhost:3000";
         const currentRatherComplexUrl = new URL(
-          "http://localhost:3000/en/cms-page/page-slug"
+          `${domain}/${currentLanguage.slug}/cms-page/page-slug`
         );
-
         if (code === LanguageCodeEnum.Fi) {
           return new URL(
-            currentRatherComplexUrl.pathname.replace(currentLanguage.slug, ""),
-            baseUrl
-          ).pathname;
+            currentRatherComplexUrl.pathname.replace(
+              `/${currentLanguage.slug}`,
+              ""
+            ),
+            domain
+          ).href;
         }
-
         return new URL(
-          currentRatherComplexUrl.pathname.replace(currentLanguage.slug, slug),
-          baseUrl
-        ).pathname;
+          currentRatherComplexUrl.pathname.replace(
+            `/${currentLanguage.slug}`,
+            slug
+          ),
+          domain
+        ).href;
       }}
     />
   ),
