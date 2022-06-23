@@ -34,7 +34,10 @@ export type Config = {
   apolloClient?: ApolloClient<NormalizedCacheObject>;
   utils: {
     getIsHrefExternal: (href: string) => boolean;
-    getRoutedInternalHref: (link: string, type?: ModuleItemTypeEnum) => string;
+    getRoutedInternalHref: (
+      link: string | null | undefined,
+      type?: ModuleItemTypeEnum
+    ) => string;
   };
 };
 

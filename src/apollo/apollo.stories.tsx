@@ -12,9 +12,11 @@ import { Navigation } from "./navigation/Navigation";
 import { Notification } from "./notification/Notification";
 import { Page } from "./page/Page";
 import { PageContentLayout } from "../core/pageContent/PageContentLayout";
+import { LanguageCodeEnum } from "../core";
 
+const cmsUri = "https://hkih.stage.geniem.io/graphql";
 const client = new ApolloClient({
-  uri: "https://hkih.stage.geniem.io/graphql",
+  uri: cmsUri,
   cache: new InMemoryCache(),
 });
 
@@ -28,7 +30,9 @@ const Template: ComponentStory<typeof Page> = (args) => (
     <ConfigProvider
       config={{
         ...defaultConfig,
+        currentLanguageCode: LanguageCodeEnum.En,
         siteName: "RHHC Example",
+        internalHrefOrigins: [cmsUri],
         apolloClient: client,
         components: {
           ...defaultConfig.components,
@@ -45,21 +49,21 @@ const Template: ComponentStory<typeof Page> = (args) => (
 
 export const ApolloBasicExample = Template.bind({});
 
-const currentPage = "/testisivu/";
-
+const currentPage = "/test-page-in-english/";
+const ExampleNavigation = () => (
+  <Navigation
+    menuName="Palvelutarjotin-UI Header"
+    onTitleClick={() => {
+      // eslint-disable-next-line no-console
+      console.log("I should navigate");
+    }}
+    getIsItemActive={({ path }) => path === currentPage}
+    getPathnameForLanguage={({ slug }) => `/${slug}${currentPage}`}
+  />
+);
 ApolloBasicExample.args = {
   uri: currentPage,
-  navigation: (
-    <Navigation
-      menuName="Palvelutarjotin-UI Header"
-      onTitleClick={() => {
-        // eslint-disable-next-line no-console
-        console.log("I should navigate");
-      }}
-      getIsItemActive={({ path }) => path === currentPage}
-      getPathnameForLanguage={() => currentPage}
-    />
-  ),
+  navigation: <ExampleNavigation />,
   notification: <Notification />,
   content: (
     <PageContent
@@ -100,17 +104,7 @@ export const ApolloCustomLayoutExample = Template.bind({});
 
 ApolloCustomLayoutExample.args = {
   uri: currentPage,
-  navigation: (
-    <Navigation
-      menuName="Palvelutarjotin-UI Header"
-      onTitleClick={() => {
-        // eslint-disable-next-line no-console
-        console.log("I should navigate");
-      }}
-      getIsItemActive={({ path }) => path === currentPage}
-      getPathnameForLanguage={() => currentPage}
-    />
-  ),
+  navigation: <ExampleNavigation />,
   notification: <Notification />,
   content: (
     <PageContent

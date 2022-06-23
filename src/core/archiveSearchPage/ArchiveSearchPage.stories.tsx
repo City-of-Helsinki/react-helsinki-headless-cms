@@ -29,6 +29,8 @@ export default {
   component: ArchiveSearchPage,
 } as ComponentMeta<typeof ArchiveSearchPage>;
 
+const domain = "http://localhost:3000";
+
 const navigation = (
   <Navigation
     languages={navigationLanguages}
@@ -38,21 +40,24 @@ const navigation = (
       console.log("I should navigate");
     }}
     getPathnameForLanguage={({ slug, code }, currentLanguage) => {
-      const baseUrl = "http://localhost:3000";
       const currentRatherComplexUrl = new URL(
-        "http://localhost:3000/en/cms-page/page-slug"
+        `${domain}/${currentLanguage.slug}/cms-page/page-slug`
       );
-
       if (code === LanguageCodeEnum.Fi) {
         return new URL(
-          currentRatherComplexUrl.pathname.replace(currentLanguage.slug, ""),
-          baseUrl
+          currentRatherComplexUrl.pathname.replace(
+            `/${currentLanguage.slug}`,
+            ""
+          ),
+          domain
         ).pathname;
       }
-
       return new URL(
-        currentRatherComplexUrl.pathname.replace(currentLanguage.slug, slug),
-        baseUrl
+        currentRatherComplexUrl.pathname.replace(
+          `/${currentLanguage.slug}`,
+          slug
+        ),
+        domain
       ).pathname;
     }}
   />
@@ -76,6 +81,7 @@ const Template: ComponentStory<typeof ArchiveSearchPage> = (args) => (
       config={{
         ...defaultConfig,
         siteName: "RHHC Example",
+        internalHrefOrigins: [domain],
         components: {
           ...defaultConfig.components,
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
