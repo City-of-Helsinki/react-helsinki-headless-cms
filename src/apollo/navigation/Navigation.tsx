@@ -8,7 +8,8 @@ import {
   NavigationProps as NavigationPropsWithoutData,
 } from "../../core/navigation/Navigation";
 import useApolloPageContext from "../page/useApolloPageContext";
-import { useConfig } from "../../core";
+import { ModuleItemTypeEnum, useConfig } from "../../core";
+import { useArticleQuery } from "../../common/headlessService/__generated__";
 
 export type NavigationProps = Omit<
   NavigationPropsWithoutData,
@@ -37,7 +38,11 @@ export function Navigation({
       id: useApolloPageContext().uri,
     },
   });
-
+  const articleQuery = useArticleQuery({
+    variables: {
+      id: useApolloPageContext().uri,
+    },
+  });
   return (
     <NavigationWithoutData
       {...delegatedProps}
@@ -46,16 +51,25 @@ export function Navigation({
       getPathnameForLanguage={(...args) => {
         const [language, currentLanguage] = args;
         const isCmsPage = Boolean(pageQuery?.data?.page?.uri);
+        const isCmsArticle = Boolean(articleQuery?.data?.post?.uri);
+
+        // eslint-disable-next-line no-nested-ternary
+        const cmsType = isCmsPage
+          ? ModuleItemTypeEnum.Page
+          : isCmsArticle
+          ? ModuleItemTypeEnum.Article
+          : undefined;
 
         // If page is a CMS page, find other language version from the CMS
-        if (isCmsPage) {
+        if (cmsType) {
           if (language.code === currentLanguage.code) {
-            return getRoutedInternalHref(pageQuery?.data?.page?.uri);
+            return getRoutedInternalHref(pageQuery?.data?.page?.uri, cmsType);
           }
           return getRoutedInternalHref(
             pageQuery?.data?.page?.translations?.find(
               (translation) => translation?.language?.code === language.code
-            )?.uri
+            )?.uri,
+            cmsType
           );
         }
         // Otherwise use userland implementation
