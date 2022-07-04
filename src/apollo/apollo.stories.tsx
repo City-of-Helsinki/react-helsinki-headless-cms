@@ -14,7 +14,8 @@ import { Page } from "./page/Page";
 import { PageContentLayout } from "../core/pageContent/PageContentLayout";
 import { LanguageCodeEnum } from "../core";
 
-const cmsUri = "https://hkih.stage.geniem.io/graphql";
+const cmsUri =
+  process.env.CMS_GRAPHQL_ENDPOINT ?? "https://hkih.stage.geniem.io/graphql";
 const client = new ApolloClient({
   uri: cmsUri,
   cache: new InMemoryCache(),
@@ -32,13 +33,23 @@ const Template: ComponentStory<typeof Page> = (args) => (
         ...defaultConfig,
         currentLanguageCode: LanguageCodeEnum.En,
         siteName: "RHHC Example",
-        internalHrefOrigins: [cmsUri],
+        internalHrefOrigins: [new URL(cmsUri).origin],
         apolloClient: client,
         components: {
           ...defaultConfig.components,
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           Head: Helmet,
+        },
+        utils: {
+          ...defaultConfig.utils,
+          getRoutedInternalHref: (link) => {
+            let uri = "";
+            [new URL(cmsUri).origin].forEach((d) => {
+              uri = link.replace(d, "");
+            });
+            return uri;
+          },
         },
       }}
     >

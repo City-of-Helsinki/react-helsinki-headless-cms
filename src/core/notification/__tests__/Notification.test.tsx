@@ -6,7 +6,7 @@ import {
   userEvent,
   waitFor,
 } from "../../../common/utils/testingLibrary";
-import Notification from "../Notification";
+import { Notification } from "../Notification";
 import notificationMock from "../__mocks__/notification.mock";
 
 const extractContentStringFromContent = (rawContent: string) =>

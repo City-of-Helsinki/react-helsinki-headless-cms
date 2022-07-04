@@ -24,8 +24,10 @@ export default {
   component: Page,
 } as ComponentMeta<typeof Page>;
 
-const domain = "http://localhost:3000";
-
+const domain = window.location.origin ?? "http://localhost:6006";
+const cmsDomain = new URL(
+  process.env.CMS_GRAPHQL_ENDPOINT ?? "https://hkih.stage.geniem.io/graphql"
+).origin;
 const Template: ComponentStory<typeof Page> = (args) => (
   <HelmetProvider>
     <ConfigProvider
@@ -43,7 +45,7 @@ const Template: ComponentStory<typeof Page> = (args) => (
           ...defaultConfig.utils,
           getRoutedInternalHref: (link) => {
             let uri = "";
-            [domain].forEach((d) => {
+            [domain, cmsDomain].forEach((d) => {
               uri = link.replace(d, "");
             });
             return uri;

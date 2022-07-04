@@ -29,7 +29,7 @@ export default {
   component: ArchiveSearchPage,
 } as ComponentMeta<typeof ArchiveSearchPage>;
 
-const domain = "http://localhost:3000";
+const domain = window.location.origin ?? "http://localhost:6006";
 
 const navigation = (
   <Navigation
@@ -75,6 +75,13 @@ const getCardProps = (
   imageUrl: item.featuredImage?.node.mediaItemUrl || "",
 });
 
+const createLargeCard = (item: CollectionItemType) => (
+  <LargeCard {...getCardProps(item)} />
+);
+const createCard = (item: CollectionItemType) => (
+  <Card {...getCardProps(item)} withShadow />
+);
+
 const Template: ComponentStory<typeof ArchiveSearchPage> = (args) => (
   <HelmetProvider>
     <ConfigProvider
@@ -110,8 +117,8 @@ ArchiveSearchPageWithArticles.args = {
         // eslint-disable-next-line no-console
         console.log("load more items");
       }}
-      createLargeCard={(item) => <LargeCard {...getCardProps(item)} />}
-      createCard={(item) => <Card {...getCardProps(item)} />}
+      createLargeCard={createLargeCard}
+      createCard={createCard}
     />
   ),
   footer: <>TODO: Implement footer</>,
@@ -131,8 +138,8 @@ ArchiveSearchPageWithPages.args = {
         // eslint-disable-next-line no-console
         console.log("load more items");
       }}
-      createLargeCard={(item) => <LargeCard {...getCardProps(item)} />}
-      createCard={(item) => <Card {...getCardProps(item)} withShadow />}
+      createLargeCard={createLargeCard}
+      createCard={createCard}
     />
   ),
   footer: <>TODO: Implement footer</>,
@@ -157,7 +164,7 @@ ArchiveSearchPageWithPageSubPages.args = {
         // eslint-disable-next-line no-console
         console.log("load more items");
       }}
-      createCard={(item) => <Card {...getCardProps(item)} />}
+      createCard={createCard}
       largeFirstItem={false}
       hasMore
     />
