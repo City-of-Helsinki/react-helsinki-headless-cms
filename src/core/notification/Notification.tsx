@@ -48,12 +48,14 @@ function getNotificationStatus(
 }
 
 type CmsNotificationLevel = "info" | "high" | "low";
-const notificationTypeMap: Record<CmsNotificationLevel, HDSNotificationLevel> =
-  {
-    info: "alert",
-    high: "error",
-    low: "info",
-  };
+const notificationTypeMap: Record<
+  CmsNotificationLevel,
+  HDSNotificationLevel
+> = {
+  info: "alert",
+  high: "error",
+  low: "info",
+};
 
 export type NotificationProps = {
   notification?: NotificationType | null;
@@ -63,8 +65,10 @@ export function Notification({ notification }: NotificationProps) {
   const {
     copy: { closeButtonLabelText },
   } = useConfig();
-  const [notificationState, setNotificationState] =
-    useLocaleStorageNotification();
+  const [
+    notificationState,
+    setNotificationState,
+  ] = useLocaleStorageNotification();
 
   const notificationHash = getNotificationHash(notification);
   const notificationStatus = getNotificationStatus(

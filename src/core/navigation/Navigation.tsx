@@ -23,6 +23,7 @@ export type NavigationProps = {
     allLanguages: Language[]
   ) => string;
   getIsItemActive?: (menuItem: MenuItem) => boolean;
+  variant?: "default" | "inline";
 };
 
 export function Navigation({
@@ -33,6 +34,7 @@ export function Navigation({
   onTitleClick,
   getPathnameForLanguage,
   getIsItemActive,
+  variant,
 }: NavigationProps) {
   const {
     siteName,
@@ -64,7 +66,7 @@ export function Navigation({
       logoLanguage={currentLanguageCode === LanguageCodeEnum.Sv ? "sv" : "fi"}
       className={className}
     >
-      <HDSNavigation.Row variant="inline">
+      <HDSNavigation.Row variant={variant}>
         {menu?.menuItems?.nodes?.map((navigationItem) => (
           <HDSNavigation.Item
             key={navigationItem.id}

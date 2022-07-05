@@ -5,12 +5,14 @@ export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K];
 };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]?: Maybe<T[SubKey]>;
-};
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]: Maybe<T[SubKey]>;
-};
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> &
+  {
+    [SubKey in K]?: Maybe<T[SubKey]>;
+  };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> &
+  {
+    [SubKey in K]: Maybe<T[SubKey]>;
+  };
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -2574,7 +2576,9 @@ export type HierarchicalContentNodeAncestorsArgs = {
   before?: InputMaybe<Scalars["String"]>;
   first?: InputMaybe<Scalars["Int"]>;
   last?: InputMaybe<Scalars["Int"]>;
-  where?: InputMaybe<HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgs>;
+  where?: InputMaybe<
+    HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgs
+  >;
 };
 
 /** Content node with hierarchical (parent/child) relationships */
@@ -2583,7 +2587,9 @@ export type HierarchicalContentNodeChildrenArgs = {
   before?: InputMaybe<Scalars["String"]>;
   first?: InputMaybe<Scalars["Int"]>;
   last?: InputMaybe<Scalars["Int"]>;
-  where?: InputMaybe<HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgs>;
+  where?: InputMaybe<
+    HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgs
+  >;
 };
 
 /** Connection between the HierarchicalContentNode type and the ContentNode type */
@@ -3476,7 +3482,9 @@ export type MediaItemAncestorsArgs = {
   before?: InputMaybe<Scalars["String"]>;
   first?: InputMaybe<Scalars["Int"]>;
   last?: InputMaybe<Scalars["Int"]>;
-  where?: InputMaybe<HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgs>;
+  where?: InputMaybe<
+    HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgs
+  >;
 };
 
 /** The mediaItem type */
@@ -3490,7 +3498,9 @@ export type MediaItemChildrenArgs = {
   before?: InputMaybe<Scalars["String"]>;
   first?: InputMaybe<Scalars["Int"]>;
   last?: InputMaybe<Scalars["Int"]>;
-  where?: InputMaybe<HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgs>;
+  where?: InputMaybe<
+    HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgs
+  >;
 };
 
 /** The mediaItem type */
@@ -4331,7 +4341,9 @@ export type PageAncestorsArgs = {
   before?: InputMaybe<Scalars["String"]>;
   first?: InputMaybe<Scalars["Int"]>;
   last?: InputMaybe<Scalars["Int"]>;
-  where?: InputMaybe<HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgs>;
+  where?: InputMaybe<
+    HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgs
+  >;
 };
 
 /** The page type */
@@ -4340,7 +4352,9 @@ export type PageChildrenArgs = {
   before?: InputMaybe<Scalars["String"]>;
   first?: InputMaybe<Scalars["Int"]>;
   last?: InputMaybe<Scalars["Int"]>;
-  where?: InputMaybe<HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgs>;
+  where?: InputMaybe<
+    HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgs
+  >;
 };
 
 /** The page type */

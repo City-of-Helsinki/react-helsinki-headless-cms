@@ -1,30 +1,30 @@
-const path = require('path')
+const path = require("path");
 
 module.exports = {
-  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-    '@storybook/addon-viewport',
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
+    "@storybook/addon-interactions",
+    "@storybook/addon-viewport",
     {
-      name: '@storybook/preset-scss',
+      name: "@storybook/preset-scss",
       options: {
         cssLoaderOptions: {
           modules: {
-            localIdentName: '[name]__[local]--[hash:base64:5]',
+            localIdentName: "[name]__[local]--[hash:base64:5]",
           },
         },
         sassLoaderOptions: {
           sassOptions: {
-            includePaths: [path.join(__dirname, '..', 'src/common/styles')],
+            includePaths: [path.join(__dirname, "..", "src/common/styles")],
           },
         },
       },
     },
   ],
-  framework: '@storybook/react',
+  framework: "@storybook/react",
   core: {
-    builder: 'webpack5',
+    builder: "webpack5",
   },
-}
+};

@@ -22,7 +22,8 @@ export const sidebarArticleList = {
     {
       id: "bdf",
       title: "AV-arkki: Miltä tuntuu? – Taide tunnekasvatuksen tukena",
-      link: "/oppimateriaalit-2/alakoulu/av-arkki-milta-tuntuu-taide-tunnekasvatuksen-tukena",
+      link:
+        "/oppimateriaalit-2/alakoulu/av-arkki-milta-tuntuu-taide-tunnekasvatuksen-tukena",
       featuredImage: {
         node: {
           altText: "image description",
