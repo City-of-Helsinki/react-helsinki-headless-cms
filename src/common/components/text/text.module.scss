@@ -1,7 +1,7 @@
-@use "breakpoints";
-@import "typography";
-@import "spacing";
-@import "color";
+@use 'breakpoints';
+@import 'typography';
+@import 'spacing';
+@import 'color';
 
 .text {
   color: $color-black-90;

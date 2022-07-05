@@ -1,5 +1,5 @@
-@import "spacing";
-@import "color";
+@import 'spacing';
+@import 'color';
 
 .container {
   &.withoutImage {
@@ -33,7 +33,7 @@
   text-align: center;
 
   &::after {
-    content: " ";
+    content: ' ';
     display: block;
     width: 80px;
     height: 4px;

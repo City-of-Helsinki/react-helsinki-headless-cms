@@ -1,8 +1,8 @@
-import React, { createContext } from "react";
-import { ApolloClient, NormalizedCacheObject } from "@apollo/client";
+import React, { createContext } from 'react';
+import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 
-import { LanguageCodeEnum } from "../../common/headlessService/types";
-import { ModuleItemTypeEnum } from "../../common/headlessService/constants";
+import { LanguageCodeEnum } from '../../common/headlessService/types';
+import { ModuleItemTypeEnum } from '../../common/headlessService/constants';
 
 export type Config = {
   siteName: string;
@@ -27,7 +27,7 @@ export type Config = {
     A: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => JSX.Element;
     Img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => JSX.Element;
     Link?: (
-      props: React.AnchorHTMLAttributes<HTMLAnchorElement>
+      props: React.AnchorHTMLAttributes<HTMLAnchorElement>,
     ) => JSX.Element;
     Head?: (props: { children: React.ReactNode }) => JSX.Element;
   };
@@ -36,7 +36,7 @@ export type Config = {
     getIsHrefExternal: (href: string) => boolean;
     getRoutedInternalHref: (
       link: string | null | undefined,
-      type?: ModuleItemTypeEnum
+      type?: ModuleItemTypeEnum,
     ) => string;
   };
 };

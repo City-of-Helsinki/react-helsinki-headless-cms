@@ -1,8 +1,8 @@
-import * as React from "react";
+import * as React from 'react';
 
-import { useConfig } from "../../../core/configProvider/useConfig";
+import { useConfig } from '../../../core/configProvider/useConfig';
 
-type Props = Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "children"> & {
+type Props = Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'children'> & {
   children: JSX.Element | string;
   iconLeft?: JSX.Element;
   ariaLabel?: string;
@@ -25,7 +25,7 @@ export default function ExternalLink({
       target="_blank"
       rel="noreferrer"
       aria-label={`${
-        ariaLabel || (typeof label === "string" ? label : "")
+        ariaLabel || (typeof label === 'string' ? label : '')
       } ${openInNewTabAriaLabel}`}
     >
       {iconLeft && iconLeft}

@@ -1,15 +1,15 @@
-import React from "react";
-import { Navigation as HDSNavigation } from "hds-react";
+import React from 'react';
+import { Navigation as HDSNavigation } from 'hds-react';
 
 import {
   Menu,
   Language,
   LanguageCodeEnum,
-} from "../../common/headlessService/types";
-import { useConfig } from "../configProvider/useConfig";
-import { MAIN_CONTENT_ID } from "../../common/constants";
+} from '../../common/headlessService/types';
+import { useConfig } from '../configProvider/useConfig';
+import { MAIN_CONTENT_ID } from '../../common/constants';
 
-type MenuItem = Omit<Menu["menuItems"]["nodes"][0], "__typename">;
+type MenuItem = Omit<Menu['menuItems']['nodes'][0], '__typename'>;
 
 export type NavigationProps = {
   menu?: Menu;
@@ -20,10 +20,10 @@ export type NavigationProps = {
   getPathnameForLanguage: (
     language: Language,
     currentLanguage: Language,
-    allLanguages: Language[]
+    allLanguages: Language[],
   ) => string;
   getIsItemActive?: (menuItem: MenuItem) => boolean;
-  variant?: "default" | "inline";
+  variant?: 'default' | 'inline';
 };
 
 export function Navigation({
@@ -46,13 +46,13 @@ export function Navigation({
 
   const currentLanguage = languages?.find(
     (language) =>
-      language.code?.toLowerCase() === currentLanguageCode?.toLowerCase()
+      language.code?.toLowerCase() === currentLanguageCode?.toLowerCase(),
   );
 
   // Error out if language props are inconsistent
   if (languages && !currentLanguage) {
     throw Error(
-      "Could not find a language from languages with currentLanguageCode"
+      'Could not find a language from languages with currentLanguageCode',
     );
   }
 
@@ -63,7 +63,7 @@ export function Navigation({
       skipTo={`#${MAIN_CONTENT_ID}`}
       skipToContentLabel={skipToContentLabel}
       onTitleClick={onTitleClick}
-      logoLanguage={currentLanguageCode === LanguageCodeEnum.Sv ? "sv" : "fi"}
+      logoLanguage={currentLanguageCode === LanguageCodeEnum.Sv ? 'sv' : 'fi'}
       className={className}
     >
       <HDSNavigation.Row variant={variant}>
@@ -88,7 +88,7 @@ export function Navigation({
               label={language.name}
               lang={language.slug}
               href={getRoutedInternalHref(
-                getPathnameForLanguage(language, currentLanguage, languages)
+                getPathnameForLanguage(language, currentLanguage, languages),
               )}
             />
           ))}

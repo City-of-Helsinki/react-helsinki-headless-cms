@@ -1,39 +1,39 @@
 /* eslint-disable react/function-component-definition */
 
-import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { Helmet, HelmetProvider } from "react-helmet-async";
+import React from 'react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
-import { LanguageCodeEnum } from "../../common/headlessService/types";
-import { ConfigProvider } from "../configProvider/ConfigProvider";
-import { defaultConfig } from "../configProvider/defaultConfig";
-import pageMock from "../pageContent/__mocks__/page.mock";
-import { PageContent } from "../pageContent/PageContent";
-import navigationLanguages from "../navigation/__mocks__/navigationLanguages.mock";
-import navigationMenu from "../navigation/__mocks__/navigationMenu.mock";
-import { Navigation } from "../navigation/Navigation";
-import { Notification } from "../notification/Notification";
-import notificationMock from "../notification/__mocks__/notification.mock";
-import { Page } from "./Page";
-import { Collection } from "../collection/Collection";
-import { getCollectionCards, getCollections } from "../pageContent/utils";
-import { Card } from "../card/Card";
+import { LanguageCodeEnum } from '../../common/headlessService/types';
+import { ConfigProvider } from '../configProvider/ConfigProvider';
+import { defaultConfig } from '../configProvider/defaultConfig';
+import pageMock from '../pageContent/__mocks__/page.mock';
+import { PageContent } from '../pageContent/PageContent';
+import navigationLanguages from '../navigation/__mocks__/navigationLanguages.mock';
+import navigationMenu from '../navigation/__mocks__/navigationMenu.mock';
+import { Navigation } from '../navigation/Navigation';
+import { Notification } from '../notification/Notification';
+import notificationMock from '../notification/__mocks__/notification.mock';
+import { Page } from './Page';
+import { Collection } from '../collection/Collection';
+import { getCollectionCards, getCollections } from '../pageContent/utils';
+import { Card } from '../card/Card';
 
 export default {
-  title: "Example/Page",
+  title: 'Example/Page',
   component: Page,
 } as ComponentMeta<typeof Page>;
 
-const domain = window.location.origin ?? "http://localhost:6006";
+const domain = window.location.origin ?? 'http://localhost:6006';
 const cmsDomain = new URL(
-  process.env.CMS_GRAPHQL_ENDPOINT ?? "https://hkih.stage.geniem.io/graphql"
+  process.env.CMS_GRAPHQL_ENDPOINT ?? 'https://hkih.stage.geniem.io/graphql',
 ).origin;
 const Template: ComponentStory<typeof Page> = (args) => (
   <HelmetProvider>
     <ConfigProvider
       config={{
         ...defaultConfig,
-        siteName: "RHHC Example",
+        siteName: 'RHHC Example',
         internalHrefOrigins: [domain],
         components: {
           ...defaultConfig.components,
@@ -44,9 +44,9 @@ const Template: ComponentStory<typeof Page> = (args) => (
         utils: {
           ...defaultConfig.utils,
           getRoutedInternalHref: (link) => {
-            let uri = "";
+            let uri = '';
             [domain, cmsDomain].forEach((d) => {
-              uri = link.replace(d, "");
+              uri = link.replace(d, '');
             });
             return uri;
           },
@@ -66,27 +66,27 @@ PageDefault.args = {
       menu={navigationMenu}
       onTitleClick={() => {
         // eslint-disable-next-line no-console
-        console.log("I should navigate");
+        console.log('I should navigate');
       }}
       getPathnameForLanguage={({ slug, code }, currentLanguage) => {
         const currentRatherComplexUrl = new URL(
-          `${domain}/${currentLanguage.slug}/cms-page/page-slug`
+          `${domain}/${currentLanguage.slug}/cms-page/page-slug`,
         );
         if (code === LanguageCodeEnum.Fi) {
           return new URL(
             currentRatherComplexUrl.pathname.replace(
               `/${currentLanguage.slug}`,
-              ""
+              '',
             ),
-            domain
+            domain,
           ).href;
         }
         return new URL(
           currentRatherComplexUrl.pathname.replace(
             `/${currentLanguage.slug}`,
-            slug
+            slug,
           ),
-          domain
+          domain,
         ).href;
       }}
     />
@@ -97,8 +97,8 @@ PageDefault.args = {
       page={pageMock}
       backUrl="/"
       breadcrumbs={[
-        { title: "Root", link: "/" },
-        { title: "Nested", link: "/nested" },
+        { title: 'Root', link: '/' },
+        { title: 'Nested', link: '/nested' },
       ]}
       collections={getCollections(pageMock.modules)?.map((collection) => (
         <Collection

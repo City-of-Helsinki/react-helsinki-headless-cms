@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import classNames from "classnames";
+import classNames from 'classnames';
 
-import styles from "./grid.module.scss";
+import styles from './grid.module.scss';
 
 export interface GridProps {
   children: React.ReactNode;

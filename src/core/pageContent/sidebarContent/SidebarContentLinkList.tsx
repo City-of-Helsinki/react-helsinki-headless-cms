@@ -1,11 +1,11 @@
-import { IconArrowRight, IconLinkExternal } from "hds-react";
-import React from "react";
+import { IconArrowRight, IconLinkExternal } from 'hds-react';
+import React from 'react';
 
-import ExternalLink from "../../../common/components/externalLink/ExternalLink";
-import HtmlToReact from "../../../common/components/htmlToReact/HtmlToReact";
-import List from "../../../common/components/list/List";
-import { LayoutLinkList } from "../../../common/headlessService/types";
-import styles from "./sidebarContentLinkList.module.scss";
+import ExternalLink from '../../../common/components/externalLink/ExternalLink';
+import HtmlToReact from '../../../common/components/htmlToReact/HtmlToReact';
+import List from '../../../common/components/list/List';
+import { LayoutLinkList } from '../../../common/headlessService/types';
+import styles from './sidebarContentLinkList.module.scss';
 
 type Link = {
   target?: string | null;
@@ -34,10 +34,10 @@ export default function SidebarContentLinkList({
         items={links
           ?.filter((item): item is Link => Boolean(item))
           .map((link) =>
-            link.target === "_blank" ? (
+            link.target === '_blank' ? (
               <ExternalLink
                 key={link.title}
-                href={link.url || "#"}
+                href={link.url || '#'}
                 className={styles.link}
                 iconLeft={<IconLinkExternal aria-hidden="true" />}
               >
@@ -46,13 +46,13 @@ export default function SidebarContentLinkList({
             ) : (
               <a
                 key={link.title}
-                href={link.url || "#"}
+                href={link.url || '#'}
                 className={styles.link}
               >
                 <IconArrowRight aria-hidden="true" />
                 {link.title}
               </a>
-            )
+            ),
           )}
       />
     </div>

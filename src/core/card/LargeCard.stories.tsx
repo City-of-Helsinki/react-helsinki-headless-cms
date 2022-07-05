@@ -1,15 +1,15 @@
 /* eslint-disable react/function-component-definition */
 
-import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import React from 'react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { ConfigProvider } from "../configProvider/ConfigProvider";
-import { defaultConfig } from "../configProvider/defaultConfig";
-import card from "./__mocks__/card.mock";
-import { LargeCard } from "./LargeCard";
+import { ConfigProvider } from '../configProvider/ConfigProvider';
+import { defaultConfig } from '../configProvider/defaultConfig';
+import card from './__mocks__/card.mock';
+import { LargeCard } from './LargeCard';
 
 export default {
-  title: "Example/LargeCard",
+  title: 'Example/LargeCard',
   component: LargeCard,
 } as ComponentMeta<typeof LargeCard>;
 
@@ -17,7 +17,7 @@ const Template: ComponentStory<typeof LargeCard> = (args) => (
   <ConfigProvider
     config={{
       ...defaultConfig,
-      siteName: "RHHC Example",
+      siteName: 'RHHC Example',
       components: {
         ...defaultConfig.components,
       },

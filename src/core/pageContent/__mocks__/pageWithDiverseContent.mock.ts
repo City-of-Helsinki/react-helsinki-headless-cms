@@ -1,7 +1,7 @@
-import { PageQuery } from "../../../common/headlessService/page";
+import { PageQuery } from '../../../common/headlessService/page';
 
-const pageWithDiverseContent: PageQuery["page"] = {
-  id: "abc",
+const pageWithDiverseContent: PageQuery['page'] = {
+  id: 'abc',
   content: `
   <h1>H1 text</h1>
   <h2>H2 text</h2>
@@ -61,7 +61,7 @@ const pageWithDiverseContent: PageQuery["page"] = {
   <p>variable <var>x</var></p>
   <p>looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooolooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooolooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooolooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo<wbr>xng</p>
   `,
-  title: "Kulttuurikasvatus",
+  title: 'Kulttuurikasvatus',
 };
 
 export default pageWithDiverseContent;

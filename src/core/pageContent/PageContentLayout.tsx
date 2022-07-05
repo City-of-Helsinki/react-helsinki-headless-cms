@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import { MAIN_CONTENT_ID } from "../../common/constants";
-import styles from "./pageContentLayout.module.scss";
-import Hero from "../hero/Hero";
+import { MAIN_CONTENT_ID } from '../../common/constants';
+import styles from './pageContentLayout.module.scss';
+import Hero from '../hero/Hero';
 
 export type PageContentLayoutProps = {
   breadcrumbs?: React.ReactNode;

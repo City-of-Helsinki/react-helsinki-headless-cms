@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import Grid from "../../common/components/grid/Grid";
+import Grid from '../../common/components/grid/Grid';
 
 export type CardListProps = {
   children: React.ReactNode;

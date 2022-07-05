@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import { configContext, Config } from "./configContext";
-import { defaultConfig } from "./defaultConfig";
+import { configContext, Config } from './configContext';
+import { defaultConfig } from './defaultConfig';
 
 export type ConfigProviderProps = {
   config: Config;
@@ -17,7 +17,7 @@ export function ConfigProvider({
       ...defaultConfig,
       ...userConfig,
     }),
-    [userConfig]
+    [userConfig],
   );
 
   return (

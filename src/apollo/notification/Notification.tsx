@@ -1,20 +1,20 @@
-import React from "react";
+import React from 'react';
 
-import { LanguageCodeEnum } from "../../common/headlessService/types";
-import { useNotificationQuery } from "../../common/headlessService/notification";
-import { useConfig } from "../../core/configProvider/useConfig";
+import { LanguageCodeEnum } from '../../common/headlessService/types';
+import { useNotificationQuery } from '../../common/headlessService/notification';
+import { useConfig } from '../../core/configProvider/useConfig';
 import {
   Notification as NotificationWithoutData,
   NotificationProps,
-} from "../../core/notification/Notification";
+} from '../../core/notification/Notification';
 
 const languageCodeEnumToNotificationLanguageMap = {
-  [LanguageCodeEnum.Fi]: "fi",
-  [LanguageCodeEnum.Sv]: "sv",
-  [LanguageCodeEnum.En]: "en",
+  [LanguageCodeEnum.Fi]: 'fi',
+  [LanguageCodeEnum.Sv]: 'sv',
+  [LanguageCodeEnum.En]: 'en',
 } as const;
 
-export type Props = Exclude<NotificationProps, "notification">;
+export type Props = Exclude<NotificationProps, 'notification'>;
 
 export function Notification(props: Props) {
   const { currentLanguageCode } = useConfig();

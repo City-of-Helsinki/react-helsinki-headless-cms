@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react';
 
-import { useConfig } from "../configProvider/useConfig";
-import SidebarContent from "./sidebarContent/SidebarContent";
-import { PageContentLayout } from "./PageContentLayout";
-import { PageMainContent } from "./PageMainContent";
-import PageContentBreadcrumbs from "./PageContentBreadcrumbs";
-import { Breadcrumb } from "./types";
-import { PageMeta } from "./meta/PageMeta";
-import { Collection } from "../collection/Collection";
-import { ArticleType, PageType } from "../../common/headlessService/types";
-import { Card } from "../card/Card";
-import { getCollections, getCollectionCards } from "./utils";
-import { ModuleItemTypeEnum } from "../../common/headlessService/constants";
+import { useConfig } from '../configProvider/useConfig';
+import SidebarContent from './sidebarContent/SidebarContent';
+import { PageContentLayout } from './PageContentLayout';
+import { PageMainContent } from './PageMainContent';
+import PageContentBreadcrumbs from './PageContentBreadcrumbs';
+import { Breadcrumb } from './types';
+import { PageMeta } from './meta/PageMeta';
+import { Collection } from '../collection/Collection';
+import { ArticleType, PageType } from '../../common/headlessService/types';
+import { Card } from '../card/Card';
+import { getCollections, getCollectionCards } from './utils';
+import { ModuleItemTypeEnum } from '../../common/headlessService/constants';
 
 export type PageContentProps = {
   page?: PageType | ArticleType;
@@ -22,7 +22,7 @@ export type PageContentProps = {
   collections?:
     | React.ReactElement<typeof Collection>[]
     | ((
-        page: PageType | ArticleType
+        page: PageType | ArticleType,
       ) => React.ReactElement<typeof Collection>[]);
   heroContainer?: JSX.Element;
   backUrl?: string;
@@ -41,7 +41,7 @@ export const defaultContent = (page: PageType | ArticleType) => (
 
 export const defaultCollections = (
   page: PageType | ArticleType,
-  getRoutedInternalHref: (link: string, type: ModuleItemTypeEnum) => string
+  getRoutedInternalHref: (link: string, type: ModuleItemTypeEnum) => string,
 ) =>
   getCollections(page?.modules)?.map((collection) => {
     const collectionType = null;
@@ -92,12 +92,12 @@ export function PageContent(props: PageContentProps) {
         imageLabel={page?.featuredImage?.node?.altText}
         backUrl={backUrl}
         content={
-          typeof content === "function"
+          typeof content === 'function'
             ? content(page)
             : content ?? defaultContent(page)
         }
         collections={
-          typeof collections === "function"
+          typeof collections === 'function'
             ? collections(page)
             : collections ?? defaultCollections(page, getRoutedInternalHref)
         }

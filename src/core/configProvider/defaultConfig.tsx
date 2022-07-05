@@ -1,30 +1,30 @@
 /* eslint-disable import/prefer-default-export */
-import React from "react";
+import React from 'react';
 
-import { ModuleItemTypeEnum } from "../../common/headlessService/constants";
-import { LanguageCodeEnum } from "../../common/headlessService/types";
-import getIsValidHttpUrl from "../../common/utils/getIsValidHttpUrl";
-import { Link, LinkProps } from "../link/Link";
-import { Config } from "./configContext";
+import { ModuleItemTypeEnum } from '../../common/headlessService/constants';
+import { LanguageCodeEnum } from '../../common/headlessService/types';
+import getIsValidHttpUrl from '../../common/utils/getIsValidHttpUrl';
+import { Link, LinkProps } from '../link/Link';
+import { Config } from './configContext';
 
 export const defaultConfig: Config = {
-  siteName: "Test site",
+  siteName: 'Test site',
   // get internal URL origins from environment variables in the client app
   internalHrefOrigins: [],
   currentLanguageCode: LanguageCodeEnum.Fi,
   copy: {
-    breadcrumbNavigationLabel: "Breadcrumb navigation",
-    breadcrumbListLabel: "breadcrumbs",
-    menuToggleAriaLabel: "toggle menu",
-    skipToContentLabel: "skip to content",
-    openInExternalDomainAriaLabel: "Opens a different website.",
-    openInNewTabAriaLabel: "Opens in a new tab.",
-    closeButtonLabelText: "close",
+    breadcrumbNavigationLabel: 'Breadcrumb navigation',
+    breadcrumbListLabel: 'breadcrumbs',
+    menuToggleAriaLabel: 'toggle menu',
+    skipToContentLabel: 'skip to content',
+    openInExternalDomainAriaLabel: 'Opens a different website.',
+    openInNewTabAriaLabel: 'Opens in a new tab.',
+    closeButtonLabelText: 'close',
     archiveSearch: {
-      searchTextPlaceholder: "Search text",
-      searchButtonLabelText: "Search",
-      loadMoreButtonLabelText: "Load more",
-      noResultsText: "No results",
+      searchTextPlaceholder: 'Search text',
+      searchButtonLabelText: 'Search',
+      loadMoreButtonLabelText: 'Load more',
+      noResultsText: 'No results',
     },
   },
   components: {
@@ -42,7 +42,7 @@ export const defaultConfig: Config = {
     getIsHrefExternal: (href: string) => {
       if (!window) {
         throw Error(
-          "The default getIsLinkExternal implementation does not support server side rendering. Provide your custom implementation."
+          'The default getIsLinkExternal implementation does not support server side rendering. Provide your custom implementation.',
         );
       }
 
@@ -56,6 +56,6 @@ export const defaultConfig: Config = {
     },
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     getRoutedInternalHref: (link: string, _type: ModuleItemTypeEnum): string =>
-      link ?? "#",
+      link ?? '#',
   },
 };

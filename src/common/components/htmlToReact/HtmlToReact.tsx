@@ -1,13 +1,13 @@
-import React, { useMemo } from "react";
-import DOMPurify from "isomorphic-dompurify";
+import React, { useMemo } from 'react';
+import DOMPurify from 'isomorphic-dompurify';
 import parse, {
   DOMNode,
   domToReact,
   HTMLReactParserOptions,
   attributesToProps,
-} from "html-react-parser";
+} from 'html-react-parser';
 
-import Text from "../text/Text";
+import Text from '../text/Text';
 
 type Components = {
   p?: React.ComponentType<{ children: React.ReactNode }>;
@@ -40,10 +40,10 @@ function replaceDomNodeWithReactComponent(
   {
     p: P = DefaultP,
     h2: H2 = DefaultH2,
-    a: A = "a",
-    table: Table = "table",
-    img: IMG = "img",
-  }: Components = {}
+    a: A = 'a',
+    table: Table = 'table',
+    img: IMG = 'img',
+  }: Components = {},
 ) {
   // html-react-parser advices to do an instanceof check
   // domNode instanceof Element
@@ -51,40 +51,40 @@ function replaceDomNodeWithReactComponent(
   // as a dependency, different contexts are likely.
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof#instanceof_and_multiple_context_e.g._frames_or_windows
 
-  if ("attribs" in domNode) {
+  if ('attribs' in domNode) {
     switch (domNode.name) {
-      case "p":
+      case 'p':
         return (
           <P {...attributesToProps(domNode.attribs)}>
             {domToReact(domNode.children, options)}
           </P>
         );
 
-      case "h2":
+      case 'h2':
         return (
           <H2 {...attributesToProps(domNode.attribs)}>
             {domToReact(domNode.children)}
           </H2>
         );
 
-      case "a":
+      case 'a':
         return (
           <A {...attributesToProps(domNode.attribs)}>
             {domToReact(domNode.children)}
           </A>
         );
 
-      case "table":
+      case 'table':
         return (
           <Table
             {...attributesToProps(domNode.attribs)}
-            style={{ width: "100%" }}
+            style={{ width: '100%' }}
           >
             {domToReact(domNode.children)}
           </Table>
         );
 
-      case "img":
+      case 'img':
         return <IMG {...attributesToProps(domNode.attribs)} width="100%" />;
 
       default:
@@ -103,82 +103,82 @@ export default function HtmlToReact({
     () =>
       DOMPurify.sanitize(dirty, {
         USE_PROFILES: { html: true },
-        ADD_ATTR: ["target"],
+        ADD_ATTR: ['target'],
         ALLOWED_TAGS: [
           // Content sectioning
-          "h1",
-          "h2",
-          "h3",
-          "h4",
-          "h5",
-          "h6",
+          'h1',
+          'h2',
+          'h3',
+          'h4',
+          'h5',
+          'h6',
 
           // Text content
-          "blockquote",
-          "dd",
-          "dl",
-          "dt",
-          "figcaption",
-          "figure",
-          "hr",
-          "li",
-          "ol",
-          "p",
-          "pre",
-          "ul",
+          'blockquote',
+          'dd',
+          'dl',
+          'dt',
+          'figcaption',
+          'figure',
+          'hr',
+          'li',
+          'ol',
+          'p',
+          'pre',
+          'ul',
 
           // Inline text semantics
-          "a",
-          "abbr",
-          "b",
-          "bdi",
-          "bdo",
-          "br",
-          "cite",
-          "code",
-          "data",
-          "dfn",
-          "em",
-          "i",
-          "kdb",
-          "mark",
-          "q",
-          "rp",
-          "rt",
-          "ruby",
-          "s",
-          "samp",
-          "small",
-          "span",
-          "strong",
-          "sub",
-          "sup",
-          "time",
-          "u",
-          "var",
-          "wbr",
+          'a',
+          'abbr',
+          'b',
+          'bdi',
+          'bdo',
+          'br',
+          'cite',
+          'code',
+          'data',
+          'dfn',
+          'em',
+          'i',
+          'kdb',
+          'mark',
+          'q',
+          'rp',
+          'rt',
+          'ruby',
+          's',
+          'samp',
+          'small',
+          'span',
+          'strong',
+          'sub',
+          'sup',
+          'time',
+          'u',
+          'var',
+          'wbr',
 
           // Image and multimedia
-          "area",
-          "audio",
-          "img",
-          "map",
-          "track",
-          "video",
+          'area',
+          'audio',
+          'img',
+          'map',
+          'track',
+          'video',
 
           // SVG and MathML
-          "svg",
-          "math",
+          'svg',
+          'math',
         ],
       }),
-    [dirty]
+    [dirty],
   );
   const htmlReactParserOptions = {
     replace: (domNode) =>
       replaceDomNodeWithReactComponent(
         domNode,
         htmlReactParserOptions,
-        components
+        components,
       ),
   };
 

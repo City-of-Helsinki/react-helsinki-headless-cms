@@ -1,8 +1,8 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import classNames from "classnames";
-import React from "react";
+import classNames from 'classnames';
+import React from 'react';
 
-import styles from "./page.module.scss";
+import styles from './page.module.scss';
 
 export type PageProps = {
   navigation: React.ReactNode;

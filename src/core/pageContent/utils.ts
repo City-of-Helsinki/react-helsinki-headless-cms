@@ -1,11 +1,11 @@
-import { PageModule } from "../../common/headlessService/types";
+import { PageModule } from '../../common/headlessService/types';
 import {
   getElementTextContent,
   isLayoutArticle,
   isLayoutPage,
-} from "../../common/headlessService/utils";
-import { CardProps } from "../card/Card";
-import { CollectionType } from "../collection/types";
+} from '../../common/headlessService/utils';
+import { CardProps } from '../card/Card';
+import { CollectionType } from '../collection/types';
 
 export function getCollections(pageModules: PageModule[]): CollectionType[] {
   return (
@@ -33,7 +33,7 @@ export function getCollections(pageModules: PageModule[]): CollectionType[] {
 
 export function getCollectionCards(
   collection: CollectionType,
-  defaultImageUrl?: string
+  defaultImageUrl?: string,
 ): CardProps[] {
   const cards = collection.items.map((item) => ({
     id: item.id,
@@ -42,13 +42,13 @@ export function getCollectionCards(
     imageUrl: item.featuredImage?.node?.mediaItemUrl || defaultImageUrl,
     ariaLabel: item.title,
     imageLabel: item.featuredImage?.node?.title,
-    text: getElementTextContent((item.lead || item.content) ?? ""),
+    text: getElementTextContent((item.lead || item.content) ?? ''),
     hasLink: true,
     withBorder: false,
     withShadow: true,
     clampText: true,
-    direction: "responsive" as CardProps["direction"],
-    target: "_self" as CardProps["target"],
+    direction: 'responsive' as CardProps['direction'],
+    target: '_self' as CardProps['target'],
   }));
   return cards;
 }

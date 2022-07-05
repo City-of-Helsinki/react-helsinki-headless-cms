@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import classNames from "classnames";
+import classNames from 'classnames';
 
-import styles from "./collection.module.scss";
-import { Carousel, CarouselProps } from "../carousel/Carousel";
-import { Card } from "../card/Card";
-import Grid, { GridProps } from "../../common/components/grid/Grid";
+import styles from './collection.module.scss';
+import { Carousel, CarouselProps } from '../carousel/Carousel';
+import { Card } from '../card/Card';
+import Grid, { GridProps } from '../../common/components/grid/Grid';
 
 export type CollectionProps = {
   title?: string;
@@ -14,7 +14,7 @@ export type CollectionProps = {
   collectionContainerProps?:
     | Partial<CarouselProps<typeof Card>>
     | Partial<GridProps>;
-  type: "carousel" | "grid";
+  type: 'carousel' | 'grid';
 };
 
 export function CollectionGrid({
@@ -52,9 +52,9 @@ export function Collection({
   cards,
   className,
   collectionContainerProps,
-  type = "grid",
+  type = 'grid',
 }: CollectionProps) {
-  const componentForType: Record<CollectionProps["type"], JSX.Element> = {
+  const componentForType: Record<CollectionProps['type'], JSX.Element> = {
     carousel: (
       <CollectionCarousel cards={cards} {...collectionContainerProps} />
     ),

@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState } from 'react';
 
 type Options<T> = {
   serializer?: (value: T) => string;
@@ -7,7 +7,7 @@ type Options<T> = {
 
 export default function makeLocaleStorageValue<T>(
   key: string,
-  options?: Partial<Options<T>>
+  options?: Partial<Options<T>>,
 ) {
   const {
     serializer: serialize = JSON.stringify,
@@ -20,14 +20,14 @@ export default function makeLocaleStorageValue<T>(
         return deserialize(localStorage.getItem(key));
       } catch (e) {
         // eslint-disable-next-line no-console
-        console.error("Failed to parse value in localStorage");
+        console.error('Failed to parse value in localStorage');
       }
 
       return null;
     };
 
     const [stateValue, setStateValue] = useState<T | null>(() =>
-      readValueInLocalStorage()
+      readValueInLocalStorage(),
     );
 
     const storeValue = useCallback((value?: T) => {
@@ -41,7 +41,7 @@ export default function makeLocaleStorageValue<T>(
         }
       } catch (e) {
         // eslint-disable-next-line no-console
-        console.error("Failed to save value into localStorage");
+        console.error('Failed to save value into localStorage');
       }
     }, []);
 

@@ -1,16 +1,16 @@
-import React, { ReactNode, HTMLAttributes } from "react";
+import React, { ReactNode, HTMLAttributes } from 'react';
 
-import styles from "./text.module.scss";
+import styles from './text.module.scss';
 
 type TextVariant =
-  | "h1"
-  | "h2"
-  | "h3"
-  | "h4"
-  | "h5"
-  | "body"
-  | "body-l"
-  | "body-xl";
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'h5'
+  | 'body'
+  | 'body-l'
+  | 'body-xl';
 
 type TextVariantProps = {
   as?: string | React.ComponentType<HTMLAttributes<HTMLElement>>;
@@ -22,22 +22,22 @@ type TextVariantProps = {
 
 function getElement(variant: TextVariant) {
   switch (variant) {
-    case "h1":
-    case "h2":
-    case "h3":
-    case "h4":
-    case "h5":
+    case 'h1':
+    case 'h2':
+    case 'h3':
+    case 'h4':
+    case 'h5':
       return variant;
-    case "body":
-    case "body-l":
+    case 'body':
+    case 'body-l':
     default:
-      return "p";
+      return 'p';
   }
 }
 
 function Text({
   as,
-  variant = "body",
+  variant = 'body',
   children,
   className,
   ...rest
@@ -47,10 +47,10 @@ function Text({
     {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore: For some reason TS considers text to be undefined
-      className: [styles.text, styles[variant], className].join(" "),
+      className: [styles.text, styles[variant], className].join(' '),
       ...rest,
     },
-    children
+    children,
   );
 }
 

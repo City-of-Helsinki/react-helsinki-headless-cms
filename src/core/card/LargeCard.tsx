@@ -1,18 +1,18 @@
-import { IconArrowRight } from "hds-react";
-import React from "react";
+import { IconArrowRight } from 'hds-react';
+import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import classNames from "classnames";
+import classNames from 'classnames';
 
-import styles from "./largeCard.module.scss";
-import LinkWrapper from "../../common/components/linkWrapper/LinkWrapper";
-import Tag from "../../common/components/tag/Tag";
+import styles from './largeCard.module.scss';
+import LinkWrapper from '../../common/components/linkWrapper/LinkWrapper';
+import Tag from '../../common/components/tag/Tag';
 
 export type LargeCardProps = {
   id?: string;
   ariaLabel?: string;
   imageLabel?: string;
   imageUrl?: string;
-  imagePosition?: "right" | "left";
+  imagePosition?: 'right' | 'left';
   subTitle?: string;
   text?: string;
   title?: string;
@@ -21,7 +21,7 @@ export type LargeCardProps = {
   customContent?: React.ReactNode;
   hasLink?: boolean;
   clampText?: boolean;
-  target?: "_blank" | "_self";
+  target?: '_blank' | '_self';
 };
 
 export function LargeCard({
@@ -45,7 +45,7 @@ export function LargeCard({
       id={id}
       href={url}
       className={classNames(styles.cardLink, className)}
-      ariaLabel={ariaLabel || ""}
+      ariaLabel={ariaLabel || ''}
       target={target}
     >
       <div

@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import classNames from "classnames";
+import classNames from 'classnames';
 
-import { useConfig } from "../../configProvider/useConfig";
-import styles from "./sidebarContentCard.module.scss";
+import { useConfig } from '../../configProvider/useConfig';
+import styles from './sidebarContentCard.module.scss';
 
 type SidebarContentCardProps = {
   title: string;
@@ -30,7 +30,7 @@ export default function SidebarContentCard({
     >
       {imageUrl && (
         <div className={styles.image}>
-          <Img src={imageUrl} alt={imageAlt ?? ""} />
+          <Img src={imageUrl} alt={imageAlt ?? ''} />
         </div>
       )}
       <h2 className={styles.title}>

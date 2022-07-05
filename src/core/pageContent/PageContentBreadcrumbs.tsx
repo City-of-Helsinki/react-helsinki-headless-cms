@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import { useConfig } from "../configProvider/useConfig";
-import { Breadcrumb } from "./types";
-import styles from "./pageContentBreadcrumbs.module.scss";
+import { useConfig } from '../configProvider/useConfig';
+import { Breadcrumb } from './types';
+import styles from './pageContentBreadcrumbs.module.scss';
 
 type PageContentBreadcrumbsProps = {
   breadcrumbs: Breadcrumb[];
