@@ -25,6 +25,8 @@ export type {
   LayoutLinkListFragment as LayoutLinkList,
   LayoutArticlesFragment as LayoutArticle,
   LayoutPagesFragment as LayoutPage,
+  LayoutArticlesCarouselFragment as LayoutArticleCarousel,
+  LayoutPagesCarouselFragment as LayoutPageCarousel,
   Notification as NotificationType,
 } from './__generated__';
 

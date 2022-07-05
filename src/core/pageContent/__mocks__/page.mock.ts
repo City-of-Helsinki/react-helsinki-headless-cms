@@ -1,6 +1,13 @@
 import { PageQuery } from '../../../common/headlessService/page';
+import {
+  LayoutArticle,
+  LayoutArticleCarousel,
+  LayoutLinkList,
+  LayoutPage,
+  LayoutPageCarousel,
+} from '../../../common/headlessService/types';
 
-export const sidebarLinkList = {
+export const sidebarLinkList: LayoutLinkList = {
   anchor: '#interesting-links',
   title: 'Interesting links',
   description: 'Short description about the purpose of the links',
@@ -15,8 +22,9 @@ export const sidebarLinkList = {
       url: '/',
     },
   ],
+  __typename: 'LayoutLinkList',
 };
-export const sidebarArticleList = {
+export const sidebarArticleList: LayoutArticle = {
   title: 'Cherry Picked Articles',
   articles: [
     {
@@ -37,8 +45,9 @@ export const sidebarArticleList = {
       link: '/alakoulu/alakoulu-artikkeli',
     },
   ],
+  __typename: 'LayoutArticles',
 };
-export const articleList = {
+export const articleList: LayoutArticle = {
   title: 'Cherry Picked Articles',
   articles: [
     ...sidebarArticleList.articles,
@@ -58,8 +67,9 @@ export const articleList = {
       link: '/alakoulu/alakoulu-artikkeli',
     },
   ],
+  __typename: 'LayoutArticles',
 };
-export const sidebarPageList = {
+export const sidebarPageList: LayoutPage = {
   title: 'Collected pages',
   pages: [
     {
@@ -68,8 +78,9 @@ export const sidebarPageList = {
       link: '/oppimateriaalit-2',
     },
   ],
+  __typename: 'LayoutPages',
 };
-export const pageList = {
+export const pageList: LayoutPage = {
   title: 'Collected pages',
   pages: [
     ...sidebarPageList.pages,
@@ -83,11 +94,36 @@ export const pageList = {
       title: 'Mikä kultus',
       link: '/mika-kultus',
     },
+    {
+      id: 'fgjhfhj',
+      title: 'Oppimateriaali',
+      link: '/oppimateriaali',
+    },
+    {
+      id: 'fghjfgj',
+      title: 'Ohjeita',
+      link: '/ohjeita',
+    },
   ],
+  __typename: 'LayoutPages',
 };
+
+export const articleCarousel: LayoutArticleCarousel = {
+  title: 'Article carousel',
+  articles: articleList.articles,
+  __typename: 'LayoutArticlesCarousel',
+};
+
+export const pageCarousel: LayoutPageCarousel = {
+  title: 'Page carousel',
+  description: 'Page carousel description',
+  pages: pageList.pages,
+  __typename: 'LayoutPagesCarousel',
+};
+
 const sidebar = [sidebarLinkList, sidebarArticleList, sidebarPageList];
 
-const modules = [articleList, pageList];
+const modules = [articleList, articleCarousel, pageList, pageCarousel];
 
 const mockPage: PageQuery['page'] = {
   id: 'abc',

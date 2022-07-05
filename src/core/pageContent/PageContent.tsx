@@ -10,7 +10,11 @@ import { PageMeta } from './meta/PageMeta';
 import { Collection } from '../collection/Collection';
 import { ArticleType, PageType } from '../../common/headlessService/types';
 import { Card } from '../card/Card';
-import { getCollections, getCollectionCards } from './utils';
+import {
+  getCollections,
+  getCollectionCards,
+  getCollectionUIType,
+} from './utils';
 import { ModuleItemTypeEnum } from '../../common/headlessService/constants';
 
 export type PageContentProps = {
@@ -47,17 +51,17 @@ export const defaultCollections = (
   getRoutedInternalHref: (link: string, type: ModuleItemTypeEnum) => string,
 ) =>
   getCollections(page?.modules)?.map((collection) => {
-    const collectionType = null;
     const cards = getCollectionCards(collection).map((cardProps) => {
-      const url = getRoutedInternalHref(cardProps.url, collectionType);
+      const url = getRoutedInternalHref(cardProps.url, null);
       return <Card key={cardProps.id} {...cardProps} url={url} />;
     });
     return (
       <Collection
         key={`collection-${Math.random()}`}
         title={collection.title}
+        description={collection.description}
         cards={cards}
-        type="grid"
+        type={getCollectionUIType(collection)}
         collectionContainerProps={{ withDots: false }}
       />
     );

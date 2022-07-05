@@ -9,6 +9,7 @@ import Grid, { GridProps } from '../../common/components/grid/Grid';
 
 export type CollectionProps = {
   title?: string;
+  description?: string;
   cards: React.ReactElement<typeof Card>[];
   className?: string;
   collectionContainerProps?:
@@ -49,6 +50,7 @@ export function CollectionCarousel({
 
 export function Collection({
   title,
+  description,
   cards,
   className,
   collectionContainerProps,
@@ -67,6 +69,7 @@ export function Collection({
     >
       <div className={styles.collection}>
         {title && <h1 className={styles.heading}>{title}</h1>}
+        {description && <p className={styles.description}>{description}</p>}
         {componentForType[type]}
       </div>
     </div>

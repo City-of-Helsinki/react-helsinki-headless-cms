@@ -16,7 +16,11 @@ import { Notification } from '../notification/Notification';
 import notificationMock from '../notification/__mocks__/notification.mock';
 import { Page } from './Page';
 import { Collection } from '../collection/Collection';
-import { getCollectionCards, getCollections } from '../pageContent/utils';
+import {
+  getCollectionCards,
+  getCollections,
+  getCollectionUIType,
+} from '../pageContent/utils';
 import { Card } from '../card/Card';
 
 export default {
@@ -105,7 +109,7 @@ PageDefault.args = {
           key={`collection-${Math.random()}`}
           title={collection.title}
           collectionContainerProps={{ withDots: false }}
-          type="grid"
+          type={getCollectionUIType(collection)}
           cards={getCollectionCards(collection).map((cardProps) => (
             <Card
               key={cardProps.id}

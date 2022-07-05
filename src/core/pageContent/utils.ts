@@ -2,27 +2,35 @@ import { PageModule } from '../../common/headlessService/types';
 import {
   getElementTextContent,
   isLayoutArticle,
+  isLayoutArticleCarousel,
   isLayoutPage,
+  isLayoutPageCarousel,
 } from '../../common/headlessService/utils';
 import { CardProps } from '../card/Card';
+import { CollectionProps } from '../collection/Collection';
 import { CollectionType } from '../collection/types';
 
 export function getCollections(pageModules: PageModule[]): CollectionType[] {
   return (
     pageModules
       ?.map((module, index) => {
-        if (isLayoutArticle(module)) {
+        if (isLayoutArticle(module) || isLayoutArticleCarousel(module)) {
           return {
             id: index.toString(),
             title: module.title,
             items: module.articles,
+            // eslint-disable-next-line no-underscore-dangle
+            __typename: module.__typename,
           };
         }
-        if (isLayoutPage(module)) {
+        if (isLayoutPage(module) || isLayoutPageCarousel(module)) {
           return {
             id: index.toString(),
             title: module.title,
+            description: 'description' in module && module.description,
             items: module.pages,
+            // eslint-disable-next-line no-underscore-dangle
+            __typename: module.__typename,
           };
         }
         return null;
@@ -51,4 +59,11 @@ export function getCollectionCards(
     target: '_self' as CardProps['target'],
   }));
   return cards;
+}
+
+export function getCollectionUIType(
+  collection: CollectionType,
+): CollectionProps['type'] {
+  // eslint-disable-next-line no-underscore-dangle
+  return collection.__typename.includes('Carousel') ? 'carousel' : 'grid';
 }

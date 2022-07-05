@@ -7,6 +7,7 @@ fragment LayoutLinkList on LayoutLinkList {
     title
     url
   }
+  __typename
 }
 
 fragment LayoutArticles on LayoutArticles {
@@ -26,10 +27,33 @@ fragment LayoutArticles on LayoutArticles {
       }
     }
   }
+  __typename
+}
+
+fragment LayoutArticlesCarousel on LayoutArticlesCarousel {
+  title
+  articles {
+    id
+    uri
+    slug
+    link
+    date
+    title
+    lead
+    featuredImage {
+      node {
+        altText
+        mediaItemUrl
+      }
+    }
+  }
+  showMore
+  __typename
 }
 
 fragment LayoutPages on LayoutPages {
   title
+  description
   pages {
     id
     uri
@@ -45,4 +69,26 @@ fragment LayoutPages on LayoutPages {
       }
     }
   }
+  __typename
+}
+
+fragment LayoutPagesCarousel on LayoutPagesCarousel {
+  title
+  description
+  pages {
+    id
+    uri
+    slug
+    link
+    date
+    title
+    lead
+    featuredImage {
+      node {
+        altText
+        mediaItemUrl
+      }
+    }
+  }
+  __typename
 }

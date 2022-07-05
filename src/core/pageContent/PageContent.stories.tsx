@@ -12,7 +12,11 @@ import pageWithDiverseContent from './__mocks__/pageWithDiverseContent.mock';
 import { PageContent } from './PageContent';
 import { Collection } from '../collection/Collection';
 import { Card } from '../card/Card';
-import { getCollectionCards, getCollections } from './utils';
+import {
+  getCollectionCards,
+  getCollections,
+  getCollectionUIType,
+} from './utils';
 import { PageMainContent } from './PageMainContent';
 import { ArticleType, PageType } from '../../common/headlessService/types';
 
@@ -59,6 +63,7 @@ PageContentWithDefinedCollections.args = {
     <Collection
       key={`collection-${Math.random()}`}
       title={collection.title}
+      description={collection.description}
       cards={getCollectionCards(collection).map((cardProps) => (
         <Card
           key={cardProps.id}
@@ -68,7 +73,7 @@ PageContentWithDefinedCollections.args = {
           }
         />
       ))}
-      type="grid"
+      type={getCollectionUIType(collection)}
       collectionContainerProps={{ withDots: false }}
     />
   )),
