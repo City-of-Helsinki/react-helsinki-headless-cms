@@ -6,5 +6,7 @@ export type CollectionItemType = ArticleType | PageType;
 export type CollectionType = {
   id?: string;
   title?: string;
+  description?: string;
   items: CollectionItemType[];
+  __typename: string;
 };

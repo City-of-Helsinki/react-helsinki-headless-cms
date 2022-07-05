@@ -38,8 +38,14 @@ fragment Page on Page {
     ... on LayoutArticles {
       ...LayoutArticles
     }
+    ... on LayoutArticlesCarousel {
+      ...LayoutArticlesCarousel
+    }
     ... on LayoutPages {
       ...LayoutPages
+    }
+    ... on LayoutPagesCarousel {
+      ...LayoutPagesCarousel
     }
   }
 }

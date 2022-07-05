@@ -10403,7 +10403,7 @@ export type PostFragment = {
     | { __typename?: 'EventSelectedCarousel' }
     | { __typename?: 'LayoutArticleHighlights' }
     | {
-        __typename?: 'LayoutArticles';
+        __typename: 'LayoutArticles';
         title?: string | null;
         articles?: Array<{
           __typename?: 'Post';
@@ -10424,12 +10424,35 @@ export type PostFragment = {
           } | null;
         } | null> | null;
       }
-    | { __typename?: 'LayoutArticlesCarousel' }
+    | {
+        __typename: 'LayoutArticlesCarousel';
+        title?: string | null;
+        showMore?: Array<string | null> | null;
+        articles?: Array<{
+          __typename?: 'Post';
+          id: string;
+          uri?: string | null;
+          slug?: string | null;
+          link?: string | null;
+          date?: string | null;
+          title?: string | null;
+          lead?: string | null;
+          featuredImage?: {
+            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+            node?: {
+              __typename?: 'MediaItem';
+              altText?: string | null;
+              mediaItemUrl?: string | null;
+            } | null;
+          } | null;
+        } | null> | null;
+      }
     | { __typename?: 'LayoutCollection' }
     | { __typename?: 'LayoutContact' }
     | {
-        __typename?: 'LayoutPages';
+        __typename: 'LayoutPages';
         title?: string | null;
+        description?: string | null;
         pages?: Array<{
           __typename?: 'Page';
           id: string;
@@ -10449,7 +10472,29 @@ export type PostFragment = {
           } | null;
         } | null> | null;
       }
-    | { __typename?: 'LayoutPagesCarousel' }
+    | {
+        __typename: 'LayoutPagesCarousel';
+        title?: string | null;
+        description?: string | null;
+        pages?: Array<{
+          __typename?: 'Page';
+          id: string;
+          uri?: string | null;
+          slug?: string | null;
+          link?: string | null;
+          date?: string | null;
+          title?: string | null;
+          lead?: string | null;
+          featuredImage?: {
+            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+            node?: {
+              __typename?: 'MediaItem';
+              altText?: string | null;
+              mediaItemUrl?: string | null;
+            } | null;
+          } | null;
+        } | null> | null;
+      }
     | null
   > | null;
 };
@@ -10550,7 +10595,7 @@ export type ArticleQuery = {
       | { __typename?: 'EventSelectedCarousel' }
       | { __typename?: 'LayoutArticleHighlights' }
       | {
-          __typename?: 'LayoutArticles';
+          __typename: 'LayoutArticles';
           title?: string | null;
           articles?: Array<{
             __typename?: 'Post';
@@ -10571,12 +10616,35 @@ export type ArticleQuery = {
             } | null;
           } | null> | null;
         }
-      | { __typename?: 'LayoutArticlesCarousel' }
+      | {
+          __typename: 'LayoutArticlesCarousel';
+          title?: string | null;
+          showMore?: Array<string | null> | null;
+          articles?: Array<{
+            __typename?: 'Post';
+            id: string;
+            uri?: string | null;
+            slug?: string | null;
+            link?: string | null;
+            date?: string | null;
+            title?: string | null;
+            lead?: string | null;
+            featuredImage?: {
+              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+              node?: {
+                __typename?: 'MediaItem';
+                altText?: string | null;
+                mediaItemUrl?: string | null;
+              } | null;
+            } | null;
+          } | null> | null;
+        }
       | { __typename?: 'LayoutCollection' }
       | { __typename?: 'LayoutContact' }
       | {
-          __typename?: 'LayoutPages';
+          __typename: 'LayoutPages';
           title?: string | null;
+          description?: string | null;
           pages?: Array<{
             __typename?: 'Page';
             id: string;
@@ -10596,7 +10664,29 @@ export type ArticleQuery = {
             } | null;
           } | null> | null;
         }
-      | { __typename?: 'LayoutPagesCarousel' }
+      | {
+          __typename: 'LayoutPagesCarousel';
+          title?: string | null;
+          description?: string | null;
+          pages?: Array<{
+            __typename?: 'Page';
+            id: string;
+            uri?: string | null;
+            slug?: string | null;
+            link?: string | null;
+            date?: string | null;
+            title?: string | null;
+            lead?: string | null;
+            featuredImage?: {
+              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+              node?: {
+                __typename?: 'MediaItem';
+                altText?: string | null;
+                mediaItemUrl?: string | null;
+              } | null;
+            } | null;
+          } | null> | null;
+        }
       | null
     > | null;
   } | null;
@@ -10720,7 +10810,7 @@ export type MenuQuery = {
 };
 
 export type LayoutLinkListFragment = {
-  __typename?: 'LayoutLinkList';
+  __typename: 'LayoutLinkList';
   anchor?: string | null;
   title?: string | null;
   description?: string | null;
@@ -10733,7 +10823,7 @@ export type LayoutLinkListFragment = {
 };
 
 export type LayoutArticlesFragment = {
-  __typename?: 'LayoutArticles';
+  __typename: 'LayoutArticles';
   title?: string | null;
   articles?: Array<{
     __typename?: 'Post';
@@ -10755,9 +10845,58 @@ export type LayoutArticlesFragment = {
   } | null> | null;
 };
 
-export type LayoutPagesFragment = {
-  __typename?: 'LayoutPages';
+export type LayoutArticlesCarouselFragment = {
+  __typename: 'LayoutArticlesCarousel';
   title?: string | null;
+  showMore?: Array<string | null> | null;
+  articles?: Array<{
+    __typename?: 'Post';
+    id: string;
+    uri?: string | null;
+    slug?: string | null;
+    link?: string | null;
+    date?: string | null;
+    title?: string | null;
+    lead?: string | null;
+    featuredImage?: {
+      __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+      node?: {
+        __typename?: 'MediaItem';
+        altText?: string | null;
+        mediaItemUrl?: string | null;
+      } | null;
+    } | null;
+  } | null> | null;
+};
+
+export type LayoutPagesFragment = {
+  __typename: 'LayoutPages';
+  title?: string | null;
+  description?: string | null;
+  pages?: Array<{
+    __typename?: 'Page';
+    id: string;
+    uri?: string | null;
+    slug?: string | null;
+    link?: string | null;
+    date?: string | null;
+    title?: string | null;
+    lead?: string | null;
+    featuredImage?: {
+      __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+      node?: {
+        __typename?: 'MediaItem';
+        altText?: string | null;
+        mediaItemUrl?: string | null;
+      } | null;
+    } | null;
+  } | null> | null;
+};
+
+export type LayoutPagesCarouselFragment = {
+  __typename: 'LayoutPagesCarousel';
+  title?: string | null;
+  description?: string | null;
   pages?: Array<{
     __typename?: 'Page';
     id: string;
@@ -10842,7 +10981,7 @@ export type PageFragment = {
   } | null;
   sidebar?: Array<
     | {
-        __typename?: 'LayoutArticles';
+        __typename: 'LayoutArticles';
         title?: string | null;
         articles?: Array<{
           __typename?: 'Post';
@@ -10864,7 +11003,7 @@ export type PageFragment = {
         } | null> | null;
       }
     | {
-        __typename?: 'LayoutLinkList';
+        __typename: 'LayoutLinkList';
         anchor?: string | null;
         title?: string | null;
         description?: string | null;
@@ -10876,8 +11015,9 @@ export type PageFragment = {
         } | null> | null;
       }
     | {
-        __typename?: 'LayoutPages';
+        __typename: 'LayoutPages';
         title?: string | null;
+        description?: string | null;
         pages?: Array<{
           __typename?: 'Page';
           id: string;
@@ -10906,7 +11046,7 @@ export type PageFragment = {
     | { __typename?: 'EventSelectedCarousel' }
     | { __typename?: 'LayoutArticleHighlights' }
     | {
-        __typename?: 'LayoutArticles';
+        __typename: 'LayoutArticles';
         title?: string | null;
         articles?: Array<{
           __typename?: 'Post';
@@ -10927,12 +11067,35 @@ export type PageFragment = {
           } | null;
         } | null> | null;
       }
-    | { __typename?: 'LayoutArticlesCarousel' }
+    | {
+        __typename: 'LayoutArticlesCarousel';
+        title?: string | null;
+        showMore?: Array<string | null> | null;
+        articles?: Array<{
+          __typename?: 'Post';
+          id: string;
+          uri?: string | null;
+          slug?: string | null;
+          link?: string | null;
+          date?: string | null;
+          title?: string | null;
+          lead?: string | null;
+          featuredImage?: {
+            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+            node?: {
+              __typename?: 'MediaItem';
+              altText?: string | null;
+              mediaItemUrl?: string | null;
+            } | null;
+          } | null;
+        } | null> | null;
+      }
     | { __typename?: 'LayoutCollection' }
     | { __typename?: 'LayoutContact' }
     | {
-        __typename?: 'LayoutPages';
+        __typename: 'LayoutPages';
         title?: string | null;
+        description?: string | null;
         pages?: Array<{
           __typename?: 'Page';
           id: string;
@@ -10952,7 +11115,29 @@ export type PageFragment = {
           } | null;
         } | null> | null;
       }
-    | { __typename?: 'LayoutPagesCarousel' }
+    | {
+        __typename: 'LayoutPagesCarousel';
+        title?: string | null;
+        description?: string | null;
+        pages?: Array<{
+          __typename?: 'Page';
+          id: string;
+          uri?: string | null;
+          slug?: string | null;
+          link?: string | null;
+          date?: string | null;
+          title?: string | null;
+          lead?: string | null;
+          featuredImage?: {
+            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+            node?: {
+              __typename?: 'MediaItem';
+              altText?: string | null;
+              mediaItemUrl?: string | null;
+            } | null;
+          } | null;
+        } | null> | null;
+      }
     | null
   > | null;
 };
@@ -11036,7 +11221,7 @@ export type PageQuery = {
     } | null;
     sidebar?: Array<
       | {
-          __typename?: 'LayoutArticles';
+          __typename: 'LayoutArticles';
           title?: string | null;
           articles?: Array<{
             __typename?: 'Post';
@@ -11058,7 +11243,7 @@ export type PageQuery = {
           } | null> | null;
         }
       | {
-          __typename?: 'LayoutLinkList';
+          __typename: 'LayoutLinkList';
           anchor?: string | null;
           title?: string | null;
           description?: string | null;
@@ -11070,8 +11255,9 @@ export type PageQuery = {
           } | null> | null;
         }
       | {
-          __typename?: 'LayoutPages';
+          __typename: 'LayoutPages';
           title?: string | null;
+          description?: string | null;
           pages?: Array<{
             __typename?: 'Page';
             id: string;
@@ -11100,7 +11286,7 @@ export type PageQuery = {
       | { __typename?: 'EventSelectedCarousel' }
       | { __typename?: 'LayoutArticleHighlights' }
       | {
-          __typename?: 'LayoutArticles';
+          __typename: 'LayoutArticles';
           title?: string | null;
           articles?: Array<{
             __typename?: 'Post';
@@ -11121,12 +11307,35 @@ export type PageQuery = {
             } | null;
           } | null> | null;
         }
-      | { __typename?: 'LayoutArticlesCarousel' }
+      | {
+          __typename: 'LayoutArticlesCarousel';
+          title?: string | null;
+          showMore?: Array<string | null> | null;
+          articles?: Array<{
+            __typename?: 'Post';
+            id: string;
+            uri?: string | null;
+            slug?: string | null;
+            link?: string | null;
+            date?: string | null;
+            title?: string | null;
+            lead?: string | null;
+            featuredImage?: {
+              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+              node?: {
+                __typename?: 'MediaItem';
+                altText?: string | null;
+                mediaItemUrl?: string | null;
+              } | null;
+            } | null;
+          } | null> | null;
+        }
       | { __typename?: 'LayoutCollection' }
       | { __typename?: 'LayoutContact' }
       | {
-          __typename?: 'LayoutPages';
+          __typename: 'LayoutPages';
           title?: string | null;
+          description?: string | null;
           pages?: Array<{
             __typename?: 'Page';
             id: string;
@@ -11146,7 +11355,29 @@ export type PageQuery = {
             } | null;
           } | null> | null;
         }
-      | { __typename?: 'LayoutPagesCarousel' }
+      | {
+          __typename: 'LayoutPagesCarousel';
+          title?: string | null;
+          description?: string | null;
+          pages?: Array<{
+            __typename?: 'Page';
+            id: string;
+            uri?: string | null;
+            slug?: string | null;
+            link?: string | null;
+            date?: string | null;
+            title?: string | null;
+            lead?: string | null;
+            featuredImage?: {
+              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+              node?: {
+                __typename?: 'MediaItem';
+                altText?: string | null;
+                mediaItemUrl?: string | null;
+              } | null;
+            } | null;
+          } | null> | null;
+        }
       | null
     > | null;
   } | null;
@@ -11232,7 +11463,7 @@ export type PageByTemplateQuery = {
     } | null;
     sidebar?: Array<
       | {
-          __typename?: 'LayoutArticles';
+          __typename: 'LayoutArticles';
           title?: string | null;
           articles?: Array<{
             __typename?: 'Post';
@@ -11254,7 +11485,7 @@ export type PageByTemplateQuery = {
           } | null> | null;
         }
       | {
-          __typename?: 'LayoutLinkList';
+          __typename: 'LayoutLinkList';
           anchor?: string | null;
           title?: string | null;
           description?: string | null;
@@ -11266,8 +11497,9 @@ export type PageByTemplateQuery = {
           } | null> | null;
         }
       | {
-          __typename?: 'LayoutPages';
+          __typename: 'LayoutPages';
           title?: string | null;
+          description?: string | null;
           pages?: Array<{
             __typename?: 'Page';
             id: string;
@@ -11296,7 +11528,7 @@ export type PageByTemplateQuery = {
       | { __typename?: 'EventSelectedCarousel' }
       | { __typename?: 'LayoutArticleHighlights' }
       | {
-          __typename?: 'LayoutArticles';
+          __typename: 'LayoutArticles';
           title?: string | null;
           articles?: Array<{
             __typename?: 'Post';
@@ -11317,12 +11549,35 @@ export type PageByTemplateQuery = {
             } | null;
           } | null> | null;
         }
-      | { __typename?: 'LayoutArticlesCarousel' }
+      | {
+          __typename: 'LayoutArticlesCarousel';
+          title?: string | null;
+          showMore?: Array<string | null> | null;
+          articles?: Array<{
+            __typename?: 'Post';
+            id: string;
+            uri?: string | null;
+            slug?: string | null;
+            link?: string | null;
+            date?: string | null;
+            title?: string | null;
+            lead?: string | null;
+            featuredImage?: {
+              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+              node?: {
+                __typename?: 'MediaItem';
+                altText?: string | null;
+                mediaItemUrl?: string | null;
+              } | null;
+            } | null;
+          } | null> | null;
+        }
       | { __typename?: 'LayoutCollection' }
       | { __typename?: 'LayoutContact' }
       | {
-          __typename?: 'LayoutPages';
+          __typename: 'LayoutPages';
           title?: string | null;
+          description?: string | null;
           pages?: Array<{
             __typename?: 'Page';
             id: string;
@@ -11342,7 +11597,29 @@ export type PageByTemplateQuery = {
             } | null;
           } | null> | null;
         }
-      | { __typename?: 'LayoutPagesCarousel' }
+      | {
+          __typename: 'LayoutPagesCarousel';
+          title?: string | null;
+          description?: string | null;
+          pages?: Array<{
+            __typename?: 'Page';
+            id: string;
+            uri?: string | null;
+            slug?: string | null;
+            link?: string | null;
+            date?: string | null;
+            title?: string | null;
+            lead?: string | null;
+            featuredImage?: {
+              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+              node?: {
+                __typename?: 'MediaItem';
+                altText?: string | null;
+                mediaItemUrl?: string | null;
+              } | null;
+            } | null;
+          } | null> | null;
+        }
       | null
     > | null;
   } | null;
@@ -11431,7 +11708,7 @@ export type PageChildrenSearchQuery = {
                 } | null;
                 sidebar?: Array<
                   | {
-                      __typename?: 'LayoutArticles';
+                      __typename: 'LayoutArticles';
                       title?: string | null;
                       articles?: Array<{
                         __typename?: 'Post';
@@ -11453,7 +11730,7 @@ export type PageChildrenSearchQuery = {
                       } | null> | null;
                     }
                   | {
-                      __typename?: 'LayoutLinkList';
+                      __typename: 'LayoutLinkList';
                       anchor?: string | null;
                       title?: string | null;
                       description?: string | null;
@@ -11465,8 +11742,9 @@ export type PageChildrenSearchQuery = {
                       } | null> | null;
                     }
                   | {
-                      __typename?: 'LayoutPages';
+                      __typename: 'LayoutPages';
                       title?: string | null;
+                      description?: string | null;
                       pages?: Array<{
                         __typename?: 'Page';
                         id: string;
@@ -11495,7 +11773,7 @@ export type PageChildrenSearchQuery = {
                   | { __typename?: 'EventSelectedCarousel' }
                   | { __typename?: 'LayoutArticleHighlights' }
                   | {
-                      __typename?: 'LayoutArticles';
+                      __typename: 'LayoutArticles';
                       title?: string | null;
                       articles?: Array<{
                         __typename?: 'Post';
@@ -11516,12 +11794,35 @@ export type PageChildrenSearchQuery = {
                         } | null;
                       } | null> | null;
                     }
-                  | { __typename?: 'LayoutArticlesCarousel' }
+                  | {
+                      __typename: 'LayoutArticlesCarousel';
+                      title?: string | null;
+                      showMore?: Array<string | null> | null;
+                      articles?: Array<{
+                        __typename?: 'Post';
+                        id: string;
+                        uri?: string | null;
+                        slug?: string | null;
+                        link?: string | null;
+                        date?: string | null;
+                        title?: string | null;
+                        lead?: string | null;
+                        featuredImage?: {
+                          __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                          node?: {
+                            __typename?: 'MediaItem';
+                            altText?: string | null;
+                            mediaItemUrl?: string | null;
+                          } | null;
+                        } | null;
+                      } | null> | null;
+                    }
                   | { __typename?: 'LayoutCollection' }
                   | { __typename?: 'LayoutContact' }
                   | {
-                      __typename?: 'LayoutPages';
+                      __typename: 'LayoutPages';
                       title?: string | null;
+                      description?: string | null;
                       pages?: Array<{
                         __typename?: 'Page';
                         id: string;
@@ -11541,7 +11842,29 @@ export type PageChildrenSearchQuery = {
                         } | null;
                       } | null> | null;
                     }
-                  | { __typename?: 'LayoutPagesCarousel' }
+                  | {
+                      __typename: 'LayoutPagesCarousel';
+                      title?: string | null;
+                      description?: string | null;
+                      pages?: Array<{
+                        __typename?: 'Page';
+                        id: string;
+                        uri?: string | null;
+                        slug?: string | null;
+                        link?: string | null;
+                        date?: string | null;
+                        title?: string | null;
+                        lead?: string | null;
+                        featuredImage?: {
+                          __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                          node?: {
+                            __typename?: 'MediaItem';
+                            altText?: string | null;
+                            mediaItemUrl?: string | null;
+                          } | null;
+                        } | null;
+                      } | null> | null;
+                    }
                   | null
                 > | null;
               } | null> | null;
@@ -11582,7 +11905,7 @@ export type PageChildrenSearchQuery = {
               } | null;
               sidebar?: Array<
                 | {
-                    __typename?: 'LayoutArticles';
+                    __typename: 'LayoutArticles';
                     title?: string | null;
                     articles?: Array<{
                       __typename?: 'Post';
@@ -11604,7 +11927,7 @@ export type PageChildrenSearchQuery = {
                     } | null> | null;
                   }
                 | {
-                    __typename?: 'LayoutLinkList';
+                    __typename: 'LayoutLinkList';
                     anchor?: string | null;
                     title?: string | null;
                     description?: string | null;
@@ -11616,8 +11939,9 @@ export type PageChildrenSearchQuery = {
                     } | null> | null;
                   }
                 | {
-                    __typename?: 'LayoutPages';
+                    __typename: 'LayoutPages';
                     title?: string | null;
+                    description?: string | null;
                     pages?: Array<{
                       __typename?: 'Page';
                       id: string;
@@ -11646,7 +11970,7 @@ export type PageChildrenSearchQuery = {
                 | { __typename?: 'EventSelectedCarousel' }
                 | { __typename?: 'LayoutArticleHighlights' }
                 | {
-                    __typename?: 'LayoutArticles';
+                    __typename: 'LayoutArticles';
                     title?: string | null;
                     articles?: Array<{
                       __typename?: 'Post';
@@ -11667,12 +11991,35 @@ export type PageChildrenSearchQuery = {
                       } | null;
                     } | null> | null;
                   }
-                | { __typename?: 'LayoutArticlesCarousel' }
+                | {
+                    __typename: 'LayoutArticlesCarousel';
+                    title?: string | null;
+                    showMore?: Array<string | null> | null;
+                    articles?: Array<{
+                      __typename?: 'Post';
+                      id: string;
+                      uri?: string | null;
+                      slug?: string | null;
+                      link?: string | null;
+                      date?: string | null;
+                      title?: string | null;
+                      lead?: string | null;
+                      featuredImage?: {
+                        __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                        node?: {
+                          __typename?: 'MediaItem';
+                          altText?: string | null;
+                          mediaItemUrl?: string | null;
+                        } | null;
+                      } | null;
+                    } | null> | null;
+                  }
                 | { __typename?: 'LayoutCollection' }
                 | { __typename?: 'LayoutContact' }
                 | {
-                    __typename?: 'LayoutPages';
+                    __typename: 'LayoutPages';
                     title?: string | null;
+                    description?: string | null;
                     pages?: Array<{
                       __typename?: 'Page';
                       id: string;
@@ -11692,7 +12039,29 @@ export type PageChildrenSearchQuery = {
                       } | null;
                     } | null> | null;
                   }
-                | { __typename?: 'LayoutPagesCarousel' }
+                | {
+                    __typename: 'LayoutPagesCarousel';
+                    title?: string | null;
+                    description?: string | null;
+                    pages?: Array<{
+                      __typename?: 'Page';
+                      id: string;
+                      uri?: string | null;
+                      slug?: string | null;
+                      link?: string | null;
+                      date?: string | null;
+                      title?: string | null;
+                      lead?: string | null;
+                      featuredImage?: {
+                        __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                        node?: {
+                          __typename?: 'MediaItem';
+                          altText?: string | null;
+                          mediaItemUrl?: string | null;
+                        } | null;
+                      } | null;
+                    } | null> | null;
+                  }
                 | null
               > | null;
             }
@@ -11804,11 +12173,35 @@ export const LayoutArticlesFragmentDoc = gql`
         }
       }
     }
+    __typename
+  }
+`;
+export const LayoutArticlesCarouselFragmentDoc = gql`
+  fragment LayoutArticlesCarousel on LayoutArticlesCarousel {
+    title
+    articles {
+      id
+      uri
+      slug
+      link
+      date
+      title
+      lead
+      featuredImage {
+        node {
+          altText
+          mediaItemUrl
+        }
+      }
+    }
+    showMore
+    __typename
   }
 `;
 export const LayoutPagesFragmentDoc = gql`
   fragment LayoutPages on LayoutPages {
     title
+    description
     pages {
       id
       uri
@@ -11824,6 +12217,29 @@ export const LayoutPagesFragmentDoc = gql`
         }
       }
     }
+    __typename
+  }
+`;
+export const LayoutPagesCarouselFragmentDoc = gql`
+  fragment LayoutPagesCarousel on LayoutPagesCarousel {
+    title
+    description
+    pages {
+      id
+      uri
+      slug
+      link
+      date
+      title
+      lead
+      featuredImage {
+        node {
+          altText
+          mediaItemUrl
+        }
+      }
+    }
+    __typename
   }
 `;
 export const PostFragmentDoc = gql`
@@ -11859,8 +12275,14 @@ export const PostFragmentDoc = gql`
       ... on LayoutArticles {
         ...LayoutArticles
       }
+      ... on LayoutArticlesCarousel {
+        ...LayoutArticlesCarousel
+      }
       ... on LayoutPages {
         ...LayoutPages
+      }
+      ... on LayoutPagesCarousel {
+        ...LayoutPagesCarousel
       }
     }
   }
@@ -11868,7 +12290,9 @@ export const PostFragmentDoc = gql`
   ${SeoFragmentDoc}
   ${LanguageFragmentDoc}
   ${LayoutArticlesFragmentDoc}
+  ${LayoutArticlesCarouselFragmentDoc}
   ${LayoutPagesFragmentDoc}
+  ${LayoutPagesCarouselFragmentDoc}
 `;
 export const MenuItemFragmentDoc = gql`
   fragment MenuItem on MenuItem {
@@ -11890,6 +12314,7 @@ export const LayoutLinkListFragmentDoc = gql`
       title
       url
     }
+    __typename
   }
 `;
 export const PageFragmentDoc = gql`
@@ -11932,8 +12357,14 @@ export const PageFragmentDoc = gql`
       ... on LayoutArticles {
         ...LayoutArticles
       }
+      ... on LayoutArticlesCarousel {
+        ...LayoutArticlesCarousel
+      }
       ... on LayoutPages {
         ...LayoutPages
+      }
+      ... on LayoutPagesCarousel {
+        ...LayoutPagesCarousel
       }
     }
   }
@@ -11942,6 +12373,8 @@ export const PageFragmentDoc = gql`
   ${LayoutLinkListFragmentDoc}
   ${LayoutArticlesFragmentDoc}
   ${LayoutPagesFragmentDoc}
+  ${LayoutArticlesCarouselFragmentDoc}
+  ${LayoutPagesCarouselFragmentDoc}
 `;
 export const ArticleDocument = gql`
   query article($id: ID!) {

@@ -40,8 +40,14 @@ fragment Post on Post {
     ... on LayoutArticles {
       ...LayoutArticles
     }
+    ... on LayoutArticlesCarousel {
+      ...LayoutArticlesCarousel
+    }
     ... on LayoutPages {
       ...LayoutPages
+    }
+    ... on LayoutPagesCarousel {
+      ...LayoutPagesCarousel
     }
   }
 }

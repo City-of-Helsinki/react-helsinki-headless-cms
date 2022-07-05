@@ -7,6 +7,8 @@ import {
   LayoutArticle,
   LayoutLinkList,
   LayoutPage,
+  LayoutPageCarousel,
+  LayoutArticleCarousel,
   PageModule,
   PageSidebarModule,
   PageType,
@@ -15,13 +17,41 @@ import {
 export function isLayoutArticle(
   module: PageModule | PageSidebarModule,
 ): module is LayoutArticle {
-  return (<LayoutArticle>module).articles !== undefined;
+  return (
+    (<LayoutArticle>module).articles !== undefined &&
+    // eslint-disable-next-line no-underscore-dangle
+    module.__typename === "LayoutArticles"
+  );
 }
 
 export function isLayoutPage(
   module: PageModule | PageSidebarModule,
 ): module is LayoutPage {
-  return (<LayoutPage>module).pages !== undefined;
+  return (
+    (<LayoutPage>module).pages !== undefined &&
+    // eslint-disable-next-line no-underscore-dangle
+    module.__typename === "LayoutPages"
+  );
+}
+
+export function isLayoutArticleCarousel(
+  module: PageModule | PageSidebarModule
+): module is LayoutArticleCarousel {
+  return (
+    (<LayoutArticleCarousel>module).articles !== undefined &&
+    // eslint-disable-next-line no-underscore-dangle
+    module.__typename === "LayoutArticlesCarousel"
+  );
+}
+
+export function isLayoutPageCarousel(
+  module: PageModule | PageSidebarModule
+): module is LayoutPageCarousel {
+  return (
+    (<LayoutPageCarousel>module).pages !== undefined &&
+    // eslint-disable-next-line no-underscore-dangle
+    module.__typename === "LayoutPagesCarousel"
+  );
 }
 
 export function isLayoutLinkList(
