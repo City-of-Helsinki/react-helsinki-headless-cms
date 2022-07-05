@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import styles from "./archiveSearchPage.module.scss";
+import styles from './archiveSearchPage.module.scss';
 
 export type ArchiveSearchPageProps = {
   navigation: React.ReactNode;

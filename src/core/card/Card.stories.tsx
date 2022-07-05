@@ -1,16 +1,16 @@
 /* eslint-disable react/function-component-definition */
 
-import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import React from 'react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { ConfigProvider } from "../configProvider/ConfigProvider";
-import { defaultConfig } from "../configProvider/defaultConfig";
-import card from "./__mocks__/card.mock";
-import { Card } from "./Card";
-import Tag from "../../common/components/tag/Tag";
+import { ConfigProvider } from '../configProvider/ConfigProvider';
+import { defaultConfig } from '../configProvider/defaultConfig';
+import card from './__mocks__/card.mock';
+import { Card } from './Card';
+import Tag from '../../common/components/tag/Tag';
 
 export default {
-  title: "Example/Card",
+  title: 'Example/Card',
   component: Card,
 } as ComponentMeta<typeof Card>;
 
@@ -18,7 +18,7 @@ const Template: ComponentStory<typeof Card> = (args) => (
   <ConfigProvider
     config={{
       ...defaultConfig,
-      siteName: "RHHC Example",
+      siteName: 'RHHC Example',
       components: {
         ...defaultConfig.components,
       },

@@ -1,18 +1,18 @@
-import React from "react";
+import React from 'react';
 
-import HtmlToReact from "../../common/components/htmlToReact/HtmlToReact";
-import Text from "../../common/components/text/Text";
-import { ArticleType } from "../../common/headlessService/types";
-import { useConfig } from "../configProvider/useConfig";
-import styles from "./pageMainContent.module.scss";
-import { formatDateFromString } from "../../common/utils/dates";
-import Tag from "../../common/components/tag/Tag";
+import HtmlToReact from '../../common/components/htmlToReact/HtmlToReact';
+import Text from '../../common/components/text/Text';
+import { ArticleType } from '../../common/headlessService/types';
+import { useConfig } from '../configProvider/useConfig';
+import styles from './pageMainContent.module.scss';
+import { formatDateFromString } from '../../common/utils/dates';
+import Tag from '../../common/components/tag/Tag';
 
 export type PageMainContentProps = {
   title: string;
   content: string;
   date?: string;
-  categories?: ArticleType["categories"];
+  categories?: ArticleType['categories'];
 };
 
 export function PageMainContent({
@@ -36,7 +36,7 @@ export function PageMainContent({
         <div className={styles.articleData}>
           {date && (
             <div className={styles.articleDate}>
-              {formatDateFromString(date || "")}
+              {formatDateFromString(date || '')}
             </div>
           )}
           {categories?.edges?.map((category) => (

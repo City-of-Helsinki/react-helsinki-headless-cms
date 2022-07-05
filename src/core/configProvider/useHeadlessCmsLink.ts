@@ -1,11 +1,11 @@
 /* eslint-disable import/prefer-default-export */
-import { ModuleItemTypeEnum } from "../../common/headlessService/constants";
-import { getUri } from "../../common/headlessService/utils";
-import { useConfig } from "./useConfig";
+import { ModuleItemTypeEnum } from '../../common/headlessService/constants';
+import { getUri } from '../../common/headlessService/utils';
+import { useConfig } from './useConfig';
 
 export function useHeadlessCmsLink(
   link: string,
-  type: ModuleItemTypeEnum = ModuleItemTypeEnum.Link
+  type: ModuleItemTypeEnum = ModuleItemTypeEnum.Link,
 ) {
   const {
     internalHrefOrigins,

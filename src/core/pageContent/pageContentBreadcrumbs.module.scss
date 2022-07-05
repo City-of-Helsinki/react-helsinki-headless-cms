@@ -1,5 +1,5 @@
-@import "spacing";
-@import "color";
+@import 'spacing';
+@import 'color';
 
 .navigation {
   display: flex;
@@ -18,7 +18,7 @@
   display: flex;
 
   &:not(:last-child) .link::after {
-    content: "/";
+    content: '/';
     display: block;
 
     margin: 0 $spacing-2-xs;

@@ -1,28 +1,28 @@
 /* eslint-disable react/function-component-definition */
 
-import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { ApolloClient, InMemoryCache } from "@apollo/client";
-import { Helmet, HelmetProvider } from "react-helmet-async";
+import React from 'react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
-import { ConfigProvider } from "../core/configProvider/ConfigProvider";
-import { defaultConfig } from "../core/configProvider/defaultConfig";
-import { PageContent } from "./pageContent/PageContent";
-import { Navigation } from "./navigation/Navigation";
-import { Notification } from "./notification/Notification";
-import { Page } from "./page/Page";
-import { PageContentLayout } from "../core/pageContent/PageContentLayout";
-import { LanguageCodeEnum } from "../core";
+import { ConfigProvider } from '../core/configProvider/ConfigProvider';
+import { defaultConfig } from '../core/configProvider/defaultConfig';
+import { PageContent } from './pageContent/PageContent';
+import { Navigation } from './navigation/Navigation';
+import { Notification } from './notification/Notification';
+import { Page } from './page/Page';
+import { PageContentLayout } from '../core/pageContent/PageContentLayout';
+import { LanguageCodeEnum } from '../core';
 
 const cmsUri =
-  process.env.CMS_GRAPHQL_ENDPOINT ?? "https://hkih.stage.geniem.io/graphql";
+  process.env.CMS_GRAPHQL_ENDPOINT ?? 'https://hkih.stage.geniem.io/graphql';
 const client = new ApolloClient({
   uri: cmsUri,
   cache: new InMemoryCache(),
 });
 
 export default {
-  title: "Example/Apollo",
+  title: 'Example/Apollo',
   component: Page,
 } as ComponentMeta<typeof Page>;
 
@@ -32,7 +32,7 @@ const Template: ComponentStory<typeof Page> = (args) => (
       config={{
         ...defaultConfig,
         currentLanguageCode: LanguageCodeEnum.En,
-        siteName: "RHHC Example",
+        siteName: 'RHHC Example',
         internalHrefOrigins: [new URL(cmsUri).origin],
         apolloClient: client,
         components: {
@@ -44,9 +44,9 @@ const Template: ComponentStory<typeof Page> = (args) => (
         utils: {
           ...defaultConfig.utils,
           getRoutedInternalHref: (link) => {
-            let uri = "";
+            let uri = '';
             [new URL(cmsUri).origin].forEach((d) => {
-              uri = link.replace(d, "");
+              uri = link.replace(d, '');
             });
             return uri;
           },
@@ -60,13 +60,13 @@ const Template: ComponentStory<typeof Page> = (args) => (
 
 export const ApolloBasicExample = Template.bind({});
 
-const currentPage = "/test-page-in-english/";
+const currentPage = '/test-page-in-english/';
 const ExampleNavigation = () => (
   <Navigation
     menuName="Palvelutarjotin-UI Header"
     onTitleClick={() => {
       // eslint-disable-next-line no-console
-      console.log("I should navigate");
+      console.log('I should navigate');
     }}
     getIsItemActive={({ path }) => path === currentPage}
     getPathnameForLanguage={({ slug }) => `/${slug}${currentPage}`}
@@ -79,8 +79,8 @@ ApolloBasicExample.args = {
   content: (
     <PageContent
       breadcrumbs={[
-        { title: "Root", link: "/" },
-        { title: "Nested", link: "/nested" },
+        { title: 'Root', link: '/' },
+        { title: 'Nested', link: '/nested' },
       ]}
     />
   ),
@@ -99,8 +99,8 @@ const CustomPageContentLayout: typeof PageContentLayout = ({
     </div>
     <div
       style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr 1fr",
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr 1fr',
         columnGap: 30,
       }}
     >
@@ -120,8 +120,8 @@ ApolloCustomLayoutExample.args = {
   content: (
     <PageContent
       breadcrumbs={[
-        { title: "Root", link: "/" },
-        { title: "Nested", link: "/nested" },
+        { title: 'Root', link: '/' },
+        { title: 'Nested', link: '/nested' },
       ]}
       PageContentLayoutComponent={CustomPageContentLayout}
     />

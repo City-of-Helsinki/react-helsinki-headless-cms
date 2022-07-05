@@ -1,4 +1,4 @@
-version: "3.7"
+version: '3.7'
 services:
   app:
     container_name: react-helsinki-headless-cms
@@ -6,4 +6,4 @@ services:
       context: .
       target: ${DOCKER_TARGET:-production}
     ports:
-      - "3000:3000"
+      - '3000:3000'

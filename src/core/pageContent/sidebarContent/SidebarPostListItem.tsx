@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react';
 
-import { ModuleItemTypeEnum } from "../../../common/headlessService/constants";
+import { ModuleItemTypeEnum } from '../../../common/headlessService/constants';
 import {
   LayoutArticle,
   LayoutPage,
-} from "../../../common/headlessService/types";
-import { useHeadlessCmsLink } from "../../configProvider/useHeadlessCmsLink";
-import SidebarContentCard from "./SidebarContentCard";
+} from '../../../common/headlessService/types';
+import { useHeadlessCmsLink } from '../../configProvider/useHeadlessCmsLink';
+import SidebarContentCard from './SidebarContentCard';
 
 type PostListItemProps = (
-  | LayoutArticle["articles"][number]
-  | LayoutPage["pages"][number]
+  | LayoutArticle['articles'][number]
+  | LayoutPage['pages'][number]
 ) & { moduleItemType: ModuleItemTypeEnum };
 
 export default function PostListItem({

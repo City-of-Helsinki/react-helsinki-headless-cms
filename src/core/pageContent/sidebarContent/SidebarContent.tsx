@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react';
 
-import List from "../../../common/components/list/List";
-import { ModuleItemTypeEnum } from "../../../common/headlessService/constants";
-import { SidebarContent as SidebarContentType } from "../../../common/headlessService/types";
+import List from '../../../common/components/list/List';
+import { ModuleItemTypeEnum } from '../../../common/headlessService/constants';
+import { SidebarContent as SidebarContentType } from '../../../common/headlessService/types';
 import {
   isLayoutArticle,
   isLayoutLinkList,
   isLayoutPage,
-} from "../../../common/headlessService/utils";
-import SidebarContentLinkList from "./SidebarContentLinkList";
-import SidebarPostListItem from "./SidebarPostListItem";
+} from '../../../common/headlessService/utils';
+import SidebarContentLinkList from './SidebarContentLinkList';
+import SidebarPostListItem from './SidebarPostListItem';
 
 type SidebarContentProps = {
   content?: SidebarContentType;

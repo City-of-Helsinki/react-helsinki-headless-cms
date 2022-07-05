@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
-const { execShellCommand, prepareToPublish } = require("./utils");
+const { execShellCommand, prepareToPublish } = require('./utils');
 
 async function publish() {
   await prepareToPublish();
 
   try {
     const [stdout, stderr] = await execShellCommand(
-      "npm publish --color always --registry=https://registry.npmjs.org/"
+      'npm publish --color always --registry=https://registry.npmjs.org/',
     );
     process.stdout.write(stdout);
     process.stderr.write(stderr);

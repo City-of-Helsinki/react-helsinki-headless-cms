@@ -1,7 +1,7 @@
-import React from "react";
-import { Link as HDSLink } from "hds-react";
+import React from 'react';
+import { Link as HDSLink } from 'hds-react';
 
-import { useConfig } from "../configProvider/useConfig";
+import { useConfig } from '../configProvider/useConfig';
 
 export type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
@@ -11,7 +11,7 @@ export function Link({ href, target, children, ...delegatedProps }: LinkProps) {
     utils: { getIsHrefExternal },
   } = useConfig();
 
-  const isOpenInNewTab = target === "_blank";
+  const isOpenInNewTab = target === '_blank';
 
   return (
     <HDSLink

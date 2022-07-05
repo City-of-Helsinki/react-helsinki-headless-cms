@@ -1,10 +1,10 @@
-import { IconArrowRight, Tag } from "hds-react";
-import React from "react";
+import { IconArrowRight, Tag } from 'hds-react';
+import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import classNames from "classnames";
+import classNames from 'classnames';
 
-import styles from "./card.module.scss";
-import LinkWrapper from "../../common/components/linkWrapper/LinkWrapper";
+import styles from './card.module.scss';
+import LinkWrapper from '../../common/components/linkWrapper/LinkWrapper';
 
 export type CardProps = {
   id?: string;
@@ -20,9 +20,9 @@ export type CardProps = {
   url?: string;
   withBorder?: boolean;
   withShadow?: boolean;
-  direction?: "fixed-horisontal" | "fixed-vertical" | "responsive";
+  direction?: 'fixed-horisontal' | 'fixed-vertical' | 'responsive';
   clampText?: boolean;
-  target?: "_blank" | "_self";
+  target?: '_blank' | '_self';
 };
 
 export function Card({
@@ -39,7 +39,7 @@ export function Card({
   url,
   withBorder,
   withShadow,
-  direction = "responsive",
+  direction = 'responsive',
   clampText,
   target,
 }: CardProps) {
@@ -48,7 +48,7 @@ export function Card({
       id={id}
       href={url}
       className={className}
-      ariaLabel={ariaLabel || ""}
+      ariaLabel={ariaLabel || ''}
       target={target}
     >
       <div
@@ -56,14 +56,14 @@ export function Card({
           styles.cardWrapper,
           withBorder && styles.withBorder,
           withShadow && styles.withShadow,
-          direction && styles[direction]
+          direction && styles[direction],
         )}
       >
         {imageUrl && (
           <div
             className={classNames(
               styles.imageWrapper,
-              direction && styles[direction]
+              direction && styles[direction],
             )}
             style={{
               backgroundImage: `url(${imageUrl})`,

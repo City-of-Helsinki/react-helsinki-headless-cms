@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import { ArticleType, PageType } from "../../../common/headlessService/types";
+import { ArticleType, PageType } from '../../../common/headlessService/types';
 
 export type PageMetaProps = {
   page?: PageType | ArticleType;

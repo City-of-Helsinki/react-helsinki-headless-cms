@@ -63,8 +63,8 @@ By importing data dependent components from `react-helsinki-headless-cms/apollo`
 **Simplified example**
 
 ```tsx
-import { Page } from "react-helsinki-headless-cms/apollo";
-import { Navigation } from "react-helsinki-headless-cms/apollo";
+import { Page } from 'react-helsinki-headless-cms/apollo';
+import { Navigation } from 'react-helsinki-headless-cms/apollo';
 
 <ConfigProvider
   config={{

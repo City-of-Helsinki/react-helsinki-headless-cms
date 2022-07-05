@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
-const { exec } = require("child_process");
+const { exec } = require('child_process');
 
 function execShellCommand(cmd) {
   return new Promise((resolve, reject) => {
@@ -17,7 +17,7 @@ function execShellCommand(cmd) {
 async function prepareToPublish() {
   try {
     // Move into dist
-    process.chdir("./dist");
+    process.chdir('./dist');
   } catch (e) {
     // eslint-disable-next-line no-console
     console.error(e);

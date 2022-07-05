@@ -1,9 +1,9 @@
-import makeQueryWithApolloClientFromConfig from "./makeQueryWithApolloClientFromConfig";
+import makeQueryWithApolloClientFromConfig from './makeQueryWithApolloClientFromConfig';
 import {
   usePagesQuery as usePagesQueryWithoutClient,
   PagesQuery,
   PagesQueryVariables,
-} from "./__generated__";
+} from './__generated__';
 
 export const usePagesQuery = makeQueryWithApolloClientFromConfig<
   PagesQuery,
@@ -14,4 +14,4 @@ export {
   PagesQuery,
   PagesQueryVariables,
   PagesDocument,
-} from "./__generated__";
+} from './__generated__';

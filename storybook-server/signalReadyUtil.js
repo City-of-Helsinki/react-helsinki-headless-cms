@@ -1,5 +1,5 @@
-const OK = "OK";
-const SERVER_IS_NOT_READY = "SERVER_IS_NOT_READY";
+const OK = 'OK';
+const SERVER_IS_NOT_READY = 'SERVER_IS_NOT_READY';
 
 let serverIsReady = false;
 

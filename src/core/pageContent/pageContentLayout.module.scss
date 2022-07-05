@@ -1,5 +1,5 @@
-@use "breakpoints";
-@import "spacing";
+@use 'breakpoints';
+@import 'spacing';
 
 .contentLayout {
   --padding: #{$spacing-layout-2-xs};

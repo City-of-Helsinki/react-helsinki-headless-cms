@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import classNames from "classnames";
-import { IconArrowLeft } from "hds-react";
+import classNames from 'classnames';
+import { IconArrowLeft } from 'hds-react';
 
-import { useConfig } from "../configProvider/useConfig";
-import Container from "../../common/components/container/Container";
-import styles from "./hero.module.scss";
-import LinkWrapper from "../../common/components/linkWrapper/LinkWrapper";
+import { useConfig } from '../configProvider/useConfig';
+import Container from '../../common/components/container/Container';
+import styles from './hero.module.scss';
+import LinkWrapper from '../../common/components/linkWrapper/LinkWrapper';
 
 export type HeroProps = {
   className?: string;

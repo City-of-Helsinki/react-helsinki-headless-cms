@@ -1,21 +1,21 @@
-import * as React from "react";
+import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import classNames from "classnames";
-import { Tag as HDSTag } from "hds-react";
+import classNames from 'classnames';
+import { Tag as HDSTag } from 'hds-react';
 
-import styles from "./tag.module.scss";
+import styles from './tag.module.scss';
 
 type Props = {
   children: React.ReactNode;
   className?: string;
   featured?: boolean;
-  variant?: "default" | "card" | "search";
+  variant?: 'default' | 'card' | 'search';
   onClick?: (tag: string) => void;
 };
 
 export default function Tag({
   className,
-  variant = "default",
+  variant = 'default',
   children,
   featured,
   onClick,
@@ -37,7 +37,7 @@ export default function Tag({
         styles[`variant-${variant}`],
         featured && styles.featured,
         selected && styles.selected,
-        className
+        className,
       )}
     >
       {children}

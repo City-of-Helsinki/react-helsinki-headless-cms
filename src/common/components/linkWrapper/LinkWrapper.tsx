@@ -1,15 +1,15 @@
-import * as React from "react";
+import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import classNames from "classnames";
+import classNames from 'classnames';
 
-import styles from "./linkWrapper.module.scss";
-import ExternalLink from "../externalLink/ExternalLink";
+import styles from './linkWrapper.module.scss';
+import ExternalLink from '../externalLink/ExternalLink';
 
-type Props = Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "children"> & {
+type Props = Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'children'> & {
   children?: JSX.Element | string;
   iconLeft?: JSX.Element;
   className?: string;
-  target?: "_blank" | "_self";
+  target?: '_blank' | '_self';
   href?: string;
   ariaLabel?: string;
 };
@@ -18,7 +18,7 @@ export default function LinkWrapper({
   children,
   iconLeft,
   className,
-  target = "_self",
+  target = '_self',
   ariaLabel,
   href,
   ...props
@@ -27,7 +27,7 @@ export default function LinkWrapper({
 
   return (
     <>
-      {target === "_self" && (
+      {target === '_self' && (
         <a
           aria-label={ariaLabel}
           className={classNames(styles.link, className)}
@@ -38,7 +38,7 @@ export default function LinkWrapper({
           {children && children}
         </a>
       )}
-      {target === "_blank" && (
+      {target === '_blank' && (
         <ExternalLink
           iconLeft={iconLeft}
           className={classNames(styles.link, className)}

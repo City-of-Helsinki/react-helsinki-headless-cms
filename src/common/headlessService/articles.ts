@@ -1,9 +1,9 @@
-import makeQueryWithApolloClientFromConfig from "./makeQueryWithApolloClientFromConfig";
+import makeQueryWithApolloClientFromConfig from './makeQueryWithApolloClientFromConfig';
 import {
   usePostsQuery as usePostsQueryWithoutClient,
   PostsQuery,
   PostsQueryVariables,
-} from "./__generated__";
+} from './__generated__';
 
 export const usePostsQuery = makeQueryWithApolloClientFromConfig<
   PostsQuery,
@@ -14,4 +14,4 @@ export {
   PostsQuery,
   PostsQueryVariables,
   PostsDocument,
-} from "./__generated__";
+} from './__generated__';

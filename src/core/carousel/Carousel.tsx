@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import classNames from "classnames";
-import { IconAngleLeft, IconAngleRight } from "hds-react";
+import classNames from 'classnames';
+import { IconAngleLeft, IconAngleRight } from 'hds-react';
 
-import styles from "./carousel.module.scss";
+import styles from './carousel.module.scss';
 import {
   splitArrayIntoChunksOfLen,
   getItemSetItemKey,
   getItemSetKey,
   getSlideDotKey,
-} from "./utils/utils";
+} from './utils/utils';
 
 export type CarouselProps<T> = {
   children: React.ReactElement<T>[];
@@ -23,12 +23,12 @@ export function Carousel({
   children,
   itemsDesktop = 4,
   itemsMobile = 2,
-  className = "",
+  className = '',
   withDots = true,
 }) {
   const MOBILE_WIDTH = 640;
   const [isReady] = useState<boolean>(true);
-  const [transformValue, setTransformValue] = useState("0px");
+  const [transformValue, setTransformValue] = useState('0px');
   const [numberOfSlides, setNumberOfSlides] = useState<number>(0);
   const [itemsPerSlide, setItemsPerSlide] = useState<number>(0);
   const [currentSlide, setCurrentSlide] = useState<number>(0);
@@ -38,16 +38,16 @@ export function Carousel({
 
   useEffect(() => {
     updateDimensions();
-    window.addEventListener("resize", updateDimensions);
-    return () => window.removeEventListener("resize", updateDimensions);
+    window.addEventListener('resize', updateDimensions);
+    return () => window.removeEventListener('resize', updateDimensions);
   }, []);
 
   useEffect(() => {
     setItemsPerSlide(
-      Math.ceil(width > MOBILE_WIDTH ? itemsDesktop : itemsMobile)
+      Math.ceil(width > MOBILE_WIDTH ? itemsDesktop : itemsMobile),
     );
     setCurrentSlide(0);
-    setTransformValue("0px");
+    setTransformValue('0px');
   }, [width, itemsDesktop, itemsMobile]);
 
   useEffect(() => {
@@ -58,21 +58,21 @@ export function Carousel({
 
   const handleUpdateSlideProps = (value: number): void => {
     if (value === 0) {
-      setTransformValue("0px");
+      setTransformValue('0px');
     } else {
-      setTransformValue(`${value > currentSlide ? "-" : ""}${value}00%`);
+      setTransformValue(`${value > currentSlide ? '-' : ''}${value}00%`);
     }
     setCurrentSlide(Math.abs(value));
   };
 
   const handleNextClick = (): void =>
     handleUpdateSlideProps(
-      currentSlide + 1 === numberOfSlides ? 0 : currentSlide + 1
+      currentSlide + 1 === numberOfSlides ? 0 : currentSlide + 1,
     );
 
   const handlePrevClick = (): void =>
     handleUpdateSlideProps(
-      -(currentSlide === 0 ? numberOfSlides - 1 : currentSlide - 1)
+      -(currentSlide === 0 ? numberOfSlides - 1 : currentSlide - 1),
     );
 
   const itemSets = React.useMemo(
@@ -80,7 +80,7 @@ export function Carousel({
       itemsPerSlide > 0
         ? splitArrayIntoChunksOfLen(children, itemsPerSlide)
         : [],
-    [children, itemsPerSlide]
+    [children, itemsPerSlide],
   );
 
   return (
@@ -117,7 +117,7 @@ export function Carousel({
                       key={getItemSetKey(itemSet, itemSetIndex)}
                       className={classNames(
                         styles.slide,
-                        itemSetIndex === currentSlide && styles.slideSelected
+                        itemSetIndex === currentSlide && styles.slideSelected,
                       )}
                     >
                       <div className={styles.slideItems}>
@@ -126,7 +126,7 @@ export function Carousel({
                             key={getItemSetItemKey(
                               item,
                               itemSetIndex,
-                              itemIndex
+                              itemIndex,
                             )}
                             className={styles.slideItem}
                             style={{
@@ -154,7 +154,7 @@ export function Carousel({
                     key={getSlideDotKey(e, i)}
                     className={classNames(
                       styles.dot,
-                      i === currentSlide && styles.selected
+                      i === currentSlide && styles.selected,
                     )}
                   />
                 ))}

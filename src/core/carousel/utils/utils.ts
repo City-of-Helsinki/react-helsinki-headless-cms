@@ -17,7 +17,7 @@ export const getItemSetItemKey = (
   item: any,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   itemSetPrefix: any,
-  index: number
+  index: number,
 ) => `itemSet-item-${item.id ?? Math.random()}-${index}`;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -1,22 +1,22 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import classNames from "classnames";
+import classNames from 'classnames';
 import {
   Button,
   IconSearch,
   Koros,
   LoadingSpinner,
   TextInput,
-} from "hds-react";
+} from 'hds-react';
 
-import styles from "./archiveSearchPageContent.module.scss";
-import Tag from "../../common/components/tag/Tag";
-import { Card } from "../card/Card";
-import Grid from "../../common/components/grid/Grid";
-import { LargeCard } from "../card/LargeCard";
-import { useConfig } from "../configProvider/useConfig";
-import { Config } from "../configProvider/configContext";
-import { CollectionItemType } from "../collection/types";
+import styles from './archiveSearchPageContent.module.scss';
+import Tag from '../../common/components/tag/Tag';
+import { Card } from '../card/Card';
+import Grid from '../../common/components/grid/Grid';
+import { LargeCard } from '../card/LargeCard';
+import { useConfig } from '../configProvider/useConfig';
+import { Config } from '../configProvider/configContext';
+import { CollectionItemType } from '../collection/types';
 
 export function SearchForm({
   archiveSearch,
@@ -24,7 +24,7 @@ export function SearchForm({
   handleChange,
   searchText,
 }: {
-  archiveSearch: Config["copy"]["archiveSearch"];
+  archiveSearch: Config['copy']['archiveSearch'];
   handleSearch: (e: React.FormEvent) => void;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   searchText: string;
@@ -34,11 +34,11 @@ export function SearchForm({
       <TextInput
         className={classNames(
           styles.inputWithIcon,
-          styles.hdsTextInputOverrides
+          styles.hdsTextInputOverrides,
         )}
         name="q"
         id="q"
-        placeholder={archiveSearch?.searchTextPlaceholder || ""}
+        placeholder={archiveSearch?.searchTextPlaceholder || ''}
         onChange={handleChange}
         value={searchText}
       >
@@ -50,7 +50,7 @@ export function SearchForm({
         iconLeft={<IconSearch aria-hidden="true" />}
         className={styles.hdsButtonOverrides}
       >
-        {archiveSearch?.searchButtonLabelText || ""}
+        {archiveSearch?.searchButtonLabelText || ''}
       </Button>
     </form>
   );
@@ -86,7 +86,7 @@ export interface SearchPageContentProps {
   onSearch?: (freeSearch: string, tags: string[]) => void;
   onLoadMore?: () => void;
   createLargeCard?: (
-    item: CollectionItemType
+    item: CollectionItemType,
   ) => React.ReactElement<typeof LargeCard>;
   createCard?: (item: CollectionItemType) => React.ReactElement<typeof Card>;
 }
@@ -134,7 +134,7 @@ export function SearchPageContent(props: SearchPageContentProps) {
     copy: { archiveSearch },
   } = useConfig();
 
-  const [searchText, setSearchText] = useState<string>("");
+  const [searchText, setSearchText] = useState<string>('');
   const [searchTags, setSearchTags] = useState<string[]>([]);
 
   const handleSearch = (e: React.FormEvent): void => {
@@ -185,7 +185,7 @@ export function SearchPageContent(props: SearchPageContentProps) {
         <div className={styles.searchResultsContainer}>
           <div className={styles.searchResultsContainerInner}>
             {noResults ? (
-              <h1>{archiveSearch.noResultsText || ""}</h1>
+              <h1>{archiveSearch.noResultsText || ''}</h1>
             ) : (
               <ArchiveCollection {...props} />
             )}
@@ -204,7 +204,7 @@ export function SearchPageContent(props: SearchPageContentProps) {
                     className={styles.hdsButtonOverrides}
                     onClick={onLoadMore}
                   >
-                    {archiveSearch?.loadMoreButtonLabelText || ""}
+                    {archiveSearch?.loadMoreButtonLabelText || ''}
                   </Button>
                 </div>
               )}
