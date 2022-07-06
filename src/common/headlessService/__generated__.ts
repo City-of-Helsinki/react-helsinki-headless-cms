@@ -10397,10 +10397,37 @@ export type PostFragment = {
     } | null;
   } | null;
   modules?: Array<
-    | { __typename?: 'EventSearch' }
-    | { __typename?: 'EventSearchCarousel' }
-    | { __typename?: 'EventSelected' }
-    | { __typename?: 'EventSelectedCarousel' }
+    | {
+        __typename: 'EventSearch';
+        title?: string | null;
+        url?: string | null;
+        module?: string | null;
+      }
+    | {
+        __typename: 'EventSearchCarousel';
+        title?: string | null;
+        showAllLink?: Array<string | null> | null;
+        url?: string | null;
+        orderNewestFirst?: boolean | null;
+        eventsNearby?: boolean | null;
+        amountOfCards?: number | null;
+      }
+    | {
+        __typename: 'EventSelected';
+        title?: string | null;
+        events?: Array<string | null> | null;
+        module?: string | null;
+      }
+    | {
+        __typename: 'EventSelectedCarousel';
+        title?: string | null;
+        module?: string | null;
+        showAllLink?: Array<string | null> | null;
+        eventsNearby?: boolean | null;
+        events?: Array<string | null> | null;
+        amountOfCardsPerRow?: number | null;
+        amountOfCards?: number | null;
+      }
     | { __typename?: 'LayoutArticleHighlights' }
     | {
         __typename: 'LayoutArticles';
@@ -10447,7 +10474,13 @@ export type PostFragment = {
           } | null;
         } | null> | null;
       }
-    | { __typename?: 'LayoutCollection' }
+    | {
+        __typename: 'LayoutCollection';
+        collection?: {
+          __typename?: 'Collection';
+          title?: string | null;
+        } | null;
+      }
     | { __typename?: 'LayoutContact' }
     | {
         __typename: 'LayoutPages';
@@ -10589,10 +10622,37 @@ export type ArticleQuery = {
       } | null;
     } | null;
     modules?: Array<
-      | { __typename?: 'EventSearch' }
-      | { __typename?: 'EventSearchCarousel' }
-      | { __typename?: 'EventSelected' }
-      | { __typename?: 'EventSelectedCarousel' }
+      | {
+          __typename: 'EventSearch';
+          title?: string | null;
+          url?: string | null;
+          module?: string | null;
+        }
+      | {
+          __typename: 'EventSearchCarousel';
+          title?: string | null;
+          showAllLink?: Array<string | null> | null;
+          url?: string | null;
+          orderNewestFirst?: boolean | null;
+          eventsNearby?: boolean | null;
+          amountOfCards?: number | null;
+        }
+      | {
+          __typename: 'EventSelected';
+          title?: string | null;
+          events?: Array<string | null> | null;
+          module?: string | null;
+        }
+      | {
+          __typename: 'EventSelectedCarousel';
+          title?: string | null;
+          module?: string | null;
+          showAllLink?: Array<string | null> | null;
+          eventsNearby?: boolean | null;
+          events?: Array<string | null> | null;
+          amountOfCardsPerRow?: number | null;
+          amountOfCards?: number | null;
+        }
       | { __typename?: 'LayoutArticleHighlights' }
       | {
           __typename: 'LayoutArticles';
@@ -10639,7 +10699,13 @@ export type ArticleQuery = {
             } | null;
           } | null> | null;
         }
-      | { __typename?: 'LayoutCollection' }
+      | {
+          __typename: 'LayoutCollection';
+          collection?: {
+            __typename?: 'Collection';
+            title?: string | null;
+          } | null;
+        }
       | { __typename?: 'LayoutContact' }
       | {
           __typename: 'LayoutPages';
@@ -10917,6 +10983,52 @@ export type LayoutPagesCarouselFragment = {
   } | null> | null;
 };
 
+export type EventSearchFragment = {
+  __typename: 'EventSearch';
+  title?: string | null;
+  url?: string | null;
+  module?: string | null;
+};
+
+export type EventSelectedFragment = {
+  __typename: 'EventSelected';
+  title?: string | null;
+  events?: Array<string | null> | null;
+  module?: string | null;
+};
+
+export type EventSearchCarouselFragment = {
+  __typename: 'EventSearchCarousel';
+  title?: string | null;
+  showAllLink?: Array<string | null> | null;
+  url?: string | null;
+  orderNewestFirst?: boolean | null;
+  eventsNearby?: boolean | null;
+  amountOfCards?: number | null;
+};
+
+export type EventSelectedCarouselFragment = {
+  __typename: 'EventSelectedCarousel';
+  title?: string | null;
+  module?: string | null;
+  showAllLink?: Array<string | null> | null;
+  eventsNearby?: boolean | null;
+  events?: Array<string | null> | null;
+  amountOfCardsPerRow?: number | null;
+  amountOfCards?: number | null;
+};
+
+export type LayoutCollectionFragment = {
+  __typename: 'LayoutCollection';
+  collection?: { __typename?: 'Collection'; title?: string | null } | null;
+};
+
+export type LayoutArticleHighlightsFragment = {
+  __typename: 'LayoutArticleHighlights';
+};
+
+export type LayoutContactFragment = { __typename: 'LayoutContact' };
+
 export type NotificationQueryVariables = Exact<{
   language?: Scalars['String'];
 }>;
@@ -11040,10 +11152,37 @@ export type PageFragment = {
     | null
   > | null;
   modules?: Array<
-    | { __typename?: 'EventSearch' }
-    | { __typename?: 'EventSearchCarousel' }
-    | { __typename?: 'EventSelected' }
-    | { __typename?: 'EventSelectedCarousel' }
+    | {
+        __typename: 'EventSearch';
+        title?: string | null;
+        url?: string | null;
+        module?: string | null;
+      }
+    | {
+        __typename: 'EventSearchCarousel';
+        title?: string | null;
+        showAllLink?: Array<string | null> | null;
+        url?: string | null;
+        orderNewestFirst?: boolean | null;
+        eventsNearby?: boolean | null;
+        amountOfCards?: number | null;
+      }
+    | {
+        __typename: 'EventSelected';
+        title?: string | null;
+        events?: Array<string | null> | null;
+        module?: string | null;
+      }
+    | {
+        __typename: 'EventSelectedCarousel';
+        title?: string | null;
+        module?: string | null;
+        showAllLink?: Array<string | null> | null;
+        eventsNearby?: boolean | null;
+        events?: Array<string | null> | null;
+        amountOfCardsPerRow?: number | null;
+        amountOfCards?: number | null;
+      }
     | { __typename?: 'LayoutArticleHighlights' }
     | {
         __typename: 'LayoutArticles';
@@ -11090,7 +11229,13 @@ export type PageFragment = {
           } | null;
         } | null> | null;
       }
-    | { __typename?: 'LayoutCollection' }
+    | {
+        __typename: 'LayoutCollection';
+        collection?: {
+          __typename?: 'Collection';
+          title?: string | null;
+        } | null;
+      }
     | { __typename?: 'LayoutContact' }
     | {
         __typename: 'LayoutPages';
@@ -11280,10 +11425,37 @@ export type PageQuery = {
       | null
     > | null;
     modules?: Array<
-      | { __typename?: 'EventSearch' }
-      | { __typename?: 'EventSearchCarousel' }
-      | { __typename?: 'EventSelected' }
-      | { __typename?: 'EventSelectedCarousel' }
+      | {
+          __typename: 'EventSearch';
+          title?: string | null;
+          url?: string | null;
+          module?: string | null;
+        }
+      | {
+          __typename: 'EventSearchCarousel';
+          title?: string | null;
+          showAllLink?: Array<string | null> | null;
+          url?: string | null;
+          orderNewestFirst?: boolean | null;
+          eventsNearby?: boolean | null;
+          amountOfCards?: number | null;
+        }
+      | {
+          __typename: 'EventSelected';
+          title?: string | null;
+          events?: Array<string | null> | null;
+          module?: string | null;
+        }
+      | {
+          __typename: 'EventSelectedCarousel';
+          title?: string | null;
+          module?: string | null;
+          showAllLink?: Array<string | null> | null;
+          eventsNearby?: boolean | null;
+          events?: Array<string | null> | null;
+          amountOfCardsPerRow?: number | null;
+          amountOfCards?: number | null;
+        }
       | { __typename?: 'LayoutArticleHighlights' }
       | {
           __typename: 'LayoutArticles';
@@ -11330,7 +11502,13 @@ export type PageQuery = {
             } | null;
           } | null> | null;
         }
-      | { __typename?: 'LayoutCollection' }
+      | {
+          __typename: 'LayoutCollection';
+          collection?: {
+            __typename?: 'Collection';
+            title?: string | null;
+          } | null;
+        }
       | { __typename?: 'LayoutContact' }
       | {
           __typename: 'LayoutPages';
@@ -11767,10 +11945,37 @@ export type PageChildrenSearchQuery = {
                   | null
                 > | null;
                 modules?: Array<
-                  | { __typename?: 'EventSearch' }
-                  | { __typename?: 'EventSearchCarousel' }
-                  | { __typename?: 'EventSelected' }
-                  | { __typename?: 'EventSelectedCarousel' }
+                  | {
+                      __typename: 'EventSearch';
+                      title?: string | null;
+                      url?: string | null;
+                      module?: string | null;
+                    }
+                  | {
+                      __typename: 'EventSearchCarousel';
+                      title?: string | null;
+                      showAllLink?: Array<string | null> | null;
+                      url?: string | null;
+                      orderNewestFirst?: boolean | null;
+                      eventsNearby?: boolean | null;
+                      amountOfCards?: number | null;
+                    }
+                  | {
+                      __typename: 'EventSelected';
+                      title?: string | null;
+                      events?: Array<string | null> | null;
+                      module?: string | null;
+                    }
+                  | {
+                      __typename: 'EventSelectedCarousel';
+                      title?: string | null;
+                      module?: string | null;
+                      showAllLink?: Array<string | null> | null;
+                      eventsNearby?: boolean | null;
+                      events?: Array<string | null> | null;
+                      amountOfCardsPerRow?: number | null;
+                      amountOfCards?: number | null;
+                    }
                   | { __typename?: 'LayoutArticleHighlights' }
                   | {
                       __typename: 'LayoutArticles';
@@ -11817,7 +12022,13 @@ export type PageChildrenSearchQuery = {
                         } | null;
                       } | null> | null;
                     }
-                  | { __typename?: 'LayoutCollection' }
+                  | {
+                      __typename: 'LayoutCollection';
+                      collection?: {
+                        __typename?: 'Collection';
+                        title?: string | null;
+                      } | null;
+                    }
                   | { __typename?: 'LayoutContact' }
                   | {
                       __typename: 'LayoutPages';
@@ -11964,10 +12175,37 @@ export type PageChildrenSearchQuery = {
                 | null
               > | null;
               modules?: Array<
-                | { __typename?: 'EventSearch' }
-                | { __typename?: 'EventSearchCarousel' }
-                | { __typename?: 'EventSelected' }
-                | { __typename?: 'EventSelectedCarousel' }
+                | {
+                    __typename: 'EventSearch';
+                    title?: string | null;
+                    url?: string | null;
+                    module?: string | null;
+                  }
+                | {
+                    __typename: 'EventSearchCarousel';
+                    title?: string | null;
+                    showAllLink?: Array<string | null> | null;
+                    url?: string | null;
+                    orderNewestFirst?: boolean | null;
+                    eventsNearby?: boolean | null;
+                    amountOfCards?: number | null;
+                  }
+                | {
+                    __typename: 'EventSelected';
+                    title?: string | null;
+                    events?: Array<string | null> | null;
+                    module?: string | null;
+                  }
+                | {
+                    __typename: 'EventSelectedCarousel';
+                    title?: string | null;
+                    module?: string | null;
+                    showAllLink?: Array<string | null> | null;
+                    eventsNearby?: boolean | null;
+                    events?: Array<string | null> | null;
+                    amountOfCardsPerRow?: number | null;
+                    amountOfCards?: number | null;
+                  }
                 | { __typename?: 'LayoutArticleHighlights' }
                 | {
                     __typename: 'LayoutArticles';
@@ -12014,7 +12252,13 @@ export type PageChildrenSearchQuery = {
                       } | null;
                     } | null> | null;
                   }
-                | { __typename?: 'LayoutCollection' }
+                | {
+                    __typename: 'LayoutCollection';
+                    collection?: {
+                      __typename?: 'Collection';
+                      title?: string | null;
+                    } | null;
+                  }
                 | { __typename?: 'LayoutContact' }
                 | {
                     __typename: 'LayoutPages';
@@ -12242,6 +12486,53 @@ export const LayoutPagesCarouselFragmentDoc = gql`
     __typename
   }
 `;
+export const EventSearchFragmentDoc = gql`
+  fragment EventSearch on EventSearch {
+    title
+    url
+    module
+    __typename
+  }
+`;
+export const EventSelectedFragmentDoc = gql`
+  fragment EventSelected on EventSelected {
+    title
+    events
+    module
+    __typename
+  }
+`;
+export const EventSearchCarouselFragmentDoc = gql`
+  fragment EventSearchCarousel on EventSearchCarousel {
+    title
+    showAllLink
+    url
+    orderNewestFirst
+    eventsNearby
+    amountOfCards
+    __typename
+  }
+`;
+export const EventSelectedCarouselFragmentDoc = gql`
+  fragment EventSelectedCarousel on EventSelectedCarousel {
+    title
+    module
+    showAllLink
+    eventsNearby
+    events
+    amountOfCardsPerRow
+    amountOfCards
+    __typename
+  }
+`;
+export const LayoutCollectionFragmentDoc = gql`
+  fragment LayoutCollection on LayoutCollection {
+    collection {
+      title
+    }
+    __typename
+  }
+`;
 export const PostFragmentDoc = gql`
   fragment Post on Post {
     id
@@ -12284,6 +12575,33 @@ export const PostFragmentDoc = gql`
       ... on LayoutPagesCarousel {
         ...LayoutPagesCarousel
       }
+      ... on LayoutArticles {
+        ...LayoutArticles
+      }
+      ... on LayoutArticlesCarousel {
+        ...LayoutArticlesCarousel
+      }
+      ... on LayoutPages {
+        ...LayoutPages
+      }
+      ... on LayoutPagesCarousel {
+        ...LayoutPagesCarousel
+      }
+      ... on EventSearch {
+        ...EventSearch
+      }
+      ... on EventSelected {
+        ...EventSelected
+      }
+      ... on EventSearchCarousel {
+        ...EventSearchCarousel
+      }
+      ... on EventSelectedCarousel {
+        ...EventSelectedCarousel
+      }
+      ... on LayoutCollection {
+        ...LayoutCollection
+      }
     }
   }
   ${CategoriesFragmentDoc}
@@ -12293,6 +12611,11 @@ export const PostFragmentDoc = gql`
   ${LayoutArticlesCarouselFragmentDoc}
   ${LayoutPagesFragmentDoc}
   ${LayoutPagesCarouselFragmentDoc}
+  ${EventSearchFragmentDoc}
+  ${EventSelectedFragmentDoc}
+  ${EventSearchCarouselFragmentDoc}
+  ${EventSelectedCarouselFragmentDoc}
+  ${LayoutCollectionFragmentDoc}
 `;
 export const MenuItemFragmentDoc = gql`
   fragment MenuItem on MenuItem {
@@ -12302,6 +12625,16 @@ export const MenuItemFragmentDoc = gql`
     title
     path
     label
+  }
+`;
+export const LayoutArticleHighlightsFragmentDoc = gql`
+  fragment LayoutArticleHighlights on LayoutArticleHighlights {
+    __typename
+  }
+`;
+export const LayoutContactFragmentDoc = gql`
+  fragment LayoutContact on LayoutContact {
+    __typename
   }
 `;
 export const LayoutLinkListFragmentDoc = gql`
@@ -12366,6 +12699,21 @@ export const PageFragmentDoc = gql`
       ... on LayoutPagesCarousel {
         ...LayoutPagesCarousel
       }
+      ... on EventSearch {
+        ...EventSearch
+      }
+      ... on EventSelected {
+        ...EventSelected
+      }
+      ... on EventSearchCarousel {
+        ...EventSearchCarousel
+      }
+      ... on EventSelectedCarousel {
+        ...EventSelectedCarousel
+      }
+      ... on LayoutCollection {
+        ...LayoutCollection
+      }
     }
   }
   ${SeoFragmentDoc}
@@ -12375,6 +12723,11 @@ export const PageFragmentDoc = gql`
   ${LayoutPagesFragmentDoc}
   ${LayoutArticlesCarouselFragmentDoc}
   ${LayoutPagesCarouselFragmentDoc}
+  ${EventSearchFragmentDoc}
+  ${EventSelectedFragmentDoc}
+  ${EventSearchCarouselFragmentDoc}
+  ${EventSelectedCarouselFragmentDoc}
+  ${LayoutCollectionFragmentDoc}
 `;
 export const ArticleDocument = gql`
   query article($id: ID!) {

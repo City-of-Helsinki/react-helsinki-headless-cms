@@ -92,3 +92,53 @@ fragment LayoutPagesCarousel on LayoutPagesCarousel {
   }
   __typename
 }
+
+fragment EventSearch on EventSearch {
+  title
+  url
+  module
+  __typename
+}
+
+fragment EventSelected on EventSelected {
+  title
+  events
+  module
+  __typename
+}
+
+fragment EventSearchCarousel on EventSearchCarousel {
+  title
+  showAllLink
+  url
+  orderNewestFirst
+  eventsNearby
+  amountOfCards
+  __typename
+}
+
+fragment EventSelectedCarousel on EventSelectedCarousel {
+  title
+  module
+  showAllLink
+  eventsNearby
+  events
+  amountOfCardsPerRow
+  amountOfCards
+  __typename
+}
+
+fragment LayoutCollection on LayoutCollection {
+  collection {
+    title
+  }
+  __typename
+}
+
+fragment LayoutArticleHighlights on LayoutArticleHighlights {
+  __typename
+}
+
+fragment LayoutContact on LayoutContact {
+  __typename
+}

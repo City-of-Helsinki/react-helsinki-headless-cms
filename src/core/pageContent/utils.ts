@@ -1,6 +1,10 @@
 import { PageModule } from '../../common/headlessService/types';
 import {
   getElementTextContent,
+  isEventSearch,
+  isEventSearchCarousel,
+  isEventSelected,
+  isEventSelectedCarousel,
   isLayoutArticle,
   isLayoutArticleCarousel,
   isLayoutPage,
@@ -11,32 +15,41 @@ import { CollectionProps } from '../collection/Collection';
 import { CollectionType } from '../collection/types';
 
 export function getCollections(pageModules: PageModule[]): CollectionType[] {
-  return (
-    pageModules
-      ?.map((module, index) => {
-        if (isLayoutArticle(module) || isLayoutArticleCarousel(module)) {
-          return {
-            id: index.toString(),
-            title: module.title,
-            items: module.articles,
-            // eslint-disable-next-line no-underscore-dangle
-            __typename: module.__typename,
-          };
-        }
-        if (isLayoutPage(module) || isLayoutPageCarousel(module)) {
-          return {
-            id: index.toString(),
-            title: module.title,
-            description: 'description' in module && module.description,
-            items: module.pages,
-            // eslint-disable-next-line no-underscore-dangle
-            __typename: module.__typename,
-          };
-        }
-        return null;
-      })
-      .filter((collection) => collection !== null) ?? []
-  );
+  return pageModules?.reduce((collections, module, index) => {
+    const commonFields: CollectionType = {
+      id: index.toString(),
+      title: 'title' in module ? module.title : undefined,
+      description: 'description' in module ? module.description : undefined,
+      items: [],
+      // eslint-disable-next-line no-underscore-dangle
+      __typename: module.__typename,
+    };
+
+    if (isLayoutArticle(module) || isLayoutArticleCarousel(module)) {
+      collections.push({
+        ...commonFields,
+        items: module.articles,
+      });
+    }
+    if (isLayoutPage(module) || isLayoutPageCarousel(module)) {
+      collections.push({
+        ...commonFields,
+        items: module.pages,
+      });
+    }
+    if (isEventSearch(module) || isEventSearchCarousel(module)) {
+      // TODO: Fetch evenst with URL-field
+      collections.push(commonFields);
+    }
+    if (isEventSelected(module) || isEventSelectedCarousel(module)) {
+      // TODO: Fetch evenst with eventIds
+      collections.push({
+        ...commonFields,
+        items: module.events.map((eventId) => ({ title: eventId })),
+      });
+    }
+    return collections;
+  }, []);
 }
 
 export function getCollectionCards(

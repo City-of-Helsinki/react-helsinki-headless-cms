@@ -12,6 +12,10 @@ import {
   PageModule,
   PageSidebarModule,
   PageType,
+  EventSearch,
+  EventSearchCarousel,
+  EventSelected,
+  EventSelectedCarousel,
 } from './types';
 
 export function isLayoutArticle(
@@ -20,7 +24,7 @@ export function isLayoutArticle(
   return (
     (<LayoutArticle>module).articles !== undefined &&
     // eslint-disable-next-line no-underscore-dangle
-    module.__typename === "LayoutArticles"
+    module.__typename === 'LayoutArticles'
   );
 }
 
@@ -30,27 +34,67 @@ export function isLayoutPage(
   return (
     (<LayoutPage>module).pages !== undefined &&
     // eslint-disable-next-line no-underscore-dangle
-    module.__typename === "LayoutPages"
+    module.__typename === 'LayoutPages'
   );
 }
 
 export function isLayoutArticleCarousel(
-  module: PageModule | PageSidebarModule
+  module: PageModule | PageSidebarModule,
 ): module is LayoutArticleCarousel {
   return (
     (<LayoutArticleCarousel>module).articles !== undefined &&
     // eslint-disable-next-line no-underscore-dangle
-    module.__typename === "LayoutArticlesCarousel"
+    module.__typename === 'LayoutArticlesCarousel'
   );
 }
 
 export function isLayoutPageCarousel(
-  module: PageModule | PageSidebarModule
+  module: PageModule | PageSidebarModule,
 ): module is LayoutPageCarousel {
   return (
     (<LayoutPageCarousel>module).pages !== undefined &&
     // eslint-disable-next-line no-underscore-dangle
-    module.__typename === "LayoutPagesCarousel"
+    module.__typename === 'LayoutPagesCarousel'
+  );
+}
+
+export function isEventSearch(
+  module: PageModule | PageSidebarModule,
+): module is EventSearch {
+  return (
+    (<EventSearch>module).url !== undefined &&
+    // eslint-disable-next-line no-underscore-dangle
+    module.__typename === 'EventSearch'
+  );
+}
+
+export function isEventSearchCarousel(
+  module: PageModule | PageSidebarModule,
+): module is EventSearchCarousel {
+  return (
+    (<EventSearchCarousel>module).url !== undefined &&
+    // eslint-disable-next-line no-underscore-dangle
+    module.__typename === 'EventSearchCarousel'
+  );
+}
+
+export function isEventSelected(
+  module: PageModule | PageSidebarModule,
+): module is EventSelected {
+  return (
+    (<EventSelected>module).events !== undefined &&
+    // eslint-disable-next-line no-underscore-dangle
+    module.__typename === 'EventSelected'
+  );
+}
+
+export function isEventSelectedCarousel(
+  module: PageModule | PageSidebarModule,
+): module is EventSelectedCarousel {
+  return (
+    (<EventSelectedCarousel>module).events !== undefined &&
+    // eslint-disable-next-line no-underscore-dangle
+    module.__typename === 'EventSelectedCarousel'
   );
 }
 
