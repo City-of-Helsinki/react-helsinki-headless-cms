@@ -27,6 +27,10 @@ export type {
   LayoutPagesFragment as LayoutPage,
   LayoutArticlesCarouselFragment as LayoutArticleCarousel,
   LayoutPagesCarouselFragment as LayoutPageCarousel,
+  EventSearchFragment as EventSearch,
+  EventSelectedFragment as EventSelected,
+  EventSearchCarouselFragment as EventSearchCarousel,
+  EventSelectedCarouselFragment as EventSelectedCarousel,
   Notification as NotificationType,
 } from './__generated__';
 

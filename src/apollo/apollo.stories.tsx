@@ -31,7 +31,7 @@ const Template: ComponentStory<typeof Page> = (args) => (
     <ConfigProvider
       config={{
         ...defaultConfig,
-        currentLanguageCode: LanguageCodeEnum.En,
+        currentLanguageCode: LanguageCodeEnum.Fi,
         siteName: 'RHHC Example',
         internalHrefOrigins: [new URL(cmsUri).origin],
         apolloClient: client,
@@ -60,7 +60,7 @@ const Template: ComponentStory<typeof Page> = (args) => (
 
 export const ApolloBasicExample = Template.bind({});
 
-const currentPage = '/test-page-in-english/';
+const currentPage = '/testisivu/';
 const ExampleNavigation = () => (
   <Navigation
     menuName="Palvelutarjotin-UI Header"

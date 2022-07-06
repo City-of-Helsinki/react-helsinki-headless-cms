@@ -49,6 +49,33 @@ fragment Post on Post {
     ... on LayoutPagesCarousel {
       ...LayoutPagesCarousel
     }
+    ... on LayoutArticles {
+      ...LayoutArticles
+    }
+    ... on LayoutArticlesCarousel {
+      ...LayoutArticlesCarousel
+    }
+    ... on LayoutPages {
+      ...LayoutPages
+    }
+    ... on LayoutPagesCarousel {
+      ...LayoutPagesCarousel
+    }
+    ... on EventSearch {
+      ...EventSearch
+    }
+    ... on EventSelected {
+      ...EventSelected
+    }
+    ... on EventSearchCarousel {
+      ...EventSearchCarousel
+    }
+    ... on EventSelectedCarousel {
+      ...EventSelectedCarousel
+    }
+    ... on LayoutCollection {
+      ...LayoutCollection
+    }
   }
 }
 

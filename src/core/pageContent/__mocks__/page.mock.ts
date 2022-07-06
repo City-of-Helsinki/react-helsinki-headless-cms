@@ -1,5 +1,9 @@
 import { PageQuery } from '../../../common/headlessService/page';
 import {
+  EventSearch,
+  EventSearchCarousel,
+  EventSelected,
+  EventSelectedCarousel,
   LayoutArticle,
   LayoutArticleCarousel,
   LayoutLinkList,
@@ -121,9 +125,58 @@ export const pageCarousel: LayoutPageCarousel = {
   __typename: 'LayoutPagesCarousel',
 };
 
+export const pageEventSearch: EventSearch = {
+  module: 'event_search',
+  title: 'Event search',
+  url: 'https://api.hel.fi/linkedevents/v1/event/?sort=end_time&super_event_type=umbrella,none&language=fi&location=tprek:15417',
+  __typename: 'EventSearch',
+};
+export const pageEventSelected: EventSelected = {
+  title: 'Event selection',
+  events: [
+    'helsinki:agariaajle',
+    'helmet:236034',
+    'helmet:236537',
+    'helsinki:aga2sfz7i4',
+    'helsinki:agawmqpcwa',
+  ],
+  // initAmountOfEvents: 6,
+  module: 'event_selected',
+  __typename: 'EventSelected',
+};
+
+export const pageEventSearchCarousel: EventSearchCarousel = {
+  title: 'Event search carousel',
+  url: 'https://api.hel.fi/linkedevents/v1/event/?sort=end_time&super_event_type=umbrella,none&language=fi&location=tprek:15417',
+  __typename: 'EventSearchCarousel',
+};
+
+export const pageEventSelectedCarousel: EventSelectedCarousel = {
+  title: 'Event selection carousel',
+  events: [
+    'helsinki:agariaajle',
+    'helmet:236034',
+    'helmet:236537',
+    'helsinki:aga2sfz7i4',
+    'helsinki:agawmqpcwa',
+  ],
+  // initAmountOfEvents: 6,
+  module: 'event_selected',
+  __typename: 'EventSelectedCarousel',
+};
+
 const sidebar = [sidebarLinkList, sidebarArticleList, sidebarPageList];
 
-const modules = [articleList, articleCarousel, pageList, pageCarousel];
+const modules = [
+  articleList,
+  articleCarousel,
+  pageList,
+  pageCarousel,
+  pageEventSearch,
+  pageEventSearchCarousel,
+  pageEventSelected,
+  pageEventSelectedCarousel,
+];
 
 const mockPage: PageQuery['page'] = {
   id: 'abc',
