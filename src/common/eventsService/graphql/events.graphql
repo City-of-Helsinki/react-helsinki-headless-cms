@@ -1,0 +1,152 @@
+fragment localizedFields on LocalizedObject {
+  en
+  fi
+  sv
+}
+
+fragment placeFields on Place {
+  id
+  divisions {
+    type
+    name {
+      ...localizedFields
+    }
+  }
+  hasUpcomingEvents
+  internalId
+  email
+  infoUrl {
+    ...localizedFields
+  }
+  name {
+    ...localizedFields
+  }
+  addressLocality {
+    ...localizedFields
+  }
+  streetAddress {
+    ...localizedFields
+  }
+  postalCode
+  position {
+    coordinates
+  }
+  telephone {
+    ...localizedFields
+  }
+}
+fragment keywordFields on Keyword {
+  id
+  internalId
+  dataSource
+  hasUpcomingEvents
+  name {
+    ...localizedFields
+  }
+}
+
+fragment offerFields on Offer {
+  isFree
+  price {
+    ...localizedFields
+  }
+  description {
+    ...localizedFields
+  }
+  infoUrl {
+    ...localizedFields
+  }
+}
+
+fragment eventFields on EventDetails {
+  id
+  internalId
+  audienceMinAge
+  audienceMaxAge
+  eventStatus
+  externalLinks {
+    name
+    link
+  }
+  images {
+    id
+    name
+    url
+    photographerName
+  }
+  subEvents {
+    internalId
+  }
+  typeId
+  superEvent {
+    internalId
+  }
+  inLanguage {
+    name {
+      ...localizedFields
+    }
+  }
+  keywords {
+    ...keywordFields
+  }
+  location {
+    ...placeFields
+  }
+  offers {
+    ...offerFields
+  }
+  name {
+    ...localizedFields
+  }
+  description {
+    ...localizedFields
+  }
+  shortDescription {
+    ...localizedFields
+  }
+  endTime
+  startTime
+  publisher
+  provider {
+    ...localizedFields
+  }
+  infoUrl {
+    ...localizedFields
+  }
+  audience {
+    id
+    name {
+      ...localizedFields
+    }
+  }
+}
+query EventsByIds(
+  $ids: [ID!]!
+  $eventType: [EventTypeId]
+  $include: [String]
+  $sort: String
+  $pageSize: Int
+  $page: Int
+  $start: String
+  $end: String
+) {
+  eventsByIds(
+    ids: $ids
+    eventType: $eventType
+    include: $include
+    sort: $sort
+    pageSize: $pageSize
+    page: $page
+    start: $start
+    end: $end
+  ) {
+    data {
+      ...eventFields
+    }
+    meta {
+      count
+      next
+      previous
+    }
+  }
+}
