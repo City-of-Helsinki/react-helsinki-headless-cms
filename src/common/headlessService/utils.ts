@@ -17,6 +17,7 @@ import {
   EventSelected,
   EventSelectedCarousel,
 } from './types';
+import { EventType } from '../eventsService/types';
 
 export function isLayoutArticle(
   module: PageModule | PageSidebarModule,
@@ -111,17 +112,20 @@ export function isLayoutLinkList(
 export function isArticleType(item: CollectionItemType): item is ArticleType {
   return (
     // eslint-disable-next-line no-underscore-dangle
-    ((<ArticleType>item).__typename === 'Post' ||
-      (<ArticleType>item).categories) !== undefined
+    item.__typename === 'Post'
   );
 }
 
 export function isPageType(item: CollectionItemType): item is PageType {
   return (
     // eslint-disable-next-line no-underscore-dangle
-    ((<PageType>item).__typename === 'Page' || (<PageType>item).sidebar) !==
-    undefined
+    item.__typename === 'Page'
   );
+}
+
+export function isEventType(item: CollectionItemType): item is EventType {
+  // eslint-disable-next-line no-underscore-dangle
+  return item.__typename === 'EventDetails';
 }
 
 export function filterPagesAndArticles(items: CollectionItemType[]) {

@@ -32,6 +32,7 @@ export type Config = {
     Head?: (props: { children: React.ReactNode }) => JSX.Element;
   };
   apolloClient?: ApolloClient<NormalizedCacheObject>;
+  eventsApolloClient?: ApolloClient<NormalizedCacheObject>;
   utils: {
     getIsHrefExternal: (href: string) => boolean;
     getRoutedInternalHref: (

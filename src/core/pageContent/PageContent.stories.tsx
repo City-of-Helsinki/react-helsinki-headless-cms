@@ -102,7 +102,7 @@ PageContentWithFunctions.args = {
             }
           />
         ))}
-        type="grid"
+        type={getCollectionUIType(collection)}
         collectionContainerProps={{ withDots: false }}
       />
     )),

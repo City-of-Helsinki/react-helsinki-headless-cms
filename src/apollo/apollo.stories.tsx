@@ -16,11 +16,18 @@ import { LanguageCodeEnum } from '../core';
 
 const cmsUri =
   process.env.CMS_GRAPHQL_ENDPOINT ?? 'https://hkih.stage.geniem.io/graphql';
-const client = new ApolloClient({
+const eventsUri =
+  process.env.EVENTS_GRAPHQL_ENDPOINT ??
+  'https://tapahtumat-proxy.test.kuva.hel.ninja/proxy/graphql';
+
+const cmsClient = new ApolloClient({
   uri: cmsUri,
   cache: new InMemoryCache(),
 });
-
+const eventsClient = new ApolloClient({
+  uri: eventsUri,
+  cache: new InMemoryCache(),
+});
 export default {
   title: 'Example/Apollo',
   component: Page,
@@ -34,7 +41,8 @@ const Template: ComponentStory<typeof Page> = (args) => (
         currentLanguageCode: LanguageCodeEnum.Fi,
         siteName: 'RHHC Example',
         internalHrefOrigins: [new URL(cmsUri).origin],
-        apolloClient: client,
+        apolloClient: cmsClient,
+        eventsApolloClient: eventsClient,
         components: {
           ...defaultConfig.components,
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
