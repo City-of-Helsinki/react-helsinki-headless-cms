@@ -1,7 +1,12 @@
 import DOMPurify from 'isomorphic-dompurify';
 import parse from 'html-react-parser';
 
-import { CollectionItemType } from '../../core/collection/types';
+import {
+  CollectionItemType,
+  CollectionType,
+  EventSearchCollectionType,
+  EventSelectionCollectionType,
+} from '../../core/collection/types';
 import {
   ArticleType,
   LayoutArticle,
@@ -16,6 +21,7 @@ import {
   EventSearchCarousel,
   EventSelected,
   EventSelectedCarousel,
+  EventModule,
 } from './types';
 import { EventType } from '../eventsService/types';
 
@@ -99,6 +105,17 @@ export function isEventSelectedCarousel(
   );
 }
 
+export function isEventModule(
+  module: PageModule | PageSidebarModule,
+): module is EventModule {
+  return (
+    isEventSearch(module) ||
+    isEventSearchCarousel(module) ||
+    isEventSelected(module) ||
+    isEventSelectedCarousel(module)
+  );
+}
+
 export function isLayoutLinkList(
   module: PageModule | PageSidebarModule,
 ): module is LayoutLinkList {
@@ -126,6 +143,18 @@ export function isPageType(item: CollectionItemType): item is PageType {
 export function isEventType(item: CollectionItemType): item is EventType {
   // eslint-disable-next-line no-underscore-dangle
   return item.__typename === 'EventDetails';
+}
+
+export function isEventSelectionCollection(
+  collection: CollectionType,
+): collection is EventSelectionCollectionType {
+  return (<EventSelectionCollectionType>collection).events !== undefined;
+}
+
+export function isEventSearchCollection(
+  collection: CollectionType,
+): collection is EventSearchCollectionType {
+  return (<EventSearchCollectionType>collection).url !== undefined;
 }
 
 export function filterPagesAndArticles(items: CollectionItemType[]) {

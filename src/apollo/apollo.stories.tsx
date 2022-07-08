@@ -19,6 +19,9 @@ const cmsUri =
 const eventsUri =
   process.env.EVENTS_GRAPHQL_ENDPOINT ??
   'https://tapahtumat-proxy.test.kuva.hel.ninja/proxy/graphql';
+const linkedEventsUri =
+  process.env.LINKED_EVENTS_ENDPOINT ??
+  'https://api.hel.fi/linkedevents/v1/event/';
 
 const cmsClient = new ApolloClient({
   uri: cmsUri,
@@ -28,6 +31,11 @@ const eventsClient = new ApolloClient({
   uri: eventsUri,
   cache: new InMemoryCache(),
 });
+const internalHrefOrigins = [
+  new URL(cmsUri).origin,
+  new URL(linkedEventsUri).href.replace('/event/', ''),
+];
+
 export default {
   title: 'Example/Apollo',
   component: Page,
@@ -40,7 +48,7 @@ const Template: ComponentStory<typeof Page> = (args) => (
         ...defaultConfig,
         currentLanguageCode: LanguageCodeEnum.Fi,
         siteName: 'RHHC Example',
-        internalHrefOrigins: [new URL(cmsUri).origin],
+        internalHrefOrigins,
         apolloClient: cmsClient,
         eventsApolloClient: eventsClient,
         components: {
@@ -53,7 +61,7 @@ const Template: ComponentStory<typeof Page> = (args) => (
           ...defaultConfig.utils,
           getRoutedInternalHref: (link) => {
             let uri = '';
-            [new URL(cmsUri).origin].forEach((d) => {
+            internalHrefOrigins.forEach((d) => {
               uri = link.replace(d, '');
             });
             return uri;

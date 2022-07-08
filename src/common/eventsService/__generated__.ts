@@ -823,6 +823,250 @@ export type EventFieldsFragment = {
   }>;
 };
 
+export type EventListQueryVariables = Exact<{
+  eventType?: InputMaybe<
+    Array<InputMaybe<EventTypeId>> | InputMaybe<EventTypeId>
+  >;
+  internetBased?: InputMaybe<Scalars['Boolean']>;
+  suitableFor?: InputMaybe<
+    Array<InputMaybe<Scalars['Int']>> | InputMaybe<Scalars['Int']>
+  >;
+  allOngoing?: InputMaybe<Scalars['Boolean']>;
+  allOngoingAnd?: InputMaybe<
+    Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>
+  >;
+  division?: InputMaybe<
+    Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>
+  >;
+  end?: InputMaybe<Scalars['String']>;
+  endsAfter?: InputMaybe<Scalars['String']>;
+  endsBefore?: InputMaybe<Scalars['String']>;
+  inLanguage?: InputMaybe<Scalars['String']>;
+  include?: InputMaybe<
+    Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>
+  >;
+  isFree?: InputMaybe<Scalars['Boolean']>;
+  keyword?: InputMaybe<
+    Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>
+  >;
+  keywordAnd?: InputMaybe<
+    Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>
+  >;
+  keywordOrSet1?: InputMaybe<
+    Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>
+  >;
+  keywordOrSet2?: InputMaybe<
+    Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>
+  >;
+  keywordOrSet3?: InputMaybe<
+    Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>
+  >;
+  keywordNot?: InputMaybe<
+    Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>
+  >;
+  language?: InputMaybe<Scalars['String']>;
+  localOngoingAnd?: InputMaybe<
+    Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>
+  >;
+  location?: InputMaybe<
+    Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>
+  >;
+  page?: InputMaybe<Scalars['Int']>;
+  pageSize?: InputMaybe<Scalars['Int']>;
+  publisher?: InputMaybe<Scalars['ID']>;
+  sort?: InputMaybe<Scalars['String']>;
+  start?: InputMaybe<Scalars['String']>;
+  startsAfter?: InputMaybe<Scalars['String']>;
+  startsBefore?: InputMaybe<Scalars['String']>;
+  superEvent?: InputMaybe<Scalars['ID']>;
+  superEventType?: InputMaybe<
+    Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>
+  >;
+  text?: InputMaybe<Scalars['String']>;
+  translation?: InputMaybe<Scalars['String']>;
+}>;
+
+export type EventListQuery = {
+  __typename?: 'Query';
+  eventList: {
+    __typename?: 'EventListResponse';
+    meta: {
+      __typename?: 'Meta';
+      count: number;
+      next?: string | null;
+      previous?: string | null;
+    };
+    data: Array<{
+      __typename?: 'EventDetails';
+      id: string;
+      internalId?: string | null;
+      audienceMinAge?: string | null;
+      audienceMaxAge?: string | null;
+      eventStatus?: string | null;
+      typeId?: EventTypeId | null;
+      endTime?: string | null;
+      startTime?: string | null;
+      publisher?: string | null;
+      externalLinks: Array<{
+        __typename?: 'ExternalLink';
+        name?: string | null;
+        link?: string | null;
+      }>;
+      images: Array<{
+        __typename?: 'Image';
+        id?: string | null;
+        name: string;
+        url: string;
+        photographerName?: string | null;
+      }>;
+      subEvents: Array<{
+        __typename?: 'InternalIdObject';
+        internalId?: string | null;
+      }>;
+      superEvent?: {
+        __typename?: 'InternalIdObject';
+        internalId?: string | null;
+      } | null;
+      inLanguage: Array<{
+        __typename?: 'InLanguage';
+        name?: {
+          __typename?: 'LocalizedObject';
+          en?: string | null;
+          fi?: string | null;
+          sv?: string | null;
+        } | null;
+      }>;
+      keywords: Array<{
+        __typename?: 'Keyword';
+        id?: string | null;
+        internalId: string;
+        dataSource?: string | null;
+        hasUpcomingEvents?: boolean | null;
+        name?: {
+          __typename?: 'LocalizedObject';
+          en?: string | null;
+          fi?: string | null;
+          sv?: string | null;
+        } | null;
+      }>;
+      location?: {
+        __typename?: 'Place';
+        id?: string | null;
+        hasUpcomingEvents?: boolean | null;
+        internalId: string;
+        email?: string | null;
+        postalCode?: string | null;
+        divisions?: Array<{
+          __typename?: 'Division';
+          type: string;
+          name?: {
+            __typename?: 'LocalizedObject';
+            en?: string | null;
+            fi?: string | null;
+            sv?: string | null;
+          } | null;
+        }> | null;
+        infoUrl?: {
+          __typename?: 'LocalizedObject';
+          en?: string | null;
+          fi?: string | null;
+          sv?: string | null;
+        } | null;
+        name?: {
+          __typename?: 'LocalizedObject';
+          en?: string | null;
+          fi?: string | null;
+          sv?: string | null;
+        } | null;
+        addressLocality?: {
+          __typename?: 'LocalizedObject';
+          en?: string | null;
+          fi?: string | null;
+          sv?: string | null;
+        } | null;
+        streetAddress?: {
+          __typename?: 'LocalizedObject';
+          en?: string | null;
+          fi?: string | null;
+          sv?: string | null;
+        } | null;
+        position?: {
+          __typename?: 'PlacePosition';
+          coordinates: Array<number>;
+        } | null;
+        telephone?: {
+          __typename?: 'LocalizedObject';
+          en?: string | null;
+          fi?: string | null;
+          sv?: string | null;
+        } | null;
+      } | null;
+      offers: Array<{
+        __typename?: 'Offer';
+        isFree?: boolean | null;
+        price?: {
+          __typename?: 'LocalizedObject';
+          en?: string | null;
+          fi?: string | null;
+          sv?: string | null;
+        } | null;
+        description?: {
+          __typename?: 'LocalizedObject';
+          en?: string | null;
+          fi?: string | null;
+          sv?: string | null;
+        } | null;
+        infoUrl?: {
+          __typename?: 'LocalizedObject';
+          en?: string | null;
+          fi?: string | null;
+          sv?: string | null;
+        } | null;
+      }>;
+      name: {
+        __typename?: 'LocalizedObject';
+        en?: string | null;
+        fi?: string | null;
+        sv?: string | null;
+      };
+      description?: {
+        __typename?: 'LocalizedObject';
+        en?: string | null;
+        fi?: string | null;
+        sv?: string | null;
+      } | null;
+      shortDescription?: {
+        __typename?: 'LocalizedObject';
+        en?: string | null;
+        fi?: string | null;
+        sv?: string | null;
+      } | null;
+      provider?: {
+        __typename?: 'LocalizedObject';
+        en?: string | null;
+        fi?: string | null;
+        sv?: string | null;
+      } | null;
+      infoUrl?: {
+        __typename?: 'LocalizedObject';
+        en?: string | null;
+        fi?: string | null;
+        sv?: string | null;
+      } | null;
+      audience: Array<{
+        __typename?: 'Audience';
+        id?: string | null;
+        name?: {
+          __typename?: 'LocalizedObject';
+          en?: string | null;
+          fi?: string | null;
+          sv?: string | null;
+        } | null;
+      }>;
+    }>;
+  };
+};
+
 export type EventsByIdsQueryVariables = Exact<{
   ids: Array<Scalars['ID']> | Scalars['ID'];
   eventType?: InputMaybe<
@@ -1155,6 +1399,167 @@ export const EventFieldsFragmentDoc = gql`
   ${PlaceFieldsFragmentDoc}
   ${OfferFieldsFragmentDoc}
 `;
+export const EventListDocument = gql`
+  query EventList(
+    $eventType: [EventTypeId]
+    $internetBased: Boolean
+    $suitableFor: [Int]
+    $allOngoing: Boolean
+    $allOngoingAnd: [String]
+    $division: [String]
+    $end: String
+    $endsAfter: String
+    $endsBefore: String
+    $inLanguage: String
+    $include: [String]
+    $isFree: Boolean
+    $keyword: [String]
+    $keywordAnd: [String]
+    $keywordOrSet1: [String]
+    $keywordOrSet2: [String]
+    $keywordOrSet3: [String]
+    $keywordNot: [String]
+    $language: String
+    $localOngoingAnd: [String]
+    $location: [String]
+    $page: Int
+    $pageSize: Int
+    $publisher: ID
+    $sort: String
+    $start: String
+    $startsAfter: String
+    $startsBefore: String
+    $superEvent: ID
+    $superEventType: [String]
+    $text: String
+    $translation: String
+  ) {
+    eventList(
+      eventType: $eventType
+      internetBased: $internetBased
+      suitableFor: $suitableFor
+      allOngoing: $allOngoing
+      allOngoingAnd: $allOngoingAnd
+      division: $division
+      end: $end
+      endsAfter: $endsAfter
+      endsBefore: $endsBefore
+      include: $include
+      inLanguage: $inLanguage
+      isFree: $isFree
+      keyword: $keyword
+      keywordAnd: $keywordAnd
+      keywordOrSet1: $keywordOrSet1
+      keywordOrSet2: $keywordOrSet2
+      keywordOrSet3: $keywordOrSet3
+      keywordNot: $keywordNot
+      language: $language
+      localOngoingAnd: $localOngoingAnd
+      location: $location
+      page: $page
+      pageSize: $pageSize
+      publisher: $publisher
+      sort: $sort
+      start: $start
+      startsAfter: $startsAfter
+      startsBefore: $startsBefore
+      superEvent: $superEvent
+      superEventType: $superEventType
+      text: $text
+      translation: $translation
+    ) {
+      meta {
+        count
+        next
+        previous
+      }
+      data {
+        ...eventFields
+      }
+    }
+  }
+  ${EventFieldsFragmentDoc}
+`;
+
+/**
+ * __useEventListQuery__
+ *
+ * To run a query within a React component, call `useEventListQuery` and pass it any options that fit your needs.
+ * When your component renders, `useEventListQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useEventListQuery({
+ *   variables: {
+ *      eventType: // value for 'eventType'
+ *      internetBased: // value for 'internetBased'
+ *      suitableFor: // value for 'suitableFor'
+ *      allOngoing: // value for 'allOngoing'
+ *      allOngoingAnd: // value for 'allOngoingAnd'
+ *      division: // value for 'division'
+ *      end: // value for 'end'
+ *      endsAfter: // value for 'endsAfter'
+ *      endsBefore: // value for 'endsBefore'
+ *      inLanguage: // value for 'inLanguage'
+ *      include: // value for 'include'
+ *      isFree: // value for 'isFree'
+ *      keyword: // value for 'keyword'
+ *      keywordAnd: // value for 'keywordAnd'
+ *      keywordOrSet1: // value for 'keywordOrSet1'
+ *      keywordOrSet2: // value for 'keywordOrSet2'
+ *      keywordOrSet3: // value for 'keywordOrSet3'
+ *      keywordNot: // value for 'keywordNot'
+ *      language: // value for 'language'
+ *      localOngoingAnd: // value for 'localOngoingAnd'
+ *      location: // value for 'location'
+ *      page: // value for 'page'
+ *      pageSize: // value for 'pageSize'
+ *      publisher: // value for 'publisher'
+ *      sort: // value for 'sort'
+ *      start: // value for 'start'
+ *      startsAfter: // value for 'startsAfter'
+ *      startsBefore: // value for 'startsBefore'
+ *      superEvent: // value for 'superEvent'
+ *      superEventType: // value for 'superEventType'
+ *      text: // value for 'text'
+ *      translation: // value for 'translation'
+ *   },
+ * });
+ */
+export function useEventListQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    EventListQuery,
+    EventListQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<EventListQuery, EventListQueryVariables>(
+    EventListDocument,
+    options,
+  );
+}
+export function useEventListLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    EventListQuery,
+    EventListQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<EventListQuery, EventListQueryVariables>(
+    EventListDocument,
+    options,
+  );
+}
+export type EventListQueryHookResult = ReturnType<typeof useEventListQuery>;
+export type EventListLazyQueryHookResult = ReturnType<
+  typeof useEventListLazyQuery
+>;
+export type EventListQueryResult = Apollo.QueryResult<
+  EventListQuery,
+  EventListQueryVariables
+>;
 export const EventsByIdsDocument = gql`
   query EventsByIds(
     $ids: [ID!]!

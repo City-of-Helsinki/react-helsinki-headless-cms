@@ -5,6 +5,10 @@ import {
   PagesQuery,
   PostsQuery,
   PageChildrenSearchQuery,
+  EventSearchFragment,
+  EventSearchCarouselFragment,
+  EventSelectedFragment,
+  EventSelectedCarouselFragment,
   TemplateEnum,
 } from './__generated__';
 
@@ -17,6 +21,11 @@ export type PageSidebarModule = PageQuery['page']['sidebar'][number];
 export type Articles = PostsQuery['posts'];
 export type Pages = PagesQuery['pages'];
 export type PageChildren = PageChildrenSearchQuery['page']['children'];
+export type EventModule =
+  | EventSearchFragment
+  | EventSearchCarouselFragment
+  | EventSelectedFragment
+  | EventSelectedCarouselFragment;
 export type Template = typeof TemplateEnum;
 
 export type {

@@ -19,26 +19,18 @@ import {
   isPageType,
 } from '../../common/headlessService/utils';
 import { CardProps } from '../card/Card';
-import { CollectionProps } from '../collection/Collection';
-import { CollectionType } from '../collection/types';
+import { type CollectionProps } from '../collection/Collection';
+import {
+  CollectionType,
+  EventSearchCollectionType,
+  EventSelectionCollectionType,
+  GeneralCollectionType,
+} from '../collection/types';
 
-const createEvent = (eventId) =>
-  ({
-    id: eventId,
-    internalId: `https://api.hel.fi/linkedevents/v1/event/${eventId}`,
-    name: { fi: eventId },
-    description: { fi: `description-${eventId}` },
-    shortDescription: { fi: `shortDescription-${eventId}` },
-    externalLinks: [],
-    images: [],
-    subEvents: [],
-    keywords: [],
-    offers: [],
-    audience: [],
-    __typename: 'EventDetails',
-  } as EventType);
-
-export function getCollections(pageModules: PageModule[]): CollectionType[] {
+export function getCollections(
+  pageModules: PageModule[],
+  isEventSearchCollectionsEnables = false,
+): CollectionType[] | GeneralCollectionType[] {
   return pageModules?.reduce((collections, module, index) => {
     const commonFields: CollectionType = {
       id: index.toString(),
@@ -61,24 +53,28 @@ export function getCollections(pageModules: PageModule[]): CollectionType[] {
         items: module.pages,
       });
     }
-    if (isEventSearch(module) || isEventSearchCarousel(module)) {
-      // TODO: Fetch evenst with URL-field
-      collections.push({
-        ...commonFields,
-        items: [
-          createEvent('asdf:123'),
-          createEvent('zxcv:234'),
-          createEvent('xcvb:345'),
-        ],
-      });
-    }
-    if (isEventSelected(module) || isEventSelectedCarousel(module)) {
-      // TODO: Fetch evenst with eventIds
-      const eventItems = module.events.map(createEvent);
-      collections.push({
-        ...commonFields,
-        items: eventItems,
-      });
+    if (isEventSearchCollectionsEnables) {
+      if (isEventSearch(module) || isEventSearchCarousel(module)) {
+        // TODO: Fetch evenst with URL-field
+        // const eventItems = fetchEventsWithUrl(module.url);
+        // const eventItems = [
+        //   createEvent('asdf:123'),
+        //   createEvent('zxcv:234'),
+        //   createEvent('xcvb:345'),
+        // ];
+        collections.push({
+          ...commonFields,
+          url: module.url,
+        } as EventSearchCollectionType);
+      }
+      if (isEventSelected(module) || isEventSelectedCarousel(module)) {
+        // TODO: Fetch evenst with eventIds
+        // const eventItems = module.events.map(createEvent);
+        collections.push({
+          ...commonFields,
+          events: module.events,
+        } as EventSelectionCollectionType);
+      }
     }
     return collections;
   }, []);
@@ -129,7 +125,7 @@ export function getEventCardProps(
 }
 
 export function getCollectionCards(
-  collection: CollectionType,
+  collection: GeneralCollectionType,
   defaultImageUrl?: string,
   locale = 'fi',
 ): CardProps[] {
