@@ -7,7 +7,11 @@ import { PageMainContent } from './PageMainContent';
 import PageContentBreadcrumbs from './PageContentBreadcrumbs';
 import { Breadcrumb } from './types';
 import { PageMeta } from './meta/PageMeta';
-import { Collection } from '../collection/Collection';
+import {
+  Collection,
+  EventSearchCollection,
+  EventSelectionCollection,
+} from '../collection/Collection';
 import { ArticleType, PageType } from '../../common/headlessService/types';
 import { Card } from '../card/Card';
 import {
@@ -16,6 +20,10 @@ import {
   getCollectionUIType,
 } from './utils';
 import { ModuleItemTypeEnum } from '../../common/headlessService/constants';
+import {
+  isEventSearchCollection,
+  isEventSelectionCollection,
+} from '../../common/headlessService/utils';
 
 export type PageContentProps = {
   page?: PageType | ArticleType;
@@ -50,21 +58,39 @@ export const defaultCollections = (
   page: PageType | ArticleType,
   getRoutedInternalHref: (link: string, type: ModuleItemTypeEnum) => string,
 ) =>
-  getCollections(page?.modules)?.map((collection) => {
+  getCollections(page?.modules, true)?.map((collection) => {
+    const commonCollectionProps = {
+      key: `collection-${Math.random()}`,
+      title: collection.title,
+      description: collection.description,
+      type: getCollectionUIType(collection),
+      collectionContainerProps: { withDots: false },
+    };
+
+    if (isEventSearchCollection(collection)) {
+      return (
+        <EventSearchCollection
+          {...commonCollectionProps}
+          collection={collection}
+        />
+      );
+    }
+
+    if (isEventSelectionCollection(collection)) {
+      return (
+        <EventSelectionCollection
+          {...commonCollectionProps}
+          collection={collection}
+        />
+      );
+    }
+
     const cards = getCollectionCards(collection).map((cardProps) => {
       const url = getRoutedInternalHref(cardProps.url, null);
       return <Card key={cardProps.id} {...cardProps} url={url} />;
     });
-    return (
-      <Collection
-        key={`collection-${Math.random()}`}
-        title={collection.title}
-        description={collection.description}
-        cards={cards}
-        type={getCollectionUIType(collection)}
-        collectionContainerProps={{ withDots: false }}
-      />
-    );
+
+    return <Collection {...commonCollectionProps} cards={cards} />;
   });
 
 export function PageContent(props: PageContentProps) {
@@ -84,6 +110,7 @@ export function PageContent(props: PageContentProps) {
     components: { Head },
     utils: { getRoutedInternalHref },
   } = useConfig();
+
   return (
     <>
       {Head && <PageMeta headComponent={Head} page={page} />}

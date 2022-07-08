@@ -19,6 +19,7 @@ import {
 } from './utils';
 import { PageMainContent } from './PageMainContent';
 import { ArticleType, PageType } from '../../common/headlessService/types';
+import { GeneralCollectionType } from '../collection/types';
 
 export default {
   title: 'Example/PageContent',
@@ -59,24 +60,6 @@ PageContentDefault.args = {
 export const PageContentWithDefinedCollections = Template.bind({});
 PageContentWithDefinedCollections.args = {
   page: pageMock,
-  collections: getCollections(pageMock.modules)?.map((collection) => (
-    <Collection
-      key={`collection-${Math.random()}`}
-      title={collection.title}
-      description={collection.description}
-      cards={getCollectionCards(collection).map((cardProps) => (
-        <Card
-          key={cardProps.id}
-          {...cardProps}
-          imageUrl={
-            cardProps.imageUrl || pageMock.featuredImage?.node?.mediaItemUrl
-          }
-        />
-      ))}
-      type={getCollectionUIType(collection)}
-      collectionContainerProps={{ withDots: false }}
-    />
-  )),
 };
 
 export const PageContentWithFunctions = Template.bind({});
@@ -89,23 +72,25 @@ PageContentWithFunctions.args = {
     />
   ),
   collections: (page: PageType | ArticleType) =>
-    getCollections(page.modules)?.map((collection) => (
-      <Collection
-        key={`collection-${Math.random()}`}
-        title={`${collection.title} (created with a custom function)`}
-        cards={getCollectionCards(collection).map((cardProps) => (
-          <Card
-            key={cardProps.id}
-            {...cardProps}
-            imageUrl={
-              cardProps.imageUrl || pageMock.featuredImage?.node?.mediaItemUrl
-            }
-          />
-        ))}
-        type={getCollectionUIType(collection)}
-        collectionContainerProps={{ withDots: false }}
-      />
-    )),
+    getCollections(page.modules, false)?.map(
+      (collection: GeneralCollectionType) => (
+        <Collection
+          key={`collection-${Math.random()}`}
+          title={`${collection.title} (created with a custom function)`}
+          cards={getCollectionCards(collection).map((cardProps) => (
+            <Card
+              key={cardProps.id}
+              {...cardProps}
+              imageUrl={
+                cardProps.imageUrl || pageMock.featuredImage?.node?.mediaItemUrl
+              }
+            />
+          ))}
+          type={getCollectionUIType(collection)}
+          collectionContainerProps={{ withDots: false }}
+        />
+      ),
+    ),
 };
 
 export const PageContentArticle = Template.bind({});
