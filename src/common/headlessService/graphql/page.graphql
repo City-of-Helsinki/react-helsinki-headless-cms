@@ -61,3 +61,21 @@ query page($id: ID!) {
     }
   }
 }
+
+query pageByTemplate($template: TemplateEnum, $language: String) {
+  pageByTemplate(template: $template, language: $language) {
+    id
+    ...Page
+    # Contains language versions other than the language the $id or type URI
+    # targets
+    translations {
+      uri
+      language {
+        ...Language
+      }
+      seo {
+        ...SEO
+      }
+    }
+  }
+}

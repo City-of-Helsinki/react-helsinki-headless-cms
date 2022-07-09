@@ -1,0 +1,17 @@
+query landingPage($id: ID!, $languageCode: LanguageCodeEnum!) {
+  landingPage(id: $id, idType: SLUG) {
+    id
+    desktopImage {
+      edges {
+        node {
+          mediaItemUrl
+        }
+      }
+    }
+    translation(language: $languageCode) {
+      title
+      description
+      heroLink
+    }
+  }
+}

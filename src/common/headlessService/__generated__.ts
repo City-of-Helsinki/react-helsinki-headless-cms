@@ -599,7 +599,11 @@ export enum CollectionIdType {
   Uri = 'URI',
 }
 
-export type CollectionModulesUnionType = EventSearch | EventSelected;
+export type CollectionModulesUnionType =
+  | EventSearch
+  | EventSearchCarousel
+  | EventSelected
+  | EventSelectedCarousel;
 
 /** Connection between the collection type and the collection type */
 export type CollectionToPreviewConnectionEdge = {
@@ -2510,10 +2514,33 @@ export type EnqueuedStylesheet = EnqueuedAsset &
 /** Collection Module: EventSearch */
 export type EventSearch = {
   __typename?: 'EventSearch';
+  /** Amount of events listed before &quot;show more -button&quot; */
+  initAmountOfEvents?: Maybe<Scalars['Int']>;
   /** Module type */
   module?: Maybe<Scalars['String']>;
   /** List of modules */
   modules?: Maybe<Array<Maybe<CollectionModulesUnionType>>>;
+  /** Module title */
+  title?: Maybe<Scalars['String']>;
+  /** Search query */
+  url?: Maybe<Scalars['String']>;
+};
+
+/** Collection Module: EventSearchCarousel */
+export type EventSearchCarousel = {
+  __typename?: 'EventSearchCarousel';
+  /** Amount of cards in carousel */
+  amountOfCards?: Maybe<Scalars['Int']>;
+  /** Events nearby */
+  eventsNearby?: Maybe<Scalars['Boolean']>;
+  /** Module type */
+  module?: Maybe<Scalars['String']>;
+  /** List of modules */
+  modules?: Maybe<Array<Maybe<CollectionModulesUnionType>>>;
+  /** Events order */
+  orderNewestFirst?: Maybe<Scalars['Boolean']>;
+  /** Show all -link */
+  showAllLink?: Maybe<Array<Maybe<Scalars['String']>>>;
   /** Module title */
   title?: Maybe<Scalars['String']>;
   /** Search query */
@@ -2525,10 +2552,33 @@ export type EventSelected = {
   __typename?: 'EventSelected';
   /** List of event IDs */
   events?: Maybe<Array<Maybe<Scalars['String']>>>;
+  /** Amount of events listed before &quot;show more -button&quot; */
+  initAmountOfEvents?: Maybe<Scalars['Int']>;
   /** Module type */
   module?: Maybe<Scalars['String']>;
   /** List of modules */
   modules?: Maybe<Array<Maybe<CollectionModulesUnionType>>>;
+  /** Module title */
+  title?: Maybe<Scalars['String']>;
+};
+
+/** Collection Module: EventSelectedCarousel */
+export type EventSelectedCarousel = {
+  __typename?: 'EventSelectedCarousel';
+  /** Amount of cards in carousel */
+  amountOfCards?: Maybe<Scalars['Int']>;
+  /** Amount of cards per row */
+  amountOfCardsPerRow?: Maybe<Scalars['Int']>;
+  /** List of event IDs */
+  events?: Maybe<Array<Maybe<Scalars['String']>>>;
+  /** Events nearby */
+  eventsNearby?: Maybe<Scalars['Boolean']>;
+  /** Module type */
+  module?: Maybe<Scalars['String']>;
+  /** List of modules */
+  modules?: Maybe<Array<Maybe<CollectionModulesUnionType>>>;
+  /** Show all -link */
+  showAllLink?: Maybe<Array<Maybe<Scalars['String']>>>;
   /** Module title */
   title?: Maybe<Scalars['String']>;
 };
@@ -3256,6 +3306,27 @@ export enum LanguageCodeFilterEnum {
   Sv = 'SV',
 }
 
+/** Layout: LayoutArticleHighlights */
+export type LayoutArticleHighlights = {
+  __typename?: 'LayoutArticleHighlights';
+  /** Anchor */
+  anchor?: Maybe<Scalars['String']>;
+  /** Articles */
+  articles?: Maybe<Array<Maybe<Post>>>;
+  /** Background Color */
+  backgroundColor?: Maybe<Scalars['String']>;
+  /** Category */
+  category?: Maybe<Scalars['Int']>;
+  /** Amount of articles to list */
+  limit?: Maybe<Scalars['Int']>;
+  /** Show more link */
+  showMore?: Maybe<Array<Maybe<Scalars['String']>>>;
+  /** Tag */
+  tag?: Maybe<Scalars['Int']>;
+  /** Title */
+  title?: Maybe<Scalars['String']>;
+};
+
 /** Layout: LayoutArticles */
 export type LayoutArticles = {
   __typename?: 'LayoutArticles';
@@ -3269,6 +3340,27 @@ export type LayoutArticles = {
   category?: Maybe<Scalars['Int']>;
   /** Tag */
   limit?: Maybe<Scalars['Int']>;
+  /** Tag */
+  tag?: Maybe<Scalars['Int']>;
+  /** Title */
+  title?: Maybe<Scalars['String']>;
+};
+
+/** Layout: LayoutArticlesCarousel */
+export type LayoutArticlesCarousel = {
+  __typename?: 'LayoutArticlesCarousel';
+  /** Anchor */
+  anchor?: Maybe<Scalars['String']>;
+  /** Articles */
+  articles?: Maybe<Array<Maybe<Post>>>;
+  /** Background Color */
+  backgroundColor?: Maybe<Scalars['String']>;
+  /** Category */
+  category?: Maybe<Scalars['Int']>;
+  /** Amount of articles to list */
+  limit?: Maybe<Scalars['Int']>;
+  /** Show more link */
+  showMore?: Maybe<Array<Maybe<Scalars['String']>>>;
   /** Tag */
   tag?: Maybe<Scalars['Int']>;
   /** Title */
@@ -3311,6 +3403,21 @@ export type LayoutLinkList = {
 /** Layout: LayoutPages */
 export type LayoutPages = {
   __typename?: 'LayoutPages';
+  /** Anchor */
+  anchor?: Maybe<Scalars['String']>;
+  /** Background Color */
+  backgroundColor?: Maybe<Scalars['String']>;
+  /** Description */
+  description?: Maybe<Scalars['String']>;
+  /** Pages */
+  pages?: Maybe<Array<Maybe<Page>>>;
+  /** Title */
+  title?: Maybe<Scalars['String']>;
+};
+
+/** Layout: LayoutPagesCarousel */
+export type LayoutPagesCarousel = {
+  __typename?: 'LayoutPagesCarousel';
   /** Anchor */
   anchor?: Maybe<Scalars['String']>;
   /** Background Color */
@@ -4404,11 +4511,16 @@ export enum PageIdType {
 
 export type PageModulesUnionType =
   | EventSearch
+  | EventSearchCarousel
   | EventSelected
+  | EventSelectedCarousel
+  | LayoutArticleHighlights
   | LayoutArticles
+  | LayoutArticlesCarousel
   | LayoutCollection
   | LayoutContact
-  | LayoutPages;
+  | LayoutPages
+  | LayoutPagesCarousel;
 
 export type PageSidebarUnionType =
   | LayoutArticles
@@ -4701,6 +4813,8 @@ export type Post = ContentNode &
     revisions?: Maybe<PostToRevisionConnection>;
     /** The SEO Framework data of the post */
     seo?: Maybe<Seo>;
+    /** List of modules */
+    sidebar?: Maybe<Array<Maybe<PostSidebarUnionType>>>;
     /** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
     slug?: Maybe<Scalars['String']>;
     /** The current status of the object */
@@ -5083,11 +5197,16 @@ export enum PostIdType {
 
 export type PostModulesUnionType =
   | EventSearch
+  | EventSearchCarousel
   | EventSelected
+  | EventSelectedCarousel
+  | LayoutArticleHighlights
   | LayoutArticles
+  | LayoutArticlesCarousel
   | LayoutCollection
   | LayoutContact
-  | LayoutPages;
+  | LayoutPages
+  | LayoutPagesCarousel;
 
 /** The format of post field data. */
 export enum PostObjectFieldFormatEnum {
@@ -5156,6 +5275,11 @@ export type PostPostFormatsNodeInput = {
   /** The slug of the postFormat. If no ID is present, this field will be used to make a connection. If no existing term exists with this slug, this field will be used as a fallback to the Name field when creating a new term to connect to, if term creation is enabled as a nested mutation. */
   slug?: InputMaybe<Scalars['String']>;
 };
+
+export type PostSidebarUnionType =
+  | LayoutArticles
+  | LayoutLinkList
+  | LayoutPages;
 
 /** The status of the object. */
 export enum PostStatusEnum {
@@ -6411,6 +6535,7 @@ export type RootQuery = {
    * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
    */
   pageBy?: Maybe<Page>;
+  pageByTemplate?: Maybe<Page>;
   /** Connection between the RootQuery type and the page type */
   pages?: Maybe<RootQueryToPageConnection>;
   /** A WordPress plugin */
@@ -6705,6 +6830,12 @@ export type RootQueryPageByArgs = {
   id?: InputMaybe<Scalars['ID']>;
   pageId?: InputMaybe<Scalars['Int']>;
   uri?: InputMaybe<Scalars['String']>;
+};
+
+/** The root entry point into the Graph */
+export type RootQueryPageByTemplateArgs = {
+  language?: InputMaybe<Scalars['String']>;
+  template?: InputMaybe<TemplateEnum>;
 };
 
 /** The root entry point into the Graph */
@@ -8648,6 +8779,12 @@ export type TaxonomyToContentTypeConnectionEdge = {
   node?: Maybe<ContentType>;
 };
 
+/** Get page object by template */
+export enum TemplateEnum {
+  FrontPage = 'frontPage',
+  PostsPage = 'postsPage',
+}
+
 /** Terms are nodes within a Taxonomy, used to group and relate other nodes. */
 export type TermNode = {
   /** The number of objects connected to the object */
@@ -10261,7 +10398,10 @@ export type PostFragment = {
   } | null;
   modules?: Array<
     | { __typename?: 'EventSearch' }
+    | { __typename?: 'EventSearchCarousel' }
     | { __typename?: 'EventSelected' }
+    | { __typename?: 'EventSelectedCarousel' }
+    | { __typename?: 'LayoutArticleHighlights' }
     | {
         __typename?: 'LayoutArticles';
         title?: string | null;
@@ -10284,6 +10424,7 @@ export type PostFragment = {
           } | null;
         } | null> | null;
       }
+    | { __typename?: 'LayoutArticlesCarousel' }
     | { __typename?: 'LayoutCollection' }
     | { __typename?: 'LayoutContact' }
     | {
@@ -10308,6 +10449,7 @@ export type PostFragment = {
           } | null;
         } | null> | null;
       }
+    | { __typename?: 'LayoutPagesCarousel' }
     | null
   > | null;
 };
@@ -10403,7 +10545,10 @@ export type ArticleQuery = {
     } | null;
     modules?: Array<
       | { __typename?: 'EventSearch' }
+      | { __typename?: 'EventSearchCarousel' }
       | { __typename?: 'EventSelected' }
+      | { __typename?: 'EventSelectedCarousel' }
+      | { __typename?: 'LayoutArticleHighlights' }
       | {
           __typename?: 'LayoutArticles';
           title?: string | null;
@@ -10426,6 +10571,7 @@ export type ArticleQuery = {
             } | null;
           } | null> | null;
         }
+      | { __typename?: 'LayoutArticlesCarousel' }
       | { __typename?: 'LayoutCollection' }
       | { __typename?: 'LayoutContact' }
       | {
@@ -10450,6 +10596,7 @@ export type ArticleQuery = {
             } | null;
           } | null> | null;
         }
+      | { __typename?: 'LayoutPagesCarousel' }
       | null
     > | null;
   } | null;
@@ -10483,6 +10630,35 @@ export type PostsQuery = {
         } | null;
       } | null;
     } | null> | null;
+  } | null;
+};
+
+export type LandingPageQueryVariables = Exact<{
+  id: Scalars['ID'];
+  languageCode: LanguageCodeEnum;
+}>;
+
+export type LandingPageQuery = {
+  __typename?: 'RootQuery';
+  landingPage?: {
+    __typename?: 'LandingPage';
+    id: string;
+    desktopImage?: {
+      __typename?: 'LandingPageToMediaItemConnection';
+      edges?: Array<{
+        __typename?: 'LandingPageToMediaItemConnectionEdge';
+        node?: {
+          __typename?: 'MediaItem';
+          mediaItemUrl?: string | null;
+        } | null;
+      } | null> | null;
+    } | null;
+    translation?: {
+      __typename?: 'LandingPage';
+      title?: string | null;
+      description?: string | null;
+      heroLink?: Array<string | null> | null;
+    } | null;
   } | null;
 };
 
@@ -10725,7 +10901,10 @@ export type PageFragment = {
   > | null;
   modules?: Array<
     | { __typename?: 'EventSearch' }
+    | { __typename?: 'EventSearchCarousel' }
     | { __typename?: 'EventSelected' }
+    | { __typename?: 'EventSelectedCarousel' }
+    | { __typename?: 'LayoutArticleHighlights' }
     | {
         __typename?: 'LayoutArticles';
         title?: string | null;
@@ -10748,6 +10927,7 @@ export type PageFragment = {
           } | null;
         } | null> | null;
       }
+    | { __typename?: 'LayoutArticlesCarousel' }
     | { __typename?: 'LayoutCollection' }
     | { __typename?: 'LayoutContact' }
     | {
@@ -10772,6 +10952,7 @@ export type PageFragment = {
           } | null;
         } | null> | null;
       }
+    | { __typename?: 'LayoutPagesCarousel' }
     | null
   > | null;
 };
@@ -10914,7 +11095,10 @@ export type PageQuery = {
     > | null;
     modules?: Array<
       | { __typename?: 'EventSearch' }
+      | { __typename?: 'EventSearchCarousel' }
       | { __typename?: 'EventSelected' }
+      | { __typename?: 'EventSelectedCarousel' }
+      | { __typename?: 'LayoutArticleHighlights' }
       | {
           __typename?: 'LayoutArticles';
           title?: string | null;
@@ -10937,6 +11121,7 @@ export type PageQuery = {
             } | null;
           } | null> | null;
         }
+      | { __typename?: 'LayoutArticlesCarousel' }
       | { __typename?: 'LayoutCollection' }
       | { __typename?: 'LayoutContact' }
       | {
@@ -10961,6 +11146,203 @@ export type PageQuery = {
             } | null;
           } | null> | null;
         }
+      | { __typename?: 'LayoutPagesCarousel' }
+      | null
+    > | null;
+  } | null;
+};
+
+export type PageByTemplateQueryVariables = Exact<{
+  template?: InputMaybe<TemplateEnum>;
+  language?: InputMaybe<Scalars['String']>;
+}>;
+
+export type PageByTemplateQuery = {
+  __typename?: 'RootQuery';
+  pageByTemplate?: {
+    __typename?: 'Page';
+    id: string;
+    content?: string | null;
+    slug?: string | null;
+    title?: string | null;
+    uri?: string | null;
+    link?: string | null;
+    lead?: string | null;
+    translations?: Array<{
+      __typename?: 'Page';
+      uri?: string | null;
+      language?: {
+        __typename?: 'Language';
+        code?: LanguageCodeEnum | null;
+        id: string;
+        locale?: string | null;
+        name?: string | null;
+        slug?: string | null;
+      } | null;
+      seo?: {
+        __typename?: 'SEO';
+        title?: string | null;
+        description?: string | null;
+        openGraphTitle?: string | null;
+        openGraphDescription?: string | null;
+        openGraphType?: string | null;
+        twitterTitle?: string | null;
+        twitterDescription?: string | null;
+        canonicalUrl?: string | null;
+        socialImage?: {
+          __typename?: 'MediaItem';
+          mediaItemUrl?: string | null;
+        } | null;
+      } | null;
+    } | null> | null;
+    seo?: {
+      __typename?: 'SEO';
+      title?: string | null;
+      description?: string | null;
+      openGraphTitle?: string | null;
+      openGraphDescription?: string | null;
+      openGraphType?: string | null;
+      twitterTitle?: string | null;
+      twitterDescription?: string | null;
+      canonicalUrl?: string | null;
+      socialImage?: {
+        __typename?: 'MediaItem';
+        mediaItemUrl?: string | null;
+      } | null;
+    } | null;
+    language?: {
+      __typename?: 'Language';
+      code?: LanguageCodeEnum | null;
+      id: string;
+      locale?: string | null;
+      name?: string | null;
+      slug?: string | null;
+    } | null;
+    featuredImage?: {
+      __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+      node?: {
+        __typename?: 'MediaItem';
+        mediaItemUrl?: string | null;
+        link?: string | null;
+        altText?: string | null;
+        mimeType?: string | null;
+        title?: string | null;
+        uri?: string | null;
+      } | null;
+    } | null;
+    sidebar?: Array<
+      | {
+          __typename?: 'LayoutArticles';
+          title?: string | null;
+          articles?: Array<{
+            __typename?: 'Post';
+            id: string;
+            uri?: string | null;
+            slug?: string | null;
+            link?: string | null;
+            date?: string | null;
+            title?: string | null;
+            lead?: string | null;
+            featuredImage?: {
+              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+              node?: {
+                __typename?: 'MediaItem';
+                altText?: string | null;
+                mediaItemUrl?: string | null;
+              } | null;
+            } | null;
+          } | null> | null;
+        }
+      | {
+          __typename?: 'LayoutLinkList';
+          anchor?: string | null;
+          title?: string | null;
+          description?: string | null;
+          links?: Array<{
+            __typename?: 'Link';
+            target?: string | null;
+            title?: string | null;
+            url?: string | null;
+          } | null> | null;
+        }
+      | {
+          __typename?: 'LayoutPages';
+          title?: string | null;
+          pages?: Array<{
+            __typename?: 'Page';
+            id: string;
+            uri?: string | null;
+            slug?: string | null;
+            link?: string | null;
+            date?: string | null;
+            title?: string | null;
+            lead?: string | null;
+            featuredImage?: {
+              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+              node?: {
+                __typename?: 'MediaItem';
+                altText?: string | null;
+                mediaItemUrl?: string | null;
+              } | null;
+            } | null;
+          } | null> | null;
+        }
+      | null
+    > | null;
+    modules?: Array<
+      | { __typename?: 'EventSearch' }
+      | { __typename?: 'EventSearchCarousel' }
+      | { __typename?: 'EventSelected' }
+      | { __typename?: 'EventSelectedCarousel' }
+      | { __typename?: 'LayoutArticleHighlights' }
+      | {
+          __typename?: 'LayoutArticles';
+          title?: string | null;
+          articles?: Array<{
+            __typename?: 'Post';
+            id: string;
+            uri?: string | null;
+            slug?: string | null;
+            link?: string | null;
+            date?: string | null;
+            title?: string | null;
+            lead?: string | null;
+            featuredImage?: {
+              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+              node?: {
+                __typename?: 'MediaItem';
+                altText?: string | null;
+                mediaItemUrl?: string | null;
+              } | null;
+            } | null;
+          } | null> | null;
+        }
+      | { __typename?: 'LayoutArticlesCarousel' }
+      | { __typename?: 'LayoutCollection' }
+      | { __typename?: 'LayoutContact' }
+      | {
+          __typename?: 'LayoutPages';
+          title?: string | null;
+          pages?: Array<{
+            __typename?: 'Page';
+            id: string;
+            uri?: string | null;
+            slug?: string | null;
+            link?: string | null;
+            date?: string | null;
+            title?: string | null;
+            lead?: string | null;
+            featuredImage?: {
+              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+              node?: {
+                __typename?: 'MediaItem';
+                altText?: string | null;
+                mediaItemUrl?: string | null;
+              } | null;
+            } | null;
+          } | null> | null;
+        }
+      | { __typename?: 'LayoutPagesCarousel' }
       | null
     > | null;
   } | null;
@@ -11108,7 +11490,10 @@ export type PageChildrenSearchQuery = {
                 > | null;
                 modules?: Array<
                   | { __typename?: 'EventSearch' }
+                  | { __typename?: 'EventSearchCarousel' }
                   | { __typename?: 'EventSelected' }
+                  | { __typename?: 'EventSelectedCarousel' }
+                  | { __typename?: 'LayoutArticleHighlights' }
                   | {
                       __typename?: 'LayoutArticles';
                       title?: string | null;
@@ -11131,6 +11516,7 @@ export type PageChildrenSearchQuery = {
                         } | null;
                       } | null> | null;
                     }
+                  | { __typename?: 'LayoutArticlesCarousel' }
                   | { __typename?: 'LayoutCollection' }
                   | { __typename?: 'LayoutContact' }
                   | {
@@ -11155,6 +11541,7 @@ export type PageChildrenSearchQuery = {
                         } | null;
                       } | null> | null;
                     }
+                  | { __typename?: 'LayoutPagesCarousel' }
                   | null
                 > | null;
               } | null> | null;
@@ -11254,7 +11641,10 @@ export type PageChildrenSearchQuery = {
               > | null;
               modules?: Array<
                 | { __typename?: 'EventSearch' }
+                | { __typename?: 'EventSearchCarousel' }
                 | { __typename?: 'EventSelected' }
+                | { __typename?: 'EventSelectedCarousel' }
+                | { __typename?: 'LayoutArticleHighlights' }
                 | {
                     __typename?: 'LayoutArticles';
                     title?: string | null;
@@ -11277,6 +11667,7 @@ export type PageChildrenSearchQuery = {
                       } | null;
                     } | null> | null;
                   }
+                | { __typename?: 'LayoutArticlesCarousel' }
                 | { __typename?: 'LayoutCollection' }
                 | { __typename?: 'LayoutContact' }
                 | {
@@ -11301,6 +11692,7 @@ export type PageChildrenSearchQuery = {
                       } | null;
                     } | null> | null;
                   }
+                | { __typename?: 'LayoutPagesCarousel' }
                 | null
               > | null;
             }
@@ -11678,6 +12070,75 @@ export type PostsQueryResult = Apollo.QueryResult<
   PostsQuery,
   PostsQueryVariables
 >;
+export const LandingPageDocument = gql`
+  query landingPage($id: ID!, $languageCode: LanguageCodeEnum!) {
+    landingPage(id: $id, idType: SLUG) {
+      id
+      desktopImage {
+        edges {
+          node {
+            mediaItemUrl
+          }
+        }
+      }
+      translation(language: $languageCode) {
+        title
+        description
+        heroLink
+      }
+    }
+  }
+`;
+
+/**
+ * __useLandingPageQuery__
+ *
+ * To run a query within a React component, call `useLandingPageQuery` and pass it any options that fit your needs.
+ * When your component renders, `useLandingPageQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useLandingPageQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *      languageCode: // value for 'languageCode'
+ *   },
+ * });
+ */
+export function useLandingPageQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    LandingPageQuery,
+    LandingPageQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<LandingPageQuery, LandingPageQueryVariables>(
+    LandingPageDocument,
+    options,
+  );
+}
+export function useLandingPageLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    LandingPageQuery,
+    LandingPageQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<LandingPageQuery, LandingPageQueryVariables>(
+    LandingPageDocument,
+    options,
+  );
+}
+export type LandingPageQueryHookResult = ReturnType<typeof useLandingPageQuery>;
+export type LandingPageLazyQueryHookResult = ReturnType<
+  typeof useLandingPageLazyQuery
+>;
+export type LandingPageQueryResult = Apollo.QueryResult<
+  LandingPageQuery,
+  LandingPageQueryVariables
+>;
 export const LanguagesDocument = gql`
   query languages {
     languages {
@@ -11901,6 +12362,78 @@ export function usePageLazyQuery(
 export type PageQueryHookResult = ReturnType<typeof usePageQuery>;
 export type PageLazyQueryHookResult = ReturnType<typeof usePageLazyQuery>;
 export type PageQueryResult = Apollo.QueryResult<PageQuery, PageQueryVariables>;
+export const PageByTemplateDocument = gql`
+  query pageByTemplate($template: TemplateEnum, $language: String) {
+    pageByTemplate(template: $template, language: $language) {
+      id
+      ...Page
+      translations {
+        uri
+        language {
+          ...Language
+        }
+        seo {
+          ...SEO
+        }
+      }
+    }
+  }
+  ${PageFragmentDoc}
+  ${LanguageFragmentDoc}
+  ${SeoFragmentDoc}
+`;
+
+/**
+ * __usePageByTemplateQuery__
+ *
+ * To run a query within a React component, call `usePageByTemplateQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePageByTemplateQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePageByTemplateQuery({
+ *   variables: {
+ *      template: // value for 'template'
+ *      language: // value for 'language'
+ *   },
+ * });
+ */
+export function usePageByTemplateQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    PageByTemplateQuery,
+    PageByTemplateQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<PageByTemplateQuery, PageByTemplateQueryVariables>(
+    PageByTemplateDocument,
+    options,
+  );
+}
+export function usePageByTemplateLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    PageByTemplateQuery,
+    PageByTemplateQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<PageByTemplateQuery, PageByTemplateQueryVariables>(
+    PageByTemplateDocument,
+    options,
+  );
+}
+export type PageByTemplateQueryHookResult = ReturnType<
+  typeof usePageByTemplateQuery
+>;
+export type PageByTemplateLazyQueryHookResult = ReturnType<
+  typeof usePageByTemplateLazyQuery
+>;
+export type PageByTemplateQueryResult = Apollo.QueryResult<
+  PageByTemplateQuery,
+  PageByTemplateQueryVariables
+>;
 export const PageChildrenSearchDocument = gql`
   query PageChildrenSearch(
     $id: ID!
