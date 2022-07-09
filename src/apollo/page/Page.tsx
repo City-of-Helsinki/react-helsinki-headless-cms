@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { TemplateEnum } from '../../core';
 import {
   Page as PageWithoutData,
   PageProps as PagePropsWithoutData,
@@ -7,15 +8,21 @@ import {
 import ApolloPageContextProvider from './ApolloPageContextProvider';
 
 export type PageProps = PagePropsWithoutData & {
-  uri: string;
+  uri?: string;
+  pageTemplate?: TemplateEnum;
 };
 
-export function Page({ uri, ...delegatedProps }: PageProps) {
+export function Page({
+  uri = '',
+  pageTemplate = TemplateEnum.FrontPage,
+  ...delegatedProps
+}: PageProps) {
   const pageContextValue = React.useMemo(
     () => ({
       uri,
+      pageTemplate,
     }),
-    [uri],
+    [uri, pageTemplate],
   );
 
   return (
