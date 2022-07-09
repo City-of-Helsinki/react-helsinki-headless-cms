@@ -5,7 +5,7 @@ import {
   PageByTemplateQueryVariables,
 } from './__generated__';
 
-export const usePageQuery = makeQueryWithApolloClientFromConfig<
+export const usePageByTemplateQuery = makeQueryWithApolloClientFromConfig<
   PageByTemplateQuery,
   PageByTemplateQueryVariables
 >(usePageByTemplateQueryWithoutClient);

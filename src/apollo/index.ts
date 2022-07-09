@@ -6,5 +6,7 @@ export * from '../common/headlessService/page';
 export * from '../common/headlessService/pages';
 export * from '../common/headlessService/article';
 export * from '../common/headlessService/articles';
+export * from '../common/headlessService/landingPage';
+export * from '../common/headlessService/pageByTemplate';
 export { MenuDocument } from '../common/headlessService/menu';
 export { LanguagesDocument } from '../common/headlessService/languages';
