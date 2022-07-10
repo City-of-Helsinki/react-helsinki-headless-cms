@@ -28,6 +28,9 @@ export type PageContentProps = {
   backUrl?: string;
   sidebarContentProps?: Partial<typeof SidebarContent>;
   PageContentLayoutComponent?: typeof PageContentLayout;
+  // All other props
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [x: string]: any;
 } & Partial<typeof PageContentLayout>;
 
 export const defaultContent = (page: PageType | ArticleType) => (
