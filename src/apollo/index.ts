@@ -14,3 +14,5 @@ export {
   LanguagesDocument,
   LanguageCodeEnum,
 } from '../common/headlessService/languages';
+
+export { TemplateEnum } from '../common/headlessService/types';
