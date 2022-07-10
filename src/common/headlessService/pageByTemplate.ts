@@ -14,4 +14,5 @@ export {
   PageByTemplateQuery,
   PageByTemplateQueryVariables,
   PageByTemplateDocument,
+  TemplateEnum,
 } from './__generated__';
