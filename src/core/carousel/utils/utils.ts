@@ -23,3 +23,5 @@ export const getItemSetItemKey = (
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getSlideDotKey = (item: any, index: number) =>
   `slide-dot-${item?.id ?? Math.random()}-${index}`;
+
+export const getLoadMoreKey = () => `carousel-loadmore-${Math.random()}`;

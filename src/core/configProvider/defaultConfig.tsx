@@ -20,6 +20,7 @@ export const defaultConfig: Config = {
     openInExternalDomainAriaLabel: 'Opens a different website.',
     openInNewTabAriaLabel: 'Opens in a new tab.',
     closeButtonLabelText: 'close',
+    loadMoreButtonLabelText: 'Load more',
     archiveSearch: {
       searchTextPlaceholder: 'Search text',
       searchButtonLabelText: 'Search',

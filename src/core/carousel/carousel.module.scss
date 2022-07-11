@@ -101,7 +101,6 @@
           }
         }
       }
-
       .dotsContainer {
         display: flex;
         justify-content: center;
@@ -117,6 +116,14 @@
             background-color: var(--color-black-50);
           }
         }
+      }
+      .onLoadMoreContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding-left: 5em;
+        width: max-content;
       }
     }
   }
