@@ -139,7 +139,7 @@ export function EventSearchCollection({
   } = useConfig();
   const { url } = collection;
   // TODO: use initAmountOfEvents -field when it's null-issue is fixed
-  const pageSize = 6; // collection.initAmountOfEvents
+  const pageSize = 4; // collection.initAmountOfEvents
 
   if (!url.startsWith(LINKED_EVENTS_ENDPOINT)) {
     throw new Error('Illegal LinkedEvents origin set!');
@@ -214,25 +214,68 @@ export function EventSelectionCollection({
   ...delegatedProps
 }: EventSelectionCollectionProps) {
   const eventsApolloClient = useEventsApolloClientFromConfig();
+  const [isFetchingMore, setIsFetchingMore] = React.useState(false);
   const {
     utils: { getRoutedInternalHref },
   } = useConfig();
+  // TODO: use initAmountOfEvents -field when it's null-issue is fixed
+  const pageSize = 4; // collection.initAmountOfEvents
 
-  const { data, loading } = useEventsByIdsQuery({
+  const { data, loading, fetchMore } = useEventsByIdsQuery({
     client: eventsApolloClient,
     ssr: false,
+    notifyOnNetworkStatusChange: true,
     variables: {
       ids: collection.events,
+      pageSize,
     },
   });
 
-  if (loading) {
+  const eventsList = data?.eventsByIds;
+
+  if (!data && loading) {
     return <LoadingSpinner />;
   }
+
+  const handleLoadMore = async () => {
+    const page = eventsList.meta ? getNextPage(eventsList.meta) : null;
+    setIsFetchingMore(true);
+    if (page) {
+      await fetchMore({
+        variables: {
+          page,
+        },
+        updateQuery: (prevResult, { fetchMoreResult }) => {
+          if (!fetchMoreResult) return prevResult;
+          return {
+            ...prevResult,
+            eventsByIds: {
+              ...fetchMoreResult.eventsByIds,
+              data: [
+                ...prevResult.eventsByIds.data,
+                ...fetchMoreResult.eventsByIds.data,
+              ],
+            },
+          };
+        },
+      });
+    }
+    setIsFetchingMore(false);
+  };
+
   const cards = getEventCollectionCards(
     collection,
-    [...data.eventsByIds.data],
+    eventsList?.data ?? [],
     getRoutedInternalHref,
   );
-  return <Collection {...delegatedProps} cards={cards} />;
+
+  return (
+    <Collection
+      {...delegatedProps}
+      cards={cards}
+      onLoadMore={handleLoadMore}
+      hasNext={!!eventsList.meta.next}
+      loading={isFetchingMore}
+    />
+  );
 }
