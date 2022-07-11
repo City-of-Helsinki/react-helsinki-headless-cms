@@ -97,6 +97,8 @@ fragment EventSearch on EventSearch {
   title
   url
   module
+  # TODO: add when initAmountOfEvents null-issue is fixed
+  # initAmountOfEvents
   __typename
 }
 
@@ -104,6 +106,8 @@ fragment EventSelected on EventSelected {
   title
   events
   module
+  # TODO: add when initAmountOfEvents null-issue is fixed
+  # initAmountOfEvents
   __typename
 }
 

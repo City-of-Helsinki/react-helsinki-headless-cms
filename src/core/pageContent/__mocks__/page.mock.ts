@@ -150,7 +150,7 @@ export const pageEventSelected: EventSelected = {
     'helsinki:aga2sfz7i4',
     'helsinki:agawmqpcwa',
   ],
-  // initAmountOfEvents: 6,
+  // initAmountOfEvents: 6, // TODO: add when initAmountOfEvents null-issue is fixed
   module: 'event_selected',
   __typename: 'EventSelected',
 };
@@ -170,7 +170,7 @@ export const pageEventSelectedCarousel: EventSelectedCarousel = {
     'helsinki:aga2sfz7i4',
     'helsinki:agawmqpcwa',
   ],
-  // initAmountOfEvents: 6,
+  // initAmountOfEvents: 6, // TODO: add when initAmountOfEvents null-issue is fixed
   module: 'event_selected',
   __typename: 'EventSelectedCarousel',
 };
