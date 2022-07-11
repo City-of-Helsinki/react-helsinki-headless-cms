@@ -1,7 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
-import { LoadingSpinner } from 'hds-react';
+import { Button, LoadingSpinner } from 'hds-react';
 
 import styles from './collection.module.scss';
 import { Carousel, CarouselProps } from '../carousel/Carousel';
@@ -22,6 +22,7 @@ import useEventsApolloClientFromConfig from '../configProvider/useEventsApolloCl
 import { getCollectionCards } from '../pageContent/utils';
 import { Config } from '../configProvider/configContext';
 import normalizeKeys from '../../linkedEvents/utils/normalizeKeys';
+import { getNextPage } from '../../common/eventsService/utils';
 
 const LINKED_EVENTS_ENDPOINT =
   process.env.LINKED_EVENTS_ENDPOINT ??
@@ -36,6 +37,9 @@ export type CollectionProps = {
     | Partial<CarouselProps<typeof Card>>
     | Partial<GridProps>;
   type: 'carousel' | 'grid';
+  loading: boolean;
+  hasNext: boolean;
+  onLoadMore?: () => void;
 };
 
 export function CollectionGrid({
@@ -75,6 +79,9 @@ export function Collection({
   className,
   collectionContainerProps,
   type = 'grid',
+  loading = false,
+  hasNext = false,
+  onLoadMore,
 }: CollectionProps) {
   const componentForType: Record<CollectionProps['type'], JSX.Element> = {
     carousel: (
@@ -91,6 +98,8 @@ export function Collection({
         {title && <h1 className={styles.heading}>{title}</h1>}
         {description && <p className={styles.description}>{description}</p>}
         {componentForType[type]}
+        {loading && <LoadingSpinner />}
+        {!loading && hasNext && <Button onClick={onLoadMore}>Load more</Button>}
       </div>
     </div>
   );
@@ -123,11 +132,14 @@ export function EventSearchCollection({
   collection,
   ...delegatedProps
 }: EventSearchCollectionProps) {
-  const useEventsApolloClient = useEventsApolloClientFromConfig();
+  const eventsApolloClient = useEventsApolloClientFromConfig();
+  const [isFetchingMore, setIsFetchingMore] = React.useState(false);
   const {
     utils: { getRoutedInternalHref },
   } = useConfig();
   const { url } = collection;
+  // TODO: use initAmountOfEvents -field when it's null-issue is fixed
+  const pageSize = 6; // collection.initAmountOfEvents
 
   if (!url.startsWith(LINKED_EVENTS_ENDPOINT)) {
     throw new Error('Illegal LinkedEvents origin set!');
@@ -135,22 +147,62 @@ export function EventSearchCollection({
 
   const { searchParams } = new URL(url);
   const params = Object.fromEntries(searchParams.entries());
-  const variables = normalizeKeys(params);
+  const variables = { ...normalizeKeys(params), pageSize };
 
-  const { data, loading } = useEventListQuery({
-    client: useEventsApolloClient,
+  const { data, loading, fetchMore } = useEventListQuery({
+    client: eventsApolloClient,
+    ssr: false,
+    notifyOnNetworkStatusChange: true,
     variables,
   });
 
-  if (loading) {
+  const eventsList = data?.eventList;
+
+  if (!data && loading) {
     return <LoadingSpinner />;
   }
+
+  const handleLoadMore = async () => {
+    const page = eventsList.meta ? getNextPage(eventsList.meta) : null;
+    setIsFetchingMore(true);
+    if (page) {
+      await fetchMore({
+        variables: {
+          page,
+        },
+        updateQuery: (prevResult, { fetchMoreResult }) => {
+          if (!fetchMoreResult) return prevResult;
+          return {
+            ...prevResult,
+            eventList: {
+              ...fetchMoreResult.eventList,
+              data: [
+                ...prevResult.eventList.data,
+                ...fetchMoreResult.eventList.data,
+              ],
+            },
+          };
+        },
+      });
+    }
+    setIsFetchingMore(false);
+  };
+
   const cards = getEventCollectionCards(
     collection,
-    [...data.eventList.data],
+    eventsList?.data ?? [],
     getRoutedInternalHref,
   );
-  return <Collection {...delegatedProps} cards={cards} />;
+
+  return (
+    <Collection
+      {...delegatedProps}
+      cards={cards}
+      onLoadMore={handleLoadMore}
+      hasNext={!!eventsList.meta.next}
+      loading={isFetchingMore}
+    />
+  );
 }
 
 export type EventSelectionCollectionProps = Omit<CollectionProps, 'cards'> & {
@@ -161,13 +213,14 @@ export function EventSelectionCollection({
   collection,
   ...delegatedProps
 }: EventSelectionCollectionProps) {
-  const useEventsApolloClient = useEventsApolloClientFromConfig();
+  const eventsApolloClient = useEventsApolloClientFromConfig();
   const {
     utils: { getRoutedInternalHref },
   } = useConfig();
 
   const { data, loading } = useEventsByIdsQuery({
-    client: useEventsApolloClient,
+    client: eventsApolloClient,
+    ssr: false,
     variables: {
       ids: collection.events,
     },
