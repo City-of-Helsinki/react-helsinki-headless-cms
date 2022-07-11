@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
-import { IconAngleLeft, IconAngleRight } from 'hds-react';
+import { Button, IconAngleLeft, IconAngleRight } from 'hds-react';
 
 import styles from './carousel.module.scss';
 import {
@@ -9,7 +9,10 @@ import {
   getItemSetItemKey,
   getItemSetKey,
   getSlideDotKey,
+  getLoadMoreKey,
 } from './utils/utils';
+import { type CollectionProps } from '../collection/Collection';
+import { useConfig } from '../configProvider/useConfig';
 
 export type CarouselProps<T> = {
   children: React.ReactElement<T>[];
@@ -17,6 +20,10 @@ export type CarouselProps<T> = {
   itemsMobile?: 1 | 2;
   className?: string;
   withDots?: boolean;
+  onShowAll?: CollectionProps['onShowAll'];
+  onLoadMore?: CollectionProps['onLoadMore'];
+  hasMore?: CollectionProps['hasNext'];
+  loading?: CollectionProps['loading'];
 };
 
 export function Carousel({
@@ -25,7 +32,14 @@ export function Carousel({
   itemsMobile = 2,
   className = '',
   withDots = true,
+  // TODO: onShowAll,
+  onLoadMore,
+  hasMore,
+  loading,
 }) {
+  const {
+    copy: { loadMoreButtonLabelText },
+  } = useConfig();
   const MOBILE_WIDTH = 640;
   const [isReady] = useState<boolean>(true);
   const [transformValue, setTransformValue] = useState('0px');
@@ -52,9 +66,11 @@ export function Carousel({
 
   useEffect(() => {
     if (itemsPerSlide > 0) {
-      setNumberOfSlides(Math.ceil(children.length / itemsPerSlide));
+      const itemsCount =
+        hasMore && !!onLoadMore ? children.length + 1 : children.length;
+      setNumberOfSlides(Math.ceil(itemsCount / itemsPerSlide));
     }
-  }, [itemsPerSlide, children.length]);
+  }, [itemsPerSlide, hasMore, onLoadMore, children.length]);
 
   const handleUpdateSlideProps = (value: number): void => {
     if (value === 0) {
@@ -144,6 +160,19 @@ export function Carousel({
                       </div>
                     </li>
                   ))}
+                  {hasMore && !!onLoadMore && (
+                    <li key={getLoadMoreKey()}>
+                      <div className={styles.onLoadMoreContainer}>
+                        <Button
+                          isLoading={loading}
+                          onClick={onLoadMore}
+                          variant="primary"
+                        >
+                          {loadMoreButtonLabelText}
+                        </Button>
+                      </div>
+                    </li>
+                  )}
                 </ul>
               </div>
             </div>

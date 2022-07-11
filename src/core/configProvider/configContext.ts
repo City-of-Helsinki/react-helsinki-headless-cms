@@ -16,6 +16,7 @@ export type Config = {
     openInExternalDomainAriaLabel: string;
     openInNewTabAriaLabel: string;
     closeButtonLabelText: string;
+    loadMoreButtonLabelText: string;
     archiveSearch?: {
       searchTextPlaceholder: string;
       searchButtonLabelText: string;

@@ -29,4 +29,8 @@
       margin-top: 0;
     }
   }
+
+  & > .loadMoreButton {
+    margin-top: var(--spacing);
+  }
 }

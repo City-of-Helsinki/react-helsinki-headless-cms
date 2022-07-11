@@ -37,9 +37,11 @@ export type CollectionProps = {
     | Partial<CarouselProps<typeof Card>>
     | Partial<GridProps>;
   type: 'carousel' | 'grid';
-  loading: boolean;
-  hasNext: boolean;
+  loading?: boolean;
+  hasNext?: boolean;
   onLoadMore?: () => void;
+  // TODO: implement the showAll -feature to carousels. Read the showAllLink -field, route it and add a button
+  onShowAll?: () => void;
 };
 
 export function CollectionGrid({
@@ -47,6 +49,7 @@ export function CollectionGrid({
   ...rest
 }: {
   cards: React.ReactElement<typeof Card>[];
+  onShowAll?: CollectionProps['onShowAll'];
 }) {
   return (
     <div className={styles.gridWrapper}>
@@ -59,13 +62,26 @@ export function CollectionGrid({
 
 export function CollectionCarousel({
   cards,
+  onLoadMore,
+  hasMore,
+  loading,
   ...rest
 }: {
   cards: React.ReactElement<typeof Card>[];
+  onShowAll?: CollectionProps['onShowAll'];
+  onLoadMore?: CollectionProps['onLoadMore'];
+  loading?: CollectionProps['loading'];
+  hasMore?: CollectionProps['hasNext'];
 }) {
   return (
     <div className={styles.carouselWrapper}>
-      <Carousel className={styles.carousel} {...rest}>
+      <Carousel
+        className={styles.carousel}
+        onLoadMore={onLoadMore}
+        hasMore={hasMore}
+        loading={loading}
+        {...rest}
+      >
         {cards}
       </Carousel>
     </div>
@@ -82,12 +98,40 @@ export function Collection({
   loading = false,
   hasNext = false,
   onLoadMore,
+  onShowAll,
 }: CollectionProps) {
+  const {
+    copy: { loadMoreButtonLabelText },
+  } = useConfig();
   const componentForType: Record<CollectionProps['type'], JSX.Element> = {
     carousel: (
-      <CollectionCarousel cards={cards} {...collectionContainerProps} />
+      <CollectionCarousel
+        cards={cards}
+        onShowAll={onShowAll}
+        onLoadMore={onLoadMore}
+        hasMore={hasNext}
+        loading={loading}
+        {...collectionContainerProps}
+      />
     ),
-    grid: <CollectionGrid cards={cards} {...collectionContainerProps} />,
+    grid: (
+      <>
+        <CollectionGrid
+          cards={cards}
+          onShowAll={onShowAll}
+          {...collectionContainerProps}
+        />
+        {hasNext && (
+          <Button
+            className={styles.loadMoreButton}
+            onClick={onLoadMore}
+            isLoading={loading}
+          >
+            {loadMoreButtonLabelText}
+          </Button>
+        )}
+      </>
+    ),
   };
 
   return (
@@ -98,8 +142,6 @@ export function Collection({
         {title && <h1 className={styles.heading}>{title}</h1>}
         {description && <p className={styles.description}>{description}</p>}
         {componentForType[type]}
-        {loading && <LoadingSpinner />}
-        {!loading && hasNext && <Button onClick={onLoadMore}>Load more</Button>}
       </div>
     </div>
   );
@@ -188,6 +230,11 @@ export function EventSearchCollection({
     setIsFetchingMore(false);
   };
 
+  const onShowAll = () => {
+    // eslint-disable-next-line no-console
+    console.info('TODO: not implemented yet');
+  };
+
   const cards = getEventCollectionCards(
     collection,
     eventsList?.data ?? [],
@@ -198,6 +245,7 @@ export function EventSearchCollection({
     <Collection
       {...delegatedProps}
       cards={cards}
+      onShowAll={onShowAll}
       onLoadMore={handleLoadMore}
       hasNext={!!eventsList.meta.next}
       loading={isFetchingMore}
@@ -263,6 +311,11 @@ export function EventSelectionCollection({
     setIsFetchingMore(false);
   };
 
+  const onShowAll = () => {
+    // eslint-disable-next-line no-console
+    console.info('TODO: not implemented yet');
+  };
+
   const cards = getEventCollectionCards(
     collection,
     eventsList?.data ?? [],
@@ -274,6 +327,7 @@ export function EventSelectionCollection({
       {...delegatedProps}
       cards={cards}
       onLoadMore={handleLoadMore}
+      onShowAll={onShowAll}
       hasNext={!!eventsList.meta.next}
       loading={isFetchingMore}
     />
