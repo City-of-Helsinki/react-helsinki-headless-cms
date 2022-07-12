@@ -13,7 +13,7 @@ type Link = {
   url?: string | null;
 };
 
-type SidebarContentLinkListProps = LayoutLinkList;
+type SidebarContentLinkListProps = Omit<LayoutLinkList, '__typename'>;
 
 export default function SidebarContentLinkList({
   anchor,
