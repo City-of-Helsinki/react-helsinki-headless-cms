@@ -57,41 +57,50 @@ export const defaultContent = (page: PageType | ArticleType) => (
 export const defaultCollections = (
   page: PageType | ArticleType,
   getRoutedInternalHref: (link: string, type: ModuleItemTypeEnum) => string,
+  isEventModulesEnabled = true,
 ) =>
-  getCollections(page?.modules, true)?.map((collection) => {
-    const commonCollectionProps = {
-      key: `collection-${Math.random()}`,
-      title: collection.title,
-      description: collection.description,
-      type: getCollectionUIType(collection),
-      collectionContainerProps: { withDots: false },
-    };
+  getCollections(page?.modules, true)?.reduce(
+    (collectionElements, collection) => {
+      const commonCollectionProps = {
+        key: `collection-${Math.random()}`,
+        title: collection.title,
+        description: collection.description,
+        type: getCollectionUIType(collection),
+        collectionContainerProps: { withDots: false },
+      };
 
-    if (isEventSearchCollection(collection)) {
-      return (
-        <EventSearchCollection
-          {...commonCollectionProps}
-          collection={collection}
-        />
-      );
-    }
+      if (isEventSearchCollection(collection)) {
+        if (isEventModulesEnabled) {
+          collectionElements.push(
+            <EventSearchCollection
+              {...commonCollectionProps}
+              collection={collection}
+            />,
+          );
+        }
+      } else if (isEventSelectionCollection(collection)) {
+        if (isEventModulesEnabled) {
+          collectionElements.push(
+            <EventSelectionCollection
+              {...commonCollectionProps}
+              collection={collection}
+            />,
+          );
+        }
+      } else {
+        const cards = getCollectionCards(collection).map((cardProps) => {
+          const url = getRoutedInternalHref(cardProps.url, null);
+          return <Card key={cardProps.id} {...cardProps} url={url} />;
+        });
 
-    if (isEventSelectionCollection(collection)) {
-      return (
-        <EventSelectionCollection
-          {...commonCollectionProps}
-          collection={collection}
-        />
-      );
-    }
-
-    const cards = getCollectionCards(collection).map((cardProps) => {
-      const url = getRoutedInternalHref(cardProps.url, null);
-      return <Card key={cardProps.id} {...cardProps} url={url} />;
-    });
-
-    return <Collection {...commonCollectionProps} cards={cards} />;
-  });
+        collectionElements.push(
+          <Collection {...commonCollectionProps} cards={cards} />,
+        );
+      }
+      return collectionElements;
+    },
+    [],
+  );
 
 export function PageContent(props: PageContentProps) {
   const {
@@ -109,7 +118,11 @@ export function PageContent(props: PageContentProps) {
   const {
     components: { Head },
     utils: { getRoutedInternalHref },
+    eventsApolloClient,
   } = useConfig();
+
+  const isEventModulesEnabled =
+    eventsApolloClient !== undefined && eventsApolloClient !== 'disabled';
 
   return (
     <>
@@ -133,7 +146,12 @@ export function PageContent(props: PageContentProps) {
         collections={
           typeof collections === 'function'
             ? collections(page)
-            : collections ?? defaultCollections(page, getRoutedInternalHref)
+            : collections ??
+              defaultCollections(
+                page,
+                getRoutedInternalHref,
+                isEventModulesEnabled,
+              )
         }
         sidebarContent={
           <SidebarContent

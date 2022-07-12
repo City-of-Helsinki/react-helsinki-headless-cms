@@ -30,7 +30,7 @@ import {
 export function getCollections(
   pageModules: PageModule[],
   isEventSearchCollectionsEnables = false,
-): CollectionType[] | GeneralCollectionType[] {
+): CollectionType[] {
   return pageModules?.reduce((collections, module, index) => {
     const commonFields: CollectionType = {
       id: index.toString(),
