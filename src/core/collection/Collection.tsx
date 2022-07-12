@@ -192,7 +192,7 @@ export function EventSearchCollection({
   const variables = { ...normalizeKeys(params), pageSize };
 
   const { data, loading, fetchMore } = useEventListQuery({
-    client: eventsApolloClient,
+    client: eventsApolloClient !== 'disabled' && eventsApolloClient,
     ssr: false,
     notifyOnNetworkStatusChange: true,
     variables,
@@ -270,7 +270,7 @@ export function EventSelectionCollection({
   const pageSize = 4; // collection.initAmountOfEvents
 
   const { data, loading, fetchMore } = useEventsByIdsQuery({
-    client: eventsApolloClient,
+    client: eventsApolloClient !== 'disabled' && eventsApolloClient,
     ssr: false,
     notifyOnNetworkStatusChange: true,
     variables: {
