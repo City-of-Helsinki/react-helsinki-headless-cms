@@ -11700,10 +11700,37 @@ export type PageByTemplateQuery = {
       | null
     > | null;
     modules?: Array<
-      | { __typename?: 'EventSearch' }
-      | { __typename?: 'EventSearchCarousel' }
-      | { __typename?: 'EventSelected' }
-      | { __typename?: 'EventSelectedCarousel' }
+      | {
+          __typename: 'EventSearch';
+          title?: string | null;
+          url?: string | null;
+          module?: string | null;
+        }
+      | {
+          __typename: 'EventSearchCarousel';
+          title?: string | null;
+          showAllLink?: Array<string | null> | null;
+          url?: string | null;
+          orderNewestFirst?: boolean | null;
+          eventsNearby?: boolean | null;
+          amountOfCards?: number | null;
+        }
+      | {
+          __typename: 'EventSelected';
+          title?: string | null;
+          events?: Array<string | null> | null;
+          module?: string | null;
+        }
+      | {
+          __typename: 'EventSelectedCarousel';
+          title?: string | null;
+          module?: string | null;
+          showAllLink?: Array<string | null> | null;
+          eventsNearby?: boolean | null;
+          events?: Array<string | null> | null;
+          amountOfCardsPerRow?: number | null;
+          amountOfCards?: number | null;
+        }
       | { __typename?: 'LayoutArticleHighlights' }
       | {
           __typename: 'LayoutArticles';
@@ -11750,7 +11777,13 @@ export type PageByTemplateQuery = {
             } | null;
           } | null> | null;
         }
-      | { __typename?: 'LayoutCollection' }
+      | {
+          __typename: 'LayoutCollection';
+          collection?: {
+            __typename?: 'Collection';
+            title?: string | null;
+          } | null;
+        }
       | { __typename?: 'LayoutContact' }
       | {
           __typename: 'LayoutPages';
