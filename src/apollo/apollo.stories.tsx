@@ -13,27 +13,23 @@ import { Notification } from './notification/Notification';
 import { Page } from './page/Page';
 import { PageContentLayout } from '../core/pageContent/PageContentLayout';
 import { LanguageCodeEnum } from '../core';
-
-const cmsUri =
-  process.env.CMS_GRAPHQL_ENDPOINT ?? 'https://hkih.stage.geniem.io/graphql';
-const eventsUri =
-  process.env.EVENTS_GRAPHQL_ENDPOINT ??
-  'https://tapahtumat-proxy.test.kuva.hel.ninja/proxy/graphql';
-const linkedEventsUri =
-  process.env.LINKED_EVENTS_ENDPOINT ??
-  'https://api.hel.fi/linkedevents/v1/event/';
+import {
+  CMS_GRAPHQL_ENDPOINT,
+  EVENTS_PROXY_ENDPOINT,
+  LINKED_EVENTS_ENDPOINT,
+} from '../constants';
 
 const cmsClient = new ApolloClient({
-  uri: cmsUri,
+  uri: CMS_GRAPHQL_ENDPOINT,
   cache: new InMemoryCache(),
 });
 const eventsClient = new ApolloClient({
-  uri: eventsUri,
+  uri: EVENTS_PROXY_ENDPOINT,
   cache: new InMemoryCache(),
 });
 const internalHrefOrigins = [
-  new URL(cmsUri).origin,
-  new URL(linkedEventsUri).href.replace('/event/', ''),
+  new URL(CMS_GRAPHQL_ENDPOINT).origin,
+  new URL(LINKED_EVENTS_ENDPOINT).href.replace('/event/', ''),
 ];
 
 export default {

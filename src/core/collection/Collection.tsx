@@ -23,10 +23,7 @@ import { getCollectionCards } from '../pageContent/utils';
 import { Config } from '../configProvider/configContext';
 import normalizeKeys from '../../linkedEvents/utils/normalizeKeys';
 import { getNextPage } from '../../common/eventsService/utils';
-
-const LINKED_EVENTS_ENDPOINT =
-  process.env.LINKED_EVENTS_ENDPOINT ??
-  'https://api.hel.fi/linkedevents/v1/event/';
+import { LINKED_EVENTS_ENDPOINT } from '../../constants';
 
 export type CollectionProps = {
   title?: string;
