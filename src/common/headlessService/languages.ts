@@ -14,4 +14,5 @@ export {
   LanguagesQuery,
   LanguagesQueryVariables,
   LanguagesDocument,
+  LanguageCodeEnum,
 } from './__generated__';

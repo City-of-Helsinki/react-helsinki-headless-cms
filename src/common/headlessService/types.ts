@@ -5,6 +5,7 @@ import {
   PagesQuery,
   PostsQuery,
   PageChildrenSearchQuery,
+  TemplateEnum,
 } from './__generated__';
 
 export type Menu = MenuQuery['menu'];
@@ -16,6 +17,7 @@ export type PageSidebarModule = PageQuery['page']['sidebar'][number];
 export type Articles = PostsQuery['posts'];
 export type Pages = PagesQuery['pages'];
 export type PageChildren = PageChildrenSearchQuery['page']['children'];
+export type Template = typeof TemplateEnum;
 
 export type {
   MenuItemFragment as MenuItem,
@@ -25,4 +27,9 @@ export type {
   LayoutPagesFragment as LayoutPage,
   Notification as NotificationType,
 } from './__generated__';
-export { LanguageCodeEnum, MenuNodeIdTypeEnum } from './__generated__';
+
+export {
+  LanguageCodeEnum,
+  MenuNodeIdTypeEnum,
+  TemplateEnum,
+} from './__generated__';
