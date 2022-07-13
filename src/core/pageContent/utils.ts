@@ -55,21 +55,12 @@ export function getCollections(
     }
     if (isEventSearchCollectionsEnables) {
       if (isEventSearch(module) || isEventSearchCarousel(module)) {
-        // TODO: Fetch evenst with URL-field
-        // const eventItems = fetchEventsWithUrl(module.url);
-        // const eventItems = [
-        //   createEvent('asdf:123'),
-        //   createEvent('zxcv:234'),
-        //   createEvent('xcvb:345'),
-        // ];
         collections.push({
           ...commonFields,
           url: module.url,
         } as EventSearchCollectionType);
       }
       if (isEventSelected(module) || isEventSelectedCarousel(module)) {
-        // TODO: Fetch evenst with eventIds
-        // const eventItems = module.events.map(createEvent);
         collections.push({
           ...commonFields,
           events: module.events,
