@@ -4,7 +4,34 @@ export { defaultConfig } from './configProvider/defaultConfig';
 export { useConfig } from './configProvider/useConfig';
 export { useHeadlessCmsLink } from './configProvider/useHeadlessCmsLink';
 
-export * from '../common/headlessService/types';
+export {
+  Menu,
+  PageType,
+  ArticleType,
+  SidebarContent,
+  PageModule,
+  PageSidebarModule,
+  Articles,
+  Pages,
+  PageChildren,
+  EventModule,
+  Template,
+  MenuItem,
+  Language,
+  LayoutLinkList,
+  LayoutArticle,
+  LayoutPage,
+  LayoutArticleCarousel,
+  LayoutPageCarousel,
+  EventSearch,
+  EventSelected,
+  EventSearchCarousel,
+  EventSelectedCarousel,
+  NotificationType,
+  LanguageCodeEnum,
+  MenuNodeIdTypeEnum,
+  TemplateEnum,
+} from '../common/headlessService/types';
 export * from '../common/headlessService/utils';
 export { ModuleItemTypeEnum } from '../common/headlessService/constants';
 
