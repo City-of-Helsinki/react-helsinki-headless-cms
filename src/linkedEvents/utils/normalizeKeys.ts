@@ -1,8 +1,8 @@
-import memoize from 'lodash/memoize';
-
+/** Cloned from the events-proxy https://github.com/City-of-Helsinki/events-helsinki-api-proxy/tree/master/src/utils */
 import normalizeKey from './normalizeKey';
-
-const memoizedNormalizeKey = memoize(normalizeKey);
+// TODO: The use of the lodash/memoize seems to break the rollup-js build! The memoize could be used if the rollup build handles it.
+// import memoize from 'lodash/memoize';
+// const memoizedNormalizeKey = memoize(normalizeKey);
 
 /**
  * Normalize complete object using snake case keys to a format that GraphQL supports
@@ -35,7 +35,7 @@ const normalizeKeys = (value) => {
     const len = keys.length;
 
     for (let i = 0; i < len; i += 1) {
-      obj[memoizedNormalizeKey(keys[i])] = normalizeKeys(value[keys[i]]);
+      obj[normalizeKey(keys[i])] = normalizeKeys(value[keys[i]]);
     }
 
     return obj;

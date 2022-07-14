@@ -557,14 +557,14 @@ export type Subscription = {
   _empty?: Maybe<Scalars['String']>;
 };
 
-export type LocalizedFieldsFragment = {
+export type LocalizedCmsEventFieldsFragment = {
   __typename?: 'LocalizedObject';
   en?: string | null;
   fi?: string | null;
   sv?: string | null;
 };
 
-export type PlaceFieldsFragment = {
+export type PlaceCmsEventFieldsFragment = {
   __typename?: 'Place';
   id?: string | null;
   hasUpcomingEvents?: boolean | null;
@@ -617,7 +617,7 @@ export type PlaceFieldsFragment = {
   } | null;
 };
 
-export type KeywordFieldsFragment = {
+export type KeywordCmsEventFieldsFragment = {
   __typename?: 'Keyword';
   id?: string | null;
   internalId: string;
@@ -631,7 +631,7 @@ export type KeywordFieldsFragment = {
   } | null;
 };
 
-export type OfferFieldsFragment = {
+export type OfferCmsEventFieldsFragment = {
   __typename?: 'Offer';
   isFree?: boolean | null;
   price?: {
@@ -654,7 +654,7 @@ export type OfferFieldsFragment = {
   } | null;
 };
 
-export type EventFieldsFragment = {
+export type EventCmsEventFieldsFragment = {
   __typename?: 'EventDetails';
   id: string;
   internalId?: string | null;
@@ -1263,76 +1263,76 @@ export type EventsByIdsQuery = {
   };
 };
 
-export const LocalizedFieldsFragmentDoc = gql`
-  fragment localizedFields on LocalizedObject {
+export const LocalizedCmsEventFieldsFragmentDoc = gql`
+  fragment localizedCmsEventFields on LocalizedObject {
     en
     fi
     sv
   }
 `;
-export const KeywordFieldsFragmentDoc = gql`
-  fragment keywordFields on Keyword {
+export const KeywordCmsEventFieldsFragmentDoc = gql`
+  fragment keywordCmsEventFields on Keyword {
     id
     internalId
     dataSource
     hasUpcomingEvents
     name {
-      ...localizedFields
+      ...localizedCmsEventFields
     }
   }
-  ${LocalizedFieldsFragmentDoc}
+  ${LocalizedCmsEventFieldsFragmentDoc}
 `;
-export const PlaceFieldsFragmentDoc = gql`
-  fragment placeFields on Place {
+export const PlaceCmsEventFieldsFragmentDoc = gql`
+  fragment placeCmsEventFields on Place {
     id
     divisions {
       type
       name {
-        ...localizedFields
+        ...localizedCmsEventFields
       }
     }
     hasUpcomingEvents
     internalId
     email
     infoUrl {
-      ...localizedFields
+      ...localizedCmsEventFields
     }
     name {
-      ...localizedFields
+      ...localizedCmsEventFields
     }
     addressLocality {
-      ...localizedFields
+      ...localizedCmsEventFields
     }
     streetAddress {
-      ...localizedFields
+      ...localizedCmsEventFields
     }
     postalCode
     position {
       coordinates
     }
     telephone {
-      ...localizedFields
+      ...localizedCmsEventFields
     }
   }
-  ${LocalizedFieldsFragmentDoc}
+  ${LocalizedCmsEventFieldsFragmentDoc}
 `;
-export const OfferFieldsFragmentDoc = gql`
-  fragment offerFields on Offer {
+export const OfferCmsEventFieldsFragmentDoc = gql`
+  fragment offerCmsEventFields on Offer {
     isFree
     price {
-      ...localizedFields
+      ...localizedCmsEventFields
     }
     description {
-      ...localizedFields
+      ...localizedCmsEventFields
     }
     infoUrl {
-      ...localizedFields
+      ...localizedCmsEventFields
     }
   }
-  ${LocalizedFieldsFragmentDoc}
+  ${LocalizedCmsEventFieldsFragmentDoc}
 `;
-export const EventFieldsFragmentDoc = gql`
-  fragment eventFields on EventDetails {
+export const EventCmsEventFieldsFragmentDoc = gql`
+  fragment eventCmsEventFields on EventDetails {
     id
     internalId
     audienceMinAge
@@ -1357,47 +1357,47 @@ export const EventFieldsFragmentDoc = gql`
     }
     inLanguage {
       name {
-        ...localizedFields
+        ...localizedCmsEventFields
       }
     }
     keywords {
-      ...keywordFields
+      ...keywordCmsEventFields
     }
     location {
-      ...placeFields
+      ...placeCmsEventFields
     }
     offers {
-      ...offerFields
+      ...offerCmsEventFields
     }
     name {
-      ...localizedFields
+      ...localizedCmsEventFields
     }
     description {
-      ...localizedFields
+      ...localizedCmsEventFields
     }
     shortDescription {
-      ...localizedFields
+      ...localizedCmsEventFields
     }
     endTime
     startTime
     publisher
     provider {
-      ...localizedFields
+      ...localizedCmsEventFields
     }
     infoUrl {
-      ...localizedFields
+      ...localizedCmsEventFields
     }
     audience {
       id
       name {
-        ...localizedFields
+        ...localizedCmsEventFields
       }
     }
   }
-  ${LocalizedFieldsFragmentDoc}
-  ${KeywordFieldsFragmentDoc}
-  ${PlaceFieldsFragmentDoc}
-  ${OfferFieldsFragmentDoc}
+  ${LocalizedCmsEventFieldsFragmentDoc}
+  ${KeywordCmsEventFieldsFragmentDoc}
+  ${PlaceCmsEventFieldsFragmentDoc}
+  ${OfferCmsEventFieldsFragmentDoc}
 `;
 export const EventListDocument = gql`
   query EventList(
@@ -1474,11 +1474,11 @@ export const EventListDocument = gql`
         previous
       }
       data {
-        ...eventFields
+        ...eventCmsEventFields
       }
     }
   }
-  ${EventFieldsFragmentDoc}
+  ${EventCmsEventFieldsFragmentDoc}
 `;
 
 /**
@@ -1582,7 +1582,7 @@ export const EventsByIdsDocument = gql`
       end: $end
     ) {
       data {
-        ...eventFields
+        ...eventCmsEventFields
       }
       meta {
         count
@@ -1591,7 +1591,7 @@ export const EventsByIdsDocument = gql`
       }
     }
   }
-  ${EventFieldsFragmentDoc}
+  ${EventCmsEventFieldsFragmentDoc}
 `;
 
 /**
