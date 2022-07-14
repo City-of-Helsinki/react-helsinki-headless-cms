@@ -76,7 +76,13 @@ export {
   EventSearchCollectionProps,
 } from './collection/Collection';
 
-export { CollectionType, CollectionItemType } from './collection/types';
+export {
+  CollectionItemType,
+  GeneralCollectionType,
+  EventSelectionCollectionType,
+  EventSearchCollectionType,
+  CollectionType,
+} from './collection/types';
 
 export { Carousel, CarouselProps } from './carousel/Carousel';
 
