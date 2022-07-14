@@ -1,3 +1,4 @@
+/** Cloned from the events-proxy https://github.com/City-of-Helsinki/events-helsinki-api-proxy/tree/master/src/utils */
 /**
  * Normalize flat language attributes to a localized object
  * Before:

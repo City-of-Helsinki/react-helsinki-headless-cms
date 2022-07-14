@@ -1,3 +1,4 @@
+/** Cloned from the events-proxy https://github.com/City-of-Helsinki/events-helsinki-api-proxy/tree/master/src/utils */
 /**
  * Normalize snake case keys to a form that GraphlQL can use
  * Keys with @-prefix are replacing with internal-prefix
