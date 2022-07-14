@@ -1,64 +1,64 @@
-fragment localizedFields on LocalizedObject {
+fragment localizedCmsEventFields on LocalizedObject {
   en
   fi
   sv
 }
 
-fragment placeFields on Place {
+fragment placeCmsEventFields on Place {
   id
   divisions {
     type
     name {
-      ...localizedFields
+      ...localizedCmsEventFields
     }
   }
   hasUpcomingEvents
   internalId
   email
   infoUrl {
-    ...localizedFields
+    ...localizedCmsEventFields
   }
   name {
-    ...localizedFields
+    ...localizedCmsEventFields
   }
   addressLocality {
-    ...localizedFields
+    ...localizedCmsEventFields
   }
   streetAddress {
-    ...localizedFields
+    ...localizedCmsEventFields
   }
   postalCode
   position {
     coordinates
   }
   telephone {
-    ...localizedFields
+    ...localizedCmsEventFields
   }
 }
-fragment keywordFields on Keyword {
+fragment keywordCmsEventFields on Keyword {
   id
   internalId
   dataSource
   hasUpcomingEvents
   name {
-    ...localizedFields
+    ...localizedCmsEventFields
   }
 }
 
-fragment offerFields on Offer {
+fragment offerCmsEventFields on Offer {
   isFree
   price {
-    ...localizedFields
+    ...localizedCmsEventFields
   }
   description {
-    ...localizedFields
+    ...localizedCmsEventFields
   }
   infoUrl {
-    ...localizedFields
+    ...localizedCmsEventFields
   }
 }
 
-fragment eventFields on EventDetails {
+fragment eventCmsEventFields on EventDetails {
   id
   internalId
   audienceMinAge
@@ -83,40 +83,40 @@ fragment eventFields on EventDetails {
   }
   inLanguage {
     name {
-      ...localizedFields
+      ...localizedCmsEventFields
     }
   }
   keywords {
-    ...keywordFields
+    ...keywordCmsEventFields
   }
   location {
-    ...placeFields
+    ...placeCmsEventFields
   }
   offers {
-    ...offerFields
+    ...offerCmsEventFields
   }
   name {
-    ...localizedFields
+    ...localizedCmsEventFields
   }
   description {
-    ...localizedFields
+    ...localizedCmsEventFields
   }
   shortDescription {
-    ...localizedFields
+    ...localizedCmsEventFields
   }
   endTime
   startTime
   publisher
   provider {
-    ...localizedFields
+    ...localizedCmsEventFields
   }
   infoUrl {
-    ...localizedFields
+    ...localizedCmsEventFields
   }
   audience {
     id
     name {
-      ...localizedFields
+      ...localizedCmsEventFields
     }
   }
 }
@@ -195,7 +195,7 @@ query EventList(
       previous
     }
     data {
-      ...eventFields
+      ...eventCmsEventFields
     }
   }
 }
@@ -221,7 +221,7 @@ query EventsByIds(
     end: $end
   ) {
     data {
-      ...eventFields
+      ...eventCmsEventFields
     }
     meta {
       count
