@@ -30,11 +30,24 @@ export {
   PageMainContentProps,
 } from './pageContent/PageMainContent';
 
-export { getCollections } from './pageContent/utils';
+export {
+  getCollections,
+  getArticlePageCardProps,
+  getEventCardProps,
+  getCollectionCards,
+  getCollectionUIType,
+} from './pageContent/utils';
 
 export type { Breadcrumb } from './pageContent/types';
 
-export { Collection, CollectionProps } from './collection/Collection';
+export {
+  Collection,
+  CollectionProps,
+  EventSelectionCollection,
+  EventSelectionCollectionProps,
+  EventSearchCollection,
+  EventSearchCollectionProps,
+} from './collection/Collection';
 
 export { CollectionType, CollectionItemType } from './collection/types';
 
