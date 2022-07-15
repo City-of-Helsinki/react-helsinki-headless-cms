@@ -13,5 +13,4 @@ export { MenuDocument } from '../common/headlessService/menu';
 export {
   LanguagesDocument,
   LanguageCodeEnum,
-  TemplateEnum,
 } from '../common/headlessService/languages';
