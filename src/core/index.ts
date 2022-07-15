@@ -15,7 +15,6 @@ export {
   Pages,
   PageChildren,
   EventModule,
-  Template,
   MenuItem,
   Language,
   LayoutLinkList,

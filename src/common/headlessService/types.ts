@@ -9,7 +9,6 @@ import {
   EventSearchCarouselFragment,
   EventSelectedFragment,
   EventSelectedCarouselFragment,
-  TemplateEnum,
 } from './__generated__';
 
 export type Menu = MenuQuery['menu'];
@@ -26,7 +25,6 @@ export type EventModule =
   | EventSearchCarouselFragment
   | EventSelectedFragment
   | EventSelectedCarouselFragment;
-export type Template = typeof TemplateEnum;
 
 export type {
   MenuItemFragment as MenuItem,
