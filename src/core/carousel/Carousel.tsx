@@ -12,7 +12,6 @@ import {
   getLoadMoreKey,
 } from './utils/utils';
 import { type CollectionProps } from '../collection/Collection';
-import { useConfig } from '../configProvider/useConfig';
 
 export type CarouselProps<T> = {
   children: React.ReactElement<T>[];
@@ -24,6 +23,7 @@ export type CarouselProps<T> = {
   onLoadMore?: CollectionProps['onLoadMore'];
   hasMore?: CollectionProps['hasNext'];
   loading?: CollectionProps['loading'];
+  loadMoreButtonLabelText: string;
 };
 
 export function Carousel({
@@ -36,10 +36,8 @@ export function Carousel({
   onLoadMore,
   hasMore,
   loading,
+  loadMoreButtonLabelText,
 }) {
-  const {
-    copy: { loadMoreButtonLabelText },
-  } = useConfig();
   const MOBILE_WIDTH = 640;
   const [isReady] = useState<boolean>(true);
   const [transformValue, setTransformValue] = useState('0px');
