@@ -24,6 +24,7 @@ import { Config } from '../configProvider/configContext';
 import normalizeKeys from '../../linkedEvents/utils/normalizeKeys';
 import { getNextPage } from '../../common/eventsService/utils';
 import { LINKED_EVENTS_ENDPOINT } from '../../constants';
+import { ModuleItemTypeEnum } from '../../common/headlessService/constants';
 
 export type CollectionProps = {
   title?: string;
@@ -235,7 +236,8 @@ export function EventSearchCollection({
   const cards = getEventCollectionCards(
     collection,
     eventsList?.data ?? [],
-    getRoutedInternalHref,
+    (link, type) =>
+      getRoutedInternalHref(link, type ?? ModuleItemTypeEnum.Event),
   );
 
   return (
@@ -316,7 +318,8 @@ export function EventSelectionCollection({
   const cards = getEventCollectionCards(
     collection,
     eventsList?.data ?? [],
-    getRoutedInternalHref,
+    (link, type) =>
+      getRoutedInternalHref(link, type ?? ModuleItemTypeEnum.Event),
   );
 
   return (
