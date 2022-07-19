@@ -87,8 +87,10 @@ export function Navigation({
               as={A}
               label={language.name}
               lang={language.slug}
-              href={getRoutedInternalHref(
-                getPathnameForLanguage(language, currentLanguage, languages),
+              href={getPathnameForLanguage(
+                language,
+                currentLanguage,
+                languages,
               )}
             />
           ))}
