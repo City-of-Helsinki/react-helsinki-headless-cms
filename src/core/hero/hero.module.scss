@@ -17,8 +17,8 @@
     & > *:nth-child(1) {
       position: relative;
       @media screen and (min-width: breakpoints.$breakpoint-m) {
-        flex: calc((100% / 3) * 2) 0 1;
-        max-width: calc((100% / 3) * 2);
+        //flex: calc((100% / 3) * 2) 0 1;
+        //max-width: calc((100% / 3) * 2);
         // TODO: Replace with flex-gap when browsers support it
         margin-right: $spacing-xs;
         z-index: 1;
