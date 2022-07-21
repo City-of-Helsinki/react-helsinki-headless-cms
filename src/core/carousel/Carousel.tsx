@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
-import { IconAngleLeft, IconAngleRight } from 'hds-react';
+import { Button, IconAngleLeft, IconAngleRight } from 'hds-react';
 
 import styles from './carousel.module.scss';
 import {
@@ -9,6 +9,7 @@ import {
   getItemSetItemKey,
   getItemSetKey,
   getSlideDotKey,
+  getLoadMoreKey,
 } from './utils/utils';
 import { type CollectionProps } from '../collection/Collection';
 
@@ -34,6 +35,8 @@ export function Carousel({
   // TODO: onShowAll,
   onLoadMore,
   hasMore,
+  loading,
+  loadMoreButtonLabelText,
 }) {
   const MOBILE_WIDTH = 640;
   const [isReady] = useState<boolean>(true);
@@ -155,6 +158,19 @@ export function Carousel({
                       </div>
                     </li>
                   ))}
+                  {hasMore && !!onLoadMore && (
+                    <li key={getLoadMoreKey()}>
+                      <div className={styles.onLoadMoreContainer}>
+                        <Button
+                          isLoading={loading}
+                          onClick={onLoadMore}
+                          variant="primary"
+                        >
+                          {loadMoreButtonLabelText}
+                        </Button>
+                      </div>
+                    </li>
+                  )}
                 </ul>
               </div>
             </div>

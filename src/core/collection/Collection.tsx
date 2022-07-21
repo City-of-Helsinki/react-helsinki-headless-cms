@@ -62,6 +62,8 @@ export function CollectionCarousel({
   cards,
   onLoadMore,
   hasMore,
+  loading,
+  loadMoreButtonLabelText,
   ...rest
 }: {
   cards: React.ReactElement<typeof Card>[];
@@ -77,6 +79,8 @@ export function CollectionCarousel({
         className={styles.carousel}
         onLoadMore={onLoadMore}
         hasMore={hasMore}
+        loading={loading}
+        loadMoreButtonLabelText={loadMoreButtonLabelText}
         {...rest}
       >
         {cards}
@@ -159,14 +163,7 @@ function getEventCollectionCards(
   };
   const cards = getCollectionCards(generalCollection).map((cardProps) => {
     const url = getRoutedInternalHref(cardProps.url, null);
-    return (
-      <Card
-        key={cardProps.id}
-        {...cardProps}
-        url={url}
-        direction="fixed-vertical"
-      />
-    );
+    return <Card key={cardProps.id} {...cardProps} url={url} />;
   });
   return cards;
 }
