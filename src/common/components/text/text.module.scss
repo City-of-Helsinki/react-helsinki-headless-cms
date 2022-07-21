@@ -12,8 +12,7 @@
 }
 
 .h1 {
-  margin: 0 0 $spacing-s 0;
-
+  margin: $spacing-s 0;
   font-size: $fontsize-heading-l;
   line-height: $lineheight-l;
 
@@ -24,7 +23,6 @@
 
 .h2 {
   margin: 0 0 $spacing-s 0;
-
   font-size: $fontsize-heading-l;
 }
 
@@ -49,7 +47,6 @@
 
 .body-l {
   margin: 0 0 $spacing-m 0;
-
   font-size: $fontsize-body-l;
   line-height: $lineheight-l;
   white-space: pre-wrap;
