@@ -35,6 +35,17 @@ fragment Post on Post {
       uri
     }
   }
+  sidebar {
+    ... on LayoutLinkList {
+      ...LayoutLinkList
+    }
+    ... on LayoutArticles {
+      ...LayoutArticles
+    }
+    ... on LayoutPages {
+      ...LayoutPages
+    }
+  }
   modules {
     # TODO: HCRC-13 - Support Event search and Event selection -modules
     ... on LayoutArticles {
