@@ -163,7 +163,14 @@ function getEventCollectionCards(
   };
   const cards = getCollectionCards(generalCollection).map((cardProps) => {
     const url = getRoutedInternalHref(cardProps.url, null);
-    return <Card key={cardProps.id} {...cardProps} url={url} />;
+    return (
+      <Card
+        key={cardProps.id}
+        {...cardProps}
+        url={url}
+        direction="fixed-vertical"
+      />
+    );
   });
   return cards;
 }

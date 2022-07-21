@@ -90,7 +90,14 @@ export const defaultCollections = (
       } else {
         const cards = getCollectionCards(collection).map((cardProps) => {
           const url = getRoutedInternalHref(cardProps.url, null);
-          return <Card key={cardProps.id} {...cardProps} url={url} />;
+          return (
+            <Card
+              key={cardProps.id}
+              {...cardProps}
+              url={url}
+              direction="fixed-vertical"
+            />
+          );
         });
 
         collectionElements.push(

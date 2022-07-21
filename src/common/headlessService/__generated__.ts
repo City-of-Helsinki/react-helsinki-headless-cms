@@ -10396,6 +10396,66 @@ export type PostFragment = {
       uri?: string | null;
     } | null;
   } | null;
+  sidebar?: Array<
+    | {
+        __typename: 'LayoutArticles';
+        title?: string | null;
+        articles?: Array<{
+          __typename?: 'Post';
+          id: string;
+          uri?: string | null;
+          slug?: string | null;
+          link?: string | null;
+          date?: string | null;
+          title?: string | null;
+          lead?: string | null;
+          featuredImage?: {
+            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+            node?: {
+              __typename?: 'MediaItem';
+              altText?: string | null;
+              mediaItemUrl?: string | null;
+            } | null;
+          } | null;
+        } | null> | null;
+      }
+    | {
+        __typename: 'LayoutLinkList';
+        anchor?: string | null;
+        title?: string | null;
+        description?: string | null;
+        links?: Array<{
+          __typename?: 'Link';
+          target?: string | null;
+          title?: string | null;
+          url?: string | null;
+        } | null> | null;
+      }
+    | {
+        __typename: 'LayoutPages';
+        title?: string | null;
+        description?: string | null;
+        pages?: Array<{
+          __typename?: 'Page';
+          id: string;
+          uri?: string | null;
+          slug?: string | null;
+          link?: string | null;
+          date?: string | null;
+          title?: string | null;
+          lead?: string | null;
+          featuredImage?: {
+            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+            node?: {
+              __typename?: 'MediaItem';
+              altText?: string | null;
+              mediaItemUrl?: string | null;
+            } | null;
+          } | null;
+        } | null> | null;
+      }
+    | null
+  > | null;
   modules?: Array<
     | {
         __typename: 'EventSearch';
@@ -10621,6 +10681,66 @@ export type ArticleQuery = {
         uri?: string | null;
       } | null;
     } | null;
+    sidebar?: Array<
+      | {
+          __typename: 'LayoutArticles';
+          title?: string | null;
+          articles?: Array<{
+            __typename?: 'Post';
+            id: string;
+            uri?: string | null;
+            slug?: string | null;
+            link?: string | null;
+            date?: string | null;
+            title?: string | null;
+            lead?: string | null;
+            featuredImage?: {
+              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+              node?: {
+                __typename?: 'MediaItem';
+                altText?: string | null;
+                mediaItemUrl?: string | null;
+              } | null;
+            } | null;
+          } | null> | null;
+        }
+      | {
+          __typename: 'LayoutLinkList';
+          anchor?: string | null;
+          title?: string | null;
+          description?: string | null;
+          links?: Array<{
+            __typename?: 'Link';
+            target?: string | null;
+            title?: string | null;
+            url?: string | null;
+          } | null> | null;
+        }
+      | {
+          __typename: 'LayoutPages';
+          title?: string | null;
+          description?: string | null;
+          pages?: Array<{
+            __typename?: 'Page';
+            id: string;
+            uri?: string | null;
+            slug?: string | null;
+            link?: string | null;
+            date?: string | null;
+            title?: string | null;
+            lead?: string | null;
+            featuredImage?: {
+              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+              node?: {
+                __typename?: 'MediaItem';
+                altText?: string | null;
+                mediaItemUrl?: string | null;
+              } | null;
+            } | null;
+          } | null> | null;
+        }
+      | null
+    > | null;
     modules?: Array<
       | {
           __typename: 'EventSearch';
@@ -12432,10 +12552,45 @@ export const LanguageFragmentDoc = gql`
     slug
   }
 `;
+export const LayoutLinkListFragmentDoc = gql`
+  fragment LayoutLinkList on LayoutLinkList {
+    anchor
+    title
+    description
+    links {
+      target
+      title
+      url
+    }
+    __typename
+  }
+`;
 export const LayoutArticlesFragmentDoc = gql`
   fragment LayoutArticles on LayoutArticles {
     title
     articles {
+      id
+      uri
+      slug
+      link
+      date
+      title
+      lead
+      featuredImage {
+        node {
+          altText
+          mediaItemUrl
+        }
+      }
+    }
+    __typename
+  }
+`;
+export const LayoutPagesFragmentDoc = gql`
+  fragment LayoutPages on LayoutPages {
+    title
+    description
+    pages {
       id
       uri
       slug
@@ -12472,28 +12627,6 @@ export const LayoutArticlesCarouselFragmentDoc = gql`
       }
     }
     showMore
-    __typename
-  }
-`;
-export const LayoutPagesFragmentDoc = gql`
-  fragment LayoutPages on LayoutPages {
-    title
-    description
-    pages {
-      id
-      uri
-      slug
-      link
-      date
-      title
-      lead
-      featuredImage {
-        node {
-          altText
-          mediaItemUrl
-        }
-      }
-    }
     __typename
   }
 `;
@@ -12595,6 +12728,17 @@ export const PostFragmentDoc = gql`
         uri
       }
     }
+    sidebar {
+      ... on LayoutLinkList {
+        ...LayoutLinkList
+      }
+      ... on LayoutArticles {
+        ...LayoutArticles
+      }
+      ... on LayoutPages {
+        ...LayoutPages
+      }
+    }
     modules {
       ... on LayoutArticles {
         ...LayoutArticles
@@ -12640,9 +12784,10 @@ export const PostFragmentDoc = gql`
   ${CategoriesFragmentDoc}
   ${SeoFragmentDoc}
   ${LanguageFragmentDoc}
+  ${LayoutLinkListFragmentDoc}
   ${LayoutArticlesFragmentDoc}
-  ${LayoutArticlesCarouselFragmentDoc}
   ${LayoutPagesFragmentDoc}
+  ${LayoutArticlesCarouselFragmentDoc}
   ${LayoutPagesCarouselFragmentDoc}
   ${EventSearchFragmentDoc}
   ${EventSelectedFragmentDoc}
@@ -12667,19 +12812,6 @@ export const LayoutArticleHighlightsFragmentDoc = gql`
 `;
 export const LayoutContactFragmentDoc = gql`
   fragment LayoutContact on LayoutContact {
-    __typename
-  }
-`;
-export const LayoutLinkListFragmentDoc = gql`
-  fragment LayoutLinkList on LayoutLinkList {
-    anchor
-    title
-    description
-    links {
-      target
-      title
-      url
-    }
     __typename
   }
 `;

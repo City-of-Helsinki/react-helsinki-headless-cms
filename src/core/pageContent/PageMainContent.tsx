@@ -28,7 +28,7 @@ export function PageMainContent({
   return (
     <article className={styles.mainContent}>
       <header>
-        <Text as="h1" variant="h2">
+        <Text as="h1" variant="h1">
           {title}
         </Text>
       </header>
@@ -40,7 +40,9 @@ export function PageMainContent({
             </div>
           )}
           {categories?.edges?.map((category) => (
-            <Tag key={category.node?.id}>{category.node?.name}</Tag>
+            <Tag className={styles.tag} variant="card" key={category.node?.id}>
+              {category.node?.name}
+            </Tag>
           ))}
         </div>
       )}
