@@ -70,7 +70,14 @@
   .koros {
     fill: var(--color-black-5);
   }
-  .innerCollectionsContainer {
+  .innerCollectionsWrapper {
     background-color: var(--color-black-5);
+    width: 100%;
+    .innerCollectionsContainer {
+      background-color: var(--color-black-5);
+      margin: 0 auto;
+      width: 100%;
+      max-width: var(--max-width);
+    }
   }
 }

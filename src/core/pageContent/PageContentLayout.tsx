@@ -49,14 +49,18 @@ export function PageContentLayout({
           {content}
           <aside>{sidebarContent}</aside>
         </div>
+        {collections && (
+          <div className={styles.collectionsContainer}>
+            <Koros className={styles.koros} />
+            <div className={styles.innerCollectionsWrapper}>
+              <div className={styles.innerCollectionsContainer}>
+                {collections}
+              </div>
+            </div>
+            <Koros className={styles.koros} flipHorizontal />
+          </div>
+        )}
       </main>
-      {collections && (
-        <div className={styles.collectionsContainer}>
-          <Koros className={styles.koros} />
-          <div className={styles.innerCollectionsContainer}>{collections}</div>
-          <Koros className={styles.koros} flipHorizontal />
-        </div>
-      )}
     </div>
   );
 }
