@@ -65,9 +65,13 @@
 }
 
 .collectionsContainer {
-  margin-top: $spacing-m;
+  position: relative;
+  margin-top: $spacing-2-xl;
   box-sizing: border-box;
   .koros {
+    position: absolute;
+    z-index: 1;
+    top: -24px;
     fill: var(--color-black-5);
   }
   .innerCollectionsWrapper {
