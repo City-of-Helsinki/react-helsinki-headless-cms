@@ -57,7 +57,6 @@ export function PageContentLayout({
                 {collections}
               </div>
             </div>
-            <Koros className={styles.koros} flipHorizontal />
           </div>
         )}
       </main>
