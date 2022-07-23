@@ -31,14 +31,3 @@
     margin-top: var(--spacing);
   }
 }
-
-.collectionWrapper.carousel > .collection {
-  & > .heading {
-    font-size: $fontsize-heading-l;
-    margin-top: #{$spacing-layout-2-xs};
-    padding: 0;
-    @media screen and (min-width: breakpoints.$breakpoint-m) {
-      margin-top: #{$spacing-layout-m};
-    }
-  }
-}
