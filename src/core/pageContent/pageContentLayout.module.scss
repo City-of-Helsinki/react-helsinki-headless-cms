@@ -63,3 +63,14 @@
     }
   }
 }
+
+.collectionsContainer {
+  margin-top: $spacing-m;
+  box-sizing: border-box;
+  .koros {
+    fill: var(--color-black-5);
+  }
+  .innerCollectionsContainer {
+    background-color: var(--color-black-5);
+  }
+}

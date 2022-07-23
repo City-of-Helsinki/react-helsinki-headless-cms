@@ -1,4 +1,5 @@
 import React from 'react';
+import { Koros } from 'hds-react';
 
 import { MAIN_CONTENT_ID } from '../../common/constants';
 import styles from './pageContentLayout.module.scss';
@@ -49,7 +50,12 @@ export function PageContentLayout({
           <aside>{sidebarContent}</aside>
         </div>
       </main>
-      {collections}
+      {collections && (
+        <div className={styles.collectionsContainer}>
+          <Koros className={styles.koros} />
+          <div className={styles.innerCollectionsContainer}>{collections}</div>
+        </div>
+      )}
     </div>
   );
 }

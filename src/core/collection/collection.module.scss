@@ -1,23 +1,21 @@
+@use 'breakpoints';
 @import 'spacing';
 @import 'typography';
 
 .collectionWrapper {
   display: block;
   --spacing: #{$spacing-layout-2-xs};
-  margin: var(--spacing) auto;
   padding: 0 var(--padding);
   max-width: calc(var(--max-width) - (2 * var(--padding)));
   width: calc(100% - (2 * var(--padding)));
-}
-
-.collectionWrapper.carousel {
-  overflow: hidden;
+  padding-bottom: #{$spacing-layout-xl};
 }
 
 .collection {
   & > .heading {
     font-size: $fontsize-heading-l;
-    margin: 0;
+    margin-top: 0;
+    padding: #{$spacing-layout-2-xs} 0;
   }
   & > .description {
     font-size: $fontsize-heading-m;
@@ -32,5 +30,16 @@
 
   & > .loadMoreButton {
     margin-top: var(--spacing);
+  }
+}
+
+.collectionWrapper.carousel > .collection {
+  & > .heading {
+    font-size: $fontsize-heading-l;
+    margin-top: #{$spacing-layout-2-xs};
+    padding: 0;
+    @media screen and (min-width: breakpoints.$breakpoint-m) {
+      margin-top: #{$spacing-layout-m};
+    }
   }
 }
