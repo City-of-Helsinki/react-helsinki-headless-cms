@@ -13,7 +13,7 @@
 .collection {
   & > .heading {
     font-size: $fontsize-heading-l;
-    margin-top: 0;
+    margin: 0;
     padding: #{$spacing-layout-2-xs} 0;
   }
   & > .description {
