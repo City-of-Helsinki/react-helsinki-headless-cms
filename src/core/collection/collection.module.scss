@@ -15,6 +15,9 @@
     font-size: $fontsize-heading-l;
     margin: 0;
     padding: #{$spacing-layout-2-xs} 0;
+    @media screen and (min-width: breakpoints.$breakpoint-m) {
+      padding: #{$spacing-layout-l} 0;
+    }
   }
   & > .description {
     font-size: $fontsize-heading-m;
