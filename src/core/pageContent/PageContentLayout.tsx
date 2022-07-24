@@ -48,8 +48,10 @@ export function PageContentLayout({
           />
         )}
         <div className={styles.content}>
-          {content}
-          {shareLinks && shareLinks}
+          <div>
+            {content}
+            {shareLinks && shareLinks}
+          </div>
           <aside>{sidebarContent}</aside>
         </div>
         {collections && (
