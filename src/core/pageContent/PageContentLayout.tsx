@@ -9,6 +9,7 @@ export type PageContentLayoutProps = {
   breadcrumbs?: React.ReactNode;
   heroContainer?: JSX.Element;
   content: React.ReactNode;
+  shareLinks?: React.ReactNode;
   collections?: React.ReactNode;
   sidebarContent: React.ReactNode;
   imageSrc?: string;
@@ -21,6 +22,7 @@ export function PageContentLayout({
   breadcrumbs,
   heroContainer,
   content,
+  shareLinks,
   collections,
   sidebarContent,
   imageSrc,
@@ -47,6 +49,7 @@ export function PageContentLayout({
         )}
         <div className={styles.content}>
           {content}
+          {shareLinks && shareLinks}
           <aside>{sidebarContent}</aside>
         </div>
         {collections && (

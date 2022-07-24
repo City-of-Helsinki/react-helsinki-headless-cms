@@ -31,6 +31,7 @@ export type PageContentProps = {
   content?:
     | React.ReactNode
     | ((page: PageType | ArticleType) => React.ReactNode);
+  shareLinks?: React.ReactNode;
   collections?:
     | React.ReactElement<typeof Collection>[]
     | ((
@@ -119,6 +120,7 @@ export function PageContent(props: PageContentProps) {
     sidebarContentProps,
     PageContentLayoutComponent = PageContentLayout,
     content,
+    shareLinks,
     ...pageContentLayoutProps
   } = props;
 
@@ -150,6 +152,7 @@ export function PageContent(props: PageContentProps) {
             ? content(page)
             : content ?? defaultContent(page)
         }
+        shareLinks={shareLinks}
         collections={
           typeof collections === 'function'
             ? collections(page)
