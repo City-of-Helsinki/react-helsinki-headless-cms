@@ -35,3 +35,11 @@
     margin-top: var(--spacing);
   }
 }
+
+.loadindSpinnerWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: #{$spacing-layout-m};
+  width: 100%;
+}

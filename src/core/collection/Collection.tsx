@@ -73,6 +73,7 @@ export function CollectionCarousel({
   hasMore?: CollectionProps['hasNext'];
   loadMoreButtonLabelText: string;
 }) {
+  console.log(123123);
   return (
     <div className={styles.carouselWrapper}>
       <Carousel
@@ -210,7 +211,11 @@ export function EventSearchCollection({
   const eventsList = data?.eventList;
 
   if (!data && loading) {
-    return <LoadingSpinner />;
+    return (
+      <div className={styles.loadingSpinnerWrapper}>
+        <LoadingSpinner />
+      </div>
+    );
   }
 
   const handleLoadMore = async () => {
@@ -292,7 +297,11 @@ export function EventSelectionCollection({
   const eventsList = data?.eventsByIds;
 
   if (!data && loading) {
-    return <LoadingSpinner />;
+    return (
+      <div className={styles.loadingSpinnerWrapper}>
+        <LoadingSpinner />
+      </div>
+    );
   }
 
   const handleLoadMore = async () => {
