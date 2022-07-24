@@ -73,7 +73,6 @@ export function CollectionCarousel({
   hasMore?: CollectionProps['hasNext'];
   loadMoreButtonLabelText: string;
 }) {
-  console.log(123123);
   return (
     <div className={styles.carouselWrapper}>
       <Carousel
