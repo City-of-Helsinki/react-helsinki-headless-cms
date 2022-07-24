@@ -23,9 +23,9 @@
   & > .description {
     font-size: $fontsize-heading-m;
     margin: 0;
-    padding-bottom: #{$spacing-layout-s} 0;
+    padding-bottom: #{$spacing-layout-s};
     @media screen and (min-width: breakpoints.$breakpoint-m) {
-      padding-bottom: #{$spacing-layout-m} 0;
+      padding-bottom: #{$spacing-layout-m};
     }
   }
 
