@@ -14,18 +14,18 @@
   & > .heading {
     font-size: $fontsize-heading-m;
     margin: 0;
-    padding-bottom: #{$spacing-layout-s} 0;
+    padding: #{$spacing-layout-s} 0;
     @media screen and (min-width: breakpoints.$breakpoint-m) {
       font-size: $fontsize-heading-l;
-      padding-bottom: #{$spacing-layout-m} 0;
+      padding: #{$spacing-layout-m} 0;
     }
   }
   & > .description {
     font-size: $fontsize-heading-m;
     margin: 0;
-    padding: #{$spacing-layout-s} 0;
+    padding-bottom: #{$spacing-layout-s} 0;
     @media screen and (min-width: breakpoints.$breakpoint-m) {
-      padding: #{$spacing-layout-m} 0;
+      padding-bottom: #{$spacing-layout-m} 0;
     }
   }
 
