@@ -1,4 +1,5 @@
 import React from 'react';
+import { Koros } from 'hds-react';
 
 import { MAIN_CONTENT_ID } from '../../common/constants';
 import styles from './pageContentLayout.module.scss';
@@ -8,6 +9,7 @@ export type PageContentLayoutProps = {
   breadcrumbs?: React.ReactNode;
   heroContainer?: JSX.Element;
   content: React.ReactNode;
+  shareLinks?: React.ReactNode;
   collections?: React.ReactNode;
   sidebarContent: React.ReactNode;
   imageSrc?: string;
@@ -20,6 +22,7 @@ export function PageContentLayout({
   breadcrumbs,
   heroContainer,
   content,
+  shareLinks,
   collections,
   sidebarContent,
   imageSrc,
@@ -27,9 +30,13 @@ export function PageContentLayout({
   imageLabel,
   backUrl,
 }: PageContentLayoutProps) {
+  // todo: temporary disabled
+  const hasBreadCrumbs = false;
   return (
     <div className={styles.contentLayout}>
-      {breadcrumbs && <div className={styles.breadcrumbs}>{breadcrumbs}</div>}
+      {hasBreadCrumbs && breadcrumbs && (
+        <div className={styles.breadcrumbs}>{breadcrumbs}</div>
+      )}
       <main id={MAIN_CONTENT_ID} className={styles.mainLayout}>
         {imageSrc && (
           <Hero
@@ -41,11 +48,23 @@ export function PageContentLayout({
           />
         )}
         <div className={styles.content}>
-          {content}
+          <div>
+            {content}
+            {shareLinks && shareLinks}
+          </div>
           <aside>{sidebarContent}</aside>
         </div>
+        {collections && (
+          <div className={styles.collectionsContainer}>
+            <Koros className={styles.koros} />
+            <div className={styles.innerCollectionsWrapper}>
+              <div className={styles.innerCollectionsContainer}>
+                {collections}
+              </div>
+            </div>
+          </div>
+        )}
       </main>
-      {collections}
     </div>
   );
 }

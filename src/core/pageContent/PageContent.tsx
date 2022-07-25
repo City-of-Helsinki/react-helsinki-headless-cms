@@ -31,6 +31,7 @@ export type PageContentProps = {
   content?:
     | React.ReactNode
     | ((page: PageType | ArticleType) => React.ReactNode);
+  shareLinks?: React.ReactNode;
   collections?:
     | React.ReactElement<typeof Collection>[]
     | ((
@@ -90,7 +91,14 @@ export const defaultCollections = (
       } else {
         const cards = getCollectionCards(collection).map((cardProps) => {
           const url = getRoutedInternalHref(cardProps.url, null);
-          return <Card key={cardProps.id} {...cardProps} url={url} />;
+          return (
+            <Card
+              key={cardProps.id}
+              {...cardProps}
+              url={url}
+              direction="fixed-vertical"
+            />
+          );
         });
 
         collectionElements.push(
@@ -112,6 +120,7 @@ export function PageContent(props: PageContentProps) {
     sidebarContentProps,
     PageContentLayoutComponent = PageContentLayout,
     content,
+    shareLinks,
     ...pageContentLayoutProps
   } = props;
 
@@ -143,6 +152,7 @@ export function PageContent(props: PageContentProps) {
             ? content(page)
             : content ?? defaultContent(page)
         }
+        shareLinks={shareLinks}
         collections={
           typeof collections === 'function'
             ? collections(page)

@@ -61,9 +61,14 @@ blockquote {
 .articleData {
   display: flex;
   align-items: center;
-  font-weight: 600;
+  flex-wrap: wrap;
 
   .articleDate {
-    margin-right: var(--spacing-xs);
+    margin-right: var(--spacing-l);
+    font-size: var(--fontsize-body-l);
+  }
+
+  .tag {
+    --tag-background: var(--color-fog-light);
   }
 }

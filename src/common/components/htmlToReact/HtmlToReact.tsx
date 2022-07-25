@@ -27,7 +27,7 @@ type HtmlToReactProps = {
 };
 
 function DefaultP({ children }: { children: React.ReactNode }) {
-  return <Text variant="body">{children}</Text>;
+  return <Text variant="body-l">{children}</Text>;
 }
 
 function DefaultH2({ children }: { children: React.ReactNode }) {

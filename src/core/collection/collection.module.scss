@@ -1,27 +1,32 @@
+@use 'breakpoints';
 @import 'spacing';
 @import 'typography';
 
 .collectionWrapper {
   display: block;
   --spacing: #{$spacing-layout-2-xs};
-  margin: var(--spacing) auto;
   padding: 0 var(--padding);
   max-width: calc(var(--max-width) - (2 * var(--padding)));
   width: calc(100% - (2 * var(--padding)));
 }
 
-.collectionWrapper.carousel {
-  overflow: hidden;
-}
-
 .collection {
   & > .heading {
-    font-size: $fontsize-heading-l;
+    font-size: $fontsize-heading-m;
     margin: 0;
+    padding: #{$spacing-layout-s} 0;
+    @media screen and (min-width: breakpoints.$breakpoint-m) {
+      font-size: $fontsize-heading-l;
+      padding: #{$spacing-layout-m} 0;
+    }
   }
   & > .description {
     font-size: $fontsize-heading-m;
     margin: 0;
+    padding-bottom: #{$spacing-layout-s};
+    @media screen and (min-width: breakpoints.$breakpoint-m) {
+      padding-bottom: #{$spacing-layout-m};
+    }
   }
 
   & > .carouselWrapper {
@@ -33,4 +38,12 @@
   & > .loadMoreButton {
     margin-top: var(--spacing);
   }
+}
+
+.loadingSpinnerWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: #{$spacing-layout-l};
+  width: 100%;
 }

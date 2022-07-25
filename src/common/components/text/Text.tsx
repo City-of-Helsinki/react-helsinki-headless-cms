@@ -37,7 +37,7 @@ function getElement(variant: TextVariant) {
 
 function Text({
   as,
-  variant = 'body',
+  variant = 'body-l',
   children,
   className,
   ...rest

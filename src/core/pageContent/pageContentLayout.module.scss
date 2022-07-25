@@ -63,3 +63,26 @@
     }
   }
 }
+
+.collectionsContainer {
+  position: relative;
+  margin-top: $spacing-2-xl;
+  box-sizing: border-box;
+  .koros {
+    position: absolute;
+    z-index: 1;
+    top: -32px;
+    fill: var(--color-black-5);
+  }
+  .innerCollectionsWrapper {
+    background-color: var(--color-black-5);
+    padding-bottom: 96px;
+    width: 100%;
+    .innerCollectionsContainer {
+      background-color: var(--color-black-5);
+      margin: 0 auto;
+      width: 100%;
+      max-width: var(--max-width);
+    }
+  }
+}
