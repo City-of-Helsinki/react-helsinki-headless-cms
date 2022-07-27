@@ -9,7 +9,7 @@ export * from '../common/headlessService/article';
 export * from '../common/headlessService/articles';
 export * from '../common/headlessService/landingPage';
 export * from '../common/headlessService/pageByTemplate';
-export { MenuDocument } from '../common/headlessService/menu';
+export { MenuDocument, useMenuQuery } from '../common/headlessService/menu';
 export {
   LanguagesDocument,
   LanguageCodeEnum,
