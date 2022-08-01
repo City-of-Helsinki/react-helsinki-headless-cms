@@ -1,0 +1,35 @@
+.link {
+  composes: hds-link from './LinkBase.scss';
+}
+
+.icon {
+  composes: icon from './LinkBase.scss';
+}
+
+.iconLeft {
+  composes: hds-icon-left from './LinkBase.scss';
+}
+
+.verticalAlignSmallOrMediumIcon {
+  composes: vertical-align-small-or-medium-icon from './LinkBase.scss';
+}
+
+.verticalAlignBigIcon {
+  composes: vertical-align-big-icon from './LinkBase.scss';
+}
+
+.disableVisitedStyles {
+  composes: hds-link--disable-visited-styles from './LinkBase.scss';
+}
+
+.linkS {
+  composes: hds-link--small from './LinkBase.scss';
+}
+
+.linkM {
+  composes: hds-link--medium from './LinkBase.scss';
+}
+
+.linkL {
+  composes: hds-link--large from './LinkBase.scss';
+}

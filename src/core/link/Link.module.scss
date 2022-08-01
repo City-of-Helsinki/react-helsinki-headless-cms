@@ -1,0 +1,11 @@
+.link {
+  display: flex;
+  &,
+  &:visited {
+    color: var(--color-black);
+  }
+
+  &:visited svg g path {
+    fill: var(--color-black);
+  }
+}

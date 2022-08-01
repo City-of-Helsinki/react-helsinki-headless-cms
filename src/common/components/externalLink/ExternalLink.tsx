@@ -8,6 +8,8 @@ type Props = Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'children'> & {
   ariaLabel?: string;
 };
 
+// TODO: deprecated, remove references.
+
 export default function ExternalLink({
   children: label,
   iconLeft,
