@@ -1,29 +1,50 @@
 import React from 'react';
-import { Link as HDSLink } from 'hds-react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import classNames from 'classnames';
 
+import LinkBase from './LinkBase';
 import { useConfig } from '../configProvider/useConfig';
+import styles from './Link.module.scss';
 
-export type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement>;
+export type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+  ariaLabel?: string;
+  iconLeft?: React.ReactNode;
+  iconRight?: React.ReactNode;
+  showExternalIcon?: boolean;
+};
 
-export function Link({ href, target, children, ...delegatedProps }: LinkProps) {
+// TODO: LinkBase component should be replaced with hds Link, when all features are supported
+// issue is created to hds: https://github.com/City-of-Helsinki/helsinki-design-system/issues/808
+
+export function Link({
+  href,
+  target,
+  children,
+  ariaLabel,
+  showExternalIcon = true,
+  className,
+  ...delegatedProps
+}: LinkProps) {
   const {
-    copy: { openInExternalDomainAriaLabel, openInNewTabAriaLabel },
     utils: { getIsHrefExternal },
   } = useConfig();
 
   const isOpenInNewTab = target === '_blank';
+  const isExternal = getIsHrefExternal(href);
 
   return (
-    <HDSLink
+    <LinkBase
+      size="M"
       {...delegatedProps}
       href={href}
       openInNewTab={isOpenInNewTab}
-      openInExternalDomainAriaLabel={openInExternalDomainAriaLabel}
-      openInNewTabAriaLabel={openInNewTabAriaLabel}
-      external={getIsHrefExternal(href)}
-      size="M"
+      external={isExternal}
+      showExternalIcon={isExternal && showExternalIcon}
+      ariaLabel={ariaLabel}
+      className={classNames(styles.link, className)}
+      disableVisitedStyles
     >
       {children as string}
-    </HDSLink>
+    </LinkBase>
   );
 }

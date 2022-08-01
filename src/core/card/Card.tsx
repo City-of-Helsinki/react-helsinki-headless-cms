@@ -4,7 +4,8 @@ import React from 'react';
 import classNames from 'classnames';
 
 import styles from './card.module.scss';
-import LinkWrapper from '../../common/components/linkWrapper/LinkWrapper';
+import { LinkBox } from '../linkBox/LinkBox';
+import { Link } from '../link/Link';
 
 export type CardProps = {
   id?: string;
@@ -44,7 +45,7 @@ export function Card({
   target,
 }: CardProps) {
   return (
-    <LinkWrapper
+    <LinkBox
       id={id}
       href={url}
       className={className}
@@ -95,15 +96,16 @@ export function Card({
           </div>
           {url && hasLink && (
             <div className={styles.buttonWrapper}>
-              <LinkWrapper
+              <Link
                 href={url}
                 target={target}
                 iconLeft={<IconArrowRight aria-hidden="true" />}
+                showExternalIcon={false}
               />
             </div>
           )}
         </div>
       </div>
-    </LinkWrapper>
+    </LinkBox>
   );
 }

@@ -95,6 +95,7 @@ export function Notification({ notification }: NotificationProps) {
         <HtmlToReact>{content}</HtmlToReact>
         {linkUrl && (
           <Link
+            ariaLabel={linkText}
             target="_blank"
             href={linkUrl}
             style={{ marginTop: '0.75rem', display: 'block' }}

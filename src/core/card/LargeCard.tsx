@@ -4,8 +4,9 @@ import React from 'react';
 import classNames from 'classnames';
 
 import styles from './largeCard.module.scss';
-import LinkWrapper from '../../common/components/linkWrapper/LinkWrapper';
 import Tag from '../../common/components/tag/Tag';
+import { LinkBox } from '../linkBox/LinkBox';
+import { Link } from '../link/Link';
 
 export type LargeCardProps = {
   id?: string;
@@ -41,7 +42,7 @@ export function LargeCard({
   target,
 }: LargeCardProps) {
   return (
-    <LinkWrapper
+    <LinkBox
       id={id}
       href={url}
       className={classNames(styles.cardLink, className)}
@@ -76,15 +77,16 @@ export function LargeCard({
           )}
           {url && hasLink && (
             <div className={styles.buttonWrapper}>
-              <LinkWrapper
+              <Link
                 href={url}
                 target={target}
                 iconLeft={<IconArrowRight aria-hidden="true" />}
+                showExternalIcon={false}
               />
             </div>
           )}
         </div>
       </div>
-    </LinkWrapper>
+    </LinkBox>
   );
 }

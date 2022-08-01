@@ -1,13 +1,13 @@
-import { IconArrowRight, IconLinkExternal } from 'hds-react';
+import { IconArrowRight } from 'hds-react';
 import React from 'react';
 
-import ExternalLink from '../../../common/components/externalLink/ExternalLink';
 import HtmlToReact from '../../../common/components/htmlToReact/HtmlToReact';
 import List from '../../../common/components/list/List';
 import { LayoutLinkList } from '../../../common/headlessService/types';
+import { Link } from '../../link/Link';
 import styles from './sidebarContentLinkList.module.scss';
 
-type Link = {
+type LinkItem = {
   target?: string | null;
   title?: string | null;
   url?: string | null;
@@ -32,28 +32,23 @@ export default function SidebarContentLinkList({
       <List
         variant="spacing-s"
         items={links
-          ?.filter((item): item is Link => Boolean(item))
-          .map((link) =>
-            link.target === '_blank' ? (
-              <ExternalLink
-                key={link.title}
-                href={link.url || '#'}
-                className={styles.link}
-                iconLeft={<IconLinkExternal aria-hidden="true" />}
-              >
-                {link.title}
-              </ExternalLink>
-            ) : (
-              <a
-                key={link.title}
-                href={link.url || '#'}
-                className={styles.link}
-              >
-                <IconArrowRight aria-hidden="true" />
-                {link.title}
-              </a>
-            ),
-          )}
+          ?.filter((item): item is LinkItem => Boolean(item))
+          .map((link) => (
+            <Link
+              key={link.title}
+              href={link.url || '#'}
+              className={styles.link}
+              ariaLabel={link.title}
+              iconRight={
+                link.target !== '_blank' && (
+                  <IconArrowRight aria-hidden="true" />
+                )
+              }
+              target={link.target}
+            >
+              {link.title}
+            </Link>
+          ))}
       />
     </div>
   );

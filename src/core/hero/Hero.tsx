@@ -6,7 +6,7 @@ import { IconArrowLeft } from 'hds-react';
 import { useConfig } from '../configProvider/useConfig';
 import Container from '../../common/components/container/Container';
 import styles from './hero.module.scss';
-import LinkWrapper from '../../common/components/linkWrapper/LinkWrapper';
+import { LinkBox } from '../linkBox/LinkBox';
 
 export type HeroProps = {
   className?: string;
@@ -41,7 +41,7 @@ export default function Hero({
           </div>
           {backUrl && (
             <div className={styles.link}>
-              <LinkWrapper
+              <LinkBox
                 href={backUrl}
                 target="_self"
                 iconLeft={<IconArrowLeft aria-hidden="true" />}

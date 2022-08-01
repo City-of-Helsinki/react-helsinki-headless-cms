@@ -23,7 +23,7 @@ test('should render notification with expected content', () => {
   ).toBeInTheDocument();
 
   const link = screen.getByRole('link', {
-    name: `${notificationMock.linkText}. Opens in a new tab. Opens a different website.`,
+    name: `Check out here`,
   });
 
   expect(link).toBeInTheDocument();

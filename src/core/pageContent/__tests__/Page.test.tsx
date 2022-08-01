@@ -36,7 +36,7 @@ test('renders page with expected content', () => {
 
     if (link.target === '_blank') {
       expect(linkElement).toHaveAttribute('target', '_blank');
-      expect(linkElement).toHaveAttribute('rel', 'noreferrer');
+      expect(linkElement).toHaveAttribute('rel', 'noopener noreferrer');
       expect(linkElement).toHaveAttribute(
         'aria-label',
         expect.stringContaining('opens in a new tab'),
