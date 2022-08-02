@@ -12,6 +12,7 @@ export type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
   iconRight?: React.ReactNode;
   showExternalIcon?: boolean;
   size?: 'S' | 'M' | 'L';
+  variant?: 'default' | 'arrowRight';
 };
 
 // TODO: LinkBase component should be replaced with hds Link, when all features are supported

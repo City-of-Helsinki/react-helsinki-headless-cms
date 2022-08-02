@@ -7,16 +7,12 @@ import classNames from 'classnames';
 import { Link, LinkProps } from './Link';
 import styles from './Link.module.scss';
 
-type SecondaryLinkProps = LinkProps & {
-  variant?: 'default' | 'arrowRight';
-};
-
 export function SecondaryLink({
   className,
   children,
   variant = 'default',
   ...delegatedProps
-}: SecondaryLinkProps) {
+}: LinkProps) {
   return (
     <Link
       className={classNames(styles.secondaryLink, className)}
