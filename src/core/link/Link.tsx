@@ -11,6 +11,7 @@ export type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
   showExternalIcon?: boolean;
+  size?: 'S' | 'M' | 'L';
 };
 
 // TODO: LinkBase component should be replaced with hds Link, when all features are supported
@@ -23,6 +24,7 @@ export function Link({
   ariaLabel,
   showExternalIcon = true,
   className,
+  size = 'M',
   ...delegatedProps
 }: LinkProps) {
   const {
@@ -34,7 +36,7 @@ export function Link({
 
   return (
     <LinkBase
-      size="M"
+      size={size}
       {...delegatedProps}
       href={href}
       openInNewTab={isOpenInNewTab}
