@@ -38,6 +38,8 @@ export { Link, LinkProps } from './link/Link';
 
 export { SecondaryLink } from './link/SecondaryLink';
 
+export { LinkBox } from './linkBox/LinkBox';
+
 export { Navigation, NavigationProps } from './navigation/Navigation';
 
 export { Notification, NotificationProps } from './notification/Notification';
