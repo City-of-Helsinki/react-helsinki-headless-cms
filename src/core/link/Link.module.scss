@@ -1,3 +1,5 @@
+@import 'typography';
+
 .link {
   display: flex;
   &,
@@ -7,5 +9,29 @@
 
   &:visited svg g path {
     fill: var(--color-black);
+  }
+}
+
+.secondaryLink {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: $fontsize-body-l;
+  &,
+  &:visited {
+    color: var(--color-coat-of-arms-dark);
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:visited svg g path {
+    fill: var(--color-coat-of-arms-dark);
+  }
+
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

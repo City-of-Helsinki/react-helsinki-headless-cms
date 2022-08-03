@@ -2,9 +2,9 @@
 
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { IconAngleRight, IconArrowRight } from 'hds-react';
 
 import { Link } from './Link';
+import { SecondaryLink } from './SecondaryLink';
 import { ConfigProvider } from '../configProvider/ConfigProvider';
 import { defaultConfig } from '../configProvider/defaultConfig';
 
@@ -27,22 +27,28 @@ const Template: ComponentStory<typeof Link> = (args) => (
       <Link {...args} ariaLabel="Internal link default" href="/internal">
         Internal link default
       </Link>
-      <Link
+      <SecondaryLink
         {...args}
-        ariaLabel="Internal link with arrow right"
-        href="/internal-2"
-        iconRight={<IconAngleRight />}
+        ariaLabel="External secondary"
+        href="https://hel.fi"
       >
-        Internal link with arrow right
-      </Link>
-      <Link
+        External secondary link
+      </SecondaryLink>
+      <SecondaryLink
         {...args}
-        ariaLabel="Internal link with arrow right"
+        ariaLabel="Internal secondary with arrow right"
         href="/internal-3"
-        iconLeft={<IconArrowRight />}
       >
-        Internal link with arrow right
-      </Link>
+        Secondary Internal link
+      </SecondaryLink>
+      <SecondaryLink
+        {...args}
+        ariaLabel="Internal secondary with arrow right"
+        href="/internal-3"
+        variant="arrowRight"
+      >
+        Secondary Internal link with arrow right
+      </SecondaryLink>
     </div>
   </ConfigProvider>
 );
