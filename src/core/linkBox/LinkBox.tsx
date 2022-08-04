@@ -2,8 +2,7 @@ import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
 
-import LinkBase from '../link/LinkBase';
-import { useConfig } from '../configProvider/useConfig';
+import { Link } from '../link/Link';
 import styles from './LinkBox.module.scss';
 
 export type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
@@ -15,34 +14,15 @@ export type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
 // TODO: this component should be replaced with hds one, when all layouts and directions are supported
 // issue is created to hds: https://github.com/City-of-Helsinki/helsinki-design-system/issues/809
 
-export function LinkBox({
-  href,
-  target,
-  children,
-  ariaLabel,
-  ...delegatedProps
-}: LinkProps) {
-  const {
-    utils: { getIsHrefExternal },
-  } = useConfig();
-
-  const isOpenInNewTab = target === '_blank';
-
+export function LinkBox({ children, ...delegatedProps }: LinkProps) {
   return (
     <div className={styles.linkBoxWrapper}>
       {children}
-      <LinkBase
+      <Link
         {...delegatedProps}
-        href={href}
-        openInNewTab={isOpenInNewTab}
-        external={getIsHrefExternal(href)}
-        ariaLabel={ariaLabel}
         className={classNames(styles.linkBox)}
         showExternalIcon={false}
-        disableVisitedStyles
-      >
-        {' '}
-      </LinkBase>
+      />
     </div>
   );
 }
