@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-useless-fragment */
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
@@ -30,12 +31,13 @@ export function Link({
 }: LinkProps) {
   const {
     utils: { getIsHrefExternal },
+    components: { Link: RoutedLink },
   } = useConfig();
 
   const isOpenInNewTab = target === '_blank';
   const isExternal = getIsHrefExternal(href);
 
-  return (
+  const linkComponent = (
     <LinkBase
       size={size}
       {...delegatedProps}
@@ -49,5 +51,13 @@ export function Link({
     >
       {children as string}
     </LinkBase>
+  );
+
+  return isExternal ? (
+    <>{linkComponent}</>
+  ) : (
+    <RoutedLink href={href} {...delegatedProps}>
+      {linkComponent}
+    </RoutedLink>
   );
 }
