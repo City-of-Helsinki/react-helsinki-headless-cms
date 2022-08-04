@@ -56,8 +56,6 @@ export function Link({
   return isExternal ? (
     <>{linkComponent}</>
   ) : (
-    <RoutedLink href={href} {...delegatedProps}>
-      {linkComponent}
-    </RoutedLink>
+    <RoutedLink href={href}>{linkComponent}</RoutedLink>
   );
 }
