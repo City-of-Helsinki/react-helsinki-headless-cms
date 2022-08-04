@@ -4,7 +4,7 @@ import React from 'react';
 import { ModuleItemTypeEnum } from '../../common/headlessService/constants';
 import { LanguageCodeEnum } from '../../common/headlessService/types';
 import getIsValidHttpUrl from '../../common/utils/getIsValidHttpUrl';
-import { Link, LinkProps } from '../link/Link';
+import { LinkProps } from '../link/Link';
 import { Config } from './configContext';
 
 export const defaultConfig: Config = {
@@ -33,7 +33,9 @@ export const defaultConfig: Config = {
       // eslint-disable-next-line jsx-a11y/anchor-has-content
       <a {...props} />
     ),
-    Link: (props: LinkProps) => <Link {...props} />,
+    Link: ({ children, ...props }: LinkProps) => (
+      <span {...props}>{children}</span>
+    ),
     Img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
       // eslint-disable-next-line jsx-a11y/alt-text
       <img {...props} />
