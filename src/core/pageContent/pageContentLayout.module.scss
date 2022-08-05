@@ -32,15 +32,9 @@
 }
 
 .content {
-  // Use flex for linear layout
   display: flex;
   flex-direction: column;
-
   width: 100%;
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 var(--padding);
-  box-sizing: border-box;
 
   @media screen and (min-width: breakpoints.$breakpoint-m) {
     flex-direction: row;

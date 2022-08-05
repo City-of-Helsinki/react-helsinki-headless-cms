@@ -4,6 +4,7 @@ import { Koros } from 'hds-react';
 import { MAIN_CONTENT_ID } from '../../common/constants';
 import styles from './pageContentLayout.module.scss';
 import Hero from '../hero/Hero';
+import { ContentContainer } from '../contentContainer/ContentContainer';
 
 export type PageContentLayoutProps = {
   breadcrumbs?: React.ReactNode;
@@ -37,6 +38,7 @@ export function PageContentLayout({
       {hasBreadCrumbs && breadcrumbs && (
         <div className={styles.breadcrumbs}>{breadcrumbs}</div>
       )}
+
       <main id={MAIN_CONTENT_ID} className={styles.mainLayout}>
         {imageSrc && (
           <Hero
@@ -47,20 +49,20 @@ export function PageContentLayout({
             backUrl={backUrl}
           />
         )}
-        <div className={styles.content}>
-          <div>
-            {content}
-            {shareLinks && shareLinks}
+        <ContentContainer>
+          <div className={styles.content}>
+            <div>
+              {content}
+              {shareLinks && shareLinks}
+            </div>
+            <aside>{sidebarContent}</aside>
           </div>
-          <aside>{sidebarContent}</aside>
-        </div>
+        </ContentContainer>
         {collections && (
           <div className={styles.collectionsContainer}>
             <Koros className={styles.koros} />
             <div className={styles.innerCollectionsWrapper}>
-              <div className={styles.innerCollectionsContainer}>
-                {collections}
-              </div>
+              <ContentContainer>{collections}</ContentContainer>
             </div>
           </div>
         )}

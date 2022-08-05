@@ -6,7 +6,8 @@ import { IconArrowLeft } from 'hds-react';
 import { useConfig } from '../configProvider/useConfig';
 import Container from '../../common/components/container/Container';
 import styles from './hero.module.scss';
-import { LinkBox } from '../linkBox/LinkBox';
+import { Link } from '../link/Link';
+import { ContentContainer } from '../contentContainer/ContentContainer';
 
 export type HeroProps = {
   className?: string;
@@ -32,23 +33,25 @@ export default function Hero({
   return (
     <div className={classNames(styles.hero, className)}>
       <Container wrapper={container}>
-        <div className={styles.heroInner}>
-          <div>
-            <figure className={styles.imageContainer}>
-              <Img src={imageUrl} alt={imageAlt} />
-            </figure>
-            {imageLabel && <div className={styles.label}>{imageLabel}</div>}
-          </div>
-          {backUrl && (
-            <div className={styles.link}>
-              <LinkBox
-                href={backUrl}
-                target="_self"
-                iconLeft={<IconArrowLeft aria-hidden="true" />}
-              />
+        <ContentContainer>
+          <div className={styles.heroInner}>
+            <div>
+              <figure className={styles.imageContainer}>
+                <Img src={imageUrl} alt={imageAlt} />
+              </figure>
+              {imageLabel && <div className={styles.label}>{imageLabel}</div>}
             </div>
-          )}
-        </div>
+            {backUrl && (
+              <div className={styles.link}>
+                <Link
+                  href={backUrl}
+                  target="_self"
+                  iconLeft={<IconArrowLeft aria-hidden="true" />}
+                />
+              </div>
+            )}
+          </div>
+        </ContentContainer>
       </Container>
     </div>
   );

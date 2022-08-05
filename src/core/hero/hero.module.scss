@@ -8,19 +8,12 @@
 
   .heroInner {
     position: relative;
-    display: flex;
-    //flex-direction: column;
     width: 100%;
-    max-width: var(--max-width);
-    margin: 0 auto;
+    margin: 0;
     box-sizing: border-box;
     & > *:nth-child(1) {
       position: relative;
-      @media screen and (min-width: breakpoints.$breakpoint-m) {
-        //flex: calc((100% / 3) * 2) 0 1;
-        //max-width: calc((100% / 3) * 2);
-        // TODO: Replace with flex-gap when browsers support it
-        margin-right: $spacing-xs;
+      @media screen and (min-width: breakpoints.$breakpoint-xl) {
         z-index: 1;
       }
 
@@ -38,6 +31,10 @@
     }
 
     .link {
+      position: absolute;
+      left: 32px;
+      top: 32px;
+
       a {
         display: flex;
         background-color: var(--color-white);
@@ -46,18 +43,22 @@
           padding: var(--spacing-2-xs);
         }
       }
-      position: absolute;
-      left: 32px;
-      top: 32px;
 
-      @media screen and (min-width: breakpoints.$breakpoint-m) {
-        left: -32px;
+      @media screen and (min-width: breakpoints.$breakpoint-xl) {
+        left: -64px;
         top: 32px;
+      }
+
+      span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
       }
     }
 
     figure {
-      margin: 0 var(--padding);
+      margin: 0;
       line-height: 0;
     }
     img {
