@@ -53,7 +53,7 @@ export function Link({
     </LinkBase>
   );
 
-  return isExternal ? (
+  return isExternal || typeof RoutedLink === 'undefined' ? (
     <>{linkComponent}</>
   ) : (
     <RoutedLink href={href}>{linkComponent}</RoutedLink>
