@@ -1,0 +1,32 @@
+.pageSection {
+  position: relative;
+  display: flex;
+
+  & .korosTop,
+  & .korosBottom {
+    position: absolute;
+    z-index: 1;
+  }
+
+  .korosTop {
+    fill: var(--color-black-5);
+    top: 0;
+  }
+
+  .korosBottom {
+    fill: var(--color-black-5);
+    bottom: 0;
+  }
+
+  &.withKorosTop {
+    padding-top: 85px;
+  }
+
+  &.withKorosBottom {
+    padding-bottom: 85px;
+  }
+}
+
+.pageSectionGrey {
+  background-color: var(--color-black-5);
+}

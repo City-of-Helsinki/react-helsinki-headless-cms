@@ -1,10 +1,10 @@
 import React from 'react';
-import { Koros } from 'hds-react';
 
 import { MAIN_CONTENT_ID } from '../../common/constants';
 import styles from './pageContentLayout.module.scss';
 import Hero from '../hero/Hero';
 import { ContentContainer } from '../contentContainer/ContentContainer';
+import { PageSection } from '../pageSection/PageSection';
 
 export type PageContentLayoutProps = {
   breadcrumbs?: React.ReactNode;
@@ -49,22 +49,21 @@ export function PageContentLayout({
             backUrl={backUrl}
           />
         )}
-        <ContentContainer>
-          <div className={styles.content}>
-            <div>
-              {content}
-              {shareLinks && shareLinks}
+        <PageSection korosBottom>
+          <ContentContainer>
+            <div className={styles.content}>
+              <div>
+                {content}
+                {shareLinks && shareLinks}
+              </div>
+              <aside>{sidebarContent}</aside>
             </div>
-            <aside>{sidebarContent}</aside>
-          </div>
-        </ContentContainer>
+          </ContentContainer>
+        </PageSection>
         {collections && (
-          <div className={styles.collectionsContainer}>
-            <Koros className={styles.koros} />
-            <div className={styles.innerCollectionsWrapper}>
-              <ContentContainer>{collections}</ContentContainer>
-            </div>
-          </div>
+          <PageSection className={styles.pageSectionGrey}>
+            <ContentContainer>{collections}</ContentContainer>
+          </PageSection>
         )}
       </main>
     </div>
