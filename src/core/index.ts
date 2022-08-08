@@ -48,6 +48,8 @@ export { Page, PageProps } from './page/Page';
 
 export { PageContent, PageContentProps } from './pageContent/PageContent';
 
+export { ContentContainer } from './contentContainer/ContentContainer';
+
 export {
   PageContentLayout,
   PageContentLayoutProps,
