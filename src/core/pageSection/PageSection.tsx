@@ -34,12 +34,12 @@ export function PageSection({
       {korosTop && (
         <Koros
           flipHorizontal
-          className={classNames(korosTopClassName, styles.korosTop)}
+          className={classNames(styles.korosTop, korosTopClassName)}
         />
       )}
       {korosBottom && (
         <Koros
-          className={classNames(korosBottomClassName, styles.korosBottom)}
+          className={classNames(styles.korosBottom, korosBottomClassName)}
         />
       )}
       {children}
