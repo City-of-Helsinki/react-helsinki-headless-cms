@@ -55,6 +55,8 @@ export {
 
 export { PageMeta, PageMetaProps } from './pageContent/meta/PageMeta';
 
+export { PageSection } from './pageSection/PageSection';
+
 export {
   PageMainContent,
   PageMainContentProps,
