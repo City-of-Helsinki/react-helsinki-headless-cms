@@ -1,6 +1,8 @@
 .pageSection {
   position: relative;
   display: flex;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   & .korosTop,
   & .korosBottom {

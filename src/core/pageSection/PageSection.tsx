@@ -12,6 +12,7 @@ export type PageSectionProps = {
   korosTopClassName?: string;
   korosBottom?: boolean;
   korosBottomClassName?: string;
+  backgroundImageUrl?: string;
 };
 
 export function PageSection({
@@ -21,6 +22,7 @@ export function PageSection({
   korosTopClassName,
   korosBottom,
   korosBottomClassName,
+  backgroundImageUrl,
 }: PageSectionProps) {
   return (
     <div
@@ -30,6 +32,7 @@ export function PageSection({
         korosTop && styles.withKorosTop,
         korosBottom && styles.withKorosBottom,
       )}
+      style={{ backgroundImage: backgroundImageUrl ?? '' }}
     >
       {korosTop && (
         <Koros
