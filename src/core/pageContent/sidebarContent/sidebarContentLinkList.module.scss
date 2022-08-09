@@ -8,13 +8,14 @@
 .link {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: $spacing-m;
 
   color: $color-black-90;
   text-decoration: none;
   font-weight: 500;
 
-  background: $color-engel-medium-light;
+  background: $color-black-5;
 
   svg {
     margin: 0 $spacing-2-xs;

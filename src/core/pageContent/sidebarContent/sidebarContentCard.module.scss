@@ -3,10 +3,14 @@
 
 .container {
   &.withoutImage {
-    padding: $spacing-layout-xl 0;
-
+    padding: $spacing-xs $spacing-m;
     background-color: $color-coat-of-arms-light;
   }
+}
+
+a {
+  display: flex;
+  justify-content: space-between;
 }
 
 .image {
