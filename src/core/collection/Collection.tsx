@@ -137,9 +137,7 @@ export function Collection({
   };
 
   return (
-    <div
-      className={classNames(styles.collectionWrapper, styles[type], className)}
-    >
+    <div className={classNames(styles[type], className)}>
       <div className={styles.collection}>
         {title && <h1 className={styles.heading}>{title}</h1>}
         {description && <p className={styles.description}>{description}</p>}

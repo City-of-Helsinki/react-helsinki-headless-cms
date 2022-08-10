@@ -19,6 +19,7 @@ export default function PostListItem({
   title,
   link,
   featuredImage,
+  date,
 }: PostListItemProps) {
   const url = useHeadlessCmsLink(link, moduleItemType);
 
@@ -30,6 +31,7 @@ export default function PostListItem({
     <SidebarContentCard
       key={id}
       title={title}
+      publishingDate={date}
       url={url}
       imageUrl={featuredImage?.node?.mediaItemUrl || undefined}
       imageAlt={featuredImage?.node?.altText || undefined}

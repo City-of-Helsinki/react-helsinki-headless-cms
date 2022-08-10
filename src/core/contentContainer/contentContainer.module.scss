@@ -1,0 +1,19 @@
+@import 'breakpoints';
+@import 'spacing';
+
+.container {
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 var(--spacing-s);
+  width: 100%;
+  position: relative;
+
+  @include respond_above(m) {
+    padding: 0 var(--spacing-m);
+  }
+
+  @include respond_above(xl) {
+    margin: 0 auto;
+    max-width: var(--breakpoint-xl);
+  }
+}

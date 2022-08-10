@@ -2,14 +2,6 @@
 @import 'spacing';
 @import 'typography';
 
-.collectionWrapper {
-  display: block;
-  --spacing: #{$spacing-layout-2-xs};
-  padding: 0 var(--padding);
-  max-width: calc(var(--max-width) - (2 * var(--padding)));
-  width: calc(100% - (2 * var(--padding)));
-}
-
 .collection {
   & > .heading {
     font-size: $fontsize-heading-m;
@@ -36,7 +28,7 @@
   }
 
   & > .loadMoreButton {
-    margin-top: var(--spacing);
+    margin-top: var(--spacing-m);
   }
 }
 
