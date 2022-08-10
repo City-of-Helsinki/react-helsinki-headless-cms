@@ -32,8 +32,8 @@
 
     .link {
       position: absolute;
-      left: 32px;
-      top: 32px;
+      left: var(--spacing-l);
+      top: var(--spacing-l);
 
       a {
         display: flex;
@@ -45,8 +45,8 @@
       }
 
       @media screen and (min-width: breakpoints.$breakpoint-xl) {
-        left: -64px;
-        top: 32px;
+        left: calc(var(--spacing--4-xl) * -1);
+        top: var(--spacing-l);
       }
 
       span {
