@@ -49,7 +49,7 @@ export function PageContentLayout({
             backUrl={backUrl}
           />
         )}
-        <PageSection className={styles.contentSection}>
+        <PageSection>
           <ContentContainer>
             <div className={styles.content}>
               <div>
