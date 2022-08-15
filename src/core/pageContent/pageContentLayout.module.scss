@@ -58,6 +58,11 @@
   }
 }
 
+.collectionsWrapper {
+  background-color: var(--color-black-5);
+  padding-bottom: $spacing-layout-xl;
+}
+
 .collectionKorosTop {
   fill: var(--color-white);
 }
@@ -77,9 +82,4 @@
       max-width: var(--max-width);
     }
   }
-}
-
-.collectionsWrapper {
-  background-color: var(--color-black-5);
-  padding-bottom: $spacing-4-xl;
 }
