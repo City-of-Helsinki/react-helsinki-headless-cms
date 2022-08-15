@@ -27,7 +27,7 @@ export default function SidebarContentLinkList({
   } = useConfig();
 
   return (
-    <div id={anchor || undefined}>
+    <div className={styles.listContainer} id={anchor || undefined}>
       <h2>{title}</h2>
       {description && (
         <div className={styles.descriptionContainer}>

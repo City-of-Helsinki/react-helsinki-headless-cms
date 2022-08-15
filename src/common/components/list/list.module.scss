@@ -1,4 +1,5 @@
 @import 'spacing';
+@import 'breakpoints';
 
 .list {
   --spacing: 0;
@@ -43,7 +44,10 @@
   --spacing: #{$spacing-2-xl};
 }
 .spacing-3-xl {
-  --spacing: #{$spacing-3-xl};
+  --spacing: #{$spacing-xl};
+  @include respond_above(m) {
+    --spacing: #{$spacing-3-xl};
+  }
 }
 .spacing-4-xl {
   --spacing: #{$spacing-4-xl};

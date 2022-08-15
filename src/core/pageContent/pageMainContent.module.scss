@@ -1,3 +1,5 @@
+@import 'breakpoints';
+
 .imageContainer {
   & img {
     max-width: 100%;
@@ -62,6 +64,11 @@ blockquote {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  margin-bottom: var(--spacing-s);
+
+  @include respond_above(m) {
+    margin-bottom: var(--spacing-xl);
+  }
 
   .articleDate {
     margin-right: var(--spacing-l);

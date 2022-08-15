@@ -49,7 +49,7 @@ export function PageContentLayout({
             backUrl={backUrl}
           />
         )}
-        <PageSection korosBottom>
+        <PageSection korosBottom className={styles.contentSection}>
           <ContentContainer>
             <div className={styles.content}>
               <div>
