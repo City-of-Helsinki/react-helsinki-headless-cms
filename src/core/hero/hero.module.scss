@@ -35,6 +35,10 @@
       left: var(--spacing-l);
       top: var(--spacing-l);
 
+      a:hover {
+        outline: 2px solid var(--color-coat-of-arms);
+      }
+
       a {
         display: flex;
         background-color: var(--color-white);
@@ -45,7 +49,7 @@
       }
 
       @media screen and (min-width: breakpoints.$breakpoint-xl) {
-        left: calc(var(--spacing--4-xl) * -1);
+        left: calc(var(--spacing-4-xl) * -1);
         top: var(--spacing-l);
       }
 
