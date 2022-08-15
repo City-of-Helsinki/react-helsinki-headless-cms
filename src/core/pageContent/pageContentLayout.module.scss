@@ -62,6 +62,10 @@
   }
 }
 
+.collectionKorosTop {
+  fill: var(--color-white);
+}
+
 .collectionsContainer {
   position: relative;
   margin-top: $spacing-2-xl;
@@ -79,7 +83,7 @@
   }
 }
 
-.pageSectionGrey {
+.collectionsWrapper {
   background-color: var(--color-black-5);
   padding-bottom: $spacing-4-xl;
 }
