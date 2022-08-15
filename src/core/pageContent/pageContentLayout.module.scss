@@ -45,7 +45,7 @@
       flex: calc((100% / 3) * 2) 0 1;
       max-width: calc((100% / 3) * 2);
       // TODO: Replace with flex-gap when browsers support it
-      margin-right: $spacing-xs;
+      margin-right: 22px;
     }
   }
 
@@ -53,9 +53,18 @@
     @media screen and (min-width: breakpoints.$breakpoint-m) {
       flex: calc(100% / 3) 0 0;
       // TODO: Replace with flex-gap when browsers support it
-      margin-left: $spacing-xs;
+      margin-left: 22px;
     }
   }
+}
+
+.collectionsWrapper {
+  background-color: var(--color-black-5);
+  padding-bottom: $spacing-layout-xl;
+}
+
+.collectionKorosTop {
+  fill: var(--color-white);
 }
 
 .collectionsContainer {
@@ -73,9 +82,4 @@
       max-width: var(--max-width);
     }
   }
-}
-
-.pageSectionGrey {
-  background-color: var(--color-black-5);
-  padding-bottom: $spacing-4-xl;
 }

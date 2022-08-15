@@ -7,16 +7,14 @@
   & .korosTop,
   & .korosBottom {
     position: absolute;
-    z-index: 1;
+    //z-index: 1;
   }
 
   .korosTop {
-    fill: var(--color-black-5);
     top: 0;
   }
 
   .korosBottom {
-    fill: var(--color-black-5);
     bottom: 0;
   }
 

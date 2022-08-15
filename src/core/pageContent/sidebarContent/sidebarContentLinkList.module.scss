@@ -1,5 +1,14 @@
 @import 'spacing';
 @import 'color';
+@import 'breakpoints';
+
+.listContainer {
+  margin-top: var(--spacing-s);
+
+  @include respond_above(m) {
+    margin-top: var(--spacing-xl);
+  }
+}
 
 .descriptionContainer {
   margin-bottom: $spacing-m;

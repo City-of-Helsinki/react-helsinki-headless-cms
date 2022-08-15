@@ -27,10 +27,10 @@ export function PageSection({
   return (
     <div
       className={classNames(
-        className,
         styles.pageSection,
         korosTop && styles.withKorosTop,
         korosBottom && styles.withKorosBottom,
+        className,
       )}
       style={{ backgroundImage: backgroundImageUrl ?? '' }}
     >

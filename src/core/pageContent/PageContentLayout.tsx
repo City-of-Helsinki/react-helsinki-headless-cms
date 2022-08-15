@@ -49,7 +49,7 @@ export function PageContentLayout({
             backUrl={backUrl}
           />
         )}
-        <PageSection korosBottom>
+        <PageSection>
           <ContentContainer>
             <div className={styles.content}>
               <div>
@@ -61,7 +61,11 @@ export function PageContentLayout({
           </ContentContainer>
         </PageSection>
         {collections && (
-          <PageSection className={styles.pageSectionGrey}>
+          <PageSection
+            className={styles.collectionsWrapper}
+            korosTop
+            korosTopClassName={styles.collectionKorosTop}
+          >
             <ContentContainer>{collections}</ContentContainer>
           </PageSection>
         )}
