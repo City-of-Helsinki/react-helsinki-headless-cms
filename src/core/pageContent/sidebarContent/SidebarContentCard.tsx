@@ -42,6 +42,7 @@ export default function SidebarContentCard({
       )}
       <p className={styles.description}>{description && description}</p>
       <Link
+        className={styles.link}
         href={url}
         ariaLabel={title}
         iconRight={
