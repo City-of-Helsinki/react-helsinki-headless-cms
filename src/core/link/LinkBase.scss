@@ -4,7 +4,6 @@
   text-decoration: underline;
   color: var(--link-color);
   box-sizing: border-box;
-  border: 3px solid transparent;
 }
 
 .hds-link:visited {
@@ -16,8 +15,7 @@
 }
 
 .hds-link:focus {
-  border: 3px solid var(--color-coat-of-arms);
-  outline: none;
+  outline: 3px solid var(--color-coat-of-arms);
 }
 
 .hds-link:focus-visible {
