@@ -1,5 +1,15 @@
 @import 'spacing';
 
 .pageLayout {
-  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.contentWrapper {
+  flex: 1 0 auto;
+}
+
+.footerWrapper {
+  flex-shrink: 0;
 }
