@@ -21,12 +21,12 @@ export function Page({
 }: PageProps) {
   return (
     <div className={classNames(styles.pageLayout, className)}>
-      <div>
+      <div className={styles.headerWrapper}>
         {navigation}
         {notification}
       </div>
-      {content}
-      {footer}
+      <div className={styles.contentWrapper}>{content}</div>
+      <div className={styles.footerWrapper}>{footer}</div>
     </div>
   );
 }
