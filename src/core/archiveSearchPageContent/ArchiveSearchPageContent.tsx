@@ -1,13 +1,7 @@
 import React, { useState } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
-import {
-  Button,
-  IconSearch,
-  Koros,
-  LoadingSpinner,
-  TextInput,
-} from 'hds-react';
+import { Button, IconSearch, LoadingSpinner, TextInput } from 'hds-react';
 
 import styles from './archiveSearchPageContent.module.scss';
 import Tag from '../../common/components/tag/Tag';
@@ -17,6 +11,7 @@ import { LargeCard } from '../card/LargeCard';
 import { useConfig } from '../configProvider/useConfig';
 import { Config } from '../configProvider/configContext';
 import { CollectionItemType } from '../collection/types';
+import { PageSection } from '../pageSection/PageSection';
 
 export function SearchForm({
   archiveSearch,
@@ -161,7 +156,11 @@ export function SearchPageContent(props: SearchPageContentProps) {
   return (
     <div className={classNames(styles.contentLayout, className)}>
       <div className={styles.mainLayout}>
-        <div className={styles.searchFormContainer}>
+        <PageSection
+          korosBottom
+          className={styles.searchFormContainer}
+          korosBottomClassName={styles.koros}
+        >
           <div className={styles.searchFormContainerInner}>
             <div>
               <SearchForm
@@ -173,16 +172,17 @@ export function SearchPageContent(props: SearchPageContentProps) {
             </div>
             {tags && <SearchTags tags={tags} handleTagClick={handleTagClick} />}
           </div>
-          <Koros className={styles.koros} flipHorizontal />
-        </div>
+        </PageSection>
 
-        <div className={styles.customContentContainer}>
-          <div className={styles.customContentContainerInner}>
-            {customContent}
-          </div>
-        </div>
+        {customContent && (
+          <PageSection className={styles.customContentContainer}>
+            <div className={styles.customContentContainerInner}>
+              {customContent}
+            </div>
+          </PageSection>
+        )}
 
-        <div className={styles.searchResultsContainer}>
+        <PageSection className={styles.searchResultsContainer}>
           <div className={styles.searchResultsContainerInner}>
             {noResults ? (
               <h1>{archiveSearch.noResultsText || ''}</h1>
@@ -210,7 +210,7 @@ export function SearchPageContent(props: SearchPageContentProps) {
               )}
             </div>
           </div>
-        </div>
+        </PageSection>
       </div>
     </div>
   );
