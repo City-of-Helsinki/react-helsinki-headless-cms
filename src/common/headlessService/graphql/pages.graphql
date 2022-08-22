@@ -22,6 +22,7 @@ query pages(
         title
         date
         lead
+        content
         slug
         uri
         featuredImage {
