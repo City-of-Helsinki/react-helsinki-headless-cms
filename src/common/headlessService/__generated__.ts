@@ -10880,14 +10880,25 @@ export type ArticleQuery = {
 
 export type PostsQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  search?: InputMaybe<Scalars['String']>;
+  language?: InputMaybe<LanguageCodeFilterEnum>;
 }>;
 
 export type PostsQuery = {
   __typename?: 'RootQuery';
   posts?: {
     __typename?: 'RootQueryToPostConnection';
+    pageInfo?: {
+      __typename?: 'WPPageInfo';
+      endCursor?: string | null;
+      hasNextPage: boolean;
+      hasPreviousPage: boolean;
+      startCursor?: string | null;
+    } | null;
     edges?: Array<{
       __typename?: 'RootQueryToPostConnectionEdge';
+      cursor?: string | null;
       node?: {
         __typename?: 'Post';
         id: string;
@@ -12473,14 +12484,25 @@ export type PageChildrenSearchQuery = {
 
 export type PagesQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  search?: InputMaybe<Scalars['String']>;
+  language?: InputMaybe<LanguageCodeFilterEnum>;
 }>;
 
 export type PagesQuery = {
   __typename?: 'RootQuery';
   pages?: {
     __typename?: 'RootQueryToPageConnection';
+    pageInfo?: {
+      __typename?: 'WPPageInfo';
+      endCursor?: string | null;
+      hasNextPage: boolean;
+      hasPreviousPage: boolean;
+      startCursor?: string | null;
+    } | null;
     edges?: Array<{
       __typename?: 'RootQueryToPageConnectionEdge';
+      cursor?: string | null;
       node?: {
         __typename?: 'Page';
         id: string;
@@ -12959,9 +12981,25 @@ export type ArticleQueryResult = Apollo.QueryResult<
   ArticleQueryVariables
 >;
 export const PostsDocument = gql`
-  query posts($first: Int) {
-    posts(first: $first) {
+  query posts(
+    $first: Int
+    $after: String
+    $search: String
+    $language: LanguageCodeFilterEnum
+  ) {
+    posts(
+      first: $first
+      after: $after
+      where: { search: $search, language: $language }
+    ) {
+      pageInfo {
+        endCursor
+        hasNextPage
+        hasPreviousPage
+        startCursor
+      }
       edges {
+        cursor
         node {
           id
           title
@@ -12994,6 +13032,9 @@ export const PostsDocument = gql`
  * const { data, loading, error } = usePostsQuery({
  *   variables: {
  *      first: // value for 'first'
+ *      after: // value for 'after'
+ *      search: // value for 'search'
+ *      language: // value for 'language'
  *   },
  * });
  */
@@ -13472,9 +13513,25 @@ export type PageChildrenSearchQueryResult = Apollo.QueryResult<
   PageChildrenSearchQueryVariables
 >;
 export const PagesDocument = gql`
-  query pages($first: Int) {
-    pages(first: $first) {
+  query pages(
+    $first: Int
+    $after: String
+    $search: String
+    $language: LanguageCodeFilterEnum
+  ) {
+    pages(
+      first: $first
+      after: $after
+      where: { search: $search, language: $language }
+    ) {
+      pageInfo {
+        endCursor
+        hasNextPage
+        hasPreviousPage
+        startCursor
+      }
       edges {
+        cursor
         node {
           id
           title
@@ -13507,6 +13564,9 @@ export const PagesDocument = gql`
  * const { data, loading, error } = usePagesQuery({
  *   variables: {
  *      first: // value for 'first'
+ *      after: // value for 'after'
+ *      search: // value for 'search'
+ *      language: // value for 'language'
  *   },
  * });
  */
