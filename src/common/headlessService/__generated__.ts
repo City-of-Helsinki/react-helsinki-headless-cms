@@ -10905,6 +10905,7 @@ export type PostsQuery = {
         title?: string | null;
         date?: string | null;
         lead?: string | null;
+        content?: string | null;
         slug?: string | null;
         uri?: string | null;
         featuredImage?: {
@@ -12509,6 +12510,7 @@ export type PagesQuery = {
         title?: string | null;
         date?: string | null;
         lead?: string | null;
+        content?: string | null;
         slug?: string | null;
         uri?: string | null;
         featuredImage?: {
@@ -13005,6 +13007,7 @@ export const PostsDocument = gql`
           title
           date
           lead
+          content
           slug
           uri
           featuredImage {
@@ -13537,6 +13540,7 @@ export const PagesDocument = gql`
           title
           date
           lead
+          content
           slug
           uri
           featuredImage {
