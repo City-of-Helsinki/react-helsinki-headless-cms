@@ -4,7 +4,11 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
-import { LanguageCodeEnum, PageType } from '../../common/headlessService/types';
+import {
+  ArticleType,
+  LanguageCodeEnum,
+  PageType,
+} from '../../common/headlessService/types';
 import { ConfigProvider } from '../configProvider/ConfigProvider';
 import { defaultConfig } from '../configProvider/defaultConfig';
 import { SearchPageContent as ArchiveSearchPageContent } from '../archiveSearchPageContent/ArchiveSearchPageContent';
@@ -64,21 +68,21 @@ const navigation = (
 );
 
 const getCardProps = (
-  item: CollectionItemType,
+  item: CollectionItemType & ArticleType,
 ): CardProps | LargeCardProps => ({
   id: item.id,
   ariaLabel: item.title || '',
   title: item.title || '',
   subTitle: 'date' in item && formatDateTimeFromString(item.date || ''),
-  customContent: <HtmlToReact>{item.lead || ''}</HtmlToReact>,
+  customContent: <HtmlToReact>{(item.lead || item.content) ?? ''}</HtmlToReact>,
   url: item.slug || '',
   imageUrl: item.featuredImage?.node.mediaItemUrl || '',
 });
 
-const createLargeCard = (item: CollectionItemType) => (
+const createLargeCard = (item: CollectionItemType & ArticleType) => (
   <LargeCard {...getCardProps(item)} />
 );
-const createCard = (item: CollectionItemType) => (
+const createCard = (item: CollectionItemType & ArticleType) => (
   <Card {...getCardProps(item)} withShadow />
 );
 
