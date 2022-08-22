@@ -427,6 +427,8 @@ export type QueryEventListArgs = {
   allOngoing?: InputMaybe<Scalars['Boolean']>;
   allOngoingAnd?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   allOngoingOr?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  audienceMaxAgeLt?: InputMaybe<Scalars['String']>;
+  audienceMinAgeGt?: InputMaybe<Scalars['String']>;
   combinedText?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   division?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   end?: InputMaybe<Scalars['String']>;
