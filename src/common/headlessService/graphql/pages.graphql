@@ -1,6 +1,22 @@
-query pages($first: Int) {
-  pages(first: $first) {
+query pages(
+  $first: Int
+  $after: String
+  $search: String
+  $language: LanguageCodeFilterEnum
+) {
+  pages(
+    first: $first
+    after: $after
+    where: { search: $search, language: $language }
+  ) {
+    pageInfo {
+      endCursor
+      hasNextPage
+      hasPreviousPage
+      startCursor
+    }
     edges {
+      cursor
       node {
         id
         title

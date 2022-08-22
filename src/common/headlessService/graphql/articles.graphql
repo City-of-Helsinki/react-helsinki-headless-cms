@@ -1,6 +1,22 @@
-query posts($first: Int) {
-  posts(first: $first) {
+query posts(
+  $first: Int
+  $after: String
+  $search: String
+  $language: LanguageCodeFilterEnum
+) {
+  posts(
+    first: $first
+    after: $after
+    where: { search: $search, language: $language }
+  ) {
+    pageInfo {
+      endCursor
+      hasNextPage
+      hasPreviousPage
+      startCursor
+    }
     edges {
+      cursor
       node {
         id
         title
