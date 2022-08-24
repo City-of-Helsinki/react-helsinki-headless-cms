@@ -28,6 +28,7 @@ export {
   EventSelectedCarousel,
   NotificationType,
   LanguageCodeEnum,
+  LanguageCodeFilterEnum,
   MenuNodeIdTypeEnum,
   TemplateEnum,
 } from '../common/headlessService/types';

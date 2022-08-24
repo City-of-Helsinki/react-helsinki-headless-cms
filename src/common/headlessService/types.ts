@@ -43,6 +43,7 @@ export type {
 
 export {
   LanguageCodeEnum,
+  LanguageCodeFilterEnum,
   MenuNodeIdTypeEnum,
   TemplateEnum,
 } from './__generated__';
