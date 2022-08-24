@@ -1,22 +1,23 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
 import { IconLinkExternal } from 'hds-react';
-import React from 'react';
+import React, { Children, isValidElement } from 'react';
+import type { ReactElement, ReactNode } from 'react';
 
 import styles from './LinkBase.module.scss';
 
+// copied from helsinki-design-system
+// TODO: LinkBase component should be replaced with hds Link, when all features are supported
+// issue is created to hds: https://github.com/City-of-Helsinki/helsinki-design-system/issues/808
+
 export type LinkProps = Omit<
   React.ComponentPropsWithoutRef<'a'>,
-  | 'target'
-  | 'href'
-  | 'onPointerEnterCapture'
-  | 'onPointerLeaveCapture'
-  | 'ariaLabel'
+  'target' | 'href' | 'onPointerEnterCapture' | 'onPointerLeaveCapture'
 > & {
   /**
    * Link content
    */
-  children: string;
+  children: ReactNode;
   /**
    * Boolean indicating whether visited styles of the link are applied
    */
@@ -46,6 +47,14 @@ export type LinkProps = Omit<
    */
   openInNewTab?: boolean;
   /**
+   * Aria label for opening link in a new tab
+   */
+  openInNewTabAriaLabel?: string;
+  /**
+   * Aria label for opening link in an external domain
+   */
+  openInExternalDomainAriaLabel?: string;
+  /**
    * Size of the link
    */
   size?: 'S' | 'M' | 'L';
@@ -53,13 +62,57 @@ export type LinkProps = Omit<
    * Additional styles
    */
   style?: React.CSSProperties;
-  ariaLabel?: string;
 };
 
 type LinkToIconSizeMappingType = {
   L: 'l';
   M: 's';
   S: 'xs';
+};
+
+const hasChildren = (
+  element: ReactNode,
+): element is ReactElement<{ children: ReactNode[] }> =>
+  isValidElement<{ children?: ReactNode[] }>(element) &&
+  Boolean(element.props.children);
+
+const childToString = (child?: ReactNode): string => {
+  if (
+    typeof child === 'undefined' ||
+    child === null ||
+    typeof child === 'boolean'
+  ) {
+    return '';
+  }
+
+  if (JSON.stringify(child) === '{}') {
+    return '';
+  }
+
+  return (child as number | string).toString();
+};
+
+export const getTextFromReactChildren = (children: ReactNode): string => {
+  if (!(children instanceof Array) && !isValidElement(children)) {
+    return childToString(children);
+  }
+
+  return Children.toArray(children).reduce(
+    (text: string, child: ReactNode): string => {
+      let newText = '';
+
+      if (isValidElement(child) && hasChildren(child)) {
+        newText = getTextFromReactChildren(child.props.children);
+      } else if (isValidElement(child) && !hasChildren(child)) {
+        newText = '';
+      } else {
+        newText = childToString(child);
+      }
+
+      return text.concat(newText);
+    },
+    '',
+  ) as string;
 };
 
 export default React.forwardRef<HTMLAnchorElement, LinkProps>(
@@ -74,13 +127,35 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
       iconLeft,
       iconRight,
       openInNewTab = false,
+      openInExternalDomainAriaLabel,
+      openInNewTabAriaLabel,
       style = {},
       size = 'M',
-      ariaLabel,
       ...rest
     }: LinkProps,
     ref: React.Ref<HTMLAnchorElement>,
   ) => {
+    const composeAriaLabel = () => {
+      let childrenText = getTextFromReactChildren(children);
+      const newTabText = openInNewTab
+        ? openInNewTabAriaLabel || 'Avautuu uudessa välilehdessä.'
+        : '';
+      const externalText = external
+        ? openInExternalDomainAriaLabel || 'Siirtyy toiseen sivustoon.'
+        : '';
+
+      if (childrenText && childrenText.slice(-1) !== '.') {
+        childrenText = `${childrenText}.`;
+      }
+
+      const label = [childrenText, newTabText, externalText]
+        .filter((text) => text)
+        .join(' ');
+      if (!label.trim()) {
+        return undefined;
+      }
+      return label;
+    };
     const mapLinkSizeToExternalIconSize: LinkToIconSizeMappingType = {
       L: 'l',
       M: 's',
@@ -88,6 +163,7 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
     };
 
     return (
+      // eslint-disable-next-line react/jsx-no-target-blank
       <a
         className={classNames(
           styles.link,
@@ -97,11 +173,10 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
         )}
         href={href}
         style={style}
-        {...(openInNewTab && { target: '_blank', rel: 'noopener noreferrer' })}
-        {...{
-          'aria-label': ariaLabel,
-        }}
         ref={ref}
+        target={openInNewTab ? '_blank' : undefined}
+        rel={openInNewTab ? 'noopener noreferrer' : undefined}
+        aria-label={composeAriaLabel()}
         {...rest}
       >
         {iconLeft && (

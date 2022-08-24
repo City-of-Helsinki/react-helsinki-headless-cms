@@ -45,7 +45,7 @@ export default function Hero({
               <div className={styles.link}>
                 <Link
                   href={backUrl}
-                  target="_self"
+                  openInNewTab={false}
                   iconLeft={<IconArrowLeft aria-hidden="true" />}
                 />
               </div>

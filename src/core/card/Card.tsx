@@ -23,7 +23,7 @@ export type CardProps = {
   withShadow?: boolean;
   direction?: 'fixed-horisontal' | 'fixed-vertical' | 'responsive';
   clampText?: boolean;
-  target?: '_blank' | '_self';
+  openLinkInNewTab?: boolean;
 };
 
 export function Card({
@@ -42,7 +42,7 @@ export function Card({
   withShadow,
   direction = 'responsive',
   clampText,
-  target,
+  openLinkInNewTab,
 }: CardProps) {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -54,8 +54,8 @@ export function Card({
       id={id}
       href={url}
       className={className}
-      ariaLabel={ariaLabel || ''}
-      target={target}
+      aria-label={ariaLabel}
+      openInNewTab={openLinkInNewTab}
       onMouseEnter={handleToggleActive}
       onMouseLeave={handleToggleActive}
     >
@@ -106,7 +106,7 @@ export function Card({
             <div className={styles.buttonWrapper}>
               <Link
                 href={url}
-                target={target}
+                openInNewTab={openLinkInNewTab}
                 iconLeft={<IconArrowRight aria-hidden="true" />}
                 showExternalIcon={false}
               />

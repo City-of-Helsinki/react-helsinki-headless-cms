@@ -43,13 +43,11 @@ export default function SidebarContentLinkList({
               key={link.title}
               href={link.url || '#'}
               className={styles.link}
-              ariaLabel={link.title}
               iconRight={
                 !getIsHrefExternal(link.url) && (
                   <IconArrowRight aria-hidden="true" />
                 )
               }
-              target={link.target}
             >
               {link.title}
             </Link>

@@ -5,10 +5,10 @@ import classNames from 'classnames';
 import { Link } from '../link/Link';
 import styles from './LinkBox.module.scss';
 
-export type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
-  ariaLabel?: string;
+export type LinkProps = Omit<React.ComponentPropsWithoutRef<'a'>, 'target'> & {
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
+  openInNewTab?: boolean;
 };
 
 // TODO: this component should be replaced with hds one, when all layouts and directions are supported

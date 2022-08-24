@@ -22,7 +22,7 @@ export type LargeCardProps = {
   customContent?: React.ReactNode;
   hasLink?: boolean;
   clampText?: boolean;
-  target?: '_blank' | '_self';
+  openInNewTab?: boolean;
 };
 
 export function LargeCard({
@@ -39,15 +39,15 @@ export function LargeCard({
   hasLink,
   url,
   clampText,
-  target,
+  openInNewTab,
 }: LargeCardProps) {
   return (
     <LinkBox
       id={id}
       href={url}
       className={classNames(styles.cardLink, className)}
-      ariaLabel={ariaLabel || ''}
-      target={target}
+      aria-label={ariaLabel || ''}
+      openInNewTab={openInNewTab}
     >
       <div
         className={classNames(styles[`${imagePosition}`], styles.cardWrapper)}
@@ -79,7 +79,7 @@ export function LargeCard({
             <div className={styles.buttonWrapper}>
               <Link
                 href={url}
-                target={target}
+                openInNewTab={openInNewTab}
                 iconLeft={<IconArrowRight aria-hidden="true" />}
                 showExternalIcon={false}
               />
