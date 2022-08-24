@@ -2,6 +2,7 @@
 @import 'spacing';
 
 .hero {
+  --hero-image-max-height: 600px;
   margin-bottom: $spacing-l;
   background-color: var(--color-fog-light);
   position: relative;
@@ -67,6 +68,8 @@
     }
     img {
       width: 100%;
+      max-height: var(--hero-image-max-height);
+      object-fit: cover;
     }
   }
 }
