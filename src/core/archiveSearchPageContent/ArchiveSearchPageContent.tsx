@@ -12,6 +12,7 @@ import { useConfig } from '../configProvider/useConfig';
 import { Config } from '../configProvider/configContext';
 import { CollectionItemType } from '../collection/types';
 import { PageSection } from '../pageSection/PageSection';
+import { SearchTag } from '../../common/headlessService/types';
 
 export function SearchForm({
   archiveSearch,
@@ -55,14 +56,18 @@ export function SearchTags({
   tags,
   handleTagClick,
 }: {
-  tags: string[];
-  handleTagClick: (tag: string) => void;
+  tags: SearchTag[];
+  handleTagClick: (tag: SearchTag) => () => void;
 }) {
   return (
     <div>
       {tags.map((tag) => (
-        <Tag key={`tag-${tag}`} variant="search" onClick={handleTagClick}>
-          {tag}
+        <Tag
+          key={`tag-${tag.slug}`}
+          variant="search"
+          onClick={handleTagClick(tag)}
+        >
+          {tag.name}
         </Tag>
       ))}
     </div>
@@ -76,9 +81,9 @@ export interface SearchPageContentProps {
   hasMore?: boolean;
   noResults?: boolean;
   className?: string;
-  tags?: string[];
+  tags?: SearchTag[];
   largeFirstItem?: boolean;
-  onSearch?: (freeSearch: string, tags: string[]) => void;
+  onSearch?: (freeSearch: string, tags: SearchTag[]) => void;
   onLoadMore?: () => void;
   createLargeCard?: (
     item: CollectionItemType,
@@ -130,7 +135,7 @@ export function SearchPageContent(props: SearchPageContentProps) {
   } = useConfig();
 
   const [searchText, setSearchText] = useState<string>('');
-  const [searchTags, setSearchTags] = useState<string[]>([]);
+  const [searchTags, setSearchTags] = useState<SearchTag[]>([]);
 
   const handleSearch = (e: React.FormEvent): void => {
     e.preventDefault();
@@ -141,7 +146,7 @@ export function SearchPageContent(props: SearchPageContentProps) {
     setSearchText(e.target.value);
   };
 
-  const handleTagClick = (tag: string): void => {
+  const handleTagClick = (tag: SearchTag) => (): void => {
     let currentTags = [...searchTags];
     if (currentTags.includes(tag)) {
       currentTags = currentTags.filter((selectedTag) => selectedTag !== tag);

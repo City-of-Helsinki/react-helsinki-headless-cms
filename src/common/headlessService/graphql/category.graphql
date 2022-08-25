@@ -1,6 +1,7 @@
 query category($id: ID!, $language: LanguageCodeEnum!) {
   category(id: $id, idType: SLUG) {
     id
+    databaseId
     name
     slug
     translation(language: $language) {

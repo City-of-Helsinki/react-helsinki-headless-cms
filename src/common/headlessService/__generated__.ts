@@ -10883,6 +10883,12 @@ export type PostsQueryVariables = Exact<{
   after?: InputMaybe<Scalars['String']>;
   search?: InputMaybe<Scalars['String']>;
   language?: InputMaybe<LanguageCodeFilterEnum>;
+  categories?: InputMaybe<
+    Array<InputMaybe<Scalars['ID']>> | InputMaybe<Scalars['ID']>
+  >;
+  tags?: InputMaybe<
+    Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>
+  >;
 }>;
 
 export type PostsQuery = {
@@ -10916,6 +10922,26 @@ export type PostsQuery = {
             mediaItemUrl?: string | null;
           } | null;
         } | null;
+        categories?: {
+          __typename?: 'PostToCategoryConnection';
+          nodes?: Array<{
+            __typename?: 'Category';
+            id: string;
+            databaseId: number;
+            name?: string | null;
+            slug?: string | null;
+          } | null> | null;
+        } | null;
+        tags?: {
+          __typename?: 'PostToTagConnection';
+          nodes?: Array<{
+            __typename?: 'Tag';
+            id: string;
+            databaseId: number;
+            name?: string | null;
+            slug?: string | null;
+          } | null> | null;
+        } | null;
       } | null;
     } | null> | null;
   } | null;
@@ -10935,6 +10961,7 @@ export type CategoriesQuery = {
     nodes?: Array<{
       __typename: 'Category';
       id: string;
+      databaseId: number;
       name?: string | null;
       slug?: string | null;
       uri?: string | null;
@@ -10966,6 +10993,7 @@ export type CategoryQuery = {
   category?: {
     __typename: 'Category';
     id: string;
+    databaseId: number;
     name?: string | null;
     slug?: string | null;
     translation?: {
@@ -12615,6 +12643,7 @@ export type TagQuery = {
   tag?: {
     __typename: 'Tag';
     id: string;
+    databaseId: number;
     name?: string | null;
     slug?: string | null;
     translation?: {
@@ -12647,9 +12676,9 @@ export type TagsQuery = {
     nodes?: Array<{
       __typename: 'Tag';
       id: string;
+      databaseId: number;
       name?: string | null;
       slug?: string | null;
-      uri?: string | null;
       translations?: Array<{
         __typename?: 'Tag';
         name?: string | null;
@@ -13114,11 +13143,18 @@ export const PostsDocument = gql`
     $after: String
     $search: String
     $language: LanguageCodeFilterEnum
+    $categories: [ID]
+    $tags: [String]
   ) {
     posts(
       first: $first
       after: $after
-      where: { search: $search, language: $language }
+      where: {
+        search: $search
+        language: $language
+        categoryIn: $categories
+        tagSlugIn: $tags
+      }
     ) {
       pageInfo {
         endCursor
@@ -13140,6 +13176,22 @@ export const PostsDocument = gql`
             node {
               altText
               mediaItemUrl
+            }
+          }
+          categories {
+            nodes {
+              id
+              databaseId
+              name
+              slug
+            }
+          }
+          tags {
+            nodes {
+              id
+              databaseId
+              name
+              slug
             }
           }
         }
@@ -13164,6 +13216,8 @@ export const PostsDocument = gql`
  *      after: // value for 'after'
  *      search: // value for 'search'
  *      language: // value for 'language'
+ *      categories: // value for 'categories'
+ *      tags: // value for 'tags'
  *   },
  * });
  */
@@ -13205,6 +13259,7 @@ export const CategoriesDocument = gql`
     ) {
       nodes {
         id
+        databaseId
         name
         slug
         uri
@@ -13278,6 +13333,7 @@ export const CategoryDocument = gql`
   query category($id: ID!, $language: LanguageCodeEnum!) {
     category(id: $id, idType: SLUG) {
       id
+      databaseId
       name
       slug
       translation(language: $language) {
@@ -13876,6 +13932,7 @@ export const TagDocument = gql`
   query tag($id: ID!, $language: LanguageCodeEnum!) {
     tag(id: $id, idType: SLUG) {
       id
+      databaseId
       name
       slug
       translation(language: $language) {
@@ -13937,9 +13994,9 @@ export const TagsDocument = gql`
     ) {
       nodes {
         id
+        databaseId
         name
         slug
-        uri
         translations {
           name
           slug

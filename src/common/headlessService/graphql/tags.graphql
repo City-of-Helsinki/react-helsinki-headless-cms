@@ -11,9 +11,9 @@ query tags(
   ) {
     nodes {
       id
+      databaseId
       name
       slug
-      uri
       translations {
         name
         slug
