@@ -32,7 +32,7 @@ export type Config = {
     ) => JSX.Element;
     Head?: (props: { children: React.ReactNode }) => JSX.Element;
     EventCardContent?: (props: any) => JSX.Element;
-    ArticleCardContent?: (props: { children: React.ReactNode }) => JSX.Element;
+    ArticleCardContent?: (props: any) => JSX.Element;
   };
   apolloClient?: ApolloClient<NormalizedCacheObject>;
   eventsApolloClient?: ApolloClient<NormalizedCacheObject> | 'disabled';
