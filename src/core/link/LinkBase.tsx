@@ -144,7 +144,11 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
         ? openInExternalDomainAriaLabel || 'Siirtyy toiseen sivustoon.'
         : '';
 
-      if (childrenText && childrenText.slice(-1) !== '.') {
+      if (
+        childrenText &&
+        childrenText.slice(-1) !== '.' &&
+        (newTabText || externalText)
+      ) {
         childrenText = `${childrenText}.`;
       }
 
