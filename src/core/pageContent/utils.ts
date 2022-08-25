@@ -103,7 +103,6 @@ export function getEventCardProps(
     url: item.internalId,
     imageUrl: image?.url || defaultImageUrl,
     ariaLabel: item.name[locale],
-    text: item.shortDescription?.[locale] ?? item.description?.[locale] ?? '',
     hasLink: true,
     withBorder: false,
     withShadow: true,
