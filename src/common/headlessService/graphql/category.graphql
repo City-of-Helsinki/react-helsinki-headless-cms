@@ -1,0 +1,15 @@
+query category($id: ID!, $language: LanguageCodeEnum!) {
+  category(id: $id, idType: SLUG) {
+    id
+    name
+    slug
+    translation(language: $language) {
+      name
+      slug
+      language {
+        ...Language
+      }
+    }
+    __typename
+  }
+}

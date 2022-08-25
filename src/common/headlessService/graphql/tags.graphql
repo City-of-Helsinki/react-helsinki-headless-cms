@@ -1,0 +1,28 @@
+query tags(
+  $first: Int
+  $after: String
+  $search: String
+  $language: LanguageCodeFilterEnum
+) {
+  tags(
+    first: $first
+    after: $after
+    where: { language: $language, search: $search }
+  ) {
+    nodes {
+      id
+      name
+      slug
+      uri
+      translations {
+        name
+        slug
+        uri
+        language {
+          ...Language
+        }
+      }
+      __typename
+    }
+  }
+}
