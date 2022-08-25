@@ -31,6 +31,8 @@ export type Config = {
       props: React.AnchorHTMLAttributes<HTMLAnchorElement>,
     ) => JSX.Element;
     Head?: (props: { children: React.ReactNode }) => JSX.Element;
+    EventCardContent?: (props: any) => JSX.Element;
+    ArticleCardContent?: (props: { children: React.ReactNode }) => JSX.Element;
   };
   apolloClient?: ApolloClient<NormalizedCacheObject>;
   eventsApolloClient?: ApolloClient<NormalizedCacheObject> | 'disabled';
