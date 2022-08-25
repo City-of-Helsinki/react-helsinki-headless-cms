@@ -6,7 +6,7 @@ import { ArticleType } from '../../common/headlessService/types';
 import { useConfig } from '../configProvider/useConfig';
 import styles from './pageMainContent.module.scss';
 import { formatDateFromString } from '../../common/utils/dates';
-import Tag from '../../common/components/tag/Tag';
+import { Tag } from '../../common/components/tag/Tag';
 
 export type PageMainContentProps = {
   title: string;

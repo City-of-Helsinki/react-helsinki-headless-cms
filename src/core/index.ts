@@ -73,6 +73,8 @@ export {
   getCollectionUIType,
 } from './pageContent/utils';
 
+export { Tag } from '../common/components/tag/Tag';
+
 export type { Breadcrumb } from './pageContent/types';
 
 export {
