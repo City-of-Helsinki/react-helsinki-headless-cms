@@ -142,7 +142,7 @@
     padding: 0 var(--spacing-s);
     padding-bottom: var(--spacing-2-xs);
     @include respond_above(s) {
-      padding: var(--spacing-s);
+      padding: 0 var(--spacing-s) var(--spacing-s) var(--spacing-s);
     }
     order: 5;
     a {
