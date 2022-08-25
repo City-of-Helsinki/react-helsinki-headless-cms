@@ -199,7 +199,11 @@ export function EventSearchCollection({
 
   const { searchParams } = new URL(url);
   const params = Object.fromEntries(searchParams.entries());
-  const variables = { ...normalizeKeys(params), pageSize };
+  const variables = {
+    ...normalizeKeys(params),
+    pageSize,
+    include: ['in_language', 'keywords', 'location', 'audience'],
+  };
 
   const { data, loading, fetchMore } = useEventListQuery({
     client: eventsApolloClient !== 'disabled' && eventsApolloClient,
@@ -293,6 +297,7 @@ export function EventSelectionCollection({
     variables: {
       ids: collection.events,
       pageSize,
+      include: ['in_language', 'keywords', 'location', 'audience'],
     },
   });
 
