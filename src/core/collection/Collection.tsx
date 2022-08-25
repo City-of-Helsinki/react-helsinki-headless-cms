@@ -160,7 +160,7 @@ function getEventCollectionCards(
     items,
     __typename: 'GeneralCollectionType',
   };
-  const cards = getCollectionCards(generalCollection).map((cardProps) => {
+  const cards = getCollectionCards(generalCollection).map((cardProps, i) => {
     const url = getRoutedInternalHref(cardProps.url, null);
     return (
       <Card
@@ -168,7 +168,7 @@ function getEventCollectionCards(
         {...cardProps}
         url={url}
         direction="fixed-vertical"
-        customContent={<EventCardContent {...cardProps} />}
+        customContent={<EventCardContent event={items[i]} />}
       />
     );
   });
