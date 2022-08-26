@@ -1,0 +1,16 @@
+query tag($id: ID!, $language: LanguageCodeEnum!) {
+  tag(id: $id, idType: SLUG) {
+    id
+    databaseId
+    name
+    slug
+    translation(language: $language) {
+      name
+      slug
+      language {
+        ...Language
+      }
+    }
+    __typename
+  }
+}

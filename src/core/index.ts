@@ -31,6 +31,11 @@ export {
   LanguageCodeFilterEnum,
   MenuNodeIdTypeEnum,
   TemplateEnum,
+  Categories,
+  Category,
+  Tags,
+  Tag,
+  SearchTag,
 } from '../common/headlessService/types';
 export * from '../common/headlessService/utils';
 export { ModuleItemTypeEnum } from '../common/headlessService/constants';
