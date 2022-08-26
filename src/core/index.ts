@@ -33,8 +33,8 @@ export {
   TemplateEnum,
   Categories,
   Category,
-  Tags,
   Tag,
+  Tags,
   SearchTag,
 } from '../common/headlessService/types';
 export * from '../common/headlessService/utils';
@@ -78,7 +78,8 @@ export {
   getCollectionUIType,
 } from './pageContent/utils';
 
-export { Tag } from '../common/components/tag/Tag';
+// naming overlaps with type exported above
+export { Tag as TagComponent } from '../common/components/tag/Tag';
 
 export type { Breadcrumb } from './pageContent/types';
 
