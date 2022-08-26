@@ -10883,6 +10883,12 @@ export type PostsQueryVariables = Exact<{
   after?: InputMaybe<Scalars['String']>;
   search?: InputMaybe<Scalars['String']>;
   language?: InputMaybe<LanguageCodeFilterEnum>;
+  categories?: InputMaybe<
+    Array<InputMaybe<Scalars['ID']>> | InputMaybe<Scalars['ID']>
+  >;
+  tags?: InputMaybe<
+    Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>
+  >;
 }>;
 
 export type PostsQuery = {
@@ -10916,8 +10922,93 @@ export type PostsQuery = {
             mediaItemUrl?: string | null;
           } | null;
         } | null;
+        categories?: {
+          __typename?: 'PostToCategoryConnection';
+          nodes?: Array<{
+            __typename?: 'Category';
+            id: string;
+            databaseId: number;
+            name?: string | null;
+            slug?: string | null;
+          } | null> | null;
+        } | null;
+        tags?: {
+          __typename?: 'PostToTagConnection';
+          nodes?: Array<{
+            __typename?: 'Tag';
+            id: string;
+            databaseId: number;
+            name?: string | null;
+            slug?: string | null;
+          } | null> | null;
+        } | null;
       } | null;
     } | null> | null;
+  } | null;
+};
+
+export type CategoriesQueryVariables = Exact<{
+  first?: InputMaybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  search?: InputMaybe<Scalars['String']>;
+  language?: InputMaybe<LanguageCodeFilterEnum>;
+}>;
+
+export type CategoriesQuery = {
+  __typename?: 'RootQuery';
+  categories?: {
+    __typename?: 'RootQueryToCategoryConnection';
+    nodes?: Array<{
+      __typename: 'Category';
+      id: string;
+      databaseId: number;
+      name?: string | null;
+      slug?: string | null;
+      uri?: string | null;
+      translations?: Array<{
+        __typename?: 'Category';
+        name?: string | null;
+        slug?: string | null;
+        uri?: string | null;
+        language?: {
+          __typename?: 'Language';
+          code?: LanguageCodeEnum | null;
+          id: string;
+          locale?: string | null;
+          name?: string | null;
+          slug?: string | null;
+        } | null;
+      } | null> | null;
+    } | null> | null;
+  } | null;
+};
+
+export type CategoryQueryVariables = Exact<{
+  id: Scalars['ID'];
+  language: LanguageCodeEnum;
+}>;
+
+export type CategoryQuery = {
+  __typename?: 'RootQuery';
+  category?: {
+    __typename: 'Category';
+    id: string;
+    databaseId: number;
+    name?: string | null;
+    slug?: string | null;
+    translation?: {
+      __typename?: 'Category';
+      name?: string | null;
+      slug?: string | null;
+      language?: {
+        __typename?: 'Language';
+        code?: LanguageCodeEnum | null;
+        id: string;
+        locale?: string | null;
+        name?: string | null;
+        slug?: string | null;
+      } | null;
+    } | null;
   } | null;
 };
 
@@ -12542,6 +12633,70 @@ export type SeoFragment = {
   } | null;
 };
 
+export type TagQueryVariables = Exact<{
+  id: Scalars['ID'];
+  language: LanguageCodeEnum;
+}>;
+
+export type TagQuery = {
+  __typename?: 'RootQuery';
+  tag?: {
+    __typename: 'Tag';
+    id: string;
+    databaseId: number;
+    name?: string | null;
+    slug?: string | null;
+    translation?: {
+      __typename?: 'Tag';
+      name?: string | null;
+      slug?: string | null;
+      language?: {
+        __typename?: 'Language';
+        code?: LanguageCodeEnum | null;
+        id: string;
+        locale?: string | null;
+        name?: string | null;
+        slug?: string | null;
+      } | null;
+    } | null;
+  } | null;
+};
+
+export type TagsQueryVariables = Exact<{
+  first?: InputMaybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  search?: InputMaybe<Scalars['String']>;
+  language?: InputMaybe<LanguageCodeFilterEnum>;
+}>;
+
+export type TagsQuery = {
+  __typename?: 'RootQuery';
+  tags?: {
+    __typename?: 'RootQueryToTagConnection';
+    nodes?: Array<{
+      __typename: 'Tag';
+      id: string;
+      databaseId: number;
+      name?: string | null;
+      slug?: string | null;
+      translations?: Array<{
+        __typename?: 'Tag';
+        name?: string | null;
+        slug?: string | null;
+        uri?: string | null;
+        language?: {
+          __typename?: 'Language';
+          code?: LanguageCodeEnum | null;
+          id: string;
+          locale?: string | null;
+          name?: string | null;
+          slug?: string | null;
+        } | null;
+      } | null> | null;
+    } | null> | null;
+  } | null;
+};
+
 export const CategoriesFragmentDoc = gql`
   fragment Categories on PostToCategoryConnection {
     edges {
@@ -12988,11 +13143,18 @@ export const PostsDocument = gql`
     $after: String
     $search: String
     $language: LanguageCodeFilterEnum
+    $categories: [ID]
+    $tags: [String]
   ) {
     posts(
       first: $first
       after: $after
-      where: { search: $search, language: $language }
+      where: {
+        search: $search
+        language: $language
+        categoryIn: $categories
+        tagSlugIn: $tags
+      }
     ) {
       pageInfo {
         endCursor
@@ -13014,6 +13176,22 @@ export const PostsDocument = gql`
             node {
               altText
               mediaItemUrl
+            }
+          }
+          categories {
+            nodes {
+              id
+              databaseId
+              name
+              slug
+            }
+          }
+          tags {
+            nodes {
+              id
+              databaseId
+              name
+              slug
             }
           }
         }
@@ -13038,6 +13216,8 @@ export const PostsDocument = gql`
  *      after: // value for 'after'
  *      search: // value for 'search'
  *      language: // value for 'language'
+ *      categories: // value for 'categories'
+ *      tags: // value for 'tags'
  *   },
  * });
  */
@@ -13064,6 +13244,156 @@ export type PostsLazyQueryHookResult = ReturnType<typeof usePostsLazyQuery>;
 export type PostsQueryResult = Apollo.QueryResult<
   PostsQuery,
   PostsQueryVariables
+>;
+export const CategoriesDocument = gql`
+  query categories(
+    $first: Int
+    $after: String
+    $search: String
+    $language: LanguageCodeFilterEnum
+  ) {
+    categories(
+      first: $first
+      after: $after
+      where: { language: $language, search: $search }
+    ) {
+      nodes {
+        id
+        databaseId
+        name
+        slug
+        uri
+        translations {
+          name
+          slug
+          uri
+          language {
+            ...Language
+          }
+        }
+        __typename
+      }
+    }
+  }
+  ${LanguageFragmentDoc}
+`;
+
+/**
+ * __useCategoriesQuery__
+ *
+ * To run a query within a React component, call `useCategoriesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCategoriesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCategoriesQuery({
+ *   variables: {
+ *      first: // value for 'first'
+ *      after: // value for 'after'
+ *      search: // value for 'search'
+ *      language: // value for 'language'
+ *   },
+ * });
+ */
+export function useCategoriesQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    CategoriesQuery,
+    CategoriesQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<CategoriesQuery, CategoriesQueryVariables>(
+    CategoriesDocument,
+    options,
+  );
+}
+export function useCategoriesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    CategoriesQuery,
+    CategoriesQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<CategoriesQuery, CategoriesQueryVariables>(
+    CategoriesDocument,
+    options,
+  );
+}
+export type CategoriesQueryHookResult = ReturnType<typeof useCategoriesQuery>;
+export type CategoriesLazyQueryHookResult = ReturnType<
+  typeof useCategoriesLazyQuery
+>;
+export type CategoriesQueryResult = Apollo.QueryResult<
+  CategoriesQuery,
+  CategoriesQueryVariables
+>;
+export const CategoryDocument = gql`
+  query category($id: ID!, $language: LanguageCodeEnum!) {
+    category(id: $id, idType: SLUG) {
+      id
+      databaseId
+      name
+      slug
+      translation(language: $language) {
+        name
+        slug
+        language {
+          ...Language
+        }
+      }
+      __typename
+    }
+  }
+  ${LanguageFragmentDoc}
+`;
+
+/**
+ * __useCategoryQuery__
+ *
+ * To run a query within a React component, call `useCategoryQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCategoryQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCategoryQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *      language: // value for 'language'
+ *   },
+ * });
+ */
+export function useCategoryQuery(
+  baseOptions: Apollo.QueryHookOptions<CategoryQuery, CategoryQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<CategoryQuery, CategoryQueryVariables>(
+    CategoryDocument,
+    options,
+  );
+}
+export function useCategoryLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    CategoryQuery,
+    CategoryQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<CategoryQuery, CategoryQueryVariables>(
+    CategoryDocument,
+    options,
+  );
+}
+export type CategoryQueryHookResult = ReturnType<typeof useCategoryQuery>;
+export type CategoryLazyQueryHookResult = ReturnType<
+  typeof useCategoryLazyQuery
+>;
+export type CategoryQueryResult = Apollo.QueryResult<
+  CategoryQuery,
+  CategoryQueryVariables
 >;
 export const LandingPageDocument = gql`
   query landingPage($id: ID!, $languageCode: LanguageCodeEnum!) {
@@ -13598,3 +13928,124 @@ export type PagesQueryResult = Apollo.QueryResult<
   PagesQuery,
   PagesQueryVariables
 >;
+export const TagDocument = gql`
+  query tag($id: ID!, $language: LanguageCodeEnum!) {
+    tag(id: $id, idType: SLUG) {
+      id
+      databaseId
+      name
+      slug
+      translation(language: $language) {
+        name
+        slug
+        language {
+          ...Language
+        }
+      }
+      __typename
+    }
+  }
+  ${LanguageFragmentDoc}
+`;
+
+/**
+ * __useTagQuery__
+ *
+ * To run a query within a React component, call `useTagQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTagQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTagQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *      language: // value for 'language'
+ *   },
+ * });
+ */
+export function useTagQuery(
+  baseOptions: Apollo.QueryHookOptions<TagQuery, TagQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<TagQuery, TagQueryVariables>(TagDocument, options);
+}
+export function useTagLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<TagQuery, TagQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<TagQuery, TagQueryVariables>(TagDocument, options);
+}
+export type TagQueryHookResult = ReturnType<typeof useTagQuery>;
+export type TagLazyQueryHookResult = ReturnType<typeof useTagLazyQuery>;
+export type TagQueryResult = Apollo.QueryResult<TagQuery, TagQueryVariables>;
+export const TagsDocument = gql`
+  query tags(
+    $first: Int
+    $after: String
+    $search: String
+    $language: LanguageCodeFilterEnum
+  ) {
+    tags(
+      first: $first
+      after: $after
+      where: { language: $language, search: $search }
+    ) {
+      nodes {
+        id
+        databaseId
+        name
+        slug
+        translations {
+          name
+          slug
+          uri
+          language {
+            ...Language
+          }
+        }
+        __typename
+      }
+    }
+  }
+  ${LanguageFragmentDoc}
+`;
+
+/**
+ * __useTagsQuery__
+ *
+ * To run a query within a React component, call `useTagsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTagsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTagsQuery({
+ *   variables: {
+ *      first: // value for 'first'
+ *      after: // value for 'after'
+ *      search: // value for 'search'
+ *      language: // value for 'language'
+ *   },
+ * });
+ */
+export function useTagsQuery(
+  baseOptions?: Apollo.QueryHookOptions<TagsQuery, TagsQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<TagsQuery, TagsQueryVariables>(TagsDocument, options);
+}
+export function useTagsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<TagsQuery, TagsQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<TagsQuery, TagsQueryVariables>(
+    TagsDocument,
+    options,
+  );
+}
+export type TagsQueryHookResult = ReturnType<typeof useTagsQuery>;
+export type TagsLazyQueryHookResult = ReturnType<typeof useTagsLazyQuery>;
+export type TagsQueryResult = Apollo.QueryResult<TagsQuery, TagsQueryVariables>;

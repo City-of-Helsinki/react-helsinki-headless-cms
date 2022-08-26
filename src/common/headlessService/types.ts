@@ -9,6 +9,10 @@ import {
   EventSearchCarouselFragment,
   EventSelectedFragment,
   EventSelectedCarouselFragment,
+  CategoryQuery,
+  TagQuery,
+  CategoriesQuery,
+  TagsQuery,
 } from './__generated__';
 
 export type Menu = MenuQuery['menu'];
@@ -25,7 +29,11 @@ export type EventModule =
   | EventSearchCarouselFragment
   | EventSelectedFragment
   | EventSelectedCarouselFragment;
-
+export type Category = CategoryQuery['category'];
+export type Categories = CategoriesQuery['categories'];
+export type Tag = TagQuery['tag'];
+export type Tags = TagsQuery['tags'];
+export type SearchTag = Category | Tag;
 export type {
   MenuItemFragment as MenuItem,
   LanguageFragment as Language,

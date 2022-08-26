@@ -10,7 +10,7 @@ type Props = {
   className?: string;
   featured?: boolean;
   variant?: 'default' | 'card' | 'search';
-  onClick?: (tag: string) => void;
+  onClick?: () => void;
 };
 
 export default function Tag({
@@ -25,7 +25,7 @@ export default function Tag({
   const handleClick = (): void => {
     if (onClick) {
       setSelected((prev) => !prev);
-      onClick(children as string);
+      onClick();
     }
   };
 

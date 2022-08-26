@@ -27,6 +27,7 @@ import { formatDateTimeFromString } from '../../common/utils/dates';
 import { CollectionItemType } from '../collection/types';
 import mockPage from '../pageContent/__mocks__/page.mock';
 import { PageMainContent } from '../pageContent/PageMainContent';
+import categories from '../archiveSearchPageContent/__mocks__/categories.mock';
 
 export default {
   title: 'Example/ArchiveSearchPage',
@@ -112,7 +113,7 @@ ArchiveSearchPageWithArticles.args = {
   content: (
     <ArchiveSearchPageContent
       items={articles.edges.map((edge) => edge.node)}
-      tags={['label1', 'label2', 'label3']}
+      tags={categories.nodes}
       onSearch={(freeSearch, tags) => {
         // eslint-disable-next-line no-console
         console.log('search params:', freeSearch, tags);

@@ -3,11 +3,18 @@ query posts(
   $after: String
   $search: String
   $language: LanguageCodeFilterEnum
+  $categories: [ID]
+  $tags: [String]
 ) {
   posts(
     first: $first
     after: $after
-    where: { search: $search, language: $language }
+    where: {
+      search: $search
+      language: $language
+      categoryIn: $categories
+      tagSlugIn: $tags
+    }
   ) {
     pageInfo {
       endCursor
@@ -29,6 +36,22 @@ query posts(
           node {
             altText
             mediaItemUrl
+          }
+        }
+        categories {
+          nodes {
+            id
+            databaseId
+            name
+            slug
+          }
+        }
+        tags {
+          nodes {
+            id
+            databaseId
+            name
+            slug
           }
         }
       }
