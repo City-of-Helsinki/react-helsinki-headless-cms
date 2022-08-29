@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { Button, IconSearch, LoadingSpinner, TextInput } from 'hds-react';
 
 import styles from './archiveSearchPageContent.module.scss';
-import Tag from '../../common/components/tag/Tag';
+import { Tag } from '../../common/components/tag/Tag';
 import { Card } from '../card/Card';
 import Grid from '../../common/components/grid/Grid';
 import { LargeCard } from '../card/LargeCard';

@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
@@ -13,7 +14,7 @@ type Props = {
   onClick?: () => void;
 };
 
-export default function Tag({
+export function Tag({
   className,
   variant = 'default',
   children,

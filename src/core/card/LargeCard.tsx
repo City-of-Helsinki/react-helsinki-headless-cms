@@ -4,7 +4,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import styles from './largeCard.module.scss';
-import Tag from '../../common/components/tag/Tag';
+import { Tag } from '../../common/components/tag/Tag';
 import { LinkBox } from '../linkBox/LinkBox';
 import { Link } from '../link/Link';
 

@@ -151,6 +151,7 @@ function getEventCollectionCards(
   collection: EventSelectionCollectionType | EventSearchCollectionType,
   items: EventType[],
   getRoutedInternalHref: Config['utils']['getRoutedInternalHref'],
+  EventCardContent: (props: any) => JSX.Element,
 ) {
   const generalCollection: GeneralCollectionType = {
     id: collection.id,
@@ -159,7 +160,7 @@ function getEventCollectionCards(
     items,
     __typename: 'GeneralCollectionType',
   };
-  const cards = getCollectionCards(generalCollection).map((cardProps) => {
+  const cards = getCollectionCards(generalCollection).map((cardProps, i) => {
     const url = getRoutedInternalHref(cardProps.url, null);
     return (
       <Card
@@ -167,6 +168,7 @@ function getEventCollectionCards(
         {...cardProps}
         url={url}
         direction="fixed-vertical"
+        customContent={<EventCardContent event={items[i]} />}
       />
     );
   });
@@ -185,6 +187,7 @@ export function EventSearchCollection({
   const [isFetchingMore, setIsFetchingMore] = React.useState(false);
   const {
     utils: { getRoutedInternalHref },
+    components: { EventCardContent },
   } = useConfig();
   const { url } = collection;
   // TODO: use initAmountOfEvents -field when it's null-issue is fixed
@@ -196,7 +199,11 @@ export function EventSearchCollection({
 
   const { searchParams } = new URL(url);
   const params = Object.fromEntries(searchParams.entries());
-  const variables = { ...normalizeKeys(params), pageSize };
+  const variables = {
+    ...normalizeKeys(params),
+    pageSize,
+    include: ['in_language', 'keywords', 'location', 'audience'],
+  };
 
   const { data, loading, fetchMore } = useEventListQuery({
     client: eventsApolloClient !== 'disabled' && eventsApolloClient,
@@ -251,6 +258,7 @@ export function EventSearchCollection({
     eventsList?.data ?? [],
     (link, type) =>
       getRoutedInternalHref(link, type ?? ModuleItemTypeEnum.Event),
+    EventCardContent,
   );
 
   return (
@@ -277,6 +285,7 @@ export function EventSelectionCollection({
   const [isFetchingMore, setIsFetchingMore] = React.useState(false);
   const {
     utils: { getRoutedInternalHref },
+    components: { EventCardContent },
   } = useConfig();
   // TODO: use initAmountOfEvents -field when it's null-issue is fixed
   const pageSize = 4; // collection.initAmountOfEvents
@@ -288,6 +297,7 @@ export function EventSelectionCollection({
     variables: {
       ids: collection.events,
       pageSize,
+      include: ['in_language', 'keywords', 'location', 'audience'],
     },
   });
 
@@ -337,6 +347,7 @@ export function EventSelectionCollection({
     eventsList?.data ?? [],
     (link, type) =>
       getRoutedInternalHref(link, type ?? ModuleItemTypeEnum.Event),
+    EventCardContent,
   );
 
   return (

@@ -26,6 +26,11 @@ fragment LayoutArticles on LayoutArticles {
         mediaItemUrl
       }
     }
+    categories {
+      nodes {
+        name
+      }
+    }
   }
   __typename
 }
@@ -44,6 +49,11 @@ fragment LayoutArticlesCarousel on LayoutArticlesCarousel {
       node {
         altText
         mediaItemUrl
+      }
+    }
+    categories {
+      nodes {
+        name
       }
     }
   }

@@ -10417,6 +10417,13 @@ export type PostFragment = {
               mediaItemUrl?: string | null;
             } | null;
           } | null;
+          categories?: {
+            __typename?: 'PostToCategoryConnection';
+            nodes?: Array<{
+              __typename?: 'Category';
+              name?: string | null;
+            } | null> | null;
+          } | null;
         } | null> | null;
       }
     | {
@@ -10509,6 +10516,13 @@ export type PostFragment = {
               mediaItemUrl?: string | null;
             } | null;
           } | null;
+          categories?: {
+            __typename?: 'PostToCategoryConnection';
+            nodes?: Array<{
+              __typename?: 'Category';
+              name?: string | null;
+            } | null> | null;
+          } | null;
         } | null> | null;
       }
     | {
@@ -10531,6 +10545,13 @@ export type PostFragment = {
               altText?: string | null;
               mediaItemUrl?: string | null;
             } | null;
+          } | null;
+          categories?: {
+            __typename?: 'PostToCategoryConnection';
+            nodes?: Array<{
+              __typename?: 'Category';
+              name?: string | null;
+            } | null> | null;
           } | null;
         } | null> | null;
       }
@@ -10702,6 +10723,13 @@ export type ArticleQuery = {
                 mediaItemUrl?: string | null;
               } | null;
             } | null;
+            categories?: {
+              __typename?: 'PostToCategoryConnection';
+              nodes?: Array<{
+                __typename?: 'Category';
+                name?: string | null;
+              } | null> | null;
+            } | null;
           } | null> | null;
         }
       | {
@@ -10794,6 +10822,13 @@ export type ArticleQuery = {
                 mediaItemUrl?: string | null;
               } | null;
             } | null;
+            categories?: {
+              __typename?: 'PostToCategoryConnection';
+              nodes?: Array<{
+                __typename?: 'Category';
+                name?: string | null;
+              } | null> | null;
+            } | null;
           } | null> | null;
         }
       | {
@@ -10816,6 +10851,13 @@ export type ArticleQuery = {
                 altText?: string | null;
                 mediaItemUrl?: string | null;
               } | null;
+            } | null;
+            categories?: {
+              __typename?: 'PostToCategoryConnection';
+              nodes?: Array<{
+                __typename?: 'Category';
+                name?: string | null;
+              } | null> | null;
             } | null;
           } | null> | null;
         }
@@ -11131,6 +11173,13 @@ export type LayoutArticlesFragment = {
         mediaItemUrl?: string | null;
       } | null;
     } | null;
+    categories?: {
+      __typename?: 'PostToCategoryConnection';
+      nodes?: Array<{
+        __typename?: 'Category';
+        name?: string | null;
+      } | null> | null;
+    } | null;
   } | null> | null;
 };
 
@@ -11154,6 +11203,13 @@ export type LayoutArticlesCarouselFragment = {
         altText?: string | null;
         mediaItemUrl?: string | null;
       } | null;
+    } | null;
+    categories?: {
+      __typename?: 'PostToCategoryConnection';
+      nodes?: Array<{
+        __typename?: 'Category';
+        name?: string | null;
+      } | null> | null;
     } | null;
   } | null> | null;
 };
@@ -11335,6 +11391,13 @@ export type PageFragment = {
               mediaItemUrl?: string | null;
             } | null;
           } | null;
+          categories?: {
+            __typename?: 'PostToCategoryConnection';
+            nodes?: Array<{
+              __typename?: 'Category';
+              name?: string | null;
+            } | null> | null;
+          } | null;
         } | null> | null;
       }
     | {
@@ -11427,6 +11490,13 @@ export type PageFragment = {
               mediaItemUrl?: string | null;
             } | null;
           } | null;
+          categories?: {
+            __typename?: 'PostToCategoryConnection';
+            nodes?: Array<{
+              __typename?: 'Category';
+              name?: string | null;
+            } | null> | null;
+          } | null;
         } | null> | null;
       }
     | {
@@ -11449,6 +11519,13 @@ export type PageFragment = {
               altText?: string | null;
               mediaItemUrl?: string | null;
             } | null;
+          } | null;
+          categories?: {
+            __typename?: 'PostToCategoryConnection';
+            nodes?: Array<{
+              __typename?: 'Category';
+              name?: string | null;
+            } | null> | null;
           } | null;
         } | null> | null;
       }
@@ -11608,6 +11685,13 @@ export type PageQuery = {
                 mediaItemUrl?: string | null;
               } | null;
             } | null;
+            categories?: {
+              __typename?: 'PostToCategoryConnection';
+              nodes?: Array<{
+                __typename?: 'Category';
+                name?: string | null;
+              } | null> | null;
+            } | null;
           } | null> | null;
         }
       | {
@@ -11700,6 +11784,13 @@ export type PageQuery = {
                 mediaItemUrl?: string | null;
               } | null;
             } | null;
+            categories?: {
+              __typename?: 'PostToCategoryConnection';
+              nodes?: Array<{
+                __typename?: 'Category';
+                name?: string | null;
+              } | null> | null;
+            } | null;
           } | null> | null;
         }
       | {
@@ -11722,6 +11813,13 @@ export type PageQuery = {
                 altText?: string | null;
                 mediaItemUrl?: string | null;
               } | null;
+            } | null;
+            categories?: {
+              __typename?: 'PostToCategoryConnection';
+              nodes?: Array<{
+                __typename?: 'Category';
+                name?: string | null;
+              } | null> | null;
             } | null;
           } | null> | null;
         }
@@ -11883,6 +11981,13 @@ export type PageByTemplateQuery = {
                 mediaItemUrl?: string | null;
               } | null;
             } | null;
+            categories?: {
+              __typename?: 'PostToCategoryConnection';
+              nodes?: Array<{
+                __typename?: 'Category';
+                name?: string | null;
+              } | null> | null;
+            } | null;
           } | null> | null;
         }
       | {
@@ -11975,6 +12080,13 @@ export type PageByTemplateQuery = {
                 mediaItemUrl?: string | null;
               } | null;
             } | null;
+            categories?: {
+              __typename?: 'PostToCategoryConnection';
+              nodes?: Array<{
+                __typename?: 'Category';
+                name?: string | null;
+              } | null> | null;
+            } | null;
           } | null> | null;
         }
       | {
@@ -11997,6 +12109,13 @@ export type PageByTemplateQuery = {
                 altText?: string | null;
                 mediaItemUrl?: string | null;
               } | null;
+            } | null;
+            categories?: {
+              __typename?: 'PostToCategoryConnection';
+              nodes?: Array<{
+                __typename?: 'Category';
+                name?: string | null;
+              } | null> | null;
             } | null;
           } | null> | null;
         }
@@ -12161,6 +12280,13 @@ export type PageChildrenSearchQuery = {
                             mediaItemUrl?: string | null;
                           } | null;
                         } | null;
+                        categories?: {
+                          __typename?: 'PostToCategoryConnection';
+                          nodes?: Array<{
+                            __typename?: 'Category';
+                            name?: string | null;
+                          } | null> | null;
+                        } | null;
                       } | null> | null;
                     }
                   | {
@@ -12253,6 +12379,13 @@ export type PageChildrenSearchQuery = {
                             mediaItemUrl?: string | null;
                           } | null;
                         } | null;
+                        categories?: {
+                          __typename?: 'PostToCategoryConnection';
+                          nodes?: Array<{
+                            __typename?: 'Category';
+                            name?: string | null;
+                          } | null> | null;
+                        } | null;
                       } | null> | null;
                     }
                   | {
@@ -12275,6 +12408,13 @@ export type PageChildrenSearchQuery = {
                             altText?: string | null;
                             mediaItemUrl?: string | null;
                           } | null;
+                        } | null;
+                        categories?: {
+                          __typename?: 'PostToCategoryConnection';
+                          nodes?: Array<{
+                            __typename?: 'Category';
+                            name?: string | null;
+                          } | null> | null;
                         } | null;
                       } | null> | null;
                     }
@@ -12391,6 +12531,13 @@ export type PageChildrenSearchQuery = {
                           mediaItemUrl?: string | null;
                         } | null;
                       } | null;
+                      categories?: {
+                        __typename?: 'PostToCategoryConnection';
+                        nodes?: Array<{
+                          __typename?: 'Category';
+                          name?: string | null;
+                        } | null> | null;
+                      } | null;
                     } | null> | null;
                   }
                 | {
@@ -12483,6 +12630,13 @@ export type PageChildrenSearchQuery = {
                           mediaItemUrl?: string | null;
                         } | null;
                       } | null;
+                      categories?: {
+                        __typename?: 'PostToCategoryConnection';
+                        nodes?: Array<{
+                          __typename?: 'Category';
+                          name?: string | null;
+                        } | null> | null;
+                      } | null;
                     } | null> | null;
                   }
                 | {
@@ -12505,6 +12659,13 @@ export type PageChildrenSearchQuery = {
                           altText?: string | null;
                           mediaItemUrl?: string | null;
                         } | null;
+                      } | null;
+                      categories?: {
+                        __typename?: 'PostToCategoryConnection';
+                        nodes?: Array<{
+                          __typename?: 'Category';
+                          name?: string | null;
+                        } | null> | null;
                       } | null;
                     } | null> | null;
                   }
@@ -12761,6 +12922,11 @@ export const LayoutArticlesFragmentDoc = gql`
           mediaItemUrl
         }
       }
+      categories {
+        nodes {
+          name
+        }
+      }
     }
     __typename
   }
@@ -12802,6 +12968,11 @@ export const LayoutArticlesCarouselFragmentDoc = gql`
         node {
           altText
           mediaItemUrl
+        }
+      }
+      categories {
+        nodes {
+          name
         }
       }
     }
