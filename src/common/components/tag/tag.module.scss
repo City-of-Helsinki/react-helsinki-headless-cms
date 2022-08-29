@@ -6,6 +6,7 @@
   margin-right: var(--spacing-2-xs);
   margin-bottom: var(--spacing-2-xs);
   margin-top: var(--spacing-2-xs);
+  --tag-focus-outline-color: var(--color-black);
 
   @include respond_above(s) {
     font-size: var(--fontsize-body-xs);

@@ -25,6 +25,7 @@ import normalizeKeys from '../../linkedEvents/utils/normalizeKeys';
 import { getNextPage } from '../../common/eventsService/utils';
 import { LINKED_EVENTS_ENDPOINT } from '../../constants';
 import { ModuleItemTypeEnum } from '../../common/headlessService/constants';
+import { Link } from '../link/Link';
 
 export type CollectionProps = {
   title?: string;
@@ -136,10 +137,20 @@ export function Collection({
     ),
   };
 
+  // todo: get from config
+  const showAllUrl = '/';
+  const showAllText = 'ShowAll';
+
   return (
     <div className={classNames(styles[type], className)}>
       <div className={styles.collection}>
-        {title && <h1 className={styles.heading}>{title}</h1>}
+        <div className={styles.headerRow}>
+          {title && <h1 className={styles.heading}>{title}</h1>}
+          {showAllUrl && showAllText && (
+            <Link href={showAllUrl}>{showAllText}</Link>
+          )}
+        </div>
+
         {description && <p className={styles.description}>{description}</p>}
         {componentForType[type]}
       </div>

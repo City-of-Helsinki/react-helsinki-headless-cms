@@ -19,11 +19,10 @@ export type CarouselProps<T> = {
   itemsMobile?: 1 | 2;
   className?: string;
   withDots?: boolean;
-  onShowAll?: CollectionProps['onShowAll'];
   onLoadMore?: CollectionProps['onLoadMore'];
   hasMore?: CollectionProps['hasNext'];
   loading?: CollectionProps['loading'];
-  loadMoreButtonLabelText: string;
+  loadMoreButtonLabelText?: string;
 };
 
 export function Carousel({
@@ -38,7 +37,7 @@ export function Carousel({
   loading,
   loadMoreButtonLabelText,
 }) {
-  const MOBILE_WIDTH = 640;
+  const MOBILE_WIDTH = 720;
   const [isReady] = useState<boolean>(true);
   const [transformValue, setTransformValue] = useState('0px');
   const [numberOfSlides, setNumberOfSlides] = useState<number>(0);
@@ -100,22 +99,26 @@ export function Carousel({
   return (
     <div className={classNames(styles.container, className)}>
       <div role="group" className={styles.carouselWrapper}>
-        <button
-          type="button"
-          className={classNames(styles.btn, styles.btnPrev)}
-          onClick={handlePrevClick}
-          disabled={!isReady}
-        >
-          <IconAngleLeft />
-        </button>
-        <button
-          type="button"
-          className={classNames(styles.btn, styles.btnNext)}
-          onClick={handleNextClick}
-          disabled={!isReady}
-        >
-          <IconAngleRight />
-        </button>
+        {numberOfSlides > 1 && (
+          <>
+            <button
+              type="button"
+              className={classNames(styles.btn, styles.btnPrev)}
+              onClick={handlePrevClick}
+              disabled={!isReady}
+            >
+              <IconAngleLeft />
+            </button>
+            <button
+              type="button"
+              className={classNames(styles.btn, styles.btnNext)}
+              onClick={handleNextClick}
+              disabled={!isReady}
+            >
+              <IconAngleRight />
+            </button>
+          </>
+        )}
         {isReady && (
           <div className={styles.root}>
             <div className={styles.slider}>
@@ -128,6 +131,12 @@ export function Carousel({
                 >
                   {itemSets.map((itemSet, itemSetIndex) => (
                     <li
+                      ref={(node) =>
+                        node &&
+                        itemSetIndex !== currentSlide &&
+                        node.setAttribute('inert', '')
+                      }
+                      aria-hidden={itemSetIndex !== currentSlide}
                       key={getItemSetKey(itemSet, itemSetIndex)}
                       className={classNames(
                         styles.slide,
@@ -174,7 +183,7 @@ export function Carousel({
                 </ul>
               </div>
             </div>
-            {withDots && (
+            {withDots && numberOfSlides > 1 && (
               <div className={styles.dotsContainer}>
                 {[...Array(numberOfSlides)].map((e, i) => (
                   <div

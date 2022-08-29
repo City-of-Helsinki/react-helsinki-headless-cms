@@ -1,7 +1,7 @@
 @import 'color';
 
 .container {
-  margin: 100px -60px 0;
+  margin: 100px -42px 0;
   box-sizing: border-box;
 
   .carouselWrapper {
@@ -27,13 +27,32 @@
       cursor: pointer;
       margin-top: -12px;
 
+      &:hover,
+      &:focus {
+        color: var(--color-bus);
+      }
+
+      &:focus {
+        outline-color: var(--color-black);
+      }
+
       &.btnPrev {
-        margin-left: 55px;
+        margin-left: 32px;
+        transition: 100ms;
+        &:hover {
+          transition: 100ms;
+          margin-left: 28px;
+        }
       }
 
       &.btnNext {
         right: 0;
-        margin-right: 55px;
+        margin-right: 32px;
+        transition: 100ms;
+        &:hover {
+          transition: 100ms;
+          margin-right: 28px;
+        }
       }
     }
 
