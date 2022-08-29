@@ -144,13 +144,14 @@ export function Collection({
   return (
     <div className={classNames(styles[type], className)}>
       <div className={styles.collection}>
-        <div className={styles.headerRow}>
-          {title && <h1 className={styles.heading}>{title}</h1>}
-          {showAllUrl && showAllText && (
-            <Link href={showAllUrl}>{showAllText}</Link>
-          )}
-        </div>
-
+        {title && (
+          <div className={styles.headerRow}>
+            <h1 className={styles.heading}>{title}</h1>
+            {showAllUrl && showAllText && (
+              <Link href={showAllUrl}>{showAllText}</Link>
+            )}
+          </div>
+        )}
         {description && <p className={styles.description}>{description}</p>}
         {componentForType[type]}
       </div>
