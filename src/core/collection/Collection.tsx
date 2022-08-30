@@ -200,7 +200,8 @@ export function EventSearchCollection({
   } = useConfig();
   const { url } = collection;
   // TODO: use initAmountOfEvents -field when it's null-issue is fixed
-  const pageSize = 4; // collection.initAmountOfEvents
+  // initAmountOfEvents only in case if load more is implemented (this feature is skipped now)
+  const pageSize = 11; // collection.initAmountOfEvents
 
   if (!url.startsWith(LINKED_EVENTS_ENDPOINT)) {
     throw new Error('Illegal LinkedEvents origin set!');
