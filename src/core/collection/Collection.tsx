@@ -120,7 +120,7 @@ export function Collection({
     grid: (
       <>
         <CollectionGrid
-          cards={cards}
+          cards={cards.slice(0, 4)}
           onShowAll={onShowAll}
           {...collectionContainerProps}
         />
