@@ -27,8 +27,8 @@ export type CarouselProps<T> = {
 
 export function Carousel({
   children,
-  itemsDesktop = 4,
-  itemsMobile = 2,
+  itemsDesktop = 3,
+  itemsMobile = 1,
   className = '',
   withDots = true,
   // TODO: onShowAll,
