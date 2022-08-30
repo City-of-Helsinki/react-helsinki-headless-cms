@@ -103,7 +103,8 @@ export function Collection({
   onShowAll,
 }: CollectionProps) {
   const {
-    copy: { loadMoreButtonLabelText },
+    copy: { loadMoreButtonLabelText, showAllText },
+    utils: { getShowAllUrl },
   } = useConfig();
   const componentForType: Record<CollectionProps['type'], JSX.Element> = {
     carousel: (
@@ -137,9 +138,7 @@ export function Collection({
     ),
   };
 
-  // todo: get from config
-  const showAllUrl = '/';
-  const showAllText = 'ShowAll';
+  const showAllUrl = getShowAllUrl();
 
   return (
     <div className={classNames(styles[type], className)}>
