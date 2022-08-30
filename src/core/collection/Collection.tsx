@@ -147,7 +147,9 @@ export function Collection({
           <div className={styles.headerRow}>
             <h1 className={styles.heading}>{title}</h1>
             {showAllUrl && showAllText && (
-              <Link href={showAllUrl}>{showAllText}</Link>
+              <Link className={styles.showAll} href={showAllUrl}>
+                {showAllText}
+              </Link>
             )}
           </div>
         )}

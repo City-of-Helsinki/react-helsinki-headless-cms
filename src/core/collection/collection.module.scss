@@ -7,6 +7,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    .showAll {
+      color: var(--color-coat-of-arms-dark);
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   a {
