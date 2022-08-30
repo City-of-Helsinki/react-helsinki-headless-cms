@@ -17,6 +17,7 @@ export type Config = {
     openInNewTabAriaLabel: string;
     closeButtonLabelText: string;
     loadMoreButtonLabelText: string;
+    showAllText: string;
     archiveSearch?: {
       searchTextPlaceholder: string;
       searchButtonLabelText: string;
@@ -42,6 +43,7 @@ export type Config = {
       link: string | null | undefined,
       type?: ModuleItemTypeEnum,
     ) => string;
+    getShowAllUrl: () => string;
   };
 };
 

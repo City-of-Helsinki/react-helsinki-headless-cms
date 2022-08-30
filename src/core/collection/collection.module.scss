@@ -3,7 +3,27 @@
 @import 'typography';
 
 .collection {
-  & > .heading {
+  .headerRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .showAll {
+      color: var(--color-coat-of-arms-dark);
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  a {
+    @media screen and (max-width: breakpoints.$breakpoint-m) {
+      min-width: 80px;
+    }
+  }
+
+  .heading {
     font-size: $fontsize-heading-m;
     margin: 0;
     padding: #{$spacing-layout-s} 0;
@@ -12,7 +32,7 @@
       padding: #{$spacing-layout-m} 0;
     }
   }
-  & > .description {
+  .description {
     font-size: $fontsize-heading-m;
     margin: 0;
     padding-bottom: #{$spacing-layout-s};
@@ -21,13 +41,13 @@
     }
   }
 
-  & > .carouselWrapper {
+  .carouselWrapper {
     .carousel {
       margin-top: 0;
     }
   }
 
-  & > .loadMoreButton {
+  .loadMoreButton {
     margin-top: var(--spacing-m);
   }
 }

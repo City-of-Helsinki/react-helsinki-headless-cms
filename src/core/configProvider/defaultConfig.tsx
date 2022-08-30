@@ -20,6 +20,7 @@ export const defaultConfig: Config = {
     openInNewTabAriaLabel: 'Opens in a new tab.',
     closeButtonLabelText: 'close',
     loadMoreButtonLabelText: 'Load more',
+    showAllText: 'Show all',
     archiveSearch: {
       searchTextPlaceholder: 'Search text',
       searchButtonLabelText: 'Search',
@@ -56,5 +57,7 @@ export const defaultConfig: Config = {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     getRoutedInternalHref: (link: string, _type: ModuleItemTypeEnum): string =>
       link ?? '#',
+    // implement when headless cms api is ready
+    getShowAllUrl: () => '/',
   },
 };

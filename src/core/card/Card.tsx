@@ -1,5 +1,5 @@
 import { IconArrowRight, Tag } from 'hds-react';
-import React from 'react';
+import React, { useState } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
 
@@ -44,13 +44,20 @@ export function Card({
   clampText,
   target,
 }: CardProps) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleToggleActive = () => setIsHovered((val) => !val);
+
   return (
     <LinkBox
+      aria-hidden
       id={id}
       href={url}
       className={className}
       ariaLabel={ariaLabel || ''}
       target={target}
+      onMouseEnter={handleToggleActive}
+      onMouseLeave={handleToggleActive}
     >
       <div
         className={classNames(
@@ -58,6 +65,7 @@ export function Card({
           withBorder && styles.withBorder,
           withShadow && styles.withShadow,
           direction && styles[direction],
+          isHovered && styles.isHovered,
         )}
       >
         {imageUrl && (

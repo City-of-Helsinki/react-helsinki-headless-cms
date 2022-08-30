@@ -22,9 +22,9 @@ import useEventsApolloClientFromConfig from '../configProvider/useEventsApolloCl
 import { getCollectionCards } from '../pageContent/utils';
 import { Config } from '../configProvider/configContext';
 import normalizeKeys from '../../linkedEvents/utils/normalizeKeys';
-import { getNextPage } from '../../common/eventsService/utils';
 import { LINKED_EVENTS_ENDPOINT } from '../../constants';
 import { ModuleItemTypeEnum } from '../../common/headlessService/constants';
+import { Link } from '../link/Link';
 
 export type CollectionProps = {
   title?: string;
@@ -102,7 +102,8 @@ export function Collection({
   onShowAll,
 }: CollectionProps) {
   const {
-    copy: { loadMoreButtonLabelText },
+    copy: { loadMoreButtonLabelText, showAllText },
+    utils: { getShowAllUrl },
   } = useConfig();
   const componentForType: Record<CollectionProps['type'], JSX.Element> = {
     carousel: (
@@ -116,10 +117,11 @@ export function Collection({
         {...collectionContainerProps}
       />
     ),
+    // todo: initial grid items amout (3) take from config or headless cms when implemented
     grid: (
       <>
         <CollectionGrid
-          cards={cards}
+          cards={cards.slice(0, 3)}
           onShowAll={onShowAll}
           {...collectionContainerProps}
         />
@@ -136,10 +138,21 @@ export function Collection({
     ),
   };
 
+  const showAllUrl = getShowAllUrl();
+
   return (
     <div className={classNames(styles[type], className)}>
       <div className={styles.collection}>
-        {title && <h1 className={styles.heading}>{title}</h1>}
+        {title && (
+          <div className={styles.headerRow}>
+            <h1 className={styles.heading}>{title}</h1>
+            {showAllUrl && showAllText && (
+              <Link className={styles.showAll} href={showAllUrl}>
+                {showAllText}
+              </Link>
+            )}
+          </div>
+        )}
         {description && <p className={styles.description}>{description}</p>}
         {componentForType[type]}
       </div>
@@ -184,14 +197,14 @@ export function EventSearchCollection({
   ...delegatedProps
 }: EventSearchCollectionProps) {
   const eventsApolloClient = useEventsApolloClientFromConfig();
-  const [isFetchingMore, setIsFetchingMore] = React.useState(false);
   const {
     utils: { getRoutedInternalHref },
     components: { EventCardContent },
   } = useConfig();
   const { url } = collection;
   // TODO: use initAmountOfEvents -field when it's null-issue is fixed
-  const pageSize = 4; // collection.initAmountOfEvents
+  // initAmountOfEvents only in case if load more is implemented (this feature is skipped now)
+  const pageSize = 9; // collection.initAmountOfEvents
 
   if (!url.startsWith(LINKED_EVENTS_ENDPOINT)) {
     throw new Error('Illegal LinkedEvents origin set!');
@@ -205,7 +218,7 @@ export function EventSearchCollection({
     include: ['in_language', 'keywords', 'location', 'audience'],
   };
 
-  const { data, loading, fetchMore } = useEventListQuery({
+  const { data, loading } = useEventListQuery({
     client: eventsApolloClient !== 'disabled' && eventsApolloClient,
     ssr: false,
     notifyOnNetworkStatusChange: true,
@@ -222,37 +235,6 @@ export function EventSearchCollection({
     );
   }
 
-  const handleLoadMore = async () => {
-    const page = eventsList.meta ? getNextPage(eventsList.meta) : null;
-    setIsFetchingMore(true);
-    if (page) {
-      await fetchMore({
-        variables: {
-          page,
-        },
-        updateQuery: (prevResult, { fetchMoreResult }) => {
-          if (!fetchMoreResult) return prevResult;
-          return {
-            ...prevResult,
-            eventList: {
-              ...fetchMoreResult.eventList,
-              data: [
-                ...prevResult.eventList.data,
-                ...fetchMoreResult.eventList.data,
-              ],
-            },
-          };
-        },
-      });
-    }
-    setIsFetchingMore(false);
-  };
-
-  const onShowAll = () => {
-    // eslint-disable-next-line no-console
-    console.info('TODO: not implemented yet');
-  };
-
   const cards = getEventCollectionCards(
     collection,
     eventsList?.data ?? [],
@@ -261,16 +243,7 @@ export function EventSearchCollection({
     EventCardContent,
   );
 
-  return (
-    <Collection
-      {...delegatedProps}
-      cards={cards}
-      onShowAll={onShowAll}
-      onLoadMore={handleLoadMore}
-      hasNext={!!eventsList.meta.next}
-      loading={isFetchingMore}
-    />
-  );
+  return <Collection {...delegatedProps} cards={cards} />;
 }
 
 export type EventSelectionCollectionProps = Omit<CollectionProps, 'cards'> & {
@@ -282,7 +255,6 @@ export function EventSelectionCollection({
   ...delegatedProps
 }: EventSelectionCollectionProps) {
   const eventsApolloClient = useEventsApolloClientFromConfig();
-  const [isFetchingMore, setIsFetchingMore] = React.useState(false);
   const {
     utils: { getRoutedInternalHref },
     components: { EventCardContent },
@@ -290,7 +262,7 @@ export function EventSelectionCollection({
   // TODO: use initAmountOfEvents -field when it's null-issue is fixed
   const pageSize = 4; // collection.initAmountOfEvents
 
-  const { data, loading, fetchMore } = useEventsByIdsQuery({
+  const { data, loading } = useEventsByIdsQuery({
     client: eventsApolloClient !== 'disabled' && eventsApolloClient,
     ssr: false,
     notifyOnNetworkStatusChange: true,
@@ -311,37 +283,6 @@ export function EventSelectionCollection({
     );
   }
 
-  const handleLoadMore = async () => {
-    const page = eventsList.meta ? getNextPage(eventsList.meta) : null;
-    setIsFetchingMore(true);
-    if (page) {
-      await fetchMore({
-        variables: {
-          page,
-        },
-        updateQuery: (prevResult, { fetchMoreResult }) => {
-          if (!fetchMoreResult) return prevResult;
-          return {
-            ...prevResult,
-            eventsByIds: {
-              ...fetchMoreResult.eventsByIds,
-              data: [
-                ...prevResult.eventsByIds.data,
-                ...fetchMoreResult.eventsByIds.data,
-              ],
-            },
-          };
-        },
-      });
-    }
-    setIsFetchingMore(false);
-  };
-
-  const onShowAll = () => {
-    // eslint-disable-next-line no-console
-    console.info('TODO: not implemented yet');
-  };
-
   const cards = getEventCollectionCards(
     collection,
     eventsList?.data ?? [],
@@ -350,14 +291,5 @@ export function EventSelectionCollection({
     EventCardContent,
   );
 
-  return (
-    <Collection
-      {...delegatedProps}
-      cards={cards}
-      onLoadMore={handleLoadMore}
-      onShowAll={onShowAll}
-      hasNext={!!eventsList.meta.next}
-      loading={isFetchingMore}
-    />
-  );
+  return <Collection {...delegatedProps} cards={cards} />;
 }
