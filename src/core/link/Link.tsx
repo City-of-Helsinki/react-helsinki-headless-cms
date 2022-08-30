@@ -7,13 +7,19 @@ import LinkBase from './LinkBase';
 import { useConfig } from '../configProvider/useConfig';
 import styles from './Link.module.scss';
 
-export type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
-  ariaLabel?: string;
+export type LinkProps = Omit<
+  React.ComponentPropsWithoutRef<'a'>,
+  'target' | 'href' | 'onPointerEnterCapture' | 'onPointerLeaveCapture'
+> & {
+  href?: string;
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
   showExternalIcon?: boolean;
+  openInNewTab?: boolean;
   size?: 'S' | 'M' | 'L';
   variant?: 'default' | 'arrowRight';
+  children?: React.ReactNode;
+  className?: string;
 };
 
 // TODO: LinkBase component should be replaced with hds Link, when all features are supported
@@ -21,10 +27,9 @@ export type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
 
 export function Link({
   href,
-  target,
   children,
-  ariaLabel,
-  showExternalIcon = true,
+  showExternalIcon,
+  openInNewTab,
   className,
   size = 'M',
   ...delegatedProps
@@ -32,9 +37,9 @@ export function Link({
   const {
     utils: { getIsHrefExternal },
     components: { Link: RoutedLink },
+    copy: { openInExternalDomainAriaLabel, openInNewTabAriaLabel },
   } = useConfig();
 
-  const isOpenInNewTab = target === '_blank';
   const isExternal = getIsHrefExternal(href);
 
   const linkComponent = (
@@ -42,14 +47,15 @@ export function Link({
       size={size}
       {...delegatedProps}
       href={href}
-      openInNewTab={isOpenInNewTab}
+      openInNewTab={openInNewTab ?? isExternal}
       external={isExternal}
-      showExternalIcon={isExternal && showExternalIcon}
-      ariaLabel={ariaLabel}
+      showExternalIcon={showExternalIcon ?? isExternal}
       className={classNames(styles.link, className)}
+      openInExternalDomainAriaLabel={openInExternalDomainAriaLabel}
+      openInNewTabAriaLabel={openInNewTabAriaLabel}
       disableVisitedStyles
     >
-      {children as string}
+      {children ?? ''}
     </LinkBase>
   );
 

@@ -23,7 +23,7 @@ test('should render notification with expected content', () => {
   ).toBeInTheDocument();
 
   const link = screen.getByRole('link', {
-    name: `Check out here`,
+    name: `Check out here. Opens in a new tab. Opens a different website.`,
   });
 
   expect(link).toBeInTheDocument();

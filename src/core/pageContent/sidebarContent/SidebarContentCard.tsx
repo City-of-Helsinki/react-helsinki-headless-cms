@@ -44,7 +44,6 @@ export default function SidebarContentCard({
       <Link
         className={styles.link}
         href={url}
-        ariaLabel={title}
         iconRight={
           !getIsHrefExternal(url) && <IconArrowRight aria-hidden="true" />
         }

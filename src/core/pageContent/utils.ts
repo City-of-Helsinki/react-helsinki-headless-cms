@@ -87,7 +87,7 @@ export function getArticlePageCardProps(
     withShadow: true,
     clampText: true,
     direction: 'responsive' as CardProps['direction'],
-    target: '_self' as CardProps['target'],
+    openLinkInNewTab: false,
   };
 }
 
@@ -108,7 +108,7 @@ export function getEventCardProps(
     withShadow: true,
     clampText: true,
     direction: 'responsive' as CardProps['direction'],
-    target: '_self' as CardProps['target'],
+    openLinkInNewTab: false,
   };
 }
 
