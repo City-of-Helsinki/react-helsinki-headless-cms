@@ -206,11 +206,9 @@ export function EventSearchCollection({
   // initAmountOfEvents only in case if load more is implemented (this feature is skipped now)
   const pageSize = 9; // collection.initAmountOfEvents
 
-  if (!url.startsWith(LINKED_EVENTS_ENDPOINT)) {
-    throw new Error('Illegal LinkedEvents origin set!');
-  }
-
-  const { searchParams } = new URL(url);
+  const searchParams = new URLSearchParams(
+    url.split('?')[1] ?? url.split('?')[0],
+  );
   const params = Object.fromEntries(searchParams.entries());
   const variables = {
     ...normalizeKeys(params),
