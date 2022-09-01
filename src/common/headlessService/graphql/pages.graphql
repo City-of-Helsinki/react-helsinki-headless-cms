@@ -18,19 +18,7 @@ query pages(
     edges {
       cursor
       node {
-        id
-        title
-        date
-        lead
-        content
-        slug
-        uri
-        featuredImage {
-          node {
-            altText
-            mediaItemUrl
-          }
-        }
+        ...Page
       }
     }
   }
