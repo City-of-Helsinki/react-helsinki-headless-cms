@@ -31,13 +31,9 @@ export function PageContentLayout({
   imageLabel,
   backUrl,
 }: PageContentLayoutProps) {
-  // todo: temporary disabled
-  const hasBreadCrumbs = false;
   return (
     <div className={styles.contentLayout}>
-      {hasBreadCrumbs && breadcrumbs && (
-        <div className={styles.breadcrumbs}>{breadcrumbs}</div>
-      )}
+      {breadcrumbs && <div className={styles.breadcrumbs}>{breadcrumbs}</div>}
 
       <main id={MAIN_CONTENT_ID} className={styles.mainLayout}>
         {imageSrc && (
