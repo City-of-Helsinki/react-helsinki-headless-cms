@@ -5,6 +5,25 @@ fragment MenuItem on MenuItem {
   title
   path
   label
+  connectedNode {
+    node {
+      ... on Page {
+        ...menuPageFields
+        children {
+          nodes {
+            ...menuPageFields
+          }
+        }
+      }
+    }
+  }
+}
+
+fragment menuPageFields on Page {
+  ...Page
+  translations {
+    ...Page
+  }
 }
 
 query menu($id: ID!) {
