@@ -12,6 +12,18 @@ fragment Page on Page {
   language {
     ...Language
   }
+  # Contains language versions other than the language the $id or type URI
+  # targets
+  translations {
+    uri
+    slug
+    language {
+      ...Language
+    }
+    seo {
+      ...SEO
+    }
+  }
   featuredImage {
     node {
       mediaItemUrl
@@ -67,36 +79,12 @@ fragment Page on Page {
 
 query page($id: ID!) {
   page(id: $id, idType: URI) {
-    id
     ...Page
-    # Contains language versions other than the language the $id or type URI
-    # targets
-    translations {
-      uri
-      language {
-        ...Language
-      }
-      seo {
-        ...SEO
-      }
-    }
   }
 }
 
 query pageByTemplate($template: TemplateEnum, $language: String) {
   pageByTemplate(template: $template, language: $language) {
-    id
     ...Page
-    # Contains language versions other than the language the $id or type URI
-    # targets
-    translations {
-      uri
-      language {
-        ...Language
-      }
-      seo {
-        ...SEO
-      }
-    }
   }
 }
