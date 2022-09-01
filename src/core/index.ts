@@ -9,6 +9,7 @@ export {
   PageType,
   ArticleType,
   SidebarContent,
+  PageIdType,
   PageModule,
   PageSidebarModule,
   Articles,
