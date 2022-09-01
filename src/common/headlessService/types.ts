@@ -53,5 +53,6 @@ export {
   LanguageCodeEnum,
   LanguageCodeFilterEnum,
   MenuNodeIdTypeEnum,
+  PageIdType,
   TemplateEnum,
 } from './__generated__';
