@@ -11114,6 +11114,1588 @@ export type MenuItemFragment = {
   title?: string | null;
   path?: string | null;
   label?: string | null;
+  connectedNode?: {
+    __typename?: 'MenuItemToMenuItemLinkableConnectionEdge';
+    node?:
+      | { __typename?: 'Category' }
+      | {
+          __typename?: 'Page';
+          id: string;
+          content?: string | null;
+          slug?: string | null;
+          title?: string | null;
+          uri?: string | null;
+          link?: string | null;
+          lead?: string | null;
+          children?: {
+            __typename?: 'HierarchicalContentNodeToContentNodeChildrenConnection';
+            nodes?: Array<
+              | { __typename?: 'Collection' }
+              | { __typename?: 'Contact' }
+              | { __typename?: 'LandingPage' }
+              | { __typename?: 'MediaItem' }
+              | {
+                  __typename?: 'Page';
+                  id: string;
+                  content?: string | null;
+                  slug?: string | null;
+                  title?: string | null;
+                  uri?: string | null;
+                  link?: string | null;
+                  lead?: string | null;
+                  translations?: Array<{
+                    __typename?: 'Page';
+                    id: string;
+                    content?: string | null;
+                    slug?: string | null;
+                    title?: string | null;
+                    uri?: string | null;
+                    link?: string | null;
+                    lead?: string | null;
+                    seo?: {
+                      __typename?: 'SEO';
+                      title?: string | null;
+                      description?: string | null;
+                      openGraphTitle?: string | null;
+                      openGraphDescription?: string | null;
+                      openGraphType?: string | null;
+                      twitterTitle?: string | null;
+                      twitterDescription?: string | null;
+                      canonicalUrl?: string | null;
+                      socialImage?: {
+                        __typename?: 'MediaItem';
+                        mediaItemUrl?: string | null;
+                      } | null;
+                    } | null;
+                    language?: {
+                      __typename?: 'Language';
+                      code?: LanguageCodeEnum | null;
+                      id: string;
+                      locale?: string | null;
+                      name?: string | null;
+                      slug?: string | null;
+                    } | null;
+                    featuredImage?: {
+                      __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                      node?: {
+                        __typename?: 'MediaItem';
+                        mediaItemUrl?: string | null;
+                        link?: string | null;
+                        altText?: string | null;
+                        mimeType?: string | null;
+                        title?: string | null;
+                        uri?: string | null;
+                      } | null;
+                    } | null;
+                    sidebar?: Array<
+                      | {
+                          __typename: 'LayoutArticles';
+                          title?: string | null;
+                          articles?: Array<{
+                            __typename?: 'Post';
+                            id: string;
+                            uri?: string | null;
+                            slug?: string | null;
+                            link?: string | null;
+                            date?: string | null;
+                            title?: string | null;
+                            lead?: string | null;
+                            featuredImage?: {
+                              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                              node?: {
+                                __typename?: 'MediaItem';
+                                altText?: string | null;
+                                mediaItemUrl?: string | null;
+                              } | null;
+                            } | null;
+                            categories?: {
+                              __typename?: 'PostToCategoryConnection';
+                              nodes?: Array<{
+                                __typename?: 'Category';
+                                name?: string | null;
+                              } | null> | null;
+                            } | null;
+                          } | null> | null;
+                        }
+                      | {
+                          __typename: 'LayoutLinkList';
+                          anchor?: string | null;
+                          title?: string | null;
+                          description?: string | null;
+                          links?: Array<{
+                            __typename?: 'Link';
+                            target?: string | null;
+                            title?: string | null;
+                            url?: string | null;
+                          } | null> | null;
+                        }
+                      | {
+                          __typename: 'LayoutPages';
+                          title?: string | null;
+                          description?: string | null;
+                          pages?: Array<{
+                            __typename?: 'Page';
+                            id: string;
+                            uri?: string | null;
+                            slug?: string | null;
+                            link?: string | null;
+                            date?: string | null;
+                            title?: string | null;
+                            lead?: string | null;
+                            featuredImage?: {
+                              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                              node?: {
+                                __typename?: 'MediaItem';
+                                altText?: string | null;
+                                mediaItemUrl?: string | null;
+                              } | null;
+                            } | null;
+                          } | null> | null;
+                        }
+                      | null
+                    > | null;
+                    modules?: Array<
+                      | {
+                          __typename: 'EventSearch';
+                          title?: string | null;
+                          url?: string | null;
+                          module?: string | null;
+                        }
+                      | {
+                          __typename: 'EventSearchCarousel';
+                          title?: string | null;
+                          showAllLink?: Array<string | null> | null;
+                          url?: string | null;
+                          orderNewestFirst?: boolean | null;
+                          eventsNearby?: boolean | null;
+                          amountOfCards?: number | null;
+                        }
+                      | {
+                          __typename: 'EventSelected';
+                          title?: string | null;
+                          events?: Array<string | null> | null;
+                          module?: string | null;
+                        }
+                      | {
+                          __typename: 'EventSelectedCarousel';
+                          title?: string | null;
+                          module?: string | null;
+                          showAllLink?: Array<string | null> | null;
+                          eventsNearby?: boolean | null;
+                          events?: Array<string | null> | null;
+                          amountOfCardsPerRow?: number | null;
+                          amountOfCards?: number | null;
+                        }
+                      | { __typename?: 'LayoutArticleHighlights' }
+                      | {
+                          __typename: 'LayoutArticles';
+                          title?: string | null;
+                          articles?: Array<{
+                            __typename?: 'Post';
+                            id: string;
+                            uri?: string | null;
+                            slug?: string | null;
+                            link?: string | null;
+                            date?: string | null;
+                            title?: string | null;
+                            lead?: string | null;
+                            featuredImage?: {
+                              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                              node?: {
+                                __typename?: 'MediaItem';
+                                altText?: string | null;
+                                mediaItemUrl?: string | null;
+                              } | null;
+                            } | null;
+                            categories?: {
+                              __typename?: 'PostToCategoryConnection';
+                              nodes?: Array<{
+                                __typename?: 'Category';
+                                name?: string | null;
+                              } | null> | null;
+                            } | null;
+                          } | null> | null;
+                        }
+                      | {
+                          __typename: 'LayoutArticlesCarousel';
+                          title?: string | null;
+                          showMore?: Array<string | null> | null;
+                          articles?: Array<{
+                            __typename?: 'Post';
+                            id: string;
+                            uri?: string | null;
+                            slug?: string | null;
+                            link?: string | null;
+                            date?: string | null;
+                            title?: string | null;
+                            lead?: string | null;
+                            featuredImage?: {
+                              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                              node?: {
+                                __typename?: 'MediaItem';
+                                altText?: string | null;
+                                mediaItemUrl?: string | null;
+                              } | null;
+                            } | null;
+                            categories?: {
+                              __typename?: 'PostToCategoryConnection';
+                              nodes?: Array<{
+                                __typename?: 'Category';
+                                name?: string | null;
+                              } | null> | null;
+                            } | null;
+                          } | null> | null;
+                        }
+                      | {
+                          __typename: 'LayoutCollection';
+                          collection?: {
+                            __typename?: 'Collection';
+                            title?: string | null;
+                          } | null;
+                        }
+                      | { __typename?: 'LayoutContact' }
+                      | {
+                          __typename: 'LayoutPages';
+                          title?: string | null;
+                          description?: string | null;
+                          pages?: Array<{
+                            __typename?: 'Page';
+                            id: string;
+                            uri?: string | null;
+                            slug?: string | null;
+                            link?: string | null;
+                            date?: string | null;
+                            title?: string | null;
+                            lead?: string | null;
+                            featuredImage?: {
+                              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                              node?: {
+                                __typename?: 'MediaItem';
+                                altText?: string | null;
+                                mediaItemUrl?: string | null;
+                              } | null;
+                            } | null;
+                          } | null> | null;
+                        }
+                      | {
+                          __typename: 'LayoutPagesCarousel';
+                          title?: string | null;
+                          description?: string | null;
+                          pages?: Array<{
+                            __typename?: 'Page';
+                            id: string;
+                            uri?: string | null;
+                            slug?: string | null;
+                            link?: string | null;
+                            date?: string | null;
+                            title?: string | null;
+                            lead?: string | null;
+                            featuredImage?: {
+                              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                              node?: {
+                                __typename?: 'MediaItem';
+                                altText?: string | null;
+                                mediaItemUrl?: string | null;
+                              } | null;
+                            } | null;
+                          } | null> | null;
+                        }
+                      | null
+                    > | null;
+                  } | null> | null;
+                  seo?: {
+                    __typename?: 'SEO';
+                    title?: string | null;
+                    description?: string | null;
+                    openGraphTitle?: string | null;
+                    openGraphDescription?: string | null;
+                    openGraphType?: string | null;
+                    twitterTitle?: string | null;
+                    twitterDescription?: string | null;
+                    canonicalUrl?: string | null;
+                    socialImage?: {
+                      __typename?: 'MediaItem';
+                      mediaItemUrl?: string | null;
+                    } | null;
+                  } | null;
+                  language?: {
+                    __typename?: 'Language';
+                    code?: LanguageCodeEnum | null;
+                    id: string;
+                    locale?: string | null;
+                    name?: string | null;
+                    slug?: string | null;
+                  } | null;
+                  featuredImage?: {
+                    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                    node?: {
+                      __typename?: 'MediaItem';
+                      mediaItemUrl?: string | null;
+                      link?: string | null;
+                      altText?: string | null;
+                      mimeType?: string | null;
+                      title?: string | null;
+                      uri?: string | null;
+                    } | null;
+                  } | null;
+                  sidebar?: Array<
+                    | {
+                        __typename: 'LayoutArticles';
+                        title?: string | null;
+                        articles?: Array<{
+                          __typename?: 'Post';
+                          id: string;
+                          uri?: string | null;
+                          slug?: string | null;
+                          link?: string | null;
+                          date?: string | null;
+                          title?: string | null;
+                          lead?: string | null;
+                          featuredImage?: {
+                            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                            node?: {
+                              __typename?: 'MediaItem';
+                              altText?: string | null;
+                              mediaItemUrl?: string | null;
+                            } | null;
+                          } | null;
+                          categories?: {
+                            __typename?: 'PostToCategoryConnection';
+                            nodes?: Array<{
+                              __typename?: 'Category';
+                              name?: string | null;
+                            } | null> | null;
+                          } | null;
+                        } | null> | null;
+                      }
+                    | {
+                        __typename: 'LayoutLinkList';
+                        anchor?: string | null;
+                        title?: string | null;
+                        description?: string | null;
+                        links?: Array<{
+                          __typename?: 'Link';
+                          target?: string | null;
+                          title?: string | null;
+                          url?: string | null;
+                        } | null> | null;
+                      }
+                    | {
+                        __typename: 'LayoutPages';
+                        title?: string | null;
+                        description?: string | null;
+                        pages?: Array<{
+                          __typename?: 'Page';
+                          id: string;
+                          uri?: string | null;
+                          slug?: string | null;
+                          link?: string | null;
+                          date?: string | null;
+                          title?: string | null;
+                          lead?: string | null;
+                          featuredImage?: {
+                            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                            node?: {
+                              __typename?: 'MediaItem';
+                              altText?: string | null;
+                              mediaItemUrl?: string | null;
+                            } | null;
+                          } | null;
+                        } | null> | null;
+                      }
+                    | null
+                  > | null;
+                  modules?: Array<
+                    | {
+                        __typename: 'EventSearch';
+                        title?: string | null;
+                        url?: string | null;
+                        module?: string | null;
+                      }
+                    | {
+                        __typename: 'EventSearchCarousel';
+                        title?: string | null;
+                        showAllLink?: Array<string | null> | null;
+                        url?: string | null;
+                        orderNewestFirst?: boolean | null;
+                        eventsNearby?: boolean | null;
+                        amountOfCards?: number | null;
+                      }
+                    | {
+                        __typename: 'EventSelected';
+                        title?: string | null;
+                        events?: Array<string | null> | null;
+                        module?: string | null;
+                      }
+                    | {
+                        __typename: 'EventSelectedCarousel';
+                        title?: string | null;
+                        module?: string | null;
+                        showAllLink?: Array<string | null> | null;
+                        eventsNearby?: boolean | null;
+                        events?: Array<string | null> | null;
+                        amountOfCardsPerRow?: number | null;
+                        amountOfCards?: number | null;
+                      }
+                    | { __typename?: 'LayoutArticleHighlights' }
+                    | {
+                        __typename: 'LayoutArticles';
+                        title?: string | null;
+                        articles?: Array<{
+                          __typename?: 'Post';
+                          id: string;
+                          uri?: string | null;
+                          slug?: string | null;
+                          link?: string | null;
+                          date?: string | null;
+                          title?: string | null;
+                          lead?: string | null;
+                          featuredImage?: {
+                            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                            node?: {
+                              __typename?: 'MediaItem';
+                              altText?: string | null;
+                              mediaItemUrl?: string | null;
+                            } | null;
+                          } | null;
+                          categories?: {
+                            __typename?: 'PostToCategoryConnection';
+                            nodes?: Array<{
+                              __typename?: 'Category';
+                              name?: string | null;
+                            } | null> | null;
+                          } | null;
+                        } | null> | null;
+                      }
+                    | {
+                        __typename: 'LayoutArticlesCarousel';
+                        title?: string | null;
+                        showMore?: Array<string | null> | null;
+                        articles?: Array<{
+                          __typename?: 'Post';
+                          id: string;
+                          uri?: string | null;
+                          slug?: string | null;
+                          link?: string | null;
+                          date?: string | null;
+                          title?: string | null;
+                          lead?: string | null;
+                          featuredImage?: {
+                            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                            node?: {
+                              __typename?: 'MediaItem';
+                              altText?: string | null;
+                              mediaItemUrl?: string | null;
+                            } | null;
+                          } | null;
+                          categories?: {
+                            __typename?: 'PostToCategoryConnection';
+                            nodes?: Array<{
+                              __typename?: 'Category';
+                              name?: string | null;
+                            } | null> | null;
+                          } | null;
+                        } | null> | null;
+                      }
+                    | {
+                        __typename: 'LayoutCollection';
+                        collection?: {
+                          __typename?: 'Collection';
+                          title?: string | null;
+                        } | null;
+                      }
+                    | { __typename?: 'LayoutContact' }
+                    | {
+                        __typename: 'LayoutPages';
+                        title?: string | null;
+                        description?: string | null;
+                        pages?: Array<{
+                          __typename?: 'Page';
+                          id: string;
+                          uri?: string | null;
+                          slug?: string | null;
+                          link?: string | null;
+                          date?: string | null;
+                          title?: string | null;
+                          lead?: string | null;
+                          featuredImage?: {
+                            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                            node?: {
+                              __typename?: 'MediaItem';
+                              altText?: string | null;
+                              mediaItemUrl?: string | null;
+                            } | null;
+                          } | null;
+                        } | null> | null;
+                      }
+                    | {
+                        __typename: 'LayoutPagesCarousel';
+                        title?: string | null;
+                        description?: string | null;
+                        pages?: Array<{
+                          __typename?: 'Page';
+                          id: string;
+                          uri?: string | null;
+                          slug?: string | null;
+                          link?: string | null;
+                          date?: string | null;
+                          title?: string | null;
+                          lead?: string | null;
+                          featuredImage?: {
+                            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                            node?: {
+                              __typename?: 'MediaItem';
+                              altText?: string | null;
+                              mediaItemUrl?: string | null;
+                            } | null;
+                          } | null;
+                        } | null> | null;
+                      }
+                    | null
+                  > | null;
+                }
+              | { __typename?: 'Post' }
+              | { __typename?: 'Release' }
+              | { __typename?: 'Translation' }
+              | null
+            > | null;
+          } | null;
+          translations?: Array<{
+            __typename?: 'Page';
+            id: string;
+            content?: string | null;
+            slug?: string | null;
+            title?: string | null;
+            uri?: string | null;
+            link?: string | null;
+            lead?: string | null;
+            seo?: {
+              __typename?: 'SEO';
+              title?: string | null;
+              description?: string | null;
+              openGraphTitle?: string | null;
+              openGraphDescription?: string | null;
+              openGraphType?: string | null;
+              twitterTitle?: string | null;
+              twitterDescription?: string | null;
+              canonicalUrl?: string | null;
+              socialImage?: {
+                __typename?: 'MediaItem';
+                mediaItemUrl?: string | null;
+              } | null;
+            } | null;
+            language?: {
+              __typename?: 'Language';
+              code?: LanguageCodeEnum | null;
+              id: string;
+              locale?: string | null;
+              name?: string | null;
+              slug?: string | null;
+            } | null;
+            featuredImage?: {
+              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+              node?: {
+                __typename?: 'MediaItem';
+                mediaItemUrl?: string | null;
+                link?: string | null;
+                altText?: string | null;
+                mimeType?: string | null;
+                title?: string | null;
+                uri?: string | null;
+              } | null;
+            } | null;
+            sidebar?: Array<
+              | {
+                  __typename: 'LayoutArticles';
+                  title?: string | null;
+                  articles?: Array<{
+                    __typename?: 'Post';
+                    id: string;
+                    uri?: string | null;
+                    slug?: string | null;
+                    link?: string | null;
+                    date?: string | null;
+                    title?: string | null;
+                    lead?: string | null;
+                    featuredImage?: {
+                      __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                      node?: {
+                        __typename?: 'MediaItem';
+                        altText?: string | null;
+                        mediaItemUrl?: string | null;
+                      } | null;
+                    } | null;
+                    categories?: {
+                      __typename?: 'PostToCategoryConnection';
+                      nodes?: Array<{
+                        __typename?: 'Category';
+                        name?: string | null;
+                      } | null> | null;
+                    } | null;
+                  } | null> | null;
+                }
+              | {
+                  __typename: 'LayoutLinkList';
+                  anchor?: string | null;
+                  title?: string | null;
+                  description?: string | null;
+                  links?: Array<{
+                    __typename?: 'Link';
+                    target?: string | null;
+                    title?: string | null;
+                    url?: string | null;
+                  } | null> | null;
+                }
+              | {
+                  __typename: 'LayoutPages';
+                  title?: string | null;
+                  description?: string | null;
+                  pages?: Array<{
+                    __typename?: 'Page';
+                    id: string;
+                    uri?: string | null;
+                    slug?: string | null;
+                    link?: string | null;
+                    date?: string | null;
+                    title?: string | null;
+                    lead?: string | null;
+                    featuredImage?: {
+                      __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                      node?: {
+                        __typename?: 'MediaItem';
+                        altText?: string | null;
+                        mediaItemUrl?: string | null;
+                      } | null;
+                    } | null;
+                  } | null> | null;
+                }
+              | null
+            > | null;
+            modules?: Array<
+              | {
+                  __typename: 'EventSearch';
+                  title?: string | null;
+                  url?: string | null;
+                  module?: string | null;
+                }
+              | {
+                  __typename: 'EventSearchCarousel';
+                  title?: string | null;
+                  showAllLink?: Array<string | null> | null;
+                  url?: string | null;
+                  orderNewestFirst?: boolean | null;
+                  eventsNearby?: boolean | null;
+                  amountOfCards?: number | null;
+                }
+              | {
+                  __typename: 'EventSelected';
+                  title?: string | null;
+                  events?: Array<string | null> | null;
+                  module?: string | null;
+                }
+              | {
+                  __typename: 'EventSelectedCarousel';
+                  title?: string | null;
+                  module?: string | null;
+                  showAllLink?: Array<string | null> | null;
+                  eventsNearby?: boolean | null;
+                  events?: Array<string | null> | null;
+                  amountOfCardsPerRow?: number | null;
+                  amountOfCards?: number | null;
+                }
+              | { __typename?: 'LayoutArticleHighlights' }
+              | {
+                  __typename: 'LayoutArticles';
+                  title?: string | null;
+                  articles?: Array<{
+                    __typename?: 'Post';
+                    id: string;
+                    uri?: string | null;
+                    slug?: string | null;
+                    link?: string | null;
+                    date?: string | null;
+                    title?: string | null;
+                    lead?: string | null;
+                    featuredImage?: {
+                      __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                      node?: {
+                        __typename?: 'MediaItem';
+                        altText?: string | null;
+                        mediaItemUrl?: string | null;
+                      } | null;
+                    } | null;
+                    categories?: {
+                      __typename?: 'PostToCategoryConnection';
+                      nodes?: Array<{
+                        __typename?: 'Category';
+                        name?: string | null;
+                      } | null> | null;
+                    } | null;
+                  } | null> | null;
+                }
+              | {
+                  __typename: 'LayoutArticlesCarousel';
+                  title?: string | null;
+                  showMore?: Array<string | null> | null;
+                  articles?: Array<{
+                    __typename?: 'Post';
+                    id: string;
+                    uri?: string | null;
+                    slug?: string | null;
+                    link?: string | null;
+                    date?: string | null;
+                    title?: string | null;
+                    lead?: string | null;
+                    featuredImage?: {
+                      __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                      node?: {
+                        __typename?: 'MediaItem';
+                        altText?: string | null;
+                        mediaItemUrl?: string | null;
+                      } | null;
+                    } | null;
+                    categories?: {
+                      __typename?: 'PostToCategoryConnection';
+                      nodes?: Array<{
+                        __typename?: 'Category';
+                        name?: string | null;
+                      } | null> | null;
+                    } | null;
+                  } | null> | null;
+                }
+              | {
+                  __typename: 'LayoutCollection';
+                  collection?: {
+                    __typename?: 'Collection';
+                    title?: string | null;
+                  } | null;
+                }
+              | { __typename?: 'LayoutContact' }
+              | {
+                  __typename: 'LayoutPages';
+                  title?: string | null;
+                  description?: string | null;
+                  pages?: Array<{
+                    __typename?: 'Page';
+                    id: string;
+                    uri?: string | null;
+                    slug?: string | null;
+                    link?: string | null;
+                    date?: string | null;
+                    title?: string | null;
+                    lead?: string | null;
+                    featuredImage?: {
+                      __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                      node?: {
+                        __typename?: 'MediaItem';
+                        altText?: string | null;
+                        mediaItemUrl?: string | null;
+                      } | null;
+                    } | null;
+                  } | null> | null;
+                }
+              | {
+                  __typename: 'LayoutPagesCarousel';
+                  title?: string | null;
+                  description?: string | null;
+                  pages?: Array<{
+                    __typename?: 'Page';
+                    id: string;
+                    uri?: string | null;
+                    slug?: string | null;
+                    link?: string | null;
+                    date?: string | null;
+                    title?: string | null;
+                    lead?: string | null;
+                    featuredImage?: {
+                      __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                      node?: {
+                        __typename?: 'MediaItem';
+                        altText?: string | null;
+                        mediaItemUrl?: string | null;
+                      } | null;
+                    } | null;
+                  } | null> | null;
+                }
+              | null
+            > | null;
+          } | null> | null;
+          seo?: {
+            __typename?: 'SEO';
+            title?: string | null;
+            description?: string | null;
+            openGraphTitle?: string | null;
+            openGraphDescription?: string | null;
+            openGraphType?: string | null;
+            twitterTitle?: string | null;
+            twitterDescription?: string | null;
+            canonicalUrl?: string | null;
+            socialImage?: {
+              __typename?: 'MediaItem';
+              mediaItemUrl?: string | null;
+            } | null;
+          } | null;
+          language?: {
+            __typename?: 'Language';
+            code?: LanguageCodeEnum | null;
+            id: string;
+            locale?: string | null;
+            name?: string | null;
+            slug?: string | null;
+          } | null;
+          featuredImage?: {
+            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+            node?: {
+              __typename?: 'MediaItem';
+              mediaItemUrl?: string | null;
+              link?: string | null;
+              altText?: string | null;
+              mimeType?: string | null;
+              title?: string | null;
+              uri?: string | null;
+            } | null;
+          } | null;
+          sidebar?: Array<
+            | {
+                __typename: 'LayoutArticles';
+                title?: string | null;
+                articles?: Array<{
+                  __typename?: 'Post';
+                  id: string;
+                  uri?: string | null;
+                  slug?: string | null;
+                  link?: string | null;
+                  date?: string | null;
+                  title?: string | null;
+                  lead?: string | null;
+                  featuredImage?: {
+                    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                    node?: {
+                      __typename?: 'MediaItem';
+                      altText?: string | null;
+                      mediaItemUrl?: string | null;
+                    } | null;
+                  } | null;
+                  categories?: {
+                    __typename?: 'PostToCategoryConnection';
+                    nodes?: Array<{
+                      __typename?: 'Category';
+                      name?: string | null;
+                    } | null> | null;
+                  } | null;
+                } | null> | null;
+              }
+            | {
+                __typename: 'LayoutLinkList';
+                anchor?: string | null;
+                title?: string | null;
+                description?: string | null;
+                links?: Array<{
+                  __typename?: 'Link';
+                  target?: string | null;
+                  title?: string | null;
+                  url?: string | null;
+                } | null> | null;
+              }
+            | {
+                __typename: 'LayoutPages';
+                title?: string | null;
+                description?: string | null;
+                pages?: Array<{
+                  __typename?: 'Page';
+                  id: string;
+                  uri?: string | null;
+                  slug?: string | null;
+                  link?: string | null;
+                  date?: string | null;
+                  title?: string | null;
+                  lead?: string | null;
+                  featuredImage?: {
+                    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                    node?: {
+                      __typename?: 'MediaItem';
+                      altText?: string | null;
+                      mediaItemUrl?: string | null;
+                    } | null;
+                  } | null;
+                } | null> | null;
+              }
+            | null
+          > | null;
+          modules?: Array<
+            | {
+                __typename: 'EventSearch';
+                title?: string | null;
+                url?: string | null;
+                module?: string | null;
+              }
+            | {
+                __typename: 'EventSearchCarousel';
+                title?: string | null;
+                showAllLink?: Array<string | null> | null;
+                url?: string | null;
+                orderNewestFirst?: boolean | null;
+                eventsNearby?: boolean | null;
+                amountOfCards?: number | null;
+              }
+            | {
+                __typename: 'EventSelected';
+                title?: string | null;
+                events?: Array<string | null> | null;
+                module?: string | null;
+              }
+            | {
+                __typename: 'EventSelectedCarousel';
+                title?: string | null;
+                module?: string | null;
+                showAllLink?: Array<string | null> | null;
+                eventsNearby?: boolean | null;
+                events?: Array<string | null> | null;
+                amountOfCardsPerRow?: number | null;
+                amountOfCards?: number | null;
+              }
+            | { __typename?: 'LayoutArticleHighlights' }
+            | {
+                __typename: 'LayoutArticles';
+                title?: string | null;
+                articles?: Array<{
+                  __typename?: 'Post';
+                  id: string;
+                  uri?: string | null;
+                  slug?: string | null;
+                  link?: string | null;
+                  date?: string | null;
+                  title?: string | null;
+                  lead?: string | null;
+                  featuredImage?: {
+                    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                    node?: {
+                      __typename?: 'MediaItem';
+                      altText?: string | null;
+                      mediaItemUrl?: string | null;
+                    } | null;
+                  } | null;
+                  categories?: {
+                    __typename?: 'PostToCategoryConnection';
+                    nodes?: Array<{
+                      __typename?: 'Category';
+                      name?: string | null;
+                    } | null> | null;
+                  } | null;
+                } | null> | null;
+              }
+            | {
+                __typename: 'LayoutArticlesCarousel';
+                title?: string | null;
+                showMore?: Array<string | null> | null;
+                articles?: Array<{
+                  __typename?: 'Post';
+                  id: string;
+                  uri?: string | null;
+                  slug?: string | null;
+                  link?: string | null;
+                  date?: string | null;
+                  title?: string | null;
+                  lead?: string | null;
+                  featuredImage?: {
+                    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                    node?: {
+                      __typename?: 'MediaItem';
+                      altText?: string | null;
+                      mediaItemUrl?: string | null;
+                    } | null;
+                  } | null;
+                  categories?: {
+                    __typename?: 'PostToCategoryConnection';
+                    nodes?: Array<{
+                      __typename?: 'Category';
+                      name?: string | null;
+                    } | null> | null;
+                  } | null;
+                } | null> | null;
+              }
+            | {
+                __typename: 'LayoutCollection';
+                collection?: {
+                  __typename?: 'Collection';
+                  title?: string | null;
+                } | null;
+              }
+            | { __typename?: 'LayoutContact' }
+            | {
+                __typename: 'LayoutPages';
+                title?: string | null;
+                description?: string | null;
+                pages?: Array<{
+                  __typename?: 'Page';
+                  id: string;
+                  uri?: string | null;
+                  slug?: string | null;
+                  link?: string | null;
+                  date?: string | null;
+                  title?: string | null;
+                  lead?: string | null;
+                  featuredImage?: {
+                    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                    node?: {
+                      __typename?: 'MediaItem';
+                      altText?: string | null;
+                      mediaItemUrl?: string | null;
+                    } | null;
+                  } | null;
+                } | null> | null;
+              }
+            | {
+                __typename: 'LayoutPagesCarousel';
+                title?: string | null;
+                description?: string | null;
+                pages?: Array<{
+                  __typename?: 'Page';
+                  id: string;
+                  uri?: string | null;
+                  slug?: string | null;
+                  link?: string | null;
+                  date?: string | null;
+                  title?: string | null;
+                  lead?: string | null;
+                  featuredImage?: {
+                    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                    node?: {
+                      __typename?: 'MediaItem';
+                      altText?: string | null;
+                      mediaItemUrl?: string | null;
+                    } | null;
+                  } | null;
+                } | null> | null;
+              }
+            | null
+          > | null;
+        }
+      | { __typename?: 'Post' }
+      | { __typename?: 'Tag' }
+      | null;
+  } | null;
+};
+
+export type MenuPageFieldsFragment = {
+  __typename?: 'Page';
+  id: string;
+  content?: string | null;
+  slug?: string | null;
+  title?: string | null;
+  uri?: string | null;
+  link?: string | null;
+  lead?: string | null;
+  translations?: Array<{
+    __typename?: 'Page';
+    id: string;
+    content?: string | null;
+    slug?: string | null;
+    title?: string | null;
+    uri?: string | null;
+    link?: string | null;
+    lead?: string | null;
+    seo?: {
+      __typename?: 'SEO';
+      title?: string | null;
+      description?: string | null;
+      openGraphTitle?: string | null;
+      openGraphDescription?: string | null;
+      openGraphType?: string | null;
+      twitterTitle?: string | null;
+      twitterDescription?: string | null;
+      canonicalUrl?: string | null;
+      socialImage?: {
+        __typename?: 'MediaItem';
+        mediaItemUrl?: string | null;
+      } | null;
+    } | null;
+    language?: {
+      __typename?: 'Language';
+      code?: LanguageCodeEnum | null;
+      id: string;
+      locale?: string | null;
+      name?: string | null;
+      slug?: string | null;
+    } | null;
+    featuredImage?: {
+      __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+      node?: {
+        __typename?: 'MediaItem';
+        mediaItemUrl?: string | null;
+        link?: string | null;
+        altText?: string | null;
+        mimeType?: string | null;
+        title?: string | null;
+        uri?: string | null;
+      } | null;
+    } | null;
+    sidebar?: Array<
+      | {
+          __typename: 'LayoutArticles';
+          title?: string | null;
+          articles?: Array<{
+            __typename?: 'Post';
+            id: string;
+            uri?: string | null;
+            slug?: string | null;
+            link?: string | null;
+            date?: string | null;
+            title?: string | null;
+            lead?: string | null;
+            featuredImage?: {
+              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+              node?: {
+                __typename?: 'MediaItem';
+                altText?: string | null;
+                mediaItemUrl?: string | null;
+              } | null;
+            } | null;
+            categories?: {
+              __typename?: 'PostToCategoryConnection';
+              nodes?: Array<{
+                __typename?: 'Category';
+                name?: string | null;
+              } | null> | null;
+            } | null;
+          } | null> | null;
+        }
+      | {
+          __typename: 'LayoutLinkList';
+          anchor?: string | null;
+          title?: string | null;
+          description?: string | null;
+          links?: Array<{
+            __typename?: 'Link';
+            target?: string | null;
+            title?: string | null;
+            url?: string | null;
+          } | null> | null;
+        }
+      | {
+          __typename: 'LayoutPages';
+          title?: string | null;
+          description?: string | null;
+          pages?: Array<{
+            __typename?: 'Page';
+            id: string;
+            uri?: string | null;
+            slug?: string | null;
+            link?: string | null;
+            date?: string | null;
+            title?: string | null;
+            lead?: string | null;
+            featuredImage?: {
+              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+              node?: {
+                __typename?: 'MediaItem';
+                altText?: string | null;
+                mediaItemUrl?: string | null;
+              } | null;
+            } | null;
+          } | null> | null;
+        }
+      | null
+    > | null;
+    modules?: Array<
+      | {
+          __typename: 'EventSearch';
+          title?: string | null;
+          url?: string | null;
+          module?: string | null;
+        }
+      | {
+          __typename: 'EventSearchCarousel';
+          title?: string | null;
+          showAllLink?: Array<string | null> | null;
+          url?: string | null;
+          orderNewestFirst?: boolean | null;
+          eventsNearby?: boolean | null;
+          amountOfCards?: number | null;
+        }
+      | {
+          __typename: 'EventSelected';
+          title?: string | null;
+          events?: Array<string | null> | null;
+          module?: string | null;
+        }
+      | {
+          __typename: 'EventSelectedCarousel';
+          title?: string | null;
+          module?: string | null;
+          showAllLink?: Array<string | null> | null;
+          eventsNearby?: boolean | null;
+          events?: Array<string | null> | null;
+          amountOfCardsPerRow?: number | null;
+          amountOfCards?: number | null;
+        }
+      | { __typename?: 'LayoutArticleHighlights' }
+      | {
+          __typename: 'LayoutArticles';
+          title?: string | null;
+          articles?: Array<{
+            __typename?: 'Post';
+            id: string;
+            uri?: string | null;
+            slug?: string | null;
+            link?: string | null;
+            date?: string | null;
+            title?: string | null;
+            lead?: string | null;
+            featuredImage?: {
+              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+              node?: {
+                __typename?: 'MediaItem';
+                altText?: string | null;
+                mediaItemUrl?: string | null;
+              } | null;
+            } | null;
+            categories?: {
+              __typename?: 'PostToCategoryConnection';
+              nodes?: Array<{
+                __typename?: 'Category';
+                name?: string | null;
+              } | null> | null;
+            } | null;
+          } | null> | null;
+        }
+      | {
+          __typename: 'LayoutArticlesCarousel';
+          title?: string | null;
+          showMore?: Array<string | null> | null;
+          articles?: Array<{
+            __typename?: 'Post';
+            id: string;
+            uri?: string | null;
+            slug?: string | null;
+            link?: string | null;
+            date?: string | null;
+            title?: string | null;
+            lead?: string | null;
+            featuredImage?: {
+              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+              node?: {
+                __typename?: 'MediaItem';
+                altText?: string | null;
+                mediaItemUrl?: string | null;
+              } | null;
+            } | null;
+            categories?: {
+              __typename?: 'PostToCategoryConnection';
+              nodes?: Array<{
+                __typename?: 'Category';
+                name?: string | null;
+              } | null> | null;
+            } | null;
+          } | null> | null;
+        }
+      | {
+          __typename: 'LayoutCollection';
+          collection?: {
+            __typename?: 'Collection';
+            title?: string | null;
+          } | null;
+        }
+      | { __typename?: 'LayoutContact' }
+      | {
+          __typename: 'LayoutPages';
+          title?: string | null;
+          description?: string | null;
+          pages?: Array<{
+            __typename?: 'Page';
+            id: string;
+            uri?: string | null;
+            slug?: string | null;
+            link?: string | null;
+            date?: string | null;
+            title?: string | null;
+            lead?: string | null;
+            featuredImage?: {
+              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+              node?: {
+                __typename?: 'MediaItem';
+                altText?: string | null;
+                mediaItemUrl?: string | null;
+              } | null;
+            } | null;
+          } | null> | null;
+        }
+      | {
+          __typename: 'LayoutPagesCarousel';
+          title?: string | null;
+          description?: string | null;
+          pages?: Array<{
+            __typename?: 'Page';
+            id: string;
+            uri?: string | null;
+            slug?: string | null;
+            link?: string | null;
+            date?: string | null;
+            title?: string | null;
+            lead?: string | null;
+            featuredImage?: {
+              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+              node?: {
+                __typename?: 'MediaItem';
+                altText?: string | null;
+                mediaItemUrl?: string | null;
+              } | null;
+            } | null;
+          } | null> | null;
+        }
+      | null
+    > | null;
+  } | null> | null;
+  seo?: {
+    __typename?: 'SEO';
+    title?: string | null;
+    description?: string | null;
+    openGraphTitle?: string | null;
+    openGraphDescription?: string | null;
+    openGraphType?: string | null;
+    twitterTitle?: string | null;
+    twitterDescription?: string | null;
+    canonicalUrl?: string | null;
+    socialImage?: {
+      __typename?: 'MediaItem';
+      mediaItemUrl?: string | null;
+    } | null;
+  } | null;
+  language?: {
+    __typename?: 'Language';
+    code?: LanguageCodeEnum | null;
+    id: string;
+    locale?: string | null;
+    name?: string | null;
+    slug?: string | null;
+  } | null;
+  featuredImage?: {
+    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+    node?: {
+      __typename?: 'MediaItem';
+      mediaItemUrl?: string | null;
+      link?: string | null;
+      altText?: string | null;
+      mimeType?: string | null;
+      title?: string | null;
+      uri?: string | null;
+    } | null;
+  } | null;
+  sidebar?: Array<
+    | {
+        __typename: 'LayoutArticles';
+        title?: string | null;
+        articles?: Array<{
+          __typename?: 'Post';
+          id: string;
+          uri?: string | null;
+          slug?: string | null;
+          link?: string | null;
+          date?: string | null;
+          title?: string | null;
+          lead?: string | null;
+          featuredImage?: {
+            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+            node?: {
+              __typename?: 'MediaItem';
+              altText?: string | null;
+              mediaItemUrl?: string | null;
+            } | null;
+          } | null;
+          categories?: {
+            __typename?: 'PostToCategoryConnection';
+            nodes?: Array<{
+              __typename?: 'Category';
+              name?: string | null;
+            } | null> | null;
+          } | null;
+        } | null> | null;
+      }
+    | {
+        __typename: 'LayoutLinkList';
+        anchor?: string | null;
+        title?: string | null;
+        description?: string | null;
+        links?: Array<{
+          __typename?: 'Link';
+          target?: string | null;
+          title?: string | null;
+          url?: string | null;
+        } | null> | null;
+      }
+    | {
+        __typename: 'LayoutPages';
+        title?: string | null;
+        description?: string | null;
+        pages?: Array<{
+          __typename?: 'Page';
+          id: string;
+          uri?: string | null;
+          slug?: string | null;
+          link?: string | null;
+          date?: string | null;
+          title?: string | null;
+          lead?: string | null;
+          featuredImage?: {
+            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+            node?: {
+              __typename?: 'MediaItem';
+              altText?: string | null;
+              mediaItemUrl?: string | null;
+            } | null;
+          } | null;
+        } | null> | null;
+      }
+    | null
+  > | null;
+  modules?: Array<
+    | {
+        __typename: 'EventSearch';
+        title?: string | null;
+        url?: string | null;
+        module?: string | null;
+      }
+    | {
+        __typename: 'EventSearchCarousel';
+        title?: string | null;
+        showAllLink?: Array<string | null> | null;
+        url?: string | null;
+        orderNewestFirst?: boolean | null;
+        eventsNearby?: boolean | null;
+        amountOfCards?: number | null;
+      }
+    | {
+        __typename: 'EventSelected';
+        title?: string | null;
+        events?: Array<string | null> | null;
+        module?: string | null;
+      }
+    | {
+        __typename: 'EventSelectedCarousel';
+        title?: string | null;
+        module?: string | null;
+        showAllLink?: Array<string | null> | null;
+        eventsNearby?: boolean | null;
+        events?: Array<string | null> | null;
+        amountOfCardsPerRow?: number | null;
+        amountOfCards?: number | null;
+      }
+    | { __typename?: 'LayoutArticleHighlights' }
+    | {
+        __typename: 'LayoutArticles';
+        title?: string | null;
+        articles?: Array<{
+          __typename?: 'Post';
+          id: string;
+          uri?: string | null;
+          slug?: string | null;
+          link?: string | null;
+          date?: string | null;
+          title?: string | null;
+          lead?: string | null;
+          featuredImage?: {
+            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+            node?: {
+              __typename?: 'MediaItem';
+              altText?: string | null;
+              mediaItemUrl?: string | null;
+            } | null;
+          } | null;
+          categories?: {
+            __typename?: 'PostToCategoryConnection';
+            nodes?: Array<{
+              __typename?: 'Category';
+              name?: string | null;
+            } | null> | null;
+          } | null;
+        } | null> | null;
+      }
+    | {
+        __typename: 'LayoutArticlesCarousel';
+        title?: string | null;
+        showMore?: Array<string | null> | null;
+        articles?: Array<{
+          __typename?: 'Post';
+          id: string;
+          uri?: string | null;
+          slug?: string | null;
+          link?: string | null;
+          date?: string | null;
+          title?: string | null;
+          lead?: string | null;
+          featuredImage?: {
+            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+            node?: {
+              __typename?: 'MediaItem';
+              altText?: string | null;
+              mediaItemUrl?: string | null;
+            } | null;
+          } | null;
+          categories?: {
+            __typename?: 'PostToCategoryConnection';
+            nodes?: Array<{
+              __typename?: 'Category';
+              name?: string | null;
+            } | null> | null;
+          } | null;
+        } | null> | null;
+      }
+    | {
+        __typename: 'LayoutCollection';
+        collection?: {
+          __typename?: 'Collection';
+          title?: string | null;
+        } | null;
+      }
+    | { __typename?: 'LayoutContact' }
+    | {
+        __typename: 'LayoutPages';
+        title?: string | null;
+        description?: string | null;
+        pages?: Array<{
+          __typename?: 'Page';
+          id: string;
+          uri?: string | null;
+          slug?: string | null;
+          link?: string | null;
+          date?: string | null;
+          title?: string | null;
+          lead?: string | null;
+          featuredImage?: {
+            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+            node?: {
+              __typename?: 'MediaItem';
+              altText?: string | null;
+              mediaItemUrl?: string | null;
+            } | null;
+          } | null;
+        } | null> | null;
+      }
+    | {
+        __typename: 'LayoutPagesCarousel';
+        title?: string | null;
+        description?: string | null;
+        pages?: Array<{
+          __typename?: 'Page';
+          id: string;
+          uri?: string | null;
+          slug?: string | null;
+          link?: string | null;
+          date?: string | null;
+          title?: string | null;
+          lead?: string | null;
+          featuredImage?: {
+            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+            node?: {
+              __typename?: 'MediaItem';
+              altText?: string | null;
+              mediaItemUrl?: string | null;
+            } | null;
+          } | null;
+        } | null> | null;
+      }
+    | null
+  > | null;
 };
 
 export type MenuQueryVariables = Exact<{
@@ -11135,6 +12717,1067 @@ export type MenuQuery = {
         title?: string | null;
         path?: string | null;
         label?: string | null;
+        connectedNode?: {
+          __typename?: 'MenuItemToMenuItemLinkableConnectionEdge';
+          node?:
+            | { __typename?: 'Category' }
+            | {
+                __typename?: 'Page';
+                id: string;
+                content?: string | null;
+                slug?: string | null;
+                title?: string | null;
+                uri?: string | null;
+                link?: string | null;
+                lead?: string | null;
+                children?: {
+                  __typename?: 'HierarchicalContentNodeToContentNodeChildrenConnection';
+                  nodes?: Array<
+                    | { __typename?: 'Collection' }
+                    | { __typename?: 'Contact' }
+                    | { __typename?: 'LandingPage' }
+                    | { __typename?: 'MediaItem' }
+                    | {
+                        __typename?: 'Page';
+                        id: string;
+                        content?: string | null;
+                        slug?: string | null;
+                        title?: string | null;
+                        uri?: string | null;
+                        link?: string | null;
+                        lead?: string | null;
+                        translations?: Array<{
+                          __typename?: 'Page';
+                          id: string;
+                          content?: string | null;
+                          slug?: string | null;
+                          title?: string | null;
+                          uri?: string | null;
+                          link?: string | null;
+                          lead?: string | null;
+                          seo?: {
+                            __typename?: 'SEO';
+                            title?: string | null;
+                            description?: string | null;
+                            openGraphTitle?: string | null;
+                            openGraphDescription?: string | null;
+                            openGraphType?: string | null;
+                            twitterTitle?: string | null;
+                            twitterDescription?: string | null;
+                            canonicalUrl?: string | null;
+                            socialImage?: {
+                              __typename?: 'MediaItem';
+                              mediaItemUrl?: string | null;
+                            } | null;
+                          } | null;
+                          language?: {
+                            __typename?: 'Language';
+                            code?: LanguageCodeEnum | null;
+                            id: string;
+                            locale?: string | null;
+                            name?: string | null;
+                            slug?: string | null;
+                          } | null;
+                          featuredImage?: {
+                            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                            node?: {
+                              __typename?: 'MediaItem';
+                              mediaItemUrl?: string | null;
+                              link?: string | null;
+                              altText?: string | null;
+                              mimeType?: string | null;
+                              title?: string | null;
+                              uri?: string | null;
+                            } | null;
+                          } | null;
+                          sidebar?: Array<
+                            | {
+                                __typename: 'LayoutArticles';
+                                title?: string | null;
+                                articles?: Array<{
+                                  __typename?: 'Post';
+                                  id: string;
+                                  uri?: string | null;
+                                  slug?: string | null;
+                                  link?: string | null;
+                                  date?: string | null;
+                                  title?: string | null;
+                                  lead?: string | null;
+                                  featuredImage?: {
+                                    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                                    node?: {
+                                      __typename?: 'MediaItem';
+                                      altText?: string | null;
+                                      mediaItemUrl?: string | null;
+                                    } | null;
+                                  } | null;
+                                  categories?: {
+                                    __typename?: 'PostToCategoryConnection';
+                                    nodes?: Array<{
+                                      __typename?: 'Category';
+                                      name?: string | null;
+                                    } | null> | null;
+                                  } | null;
+                                } | null> | null;
+                              }
+                            | {
+                                __typename: 'LayoutLinkList';
+                                anchor?: string | null;
+                                title?: string | null;
+                                description?: string | null;
+                                links?: Array<{
+                                  __typename?: 'Link';
+                                  target?: string | null;
+                                  title?: string | null;
+                                  url?: string | null;
+                                } | null> | null;
+                              }
+                            | {
+                                __typename: 'LayoutPages';
+                                title?: string | null;
+                                description?: string | null;
+                                pages?: Array<{
+                                  __typename?: 'Page';
+                                  id: string;
+                                  uri?: string | null;
+                                  slug?: string | null;
+                                  link?: string | null;
+                                  date?: string | null;
+                                  title?: string | null;
+                                  lead?: string | null;
+                                  featuredImage?: {
+                                    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                                    node?: {
+                                      __typename?: 'MediaItem';
+                                      altText?: string | null;
+                                      mediaItemUrl?: string | null;
+                                    } | null;
+                                  } | null;
+                                } | null> | null;
+                              }
+                            | null
+                          > | null;
+                          modules?: Array<
+                            | {
+                                __typename: 'EventSearch';
+                                title?: string | null;
+                                url?: string | null;
+                                module?: string | null;
+                              }
+                            | {
+                                __typename: 'EventSearchCarousel';
+                                title?: string | null;
+                                showAllLink?: Array<string | null> | null;
+                                url?: string | null;
+                                orderNewestFirst?: boolean | null;
+                                eventsNearby?: boolean | null;
+                                amountOfCards?: number | null;
+                              }
+                            | {
+                                __typename: 'EventSelected';
+                                title?: string | null;
+                                events?: Array<string | null> | null;
+                                module?: string | null;
+                              }
+                            | {
+                                __typename: 'EventSelectedCarousel';
+                                title?: string | null;
+                                module?: string | null;
+                                showAllLink?: Array<string | null> | null;
+                                eventsNearby?: boolean | null;
+                                events?: Array<string | null> | null;
+                                amountOfCardsPerRow?: number | null;
+                                amountOfCards?: number | null;
+                              }
+                            | { __typename?: 'LayoutArticleHighlights' }
+                            | {
+                                __typename: 'LayoutArticles';
+                                title?: string | null;
+                                articles?: Array<{
+                                  __typename?: 'Post';
+                                  id: string;
+                                  uri?: string | null;
+                                  slug?: string | null;
+                                  link?: string | null;
+                                  date?: string | null;
+                                  title?: string | null;
+                                  lead?: string | null;
+                                  featuredImage?: {
+                                    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                                    node?: {
+                                      __typename?: 'MediaItem';
+                                      altText?: string | null;
+                                      mediaItemUrl?: string | null;
+                                    } | null;
+                                  } | null;
+                                  categories?: {
+                                    __typename?: 'PostToCategoryConnection';
+                                    nodes?: Array<{
+                                      __typename?: 'Category';
+                                      name?: string | null;
+                                    } | null> | null;
+                                  } | null;
+                                } | null> | null;
+                              }
+                            | {
+                                __typename: 'LayoutArticlesCarousel';
+                                title?: string | null;
+                                showMore?: Array<string | null> | null;
+                                articles?: Array<{
+                                  __typename?: 'Post';
+                                  id: string;
+                                  uri?: string | null;
+                                  slug?: string | null;
+                                  link?: string | null;
+                                  date?: string | null;
+                                  title?: string | null;
+                                  lead?: string | null;
+                                  featuredImage?: {
+                                    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                                    node?: {
+                                      __typename?: 'MediaItem';
+                                      altText?: string | null;
+                                      mediaItemUrl?: string | null;
+                                    } | null;
+                                  } | null;
+                                  categories?: {
+                                    __typename?: 'PostToCategoryConnection';
+                                    nodes?: Array<{
+                                      __typename?: 'Category';
+                                      name?: string | null;
+                                    } | null> | null;
+                                  } | null;
+                                } | null> | null;
+                              }
+                            | {
+                                __typename: 'LayoutCollection';
+                                collection?: {
+                                  __typename?: 'Collection';
+                                  title?: string | null;
+                                } | null;
+                              }
+                            | { __typename?: 'LayoutContact' }
+                            | {
+                                __typename: 'LayoutPages';
+                                title?: string | null;
+                                description?: string | null;
+                                pages?: Array<{
+                                  __typename?: 'Page';
+                                  id: string;
+                                  uri?: string | null;
+                                  slug?: string | null;
+                                  link?: string | null;
+                                  date?: string | null;
+                                  title?: string | null;
+                                  lead?: string | null;
+                                  featuredImage?: {
+                                    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                                    node?: {
+                                      __typename?: 'MediaItem';
+                                      altText?: string | null;
+                                      mediaItemUrl?: string | null;
+                                    } | null;
+                                  } | null;
+                                } | null> | null;
+                              }
+                            | {
+                                __typename: 'LayoutPagesCarousel';
+                                title?: string | null;
+                                description?: string | null;
+                                pages?: Array<{
+                                  __typename?: 'Page';
+                                  id: string;
+                                  uri?: string | null;
+                                  slug?: string | null;
+                                  link?: string | null;
+                                  date?: string | null;
+                                  title?: string | null;
+                                  lead?: string | null;
+                                  featuredImage?: {
+                                    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                                    node?: {
+                                      __typename?: 'MediaItem';
+                                      altText?: string | null;
+                                      mediaItemUrl?: string | null;
+                                    } | null;
+                                  } | null;
+                                } | null> | null;
+                              }
+                            | null
+                          > | null;
+                        } | null> | null;
+                        seo?: {
+                          __typename?: 'SEO';
+                          title?: string | null;
+                          description?: string | null;
+                          openGraphTitle?: string | null;
+                          openGraphDescription?: string | null;
+                          openGraphType?: string | null;
+                          twitterTitle?: string | null;
+                          twitterDescription?: string | null;
+                          canonicalUrl?: string | null;
+                          socialImage?: {
+                            __typename?: 'MediaItem';
+                            mediaItemUrl?: string | null;
+                          } | null;
+                        } | null;
+                        language?: {
+                          __typename?: 'Language';
+                          code?: LanguageCodeEnum | null;
+                          id: string;
+                          locale?: string | null;
+                          name?: string | null;
+                          slug?: string | null;
+                        } | null;
+                        featuredImage?: {
+                          __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                          node?: {
+                            __typename?: 'MediaItem';
+                            mediaItemUrl?: string | null;
+                            link?: string | null;
+                            altText?: string | null;
+                            mimeType?: string | null;
+                            title?: string | null;
+                            uri?: string | null;
+                          } | null;
+                        } | null;
+                        sidebar?: Array<
+                          | {
+                              __typename: 'LayoutArticles';
+                              title?: string | null;
+                              articles?: Array<{
+                                __typename?: 'Post';
+                                id: string;
+                                uri?: string | null;
+                                slug?: string | null;
+                                link?: string | null;
+                                date?: string | null;
+                                title?: string | null;
+                                lead?: string | null;
+                                featuredImage?: {
+                                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                                  node?: {
+                                    __typename?: 'MediaItem';
+                                    altText?: string | null;
+                                    mediaItemUrl?: string | null;
+                                  } | null;
+                                } | null;
+                                categories?: {
+                                  __typename?: 'PostToCategoryConnection';
+                                  nodes?: Array<{
+                                    __typename?: 'Category';
+                                    name?: string | null;
+                                  } | null> | null;
+                                } | null;
+                              } | null> | null;
+                            }
+                          | {
+                              __typename: 'LayoutLinkList';
+                              anchor?: string | null;
+                              title?: string | null;
+                              description?: string | null;
+                              links?: Array<{
+                                __typename?: 'Link';
+                                target?: string | null;
+                                title?: string | null;
+                                url?: string | null;
+                              } | null> | null;
+                            }
+                          | {
+                              __typename: 'LayoutPages';
+                              title?: string | null;
+                              description?: string | null;
+                              pages?: Array<{
+                                __typename?: 'Page';
+                                id: string;
+                                uri?: string | null;
+                                slug?: string | null;
+                                link?: string | null;
+                                date?: string | null;
+                                title?: string | null;
+                                lead?: string | null;
+                                featuredImage?: {
+                                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                                  node?: {
+                                    __typename?: 'MediaItem';
+                                    altText?: string | null;
+                                    mediaItemUrl?: string | null;
+                                  } | null;
+                                } | null;
+                              } | null> | null;
+                            }
+                          | null
+                        > | null;
+                        modules?: Array<
+                          | {
+                              __typename: 'EventSearch';
+                              title?: string | null;
+                              url?: string | null;
+                              module?: string | null;
+                            }
+                          | {
+                              __typename: 'EventSearchCarousel';
+                              title?: string | null;
+                              showAllLink?: Array<string | null> | null;
+                              url?: string | null;
+                              orderNewestFirst?: boolean | null;
+                              eventsNearby?: boolean | null;
+                              amountOfCards?: number | null;
+                            }
+                          | {
+                              __typename: 'EventSelected';
+                              title?: string | null;
+                              events?: Array<string | null> | null;
+                              module?: string | null;
+                            }
+                          | {
+                              __typename: 'EventSelectedCarousel';
+                              title?: string | null;
+                              module?: string | null;
+                              showAllLink?: Array<string | null> | null;
+                              eventsNearby?: boolean | null;
+                              events?: Array<string | null> | null;
+                              amountOfCardsPerRow?: number | null;
+                              amountOfCards?: number | null;
+                            }
+                          | { __typename?: 'LayoutArticleHighlights' }
+                          | {
+                              __typename: 'LayoutArticles';
+                              title?: string | null;
+                              articles?: Array<{
+                                __typename?: 'Post';
+                                id: string;
+                                uri?: string | null;
+                                slug?: string | null;
+                                link?: string | null;
+                                date?: string | null;
+                                title?: string | null;
+                                lead?: string | null;
+                                featuredImage?: {
+                                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                                  node?: {
+                                    __typename?: 'MediaItem';
+                                    altText?: string | null;
+                                    mediaItemUrl?: string | null;
+                                  } | null;
+                                } | null;
+                                categories?: {
+                                  __typename?: 'PostToCategoryConnection';
+                                  nodes?: Array<{
+                                    __typename?: 'Category';
+                                    name?: string | null;
+                                  } | null> | null;
+                                } | null;
+                              } | null> | null;
+                            }
+                          | {
+                              __typename: 'LayoutArticlesCarousel';
+                              title?: string | null;
+                              showMore?: Array<string | null> | null;
+                              articles?: Array<{
+                                __typename?: 'Post';
+                                id: string;
+                                uri?: string | null;
+                                slug?: string | null;
+                                link?: string | null;
+                                date?: string | null;
+                                title?: string | null;
+                                lead?: string | null;
+                                featuredImage?: {
+                                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                                  node?: {
+                                    __typename?: 'MediaItem';
+                                    altText?: string | null;
+                                    mediaItemUrl?: string | null;
+                                  } | null;
+                                } | null;
+                                categories?: {
+                                  __typename?: 'PostToCategoryConnection';
+                                  nodes?: Array<{
+                                    __typename?: 'Category';
+                                    name?: string | null;
+                                  } | null> | null;
+                                } | null;
+                              } | null> | null;
+                            }
+                          | {
+                              __typename: 'LayoutCollection';
+                              collection?: {
+                                __typename?: 'Collection';
+                                title?: string | null;
+                              } | null;
+                            }
+                          | { __typename?: 'LayoutContact' }
+                          | {
+                              __typename: 'LayoutPages';
+                              title?: string | null;
+                              description?: string | null;
+                              pages?: Array<{
+                                __typename?: 'Page';
+                                id: string;
+                                uri?: string | null;
+                                slug?: string | null;
+                                link?: string | null;
+                                date?: string | null;
+                                title?: string | null;
+                                lead?: string | null;
+                                featuredImage?: {
+                                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                                  node?: {
+                                    __typename?: 'MediaItem';
+                                    altText?: string | null;
+                                    mediaItemUrl?: string | null;
+                                  } | null;
+                                } | null;
+                              } | null> | null;
+                            }
+                          | {
+                              __typename: 'LayoutPagesCarousel';
+                              title?: string | null;
+                              description?: string | null;
+                              pages?: Array<{
+                                __typename?: 'Page';
+                                id: string;
+                                uri?: string | null;
+                                slug?: string | null;
+                                link?: string | null;
+                                date?: string | null;
+                                title?: string | null;
+                                lead?: string | null;
+                                featuredImage?: {
+                                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                                  node?: {
+                                    __typename?: 'MediaItem';
+                                    altText?: string | null;
+                                    mediaItemUrl?: string | null;
+                                  } | null;
+                                } | null;
+                              } | null> | null;
+                            }
+                          | null
+                        > | null;
+                      }
+                    | { __typename?: 'Post' }
+                    | { __typename?: 'Release' }
+                    | { __typename?: 'Translation' }
+                    | null
+                  > | null;
+                } | null;
+                translations?: Array<{
+                  __typename?: 'Page';
+                  id: string;
+                  content?: string | null;
+                  slug?: string | null;
+                  title?: string | null;
+                  uri?: string | null;
+                  link?: string | null;
+                  lead?: string | null;
+                  seo?: {
+                    __typename?: 'SEO';
+                    title?: string | null;
+                    description?: string | null;
+                    openGraphTitle?: string | null;
+                    openGraphDescription?: string | null;
+                    openGraphType?: string | null;
+                    twitterTitle?: string | null;
+                    twitterDescription?: string | null;
+                    canonicalUrl?: string | null;
+                    socialImage?: {
+                      __typename?: 'MediaItem';
+                      mediaItemUrl?: string | null;
+                    } | null;
+                  } | null;
+                  language?: {
+                    __typename?: 'Language';
+                    code?: LanguageCodeEnum | null;
+                    id: string;
+                    locale?: string | null;
+                    name?: string | null;
+                    slug?: string | null;
+                  } | null;
+                  featuredImage?: {
+                    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                    node?: {
+                      __typename?: 'MediaItem';
+                      mediaItemUrl?: string | null;
+                      link?: string | null;
+                      altText?: string | null;
+                      mimeType?: string | null;
+                      title?: string | null;
+                      uri?: string | null;
+                    } | null;
+                  } | null;
+                  sidebar?: Array<
+                    | {
+                        __typename: 'LayoutArticles';
+                        title?: string | null;
+                        articles?: Array<{
+                          __typename?: 'Post';
+                          id: string;
+                          uri?: string | null;
+                          slug?: string | null;
+                          link?: string | null;
+                          date?: string | null;
+                          title?: string | null;
+                          lead?: string | null;
+                          featuredImage?: {
+                            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                            node?: {
+                              __typename?: 'MediaItem';
+                              altText?: string | null;
+                              mediaItemUrl?: string | null;
+                            } | null;
+                          } | null;
+                          categories?: {
+                            __typename?: 'PostToCategoryConnection';
+                            nodes?: Array<{
+                              __typename?: 'Category';
+                              name?: string | null;
+                            } | null> | null;
+                          } | null;
+                        } | null> | null;
+                      }
+                    | {
+                        __typename: 'LayoutLinkList';
+                        anchor?: string | null;
+                        title?: string | null;
+                        description?: string | null;
+                        links?: Array<{
+                          __typename?: 'Link';
+                          target?: string | null;
+                          title?: string | null;
+                          url?: string | null;
+                        } | null> | null;
+                      }
+                    | {
+                        __typename: 'LayoutPages';
+                        title?: string | null;
+                        description?: string | null;
+                        pages?: Array<{
+                          __typename?: 'Page';
+                          id: string;
+                          uri?: string | null;
+                          slug?: string | null;
+                          link?: string | null;
+                          date?: string | null;
+                          title?: string | null;
+                          lead?: string | null;
+                          featuredImage?: {
+                            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                            node?: {
+                              __typename?: 'MediaItem';
+                              altText?: string | null;
+                              mediaItemUrl?: string | null;
+                            } | null;
+                          } | null;
+                        } | null> | null;
+                      }
+                    | null
+                  > | null;
+                  modules?: Array<
+                    | {
+                        __typename: 'EventSearch';
+                        title?: string | null;
+                        url?: string | null;
+                        module?: string | null;
+                      }
+                    | {
+                        __typename: 'EventSearchCarousel';
+                        title?: string | null;
+                        showAllLink?: Array<string | null> | null;
+                        url?: string | null;
+                        orderNewestFirst?: boolean | null;
+                        eventsNearby?: boolean | null;
+                        amountOfCards?: number | null;
+                      }
+                    | {
+                        __typename: 'EventSelected';
+                        title?: string | null;
+                        events?: Array<string | null> | null;
+                        module?: string | null;
+                      }
+                    | {
+                        __typename: 'EventSelectedCarousel';
+                        title?: string | null;
+                        module?: string | null;
+                        showAllLink?: Array<string | null> | null;
+                        eventsNearby?: boolean | null;
+                        events?: Array<string | null> | null;
+                        amountOfCardsPerRow?: number | null;
+                        amountOfCards?: number | null;
+                      }
+                    | { __typename?: 'LayoutArticleHighlights' }
+                    | {
+                        __typename: 'LayoutArticles';
+                        title?: string | null;
+                        articles?: Array<{
+                          __typename?: 'Post';
+                          id: string;
+                          uri?: string | null;
+                          slug?: string | null;
+                          link?: string | null;
+                          date?: string | null;
+                          title?: string | null;
+                          lead?: string | null;
+                          featuredImage?: {
+                            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                            node?: {
+                              __typename?: 'MediaItem';
+                              altText?: string | null;
+                              mediaItemUrl?: string | null;
+                            } | null;
+                          } | null;
+                          categories?: {
+                            __typename?: 'PostToCategoryConnection';
+                            nodes?: Array<{
+                              __typename?: 'Category';
+                              name?: string | null;
+                            } | null> | null;
+                          } | null;
+                        } | null> | null;
+                      }
+                    | {
+                        __typename: 'LayoutArticlesCarousel';
+                        title?: string | null;
+                        showMore?: Array<string | null> | null;
+                        articles?: Array<{
+                          __typename?: 'Post';
+                          id: string;
+                          uri?: string | null;
+                          slug?: string | null;
+                          link?: string | null;
+                          date?: string | null;
+                          title?: string | null;
+                          lead?: string | null;
+                          featuredImage?: {
+                            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                            node?: {
+                              __typename?: 'MediaItem';
+                              altText?: string | null;
+                              mediaItemUrl?: string | null;
+                            } | null;
+                          } | null;
+                          categories?: {
+                            __typename?: 'PostToCategoryConnection';
+                            nodes?: Array<{
+                              __typename?: 'Category';
+                              name?: string | null;
+                            } | null> | null;
+                          } | null;
+                        } | null> | null;
+                      }
+                    | {
+                        __typename: 'LayoutCollection';
+                        collection?: {
+                          __typename?: 'Collection';
+                          title?: string | null;
+                        } | null;
+                      }
+                    | { __typename?: 'LayoutContact' }
+                    | {
+                        __typename: 'LayoutPages';
+                        title?: string | null;
+                        description?: string | null;
+                        pages?: Array<{
+                          __typename?: 'Page';
+                          id: string;
+                          uri?: string | null;
+                          slug?: string | null;
+                          link?: string | null;
+                          date?: string | null;
+                          title?: string | null;
+                          lead?: string | null;
+                          featuredImage?: {
+                            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                            node?: {
+                              __typename?: 'MediaItem';
+                              altText?: string | null;
+                              mediaItemUrl?: string | null;
+                            } | null;
+                          } | null;
+                        } | null> | null;
+                      }
+                    | {
+                        __typename: 'LayoutPagesCarousel';
+                        title?: string | null;
+                        description?: string | null;
+                        pages?: Array<{
+                          __typename?: 'Page';
+                          id: string;
+                          uri?: string | null;
+                          slug?: string | null;
+                          link?: string | null;
+                          date?: string | null;
+                          title?: string | null;
+                          lead?: string | null;
+                          featuredImage?: {
+                            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                            node?: {
+                              __typename?: 'MediaItem';
+                              altText?: string | null;
+                              mediaItemUrl?: string | null;
+                            } | null;
+                          } | null;
+                        } | null> | null;
+                      }
+                    | null
+                  > | null;
+                } | null> | null;
+                seo?: {
+                  __typename?: 'SEO';
+                  title?: string | null;
+                  description?: string | null;
+                  openGraphTitle?: string | null;
+                  openGraphDescription?: string | null;
+                  openGraphType?: string | null;
+                  twitterTitle?: string | null;
+                  twitterDescription?: string | null;
+                  canonicalUrl?: string | null;
+                  socialImage?: {
+                    __typename?: 'MediaItem';
+                    mediaItemUrl?: string | null;
+                  } | null;
+                } | null;
+                language?: {
+                  __typename?: 'Language';
+                  code?: LanguageCodeEnum | null;
+                  id: string;
+                  locale?: string | null;
+                  name?: string | null;
+                  slug?: string | null;
+                } | null;
+                featuredImage?: {
+                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                  node?: {
+                    __typename?: 'MediaItem';
+                    mediaItemUrl?: string | null;
+                    link?: string | null;
+                    altText?: string | null;
+                    mimeType?: string | null;
+                    title?: string | null;
+                    uri?: string | null;
+                  } | null;
+                } | null;
+                sidebar?: Array<
+                  | {
+                      __typename: 'LayoutArticles';
+                      title?: string | null;
+                      articles?: Array<{
+                        __typename?: 'Post';
+                        id: string;
+                        uri?: string | null;
+                        slug?: string | null;
+                        link?: string | null;
+                        date?: string | null;
+                        title?: string | null;
+                        lead?: string | null;
+                        featuredImage?: {
+                          __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                          node?: {
+                            __typename?: 'MediaItem';
+                            altText?: string | null;
+                            mediaItemUrl?: string | null;
+                          } | null;
+                        } | null;
+                        categories?: {
+                          __typename?: 'PostToCategoryConnection';
+                          nodes?: Array<{
+                            __typename?: 'Category';
+                            name?: string | null;
+                          } | null> | null;
+                        } | null;
+                      } | null> | null;
+                    }
+                  | {
+                      __typename: 'LayoutLinkList';
+                      anchor?: string | null;
+                      title?: string | null;
+                      description?: string | null;
+                      links?: Array<{
+                        __typename?: 'Link';
+                        target?: string | null;
+                        title?: string | null;
+                        url?: string | null;
+                      } | null> | null;
+                    }
+                  | {
+                      __typename: 'LayoutPages';
+                      title?: string | null;
+                      description?: string | null;
+                      pages?: Array<{
+                        __typename?: 'Page';
+                        id: string;
+                        uri?: string | null;
+                        slug?: string | null;
+                        link?: string | null;
+                        date?: string | null;
+                        title?: string | null;
+                        lead?: string | null;
+                        featuredImage?: {
+                          __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                          node?: {
+                            __typename?: 'MediaItem';
+                            altText?: string | null;
+                            mediaItemUrl?: string | null;
+                          } | null;
+                        } | null;
+                      } | null> | null;
+                    }
+                  | null
+                > | null;
+                modules?: Array<
+                  | {
+                      __typename: 'EventSearch';
+                      title?: string | null;
+                      url?: string | null;
+                      module?: string | null;
+                    }
+                  | {
+                      __typename: 'EventSearchCarousel';
+                      title?: string | null;
+                      showAllLink?: Array<string | null> | null;
+                      url?: string | null;
+                      orderNewestFirst?: boolean | null;
+                      eventsNearby?: boolean | null;
+                      amountOfCards?: number | null;
+                    }
+                  | {
+                      __typename: 'EventSelected';
+                      title?: string | null;
+                      events?: Array<string | null> | null;
+                      module?: string | null;
+                    }
+                  | {
+                      __typename: 'EventSelectedCarousel';
+                      title?: string | null;
+                      module?: string | null;
+                      showAllLink?: Array<string | null> | null;
+                      eventsNearby?: boolean | null;
+                      events?: Array<string | null> | null;
+                      amountOfCardsPerRow?: number | null;
+                      amountOfCards?: number | null;
+                    }
+                  | { __typename?: 'LayoutArticleHighlights' }
+                  | {
+                      __typename: 'LayoutArticles';
+                      title?: string | null;
+                      articles?: Array<{
+                        __typename?: 'Post';
+                        id: string;
+                        uri?: string | null;
+                        slug?: string | null;
+                        link?: string | null;
+                        date?: string | null;
+                        title?: string | null;
+                        lead?: string | null;
+                        featuredImage?: {
+                          __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                          node?: {
+                            __typename?: 'MediaItem';
+                            altText?: string | null;
+                            mediaItemUrl?: string | null;
+                          } | null;
+                        } | null;
+                        categories?: {
+                          __typename?: 'PostToCategoryConnection';
+                          nodes?: Array<{
+                            __typename?: 'Category';
+                            name?: string | null;
+                          } | null> | null;
+                        } | null;
+                      } | null> | null;
+                    }
+                  | {
+                      __typename: 'LayoutArticlesCarousel';
+                      title?: string | null;
+                      showMore?: Array<string | null> | null;
+                      articles?: Array<{
+                        __typename?: 'Post';
+                        id: string;
+                        uri?: string | null;
+                        slug?: string | null;
+                        link?: string | null;
+                        date?: string | null;
+                        title?: string | null;
+                        lead?: string | null;
+                        featuredImage?: {
+                          __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                          node?: {
+                            __typename?: 'MediaItem';
+                            altText?: string | null;
+                            mediaItemUrl?: string | null;
+                          } | null;
+                        } | null;
+                        categories?: {
+                          __typename?: 'PostToCategoryConnection';
+                          nodes?: Array<{
+                            __typename?: 'Category';
+                            name?: string | null;
+                          } | null> | null;
+                        } | null;
+                      } | null> | null;
+                    }
+                  | {
+                      __typename: 'LayoutCollection';
+                      collection?: {
+                        __typename?: 'Collection';
+                        title?: string | null;
+                      } | null;
+                    }
+                  | { __typename?: 'LayoutContact' }
+                  | {
+                      __typename: 'LayoutPages';
+                      title?: string | null;
+                      description?: string | null;
+                      pages?: Array<{
+                        __typename?: 'Page';
+                        id: string;
+                        uri?: string | null;
+                        slug?: string | null;
+                        link?: string | null;
+                        date?: string | null;
+                        title?: string | null;
+                        lead?: string | null;
+                        featuredImage?: {
+                          __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                          node?: {
+                            __typename?: 'MediaItem';
+                            altText?: string | null;
+                            mediaItemUrl?: string | null;
+                          } | null;
+                        } | null;
+                      } | null> | null;
+                    }
+                  | {
+                      __typename: 'LayoutPagesCarousel';
+                      title?: string | null;
+                      description?: string | null;
+                      pages?: Array<{
+                        __typename?: 'Page';
+                        id: string;
+                        uri?: string | null;
+                        slug?: string | null;
+                        link?: string | null;
+                        date?: string | null;
+                        title?: string | null;
+                        lead?: string | null;
+                        featuredImage?: {
+                          __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                          node?: {
+                            __typename?: 'MediaItem';
+                            altText?: string | null;
+                            mediaItemUrl?: string | null;
+                          } | null;
+                        } | null;
+                      } | null> | null;
+                    }
+                  | null
+                > | null;
+              }
+            | { __typename?: 'Post' }
+            | { __typename?: 'Tag' }
+            | null;
+        } | null;
       } | null> | null;
     } | null;
   } | null;
@@ -13145,26 +15788,6 @@ export const PostFragmentDoc = gql`
   ${EventSelectedCarouselFragmentDoc}
   ${LayoutCollectionFragmentDoc}
 `;
-export const MenuItemFragmentDoc = gql`
-  fragment MenuItem on MenuItem {
-    id
-    order
-    target
-    title
-    path
-    label
-  }
-`;
-export const LayoutArticleHighlightsFragmentDoc = gql`
-  fragment LayoutArticleHighlights on LayoutArticleHighlights {
-    __typename
-  }
-`;
-export const LayoutContactFragmentDoc = gql`
-  fragment LayoutContact on LayoutContact {
-    __typename
-  }
-`;
 export const PageFragmentDoc = gql`
   fragment Page on Page {
     id
@@ -13243,6 +15866,48 @@ export const PageFragmentDoc = gql`
   ${EventSearchCarouselFragmentDoc}
   ${EventSelectedCarouselFragmentDoc}
   ${LayoutCollectionFragmentDoc}
+`;
+export const MenuPageFieldsFragmentDoc = gql`
+  fragment menuPageFields on Page {
+    ...Page
+    translations {
+      ...Page
+    }
+  }
+  ${PageFragmentDoc}
+`;
+export const MenuItemFragmentDoc = gql`
+  fragment MenuItem on MenuItem {
+    id
+    order
+    target
+    title
+    path
+    label
+    connectedNode {
+      node {
+        ... on Page {
+          ...menuPageFields
+          children {
+            nodes {
+              ...menuPageFields
+            }
+          }
+        }
+      }
+    }
+  }
+  ${MenuPageFieldsFragmentDoc}
+`;
+export const LayoutArticleHighlightsFragmentDoc = gql`
+  fragment LayoutArticleHighlights on LayoutArticleHighlights {
+    __typename
+  }
+`;
+export const LayoutContactFragmentDoc = gql`
+  fragment LayoutContact on LayoutContact {
+    __typename
+  }
 `;
 export const ArticleDocument = gql`
   query article($id: ID!) {
