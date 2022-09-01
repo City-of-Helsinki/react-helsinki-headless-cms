@@ -13,7 +13,7 @@ export * from '../common/headlessService/tag';
 export * from '../common/headlessService/tags';
 export * from '../common/headlessService/landingPage';
 export * from '../common/headlessService/pageByTemplate';
-export { MenuDocument, useMenuQuery } from '../common/headlessService/menu';
+export * from '../common/headlessService/menu';
 export {
   LanguagesDocument,
   LanguageCodeEnum,
