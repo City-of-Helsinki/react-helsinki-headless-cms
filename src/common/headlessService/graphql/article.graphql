@@ -25,6 +25,18 @@ fragment Post on Post {
   language {
     ...Language
   }
+  # Contains language versions other than the language the $id or type URI
+  # targets
+  translations {
+    uri
+    slug
+    language {
+      ...Language
+    }
+    seo {
+      ...SEO
+    }
+  }
   featuredImage {
     node {
       mediaItemUrl
@@ -92,18 +104,6 @@ fragment Post on Post {
 
 query article($id: ID!) {
   post(id: $id, idType: URI) {
-    id
     ...Post
-    # Contains language versions other than the language the $id or type URI
-    # targets
-    translations {
-      uri
-      language {
-        ...Language
-      }
-      seo {
-        ...SEO
-      }
-    }
   }
 }

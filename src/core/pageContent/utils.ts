@@ -34,8 +34,8 @@ export function getCollections(
   return pageModules?.reduce((collections, module, index) => {
     const commonFields: CollectionType = {
       id: index.toString(),
-      title: 'title' in module ? module.title : undefined,
-      description: 'description' in module ? module.description : undefined,
+      title: 'title' in module ? module.title : null,
+      description: 'description' in module ? module.description : null,
       items: [],
       // eslint-disable-next-line no-underscore-dangle
       __typename: module.__typename,

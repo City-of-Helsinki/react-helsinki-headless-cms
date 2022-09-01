@@ -25,35 +25,7 @@ query posts(
     edges {
       cursor
       node {
-        id
-        title
-        date
-        lead
-        content
-        slug
-        uri
-        featuredImage {
-          node {
-            altText
-            mediaItemUrl
-          }
-        }
-        categories {
-          nodes {
-            id
-            databaseId
-            name
-            slug
-          }
-        }
-        tags {
-          nodes {
-            id
-            databaseId
-            name
-            slug
-          }
-        }
+        ...Post
       }
     }
   }

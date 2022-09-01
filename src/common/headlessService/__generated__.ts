@@ -10384,6 +10384,34 @@ export type PostFragment = {
     name?: string | null;
     slug?: string | null;
   } | null;
+  translations?: Array<{
+    __typename?: 'Post';
+    uri?: string | null;
+    slug?: string | null;
+    language?: {
+      __typename?: 'Language';
+      code?: LanguageCodeEnum | null;
+      id: string;
+      locale?: string | null;
+      name?: string | null;
+      slug?: string | null;
+    } | null;
+    seo?: {
+      __typename?: 'SEO';
+      title?: string | null;
+      description?: string | null;
+      openGraphTitle?: string | null;
+      openGraphDescription?: string | null;
+      openGraphType?: string | null;
+      twitterTitle?: string | null;
+      twitterDescription?: string | null;
+      canonicalUrl?: string | null;
+      socialImage?: {
+        __typename?: 'MediaItem';
+        mediaItemUrl?: string | null;
+      } | null;
+    } | null;
+  } | null> | null;
   featuredImage?: {
     __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
     node?: {
@@ -10629,33 +10657,6 @@ export type ArticleQuery = {
     uri?: string | null;
     link?: string | null;
     lead?: string | null;
-    translations?: Array<{
-      __typename?: 'Post';
-      uri?: string | null;
-      language?: {
-        __typename?: 'Language';
-        code?: LanguageCodeEnum | null;
-        id: string;
-        locale?: string | null;
-        name?: string | null;
-        slug?: string | null;
-      } | null;
-      seo?: {
-        __typename?: 'SEO';
-        title?: string | null;
-        description?: string | null;
-        openGraphTitle?: string | null;
-        openGraphDescription?: string | null;
-        openGraphType?: string | null;
-        twitterTitle?: string | null;
-        twitterDescription?: string | null;
-        canonicalUrl?: string | null;
-        socialImage?: {
-          __typename?: 'MediaItem';
-          mediaItemUrl?: string | null;
-        } | null;
-      } | null;
-    } | null> | null;
     categories?: {
       __typename?: 'PostToCategoryConnection';
       edges?: Array<{
@@ -10690,6 +10691,34 @@ export type ArticleQuery = {
       name?: string | null;
       slug?: string | null;
     } | null;
+    translations?: Array<{
+      __typename?: 'Post';
+      uri?: string | null;
+      slug?: string | null;
+      language?: {
+        __typename?: 'Language';
+        code?: LanguageCodeEnum | null;
+        id: string;
+        locale?: string | null;
+        name?: string | null;
+        slug?: string | null;
+      } | null;
+      seo?: {
+        __typename?: 'SEO';
+        title?: string | null;
+        description?: string | null;
+        openGraphTitle?: string | null;
+        openGraphDescription?: string | null;
+        openGraphType?: string | null;
+        twitterTitle?: string | null;
+        twitterDescription?: string | null;
+        canonicalUrl?: string | null;
+        socialImage?: {
+          __typename?: 'MediaItem';
+          mediaItemUrl?: string | null;
+        } | null;
+      } | null;
+    } | null> | null;
     featuredImage?: {
       __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
       node?: {
@@ -10950,40 +10979,302 @@ export type PostsQuery = {
       node?: {
         __typename?: 'Post';
         id: string;
-        title?: string | null;
         date?: string | null;
-        lead?: string | null;
         content?: string | null;
         slug?: string | null;
+        title?: string | null;
         uri?: string | null;
+        link?: string | null;
+        lead?: string | null;
+        categories?: {
+          __typename?: 'PostToCategoryConnection';
+          edges?: Array<{
+            __typename?: 'PostToCategoryConnectionEdge';
+            node?: {
+              __typename?: 'Category';
+              id: string;
+              name?: string | null;
+            } | null;
+          } | null> | null;
+        } | null;
+        seo?: {
+          __typename?: 'SEO';
+          title?: string | null;
+          description?: string | null;
+          openGraphTitle?: string | null;
+          openGraphDescription?: string | null;
+          openGraphType?: string | null;
+          twitterTitle?: string | null;
+          twitterDescription?: string | null;
+          canonicalUrl?: string | null;
+          socialImage?: {
+            __typename?: 'MediaItem';
+            mediaItemUrl?: string | null;
+          } | null;
+        } | null;
+        language?: {
+          __typename?: 'Language';
+          code?: LanguageCodeEnum | null;
+          id: string;
+          locale?: string | null;
+          name?: string | null;
+          slug?: string | null;
+        } | null;
+        translations?: Array<{
+          __typename?: 'Post';
+          uri?: string | null;
+          slug?: string | null;
+          language?: {
+            __typename?: 'Language';
+            code?: LanguageCodeEnum | null;
+            id: string;
+            locale?: string | null;
+            name?: string | null;
+            slug?: string | null;
+          } | null;
+          seo?: {
+            __typename?: 'SEO';
+            title?: string | null;
+            description?: string | null;
+            openGraphTitle?: string | null;
+            openGraphDescription?: string | null;
+            openGraphType?: string | null;
+            twitterTitle?: string | null;
+            twitterDescription?: string | null;
+            canonicalUrl?: string | null;
+            socialImage?: {
+              __typename?: 'MediaItem';
+              mediaItemUrl?: string | null;
+            } | null;
+          } | null;
+        } | null> | null;
         featuredImage?: {
           __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
           node?: {
             __typename?: 'MediaItem';
-            altText?: string | null;
             mediaItemUrl?: string | null;
+            link?: string | null;
+            altText?: string | null;
+            mimeType?: string | null;
+            title?: string | null;
+            uri?: string | null;
           } | null;
         } | null;
-        categories?: {
-          __typename?: 'PostToCategoryConnection';
-          nodes?: Array<{
-            __typename?: 'Category';
-            id: string;
-            databaseId: number;
-            name?: string | null;
-            slug?: string | null;
-          } | null> | null;
-        } | null;
-        tags?: {
-          __typename?: 'PostToTagConnection';
-          nodes?: Array<{
-            __typename?: 'Tag';
-            id: string;
-            databaseId: number;
-            name?: string | null;
-            slug?: string | null;
-          } | null> | null;
-        } | null;
+        sidebar?: Array<
+          | {
+              __typename: 'LayoutArticles';
+              title?: string | null;
+              articles?: Array<{
+                __typename?: 'Post';
+                id: string;
+                uri?: string | null;
+                slug?: string | null;
+                link?: string | null;
+                date?: string | null;
+                title?: string | null;
+                lead?: string | null;
+                featuredImage?: {
+                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                  node?: {
+                    __typename?: 'MediaItem';
+                    altText?: string | null;
+                    mediaItemUrl?: string | null;
+                  } | null;
+                } | null;
+                categories?: {
+                  __typename?: 'PostToCategoryConnection';
+                  nodes?: Array<{
+                    __typename?: 'Category';
+                    name?: string | null;
+                  } | null> | null;
+                } | null;
+              } | null> | null;
+            }
+          | {
+              __typename: 'LayoutLinkList';
+              anchor?: string | null;
+              title?: string | null;
+              description?: string | null;
+              links?: Array<{
+                __typename?: 'Link';
+                target?: string | null;
+                title?: string | null;
+                url?: string | null;
+              } | null> | null;
+            }
+          | {
+              __typename: 'LayoutPages';
+              title?: string | null;
+              description?: string | null;
+              pages?: Array<{
+                __typename?: 'Page';
+                id: string;
+                uri?: string | null;
+                slug?: string | null;
+                link?: string | null;
+                date?: string | null;
+                title?: string | null;
+                lead?: string | null;
+                featuredImage?: {
+                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                  node?: {
+                    __typename?: 'MediaItem';
+                    altText?: string | null;
+                    mediaItemUrl?: string | null;
+                  } | null;
+                } | null;
+              } | null> | null;
+            }
+          | null
+        > | null;
+        modules?: Array<
+          | {
+              __typename: 'EventSearch';
+              title?: string | null;
+              url?: string | null;
+              module?: string | null;
+            }
+          | {
+              __typename: 'EventSearchCarousel';
+              title?: string | null;
+              showAllLink?: Array<string | null> | null;
+              url?: string | null;
+              orderNewestFirst?: boolean | null;
+              eventsNearby?: boolean | null;
+              amountOfCards?: number | null;
+            }
+          | {
+              __typename: 'EventSelected';
+              title?: string | null;
+              events?: Array<string | null> | null;
+              module?: string | null;
+            }
+          | {
+              __typename: 'EventSelectedCarousel';
+              title?: string | null;
+              module?: string | null;
+              showAllLink?: Array<string | null> | null;
+              eventsNearby?: boolean | null;
+              events?: Array<string | null> | null;
+              amountOfCardsPerRow?: number | null;
+              amountOfCards?: number | null;
+            }
+          | { __typename?: 'LayoutArticleHighlights' }
+          | {
+              __typename: 'LayoutArticles';
+              title?: string | null;
+              articles?: Array<{
+                __typename?: 'Post';
+                id: string;
+                uri?: string | null;
+                slug?: string | null;
+                link?: string | null;
+                date?: string | null;
+                title?: string | null;
+                lead?: string | null;
+                featuredImage?: {
+                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                  node?: {
+                    __typename?: 'MediaItem';
+                    altText?: string | null;
+                    mediaItemUrl?: string | null;
+                  } | null;
+                } | null;
+                categories?: {
+                  __typename?: 'PostToCategoryConnection';
+                  nodes?: Array<{
+                    __typename?: 'Category';
+                    name?: string | null;
+                  } | null> | null;
+                } | null;
+              } | null> | null;
+            }
+          | {
+              __typename: 'LayoutArticlesCarousel';
+              title?: string | null;
+              showMore?: Array<string | null> | null;
+              articles?: Array<{
+                __typename?: 'Post';
+                id: string;
+                uri?: string | null;
+                slug?: string | null;
+                link?: string | null;
+                date?: string | null;
+                title?: string | null;
+                lead?: string | null;
+                featuredImage?: {
+                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                  node?: {
+                    __typename?: 'MediaItem';
+                    altText?: string | null;
+                    mediaItemUrl?: string | null;
+                  } | null;
+                } | null;
+                categories?: {
+                  __typename?: 'PostToCategoryConnection';
+                  nodes?: Array<{
+                    __typename?: 'Category';
+                    name?: string | null;
+                  } | null> | null;
+                } | null;
+              } | null> | null;
+            }
+          | {
+              __typename: 'LayoutCollection';
+              collection?: {
+                __typename?: 'Collection';
+                title?: string | null;
+              } | null;
+            }
+          | { __typename?: 'LayoutContact' }
+          | {
+              __typename: 'LayoutPages';
+              title?: string | null;
+              description?: string | null;
+              pages?: Array<{
+                __typename?: 'Page';
+                id: string;
+                uri?: string | null;
+                slug?: string | null;
+                link?: string | null;
+                date?: string | null;
+                title?: string | null;
+                lead?: string | null;
+                featuredImage?: {
+                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                  node?: {
+                    __typename?: 'MediaItem';
+                    altText?: string | null;
+                    mediaItemUrl?: string | null;
+                  } | null;
+                } | null;
+              } | null> | null;
+            }
+          | {
+              __typename: 'LayoutPagesCarousel';
+              title?: string | null;
+              description?: string | null;
+              pages?: Array<{
+                __typename?: 'Page';
+                id: string;
+                uri?: string | null;
+                slug?: string | null;
+                link?: string | null;
+                date?: string | null;
+                title?: string | null;
+                lead?: string | null;
+                featuredImage?: {
+                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                  node?: {
+                    __typename?: 'MediaItem';
+                    altText?: string | null;
+                    mediaItemUrl?: string | null;
+                  } | null;
+                } | null;
+              } | null> | null;
+            }
+          | null
+        > | null;
       } | null;
     } | null> | null;
   } | null;
@@ -11145,13 +11436,21 @@ export type MenuItemFragment = {
                   lead?: string | null;
                   translations?: Array<{
                     __typename?: 'Page';
+                    uri?: string | null;
+                    slug?: string | null;
                     id: string;
                     content?: string | null;
-                    slug?: string | null;
                     title?: string | null;
-                    uri?: string | null;
                     link?: string | null;
                     lead?: string | null;
+                    language?: {
+                      __typename?: 'Language';
+                      code?: LanguageCodeEnum | null;
+                      id: string;
+                      locale?: string | null;
+                      name?: string | null;
+                      slug?: string | null;
+                    } | null;
                     seo?: {
                       __typename?: 'SEO';
                       title?: string | null;
@@ -11167,14 +11466,34 @@ export type MenuItemFragment = {
                         mediaItemUrl?: string | null;
                       } | null;
                     } | null;
-                    language?: {
-                      __typename?: 'Language';
-                      code?: LanguageCodeEnum | null;
-                      id: string;
-                      locale?: string | null;
-                      name?: string | null;
+                    translations?: Array<{
+                      __typename?: 'Page';
+                      uri?: string | null;
                       slug?: string | null;
-                    } | null;
+                      language?: {
+                        __typename?: 'Language';
+                        code?: LanguageCodeEnum | null;
+                        id: string;
+                        locale?: string | null;
+                        name?: string | null;
+                        slug?: string | null;
+                      } | null;
+                      seo?: {
+                        __typename?: 'SEO';
+                        title?: string | null;
+                        description?: string | null;
+                        openGraphTitle?: string | null;
+                        openGraphDescription?: string | null;
+                        openGraphType?: string | null;
+                        twitterTitle?: string | null;
+                        twitterDescription?: string | null;
+                        canonicalUrl?: string | null;
+                        socialImage?: {
+                          __typename?: 'MediaItem';
+                          mediaItemUrl?: string | null;
+                        } | null;
+                      } | null;
+                    } | null> | null;
                     featuredImage?: {
                       __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
                       node?: {
@@ -11662,13 +11981,21 @@ export type MenuItemFragment = {
           } | null;
           translations?: Array<{
             __typename?: 'Page';
+            uri?: string | null;
+            slug?: string | null;
             id: string;
             content?: string | null;
-            slug?: string | null;
             title?: string | null;
-            uri?: string | null;
             link?: string | null;
             lead?: string | null;
+            language?: {
+              __typename?: 'Language';
+              code?: LanguageCodeEnum | null;
+              id: string;
+              locale?: string | null;
+              name?: string | null;
+              slug?: string | null;
+            } | null;
             seo?: {
               __typename?: 'SEO';
               title?: string | null;
@@ -11684,14 +12011,34 @@ export type MenuItemFragment = {
                 mediaItemUrl?: string | null;
               } | null;
             } | null;
-            language?: {
-              __typename?: 'Language';
-              code?: LanguageCodeEnum | null;
-              id: string;
-              locale?: string | null;
-              name?: string | null;
+            translations?: Array<{
+              __typename?: 'Page';
+              uri?: string | null;
               slug?: string | null;
-            } | null;
+              language?: {
+                __typename?: 'Language';
+                code?: LanguageCodeEnum | null;
+                id: string;
+                locale?: string | null;
+                name?: string | null;
+                slug?: string | null;
+              } | null;
+              seo?: {
+                __typename?: 'SEO';
+                title?: string | null;
+                description?: string | null;
+                openGraphTitle?: string | null;
+                openGraphDescription?: string | null;
+                openGraphType?: string | null;
+                twitterTitle?: string | null;
+                twitterDescription?: string | null;
+                canonicalUrl?: string | null;
+                socialImage?: {
+                  __typename?: 'MediaItem';
+                  mediaItemUrl?: string | null;
+                } | null;
+              } | null;
+            } | null> | null;
             featuredImage?: {
               __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
               node?: {
@@ -12188,13 +12535,21 @@ export type MenuPageFieldsFragment = {
   lead?: string | null;
   translations?: Array<{
     __typename?: 'Page';
+    uri?: string | null;
+    slug?: string | null;
     id: string;
     content?: string | null;
-    slug?: string | null;
     title?: string | null;
-    uri?: string | null;
     link?: string | null;
     lead?: string | null;
+    language?: {
+      __typename?: 'Language';
+      code?: LanguageCodeEnum | null;
+      id: string;
+      locale?: string | null;
+      name?: string | null;
+      slug?: string | null;
+    } | null;
     seo?: {
       __typename?: 'SEO';
       title?: string | null;
@@ -12210,14 +12565,34 @@ export type MenuPageFieldsFragment = {
         mediaItemUrl?: string | null;
       } | null;
     } | null;
-    language?: {
-      __typename?: 'Language';
-      code?: LanguageCodeEnum | null;
-      id: string;
-      locale?: string | null;
-      name?: string | null;
+    translations?: Array<{
+      __typename?: 'Page';
+      uri?: string | null;
       slug?: string | null;
-    } | null;
+      language?: {
+        __typename?: 'Language';
+        code?: LanguageCodeEnum | null;
+        id: string;
+        locale?: string | null;
+        name?: string | null;
+        slug?: string | null;
+      } | null;
+      seo?: {
+        __typename?: 'SEO';
+        title?: string | null;
+        description?: string | null;
+        openGraphTitle?: string | null;
+        openGraphDescription?: string | null;
+        openGraphType?: string | null;
+        twitterTitle?: string | null;
+        twitterDescription?: string | null;
+        canonicalUrl?: string | null;
+        socialImage?: {
+          __typename?: 'MediaItem';
+          mediaItemUrl?: string | null;
+        } | null;
+      } | null;
+    } | null> | null;
     featuredImage?: {
       __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
       node?: {
@@ -12748,13 +13123,21 @@ export type MenuQuery = {
                         lead?: string | null;
                         translations?: Array<{
                           __typename?: 'Page';
+                          uri?: string | null;
+                          slug?: string | null;
                           id: string;
                           content?: string | null;
-                          slug?: string | null;
                           title?: string | null;
-                          uri?: string | null;
                           link?: string | null;
                           lead?: string | null;
+                          language?: {
+                            __typename?: 'Language';
+                            code?: LanguageCodeEnum | null;
+                            id: string;
+                            locale?: string | null;
+                            name?: string | null;
+                            slug?: string | null;
+                          } | null;
                           seo?: {
                             __typename?: 'SEO';
                             title?: string | null;
@@ -12770,14 +13153,34 @@ export type MenuQuery = {
                               mediaItemUrl?: string | null;
                             } | null;
                           } | null;
-                          language?: {
-                            __typename?: 'Language';
-                            code?: LanguageCodeEnum | null;
-                            id: string;
-                            locale?: string | null;
-                            name?: string | null;
+                          translations?: Array<{
+                            __typename?: 'Page';
+                            uri?: string | null;
                             slug?: string | null;
-                          } | null;
+                            language?: {
+                              __typename?: 'Language';
+                              code?: LanguageCodeEnum | null;
+                              id: string;
+                              locale?: string | null;
+                              name?: string | null;
+                              slug?: string | null;
+                            } | null;
+                            seo?: {
+                              __typename?: 'SEO';
+                              title?: string | null;
+                              description?: string | null;
+                              openGraphTitle?: string | null;
+                              openGraphDescription?: string | null;
+                              openGraphType?: string | null;
+                              twitterTitle?: string | null;
+                              twitterDescription?: string | null;
+                              canonicalUrl?: string | null;
+                              socialImage?: {
+                                __typename?: 'MediaItem';
+                                mediaItemUrl?: string | null;
+                              } | null;
+                            } | null;
+                          } | null> | null;
                           featuredImage?: {
                             __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
                             node?: {
@@ -13265,13 +13668,21 @@ export type MenuQuery = {
                 } | null;
                 translations?: Array<{
                   __typename?: 'Page';
+                  uri?: string | null;
+                  slug?: string | null;
                   id: string;
                   content?: string | null;
-                  slug?: string | null;
                   title?: string | null;
-                  uri?: string | null;
                   link?: string | null;
                   lead?: string | null;
+                  language?: {
+                    __typename?: 'Language';
+                    code?: LanguageCodeEnum | null;
+                    id: string;
+                    locale?: string | null;
+                    name?: string | null;
+                    slug?: string | null;
+                  } | null;
                   seo?: {
                     __typename?: 'SEO';
                     title?: string | null;
@@ -13287,14 +13698,34 @@ export type MenuQuery = {
                       mediaItemUrl?: string | null;
                     } | null;
                   } | null;
-                  language?: {
-                    __typename?: 'Language';
-                    code?: LanguageCodeEnum | null;
-                    id: string;
-                    locale?: string | null;
-                    name?: string | null;
+                  translations?: Array<{
+                    __typename?: 'Page';
+                    uri?: string | null;
                     slug?: string | null;
-                  } | null;
+                    language?: {
+                      __typename?: 'Language';
+                      code?: LanguageCodeEnum | null;
+                      id: string;
+                      locale?: string | null;
+                      name?: string | null;
+                      slug?: string | null;
+                    } | null;
+                    seo?: {
+                      __typename?: 'SEO';
+                      title?: string | null;
+                      description?: string | null;
+                      openGraphTitle?: string | null;
+                      openGraphDescription?: string | null;
+                      openGraphType?: string | null;
+                      twitterTitle?: string | null;
+                      twitterDescription?: string | null;
+                      canonicalUrl?: string | null;
+                      socialImage?: {
+                        __typename?: 'MediaItem';
+                        mediaItemUrl?: string | null;
+                      } | null;
+                    } | null;
+                  } | null> | null;
                   featuredImage?: {
                     __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
                     node?: {
@@ -14001,6 +14432,34 @@ export type PageFragment = {
     name?: string | null;
     slug?: string | null;
   } | null;
+  translations?: Array<{
+    __typename?: 'Page';
+    uri?: string | null;
+    slug?: string | null;
+    language?: {
+      __typename?: 'Language';
+      code?: LanguageCodeEnum | null;
+      id: string;
+      locale?: string | null;
+      name?: string | null;
+      slug?: string | null;
+    } | null;
+    seo?: {
+      __typename?: 'SEO';
+      title?: string | null;
+      description?: string | null;
+      openGraphTitle?: string | null;
+      openGraphDescription?: string | null;
+      openGraphType?: string | null;
+      twitterTitle?: string | null;
+      twitterDescription?: string | null;
+      canonicalUrl?: string | null;
+      socialImage?: {
+        __typename?: 'MediaItem';
+        mediaItemUrl?: string | null;
+      } | null;
+    } | null;
+  } | null> | null;
   featuredImage?: {
     __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
     node?: {
@@ -14245,9 +14704,33 @@ export type PageQuery = {
     uri?: string | null;
     link?: string | null;
     lead?: string | null;
+    seo?: {
+      __typename?: 'SEO';
+      title?: string | null;
+      description?: string | null;
+      openGraphTitle?: string | null;
+      openGraphDescription?: string | null;
+      openGraphType?: string | null;
+      twitterTitle?: string | null;
+      twitterDescription?: string | null;
+      canonicalUrl?: string | null;
+      socialImage?: {
+        __typename?: 'MediaItem';
+        mediaItemUrl?: string | null;
+      } | null;
+    } | null;
+    language?: {
+      __typename?: 'Language';
+      code?: LanguageCodeEnum | null;
+      id: string;
+      locale?: string | null;
+      name?: string | null;
+      slug?: string | null;
+    } | null;
     translations?: Array<{
       __typename?: 'Page';
       uri?: string | null;
+      slug?: string | null;
       language?: {
         __typename?: 'Language';
         code?: LanguageCodeEnum | null;
@@ -14272,29 +14755,6 @@ export type PageQuery = {
         } | null;
       } | null;
     } | null> | null;
-    seo?: {
-      __typename?: 'SEO';
-      title?: string | null;
-      description?: string | null;
-      openGraphTitle?: string | null;
-      openGraphDescription?: string | null;
-      openGraphType?: string | null;
-      twitterTitle?: string | null;
-      twitterDescription?: string | null;
-      canonicalUrl?: string | null;
-      socialImage?: {
-        __typename?: 'MediaItem';
-        mediaItemUrl?: string | null;
-      } | null;
-    } | null;
-    language?: {
-      __typename?: 'Language';
-      code?: LanguageCodeEnum | null;
-      id: string;
-      locale?: string | null;
-      name?: string | null;
-      slug?: string | null;
-    } | null;
     featuredImage?: {
       __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
       node?: {
@@ -14541,9 +15001,33 @@ export type PageByTemplateQuery = {
     uri?: string | null;
     link?: string | null;
     lead?: string | null;
+    seo?: {
+      __typename?: 'SEO';
+      title?: string | null;
+      description?: string | null;
+      openGraphTitle?: string | null;
+      openGraphDescription?: string | null;
+      openGraphType?: string | null;
+      twitterTitle?: string | null;
+      twitterDescription?: string | null;
+      canonicalUrl?: string | null;
+      socialImage?: {
+        __typename?: 'MediaItem';
+        mediaItemUrl?: string | null;
+      } | null;
+    } | null;
+    language?: {
+      __typename?: 'Language';
+      code?: LanguageCodeEnum | null;
+      id: string;
+      locale?: string | null;
+      name?: string | null;
+      slug?: string | null;
+    } | null;
     translations?: Array<{
       __typename?: 'Page';
       uri?: string | null;
+      slug?: string | null;
       language?: {
         __typename?: 'Language';
         code?: LanguageCodeEnum | null;
@@ -14568,29 +15052,6 @@ export type PageByTemplateQuery = {
         } | null;
       } | null;
     } | null> | null;
-    seo?: {
-      __typename?: 'SEO';
-      title?: string | null;
-      description?: string | null;
-      openGraphTitle?: string | null;
-      openGraphDescription?: string | null;
-      openGraphType?: string | null;
-      twitterTitle?: string | null;
-      twitterDescription?: string | null;
-      canonicalUrl?: string | null;
-      socialImage?: {
-        __typename?: 'MediaItem';
-        mediaItemUrl?: string | null;
-      } | null;
-    } | null;
-    language?: {
-      __typename?: 'Language';
-      code?: LanguageCodeEnum | null;
-      id: string;
-      locale?: string | null;
-      name?: string | null;
-      slug?: string | null;
-    } | null;
     featuredImage?: {
       __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
       node?: {
@@ -14860,13 +15321,21 @@ export type PageChildrenSearchQuery = {
               lead?: string | null;
               translations?: Array<{
                 __typename?: 'Page';
+                uri?: string | null;
+                slug?: string | null;
                 id: string;
                 content?: string | null;
-                slug?: string | null;
                 title?: string | null;
-                uri?: string | null;
                 link?: string | null;
                 lead?: string | null;
+                language?: {
+                  __typename?: 'Language';
+                  code?: LanguageCodeEnum | null;
+                  id: string;
+                  locale?: string | null;
+                  name?: string | null;
+                  slug?: string | null;
+                } | null;
                 seo?: {
                   __typename?: 'SEO';
                   title?: string | null;
@@ -14882,14 +15351,34 @@ export type PageChildrenSearchQuery = {
                     mediaItemUrl?: string | null;
                   } | null;
                 } | null;
-                language?: {
-                  __typename?: 'Language';
-                  code?: LanguageCodeEnum | null;
-                  id: string;
-                  locale?: string | null;
-                  name?: string | null;
+                translations?: Array<{
+                  __typename?: 'Page';
+                  uri?: string | null;
                   slug?: string | null;
-                } | null;
+                  language?: {
+                    __typename?: 'Language';
+                    code?: LanguageCodeEnum | null;
+                    id: string;
+                    locale?: string | null;
+                    name?: string | null;
+                    slug?: string | null;
+                  } | null;
+                  seo?: {
+                    __typename?: 'SEO';
+                    title?: string | null;
+                    description?: string | null;
+                    openGraphTitle?: string | null;
+                    openGraphDescription?: string | null;
+                    openGraphType?: string | null;
+                    twitterTitle?: string | null;
+                    twitterDescription?: string | null;
+                    canonicalUrl?: string | null;
+                    socialImage?: {
+                      __typename?: 'MediaItem';
+                      mediaItemUrl?: string | null;
+                    } | null;
+                  } | null;
+                } | null> | null;
                 featuredImage?: {
                   __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
                   node?: {
@@ -15402,20 +15891,290 @@ export type PagesQuery = {
       node?: {
         __typename?: 'Page';
         id: string;
-        title?: string | null;
-        date?: string | null;
-        lead?: string | null;
         content?: string | null;
         slug?: string | null;
+        title?: string | null;
         uri?: string | null;
+        link?: string | null;
+        lead?: string | null;
+        seo?: {
+          __typename?: 'SEO';
+          title?: string | null;
+          description?: string | null;
+          openGraphTitle?: string | null;
+          openGraphDescription?: string | null;
+          openGraphType?: string | null;
+          twitterTitle?: string | null;
+          twitterDescription?: string | null;
+          canonicalUrl?: string | null;
+          socialImage?: {
+            __typename?: 'MediaItem';
+            mediaItemUrl?: string | null;
+          } | null;
+        } | null;
+        language?: {
+          __typename?: 'Language';
+          code?: LanguageCodeEnum | null;
+          id: string;
+          locale?: string | null;
+          name?: string | null;
+          slug?: string | null;
+        } | null;
+        translations?: Array<{
+          __typename?: 'Page';
+          uri?: string | null;
+          slug?: string | null;
+          language?: {
+            __typename?: 'Language';
+            code?: LanguageCodeEnum | null;
+            id: string;
+            locale?: string | null;
+            name?: string | null;
+            slug?: string | null;
+          } | null;
+          seo?: {
+            __typename?: 'SEO';
+            title?: string | null;
+            description?: string | null;
+            openGraphTitle?: string | null;
+            openGraphDescription?: string | null;
+            openGraphType?: string | null;
+            twitterTitle?: string | null;
+            twitterDescription?: string | null;
+            canonicalUrl?: string | null;
+            socialImage?: {
+              __typename?: 'MediaItem';
+              mediaItemUrl?: string | null;
+            } | null;
+          } | null;
+        } | null> | null;
         featuredImage?: {
           __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
           node?: {
             __typename?: 'MediaItem';
-            altText?: string | null;
             mediaItemUrl?: string | null;
+            link?: string | null;
+            altText?: string | null;
+            mimeType?: string | null;
+            title?: string | null;
+            uri?: string | null;
           } | null;
         } | null;
+        sidebar?: Array<
+          | {
+              __typename: 'LayoutArticles';
+              title?: string | null;
+              articles?: Array<{
+                __typename?: 'Post';
+                id: string;
+                uri?: string | null;
+                slug?: string | null;
+                link?: string | null;
+                date?: string | null;
+                title?: string | null;
+                lead?: string | null;
+                featuredImage?: {
+                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                  node?: {
+                    __typename?: 'MediaItem';
+                    altText?: string | null;
+                    mediaItemUrl?: string | null;
+                  } | null;
+                } | null;
+                categories?: {
+                  __typename?: 'PostToCategoryConnection';
+                  nodes?: Array<{
+                    __typename?: 'Category';
+                    name?: string | null;
+                  } | null> | null;
+                } | null;
+              } | null> | null;
+            }
+          | {
+              __typename: 'LayoutLinkList';
+              anchor?: string | null;
+              title?: string | null;
+              description?: string | null;
+              links?: Array<{
+                __typename?: 'Link';
+                target?: string | null;
+                title?: string | null;
+                url?: string | null;
+              } | null> | null;
+            }
+          | {
+              __typename: 'LayoutPages';
+              title?: string | null;
+              description?: string | null;
+              pages?: Array<{
+                __typename?: 'Page';
+                id: string;
+                uri?: string | null;
+                slug?: string | null;
+                link?: string | null;
+                date?: string | null;
+                title?: string | null;
+                lead?: string | null;
+                featuredImage?: {
+                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                  node?: {
+                    __typename?: 'MediaItem';
+                    altText?: string | null;
+                    mediaItemUrl?: string | null;
+                  } | null;
+                } | null;
+              } | null> | null;
+            }
+          | null
+        > | null;
+        modules?: Array<
+          | {
+              __typename: 'EventSearch';
+              title?: string | null;
+              url?: string | null;
+              module?: string | null;
+            }
+          | {
+              __typename: 'EventSearchCarousel';
+              title?: string | null;
+              showAllLink?: Array<string | null> | null;
+              url?: string | null;
+              orderNewestFirst?: boolean | null;
+              eventsNearby?: boolean | null;
+              amountOfCards?: number | null;
+            }
+          | {
+              __typename: 'EventSelected';
+              title?: string | null;
+              events?: Array<string | null> | null;
+              module?: string | null;
+            }
+          | {
+              __typename: 'EventSelectedCarousel';
+              title?: string | null;
+              module?: string | null;
+              showAllLink?: Array<string | null> | null;
+              eventsNearby?: boolean | null;
+              events?: Array<string | null> | null;
+              amountOfCardsPerRow?: number | null;
+              amountOfCards?: number | null;
+            }
+          | { __typename?: 'LayoutArticleHighlights' }
+          | {
+              __typename: 'LayoutArticles';
+              title?: string | null;
+              articles?: Array<{
+                __typename?: 'Post';
+                id: string;
+                uri?: string | null;
+                slug?: string | null;
+                link?: string | null;
+                date?: string | null;
+                title?: string | null;
+                lead?: string | null;
+                featuredImage?: {
+                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                  node?: {
+                    __typename?: 'MediaItem';
+                    altText?: string | null;
+                    mediaItemUrl?: string | null;
+                  } | null;
+                } | null;
+                categories?: {
+                  __typename?: 'PostToCategoryConnection';
+                  nodes?: Array<{
+                    __typename?: 'Category';
+                    name?: string | null;
+                  } | null> | null;
+                } | null;
+              } | null> | null;
+            }
+          | {
+              __typename: 'LayoutArticlesCarousel';
+              title?: string | null;
+              showMore?: Array<string | null> | null;
+              articles?: Array<{
+                __typename?: 'Post';
+                id: string;
+                uri?: string | null;
+                slug?: string | null;
+                link?: string | null;
+                date?: string | null;
+                title?: string | null;
+                lead?: string | null;
+                featuredImage?: {
+                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                  node?: {
+                    __typename?: 'MediaItem';
+                    altText?: string | null;
+                    mediaItemUrl?: string | null;
+                  } | null;
+                } | null;
+                categories?: {
+                  __typename?: 'PostToCategoryConnection';
+                  nodes?: Array<{
+                    __typename?: 'Category';
+                    name?: string | null;
+                  } | null> | null;
+                } | null;
+              } | null> | null;
+            }
+          | {
+              __typename: 'LayoutCollection';
+              collection?: {
+                __typename?: 'Collection';
+                title?: string | null;
+              } | null;
+            }
+          | { __typename?: 'LayoutContact' }
+          | {
+              __typename: 'LayoutPages';
+              title?: string | null;
+              description?: string | null;
+              pages?: Array<{
+                __typename?: 'Page';
+                id: string;
+                uri?: string | null;
+                slug?: string | null;
+                link?: string | null;
+                date?: string | null;
+                title?: string | null;
+                lead?: string | null;
+                featuredImage?: {
+                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                  node?: {
+                    __typename?: 'MediaItem';
+                    altText?: string | null;
+                    mediaItemUrl?: string | null;
+                  } | null;
+                } | null;
+              } | null> | null;
+            }
+          | {
+              __typename: 'LayoutPagesCarousel';
+              title?: string | null;
+              description?: string | null;
+              pages?: Array<{
+                __typename?: 'Page';
+                id: string;
+                uri?: string | null;
+                slug?: string | null;
+                link?: string | null;
+                date?: string | null;
+                title?: string | null;
+                lead?: string | null;
+                featuredImage?: {
+                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+                  node?: {
+                    __typename?: 'MediaItem';
+                    altText?: string | null;
+                    mediaItemUrl?: string | null;
+                  } | null;
+                } | null;
+              } | null> | null;
+            }
+          | null
+        > | null;
       } | null;
     } | null> | null;
   } | null;
@@ -15711,6 +16470,16 @@ export const PostFragmentDoc = gql`
     language {
       ...Language
     }
+    translations {
+      uri
+      slug
+      language {
+        ...Language
+      }
+      seo {
+        ...SEO
+      }
+    }
     featuredImage {
       node {
         mediaItemUrl
@@ -15802,6 +16571,16 @@ export const PageFragmentDoc = gql`
     }
     language {
       ...Language
+    }
+    translations {
+      uri
+      slug
+      language {
+        ...Language
+      }
+      seo {
+        ...SEO
+      }
     }
     featuredImage {
       node {
@@ -15912,22 +16691,10 @@ export const LayoutContactFragmentDoc = gql`
 export const ArticleDocument = gql`
   query article($id: ID!) {
     post(id: $id, idType: URI) {
-      id
       ...Post
-      translations {
-        uri
-        language {
-          ...Language
-        }
-        seo {
-          ...SEO
-        }
-      }
     }
   }
   ${PostFragmentDoc}
-  ${LanguageFragmentDoc}
-  ${SeoFragmentDoc}
 `;
 
 /**
@@ -16001,39 +16768,12 @@ export const PostsDocument = gql`
       edges {
         cursor
         node {
-          id
-          title
-          date
-          lead
-          content
-          slug
-          uri
-          featuredImage {
-            node {
-              altText
-              mediaItemUrl
-            }
-          }
-          categories {
-            nodes {
-              id
-              databaseId
-              name
-              slug
-            }
-          }
-          tags {
-            nodes {
-              id
-              databaseId
-              name
-              slug
-            }
-          }
+          ...Post
         }
       }
     }
   }
+  ${PostFragmentDoc}
 `;
 
 /**
@@ -16471,22 +17211,10 @@ export type NotificationQueryResult = Apollo.QueryResult<
 export const PageDocument = gql`
   query page($id: ID!) {
     page(id: $id, idType: URI) {
-      id
       ...Page
-      translations {
-        uri
-        language {
-          ...Language
-        }
-        seo {
-          ...SEO
-        }
-      }
     }
   }
   ${PageFragmentDoc}
-  ${LanguageFragmentDoc}
-  ${SeoFragmentDoc}
 `;
 
 /**
@@ -16526,22 +17254,10 @@ export type PageQueryResult = Apollo.QueryResult<PageQuery, PageQueryVariables>;
 export const PageByTemplateDocument = gql`
   query pageByTemplate($template: TemplateEnum, $language: String) {
     pageByTemplate(template: $template, language: $language) {
-      id
       ...Page
-      translations {
-        uri
-        language {
-          ...Language
-        }
-        seo {
-          ...SEO
-        }
-      }
     }
   }
   ${PageFragmentDoc}
-  ${LanguageFragmentDoc}
-  ${SeoFragmentDoc}
 `;
 
 /**
@@ -16702,23 +17418,12 @@ export const PagesDocument = gql`
       edges {
         cursor
         node {
-          id
-          title
-          date
-          lead
-          content
-          slug
-          uri
-          featuredImage {
-            node {
-              altText
-              mediaItemUrl
-            }
-          }
+          ...Page
         }
       }
     }
   }
+  ${PageFragmentDoc}
 `;
 
 /**
