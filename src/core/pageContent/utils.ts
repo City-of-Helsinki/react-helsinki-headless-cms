@@ -73,13 +73,12 @@ export function getCollections(
 
 export function getArticlePageCardProps(
   item: ArticleType | PageType,
-  defaultImageUrl?: string,
 ): CardProps {
   return {
     id: item.id,
     title: item.title,
     url: item.link,
-    imageUrl: item.featuredImage?.node?.mediaItemUrl || defaultImageUrl,
+    imageUrl: item.featuredImage?.node?.mediaItemUrl,
     ariaLabel: item.title,
     text: getElementTextContent((item.lead || item.content) ?? ''),
     hasLink: true,
@@ -91,17 +90,13 @@ export function getArticlePageCardProps(
   };
 }
 
-export function getEventCardProps(
-  item: EventType,
-  defaultImageUrl?: string,
-  locale = 'fi',
-): CardProps {
+export function getEventCardProps(item: EventType, locale = 'fi'): CardProps {
   const image = item.images.length > 0 ? item.images[0] : null;
   return {
     id: item.id,
     title: item.name[locale],
     url: item.internalId,
-    imageUrl: image?.url || defaultImageUrl,
+    imageUrl: image?.url,
     ariaLabel: item.name[locale],
     hasLink: true,
     withBorder: false,
@@ -114,14 +109,12 @@ export function getEventCardProps(
 
 export function getCollectionCards(
   collection: GeneralCollectionType,
-  defaultImageUrl?: string,
   locale = 'fi',
 ): CardProps[] {
   return collection.items.reduce((result: CardProps[], item) => {
     if (isPageType(item) || isArticleType(item))
-      result.push(getArticlePageCardProps(item, defaultImageUrl));
-    else if (isEventType(item))
-      result.push(getEventCardProps(item, defaultImageUrl, locale));
+      result.push(getArticlePageCardProps(item));
+    else if (isEventType(item)) result.push(getEventCardProps(item, locale));
 
     return result;
   }, []);

@@ -25,8 +25,9 @@ export function PageSection({
   korosBottomClassName,
   backgroundImageUrl,
 }: PageSectionProps) {
+  const Wrapper = backgroundImageUrl ? BackgroundImage : 'div';
   return (
-    <BackgroundImage
+    <Wrapper
       url={backgroundImageUrl}
       className={classNames(
         styles.pageSection,
@@ -47,6 +48,6 @@ export function PageSection({
         />
       )}
       {children}
-    </BackgroundImage>
+    </Wrapper>
   );
 }
