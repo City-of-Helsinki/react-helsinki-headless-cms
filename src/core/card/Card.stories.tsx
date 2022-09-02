@@ -38,7 +38,12 @@ const Template: ComponentStory<typeof Card> = (args) => (
           </>
         }
         imageLabel="Article"
-        target="_blank"
+        openLinkInNewTab
+      />
+      <Card
+        {...args}
+        imageUrl="/broken/card/image.jpg"
+        title="Fallback image"
       />
     </div>
   </ConfigProvider>

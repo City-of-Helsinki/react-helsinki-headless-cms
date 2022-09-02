@@ -1,5 +1,3 @@
-/* eslint-disable import/prefer-default-export */
-
 import { Meta } from './__generated__';
 
 const PAGE_PARAM = 'page';

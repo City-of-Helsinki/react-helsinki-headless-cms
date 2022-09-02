@@ -164,7 +164,7 @@ function getEventCollectionCards(
   collection: EventSelectionCollectionType | EventSearchCollectionType,
   items: EventType[],
   getRoutedInternalHref: Config['utils']['getRoutedInternalHref'],
-  EventCardContent: (props: any) => JSX.Element,
+  EventCardContent: React.FC<Record<string, unknown>>,
 ) {
   const generalCollection: GeneralCollectionType = {
     id: collection.id,

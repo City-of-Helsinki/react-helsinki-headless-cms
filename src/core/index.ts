@@ -108,3 +108,6 @@ export { LargeCard, LargeCardProps } from './card/LargeCard';
 
 export { ArchivePage } from './archiveSearchPage/ArchiveSearchPage';
 export { SearchPageContent } from './archiveSearchPageContent/ArchiveSearchPageContent';
+
+export { BackgroundImage, BackgroundImageProps } from './image/BackgroundImage';
+export { useBackgroundFallbackImageUrl } from './hooks/useBackgroundFallbackImageUrl';

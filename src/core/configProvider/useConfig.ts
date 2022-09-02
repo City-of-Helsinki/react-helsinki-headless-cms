@@ -1,8 +1,19 @@
-/* eslint-disable import/prefer-default-export */
 import { useContext } from 'react';
 
-import { configContext } from './configContext';
+import { Config, configContext } from './configContext';
+
+const validateContext = (config?: Config) => {
+  if (config === undefined) {
+    throw new Error('useConfig must be used within a ConfigProvider');
+  }
+  if (config.fallbackBackgroundImageUrls?.length === 0) {
+    throw new Error('add at least one fallback background image for events');
+  }
+};
 
 export function useConfig() {
-  return useContext(configContext);
+  const config = useContext(configContext);
+  validateContext(config);
+
+  return config;
 }

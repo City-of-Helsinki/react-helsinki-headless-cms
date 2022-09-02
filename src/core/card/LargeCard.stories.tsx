@@ -26,6 +26,11 @@ const Template: ComponentStory<typeof LargeCard> = (args) => (
     <div style={{ maxWidth: 1470, margin: 24 }}>
       <LargeCard {...args} />
       <LargeCard {...args} imagePosition="left" />
+      <LargeCard
+        {...args}
+        imageUrl="/broken/large/image.jpg"
+        title="Fallback image"
+      />
     </div>
   </ConfigProvider>
 );

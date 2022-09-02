@@ -4,9 +4,9 @@ import React from 'react';
 import classNames from 'classnames';
 
 import styles from './largeCard.module.scss';
-import { Tag } from '../../common/components/tag/Tag';
 import { LinkBox } from '../linkBox/LinkBox';
 import { Link } from '../link/Link';
+import { BackgroundImage } from '../image/BackgroundImage';
 
 export type LargeCardProps = {
   id?: string;
@@ -53,18 +53,11 @@ export function LargeCard({
         className={classNames(styles[`${imagePosition}`], styles.cardWrapper)}
       >
         {imageUrl && (
-          <div
+          <BackgroundImage
+            url={imageUrl}
+            labelTag={imageLabel}
             className={styles.imageWrapper}
-            style={{
-              backgroundImage: `url(${imageUrl})`,
-            }}
-          >
-            {imageLabel && (
-              <div className={styles.imageLabel}>
-                <Tag className={styles.tag}>{imageLabel}</Tag>
-              </div>
-            )}
-          </div>
+          />
         )}
         <div className={styles.textWrapper}>
           {title && <div className={styles.title}>{title}</div>}

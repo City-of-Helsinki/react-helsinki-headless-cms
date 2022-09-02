@@ -1,0 +1,31 @@
+@import 'breakpoints';
+
+.imageWrapper {
+  min-width: var(--width-image);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  box-sizing: border-box;
+  text-decoration: none;
+  position: relative;
+
+  &.fixed-vertical {
+    min-height: var(--height-image);
+    @include respond_above(s) {
+      min-height: var(--height-image-desktop);
+    }
+  }
+
+  @include respond_above(s) {
+    min-height: var(--height-image-desktop);
+  }
+
+  .imageLabel {
+    padding: var(--spacing-xs);
+    .tag {
+      --tag-background: var(--color-black-5);
+      font-weight: 600;
+      font-size: var(--fontsize-body-s);
+    }
+  }
+}
