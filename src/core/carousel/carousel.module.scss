@@ -74,6 +74,10 @@
         padding: 0 60px;
         box-sizing: border-box;
 
+        &.noDots {
+          margin-bottom: 32px;
+        }
+
         .sliderWrapper {
           overflow: visible;
           margin: auto;
