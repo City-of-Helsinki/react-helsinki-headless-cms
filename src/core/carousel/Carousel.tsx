@@ -122,7 +122,10 @@ export function Carousel({
         {isReady && (
           <div className={styles.root}>
             <div
-              className={classNames(styles.slider, !withDots && styles.noDots)}
+              className={classNames(
+                styles.slider,
+                !(withDots || numberOfSlides > 1) && styles.noDots,
+              )}
             >
               <div className={styles.sliderWrapper}>
                 <ul
