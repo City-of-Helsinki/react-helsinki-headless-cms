@@ -1,8 +1,13 @@
+@use 'breakpoints';
 @import 'color';
 
 .container {
-  margin: 100px -42px 0;
+  margin: 100px -60px 0;
   box-sizing: border-box;
+
+  @media screen and (max-width: breakpoints.$breakpoint-xl) {
+    margin: 100px -42px 0;
+  }
 
   .carouselWrapper {
     position: relative;
@@ -123,16 +128,16 @@
       .dotsContainer {
         display: flex;
         justify-content: center;
-        margin: 8px;
+        margin: 32px 0 0;
         .dot {
-          border: 2px solid var(--color-black-50);
+          border: 2px solid var(--color-black-20);
           border-radius: 50%;
           width: 8px;
           height: 8px;
           margin: 0 2px;
 
           &.selected {
-            background-color: var(--color-black-50);
+            background-color: var(--color-black-20);
           }
         }
       }
