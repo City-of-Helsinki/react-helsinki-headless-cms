@@ -25,6 +25,7 @@
 
   .heading {
     font-size: $fontsize-heading-m;
+    line-height: $fontsize-heading-m;
     margin: 0;
     padding: #{$spacing-layout-s} 0;
     @media screen and (min-width: breakpoints.$breakpoint-m) {

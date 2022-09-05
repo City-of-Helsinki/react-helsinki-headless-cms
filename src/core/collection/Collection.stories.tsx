@@ -57,5 +57,9 @@ CollectionWithCarousel.args = {
   cards,
   title: 'Carousel Collection Heading',
   type: 'carousel',
-  collectionContainerProps: { itemsDesktop: 5, itemsMobile: 2, withDots: true },
+  collectionContainerProps: {
+    itemsDesktop: 5,
+    itemsMobile: 2,
+    withDots: false,
+  },
 };
