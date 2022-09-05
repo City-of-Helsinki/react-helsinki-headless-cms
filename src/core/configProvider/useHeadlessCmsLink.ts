@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { ModuleItemTypeEnum } from '../../common/headlessService/constants';
 import { getUri } from '../../common/headlessService/utils';
 import { useConfig } from './useConfig';

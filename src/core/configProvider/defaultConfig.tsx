@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import React from 'react';
 
 import { ModuleItemTypeEnum } from '../../common/headlessService/constants';
@@ -11,6 +10,12 @@ export const defaultConfig: Config = {
   // get internal URL origins from environment variables in the client app
   internalHrefOrigins: [],
   currentLanguageCode: LanguageCodeEnum.Fi,
+  fallbackBackgroundImageUrls: [
+    './images/event_placeholder_A.jpg',
+    './images/event_placeholder_B.jpg',
+    './images/event_placeholder_C.jpg',
+    './images/event_placeholder_D.jpg',
+  ],
   copy: {
     breadcrumbNavigationLabel: 'Breadcrumb navigation',
     breadcrumbListLabel: 'breadcrumbs',

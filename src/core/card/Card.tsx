@@ -1,4 +1,4 @@
-import { IconArrowRight, Tag } from 'hds-react';
+import { IconArrowRight } from 'hds-react';
 import React, { useState } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import styles from './card.module.scss';
 import { LinkBox } from '../linkBox/LinkBox';
 import { Link } from '../link/Link';
+import { BackgroundImage } from '../image/BackgroundImage';
 
 export type CardProps = {
   id?: string;
@@ -69,21 +70,14 @@ export function Card({
         )}
       >
         {imageUrl && (
-          <div
+          <BackgroundImage
+            url={imageUrl}
+            labelTag={imageLabel}
             className={classNames(
               styles.imageWrapper,
               direction && styles[direction],
             )}
-            style={{
-              backgroundImage: `url(${imageUrl})`,
-            }}
-          >
-            {imageLabel && (
-              <div className={styles.imageLabel}>
-                <Tag className={styles.tag}>{imageLabel}</Tag>
-              </div>
-            )}
-          </div>
+          />
         )}
         <div className={styles.contentWrapper}>
           <div>

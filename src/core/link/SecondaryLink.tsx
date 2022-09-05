@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { IconAngleRight } from 'hds-react';
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies

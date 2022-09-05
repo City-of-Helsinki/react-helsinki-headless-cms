@@ -8,6 +8,7 @@ export type Config = {
   siteName: string;
   internalHrefOrigins: string[];
   currentLanguageCode: LanguageCodeEnum;
+  fallbackBackgroundImageUrls: string[];
   copy: {
     breadcrumbNavigationLabel: string;
     breadcrumbListLabel: string;
@@ -32,8 +33,8 @@ export type Config = {
       props: React.AnchorHTMLAttributes<HTMLAnchorElement>,
     ) => JSX.Element;
     Head?: (props: { children: React.ReactNode }) => JSX.Element;
-    EventCardContent?: (props: any) => JSX.Element;
-    ArticleCardContent?: (props: any) => JSX.Element;
+    EventCardContent?: React.FC<Record<string, unknown>>;
+    ArticleCardContent?: React.FC<Record<string, unknown>>;
   };
   apolloClient?: ApolloClient<NormalizedCacheObject>;
   eventsApolloClient?: ApolloClient<NormalizedCacheObject> | 'disabled';

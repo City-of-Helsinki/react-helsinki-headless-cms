@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { Koros } from 'hds-react';
 
 import styles from './pageSection.module.scss';
+import { BackgroundImage } from '../image/BackgroundImage';
 
 export type PageSectionProps = {
   children: React.ReactNode;
@@ -24,15 +25,16 @@ export function PageSection({
   korosBottomClassName,
   backgroundImageUrl,
 }: PageSectionProps) {
+  const Wrapper = backgroundImageUrl ? BackgroundImage : 'div';
   return (
-    <div
+    <Wrapper
+      url={backgroundImageUrl}
       className={classNames(
         styles.pageSection,
         korosTop && styles.withKorosTop,
         korosBottom && styles.withKorosBottom,
         className,
       )}
-      style={{ backgroundImage: backgroundImageUrl ?? '' }}
     >
       {korosTop && (
         <Koros
@@ -46,6 +48,6 @@ export function PageSection({
         />
       )}
       {children}
-    </div>
+    </Wrapper>
   );
 }
