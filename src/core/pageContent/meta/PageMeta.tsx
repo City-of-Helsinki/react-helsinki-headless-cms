@@ -7,6 +7,18 @@ export type PageMetaProps = {
   headComponent: React.ComponentType<{ children: React.ReactNode }>;
 };
 
+function replaceAll(str: string, find: string, replace: string) {
+  return str.replace(new RegExp(find, 'g'), replace);
+}
+
+function unescapeDash(str?: string): string {
+  if (!str) {
+    return str ?? '';
+  }
+
+  return replaceAll(str, '&#x2d;', '-');
+}
+
 export function PageMeta({ page, headComponent: Head }: PageMetaProps) {
   const seoForCurrentLanguage = page?.seo;
   const {
@@ -23,7 +35,7 @@ export function PageMeta({ page, headComponent: Head }: PageMetaProps) {
 
   return (
     <Head>
-      <title>{title}</title>
+      <title>{unescapeDash(title)}</title>
       {description && <meta name="description" content={description} />}
       <meta property="og:title" content={openGraphTitle} />
       {openGraphDescription && (
