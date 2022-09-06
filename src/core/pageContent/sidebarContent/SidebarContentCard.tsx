@@ -6,8 +6,10 @@ import { IconArrowRight } from 'hds-react';
 import { Link } from '../../link/Link';
 import { useConfig } from '../../configProvider/useConfig';
 import styles from './sidebarContentCard.module.scss';
+import { Image } from '../../image/Image';
 
 type SidebarContentCardProps = {
+  id: string;
   title: string;
   url: string;
   imageUrl?: string;
@@ -17,6 +19,7 @@ type SidebarContentCardProps = {
 };
 
 export default function SidebarContentCard({
+  id,
   title,
   url,
   imageUrl,
@@ -25,7 +28,6 @@ export default function SidebarContentCard({
   publishingDate,
 }: SidebarContentCardProps) {
   const {
-    components: { Img },
     utils: { getIsHrefExternal },
   } = useConfig();
 
@@ -35,11 +37,12 @@ export default function SidebarContentCard({
         [styles.withoutImage]: !imageUrl,
       })}
     >
-      {imageUrl && (
-        <div className={styles.image}>
-          <Img src={imageUrl} alt={imageAlt ?? ''} />
-        </div>
-      )}
+      <Image
+        id={id}
+        className={styles.image}
+        src={imageUrl}
+        alt={imageAlt ?? ''}
+      />
       <p className={styles.description}>{description && description}</p>
       <Link
         className={styles.link}

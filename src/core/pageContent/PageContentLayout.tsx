@@ -7,6 +7,7 @@ import { ContentContainer } from '../contentContainer/ContentContainer';
 import { PageSection } from '../pageSection/PageSection';
 
 export type PageContentLayoutProps = {
+  id: string;
   breadcrumbs?: React.ReactNode;
   heroContainer?: JSX.Element;
   content: React.ReactNode;
@@ -20,6 +21,7 @@ export type PageContentLayoutProps = {
 };
 
 export function PageContentLayout({
+  id,
   breadcrumbs,
   heroContainer,
   content,
@@ -36,15 +38,14 @@ export function PageContentLayout({
       {breadcrumbs && <div className={styles.breadcrumbs}>{breadcrumbs}</div>}
 
       <main id={MAIN_CONTENT_ID} className={styles.mainLayout}>
-        {imageSrc && (
-          <Hero
-            container={heroContainer}
-            imageAlt={imageAlt}
-            imageUrl={imageSrc}
-            imageLabel={imageLabel}
-            backUrl={backUrl}
-          />
-        )}
+        <Hero
+          id={id}
+          container={heroContainer}
+          imageAlt={imageAlt}
+          imageUrl={imageSrc}
+          imageLabel={imageLabel}
+          backUrl={backUrl}
+        />
         <PageSection>
           <ContentContainer>
             <div className={styles.content}>

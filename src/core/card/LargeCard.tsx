@@ -52,13 +52,12 @@ export function LargeCard({
       <div
         className={classNames(styles[`${imagePosition}`], styles.cardWrapper)}
       >
-        {imageUrl && (
-          <BackgroundImage
-            url={imageUrl}
-            labelTag={imageLabel}
-            className={styles.imageWrapper}
-          />
-        )}
+        <BackgroundImage
+          id={id}
+          url={imageUrl}
+          labelTag={imageLabel}
+          className={styles.imageWrapper}
+        />
         <div className={styles.textWrapper}>
           {title && <div className={styles.title}>{title}</div>}
           {subTitle && <div className={styles.subTitle}>{subTitle}</div>}

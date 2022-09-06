@@ -43,7 +43,7 @@ test('renders fallback background image url from app configuration', async () =>
     <PageSection backgroundImageUrl="invalid.jpg">Hello</PageSection>,
     undefined,
     {
-      fallbackBackgroundImageUrls: ['fallback_image.jpg'],
+      fallbackImageUrls: ['fallback_image.jpg'],
     },
   );
   mockImage.onerror(); // invalid.jpg

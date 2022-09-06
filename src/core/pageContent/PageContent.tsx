@@ -143,6 +143,7 @@ export function PageContent(props: PageContentProps) {
           breadcrumbs && <PageContentBreadcrumbs breadcrumbs={breadcrumbs} />
         }
         heroContainer={heroContainer}
+        id={page?.id ?? 'page'}
         imageSrc={page?.featuredImage?.node?.mediaItemUrl}
         imageAlt={page?.featuredImage?.node?.altText}
         imageLabel={page?.featuredImage?.node?.altText}

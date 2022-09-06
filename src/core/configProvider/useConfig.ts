@@ -6,7 +6,7 @@ const validateContext = (config?: Config) => {
   if (config === undefined) {
     throw new Error('useConfig must be used within a ConfigProvider');
   }
-  if (config.fallbackBackgroundImageUrls?.length === 0) {
+  if (config.fallbackImageUrls?.length === 0) {
     throw new Error('add at least one fallback background image for events');
   }
 };

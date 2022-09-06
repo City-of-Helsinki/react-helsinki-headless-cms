@@ -28,6 +28,7 @@ export function PageSection({
   const Wrapper = backgroundImageUrl ? BackgroundImage : 'div';
   return (
     <Wrapper
+      id={backgroundImageUrl ?? 'page-section'}
       url={backgroundImageUrl}
       className={classNames(
         styles.pageSection,

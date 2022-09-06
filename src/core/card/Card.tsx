@@ -46,7 +46,6 @@ export function Card({
   openLinkInNewTab,
 }: CardProps) {
   const [isHovered, setIsHovered] = useState(false);
-
   const handleToggleActive = () => setIsHovered((val) => !val);
 
   return (
@@ -69,16 +68,15 @@ export function Card({
           isHovered && styles.isHovered,
         )}
       >
-        {imageUrl && (
-          <BackgroundImage
-            url={imageUrl}
-            labelTag={imageLabel}
-            className={classNames(
-              styles.imageWrapper,
-              direction && styles[direction],
-            )}
-          />
-        )}
+        <BackgroundImage
+          id={id}
+          url={imageUrl}
+          labelTag={imageLabel}
+          className={classNames(
+            styles.imageWrapper,
+            direction && styles[direction],
+          )}
+        />
         <div className={styles.contentWrapper}>
           <div>
             <div className={styles.textWrapper}>
