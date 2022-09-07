@@ -8,7 +8,7 @@ export type Config = {
   siteName: string;
   internalHrefOrigins: string[];
   currentLanguageCode: LanguageCodeEnum;
-  fallbackBackgroundImageUrls: string[];
+  fallbackImageUrls: string[];
   copy: {
     breadcrumbNavigationLabel: string;
     breadcrumbListLabel: string;

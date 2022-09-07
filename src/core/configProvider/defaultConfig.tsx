@@ -10,7 +10,7 @@ export const defaultConfig: Config = {
   // get internal URL origins from environment variables in the client app
   internalHrefOrigins: [],
   currentLanguageCode: LanguageCodeEnum.Fi,
-  fallbackBackgroundImageUrls: [
+  fallbackImageUrls: [
     './images/event_placeholder_A.jpg',
     './images/event_placeholder_B.jpg',
     './images/event_placeholder_C.jpg',

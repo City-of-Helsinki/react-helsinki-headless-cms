@@ -3,13 +3,14 @@ import React from 'react';
 import classNames from 'classnames';
 import { IconArrowLeft } from 'hds-react';
 
-import { useConfig } from '../configProvider/useConfig';
 import Container from '../../common/components/container/Container';
 import styles from './hero.module.scss';
 import { Link } from '../link/Link';
 import { ContentContainer } from '../contentContainer/ContentContainer';
+import { Image } from '../image/Image';
 
 export type HeroProps = {
+  id: string;
   className?: string;
   backUrl?: string;
   imageUrl?: string;
@@ -19,6 +20,7 @@ export type HeroProps = {
 };
 
 export default function Hero({
+  id,
   className,
   backUrl,
   imageUrl,
@@ -26,19 +28,18 @@ export default function Hero({
   container,
   imageLabel,
 }: HeroProps) {
-  const {
-    components: { Img },
-  } = useConfig();
-
   return (
     <div className={classNames(styles.hero, className)}>
       <Container wrapper={container}>
         <ContentContainer>
           <div className={styles.heroInner}>
             <div>
-              <figure className={styles.imageContainer}>
-                <Img src={imageUrl} alt={imageAlt} />
-              </figure>
+              <Image
+                id={id}
+                className={styles.imageContainer}
+                src={imageUrl}
+                alt={imageAlt}
+              />
               {imageLabel && <div className={styles.label}>{imageLabel}</div>}
             </div>
             {backUrl && (

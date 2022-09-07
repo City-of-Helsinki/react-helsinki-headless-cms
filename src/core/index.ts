@@ -111,4 +111,5 @@ export { ArchivePage } from './archiveSearchPage/ArchiveSearchPage';
 export { SearchPageContent } from './archiveSearchPageContent/ArchiveSearchPageContent';
 
 export { BackgroundImage, BackgroundImageProps } from './image/BackgroundImage';
-export { useBackgroundFallbackImageUrl } from './hooks/useBackgroundFallbackImageUrl';
+export { Image, ImageProps } from './image/Image';
+export { useResolveImageUrl } from './hooks/useResolveImageUrl';

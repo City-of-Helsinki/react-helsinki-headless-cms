@@ -30,6 +30,7 @@ export default function PostListItem({
   return (
     <SidebarContentCard
       key={id}
+      id={id}
       title={title}
       publishingDate={date}
       url={url}
