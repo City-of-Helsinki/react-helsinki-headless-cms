@@ -224,7 +224,7 @@ export function EventSearchCollection({
 
   const eventsList = data?.eventList;
 
-  if (!data && !loading) {
+  if (!loading) {
     return (
       <div className={styles.loadingSpinnerWrapper}>
         <LoadingSpinner multicolor />
