@@ -197,7 +197,7 @@ export function SearchPageContent(props: SearchPageContentProps) {
             <div className={styles.bottomActions}>
               {isLoading && (
                 <div className={styles.loadingSpinner}>
-                  <LoadingSpinner />
+                  <LoadingSpinner multicolor />
                 </div>
               )}
               {hasMore && (

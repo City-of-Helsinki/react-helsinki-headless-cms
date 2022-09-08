@@ -39,7 +39,7 @@ export function PageWithTemplateContent({
   if (pageByTemplateQuery.loading) {
     return (
       <div className={styles.loadingSpinnerContainer}>
-        <LoadingSpinner />
+        <LoadingSpinner multicolor />
       </div>
     );
   }
