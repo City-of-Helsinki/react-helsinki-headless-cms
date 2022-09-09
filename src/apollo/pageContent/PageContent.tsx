@@ -35,7 +35,7 @@ export function PageContent({
   if (pageQuery.loading) {
     return (
       <div className={styles.loadingSpinnerContainer}>
-        <LoadingSpinner />
+        <LoadingSpinner multicolor />
       </div>
     );
   }
