@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from '../../link/Link';
 import styles from './sidebarContentCard.module.scss';
 import { Image } from '../../image/Image';
+import { formatDateFromString } from '../../../common/utils/dates';
 
 type SidebarContentCardProps = {
   id: string;
@@ -37,7 +38,9 @@ export default function SidebarContentCard({
           {title}
         </Link>
         {publishingDate && (
-          <p className={styles.publishingDate}>{publishingDate}</p>
+          <p className={styles.publishingDate}>
+            {formatDateFromString(publishingDate)}
+          </p>
         )}
       </div>
     </div>

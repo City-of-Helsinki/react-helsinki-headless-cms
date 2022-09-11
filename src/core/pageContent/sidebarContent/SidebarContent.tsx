@@ -58,7 +58,6 @@ export default function SidebarContent({
           }
 
           if (isLayoutArticle(item)) {
-            console.log(item);
             return (
               <SidebarPostListComponent
                 key="articles"
