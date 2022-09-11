@@ -1,10 +1,6 @@
 import React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import classNames from 'classnames';
-import { IconArrowRight } from 'hds-react';
 
 import { Link } from '../../link/Link';
-import { useConfig } from '../../configProvider/useConfig';
 import styles from './sidebarContentCard.module.scss';
 import { Image } from '../../image/Image';
 
@@ -27,36 +23,23 @@ export default function SidebarContentCard({
   description,
   publishingDate,
 }: SidebarContentCardProps) {
-  const {
-    utils: { getIsHrefExternal },
-  } = useConfig();
-
   return (
-    <div
-      className={classNames(styles.container, {
-        [styles.withoutImage]: !imageUrl,
-      })}
-    >
+    <div className={styles.container}>
       <Image
         id={id}
         className={styles.image}
         src={imageUrl}
         alt={imageAlt ?? ''}
       />
-      <p className={styles.description}>{description && description}</p>
-      <Link
-        className={styles.link}
-        href={url}
-        iconRight={
-          !getIsHrefExternal(url) && <IconArrowRight aria-hidden="true" />
-        }
-      >
-        {title}
-      </Link>
-      <p className={styles.publishingDate}>
-        {' '}
-        {publishingDate && publishingDate}
-      </p>
+      <div className={styles.content}>
+        <p className={styles.description}>{description && description}</p>
+        <Link className={styles.link} href={url}>
+          {title}
+        </Link>
+        {publishingDate && (
+          <p className={styles.publishingDate}>{publishingDate}</p>
+        )}
+      </div>
     </div>
   );
 }
