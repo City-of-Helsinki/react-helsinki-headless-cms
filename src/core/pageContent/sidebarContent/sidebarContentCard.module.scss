@@ -1,56 +1,37 @@
 @import 'spacing';
 @import 'color';
 
-.container {
-  &.withoutImage {
-    padding: $spacing-xs $spacing-m;
-    background-color: $color-coat-of-arms-light;
-  }
+.content {
+  padding: 0 $spacing-m;
+  color: var($color-black-90);
 }
 
 .link {
   display: flex;
   justify-content: space-between;
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 27px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+figure {
+  padding: 0;
+  margin: 0;
 }
 
 .image {
   position: relative;
   height: 13rem;
   overflow: hidden;
-
-  & img {
-    width: 0;
-    height: 0;
-    min-width: 100%;
-    max-width: 100%;
-    min-height: 100%;
-    max-height: 100%;
-    object-fit: cover;
-  }
+  object-fit: cover;
+  width: 100%;
 }
 
-.title {
-  position: relative;
-  padding: $spacing-xl $spacing-m;
-  margin: 0;
-
-  text-align: center;
-
-  &::after {
-    content: ' ';
-    display: block;
-    width: 80px;
-    height: 4px;
-    position: absolute;
-    left: 50%;
-    bottom: 1rem;
-
-    transform: translateX(-50%);
-    background-color: $color-coat-of-arms;
-  }
-
-  & > a {
-    text-decoration: none;
-    color: $color-black-90;
-  }
+.publishingDate {
+  margin: $spacing-2-xs 0;
+  color: var($color-black-60);
 }
