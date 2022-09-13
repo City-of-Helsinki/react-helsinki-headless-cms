@@ -275,7 +275,7 @@ export function EventSelectionCollection({
   if (!data && loading) {
     return (
       <div className={styles.loadingSpinnerWrapper}>
-        <LoadingSpinner />
+        <LoadingSpinner multicolor />
       </div>
     );
   }
