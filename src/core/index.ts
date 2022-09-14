@@ -91,6 +91,7 @@ export {
   EventSelectionCollectionProps,
   EventSearchCollection,
   EventSearchCollectionProps,
+  getEventCollectionCards,
 } from './collection/Collection';
 
 export {
