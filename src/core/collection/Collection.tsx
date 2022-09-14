@@ -159,7 +159,7 @@ export function Collection({
   );
 }
 
-function getEventCollectionCards(
+export function getEventCollectionCards(
   collection: EventSelectionCollectionType | EventSearchCollectionType,
   items: EventType[],
   getRoutedInternalHref: Config['utils']['getRoutedInternalHref'],
