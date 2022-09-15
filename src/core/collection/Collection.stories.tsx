@@ -10,6 +10,7 @@ import { defaultConfig } from '../configProvider/defaultConfig';
 import { ConfigProvider } from '../configProvider/ConfigProvider';
 import { Card } from '../card/Card';
 import cardMock from '../card/__mocks__/card.mock';
+import { GeneralCollectionType } from './types';
 
 export default {
   title: 'Example/Collection',
@@ -28,7 +29,9 @@ const Template: ComponentStory<typeof Collection> = (args) => (
   </div>
 );
 
-const collection = getCollections([page?.modules[0]])[0];
+const collection = getCollections([
+  page?.modules[0],
+])[0] as GeneralCollectionType;
 const cards = [
   ...getCollectionCards(collection),
   ...getCollectionCards(collection),
@@ -50,6 +53,7 @@ CollectionWithGrid.args = {
   title: 'Grid Collection Heading',
   type: 'grid',
   collectionContainerProps: { colsCount: 4 },
+  showAllUrl: '#',
 };
 
 export const CollectionWithCarousel = Template.bind({});
@@ -62,4 +66,5 @@ CollectionWithCarousel.args = {
     itemsMobile: 2,
     withDots: false,
   },
+  showAllUrl: '#',
 };

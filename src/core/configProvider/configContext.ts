@@ -44,7 +44,6 @@ export type Config = {
       link: string | null | undefined,
       type?: ModuleItemTypeEnum,
     ) => string;
-    getShowAllUrl: () => string;
   };
 };
 
