@@ -36,9 +36,8 @@ export type CollectionProps = {
   type: 'carousel' | 'grid';
   loading?: boolean;
   hasNext?: boolean;
+  showAllUrl?: string;
   onLoadMore?: () => void;
-  // TODO: implement the showAll -feature to carousels. Read the showAllLink -field, route it and add a button
-  onShowAll?: () => void;
 };
 
 export function CollectionGrid({
@@ -46,7 +45,7 @@ export function CollectionGrid({
   ...rest
 }: {
   cards: React.ReactElement<typeof Card>[];
-  onShowAll?: CollectionProps['onShowAll'];
+  showAllUrl?: CollectionProps['showAllUrl'];
 }) {
   return (
     <div className={styles.gridWrapper}>
@@ -66,7 +65,7 @@ export function CollectionCarousel({
   ...rest
 }: {
   cards: React.ReactElement<typeof Card>[];
-  onShowAll?: CollectionProps['onShowAll'];
+  showAllUrl?: CollectionProps['showAllUrl'];
   onLoadMore?: CollectionProps['onLoadMore'];
   loading?: CollectionProps['loading'];
   hasMore?: CollectionProps['hasNext'];
@@ -98,17 +97,16 @@ export function Collection({
   loading = false,
   hasNext = false,
   onLoadMore,
-  onShowAll,
+  showAllUrl,
 }: CollectionProps) {
   const {
     copy: { loadMoreButtonLabelText, showAllText },
-    utils: { getShowAllUrl },
   } = useConfig();
   const componentForType: Record<CollectionProps['type'], JSX.Element> = {
     carousel: (
       <CollectionCarousel
         cards={cards}
-        onShowAll={onShowAll}
+        showAllUrl={showAllUrl}
         onLoadMore={onLoadMore}
         hasMore={hasNext}
         loading={loading}
@@ -121,7 +119,7 @@ export function Collection({
       <>
         <CollectionGrid
           cards={cards.slice(0, 3)}
-          onShowAll={onShowAll}
+          showAllUrl={showAllUrl}
           {...collectionContainerProps}
         />
         {hasNext && (
@@ -136,8 +134,6 @@ export function Collection({
       </>
     ),
   };
-
-  const showAllUrl = getShowAllUrl();
 
   return (
     <div className={classNames(styles[type], className)}>

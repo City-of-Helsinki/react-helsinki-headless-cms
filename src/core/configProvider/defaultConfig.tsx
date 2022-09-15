@@ -62,7 +62,5 @@ export const defaultConfig: Config = {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     getRoutedInternalHref: (link: string, _type: ModuleItemTypeEnum): string =>
       link ?? '#',
-    // implement when headless cms api is ready
-    getShowAllUrl: () => '/',
   },
 };
