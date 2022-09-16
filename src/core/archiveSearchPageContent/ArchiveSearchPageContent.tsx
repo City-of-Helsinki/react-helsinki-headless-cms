@@ -140,7 +140,9 @@ export function ArchiveCollection({
 
   return (
     <>
-      {largeFirstItem && createLargeCard(firstItem)}
+      <div className={styles.largeCardContainer}>
+        {largeFirstItem && createLargeCard(firstItem)}
+      </div>
       <Grid>{gridItems.map((item) => createCard(item))}</Grid>
     </>
   );
