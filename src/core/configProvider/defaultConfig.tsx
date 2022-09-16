@@ -31,6 +31,7 @@ export const defaultConfig: Config = {
       searchButtonLabelText: 'Search',
       loadMoreButtonLabelText: 'Load more',
       noResultsText: 'No results',
+      clearAll: 'Clear filters',
     },
   },
   components: {

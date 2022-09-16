@@ -24,6 +24,7 @@ export type Config = {
       searchButtonLabelText: string;
       loadMoreButtonLabelText: string;
       noResultsText: string;
+      clearAll: string;
     };
   };
   components: {

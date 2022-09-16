@@ -49,6 +49,50 @@
         padding: 0 var(--padding);
         box-sizing: border-box;
         z-index: 1;
+
+        .tagsContainer {
+          display: flex;
+          flex-direction: column;
+
+          & > :last-child {
+            .clearButton {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              padding: 0;
+              margin-left: var(--spacing-s);
+              color: var(--color-black);
+              font-size: var(--fontsize-body-m);
+              font-weight: 500;
+              border: 2px solid transparent;
+              text-align: left;
+              height: 16px;
+              &:focus {
+                outline: 2px solid var(--color-black);
+                outline-offset: 0.25rem;
+              }
+
+              svg {
+                margin-left: var(--spacing-3-xs);
+              }
+            }
+          }
+
+          @media screen and (min-width: breakpoints.$breakpoint-l) {
+            display: grid;
+            align-items: center;
+            column-gap: $spacing-xs;
+            grid-template-columns: 5fr 1fr;
+
+            & > :last-child {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 100%;
+              margin: var(--spacing-xs);
+            }
+          }
+        }
       }
     }
 
