@@ -108,7 +108,7 @@
       padding-bottom: $spacing-2-xl;
 
       @media screen and (min-width: breakpoints.$breakpoint-m) {
-        padding-bottom: $spacing-5-xl;
+        padding-bottom: 6rem;
       }
 
       .searchResultsContainerInner {
