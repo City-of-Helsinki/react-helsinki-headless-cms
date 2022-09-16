@@ -133,6 +133,10 @@
       order: 5;
       a {
         color: var(--color-black);
+        svg {
+          height: var(--spacing-2-xl);
+          width: var(--spacing-2-xl);
+        }
       }
     }
   }
