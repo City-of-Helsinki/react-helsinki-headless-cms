@@ -50,12 +50,6 @@
         box-sizing: border-box;
         z-index: 1;
 
-        .largeCardContainer {
-          @media screen and (max-width: breakpoints.$breakpoint-m) {
-            margin-bottom: $spacing-s;
-          }
-        }
-
         .tagsContainer {
           display: flex;
           flex-direction: column;
@@ -168,6 +162,12 @@
         margin: 0 auto;
         padding: 0 var(--padding);
         box-sizing: border-box;
+
+        .largeCardContainer {
+          @media screen and (max-width: breakpoints.$breakpoint-l) {
+            margin-bottom: $spacing-s;
+          }
+        }
 
         .noResultsContainer {
           display: flex;
