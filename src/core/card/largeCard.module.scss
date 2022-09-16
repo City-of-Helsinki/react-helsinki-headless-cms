@@ -87,11 +87,11 @@
     }
 
     .subTitle {
-      font-size: var(--fontsize-body-m);
+      font-size: var(--fontsize-body-s);
       margin-bottom: var(--spacing-2-xs);
       color: var(--color-black-40);
       @include respond_above(s) {
-        font-size: var(--fontsize-body-m);
+        font-size: var(--fontsize-body-l);
         line-height: 2.25rem;
       }
     }
