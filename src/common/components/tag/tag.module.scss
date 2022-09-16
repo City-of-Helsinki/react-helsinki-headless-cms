@@ -28,6 +28,7 @@
 
   &.selected {
     --tag-background: var(--color-black-70) !important;
+    --tag-focus-outline-color: var(--color-black-70);
     color: var(--color-white);
   }
 
