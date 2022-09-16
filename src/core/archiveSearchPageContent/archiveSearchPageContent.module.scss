@@ -53,6 +53,7 @@
         .tagsContainer {
           display: flex;
           flex-direction: column;
+          min-height: 16px;
 
           & > :last-child {
             margin: 0;
