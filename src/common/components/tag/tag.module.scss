@@ -7,6 +7,7 @@
   margin-bottom: var(--spacing-2-xs);
   margin-top: var(--spacing-2-xs);
   --tag-focus-outline-color: var(--color-black);
+  border-radius: var(--spacing-s);
 
   @include respond_above(s) {
     font-size: var(--fontsize-body-xs);
@@ -19,7 +20,6 @@
 
   &.variant-card {
     font-weight: 500;
-    border-radius: var(--spacing-s);
   }
 
   &.featured {
