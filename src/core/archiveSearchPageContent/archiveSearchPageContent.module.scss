@@ -108,10 +108,10 @@
     .searchResultsContainer {
       display: flex;
       flex-direction: column;
-      padding: $spacing-xl 0;
+      padding: $spacing-2-xl 0;
 
       @media screen and (min-width: breakpoints.$breakpoint-m) {
-        padding: $spacing-4-xl 0;
+        padding: $spacing-5-xl 0;
       }
 
       .searchResultsContainerInner {
