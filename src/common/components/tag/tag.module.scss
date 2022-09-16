@@ -28,6 +28,7 @@
 
   &.selected {
     --tag-background: var(--color-black-70) !important;
+    color: var(--color-white);
   }
 
   &.variant-search {
