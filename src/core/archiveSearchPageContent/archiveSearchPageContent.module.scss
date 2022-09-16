@@ -56,7 +56,6 @@
           min-height: 16px;
 
           & > :last-child {
-            margin: 0;
             .clearButton {
               display: flex;
               justify-content: center;
@@ -89,7 +88,6 @@
               justify-content: center;
               align-items: center;
               height: 100%;
-              margin: var(--spacing-xs);
             }
           }
         }
