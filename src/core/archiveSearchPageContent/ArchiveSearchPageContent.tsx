@@ -230,7 +230,11 @@ export function SearchPageContent(props: SearchPageContentProps) {
         <PageSection className={styles.searchResultsContainer}>
           <div className={styles.searchResultsContainerInner}>
             {noResults ? (
-              <h1>{archiveSearch.noResultsText || ''}</h1>
+              <div className={styles.noResultsContainer}>
+                <IconSearch />
+                <h1>{archiveSearch.noResultsTitle || ''}</h1>
+                <p>{archiveSearch.noResultsText || ''}</p>
+              </div>
             ) : (
               <ArchiveCollection {...props} />
             )}

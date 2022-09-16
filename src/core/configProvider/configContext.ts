@@ -23,6 +23,7 @@ export type Config = {
       searchTextPlaceholder: string;
       searchButtonLabelText: string;
       loadMoreButtonLabelText: string;
+      noResultsTitle: string;
       noResultsText: string;
       clearAll: string;
     };

@@ -164,6 +164,29 @@
         padding: 0 var(--padding);
         box-sizing: border-box;
 
+        .noResultsContainer {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          margin: var(--padding);
+
+          h1 {
+            font-weight: 400;
+            margin: $spacing-xs;
+          }
+
+          p {
+            font-size: var(--fontsize-body-l);
+            margin: 0;
+          }
+
+          svg {
+            height: var(--spacing-3-xl);
+            width: var(--spacing-3-xl);
+          }
+        }
+
         .bottomActions {
           display: flex;
           align-items: center;
