@@ -30,12 +30,9 @@
   }
 
   .imageWrapper {
-    height: var(--height-image);
-    min-width: var(--width-image);
     background-repeat: no-repeat;
     background-position: 50%;
     background-size: cover;
-    margin-bottom: var(--spacing-s);
     display: flex;
     box-sizing: border-box;
     text-decoration: none;
@@ -99,6 +96,7 @@
     .text {
       order: 3;
       font-size: var(--fontsize-body-m);
+      line-height: var(--lineheight-m);
       margin-bottom: var(--spacing-2-xs);
       display: -webkit-box;
       -webkit-line-clamp: 2;
@@ -106,8 +104,8 @@
       overflow: hidden;
 
       @include respond_above(s) {
-        font-size: var(--fontsize-body-m);
-        line-height: 2.25rem;
+        font-size: var(--fontsize-body-l);
+        line-height: var(--lineheight-l);
         -webkit-line-clamp: initial;
         -webkit-box-orient: vertical;
         margin-bottom: var(--spacing-2-xs);
