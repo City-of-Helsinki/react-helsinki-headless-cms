@@ -9,6 +9,7 @@ type Props = {
   children: React.ReactNode;
   className?: string;
   featured?: boolean;
+  selected?: boolean;
   variant?: 'default' | 'card' | 'search';
   onClick?: () => void;
 };
@@ -18,13 +19,11 @@ export function Tag({
   variant = 'default',
   children,
   featured,
+  selected,
   onClick,
 }: Props) {
-  const [selected, setSelected] = React.useState<boolean>(false);
-
   const handleClick = (): void => {
     if (onClick) {
-      setSelected((prev) => !prev);
       onClick();
     }
   };

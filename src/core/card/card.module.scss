@@ -107,21 +107,23 @@
     .subTitle {
       font-size: var(--fontsize-body-s);
       color: var(--color-black-40);
+      margin: var(--spacing-2-xs) 0;
       @include respond_above(s) {
-        font-size: var(--fontsize-body-l);
-        margin-bottom: var(--spacing-2-xs);
+        font-size: var(--fontsize-body-m);
       }
     }
 
     .text {
       order: 3;
       font-size: var(--fontsize-body-m);
+      line-height: var(--lineheight-m);
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
       @include respond_above(s) {
         font-size: var(--fontsize-body-l);
+        line-height: var(--lineheight-l);
         -webkit-line-clamp: initial;
         -webkit-box-orient: vertical;
         margin-bottom: var(--spacing-2-xs);

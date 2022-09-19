@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
-import { Button, IconSearch, LoadingSpinner, TextInput } from 'hds-react';
+import {
+  Button,
+  IconCrossCircleFill,
+  IconSearch,
+  LoadingSpinner,
+  TextInput,
+} from 'hds-react';
 
 import styles from './archiveSearchPageContent.module.scss';
 import { Tag } from '../../common/components/tag/Tag';
@@ -54,22 +60,43 @@ export function SearchForm({
 
 export function SearchTags({
   tags,
+  currentTags,
   handleTagClick,
+  handleClearTags,
+  clearAllText,
 }: {
   tags: SearchTag[];
+  currentTags: SearchTag[];
   handleTagClick: (tag: SearchTag) => () => void;
+  handleClearTags: () => void;
+  clearAllText: string;
 }) {
   return (
-    <div>
-      {tags.map((tag) => (
-        <Tag
-          key={`tag-${tag.slug}`}
-          variant="search"
-          onClick={handleTagClick(tag)}
-        >
-          {tag.name}
-        </Tag>
-      ))}
+    <div className={styles.tagsContainer}>
+      <div>
+        {tags.map((tag) => (
+          <Tag
+            key={`tag-${tag.slug}`}
+            variant="search"
+            selected={currentTags.includes(tag)}
+            onClick={handleTagClick(tag)}
+          >
+            {tag.name}
+          </Tag>
+        ))}
+      </div>
+      <div>
+        {currentTags?.length > 0 && (
+          <button
+            className={styles.clearButton}
+            onClick={handleClearTags}
+            type="button"
+          >
+            {clearAllText}
+            <IconCrossCircleFill aria-hidden />
+          </button>
+        )}
+      </div>
     </div>
   );
 }
@@ -113,7 +140,9 @@ export function ArchiveCollection({
 
   return (
     <>
-      {largeFirstItem && createLargeCard(firstItem)}
+      <div className={styles.largeCardContainer}>
+        {largeFirstItem && createLargeCard(firstItem)}
+      </div>
       <Grid>{gridItems.map((item) => createCard(item))}</Grid>
     </>
   );
@@ -158,6 +187,12 @@ export function SearchPageContent(props: SearchPageContentProps) {
     onSearch(searchText, currentTags);
   };
 
+  const clearTags = (): void => {
+    setSearchTags([]);
+    setSearchText('');
+    onSearch('', []);
+  };
+
   return (
     <div className={classNames(styles.contentLayout, className)}>
       <div className={styles.mainLayout}>
@@ -175,7 +210,15 @@ export function SearchPageContent(props: SearchPageContentProps) {
                 searchText={searchText}
               />
             </div>
-            {tags && <SearchTags tags={tags} handleTagClick={handleTagClick} />}
+            {tags && (
+              <SearchTags
+                tags={tags}
+                clearAllText={archiveSearch?.clearAll}
+                currentTags={searchTags}
+                handleTagClick={handleTagClick}
+                handleClearTags={clearTags}
+              />
+            )}
           </div>
         </PageSection>
 
@@ -190,7 +233,11 @@ export function SearchPageContent(props: SearchPageContentProps) {
         <PageSection className={styles.searchResultsContainer}>
           <div className={styles.searchResultsContainerInner}>
             {noResults ? (
-              <h1>{archiveSearch.noResultsText || ''}</h1>
+              <div className={styles.noResultsContainer}>
+                <IconSearch />
+                <h1>{archiveSearch.noResultsTitle || ''}</h1>
+                <p>{archiveSearch.noResultsText || ''}</p>
+              </div>
             ) : (
               <ArchiveCollection {...props} />
             )}

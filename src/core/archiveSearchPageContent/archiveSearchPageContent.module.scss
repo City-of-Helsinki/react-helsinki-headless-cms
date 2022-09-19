@@ -18,10 +18,6 @@
 
   .mainLayout {
     .customContentContainer {
-      padding: $spacing-xl 0 0 0;
-      @media screen and (min-width: breakpoints.$breakpoint-m) {
-        padding: $spacing-4-xl 0 0 0;
-      }
       .customContentContainerInner {
         width: 100%;
         max-width: var(--max-width);
@@ -53,6 +49,49 @@
         padding: 0 var(--padding);
         box-sizing: border-box;
         z-index: 1;
+
+        .tagsContainer {
+          display: flex;
+          flex-direction: column;
+          min-height: 16px;
+
+          & > :last-child {
+            .clearButton {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              padding: 0;
+              color: var(--color-black);
+              font-size: var(--fontsize-body-m);
+              font-weight: 500;
+              border: 2px solid transparent;
+              text-align: left;
+              &:focus {
+                outline: 2px solid var(--color-black);
+                outline-offset: 0.25rem;
+              }
+
+              svg {
+                margin-left: var(--spacing-3-xs);
+              }
+            }
+          }
+
+          @media screen and (min-width: breakpoints.$breakpoint-l) {
+            display: grid;
+            align-items: center;
+            column-gap: $spacing-xs;
+            grid-template-columns: 5fr 1fr;
+
+            & > :last-child {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 100%;
+              margin: 0 var(--spacing-xs);
+            }
+          }
+        }
       }
     }
 
@@ -109,10 +148,10 @@
     .searchResultsContainer {
       display: flex;
       flex-direction: column;
-      padding: $spacing-xl 0;
+      padding-bottom: $spacing-2-xl;
 
       @media screen and (min-width: breakpoints.$breakpoint-m) {
-        padding: $spacing-4-xl 0;
+        padding-bottom: 6rem;
       }
 
       .searchResultsContainerInner {
@@ -123,6 +162,35 @@
         margin: 0 auto;
         padding: 0 var(--padding);
         box-sizing: border-box;
+
+        .largeCardContainer {
+          @media screen and (max-width: breakpoints.$breakpoint-l) {
+            margin-bottom: $spacing-s;
+          }
+        }
+
+        .noResultsContainer {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          margin: var(--padding);
+
+          h1 {
+            font-weight: 400;
+            margin: $spacing-xs;
+          }
+
+          p {
+            font-size: var(--fontsize-body-l);
+            margin: 0;
+          }
+
+          svg {
+            height: var(--spacing-3-xl);
+            width: var(--spacing-3-xl);
+          }
+        }
 
         .bottomActions {
           display: flex;

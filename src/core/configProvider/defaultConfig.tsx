@@ -30,7 +30,9 @@ export const defaultConfig: Config = {
       searchTextPlaceholder: 'Search text',
       searchButtonLabelText: 'Search',
       loadMoreButtonLabelText: 'Load more',
-      noResultsText: 'No results',
+      noResultsTitle: 'No results found',
+      noResultsText: 'Please try to search something else',
+      clearAll: 'Clear filters',
     },
   },
   components: {
