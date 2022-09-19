@@ -108,6 +108,9 @@
       font-size: var(--fontsize-body-s);
       color: var(--color-black-40);
       margin: var(--spacing-2-xs) 0;
+      @include respond_above(s) {
+        font-size: var(--fontsize-body-m);
+      }
     }
 
     .text {
