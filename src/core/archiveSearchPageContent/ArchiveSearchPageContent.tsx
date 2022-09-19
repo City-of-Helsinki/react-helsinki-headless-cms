@@ -189,7 +189,8 @@ export function SearchPageContent(props: SearchPageContentProps) {
 
   const clearTags = (): void => {
     setSearchTags([]);
-    onSearch(searchText, []);
+    setSearchText('');
+    onSearch('', []);
   };
 
   return (
