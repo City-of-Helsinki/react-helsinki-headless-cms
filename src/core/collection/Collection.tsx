@@ -45,7 +45,6 @@ export function CollectionGrid({
   ...rest
 }: {
   cards: React.ReactElement<typeof Card>[];
-  showAllUrl?: CollectionProps['showAllUrl'];
 }) {
   return (
     <div className={styles.gridWrapper}>
@@ -65,11 +64,10 @@ export function CollectionCarousel({
   ...rest
 }: {
   cards: React.ReactElement<typeof Card>[];
-  showAllUrl?: CollectionProps['showAllUrl'];
   onLoadMore?: CollectionProps['onLoadMore'];
   loading?: CollectionProps['loading'];
   hasMore?: CollectionProps['hasNext'];
-  loadMoreButtonLabelText: string;
+  loadMoreButtonLabelText?: string;
 }) {
   return (
     <div className={styles.carouselWrapper}>
@@ -106,7 +104,6 @@ export function Collection({
     carousel: (
       <CollectionCarousel
         cards={cards}
-        showAllUrl={showAllUrl}
         onLoadMore={onLoadMore}
         hasMore={hasNext}
         loading={loading}
@@ -119,7 +116,6 @@ export function Collection({
       <>
         <CollectionGrid
           cards={cards.slice(0, 3)}
-          showAllUrl={showAllUrl}
           {...collectionContainerProps}
         />
         {hasNext && (
@@ -176,7 +172,9 @@ export function getEventCollectionCards(
         {...cardProps}
         url={url}
         direction="fixed-vertical"
-        customContent={<EventCardContent event={items[i]} />}
+        customContent={
+          EventCardContent && <EventCardContent event={items[i]} />
+        }
       />
     );
   });
@@ -271,7 +269,7 @@ export function EventSelectionCollection({
   if (!data && loading) {
     return (
       <div className={styles.loadingSpinnerWrapper}>
-        <LoadingSpinner />
+        <LoadingSpinner multicolor />
       </div>
     );
   }
