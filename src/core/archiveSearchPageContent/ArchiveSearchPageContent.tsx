@@ -210,7 +210,7 @@ export function SearchPageContent(props: SearchPageContentProps) {
                 searchText={searchText}
               />
             </div>
-            {tags && (
+            {(tags || searchText) && (
               <SearchTags
                 tags={tags}
                 clearAllText={archiveSearch?.clearAll}

@@ -139,7 +139,9 @@
 
     .customContent {
       order: 4;
-      margin: var(--spacing-2-xs) 0;
+      margin-top: var(--spacing-2-xs);
+      margin-bottom: var(--spacing-2-xs);
+      margin-right: var(--spacing-2-xs);
       p {
         margin: 0;
       }
