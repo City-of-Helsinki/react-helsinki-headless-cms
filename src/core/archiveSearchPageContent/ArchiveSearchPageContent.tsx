@@ -61,14 +61,16 @@ export function SearchForm({
 export function SearchTags({
   tags,
   currentTags,
+  hasClearSearch,
   handleTagClick,
-  handleClearTags,
+  handleClearSearch,
   clearAllText,
 }: {
   tags: SearchTag[];
   currentTags: SearchTag[];
+  hasClearSearch: boolean;
   handleTagClick: (tag: SearchTag) => () => void;
-  handleClearTags: () => void;
+  handleClearSearch: () => void;
   clearAllText: string;
 }) {
   return (
@@ -86,10 +88,10 @@ export function SearchTags({
         ))}
       </div>
       <div>
-        {currentTags?.length > 0 && (
+        {hasClearSearch && (
           <button
             className={styles.clearButton}
-            onClick={handleClearTags}
+            onClick={handleClearSearch}
             type="button"
           >
             {clearAllText}
@@ -213,10 +215,11 @@ export function SearchPageContent(props: SearchPageContentProps) {
             {tags && (
               <SearchTags
                 tags={tags}
+                hasClearSearch={Boolean(searchText) && tags.length > 0}
                 clearAllText={archiveSearch?.clearAll}
                 currentTags={searchTags}
                 handleTagClick={handleTagClick}
-                handleClearTags={clearTags}
+                handleClearSearch={clearTags}
               />
             )}
           </div>
