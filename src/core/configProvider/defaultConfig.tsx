@@ -7,7 +7,7 @@ import { Config } from './configContext';
 
 export const defaultConfig: Config = {
   siteName: 'Test site',
-  // get internal URL origins from environment variables in the client app
+  //  get internal URL origins from environment variables in the client app
   internalHrefOrigins: [],
   currentLanguageCode: LanguageCodeEnum.Fi,
   fallbackImageUrls: [
