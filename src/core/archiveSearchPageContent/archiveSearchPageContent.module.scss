@@ -50,6 +50,11 @@
         box-sizing: border-box;
         z-index: 1;
 
+        h2 {
+          font-size: var(--fontsize-heading-l);
+          margin: 0;
+        }
+
         .tagsContainer {
           display: flex;
           flex-direction: column;
