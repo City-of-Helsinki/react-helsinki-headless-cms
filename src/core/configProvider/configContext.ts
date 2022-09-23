@@ -20,6 +20,7 @@ export type Config = {
     loadMoreButtonLabelText: string;
     showAllText: string;
     archiveSearch?: {
+      title: string;
       searchTextPlaceholder: string;
       searchButtonLabelText: string;
       loadMoreButtonLabelText: string;

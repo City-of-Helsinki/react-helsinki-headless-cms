@@ -27,6 +27,7 @@ export const defaultConfig: Config = {
     loadMoreButtonLabelText: 'Load more',
     showAllText: 'Show all',
     archiveSearch: {
+      title: 'Articles search',
       searchTextPlaceholder: 'Search text',
       searchButtonLabelText: 'Search',
       loadMoreButtonLabelText: 'Load more',

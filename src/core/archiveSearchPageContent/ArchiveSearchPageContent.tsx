@@ -204,6 +204,7 @@ export function SearchPageContent(props: SearchPageContentProps) {
           korosBottomClassName={styles.koros}
         >
           <div className={styles.searchFormContainerInner}>
+            <h2>{archiveSearch.title || ''}</h2>
             <div>
               <SearchForm
                 archiveSearch={archiveSearch}
