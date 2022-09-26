@@ -203,6 +203,10 @@ export function EventSearchCollection({
     url.split('?')[1] ?? url.split('?')[0],
   );
   const params = Object.fromEntries(searchParams.entries());
+
+  const normalizedParams = { ...normalizeKeys(params) };
+  normalizedParams.eventType = 'Course';
+
   const variables = {
     ...normalizeKeys(params),
     pageSize,
