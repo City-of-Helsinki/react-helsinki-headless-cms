@@ -205,7 +205,15 @@ export function EventSearchCollection({
   const params = Object.fromEntries(searchParams.entries());
 
   const normalizedParams = { ...normalizeKeys(params) };
-  normalizedParams.eventType = 'Course';
+
+  // fix for course event type lower case
+  if (normalizedParams.eventType) {
+    normalizedParams.eventType =
+      normalizedParams.eventType.charAt(0).toUpperCase() +
+      normalizedParams.eventType.slice(1);
+  }
+
+  // str.charAt(0).toUpperCase() + str.slice(1);
 
   const variables = {
     ...normalizeKeys(params),
