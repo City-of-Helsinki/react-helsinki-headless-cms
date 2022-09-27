@@ -203,6 +203,16 @@ export function EventSearchCollection({
     url.split('?')[1] ?? url.split('?')[0],
   );
   const params = Object.fromEntries(searchParams.entries());
+
+  const normalizedParams = { ...normalizeKeys(params) };
+
+  // fix for course event type lower case
+  if (normalizedParams.eventType) {
+    normalizedParams.eventType =
+      normalizedParams.eventType.charAt(0).toUpperCase() +
+      normalizedParams.eventType.slice(1);
+  }
+
   const variables = {
     ...normalizeKeys(params),
     pageSize,
