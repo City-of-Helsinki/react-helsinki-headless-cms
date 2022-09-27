@@ -213,8 +213,6 @@ export function EventSearchCollection({
       normalizedParams.eventType.slice(1);
   }
 
-  // str.charAt(0).toUpperCase() + str.slice(1);
-
   const variables = {
     ...normalizeKeys(params),
     pageSize,
