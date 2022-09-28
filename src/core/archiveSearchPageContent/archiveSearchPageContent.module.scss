@@ -51,8 +51,10 @@
         z-index: 1;
 
         h2 {
-          font-size: var(--fontsize-heading-l);
-          margin: 0;
+          font-size: var(--fontsize-heading-xl);
+          font-weight: 500;
+          margin-top: var(--spacing-s);
+          margin-bottom: var(--spacing-m);
         }
 
         .tagsContainer {
