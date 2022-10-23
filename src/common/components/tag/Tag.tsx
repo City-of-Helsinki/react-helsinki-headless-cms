@@ -1,5 +1,5 @@
 import * as React from 'react';
-//  eslint-disable-next-line import/no-extraneous-dependencies
+// eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
 import { Tag as HDSTag } from 'hds-react';
 
