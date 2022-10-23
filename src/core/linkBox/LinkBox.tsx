@@ -1,5 +1,5 @@
 import React from 'react';
-//  eslint-disable-next-line import/no-extraneous-dependencies
+// eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
 
 import { Link } from '../link/Link';
