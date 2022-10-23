@@ -25,6 +25,10 @@
     border: 1px solid var(--color-black-20);
   }
 
+  &.default {
+    border: none;
+  }
+
   @include respond_above(s) {
     flex-direction: row;
     &.left {
