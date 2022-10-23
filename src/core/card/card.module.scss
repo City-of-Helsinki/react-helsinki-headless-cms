@@ -31,7 +31,7 @@
   margin-bottom: var(--spacing-s);
 
   &.withBorder {
-    border: 1px solid var(--color-black);
+    border: 1px solid var(--color-black-20);
   }
 
   &.withShadow {
@@ -47,6 +47,7 @@
   }
 
   .imageWrapper {
+    padding: 0 var(--spacing-xs);
     min-width: var(--width-image);
     background-repeat: no-repeat;
     background-position: 50%;
