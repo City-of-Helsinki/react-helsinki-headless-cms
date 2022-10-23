@@ -81,12 +81,12 @@
     .title {
       color: var(--color-black);
       font-size: var(--fontsize-heading-m);
-      font-weight: 600;
+      font-weight: 400;
       line-height: var(--lineheight-l);
       margin-bottom: var(--spacing-2-xs);
 
       @include respond_above(s) {
-        font-size: var(--fontsize-heading-l);
+        font-size: var(--fontsize-heading-xl);
         margin-bottom: var(--spacing-s);
       }
     }
