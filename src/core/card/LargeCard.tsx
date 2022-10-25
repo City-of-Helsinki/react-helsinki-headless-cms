@@ -23,6 +23,7 @@ export type LargeCardProps = {
   hasLink?: boolean;
   clampText?: boolean;
   openInNewTab?: boolean;
+  withBorder?: boolean;
 };
 
 export function LargeCard({
@@ -40,6 +41,7 @@ export function LargeCard({
   url,
   clampText,
   openInNewTab,
+  withBorder,
 }: LargeCardProps) {
   return (
     <LinkBox
@@ -50,7 +52,11 @@ export function LargeCard({
       openInNewTab={openInNewTab}
     >
       <div
-        className={classNames(styles[`${imagePosition}`], styles.cardWrapper)}
+        className={classNames(
+          styles[`${imagePosition}`],
+          styles.cardWrapper,
+          withBorder && styles.withBorder,
+        )}
       >
         <BackgroundImage
           id={id}
