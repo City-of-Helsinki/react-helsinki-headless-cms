@@ -12,6 +12,7 @@ import {
   getLoadMoreKey,
 } from './utils/utils';
 import { type CollectionProps } from '../collection/Collection';
+import { useConfig } from '../configProvider/useConfig';
 
 export type CarouselProps<T> = {
   children: React.ReactElement<T>[];
@@ -23,6 +24,7 @@ export type CarouselProps<T> = {
   hasMore?: CollectionProps['hasNext'];
   loading?: CollectionProps['loading'];
   loadMoreButtonLabelText?: string;
+  title?: string;
 };
 
 export function Carousel({
@@ -36,6 +38,7 @@ export function Carousel({
   hasMore,
   loading,
   loadMoreButtonLabelText,
+  title,
 }) {
   const MOBILE_WIDTH = 720;
   const [isReady] = useState<boolean>(true);
@@ -44,6 +47,10 @@ export function Carousel({
   const [itemsPerSlide, setItemsPerSlide] = useState<number>(0);
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [width, setWidth] = useState<number>(0);
+
+  const {
+    copy: { next, previous },
+  } = useConfig();
 
   const updateDimensions = () => setWidth(window.innerWidth);
 
@@ -103,6 +110,7 @@ export function Carousel({
           <>
             <button
               type="button"
+              aria-label={`${previous}${title ? ` - ${title}` : ''}`}
               className={classNames(styles.btn, styles.btnPrev)}
               onClick={handlePrevClick}
               disabled={!isReady}
@@ -111,6 +119,7 @@ export function Carousel({
             </button>
             <button
               type="button"
+              aria-label={`${next}${title ? ` - ${title}` : ''}`}
               className={classNames(styles.btn, styles.btnNext)}
               onClick={handleNextClick}
               disabled={!isReady}

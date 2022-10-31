@@ -163,6 +163,7 @@ export function SearchPageContent(props: SearchPageContentProps) {
   } = props;
   const {
     copy: { archiveSearch },
+    mainContentId,
   } = useConfig();
 
   const [searchText, setSearchText] = useState<string>('');
@@ -196,7 +197,10 @@ export function SearchPageContent(props: SearchPageContentProps) {
   };
 
   return (
-    <div className={classNames(styles.contentLayout, className)}>
+    <main
+      id={mainContentId || 'main-content'}
+      className={classNames(styles.contentLayout, className)}
+    >
       <div className={styles.mainLayout}>
         <PageSection
           korosBottom
@@ -268,6 +272,6 @@ export function SearchPageContent(props: SearchPageContentProps) {
           </div>
         </PageSection>
       </div>
-    </div>
+    </main>
   );
 }

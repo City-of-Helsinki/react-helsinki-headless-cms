@@ -61,6 +61,7 @@ export function CollectionCarousel({
   hasMore,
   loading,
   loadMoreButtonLabelText,
+  title,
   ...rest
 }: {
   cards: React.ReactElement<typeof Card>[];
@@ -68,10 +69,12 @@ export function CollectionCarousel({
   loading?: CollectionProps['loading'];
   hasMore?: CollectionProps['hasNext'];
   loadMoreButtonLabelText?: string;
+  title?: string;
 }) {
   return (
     <div className={styles.carouselWrapper}>
       <Carousel
+        title={title}
         className={styles.carousel}
         onLoadMore={onLoadMore}
         hasMore={hasMore}
@@ -108,6 +111,7 @@ export function Collection({
         hasMore={hasNext}
         loading={loading}
         loadMoreButtonLabelText={loadMoreButtonLabelText}
+        title={title}
         {...collectionContainerProps}
       />
     ),

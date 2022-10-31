@@ -6,6 +6,7 @@ import { ModuleItemTypeEnum } from '../../common/headlessService/constants';
 
 export type Config = {
   siteName: string;
+  mainContentId?: string;
   internalHrefOrigins: string[];
   currentLanguageCode: LanguageCodeEnum;
   fallbackImageUrls: string[];
@@ -19,6 +20,8 @@ export type Config = {
     closeButtonLabelText: string;
     loadMoreButtonLabelText: string;
     showAllText: string;
+    next: string;
+    previous: string;
     archiveSearch?: {
       title: string;
       searchTextPlaceholder: string;

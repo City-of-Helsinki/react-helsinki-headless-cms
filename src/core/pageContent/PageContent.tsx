@@ -128,13 +128,14 @@ export function PageContent(props: PageContentProps) {
     components: { Head },
     utils: { getRoutedInternalHref },
     eventsApolloClient,
+    mainContentId,
   } = useConfig();
 
   const isEventModulesEnabled =
     eventsApolloClient !== undefined && eventsApolloClient !== 'disabled';
 
   return (
-    <>
+    <main id={mainContentId || 'main-content'}>
       {Head && <PageMeta headComponent={Head} page={page} />}
       <PageContentLayoutComponent
         {...props}
@@ -171,6 +172,6 @@ export function PageContent(props: PageContentProps) {
           />
         }
       />
-    </>
+    </main>
   );
 }
