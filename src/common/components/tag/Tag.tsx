@@ -31,6 +31,7 @@ export function Tag({
   return (
     <HDSTag
       onClick={handleClick}
+      {...(!onClick && { tabindex: -1 })}
       className={classNames(
         styles.tag,
         styles[`variant-${variant}`],

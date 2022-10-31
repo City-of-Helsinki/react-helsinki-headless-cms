@@ -26,6 +26,8 @@ export const defaultConfig: Config = {
     closeButtonLabelText: 'close',
     loadMoreButtonLabelText: 'Load more',
     showAllText: 'Show all',
+    next: 'Next',
+    previous: 'Previous',
     archiveSearch: {
       title: 'Articles search',
       searchTextPlaceholder: 'Search text',

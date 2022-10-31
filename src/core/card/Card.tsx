@@ -50,11 +50,10 @@ export function Card({
 
   return (
     <LinkBox
-      aria-hidden
       id={id}
       href={url}
       className={className}
-      aria-label={ariaLabel}
+      aria-label={ariaLabel || ''}
       openInNewTab={openLinkInNewTab}
       onMouseEnter={handleToggleActive}
       onMouseLeave={handleToggleActive}
@@ -97,6 +96,7 @@ export function Card({
           {url && hasLink && (
             <div className={styles.buttonWrapper}>
               <Link
+                tabIndex={-1}
                 href={url}
                 openInNewTab={openLinkInNewTab}
                 iconLeft={<IconArrowRight aria-hidden="true" />}

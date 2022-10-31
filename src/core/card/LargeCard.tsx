@@ -76,6 +76,7 @@ export function LargeCard({
           {url && hasLink && (
             <div className={styles.buttonWrapper}>
               <Link
+                tabIndex={-1}
                 href={url}
                 openInNewTab={openInNewTab}
                 iconLeft={<IconArrowRight aria-hidden="true" />}
