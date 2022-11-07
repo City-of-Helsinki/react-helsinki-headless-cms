@@ -1,6 +1,6 @@
 {
   "name": "react-helsinki-headless-cms",
-  "version": "1.0.0-alpha37",
+  "version": "1.0.0-alpha38",
   "description": "React components for displaying Headless CMS content according to guidelines set by HDS",
   "main": "cjs/index.js",
   "module": "index.js",
