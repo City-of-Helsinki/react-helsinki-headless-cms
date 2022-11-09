@@ -3,10 +3,10 @@ import React from 'react';
 import HtmlToReact from '../../common/components/htmlToReact/HtmlToReact';
 import Text from '../../common/components/text/Text';
 import { ArticleType } from '../../common/headlessService/types';
-import { useConfig } from '../configProvider/useConfig';
 import styles from './pageMainContent.module.scss';
 import { formatDateFromString } from '../../common/utils/dates';
 import { Tag } from '../../common/components/tag/Tag';
+import { Link } from '../link/Link';
 
 export type PageMainContentProps = {
   title: string;
@@ -21,10 +21,6 @@ export function PageMainContent({
   date,
   categories,
 }: PageMainContentProps) {
-  const {
-    components: { Link },
-  } = useConfig();
-
   return (
     <article className={styles.mainContent}>
       <header>
