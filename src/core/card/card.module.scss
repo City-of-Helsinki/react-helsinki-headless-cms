@@ -24,7 +24,6 @@
 
   position: relative;
   background-color: var(--color-white);
-  color: var(--color-black);
   height: 100%;
   width: 100%;
   text-decoration: none;
@@ -90,7 +89,6 @@
     padding: var(--spacing-s);
 
     .title {
-      color: var(--color-black);
       font-size: var(--fontsize-heading-s);
       line-height: var(--lineheight-m);
       margin: var(--spacing-2-xs) 0;
@@ -155,7 +153,6 @@
     }
     order: 5;
     a {
-      color: var(--color-black);
       display: flex;
       svg {
         height: var(--spacing-2-xl);

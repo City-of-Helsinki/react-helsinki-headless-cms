@@ -68,13 +68,13 @@
               justify-content: center;
               align-items: center;
               padding: 0;
-              color: var(--color-black);
+              color: var(--color-black-90);
               font-size: var(--fontsize-body-m);
               font-weight: 500;
               border: 2px solid transparent;
               text-align: left;
               &:focus {
-                outline: 2px solid var(--color-black);
+                outline: 2px solid var(--color-black-90);
                 outline-offset: 0.25rem;
               }
 

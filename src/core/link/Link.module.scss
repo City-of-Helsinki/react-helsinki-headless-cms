@@ -4,11 +4,11 @@
   display: flex;
   &,
   &:visited {
-    color: var(--color-black);
+    color: var(--color-black-90);
   }
 
   &:visited svg g path {
-    fill: var(--color-black);
+    fill: var(--color-black-90);
   }
 }
 

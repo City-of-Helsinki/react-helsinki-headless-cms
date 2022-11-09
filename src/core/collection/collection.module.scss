@@ -9,12 +9,12 @@
     justify-content: space-between;
 
     .showAll {
-      color: var(--color-coat-of-arms-dark);
       text-decoration: none;
       font-weight: 500;
       &:hover {
         text-decoration: underline;
       }
+      color: var(--color-link-show-all);
     }
   }
 
