@@ -56,7 +56,7 @@
     position: relative;
 
     &.fixed-vertical {
-      min-height: var(--height-image);
+      padding-bottom: 62.5%;
       @include respond_above(s) {
         min-height: var(--height-image-desktop);
       }
