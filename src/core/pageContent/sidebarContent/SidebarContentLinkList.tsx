@@ -1,7 +1,7 @@
 import { IconArrowRight } from 'hds-react';
 import React from 'react';
 
-import HtmlToReact from '../../../common/components/htmlToReact/HtmlToReact';
+import { HtmlToReact } from '../../../common/components/htmlToReact/HtmlToReact';
 import List from '../../../common/components/list/List';
 import { LayoutLinkList } from '../../../common/headlessService/types';
 import { useConfig } from '../../configProvider/useConfig';

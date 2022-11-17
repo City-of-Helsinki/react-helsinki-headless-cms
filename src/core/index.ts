@@ -82,6 +82,8 @@ export {
 // naming overlaps with type exported above
 export { Tag as TagComponent } from '../common/components/tag/Tag';
 
+export { HtmlToReact } from '../common/components/htmlToReact/HtmlToReact';
+
 export type { Breadcrumb } from './pageContent/types';
 
 export {

@@ -68,4 +68,8 @@ export const defaultConfig: Config = {
     getRoutedInternalHref: (link: string, _type: ModuleItemTypeEnum): string =>
       link ?? '#',
   },
+  meta: {
+    appleTouchIconUrl: 'apple-touch-icon.png',
+    favIconUrl: '/favicon.ico',
+  },
 };

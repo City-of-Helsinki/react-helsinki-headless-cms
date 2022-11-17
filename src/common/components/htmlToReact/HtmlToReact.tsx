@@ -95,10 +95,7 @@ function replaceDomNodeWithReactComponent(
   return domNode;
 }
 
-export default function HtmlToReact({
-  children: dirty,
-  components,
-}: HtmlToReactProps) {
+export function HtmlToReact({ children: dirty, components }: HtmlToReactProps) {
   const clean = useMemo(
     () =>
       DOMPurify.sanitize(dirty, {

@@ -22,7 +22,7 @@ import pageWithChildren from '../archiveSearchPageContent/__mocks__/pageChildren
 import { LargeCard, LargeCardProps } from '../card/LargeCard';
 import { Card, CardProps } from '../card/Card';
 import { filterPagesAndArticles } from '../../common/headlessService/utils';
-import HtmlToReact from '../../common/components/htmlToReact/HtmlToReact';
+import { HtmlToReact } from '../../common/components/htmlToReact/HtmlToReact';
 import { formatDateTimeFromString } from '../../common/utils/dates';
 import { CollectionItemType } from '../collection/types';
 import mockPage from '../pageContent/__mocks__/page.mock';

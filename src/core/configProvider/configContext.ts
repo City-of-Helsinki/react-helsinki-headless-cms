@@ -51,6 +51,10 @@ export type Config = {
       type?: ModuleItemTypeEnum,
     ) => string;
   };
+  meta?: {
+    appleTouchIconUrl?: string;
+    favIconUrl?: string;
+  };
 };
 
 export const configContext = createContext<Config>({} as Config);
