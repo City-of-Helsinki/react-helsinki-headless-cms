@@ -1,6 +1,6 @@
 import React from 'react';
 
-import HtmlToReact from '../../common/components/htmlToReact/HtmlToReact';
+import { HtmlToReact } from '../../common/components/htmlToReact/HtmlToReact';
 import Text from '../../common/components/text/Text';
 import { ArticleType } from '../../common/headlessService/types';
 import styles from './pageMainContent.module.scss';

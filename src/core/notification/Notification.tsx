@@ -6,7 +6,7 @@ import {
 
 import makeLocaleStorageValue from '../../common/utils/makeLocaleStorageValue';
 import { NotificationType } from '../../common/headlessService/types';
-import HtmlToReact from '../../common/components/htmlToReact/HtmlToReact';
+import { HtmlToReact } from '../../common/components/htmlToReact/HtmlToReact';
 import { useConfig } from '../configProvider/useConfig';
 import { Link } from '../link/Link';
 import getNotificationHash from './utils/getNotificationHash';
