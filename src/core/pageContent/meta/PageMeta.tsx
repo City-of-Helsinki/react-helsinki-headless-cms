@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { ArticleType, PageType } from '../../../common/headlessService/types';
+import { useConfig } from '../../configProvider/useConfig';
 
 export type PageMetaProps = {
   page?: PageType | ArticleType;
@@ -33,6 +34,8 @@ export function PageMeta({ page, headComponent: Head }: PageMetaProps) {
   } = seoForCurrentLanguage ?? {};
   const image = seoForCurrentLanguage?.socialImage?.mediaItemUrl;
 
+  const { meta } = useConfig();
+
   return (
     <Head>
       <title>{unescapeDash(title)}</title>
@@ -61,6 +64,13 @@ export function PageMeta({ page, headComponent: Head }: PageMetaProps) {
         href={page?.seo?.canonicalUrl}
       />
       <link rel="canonical" href={canonicalUrl} />
+      <link rel="canonical" href={canonicalUrl} />
+      <link rel="icon" href={meta?.favIconUrl} />
+      <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href={meta?.appleTouchIconUrl}
+      />
     </Head>
   );
 }
