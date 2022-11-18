@@ -71,5 +71,7 @@ export const defaultConfig: Config = {
   meta: {
     appleTouchIconUrl: 'apple-touch-icon.png',
     favIconUrl: '/favicon.ico',
+    favIconSvgUrl: '/favicon.svg',
+    manifestUrl: '/manifest.webmanifest',
   },
 };
