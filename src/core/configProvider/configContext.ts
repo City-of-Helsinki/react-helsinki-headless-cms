@@ -54,6 +54,7 @@ export type Config = {
   meta?: {
     appleTouchIconUrl?: string;
     favIconUrl?: string;
+    favIconSvgUrl?: string;
     manifestUrl?: string;
   };
 };
