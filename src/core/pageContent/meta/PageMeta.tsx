@@ -66,11 +66,8 @@ export function PageMeta({ page, headComponent: Head }: PageMetaProps) {
       <link rel="canonical" href={canonicalUrl} />
       <link rel="canonical" href={canonicalUrl} />
       <link rel="icon" href={meta?.favIconUrl} />
-      <link
-        rel="apple-touch-icon"
-        sizes="180x180"
-        href={meta?.appleTouchIconUrl}
-      />
+      <link rel="apple-touch-icon" href={meta?.appleTouchIconUrl} />
+      <link rel="manifest" href={meta?.manifestUrl} />
     </Head>
   );
 }
