@@ -37,6 +37,7 @@ export function Tag({
         styles[`variant-${variant}`],
         featured && styles.featured,
         selected && styles.selected,
+        !onClick && styles.noOutline,
         className,
       )}
     >
