@@ -37,4 +37,8 @@
     --tag-background: var(--color-fog-light);
     cursor: pointer;
   }
+
+  &.noOutline {
+    --tag-focus-outline-color: none;
+  }
 }
