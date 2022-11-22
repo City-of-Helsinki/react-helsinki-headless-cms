@@ -74,6 +74,9 @@ fragment Page on Page {
     ... on LayoutCollection {
       ...LayoutCollection
     }
+    ... on LocationsSelected {
+      ...LocationsSelected
+    }
   }
 }
 

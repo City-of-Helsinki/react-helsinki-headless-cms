@@ -156,3 +156,10 @@ fragment LayoutArticleHighlights on LayoutArticleHighlights {
 fragment LayoutContact on LayoutContact {
   __typename
 }
+
+fragment LocationsSelected on LocationsSelected {
+  title
+  locations
+  module
+  __typename
+}

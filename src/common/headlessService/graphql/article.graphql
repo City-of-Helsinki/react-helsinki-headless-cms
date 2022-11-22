@@ -99,6 +99,9 @@ fragment Post on Post {
     ... on LayoutCollection {
       ...LayoutCollection
     }
+    ... on LocationsSelected {
+      ...LocationsSelected
+    }
   }
 }
 
