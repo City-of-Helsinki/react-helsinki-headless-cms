@@ -1,5 +1,6 @@
 @use 'breakpoints';
 @import 'spacing';
+@import 'typography';
 
 .contentLayout {
   --padding: #{$spacing-layout-2-xs};
@@ -55,6 +56,10 @@
       // TODO: Replace with flex-gap when browsers support it
       margin-left: 22px;
     }
+  }
+
+  a {
+    font-size: $fontsize-body-l;
   }
 }
 
