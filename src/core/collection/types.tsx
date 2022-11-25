@@ -10,6 +10,7 @@ export type GeneralCollectionType = {
   title?: string;
   description?: string;
   items: CollectionItemType[];
+  showAllUrl?: string;
   __typename: string;
 };
 

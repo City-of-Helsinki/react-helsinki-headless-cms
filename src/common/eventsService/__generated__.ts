@@ -19,6 +19,9 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
+  _Any: any;
+  federation__FieldSet: any;
+  link__Import: any;
 };
 
 export type AboutPagesResponse = {
@@ -392,6 +395,7 @@ export type PlacePosition = {
 export type Query = {
   __typename?: 'Query';
   _empty?: Maybe<Scalars['String']>;
+  _service: _Service;
   aboutPages: AboutPagesResponse;
   accessibilityPages: AccessibilityPagesResponse;
   collectionDetails: CollectionDetails;
@@ -427,8 +431,10 @@ export type QueryEventListArgs = {
   allOngoing?: InputMaybe<Scalars['Boolean']>;
   allOngoingAnd?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   allOngoingOr?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  audienceMaxAgeGt?: InputMaybe<Scalars['String']>;
   audienceMaxAgeLt?: InputMaybe<Scalars['String']>;
   audienceMinAgeGt?: InputMaybe<Scalars['String']>;
+  audienceMinAgeLt?: InputMaybe<Scalars['String']>;
   combinedText?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   division?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   end?: InputMaybe<Scalars['String']>;
@@ -558,6 +564,18 @@ export type Subscription = {
   __typename?: 'Subscription';
   _empty?: Maybe<Scalars['String']>;
 };
+
+export type _Service = {
+  __typename?: '_Service';
+  sdl?: Maybe<Scalars['String']>;
+};
+
+export enum Link__Purpose {
+  /** `EXECUTION` features provide metadata necessary for operation execution. */
+  Execution = 'EXECUTION',
+  /** `SECURITY` features provide metadata necessary to securely resolve fields. */
+  Security = 'SECURITY',
+}
 
 export type LocalizedCmsEventFieldsFragment = {
   __typename?: 'LocalizedObject';

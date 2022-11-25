@@ -102,7 +102,11 @@ export const defaultCollections = (
         });
 
         collectionElements.push(
-          <Collection {...commonCollectionProps} cards={cards} />,
+          <Collection
+            {...commonCollectionProps}
+            showAllUrl={collection.showAllUrl}
+            cards={cards}
+          />,
         );
       }
       return collectionElements;

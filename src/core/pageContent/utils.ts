@@ -45,6 +45,7 @@ export function getCollections(
       collections.push({
         ...commonFields,
         items: module.articles,
+        showAllUrl: module.showAllLink,
       });
     }
     if (isLayoutPage(module) || isLayoutPageCarousel(module)) {

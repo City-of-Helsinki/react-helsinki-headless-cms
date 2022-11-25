@@ -32,6 +32,7 @@ fragment LayoutArticles on LayoutArticles {
       }
     }
   }
+  showAllLink
   __typename
 }
 
@@ -58,6 +59,7 @@ fragment LayoutArticlesCarousel on LayoutArticlesCarousel {
     }
   }
   showMore
+  showAllLink
   __typename
 }
 
