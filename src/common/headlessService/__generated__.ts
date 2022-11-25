@@ -2170,6 +2170,18 @@ export type DateQueryInput = {
   year?: InputMaybe<Scalars['Int']>;
 };
 
+export type DefaultImages = {
+  __typename?: 'DefaultImages';
+  /** Attachment ID for article image */
+  article?: Maybe<Scalars['String']>;
+  /** Attachment ID for event image */
+  event?: Maybe<Scalars['String']>;
+  /** Attachment ID for hero image */
+  hero?: Maybe<Scalars['String']>;
+  /** Attachment ID for page image */
+  page?: Maybe<Scalars['String']>;
+};
+
 /** The template assigned to the node */
 export type DefaultTemplate = ContentTemplate & {
   __typename?: 'DefaultTemplate';
@@ -2520,6 +2532,8 @@ export type EventSearch = {
   module?: Maybe<Scalars['String']>;
   /** List of modules */
   modules?: Maybe<Array<Maybe<CollectionModulesUnionType>>>;
+  /** Show all -link */
+  showAllLink?: Maybe<Scalars['String']>;
   /** Module title */
   title?: Maybe<Scalars['String']>;
   /** Search query */
@@ -2540,7 +2554,7 @@ export type EventSearchCarousel = {
   /** Events order */
   orderNewestFirst?: Maybe<Scalars['Boolean']>;
   /** Show all -link */
-  showAllLink?: Maybe<Array<Maybe<Scalars['String']>>>;
+  showAllLink?: Maybe<Scalars['String']>;
   /** Module title */
   title?: Maybe<Scalars['String']>;
   /** Search query */
@@ -2558,6 +2572,8 @@ export type EventSelected = {
   module?: Maybe<Scalars['String']>;
   /** List of modules */
   modules?: Maybe<Array<Maybe<CollectionModulesUnionType>>>;
+  /** Show all -link */
+  showAllLink?: Maybe<Scalars['String']>;
   /** Module title */
   title?: Maybe<Scalars['String']>;
 };
@@ -2578,7 +2594,7 @@ export type EventSelectedCarousel = {
   /** List of modules */
   modules?: Maybe<Array<Maybe<CollectionModulesUnionType>>>;
   /** Show all -link */
-  showAllLink?: Maybe<Array<Maybe<Scalars['String']>>>;
+  showAllLink?: Maybe<Scalars['String']>;
   /** Module title */
   title?: Maybe<Scalars['String']>;
 };
@@ -3340,6 +3356,8 @@ export type LayoutArticles = {
   category?: Maybe<Scalars['Int']>;
   /** Tag */
   limit?: Maybe<Scalars['Int']>;
+  /** Show all -link */
+  showAllLink?: Maybe<Scalars['String']>;
   /** Tag */
   tag?: Maybe<Scalars['Int']>;
   /** Title */
@@ -3359,6 +3377,8 @@ export type LayoutArticlesCarousel = {
   category?: Maybe<Scalars['Int']>;
   /** Amount of articles to list */
   limit?: Maybe<Scalars['Int']>;
+  /** Show all -link */
+  showAllLink?: Maybe<Scalars['String']>;
   /** Show more link */
   showMore?: Maybe<Array<Maybe<Scalars['String']>>>;
   /** Tag */
@@ -3411,6 +3431,8 @@ export type LayoutPages = {
   description?: Maybe<Scalars['String']>;
   /** Pages */
   pages?: Maybe<Array<Maybe<Page>>>;
+  /** Show all -link */
+  showAllLink?: Maybe<Scalars['String']>;
   /** Title */
   title?: Maybe<Scalars['String']>;
 };
@@ -6489,6 +6511,8 @@ export type RootQuery = {
   contentType?: Maybe<ContentType>;
   /** Connection between the RootQuery type and the ContentType type */
   contentTypes?: Maybe<RootQueryToContentTypeConnection>;
+  /** Default Images */
+  defaultImages?: Maybe<DefaultImages>;
   /** Get language list */
   defaultLanguage?: Maybe<Language>;
   /** Fields of the &#039;DiscussionSettings&#039; settings group */
@@ -6723,6 +6747,11 @@ export type RootQueryContentTypesArgs = {
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
+};
+
+/** The root entry point into the Graph */
+export type RootQueryDefaultImagesArgs = {
+  language: Scalars['String'];
 };
 
 /** The root entry point into the Graph */
@@ -10428,6 +10457,7 @@ export type PostFragment = {
     | {
         __typename: 'LayoutArticles';
         title?: string | null;
+        showAllLink?: string | null;
         articles?: Array<{
           __typename?: 'Post';
           id: string;
@@ -10501,7 +10531,7 @@ export type PostFragment = {
     | {
         __typename: 'EventSearchCarousel';
         title?: string | null;
-        showAllLink?: Array<string | null> | null;
+        showAllLink?: string | null;
         url?: string | null;
         orderNewestFirst?: boolean | null;
         eventsNearby?: boolean | null;
@@ -10517,7 +10547,7 @@ export type PostFragment = {
         __typename: 'EventSelectedCarousel';
         title?: string | null;
         module?: string | null;
-        showAllLink?: Array<string | null> | null;
+        showAllLink?: string | null;
         eventsNearby?: boolean | null;
         events?: Array<string | null> | null;
         amountOfCardsPerRow?: number | null;
@@ -10527,6 +10557,7 @@ export type PostFragment = {
     | {
         __typename: 'LayoutArticles';
         title?: string | null;
+        showAllLink?: string | null;
         articles?: Array<{
           __typename?: 'Post';
           id: string;
@@ -10557,6 +10588,7 @@ export type PostFragment = {
         __typename: 'LayoutArticlesCarousel';
         title?: string | null;
         showMore?: Array<string | null> | null;
+        showAllLink?: string | null;
         articles?: Array<{
           __typename?: 'Post';
           id: string;
@@ -10735,6 +10767,7 @@ export type ArticleQuery = {
       | {
           __typename: 'LayoutArticles';
           title?: string | null;
+          showAllLink?: string | null;
           articles?: Array<{
             __typename?: 'Post';
             id: string;
@@ -10808,7 +10841,7 @@ export type ArticleQuery = {
       | {
           __typename: 'EventSearchCarousel';
           title?: string | null;
-          showAllLink?: Array<string | null> | null;
+          showAllLink?: string | null;
           url?: string | null;
           orderNewestFirst?: boolean | null;
           eventsNearby?: boolean | null;
@@ -10824,7 +10857,7 @@ export type ArticleQuery = {
           __typename: 'EventSelectedCarousel';
           title?: string | null;
           module?: string | null;
-          showAllLink?: Array<string | null> | null;
+          showAllLink?: string | null;
           eventsNearby?: boolean | null;
           events?: Array<string | null> | null;
           amountOfCardsPerRow?: number | null;
@@ -10834,6 +10867,7 @@ export type ArticleQuery = {
       | {
           __typename: 'LayoutArticles';
           title?: string | null;
+          showAllLink?: string | null;
           articles?: Array<{
             __typename?: 'Post';
             id: string;
@@ -10864,6 +10898,7 @@ export type ArticleQuery = {
           __typename: 'LayoutArticlesCarousel';
           title?: string | null;
           showMore?: Array<string | null> | null;
+          showAllLink?: string | null;
           articles?: Array<{
             __typename?: 'Post';
             id: string;
@@ -11064,6 +11099,7 @@ export type PostsQuery = {
           | {
               __typename: 'LayoutArticles';
               title?: string | null;
+              showAllLink?: string | null;
               articles?: Array<{
                 __typename?: 'Post';
                 id: string;
@@ -11137,7 +11173,7 @@ export type PostsQuery = {
           | {
               __typename: 'EventSearchCarousel';
               title?: string | null;
-              showAllLink?: Array<string | null> | null;
+              showAllLink?: string | null;
               url?: string | null;
               orderNewestFirst?: boolean | null;
               eventsNearby?: boolean | null;
@@ -11153,7 +11189,7 @@ export type PostsQuery = {
               __typename: 'EventSelectedCarousel';
               title?: string | null;
               module?: string | null;
-              showAllLink?: Array<string | null> | null;
+              showAllLink?: string | null;
               eventsNearby?: boolean | null;
               events?: Array<string | null> | null;
               amountOfCardsPerRow?: number | null;
@@ -11163,6 +11199,7 @@ export type PostsQuery = {
           | {
               __typename: 'LayoutArticles';
               title?: string | null;
+              showAllLink?: string | null;
               articles?: Array<{
                 __typename?: 'Post';
                 id: string;
@@ -11193,6 +11230,7 @@ export type PostsQuery = {
               __typename: 'LayoutArticlesCarousel';
               title?: string | null;
               showMore?: Array<string | null> | null;
+              showAllLink?: string | null;
               articles?: Array<{
                 __typename?: 'Post';
                 id: string;
@@ -11510,6 +11548,7 @@ export type MenuItemFragment = {
                       | {
                           __typename: 'LayoutArticles';
                           title?: string | null;
+                          showAllLink?: string | null;
                           articles?: Array<{
                             __typename?: 'Post';
                             id: string;
@@ -11583,7 +11622,7 @@ export type MenuItemFragment = {
                       | {
                           __typename: 'EventSearchCarousel';
                           title?: string | null;
-                          showAllLink?: Array<string | null> | null;
+                          showAllLink?: string | null;
                           url?: string | null;
                           orderNewestFirst?: boolean | null;
                           eventsNearby?: boolean | null;
@@ -11599,7 +11638,7 @@ export type MenuItemFragment = {
                           __typename: 'EventSelectedCarousel';
                           title?: string | null;
                           module?: string | null;
-                          showAllLink?: Array<string | null> | null;
+                          showAllLink?: string | null;
                           eventsNearby?: boolean | null;
                           events?: Array<string | null> | null;
                           amountOfCardsPerRow?: number | null;
@@ -11609,6 +11648,7 @@ export type MenuItemFragment = {
                       | {
                           __typename: 'LayoutArticles';
                           title?: string | null;
+                          showAllLink?: string | null;
                           articles?: Array<{
                             __typename?: 'Post';
                             id: string;
@@ -11639,6 +11679,7 @@ export type MenuItemFragment = {
                           __typename: 'LayoutArticlesCarousel';
                           title?: string | null;
                           showMore?: Array<string | null> | null;
+                          showAllLink?: string | null;
                           articles?: Array<{
                             __typename?: 'Post';
                             id: string;
@@ -11761,6 +11802,7 @@ export type MenuItemFragment = {
                     | {
                         __typename: 'LayoutArticles';
                         title?: string | null;
+                        showAllLink?: string | null;
                         articles?: Array<{
                           __typename?: 'Post';
                           id: string;
@@ -11834,7 +11876,7 @@ export type MenuItemFragment = {
                     | {
                         __typename: 'EventSearchCarousel';
                         title?: string | null;
-                        showAllLink?: Array<string | null> | null;
+                        showAllLink?: string | null;
                         url?: string | null;
                         orderNewestFirst?: boolean | null;
                         eventsNearby?: boolean | null;
@@ -11850,7 +11892,7 @@ export type MenuItemFragment = {
                         __typename: 'EventSelectedCarousel';
                         title?: string | null;
                         module?: string | null;
-                        showAllLink?: Array<string | null> | null;
+                        showAllLink?: string | null;
                         eventsNearby?: boolean | null;
                         events?: Array<string | null> | null;
                         amountOfCardsPerRow?: number | null;
@@ -11860,6 +11902,7 @@ export type MenuItemFragment = {
                     | {
                         __typename: 'LayoutArticles';
                         title?: string | null;
+                        showAllLink?: string | null;
                         articles?: Array<{
                           __typename?: 'Post';
                           id: string;
@@ -11890,6 +11933,7 @@ export type MenuItemFragment = {
                         __typename: 'LayoutArticlesCarousel';
                         title?: string | null;
                         showMore?: Array<string | null> | null;
+                        showAllLink?: string | null;
                         articles?: Array<{
                           __typename?: 'Post';
                           id: string;
@@ -12055,6 +12099,7 @@ export type MenuItemFragment = {
               | {
                   __typename: 'LayoutArticles';
                   title?: string | null;
+                  showAllLink?: string | null;
                   articles?: Array<{
                     __typename?: 'Post';
                     id: string;
@@ -12128,7 +12173,7 @@ export type MenuItemFragment = {
               | {
                   __typename: 'EventSearchCarousel';
                   title?: string | null;
-                  showAllLink?: Array<string | null> | null;
+                  showAllLink?: string | null;
                   url?: string | null;
                   orderNewestFirst?: boolean | null;
                   eventsNearby?: boolean | null;
@@ -12144,7 +12189,7 @@ export type MenuItemFragment = {
                   __typename: 'EventSelectedCarousel';
                   title?: string | null;
                   module?: string | null;
-                  showAllLink?: Array<string | null> | null;
+                  showAllLink?: string | null;
                   eventsNearby?: boolean | null;
                   events?: Array<string | null> | null;
                   amountOfCardsPerRow?: number | null;
@@ -12154,6 +12199,7 @@ export type MenuItemFragment = {
               | {
                   __typename: 'LayoutArticles';
                   title?: string | null;
+                  showAllLink?: string | null;
                   articles?: Array<{
                     __typename?: 'Post';
                     id: string;
@@ -12184,6 +12230,7 @@ export type MenuItemFragment = {
                   __typename: 'LayoutArticlesCarousel';
                   title?: string | null;
                   showMore?: Array<string | null> | null;
+                  showAllLink?: string | null;
                   articles?: Array<{
                     __typename?: 'Post';
                     id: string;
@@ -12306,6 +12353,7 @@ export type MenuItemFragment = {
             | {
                 __typename: 'LayoutArticles';
                 title?: string | null;
+                showAllLink?: string | null;
                 articles?: Array<{
                   __typename?: 'Post';
                   id: string;
@@ -12379,7 +12427,7 @@ export type MenuItemFragment = {
             | {
                 __typename: 'EventSearchCarousel';
                 title?: string | null;
-                showAllLink?: Array<string | null> | null;
+                showAllLink?: string | null;
                 url?: string | null;
                 orderNewestFirst?: boolean | null;
                 eventsNearby?: boolean | null;
@@ -12395,7 +12443,7 @@ export type MenuItemFragment = {
                 __typename: 'EventSelectedCarousel';
                 title?: string | null;
                 module?: string | null;
-                showAllLink?: Array<string | null> | null;
+                showAllLink?: string | null;
                 eventsNearby?: boolean | null;
                 events?: Array<string | null> | null;
                 amountOfCardsPerRow?: number | null;
@@ -12405,6 +12453,7 @@ export type MenuItemFragment = {
             | {
                 __typename: 'LayoutArticles';
                 title?: string | null;
+                showAllLink?: string | null;
                 articles?: Array<{
                   __typename?: 'Post';
                   id: string;
@@ -12435,6 +12484,7 @@ export type MenuItemFragment = {
                 __typename: 'LayoutArticlesCarousel';
                 title?: string | null;
                 showMore?: Array<string | null> | null;
+                showAllLink?: string | null;
                 articles?: Array<{
                   __typename?: 'Post';
                   id: string;
@@ -12609,6 +12659,7 @@ export type MenuPageFieldsFragment = {
       | {
           __typename: 'LayoutArticles';
           title?: string | null;
+          showAllLink?: string | null;
           articles?: Array<{
             __typename?: 'Post';
             id: string;
@@ -12682,7 +12733,7 @@ export type MenuPageFieldsFragment = {
       | {
           __typename: 'EventSearchCarousel';
           title?: string | null;
-          showAllLink?: Array<string | null> | null;
+          showAllLink?: string | null;
           url?: string | null;
           orderNewestFirst?: boolean | null;
           eventsNearby?: boolean | null;
@@ -12698,7 +12749,7 @@ export type MenuPageFieldsFragment = {
           __typename: 'EventSelectedCarousel';
           title?: string | null;
           module?: string | null;
-          showAllLink?: Array<string | null> | null;
+          showAllLink?: string | null;
           eventsNearby?: boolean | null;
           events?: Array<string | null> | null;
           amountOfCardsPerRow?: number | null;
@@ -12708,6 +12759,7 @@ export type MenuPageFieldsFragment = {
       | {
           __typename: 'LayoutArticles';
           title?: string | null;
+          showAllLink?: string | null;
           articles?: Array<{
             __typename?: 'Post';
             id: string;
@@ -12738,6 +12790,7 @@ export type MenuPageFieldsFragment = {
           __typename: 'LayoutArticlesCarousel';
           title?: string | null;
           showMore?: Array<string | null> | null;
+          showAllLink?: string | null;
           articles?: Array<{
             __typename?: 'Post';
             id: string;
@@ -12860,6 +12913,7 @@ export type MenuPageFieldsFragment = {
     | {
         __typename: 'LayoutArticles';
         title?: string | null;
+        showAllLink?: string | null;
         articles?: Array<{
           __typename?: 'Post';
           id: string;
@@ -12933,7 +12987,7 @@ export type MenuPageFieldsFragment = {
     | {
         __typename: 'EventSearchCarousel';
         title?: string | null;
-        showAllLink?: Array<string | null> | null;
+        showAllLink?: string | null;
         url?: string | null;
         orderNewestFirst?: boolean | null;
         eventsNearby?: boolean | null;
@@ -12949,7 +13003,7 @@ export type MenuPageFieldsFragment = {
         __typename: 'EventSelectedCarousel';
         title?: string | null;
         module?: string | null;
-        showAllLink?: Array<string | null> | null;
+        showAllLink?: string | null;
         eventsNearby?: boolean | null;
         events?: Array<string | null> | null;
         amountOfCardsPerRow?: number | null;
@@ -12959,6 +13013,7 @@ export type MenuPageFieldsFragment = {
     | {
         __typename: 'LayoutArticles';
         title?: string | null;
+        showAllLink?: string | null;
         articles?: Array<{
           __typename?: 'Post';
           id: string;
@@ -12989,6 +13044,7 @@ export type MenuPageFieldsFragment = {
         __typename: 'LayoutArticlesCarousel';
         title?: string | null;
         showMore?: Array<string | null> | null;
+        showAllLink?: string | null;
         articles?: Array<{
           __typename?: 'Post';
           id: string;
@@ -13197,6 +13253,7 @@ export type MenuQuery = {
                             | {
                                 __typename: 'LayoutArticles';
                                 title?: string | null;
+                                showAllLink?: string | null;
                                 articles?: Array<{
                                   __typename?: 'Post';
                                   id: string;
@@ -13270,7 +13327,7 @@ export type MenuQuery = {
                             | {
                                 __typename: 'EventSearchCarousel';
                                 title?: string | null;
-                                showAllLink?: Array<string | null> | null;
+                                showAllLink?: string | null;
                                 url?: string | null;
                                 orderNewestFirst?: boolean | null;
                                 eventsNearby?: boolean | null;
@@ -13286,7 +13343,7 @@ export type MenuQuery = {
                                 __typename: 'EventSelectedCarousel';
                                 title?: string | null;
                                 module?: string | null;
-                                showAllLink?: Array<string | null> | null;
+                                showAllLink?: string | null;
                                 eventsNearby?: boolean | null;
                                 events?: Array<string | null> | null;
                                 amountOfCardsPerRow?: number | null;
@@ -13296,6 +13353,7 @@ export type MenuQuery = {
                             | {
                                 __typename: 'LayoutArticles';
                                 title?: string | null;
+                                showAllLink?: string | null;
                                 articles?: Array<{
                                   __typename?: 'Post';
                                   id: string;
@@ -13326,6 +13384,7 @@ export type MenuQuery = {
                                 __typename: 'LayoutArticlesCarousel';
                                 title?: string | null;
                                 showMore?: Array<string | null> | null;
+                                showAllLink?: string | null;
                                 articles?: Array<{
                                   __typename?: 'Post';
                                   id: string;
@@ -13448,6 +13507,7 @@ export type MenuQuery = {
                           | {
                               __typename: 'LayoutArticles';
                               title?: string | null;
+                              showAllLink?: string | null;
                               articles?: Array<{
                                 __typename?: 'Post';
                                 id: string;
@@ -13521,7 +13581,7 @@ export type MenuQuery = {
                           | {
                               __typename: 'EventSearchCarousel';
                               title?: string | null;
-                              showAllLink?: Array<string | null> | null;
+                              showAllLink?: string | null;
                               url?: string | null;
                               orderNewestFirst?: boolean | null;
                               eventsNearby?: boolean | null;
@@ -13537,7 +13597,7 @@ export type MenuQuery = {
                               __typename: 'EventSelectedCarousel';
                               title?: string | null;
                               module?: string | null;
-                              showAllLink?: Array<string | null> | null;
+                              showAllLink?: string | null;
                               eventsNearby?: boolean | null;
                               events?: Array<string | null> | null;
                               amountOfCardsPerRow?: number | null;
@@ -13547,6 +13607,7 @@ export type MenuQuery = {
                           | {
                               __typename: 'LayoutArticles';
                               title?: string | null;
+                              showAllLink?: string | null;
                               articles?: Array<{
                                 __typename?: 'Post';
                                 id: string;
@@ -13577,6 +13638,7 @@ export type MenuQuery = {
                               __typename: 'LayoutArticlesCarousel';
                               title?: string | null;
                               showMore?: Array<string | null> | null;
+                              showAllLink?: string | null;
                               articles?: Array<{
                                 __typename?: 'Post';
                                 id: string;
@@ -13742,6 +13804,7 @@ export type MenuQuery = {
                     | {
                         __typename: 'LayoutArticles';
                         title?: string | null;
+                        showAllLink?: string | null;
                         articles?: Array<{
                           __typename?: 'Post';
                           id: string;
@@ -13815,7 +13878,7 @@ export type MenuQuery = {
                     | {
                         __typename: 'EventSearchCarousel';
                         title?: string | null;
-                        showAllLink?: Array<string | null> | null;
+                        showAllLink?: string | null;
                         url?: string | null;
                         orderNewestFirst?: boolean | null;
                         eventsNearby?: boolean | null;
@@ -13831,7 +13894,7 @@ export type MenuQuery = {
                         __typename: 'EventSelectedCarousel';
                         title?: string | null;
                         module?: string | null;
-                        showAllLink?: Array<string | null> | null;
+                        showAllLink?: string | null;
                         eventsNearby?: boolean | null;
                         events?: Array<string | null> | null;
                         amountOfCardsPerRow?: number | null;
@@ -13841,6 +13904,7 @@ export type MenuQuery = {
                     | {
                         __typename: 'LayoutArticles';
                         title?: string | null;
+                        showAllLink?: string | null;
                         articles?: Array<{
                           __typename?: 'Post';
                           id: string;
@@ -13871,6 +13935,7 @@ export type MenuQuery = {
                         __typename: 'LayoutArticlesCarousel';
                         title?: string | null;
                         showMore?: Array<string | null> | null;
+                        showAllLink?: string | null;
                         articles?: Array<{
                           __typename?: 'Post';
                           id: string;
@@ -13993,6 +14058,7 @@ export type MenuQuery = {
                   | {
                       __typename: 'LayoutArticles';
                       title?: string | null;
+                      showAllLink?: string | null;
                       articles?: Array<{
                         __typename?: 'Post';
                         id: string;
@@ -14066,7 +14132,7 @@ export type MenuQuery = {
                   | {
                       __typename: 'EventSearchCarousel';
                       title?: string | null;
-                      showAllLink?: Array<string | null> | null;
+                      showAllLink?: string | null;
                       url?: string | null;
                       orderNewestFirst?: boolean | null;
                       eventsNearby?: boolean | null;
@@ -14082,7 +14148,7 @@ export type MenuQuery = {
                       __typename: 'EventSelectedCarousel';
                       title?: string | null;
                       module?: string | null;
-                      showAllLink?: Array<string | null> | null;
+                      showAllLink?: string | null;
                       eventsNearby?: boolean | null;
                       events?: Array<string | null> | null;
                       amountOfCardsPerRow?: number | null;
@@ -14092,6 +14158,7 @@ export type MenuQuery = {
                   | {
                       __typename: 'LayoutArticles';
                       title?: string | null;
+                      showAllLink?: string | null;
                       articles?: Array<{
                         __typename?: 'Post';
                         id: string;
@@ -14122,6 +14189,7 @@ export type MenuQuery = {
                       __typename: 'LayoutArticlesCarousel';
                       title?: string | null;
                       showMore?: Array<string | null> | null;
+                      showAllLink?: string | null;
                       articles?: Array<{
                         __typename?: 'Post';
                         id: string;
@@ -14230,6 +14298,7 @@ export type LayoutLinkListFragment = {
 export type LayoutArticlesFragment = {
   __typename: 'LayoutArticles';
   title?: string | null;
+  showAllLink?: string | null;
   articles?: Array<{
     __typename?: 'Post';
     id: string;
@@ -14261,6 +14330,7 @@ export type LayoutArticlesCarouselFragment = {
   __typename: 'LayoutArticlesCarousel';
   title?: string | null;
   showMore?: Array<string | null> | null;
+  showAllLink?: string | null;
   articles?: Array<{
     __typename?: 'Post';
     id: string;
@@ -14353,7 +14423,7 @@ export type EventSelectedFragment = {
 export type EventSearchCarouselFragment = {
   __typename: 'EventSearchCarousel';
   title?: string | null;
-  showAllLink?: Array<string | null> | null;
+  showAllLink?: string | null;
   url?: string | null;
   orderNewestFirst?: boolean | null;
   eventsNearby?: boolean | null;
@@ -14364,7 +14434,7 @@ export type EventSelectedCarouselFragment = {
   __typename: 'EventSelectedCarousel';
   title?: string | null;
   module?: string | null;
-  showAllLink?: Array<string | null> | null;
+  showAllLink?: string | null;
   eventsNearby?: boolean | null;
   events?: Array<string | null> | null;
   amountOfCardsPerRow?: number | null;
@@ -14476,6 +14546,7 @@ export type PageFragment = {
     | {
         __typename: 'LayoutArticles';
         title?: string | null;
+        showAllLink?: string | null;
         articles?: Array<{
           __typename?: 'Post';
           id: string;
@@ -14549,7 +14620,7 @@ export type PageFragment = {
     | {
         __typename: 'EventSearchCarousel';
         title?: string | null;
-        showAllLink?: Array<string | null> | null;
+        showAllLink?: string | null;
         url?: string | null;
         orderNewestFirst?: boolean | null;
         eventsNearby?: boolean | null;
@@ -14565,7 +14636,7 @@ export type PageFragment = {
         __typename: 'EventSelectedCarousel';
         title?: string | null;
         module?: string | null;
-        showAllLink?: Array<string | null> | null;
+        showAllLink?: string | null;
         eventsNearby?: boolean | null;
         events?: Array<string | null> | null;
         amountOfCardsPerRow?: number | null;
@@ -14575,6 +14646,7 @@ export type PageFragment = {
     | {
         __typename: 'LayoutArticles';
         title?: string | null;
+        showAllLink?: string | null;
         articles?: Array<{
           __typename?: 'Post';
           id: string;
@@ -14605,6 +14677,7 @@ export type PageFragment = {
         __typename: 'LayoutArticlesCarousel';
         title?: string | null;
         showMore?: Array<string | null> | null;
+        showAllLink?: string | null;
         articles?: Array<{
           __typename?: 'Post';
           id: string;
@@ -14771,6 +14844,7 @@ export type PageQuery = {
       | {
           __typename: 'LayoutArticles';
           title?: string | null;
+          showAllLink?: string | null;
           articles?: Array<{
             __typename?: 'Post';
             id: string;
@@ -14844,7 +14918,7 @@ export type PageQuery = {
       | {
           __typename: 'EventSearchCarousel';
           title?: string | null;
-          showAllLink?: Array<string | null> | null;
+          showAllLink?: string | null;
           url?: string | null;
           orderNewestFirst?: boolean | null;
           eventsNearby?: boolean | null;
@@ -14860,7 +14934,7 @@ export type PageQuery = {
           __typename: 'EventSelectedCarousel';
           title?: string | null;
           module?: string | null;
-          showAllLink?: Array<string | null> | null;
+          showAllLink?: string | null;
           eventsNearby?: boolean | null;
           events?: Array<string | null> | null;
           amountOfCardsPerRow?: number | null;
@@ -14870,6 +14944,7 @@ export type PageQuery = {
       | {
           __typename: 'LayoutArticles';
           title?: string | null;
+          showAllLink?: string | null;
           articles?: Array<{
             __typename?: 'Post';
             id: string;
@@ -14900,6 +14975,7 @@ export type PageQuery = {
           __typename: 'LayoutArticlesCarousel';
           title?: string | null;
           showMore?: Array<string | null> | null;
+          showAllLink?: string | null;
           articles?: Array<{
             __typename?: 'Post';
             id: string;
@@ -15068,6 +15144,7 @@ export type PageByTemplateQuery = {
       | {
           __typename: 'LayoutArticles';
           title?: string | null;
+          showAllLink?: string | null;
           articles?: Array<{
             __typename?: 'Post';
             id: string;
@@ -15141,7 +15218,7 @@ export type PageByTemplateQuery = {
       | {
           __typename: 'EventSearchCarousel';
           title?: string | null;
-          showAllLink?: Array<string | null> | null;
+          showAllLink?: string | null;
           url?: string | null;
           orderNewestFirst?: boolean | null;
           eventsNearby?: boolean | null;
@@ -15157,7 +15234,7 @@ export type PageByTemplateQuery = {
           __typename: 'EventSelectedCarousel';
           title?: string | null;
           module?: string | null;
-          showAllLink?: Array<string | null> | null;
+          showAllLink?: string | null;
           eventsNearby?: boolean | null;
           events?: Array<string | null> | null;
           amountOfCardsPerRow?: number | null;
@@ -15167,6 +15244,7 @@ export type PageByTemplateQuery = {
       | {
           __typename: 'LayoutArticles';
           title?: string | null;
+          showAllLink?: string | null;
           articles?: Array<{
             __typename?: 'Post';
             id: string;
@@ -15197,6 +15275,7 @@ export type PageByTemplateQuery = {
           __typename: 'LayoutArticlesCarousel';
           title?: string | null;
           showMore?: Array<string | null> | null;
+          showAllLink?: string | null;
           articles?: Array<{
             __typename?: 'Post';
             id: string;
@@ -15395,6 +15474,7 @@ export type PageChildrenSearchQuery = {
                   | {
                       __typename: 'LayoutArticles';
                       title?: string | null;
+                      showAllLink?: string | null;
                       articles?: Array<{
                         __typename?: 'Post';
                         id: string;
@@ -15468,7 +15548,7 @@ export type PageChildrenSearchQuery = {
                   | {
                       __typename: 'EventSearchCarousel';
                       title?: string | null;
-                      showAllLink?: Array<string | null> | null;
+                      showAllLink?: string | null;
                       url?: string | null;
                       orderNewestFirst?: boolean | null;
                       eventsNearby?: boolean | null;
@@ -15484,7 +15564,7 @@ export type PageChildrenSearchQuery = {
                       __typename: 'EventSelectedCarousel';
                       title?: string | null;
                       module?: string | null;
-                      showAllLink?: Array<string | null> | null;
+                      showAllLink?: string | null;
                       eventsNearby?: boolean | null;
                       events?: Array<string | null> | null;
                       amountOfCardsPerRow?: number | null;
@@ -15494,6 +15574,7 @@ export type PageChildrenSearchQuery = {
                   | {
                       __typename: 'LayoutArticles';
                       title?: string | null;
+                      showAllLink?: string | null;
                       articles?: Array<{
                         __typename?: 'Post';
                         id: string;
@@ -15524,6 +15605,7 @@ export type PageChildrenSearchQuery = {
                       __typename: 'LayoutArticlesCarousel';
                       title?: string | null;
                       showMore?: Array<string | null> | null;
+                      showAllLink?: string | null;
                       articles?: Array<{
                         __typename?: 'Post';
                         id: string;
@@ -15646,6 +15728,7 @@ export type PageChildrenSearchQuery = {
                 | {
                     __typename: 'LayoutArticles';
                     title?: string | null;
+                    showAllLink?: string | null;
                     articles?: Array<{
                       __typename?: 'Post';
                       id: string;
@@ -15719,7 +15802,7 @@ export type PageChildrenSearchQuery = {
                 | {
                     __typename: 'EventSearchCarousel';
                     title?: string | null;
-                    showAllLink?: Array<string | null> | null;
+                    showAllLink?: string | null;
                     url?: string | null;
                     orderNewestFirst?: boolean | null;
                     eventsNearby?: boolean | null;
@@ -15735,7 +15818,7 @@ export type PageChildrenSearchQuery = {
                     __typename: 'EventSelectedCarousel';
                     title?: string | null;
                     module?: string | null;
-                    showAllLink?: Array<string | null> | null;
+                    showAllLink?: string | null;
                     eventsNearby?: boolean | null;
                     events?: Array<string | null> | null;
                     amountOfCardsPerRow?: number | null;
@@ -15745,6 +15828,7 @@ export type PageChildrenSearchQuery = {
                 | {
                     __typename: 'LayoutArticles';
                     title?: string | null;
+                    showAllLink?: string | null;
                     articles?: Array<{
                       __typename?: 'Post';
                       id: string;
@@ -15775,6 +15859,7 @@ export type PageChildrenSearchQuery = {
                     __typename: 'LayoutArticlesCarousel';
                     title?: string | null;
                     showMore?: Array<string | null> | null;
+                    showAllLink?: string | null;
                     articles?: Array<{
                       __typename?: 'Post';
                       id: string;
@@ -15964,6 +16049,7 @@ export type PagesQuery = {
           | {
               __typename: 'LayoutArticles';
               title?: string | null;
+              showAllLink?: string | null;
               articles?: Array<{
                 __typename?: 'Post';
                 id: string;
@@ -16037,7 +16123,7 @@ export type PagesQuery = {
           | {
               __typename: 'EventSearchCarousel';
               title?: string | null;
-              showAllLink?: Array<string | null> | null;
+              showAllLink?: string | null;
               url?: string | null;
               orderNewestFirst?: boolean | null;
               eventsNearby?: boolean | null;
@@ -16053,7 +16139,7 @@ export type PagesQuery = {
               __typename: 'EventSelectedCarousel';
               title?: string | null;
               module?: string | null;
-              showAllLink?: Array<string | null> | null;
+              showAllLink?: string | null;
               eventsNearby?: boolean | null;
               events?: Array<string | null> | null;
               amountOfCardsPerRow?: number | null;
@@ -16063,6 +16149,7 @@ export type PagesQuery = {
           | {
               __typename: 'LayoutArticles';
               title?: string | null;
+              showAllLink?: string | null;
               articles?: Array<{
                 __typename?: 'Post';
                 id: string;
@@ -16093,6 +16180,7 @@ export type PagesQuery = {
               __typename: 'LayoutArticlesCarousel';
               title?: string | null;
               showMore?: Array<string | null> | null;
+              showAllLink?: string | null;
               articles?: Array<{
                 __typename?: 'Post';
                 id: string;
@@ -16330,6 +16418,7 @@ export const LayoutArticlesFragmentDoc = gql`
         }
       }
     }
+    showAllLink
     __typename
   }
 `;
@@ -16379,6 +16468,7 @@ export const LayoutArticlesCarouselFragmentDoc = gql`
       }
     }
     showMore
+    showAllLink
     __typename
   }
 `;
