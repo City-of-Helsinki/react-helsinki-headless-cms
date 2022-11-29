@@ -10531,7 +10531,6 @@ export type PostFragment = {
     | {
         __typename: 'EventSearchCarousel';
         title?: string | null;
-        showAllLink?: string | null;
         url?: string | null;
         orderNewestFirst?: boolean | null;
         eventsNearby?: boolean | null;
@@ -10547,7 +10546,6 @@ export type PostFragment = {
         __typename: 'EventSelectedCarousel';
         title?: string | null;
         module?: string | null;
-        showAllLink?: string | null;
         eventsNearby?: boolean | null;
         events?: Array<string | null> | null;
         amountOfCardsPerRow?: number | null;
@@ -10841,7 +10839,6 @@ export type ArticleQuery = {
       | {
           __typename: 'EventSearchCarousel';
           title?: string | null;
-          showAllLink?: string | null;
           url?: string | null;
           orderNewestFirst?: boolean | null;
           eventsNearby?: boolean | null;
@@ -10857,7 +10854,6 @@ export type ArticleQuery = {
           __typename: 'EventSelectedCarousel';
           title?: string | null;
           module?: string | null;
-          showAllLink?: string | null;
           eventsNearby?: boolean | null;
           events?: Array<string | null> | null;
           amountOfCardsPerRow?: number | null;
@@ -11173,7 +11169,6 @@ export type PostsQuery = {
           | {
               __typename: 'EventSearchCarousel';
               title?: string | null;
-              showAllLink?: string | null;
               url?: string | null;
               orderNewestFirst?: boolean | null;
               eventsNearby?: boolean | null;
@@ -11189,7 +11184,6 @@ export type PostsQuery = {
               __typename: 'EventSelectedCarousel';
               title?: string | null;
               module?: string | null;
-              showAllLink?: string | null;
               eventsNearby?: boolean | null;
               events?: Array<string | null> | null;
               amountOfCardsPerRow?: number | null;
@@ -11622,7 +11616,6 @@ export type MenuItemFragment = {
                       | {
                           __typename: 'EventSearchCarousel';
                           title?: string | null;
-                          showAllLink?: string | null;
                           url?: string | null;
                           orderNewestFirst?: boolean | null;
                           eventsNearby?: boolean | null;
@@ -11638,7 +11631,6 @@ export type MenuItemFragment = {
                           __typename: 'EventSelectedCarousel';
                           title?: string | null;
                           module?: string | null;
-                          showAllLink?: string | null;
                           eventsNearby?: boolean | null;
                           events?: Array<string | null> | null;
                           amountOfCardsPerRow?: number | null;
@@ -11876,7 +11868,6 @@ export type MenuItemFragment = {
                     | {
                         __typename: 'EventSearchCarousel';
                         title?: string | null;
-                        showAllLink?: string | null;
                         url?: string | null;
                         orderNewestFirst?: boolean | null;
                         eventsNearby?: boolean | null;
@@ -11892,7 +11883,6 @@ export type MenuItemFragment = {
                         __typename: 'EventSelectedCarousel';
                         title?: string | null;
                         module?: string | null;
-                        showAllLink?: string | null;
                         eventsNearby?: boolean | null;
                         events?: Array<string | null> | null;
                         amountOfCardsPerRow?: number | null;
@@ -12173,7 +12163,6 @@ export type MenuItemFragment = {
               | {
                   __typename: 'EventSearchCarousel';
                   title?: string | null;
-                  showAllLink?: string | null;
                   url?: string | null;
                   orderNewestFirst?: boolean | null;
                   eventsNearby?: boolean | null;
@@ -12189,7 +12178,6 @@ export type MenuItemFragment = {
                   __typename: 'EventSelectedCarousel';
                   title?: string | null;
                   module?: string | null;
-                  showAllLink?: string | null;
                   eventsNearby?: boolean | null;
                   events?: Array<string | null> | null;
                   amountOfCardsPerRow?: number | null;
@@ -12427,7 +12415,6 @@ export type MenuItemFragment = {
             | {
                 __typename: 'EventSearchCarousel';
                 title?: string | null;
-                showAllLink?: string | null;
                 url?: string | null;
                 orderNewestFirst?: boolean | null;
                 eventsNearby?: boolean | null;
@@ -12443,7 +12430,6 @@ export type MenuItemFragment = {
                 __typename: 'EventSelectedCarousel';
                 title?: string | null;
                 module?: string | null;
-                showAllLink?: string | null;
                 eventsNearby?: boolean | null;
                 events?: Array<string | null> | null;
                 amountOfCardsPerRow?: number | null;
@@ -12733,7 +12719,6 @@ export type MenuPageFieldsFragment = {
       | {
           __typename: 'EventSearchCarousel';
           title?: string | null;
-          showAllLink?: string | null;
           url?: string | null;
           orderNewestFirst?: boolean | null;
           eventsNearby?: boolean | null;
@@ -12749,7 +12734,6 @@ export type MenuPageFieldsFragment = {
           __typename: 'EventSelectedCarousel';
           title?: string | null;
           module?: string | null;
-          showAllLink?: string | null;
           eventsNearby?: boolean | null;
           events?: Array<string | null> | null;
           amountOfCardsPerRow?: number | null;
@@ -12987,7 +12971,6 @@ export type MenuPageFieldsFragment = {
     | {
         __typename: 'EventSearchCarousel';
         title?: string | null;
-        showAllLink?: string | null;
         url?: string | null;
         orderNewestFirst?: boolean | null;
         eventsNearby?: boolean | null;
@@ -13003,7 +12986,6 @@ export type MenuPageFieldsFragment = {
         __typename: 'EventSelectedCarousel';
         title?: string | null;
         module?: string | null;
-        showAllLink?: string | null;
         eventsNearby?: boolean | null;
         events?: Array<string | null> | null;
         amountOfCardsPerRow?: number | null;
@@ -13327,7 +13309,6 @@ export type MenuQuery = {
                             | {
                                 __typename: 'EventSearchCarousel';
                                 title?: string | null;
-                                showAllLink?: string | null;
                                 url?: string | null;
                                 orderNewestFirst?: boolean | null;
                                 eventsNearby?: boolean | null;
@@ -13343,7 +13324,6 @@ export type MenuQuery = {
                                 __typename: 'EventSelectedCarousel';
                                 title?: string | null;
                                 module?: string | null;
-                                showAllLink?: string | null;
                                 eventsNearby?: boolean | null;
                                 events?: Array<string | null> | null;
                                 amountOfCardsPerRow?: number | null;
@@ -13581,7 +13561,6 @@ export type MenuQuery = {
                           | {
                               __typename: 'EventSearchCarousel';
                               title?: string | null;
-                              showAllLink?: string | null;
                               url?: string | null;
                               orderNewestFirst?: boolean | null;
                               eventsNearby?: boolean | null;
@@ -13597,7 +13576,6 @@ export type MenuQuery = {
                               __typename: 'EventSelectedCarousel';
                               title?: string | null;
                               module?: string | null;
-                              showAllLink?: string | null;
                               eventsNearby?: boolean | null;
                               events?: Array<string | null> | null;
                               amountOfCardsPerRow?: number | null;
@@ -13878,7 +13856,6 @@ export type MenuQuery = {
                     | {
                         __typename: 'EventSearchCarousel';
                         title?: string | null;
-                        showAllLink?: string | null;
                         url?: string | null;
                         orderNewestFirst?: boolean | null;
                         eventsNearby?: boolean | null;
@@ -13894,7 +13871,6 @@ export type MenuQuery = {
                         __typename: 'EventSelectedCarousel';
                         title?: string | null;
                         module?: string | null;
-                        showAllLink?: string | null;
                         eventsNearby?: boolean | null;
                         events?: Array<string | null> | null;
                         amountOfCardsPerRow?: number | null;
@@ -14132,7 +14108,6 @@ export type MenuQuery = {
                   | {
                       __typename: 'EventSearchCarousel';
                       title?: string | null;
-                      showAllLink?: string | null;
                       url?: string | null;
                       orderNewestFirst?: boolean | null;
                       eventsNearby?: boolean | null;
@@ -14148,7 +14123,6 @@ export type MenuQuery = {
                       __typename: 'EventSelectedCarousel';
                       title?: string | null;
                       module?: string | null;
-                      showAllLink?: string | null;
                       eventsNearby?: boolean | null;
                       events?: Array<string | null> | null;
                       amountOfCardsPerRow?: number | null;
@@ -14423,7 +14397,6 @@ export type EventSelectedFragment = {
 export type EventSearchCarouselFragment = {
   __typename: 'EventSearchCarousel';
   title?: string | null;
-  showAllLink?: string | null;
   url?: string | null;
   orderNewestFirst?: boolean | null;
   eventsNearby?: boolean | null;
@@ -14434,7 +14407,6 @@ export type EventSelectedCarouselFragment = {
   __typename: 'EventSelectedCarousel';
   title?: string | null;
   module?: string | null;
-  showAllLink?: string | null;
   eventsNearby?: boolean | null;
   events?: Array<string | null> | null;
   amountOfCardsPerRow?: number | null;
@@ -14620,7 +14592,6 @@ export type PageFragment = {
     | {
         __typename: 'EventSearchCarousel';
         title?: string | null;
-        showAllLink?: string | null;
         url?: string | null;
         orderNewestFirst?: boolean | null;
         eventsNearby?: boolean | null;
@@ -14636,7 +14607,6 @@ export type PageFragment = {
         __typename: 'EventSelectedCarousel';
         title?: string | null;
         module?: string | null;
-        showAllLink?: string | null;
         eventsNearby?: boolean | null;
         events?: Array<string | null> | null;
         amountOfCardsPerRow?: number | null;
@@ -14918,7 +14888,6 @@ export type PageQuery = {
       | {
           __typename: 'EventSearchCarousel';
           title?: string | null;
-          showAllLink?: string | null;
           url?: string | null;
           orderNewestFirst?: boolean | null;
           eventsNearby?: boolean | null;
@@ -14934,7 +14903,6 @@ export type PageQuery = {
           __typename: 'EventSelectedCarousel';
           title?: string | null;
           module?: string | null;
-          showAllLink?: string | null;
           eventsNearby?: boolean | null;
           events?: Array<string | null> | null;
           amountOfCardsPerRow?: number | null;
@@ -15218,7 +15186,6 @@ export type PageByTemplateQuery = {
       | {
           __typename: 'EventSearchCarousel';
           title?: string | null;
-          showAllLink?: string | null;
           url?: string | null;
           orderNewestFirst?: boolean | null;
           eventsNearby?: boolean | null;
@@ -15234,7 +15201,6 @@ export type PageByTemplateQuery = {
           __typename: 'EventSelectedCarousel';
           title?: string | null;
           module?: string | null;
-          showAllLink?: string | null;
           eventsNearby?: boolean | null;
           events?: Array<string | null> | null;
           amountOfCardsPerRow?: number | null;
@@ -15548,7 +15514,6 @@ export type PageChildrenSearchQuery = {
                   | {
                       __typename: 'EventSearchCarousel';
                       title?: string | null;
-                      showAllLink?: string | null;
                       url?: string | null;
                       orderNewestFirst?: boolean | null;
                       eventsNearby?: boolean | null;
@@ -15564,7 +15529,6 @@ export type PageChildrenSearchQuery = {
                       __typename: 'EventSelectedCarousel';
                       title?: string | null;
                       module?: string | null;
-                      showAllLink?: string | null;
                       eventsNearby?: boolean | null;
                       events?: Array<string | null> | null;
                       amountOfCardsPerRow?: number | null;
@@ -15802,7 +15766,6 @@ export type PageChildrenSearchQuery = {
                 | {
                     __typename: 'EventSearchCarousel';
                     title?: string | null;
-                    showAllLink?: string | null;
                     url?: string | null;
                     orderNewestFirst?: boolean | null;
                     eventsNearby?: boolean | null;
@@ -15818,7 +15781,6 @@ export type PageChildrenSearchQuery = {
                     __typename: 'EventSelectedCarousel';
                     title?: string | null;
                     module?: string | null;
-                    showAllLink?: string | null;
                     eventsNearby?: boolean | null;
                     events?: Array<string | null> | null;
                     amountOfCardsPerRow?: number | null;
@@ -16123,7 +16085,6 @@ export type PagesQuery = {
           | {
               __typename: 'EventSearchCarousel';
               title?: string | null;
-              showAllLink?: string | null;
               url?: string | null;
               orderNewestFirst?: boolean | null;
               eventsNearby?: boolean | null;
@@ -16139,7 +16100,6 @@ export type PagesQuery = {
               __typename: 'EventSelectedCarousel';
               title?: string | null;
               module?: string | null;
-              showAllLink?: string | null;
               eventsNearby?: boolean | null;
               events?: Array<string | null> | null;
               amountOfCardsPerRow?: number | null;
@@ -16513,7 +16473,6 @@ export const EventSelectedFragmentDoc = gql`
 export const EventSearchCarouselFragmentDoc = gql`
   fragment EventSearchCarousel on EventSearchCarousel {
     title
-    showAllLink
     url
     orderNewestFirst
     eventsNearby
@@ -16525,7 +16484,6 @@ export const EventSelectedCarouselFragmentDoc = gql`
   fragment EventSelectedCarousel on EventSelectedCarousel {
     title
     module
-    showAllLink
     eventsNearby
     events
     amountOfCardsPerRow

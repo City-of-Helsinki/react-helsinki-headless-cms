@@ -72,7 +72,7 @@ const Template: ComponentStory<typeof Page> = (args) => (
 
 export const ApolloBasicExample = Template.bind({});
 
-const currentPage = '/etusivu/';
+const currentPage = '/testisivu/';
 const ExampleNavigation = () => (
   <Navigation
     menuName="Palvelutarjotin-UI Header"

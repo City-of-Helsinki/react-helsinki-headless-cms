@@ -125,7 +125,6 @@ fragment EventSelected on EventSelected {
 
 fragment EventSearchCarousel on EventSearchCarousel {
   title
-  showAllLink
   url
   orderNewestFirst
   eventsNearby
@@ -136,7 +135,6 @@ fragment EventSearchCarousel on EventSearchCarousel {
 fragment EventSelectedCarousel on EventSelectedCarousel {
   title
   module
-  showAllLink
   eventsNearby
   events
   amountOfCardsPerRow
