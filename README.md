@@ -131,3 +131,4 @@ A new version of the `npm` package is automatically released when a new release 
 ### Known issues
 
 - Jest has difficulties loading this library. When this library is required in a test file, it's possible that some imports are cjs and some are esm. These two variants do not share a react context which can result in `useConfig` calls that return an empty config object even though `<ConfigProvider>` is declared correctly. I.e. `<ConfigProvider>` sets values for `context1` and `useConfig` reads `context2`.
+- `yarn generate:graphql` does not work with Node.js v16 or greater
