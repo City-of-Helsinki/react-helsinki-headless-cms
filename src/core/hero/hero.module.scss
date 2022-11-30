@@ -4,7 +4,7 @@
 .hero {
   --hero-image-max-height: 600px;
   margin-bottom: $spacing-l;
-  background-color: var(--hcrc-color-hero-bg, --color-fog-light);
+  background-color: var(--color-fog-light, --hcrc-color-hero-bg);
   position: relative;
 
   .heroInner {
