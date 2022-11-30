@@ -30,7 +30,7 @@
     .searchFormContainer {
       display: flex;
       flex-direction: column;
-      background-color: var(--color-black-5);
+      background-color: var(--hcrc-color-archive-search-bg, --color-black-5);
       padding-top: $spacing-layout-xs;
       position: relative;
 
