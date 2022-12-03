@@ -79,7 +79,6 @@ export function SearchTags({
         {tags.map((tag) => (
           <Tag
             key={`tag-${tag.slug}`}
-            variant="search"
             selected={currentTags.includes(tag)}
             onClick={handleTagClick(tag)}
           >
