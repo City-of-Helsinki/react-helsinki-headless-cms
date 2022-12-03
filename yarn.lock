@@ -8559,20 +8559,20 @@ hastscript@^6.0.0:
     property-information "^5.0.0"
     space-separated-tokens "^1.0.0"
 
-hds-core@2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/hds-core/-/hds-core-2.4.0.tgz#598c8ed1919a95e40cdd9f754371fb87834590af"
-  integrity sha512-23MhU/KJsVKo1dEm2xOf4feSAd0uHYB0yjOQEOYDPRVRrd+W9IRFGjbcVKsQDr1aWWjtVJK5rEgEVsSA3bAf0A==
+hds-core@2.8.0:
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/hds-core/-/hds-core-2.8.0.tgz#8dd00a5b1ea4783bd02575bfe8776825b71a086e"
+  integrity sha512-VvhsLYpzLDuD63od7DK1NpvxjIbgYSK0BM/YzTnd4TgBDAAHofec94EIJ83J//7vJgFqKu9de90pfqGwTq+Ovw==
 
 hds-design-tokens@^2.3.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/hds-design-tokens/-/hds-design-tokens-2.4.0.tgz#7ec4eb57bff47460b4ffcd94f91816ee37776b66"
   integrity sha512-J1rr1rlXQjOzlFkG+NV++pEgN5W99W08s1o5kWbfBKgXxG2+xWyi9K2sdrpfW6UVcUI9/ms2NmWP8lz5ipVG7g==
 
-hds-react@2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/hds-react/-/hds-react-2.4.0.tgz#77bc1cf9c51f08198a2d8e64e2466853f240795e"
-  integrity sha512-mPb9WUbh3TUFyfIrFNQzAPw6EKRJDtYdSJXgJfxg2WMYPwnlmZS4IeUqT6kpGOHCIY18q/F0WQEVsixDAMSZ+g==
+hds-react@2.8.0:
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/hds-react/-/hds-react-2.8.0.tgz#b4adc8da439d5a3c032b5c3fee53573cfdfa0280"
+  integrity sha512-LpryxwrnDNCWVftzc5OM8KKCN5M5kfru36WxJWRcNZRCpXfUZUIzrsEBvVhR8ZpERVQvIv2iU30bbeOd8rqK4Q==
   dependencies:
     "@babel/runtime" "7.11.2"
     "@emotion/styled-base" "^11.0.0"
@@ -8584,7 +8584,7 @@ hds-react@2.4.0:
     crc-32 "1.2.0"
     date-fns "2.16.1"
     downshift "6.0.6"
-    hds-core "2.4.0"
+    hds-core "2.8.0"
     kashe "1.0.4"
     lodash.get "^4.4.2"
     lodash.isequal "4.5.0"
@@ -8602,7 +8602,6 @@ hds-react@2.4.0:
     react-spring "9.3.0"
     react-use-measure "2.0.1"
     react-virtual "2.2.7"
-    typescript "4.5.5"
 
 he@^1.2.0:
   version "1.2.0"
@@ -14699,11 +14698,6 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
-
-typescript@4.5.5:
-  version "4.5.5"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.5.5.tgz#d8c953832d28924a9e3d37c73d729c846c5896f3"
-  integrity sha512-TCTIul70LyWe6IJWT8QSYeA54WQe8EjQFU4wY52Fasj5UKx88LNYKCgBEHcOMOrFF1rKGbD8v/xcNWVUq9SymA==
 
 typescript@^4.6.2:
   version "4.6.2"

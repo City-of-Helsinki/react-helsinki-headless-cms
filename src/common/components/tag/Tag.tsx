@@ -1,26 +1,27 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
-import { Tag as HDSTag } from 'hds-react';
+import { RoundedTag as HDSTag } from 'hds-react';
 
 import styles from './tag.module.scss';
+import { theme1, theme2 } from './tagThemes';
 
 type Props = {
   children: React.ReactNode;
   className?: string;
   featured?: boolean;
   selected?: boolean;
-  variant?: 'default' | 'card' | 'search';
   onClick?: () => void;
+  id?: string;
 };
 
 export function Tag({
   className,
-  variant = 'default',
   children,
   featured,
   selected,
   onClick,
+  id
 }: Props) {
   const handleClick = (): void => {
     if (onClick) {
@@ -32,11 +33,13 @@ export function Tag({
     <HDSTag
       onClick={handleClick}
       {...(!onClick && { tabindex: -1 })}
+      id={id || `tag-${Math.random().toString()}`}
+      theme={featured ? theme2 : theme1 }
       className={classNames(
         styles.tag,
-        styles[`variant-${variant}`],
         featured && styles.featured,
         selected && styles.selected,
+        onClick  && !featured && styles.withHover,
         !onClick && styles.noOutline,
         className,
       )}

@@ -94,7 +94,7 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "git-rev-sync": "^3.0.2",
     "graphql": "^16.3.0",
-    "hds-react": "2.4.0",
+    "hds-react": "2.8.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
     "jest-axe": "^6.0.0",
