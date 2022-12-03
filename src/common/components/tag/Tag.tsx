@@ -12,7 +12,6 @@ type Props = {
   featured?: boolean;
   selected?: boolean;
   onClick?: () => void;
-  id?: string;
 };
 
 export function Tag({
@@ -21,7 +20,6 @@ export function Tag({
   featured,
   selected,
   onClick,
-  id
 }: Props) {
   const handleClick = (): void => {
     if (onClick) {
@@ -33,7 +31,6 @@ export function Tag({
     <HDSTag
       onClick={handleClick}
       {...(!onClick && { tabindex: -1 })}
-      id={id || `tag-${Math.random().toString()}`}
       theme={featured ? theme2 : theme1 }
       className={classNames(
         styles.tag,
