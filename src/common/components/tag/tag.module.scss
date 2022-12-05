@@ -3,8 +3,8 @@
 .tag {
   padding: 0 var(--spacing-2-xs);
   margin-right: var(--spacing-2-xs);
-  margin-bottom: var(--spacing-2-xs);
-  margin-top: var(--spacing-2-xs);
+  margin-bottom: var(--spacing-3-xs);
+  margin-top: var(--spacing-3-xs);
 
   &.withHover:hover {
     --tag-background: var(--color-black-5);
