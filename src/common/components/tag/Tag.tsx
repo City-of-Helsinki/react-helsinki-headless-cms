@@ -31,12 +31,12 @@ export function Tag({
     <HDSTag
       onClick={handleClick}
       {...(!onClick && { tabindex: -1 })}
-      theme={featured ? theme2 : theme1 }
+      theme={featured ? theme2 : theme1}
       className={classNames(
         styles.tag,
         featured && styles.featured,
         selected && styles.selected,
-        onClick  && !featured && styles.withHover,
+        onClick && !featured && styles.withHover,
         !onClick && styles.noOutline,
         className,
       )}

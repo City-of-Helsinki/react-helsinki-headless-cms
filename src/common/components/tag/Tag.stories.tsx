@@ -11,11 +11,13 @@ export default {
 } as ComponentMeta<typeof Tag>;
 
 const Template: ComponentStory<typeof Tag> = (args) => (
-    <div>
-      <Tag {...args}>Default</Tag>
-      <Tag featured {...args}>Featured</Tag>
-      <Tag>No outline</Tag>
-    </div>
+  <div>
+    <Tag {...args}>Default</Tag>
+    <Tag featured {...args}>
+      Featured
+    </Tag>
+    <Tag>No outline</Tag>
+  </div>
 );
 
 export const TagDefault = Template.bind({});
