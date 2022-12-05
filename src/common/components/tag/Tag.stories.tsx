@@ -13,7 +13,6 @@ export default {
 const Template: ComponentStory<typeof Tag> = (args) => (
     <div>
       <Tag {...args}>Default</Tag>
-      <Tag onClick={() => {console.log("clicked")}} {...args}>With click</Tag>
       <Tag featured {...args}>Featured</Tag>
       <Tag>No outline</Tag>
     </div>
