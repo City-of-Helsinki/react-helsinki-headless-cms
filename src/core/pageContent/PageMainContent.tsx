@@ -36,7 +36,7 @@ export function PageMainContent({
             </div>
           )}
           {categories?.edges?.map((category) => (
-            <Tag className={styles.tag} variant="card" key={category.node?.id}>
+            <Tag className={styles.tag} key={category.node?.id}>
               {category.node?.name}
             </Tag>
           ))}
