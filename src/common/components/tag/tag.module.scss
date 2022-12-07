@@ -20,6 +20,10 @@
     color: var(--color-white);
   }
 
+  &.whiteOnly {
+    --tag-background: var(--color-white) !important;
+  }
+
   &.noOutline {
     --tag-focus-outline-color: none !important;
     cursor: default;
