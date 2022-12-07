@@ -5,23 +5,23 @@
   margin-right: var(--spacing-2-xs);
   margin-bottom: var(--spacing-3-xs);
   margin-top: var(--spacing-3-xs);
-
-  &.withHover:hover {
-    --tag-background: var(--color-black-5);
-  }
+  --tag-focus-outline-color: var(--color-black-70);
 
   &.featured {
     --tag-background: var(--color-tram-light);
   }
 
+  &.whiteOnly {
+    --tag-background: var(--color-white) !important;
+  }
+
   &.selected {
     --tag-background: var(--color-black-70) !important;
-    --tag-focus-outline-color: var(--color-black-70);
     color: var(--color-white);
   }
 
-  &.whiteOnly {
-    --tag-background: var(--color-white) !important;
+  &.withHover:hover {
+    --tag-background: var(--color-black-5) !important;
   }
 
   &.noOutline {
