@@ -24,6 +24,10 @@
     --tag-background: var(--color-black-5) !important;
   }
 
+  &.selected:hover {
+    --tag-background: var(--color-black-70) !important;
+  }
+
   &.noOutline {
     --tag-focus-outline-color: none !important;
     cursor: default;
