@@ -8,6 +8,7 @@ import { Carousel, CarouselProps } from '../carousel/Carousel';
 import { Card } from '../card/Card';
 import Grid, { GridProps } from '../../common/components/grid/Grid';
 import {
+  EventTypeId,
   useEventListQuery,
   useEventsByIdsQuery,
 } from '../../common/eventsService/__generated__';
@@ -275,6 +276,7 @@ export function EventSelectionCollection({
       ids: collection.events,
       pageSize,
       include: ['in_language', 'keywords', 'location', 'audience'],
+      eventType: [EventTypeId.General, EventTypeId.Course],
     },
   });
 
