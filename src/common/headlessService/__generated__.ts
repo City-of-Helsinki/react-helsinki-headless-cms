@@ -2170,15 +2170,16 @@ export type DateQueryInput = {
   year?: InputMaybe<Scalars['Int']>;
 };
 
+/** Default images of different post types. Returns url of image of queried post type. Values come from Sivuston Asetukset -&gt; Oletuskuvat. */
 export type DefaultImages = {
   __typename?: 'DefaultImages';
-  /** Attachment ID for article image */
+  /** Attachment URL for article image */
   article?: Maybe<Scalars['String']>;
-  /** Attachment ID for event image */
+  /** Attachment URL for event image */
   event?: Maybe<Scalars['String']>;
-  /** Attachment ID for hero image */
+  /** Attachment URL for hero image */
   hero?: Maybe<Scalars['String']>;
-  /** Attachment ID for page image */
+  /** Attachment URL for page image */
   page?: Maybe<Scalars['String']>;
 };
 
@@ -2532,7 +2533,12 @@ export type EventSearch = {
   module?: Maybe<Scalars['String']>;
   /** List of modules */
   modules?: Maybe<Array<Maybe<CollectionModulesUnionType>>>;
-  /** Show all -link */
+  /**
+   * Show all -link, final link is combination of Tapahtuma- ja kurssikarusellin
+   *                 hakutulosten osoite -link and search params of the module, for example:
+   *                 https://client-url.com/search/?sort=end_time&amp;super_event_type=umbrella,none&amp;language=fi&amp;start=2022-10-29
+   *
+   */
   showAllLink?: Maybe<Scalars['String']>;
   /** Module title */
   title?: Maybe<Scalars['String']>;
@@ -2553,7 +2559,12 @@ export type EventSearchCarousel = {
   modules?: Maybe<Array<Maybe<CollectionModulesUnionType>>>;
   /** Events order */
   orderNewestFirst?: Maybe<Scalars['Boolean']>;
-  /** Show all -link */
+  /**
+   * Show all -link, final link is combination of Tapahtuma- ja kurssikarusellin
+   *                                     hakutulosten osoite -link and search params of the module, for example:
+   *                                     https://client-url.com/search/?sort=end_time&amp;super_event_type=umbrella,none&amp;language=fi&amp;start=2022-10-29
+   *
+   */
   showAllLink?: Maybe<Scalars['String']>;
   /** Module title */
   title?: Maybe<Scalars['String']>;
@@ -6559,6 +6570,7 @@ export type RootQuery = {
    * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
    */
   pageBy?: Maybe<Page>;
+  /** Returns ID of page that uses the given template */
   pageByTemplate?: Maybe<Page>;
   /** Connection between the RootQuery type and the page type */
   pages?: Maybe<RootQueryToPageConnection>;
