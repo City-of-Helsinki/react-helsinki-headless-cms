@@ -78,6 +78,7 @@ export function SearchTags({
       <div>
         {tags.map((tag) => (
           <Tag
+            whiteOnly
             key={`tag-${tag.slug}`}
             selected={currentTags.includes(tag)}
             onClick={handleTagClick(tag)}

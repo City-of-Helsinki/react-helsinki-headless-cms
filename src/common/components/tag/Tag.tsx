@@ -10,6 +10,7 @@ type Props = {
   children: React.ReactNode;
   className?: string;
   featured?: boolean;
+  whiteOnly?: boolean;
   selected?: boolean;
   onClick?: () => void;
 };
@@ -19,6 +20,7 @@ export function Tag({
   children,
   featured,
   selected,
+  whiteOnly,
   onClick,
 }: Props) {
   const handleClick = (): void => {
@@ -36,6 +38,7 @@ export function Tag({
         styles.tag,
         featured && styles.featured,
         selected && styles.selected,
+        whiteOnly && styles.whiteOnly,
         onClick && !featured && styles.withHover,
         !onClick && styles.noOutline,
         className,
