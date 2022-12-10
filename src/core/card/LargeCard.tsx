@@ -1,5 +1,5 @@
 import { IconArrowRight } from 'hds-react';
-import React from 'react';
+import React, { useState } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
 
@@ -43,6 +43,9 @@ export function LargeCard({
   openInNewTab,
   withBorder,
 }: LargeCardProps) {
+  const [isHovered, setIsHovered] = useState(false);
+  const handleToggleActive = () => setIsHovered((val) => !val);
+
   return (
     <LinkBox
       id={id}
@@ -50,12 +53,15 @@ export function LargeCard({
       className={classNames(styles.cardLink, className)}
       aria-label={ariaLabel || ''}
       openInNewTab={openInNewTab}
+      onMouseEnter={handleToggleActive}
+      onMouseLeave={handleToggleActive}
     >
       <div
         className={classNames(
           styles[`${imagePosition}`],
           styles.cardWrapper,
           withBorder && styles.withBorder,
+          isHovered && styles.isHovered,
         )}
       >
         <BackgroundImage

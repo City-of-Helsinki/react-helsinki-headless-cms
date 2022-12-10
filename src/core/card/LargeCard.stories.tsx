@@ -24,7 +24,7 @@ const Template: ComponentStory<typeof LargeCard> = (args) => (
     }}
   >
     <div style={{ maxWidth: 1470, margin: 24 }}>
-      <LargeCard {...args} />
+      <LargeCard {...args} url="https://hel.fi" hasLink />
       <LargeCard {...args} imagePosition="left" />
       <LargeCard
         {...args}
