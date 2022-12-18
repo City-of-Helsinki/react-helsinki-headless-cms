@@ -115,7 +115,7 @@
                 box-sizing: border-box;
 
                 .slideItem {
-                  padding: 0 5px;
+                  padding: 0 12px;
                   position: relative;
                   box-sizing: border-box;
                 }
@@ -133,14 +133,14 @@
         justify-content: center;
         margin: 32px 0 0;
         .dot {
-          border: 2px solid var(--color-black-20);
+          border: 2px solid var(--color-black-30);
           border-radius: 50%;
           width: 12px;
           height: 12px;
           margin: 0 2px;
 
           &.selected {
-            background-color: var(--color-black-20);
+            background-color: var(--color-black-40);
           }
         }
       }

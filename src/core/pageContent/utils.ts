@@ -83,7 +83,7 @@ export function getArticlePageCardProps(
     ariaLabel: item.title,
     text: getElementTextContent((item.lead || item.content) ?? ''),
     hasLink: true,
-    withBorder: false,
+    withBorder: true,
     withShadow: false,
     clampText: true,
     direction: 'responsive' as CardProps['direction'],
