@@ -40,7 +40,7 @@ export function Carousel({
   loadMoreButtonLabelText,
   title,
 }) {
-  const MOBILE_WIDTH = 720;
+  const MOBILE_WIDTH = 840;
   const [isReady] = useState<boolean>(true);
   const [transformValue, setTransformValue] = useState('0px');
   const [numberOfSlides, setNumberOfSlides] = useState<number>(0);
