@@ -14,7 +14,4 @@ export * from '../common/headlessService/tags';
 export * from '../common/headlessService/landingPage';
 export * from '../common/headlessService/pageByTemplate';
 export * from '../common/headlessService/menu';
-export {
-  LanguagesDocument,
-  LanguageCodeEnum,
-} from '../common/headlessService/languages';
+export * from '../common/headlessService/languages';

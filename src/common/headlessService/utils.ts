@@ -22,6 +22,7 @@ import {
   EventSelected,
   EventSelectedCarousel,
   EventModule,
+  Language,
 } from './types';
 import { EventType } from '../eventsService/types';
 
@@ -155,6 +156,12 @@ export function isEventSearchCollection(
   collection: CollectionType,
 ): collection is EventSearchCollectionType {
   return (<EventSearchCollectionType>collection).url !== undefined;
+}
+
+export function isLanguage(
+  language: Language | null | undefined,
+): language is Language {
+  return !!(<Language>language);
 }
 
 export function filterPagesAndArticles(items: CollectionItemType[]) {
