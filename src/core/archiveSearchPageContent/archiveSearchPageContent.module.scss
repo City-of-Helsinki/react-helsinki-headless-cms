@@ -130,7 +130,6 @@
 
     .inputWithIcon {
       position: relative;
-
       & > div > input {
         padding-left: calc((2 * #{$spacing-s}) + 1.5rem) !important;
       }
@@ -149,6 +148,11 @@
     .hdsTextInputOverrides {
       & > div > input {
         border: none;
+        &:focus {
+          box-shadow: none !important;
+          outline: 3px solid var(--color-coat-of-arms);
+          outline-offset: 2px;
+        }
       }
     }
 
