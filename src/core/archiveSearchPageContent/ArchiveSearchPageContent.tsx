@@ -243,34 +243,36 @@ export function SearchPageContent(props: SearchPageContentProps) {
         <PageSection className={styles.searchResultsContainer}>
           <div>
             <div className={styles.searchResultsContainerInner}>
-              {noResults ? (
-                <div className={styles.noResultsContainer}>
-                  <IconSearch />
-                  <h1>{archiveSearch.noResultsTitle || ''}</h1>
-                  <p>{archiveSearch.noResultsText || ''}</p>
+              <div>
+                {noResults ? (
+                  <div className={styles.noResultsContainer}>
+                    <IconSearch />
+                    <h1>{archiveSearch.noResultsTitle || ''}</h1>
+                    <p>{archiveSearch.noResultsText || ''}</p>
+                  </div>
+                ) : (
+                  <ArchiveCollection {...props} />
+                )}
+                <div className={styles.bottomActions}>
+                  {isLoading && (
+                    <div className={styles.loadingSpinner}>
+                      <LoadingSpinner multicolor />
+                    </div>
+                  )}
+                  {hasMore && (
+                    <div className={styles.loadMoreButton}>
+                      <Button
+                        theme="coat"
+                        variant="secondary"
+                        type="button"
+                        className={styles.hdsButtonOverrides}
+                        onClick={onLoadMore}
+                      >
+                        {archiveSearch?.loadMoreButtonLabelText || ''}
+                      </Button>
+                    </div>
+                  )}
                 </div>
-              ) : (
-                <ArchiveCollection {...props} />
-              )}
-              <div className={styles.bottomActions}>
-                {isLoading && (
-                  <div className={styles.loadingSpinner}>
-                    <LoadingSpinner multicolor />
-                  </div>
-                )}
-                {hasMore && (
-                  <div className={styles.loadMoreButton}>
-                    <Button
-                      theme="coat"
-                      variant="secondary"
-                      type="button"
-                      className={styles.hdsButtonOverrides}
-                      onClick={onLoadMore}
-                    >
-                      {archiveSearch?.loadMoreButtonLabelText || ''}
-                    </Button>
-                  </div>
-                )}
               </div>
             </div>
           </div>
