@@ -52,8 +52,6 @@ export type Config = {
     ) => string;
   };
   meta?: {
-    title?: string;
-    description?: string;
     appleTouchIconUrl?: string;
     favIconUrl?: string;
     favIconSvgUrl?: string;

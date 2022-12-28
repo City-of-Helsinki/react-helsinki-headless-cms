@@ -2,17 +2,20 @@ import React from 'react';
 
 import { useConfig } from '../configProvider/useConfig';
 
-function BasicMeta() {
+type BasicMetaProps = {
+  title?: string;
+  description?: string;
+};
+
+function BasicMeta({ title, description }: BasicMetaProps) {
   const {
     components: { Head },
     meta,
   } = useConfig();
   return (
     <Head>
-      {meta.title && <meta property="title" content={meta.title} />}
-      {meta.description && (
-        <meta property="description" content={meta.description} />
-      )}
+      {title && <meta property="title" content={title} />}
+      {description && <meta property="description" content={description} />}
       {meta.favIconUrl && <link rel="icon" href={meta.favIconUrl} />}
       {meta.favIconSvgUrl && (
         <link rel="icon" href={meta.favIconSvgUrl} type="image/svg+xml" />
