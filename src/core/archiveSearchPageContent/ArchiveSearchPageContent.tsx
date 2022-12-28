@@ -19,6 +19,7 @@ import { Config } from '../configProvider/configContext';
 import { CollectionItemType } from '../collection/types';
 import { PageSection } from '../pageSection/PageSection';
 import { SearchTag } from '../../common/headlessService/types';
+import BasicMeta from '../archiveSearchPage/ArchivePageMeta';
 
 export function SearchForm({
   archiveSearch,
@@ -199,85 +200,88 @@ export function SearchPageContent(props: SearchPageContentProps) {
   };
 
   return (
-    <main
-      id={mainContentId || 'main-content'}
-      className={classNames(styles.contentLayout, className)}
-    >
-      <div className={styles.mainLayout}>
-        <PageSection
-          korosBottom
-          className={styles.searchFormContainer}
-          korosBottomClassName={styles.koros}
-        >
-          <div className={styles.searchFormContainerInner}>
-            <h2>{archiveSearch.title || ''}</h2>
-            <div>
-              <SearchForm
-                archiveSearch={archiveSearch}
-                handleSearch={handleSearch}
-                handleChange={handleChange}
-                searchText={searchText}
-              />
-            </div>
-            {tags && (
-              <SearchTags
-                tags={tags}
-                hasClearSearch={Boolean(searchText) && tags.length > 0}
-                clearAllText={archiveSearch?.clearAll}
-                currentTags={searchTags}
-                handleTagClick={handleTagClick}
-                handleClearSearch={clearTags}
-              />
-            )}
-          </div>
-        </PageSection>
-
-        {customContent && (
-          <PageSection className={styles.customContentContainer}>
-            <div className={styles.customContentContainerInner}>
-              {customContent}
+    <>
+      <BasicMeta />
+      <main
+        id={mainContentId || 'main-content'}
+        className={classNames(styles.contentLayout, className)}
+      >
+        <div className={styles.mainLayout}>
+          <PageSection
+            korosBottom
+            className={styles.searchFormContainer}
+            korosBottomClassName={styles.koros}
+          >
+            <div className={styles.searchFormContainerInner}>
+              <h2>{archiveSearch.title || ''}</h2>
+              <div>
+                <SearchForm
+                  archiveSearch={archiveSearch}
+                  handleSearch={handleSearch}
+                  handleChange={handleChange}
+                  searchText={searchText}
+                />
+              </div>
+              {tags && (
+                <SearchTags
+                  tags={tags}
+                  hasClearSearch={Boolean(searchText) && tags.length > 0}
+                  clearAllText={archiveSearch?.clearAll}
+                  currentTags={searchTags}
+                  handleTagClick={handleTagClick}
+                  handleClearSearch={clearTags}
+                />
+              )}
             </div>
           </PageSection>
-        )}
 
-        <PageSection className={styles.searchResultsContainer}>
-          <div>
-            <div className={styles.searchResultsContainerInner}>
-              <div>
-                {noResults ? (
-                  <div className={styles.noResultsContainer}>
-                    <IconSearch />
-                    <h1>{archiveSearch.noResultsTitle || ''}</h1>
-                    <p>{archiveSearch.noResultsText || ''}</p>
+          {customContent && (
+            <PageSection className={styles.customContentContainer}>
+              <div className={styles.customContentContainerInner}>
+                {customContent}
+              </div>
+            </PageSection>
+          )}
+
+          <PageSection className={styles.searchResultsContainer}>
+            <div>
+              <div className={styles.searchResultsContainerInner}>
+                <div>
+                  {noResults ? (
+                    <div className={styles.noResultsContainer}>
+                      <IconSearch />
+                      <h1>{archiveSearch.noResultsTitle || ''}</h1>
+                      <p>{archiveSearch.noResultsText || ''}</p>
+                    </div>
+                  ) : (
+                    <ArchiveCollection {...props} />
+                  )}
+                  <div className={styles.bottomActions}>
+                    {isLoading && (
+                      <div className={styles.loadingSpinner}>
+                        <LoadingSpinner multicolor />
+                      </div>
+                    )}
+                    {hasMore && (
+                      <div className={styles.loadMoreButton}>
+                        <Button
+                          theme="coat"
+                          variant="secondary"
+                          type="button"
+                          className={styles.hdsButtonOverrides}
+                          onClick={onLoadMore}
+                        >
+                          {archiveSearch?.loadMoreButtonLabelText || ''}
+                        </Button>
+                      </div>
+                    )}
                   </div>
-                ) : (
-                  <ArchiveCollection {...props} />
-                )}
-                <div className={styles.bottomActions}>
-                  {isLoading && (
-                    <div className={styles.loadingSpinner}>
-                      <LoadingSpinner multicolor />
-                    </div>
-                  )}
-                  {hasMore && (
-                    <div className={styles.loadMoreButton}>
-                      <Button
-                        theme="coat"
-                        variant="secondary"
-                        type="button"
-                        className={styles.hdsButtonOverrides}
-                        onClick={onLoadMore}
-                      >
-                        {archiveSearch?.loadMoreButtonLabelText || ''}
-                      </Button>
-                    </div>
-                  )}
                 </div>
               </div>
             </div>
-          </div>
-        </PageSection>
-      </div>
-    </main>
+          </PageSection>
+        </div>
+      </main>
+    </>
   );
 }
