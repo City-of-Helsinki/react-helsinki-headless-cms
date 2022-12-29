@@ -1,0 +1,35 @@
+import React from 'react';
+
+import { useConfig } from '../configProvider/useConfig';
+
+type BasicMetaProps = {
+  title?: string;
+  description?: string;
+};
+
+function BasicMeta({ title, description }: BasicMetaProps) {
+  const {
+    components: { Head },
+    meta,
+  } = useConfig();
+  return (
+    <Head>
+      {title && <meta property="title" content={title} />}
+      {description && <meta property="description" content={description} />}
+      {meta.favIconUrl && <link rel="icon" href={meta.favIconUrl} />}
+      {meta.favIconSvgUrl && (
+        <link rel="icon" href={meta.favIconSvgUrl} type="image/svg+xml" />
+      )}
+      {meta.appleTouchIconUrl && (
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href={meta.appleTouchIconUrl}
+        />
+      )}
+      {meta.manifestUrl && <link rel="manifest" href={meta.manifestUrl} />}
+    </Head>
+  );
+}
+
+export default BasicMeta;
