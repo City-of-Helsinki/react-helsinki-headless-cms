@@ -1,6 +1,10 @@
 @use 'breakpoints';
 @import 'spacing';
 
+.grid {
+  margin-top: var(--spacing-m);
+}
+
 .contentLayout {
   --padding: #{$spacing-layout-2-xs};
   --max-width: calc(#{breakpoints.$container-width-xl} + (2 * var(--padding)));
