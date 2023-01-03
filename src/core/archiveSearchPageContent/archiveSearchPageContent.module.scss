@@ -1,6 +1,10 @@
 @use 'breakpoints';
 @import 'spacing';
 
+.grid {
+  margin-top: var(--spacing-m);
+}
+
 .contentLayout {
   --padding: #{$spacing-layout-2-xs};
   --max-width: calc(#{breakpoints.$container-width-xl} + (2 * var(--padding)));
@@ -117,7 +121,6 @@
 
       @media screen and (min-width: breakpoints.$breakpoint-l) {
         display: grid;
-        align-items: flex-end;
         column-gap: $spacing-xs;
         row-gap: $spacing-xs;
         grid-template-columns: 5fr 1fr;
@@ -173,12 +176,6 @@
         margin: 0 auto;
         padding: 0 var(--padding);
         box-sizing: border-box;
-
-        .largeCardContainer {
-          @media screen and (max-width: breakpoints.$breakpoint-l) {
-            margin-bottom: $spacing-s;
-          }
-        }
 
         .noResultsContainer {
           display: flex;
