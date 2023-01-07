@@ -195,6 +195,7 @@ const modules = [
   pageEventSearchCarousel,
   pageEventSelected,
   pageEventSelectedCarousel,
+  pageLocationsSelected,
 ];
 
 const mockPage: PageQuery['page'] = {
