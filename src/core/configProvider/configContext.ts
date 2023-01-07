@@ -44,6 +44,7 @@ export type Config = {
   };
   apolloClient?: ApolloClient<NormalizedCacheObject>;
   eventsApolloClient?: ApolloClient<NormalizedCacheObject> | 'disabled';
+  venuesApolloClient?: ApolloClient<NormalizedCacheObject>;
   utils: {
     getIsHrefExternal: (href: string) => boolean;
     getRoutedInternalHref: (

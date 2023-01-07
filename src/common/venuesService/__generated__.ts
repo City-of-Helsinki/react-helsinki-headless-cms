@@ -19,6 +19,59 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
+  DateTime: any;
+  /** A (multidimensional) set of coordinates following x, y, z order. */
+  GeoJSONCoordinates: any;
+  /** Arbitrary JSON value */
+  JSONObject: any;
+};
+
+export type AboutPagesResponse = {
+  __typename?: 'AboutPagesResponse';
+  data: Array<StaticPage>;
+};
+
+export type AccessibilityPagesResponse = {
+  __typename?: 'AccessibilityPagesResponse';
+  data: Array<StaticPage>;
+};
+
+/** TODO: take this from service map / TPREK */
+export type AccessibilityProfile = {
+  __typename?: 'AccessibilityProfile';
+  meta?: Maybe<NodeMeta>;
+  todo?: Maybe<Scalars['String']>;
+};
+
+export type AccessibilitySentences = {
+  __typename?: 'AccessibilitySentences';
+  groupName?: Maybe<Scalars['String']>;
+  sentences?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+/** TODO: give real structure */
+export type Address = {
+  __typename?: 'Address';
+  city?: Maybe<LanguageString>;
+  postalCode?: Maybe<Scalars['String']>;
+  streetAddress?: Maybe<LanguageString>;
+};
+
+export type AdministrativeDivision = {
+  __typename?: 'AdministrativeDivision';
+  id?: Maybe<Scalars['ID']>;
+  municipality?: Maybe<Scalars['String']>;
+  name?: Maybe<LanguageString>;
+  type?: Maybe<Scalars['String']>;
+};
+
+export type Audience = {
+  __typename?: 'Audience';
+  id?: Maybe<Scalars['ID']>;
+  internalContext?: Maybe<Scalars['String']>;
+  internalId?: Maybe<Scalars['String']>;
+  internalType?: Maybe<Scalars['String']>;
+  name?: Maybe<LocalizedObject>;
 };
 
 /** Avatars are profile images for users. WordPress by default uses the Gravatar service to host and fetch avatars from. */
@@ -58,6 +111,26 @@ export enum AvatarRatingEnum {
   R = 'R',
   /** Indicates an X level avatar rating level. */
   X = 'X',
+}
+
+export type BannerPage = {
+  __typename?: 'BannerPage';
+  buttonText?: Maybe<LocalizedObject>;
+  buttonUrl?: Maybe<LocalizedObject>;
+  description?: Maybe<LocalizedObject>;
+  heroBackgroundImage?: Maybe<LocalizedCmsImage>;
+  heroBackgroundImageColor?: Maybe<LocalizedObject>;
+  heroBackgroundImageMobile?: Maybe<LocalizedCmsImage>;
+  heroTopLayerImage?: Maybe<LocalizedCmsImage>;
+  keywords?: Maybe<LocalizedCmsKeywords>;
+  socialMediaImage?: Maybe<LocalizedCmsImage>;
+  title?: Maybe<LocalizedObject>;
+  titleAndDescriptionColor?: Maybe<LocalizedObject>;
+};
+
+export enum CacheControlScope {
+  Private = 'PRIVATE',
+  Public = 'PUBLIC',
 }
 
 /** The category type */
@@ -443,6 +516,13 @@ export type CategoryToTaxonomyConnectionEdge = {
   node?: Maybe<Taxonomy>;
 };
 
+export type CmsImage = {
+  __typename?: 'CmsImage';
+  photographerCredit?: Maybe<LocalizedObject>;
+  title?: Maybe<Scalars['String']>;
+  url?: Maybe<Scalars['String']>;
+};
+
 /** The collection type */
 export type Collection = ContentNode &
   DatabaseIdentifier &
@@ -587,6 +667,46 @@ export type CollectionTranslationArgs = {
   language: LanguageCodeEnum;
 };
 
+export type CollectionDetails = {
+  __typename?: 'CollectionDetails';
+  boxColor?: Maybe<Scalars['String']>;
+  contentType?: Maybe<Scalars['Int']>;
+  curatedEvents: Array<Scalars['String']>;
+  curatedEventsTitle?: Maybe<LocalizedObject>;
+  depth?: Maybe<Scalars['Int']>;
+  description?: Maybe<LocalizedObject>;
+  draftTitle?: Maybe<Scalars['String']>;
+  eventListQuery?: Maybe<LocalizedObject>;
+  eventListTitle?: Maybe<LocalizedObject>;
+  expireAt?: Maybe<Scalars['String']>;
+  expired?: Maybe<Scalars['Boolean']>;
+  firstPublishedAt?: Maybe<Scalars['String']>;
+  goLiveAt?: Maybe<Scalars['String']>;
+  hasUnpublishedChanges?: Maybe<Scalars['Boolean']>;
+  heroImage?: Maybe<CmsImage>;
+  id: Scalars['ID'];
+  keywords?: Maybe<LocalizedCmsKeywords>;
+  lastPublishedAt?: Maybe<Scalars['String']>;
+  latestRevisionCreatedAt?: Maybe<Scalars['String']>;
+  linkText?: Maybe<LocalizedObject>;
+  linkUrl?: Maybe<LocalizedObject>;
+  live?: Maybe<Scalars['Boolean']>;
+  liveRevision?: Maybe<Scalars['Int']>;
+  locked?: Maybe<Scalars['Boolean']>;
+  lockedAt?: Maybe<Scalars['String']>;
+  lockedBy?: Maybe<Scalars['Int']>;
+  numchild?: Maybe<Scalars['Int']>;
+  owner?: Maybe<Scalars['Int']>;
+  path?: Maybe<Scalars['String']>;
+  searchDescription?: Maybe<Scalars['String']>;
+  seoTitle?: Maybe<Scalars['String']>;
+  showInMenus?: Maybe<Scalars['Boolean']>;
+  slug: Scalars['ID'];
+  socialMediaDescription?: Maybe<LocalizedObject>;
+  title: LocalizedObject;
+  urlPath?: Maybe<Scalars['String']>;
+};
+
 /** The Type of Identifier used to fetch a single resource. Default is ID. */
 export enum CollectionIdType {
   /** Identify a resource by the Database ID. */
@@ -599,12 +719,16 @@ export enum CollectionIdType {
   Uri = 'URI',
 }
 
+export type CollectionListResponse = {
+  __typename?: 'CollectionListResponse';
+  data: Array<CollectionDetails>;
+};
+
 export type CollectionModulesUnionType =
   | EventSearch
   | EventSearchCarousel
   | EventSelected
-  | EventSelectedCarousel
-  | LocationsSelected;
+  | EventSelectedCarousel;
 
 /** Connection between the collection type and the collection type */
 export type CollectionToPreviewConnectionEdge = {
@@ -1047,295 +1171,30 @@ export enum CommentsConnectionOrderbyEnum {
   UserId = 'USER_ID',
 }
 
-/** The contact type */
-export type Contact = ContentNode &
-  DatabaseIdentifier &
-  Node &
-  NodeWithFeaturedImage &
-  NodeWithRevisions &
-  NodeWithTemplate &
-  NodeWithTitle &
-  UniformResourceIdentifiable & {
-    __typename?: 'Contact';
-    /**
-     * The id field matches the WP_Post-&gt;ID field.
-     * @deprecated Deprecated in favor of the databaseId field
-     */
-    contactId: Scalars['Int'];
-    /** Connection between the ContentNode type and the ContentType type */
-    contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
-    /** The name of the Content Type the node belongs to */
-    contentTypeName: Scalars['String'];
-    /** The unique identifier stored in the database */
-    databaseId: Scalars['Int'];
-    /** Post publishing date. */
-    date?: Maybe<Scalars['String']>;
-    /** The publishing date set in GMT. */
-    dateGmt?: Maybe<Scalars['String']>;
-    /** Description */
-    description?: Maybe<Scalars['String']>;
-    /** The desired slug of the post */
-    desiredSlug?: Maybe<Scalars['String']>;
-    /** If a user has edited the node within the past 15 seconds, this will return the user that last edited. Null if the edit lock doesn&#039;t exist or is greater than 15 seconds */
-    editingLockedBy?: Maybe<ContentNodeToEditLockConnectionEdge>;
-    /** The RSS enclosure for the object */
-    enclosure?: Maybe<Scalars['String']>;
-    /** Connection between the ContentNode type and the EnqueuedScript type */
-    enqueuedScripts?: Maybe<ContentNodeToEnqueuedScriptConnection>;
-    /** Connection between the ContentNode type and the EnqueuedStylesheet type */
-    enqueuedStylesheets?: Maybe<ContentNodeToEnqueuedStylesheetConnection>;
-    /** Connection between the NodeWithFeaturedImage type and the MediaItem type */
-    featuredImage?: Maybe<NodeWithFeaturedImageToMediaItemConnectionEdge>;
-    /** The database identifier for the featured image node assigned to the content node */
-    featuredImageDatabaseId?: Maybe<Scalars['Int']>;
-    /** Globally unique ID of the featured image assigned to the node */
-    featuredImageId?: Maybe<Scalars['ID']>;
-    /** First name */
-    firstName?: Maybe<Scalars['String']>;
-    /** The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table. */
-    guid?: Maybe<Scalars['String']>;
-    /** The globally unique identifier of the contact-cpt object. */
-    id: Scalars['ID'];
-    /** Whether the node is a Content Node */
-    isContentNode: Scalars['Boolean'];
-    /** Whether the object is a node in the preview state */
-    isPreview?: Maybe<Scalars['Boolean']>;
-    /** Whether the object is restricted from the current viewer */
-    isRestricted?: Maybe<Scalars['Boolean']>;
-    /** True if the node is a revision of another node */
-    isRevision?: Maybe<Scalars['Boolean']>;
-    /** Whether the node is a Term */
-    isTermNode: Scalars['Boolean'];
-    /** Job Title */
-    jobTitle?: Maybe<Scalars['String']>;
-    /** Polylang language */
-    language?: Maybe<Language>;
-    /** The user that most recently edited the node */
-    lastEditedBy?: Maybe<ContentNodeToEditLastConnectionEdge>;
-    /** Last name */
-    lastName?: Maybe<Scalars['String']>;
-    /** The permalink of the post */
-    link?: Maybe<Scalars['String']>;
-    /** The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time. */
-    modified?: Maybe<Scalars['String']>;
-    /** The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT. */
-    modifiedGmt?: Maybe<Scalars['String']>;
-    /** Connection between the contact type and the contact type */
-    preview?: Maybe<ContactToPreviewConnectionEdge>;
-    /** The database id of the preview node */
-    previewRevisionDatabaseId?: Maybe<Scalars['Int']>;
-    /** Whether the object is a node in the preview state */
-    previewRevisionId?: Maybe<Scalars['ID']>;
-    /** If the current node is a revision, this field exposes the node this is a revision of. Returns null if the node is not a revision of another node. */
-    revisionOf?: Maybe<NodeWithRevisionsToContentNodeConnectionEdge>;
-    /** Connection between the contact type and the contact type */
-    revisions?: Maybe<ContactToRevisionConnection>;
-    /** The SEO Framework data of the contact */
-    seo?: Maybe<Seo>;
-    /** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
-    slug?: Maybe<Scalars['String']>;
-    /** The current status of the object */
-    status?: Maybe<Scalars['String']>;
-    /** The template assigned to a node of content */
-    template?: Maybe<ContentTemplate>;
-    /** Connection between the contact type and the TermNode type */
-    terms?: Maybe<ContactToTermNodeConnection>;
-    /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
-    title?: Maybe<Scalars['String']>;
-    /** Get specific translation version of this object */
-    translation?: Maybe<Contact>;
-    /** List all translated versions of this post */
-    translations?: Maybe<Array<Maybe<Contact>>>;
-    /** The unique resource identifier path */
-    uri?: Maybe<Scalars['String']>;
-  };
-
-/** The contact type */
-export type ContactEnqueuedScriptsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
+export type Connection = {
+  __typename?: 'Connection';
+  name?: Maybe<Scalars['String']>;
+  phone?: Maybe<Scalars['String']>;
+  sectionType?: Maybe<Scalars['String']>;
+  url?: Maybe<Scalars['String']>;
 };
 
-/** The contact type */
-export type ContactEnqueuedStylesheetsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
+/** Contact details for a person, legal entity, venue or project */
+export type ContactInfo = {
+  __typename?: 'ContactInfo';
+  contactUrl?: Maybe<Scalars['String']>;
+  emailAddresses: Array<Scalars['String']>;
+  phoneNumbers: Array<PhoneNumber>;
+  postalAddresses: Array<Address>;
 };
 
-/** The contact type */
-export type ContactRevisionsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<ContactToRevisionConnectionWhereArgs>;
-};
-
-/** The contact type */
-export type ContactTermsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<ContactToTermNodeConnectionWhereArgs>;
-};
-
-/** The contact type */
-export type ContactTitleArgs = {
-  format?: InputMaybe<PostObjectFieldFormatEnum>;
-};
-
-/** The contact type */
-export type ContactTranslationArgs = {
-  language: LanguageCodeEnum;
-};
-
-/** The Type of Identifier used to fetch a single resource. Default is ID. */
-export enum ContactIdType {
-  /** Identify a resource by the Database ID. */
-  DatabaseId = 'DATABASE_ID',
-  /** Identify a resource by the (hashed) Global ID. */
-  Id = 'ID',
-  /** Identify a resource by the slug. Available to non-hierarchcial Types where the slug is a unique identifier. */
-  Slug = 'SLUG',
-  /** Identify a resource by the URI. */
-  Uri = 'URI',
+export enum ContactMedium {
+  Asiointi = 'ASIOINTI',
+  Email = 'EMAIL',
+  MobileNotification = 'MOBILE_NOTIFICATION',
+  Sms = 'SMS',
+  SmsAndEmail = 'SMS_AND_EMAIL',
 }
-
-/** Connection between the contact type and the contact type */
-export type ContactToPreviewConnectionEdge = {
-  __typename?: 'ContactToPreviewConnectionEdge';
-  /** The node of the connection, without the edges */
-  node?: Maybe<Contact>;
-};
-
-/** Connection between the contact type and the contact type */
-export type ContactToRevisionConnection = {
-  __typename?: 'ContactToRevisionConnection';
-  /** Edges for the contactToRevisionConnection connection */
-  edges?: Maybe<Array<Maybe<ContactToRevisionConnectionEdge>>>;
-  /** The nodes of the connection, without the edges */
-  nodes?: Maybe<Array<Maybe<Contact>>>;
-  /** Information about pagination in a connection. */
-  pageInfo?: Maybe<WpPageInfo>;
-};
-
-/** An edge in a connection */
-export type ContactToRevisionConnectionEdge = {
-  __typename?: 'ContactToRevisionConnectionEdge';
-  /** A cursor for use in pagination */
-  cursor?: Maybe<Scalars['String']>;
-  /** The item at the end of the edge */
-  node?: Maybe<Contact>;
-};
-
-/** Arguments for filtering the contactToRevisionConnection connection */
-export type ContactToRevisionConnectionWhereArgs = {
-  /** Filter the connection based on dates */
-  dateQuery?: InputMaybe<DateQueryInput>;
-  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
-  hasPassword?: InputMaybe<Scalars['Boolean']>;
-  /** Specific ID of the object */
-  id?: InputMaybe<Scalars['Int']>;
-  /** Array of IDs for the objects to retrieve */
-  in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Get objects with a specific mimeType property */
-  mimeType?: InputMaybe<MimeTypeEnum>;
-  /** Slug / post_name of the object */
-  name?: InputMaybe<Scalars['String']>;
-  /** Specify objects to retrieve. Use slugs */
-  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
-  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
-  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
-  /** Use ID to return only children. Use 0 to return only top-level items */
-  parent?: InputMaybe<Scalars['ID']>;
-  /** Specify objects whose parent is in an array */
-  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Specify posts whose parent is not in an array */
-  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Show posts with a specific password. */
-  password?: InputMaybe<Scalars['String']>;
-  /** Show Posts based on a keyword search */
-  search?: InputMaybe<Scalars['String']>;
-  /** Retrieve posts where post status is in an array. */
-  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
-  /** Show posts with a specific status. */
-  status?: InputMaybe<PostStatusEnum>;
-  /** Title of the object */
-  title?: InputMaybe<Scalars['String']>;
-};
-
-/** Connection between the contact type and the TermNode type */
-export type ContactToTermNodeConnection = {
-  __typename?: 'ContactToTermNodeConnection';
-  /** Edges for the ContactToTermNodeConnection connection */
-  edges?: Maybe<Array<Maybe<ContactToTermNodeConnectionEdge>>>;
-  /** The nodes of the connection, without the edges */
-  nodes?: Maybe<Array<Maybe<TermNode>>>;
-  /** Information about pagination in a connection. */
-  pageInfo?: Maybe<WpPageInfo>;
-};
-
-/** An edge in a connection */
-export type ContactToTermNodeConnectionEdge = {
-  __typename?: 'ContactToTermNodeConnectionEdge';
-  /** A cursor for use in pagination */
-  cursor?: Maybe<Scalars['String']>;
-  /** The item at the end of the edge */
-  node?: Maybe<TermNode>;
-};
-
-/** Arguments for filtering the ContactToTermNodeConnection connection */
-export type ContactToTermNodeConnectionWhereArgs = {
-  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
-  cacheDomain?: InputMaybe<Scalars['String']>;
-  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
-  childOf?: InputMaybe<Scalars['Int']>;
-  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
-  childless?: InputMaybe<Scalars['Boolean']>;
-  /** Retrieve terms where the description is LIKE the input value. Default empty. */
-  descriptionLike?: InputMaybe<Scalars['String']>;
-  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
-  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
-  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
-  hideEmpty?: InputMaybe<Scalars['Boolean']>;
-  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
-  hierarchical?: InputMaybe<Scalars['Boolean']>;
-  /** Array of term ids to include. Default empty array. */
-  include?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Array of names to return term(s) for. Default empty. */
-  name?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Retrieve terms where the name is LIKE the input value. Default empty. */
-  nameLike?: InputMaybe<Scalars['String']>;
-  /** Array of object IDs. Results will be limited to terms associated with these objects. */
-  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Direction the connection should be ordered in */
-  order?: InputMaybe<OrderEnum>;
-  /** Field(s) to order terms by. Defaults to 'name'. */
-  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
-  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
-  padCounts?: InputMaybe<Scalars['Boolean']>;
-  /** Parent term ID to retrieve direct-child terms of. Default empty. */
-  parent?: InputMaybe<Scalars['Int']>;
-  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
-  search?: InputMaybe<Scalars['String']>;
-  /** Array of slugs to return term(s) for. Default empty. */
-  slug?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** The Taxonomy to filter terms by */
-  taxonomies?: InputMaybe<Array<InputMaybe<TaxonomyEnum>>>;
-  /** Array of term taxonomy IDs, to match when querying terms. */
-  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Whether to prime meta caches for matched terms. Default true. */
-  updateTermMetaCache?: InputMaybe<Scalars['Boolean']>;
-};
 
 /** Nodes used to manage content */
 export type ContentNode = {
@@ -1485,12 +1344,10 @@ export type ContentNodeToEnqueuedStylesheetConnectionEdge = {
 /** A union of Content Node Types that support revisions */
 export type ContentRevisionUnion =
   | Collection
-  | Contact
   | LandingPage
   | Page
   | Post
-  | Release
-  | Translation;
+  | Release;
 
 /** The template assigned to a node of content */
 export type ContentTemplate = {
@@ -1592,8 +1449,6 @@ export enum ContentTypeEnum {
   /** The Type of Content object */
   CollectionCpt = 'COLLECTION_CPT',
   /** The Type of Content object */
-  ContactCpt = 'CONTACT_CPT',
-  /** The Type of Content object */
   LandingPageCpt = 'LANDING_PAGE_CPT',
   /** The Type of Content object */
   Page = 'PAGE',
@@ -1601,8 +1456,6 @@ export enum ContentTypeEnum {
   Post = 'POST',
   /** The Type of Content object */
   ReleaseCpt = 'RELEASE_CPT',
-  /** The Type of Content object */
-  TranslationCpt = 'TRANSLATION_CPT',
 }
 
 /** The Type of Identifier used to fetch a single Content Type node. To be used along with the "id" field. Default is "ID". */
@@ -1741,7 +1594,7 @@ export type CreateCategoryPayload = {
 export type CreateCollectionInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
   clientMutationId?: InputMaybe<Scalars['String']>;
-  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17 */
   date?: InputMaybe<Scalars['String']>;
   language?: InputMaybe<LanguageCodeEnum>;
   /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
@@ -1781,7 +1634,7 @@ export type CreateCommentInput = {
   commentOn?: InputMaybe<Scalars['Int']>;
   /** Content of the comment. */
   content?: InputMaybe<Scalars['String']>;
-  /** The date of the object. Preferable to enter as year/month/day ( e.g. 01/31/2017 ) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  /** The date of the object. Preferable to enter as year/month/day ( e.g. 01/31/2017 ) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17 */
   date?: InputMaybe<Scalars['String']>;
   /** Parent comment of current comment. */
   parent?: InputMaybe<Scalars['ID']>;
@@ -1800,39 +1653,11 @@ export type CreateCommentPayload = {
   success?: Maybe<Scalars['Boolean']>;
 };
 
-/** Input for the createContact mutation */
-export type CreateContactInput = {
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: InputMaybe<Scalars['String']>;
-  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
-  date?: InputMaybe<Scalars['String']>;
-  language?: InputMaybe<LanguageCodeEnum>;
-  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
-  menuOrder?: InputMaybe<Scalars['Int']>;
-  /** The password used to protect the content of the object */
-  password?: InputMaybe<Scalars['String']>;
-  /** The slug of the object */
-  slug?: InputMaybe<Scalars['String']>;
-  /** The status of the object */
-  status?: InputMaybe<PostStatusEnum>;
-  /** The title of the object */
-  title?: InputMaybe<Scalars['String']>;
-};
-
-/** The payload for the createContact mutation */
-export type CreateContactPayload = {
-  __typename?: 'CreateContactPayload';
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The Post object mutation type. */
-  contact?: Maybe<Contact>;
-};
-
 /** Input for the createLandingPage mutation */
 export type CreateLandingPageInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
   clientMutationId?: InputMaybe<Scalars['String']>;
-  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17 */
   date?: InputMaybe<Scalars['String']>;
   language?: InputMaybe<LanguageCodeEnum>;
   /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
@@ -1908,7 +1733,7 @@ export type CreatePageInput = {
   clientMutationId?: InputMaybe<Scalars['String']>;
   /** The content of the object */
   content?: InputMaybe<Scalars['String']>;
-  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17 */
   date?: InputMaybe<Scalars['String']>;
   language?: InputMaybe<LanguageCodeEnum>;
   /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
@@ -1967,7 +1792,7 @@ export type CreatePostInput = {
   clientMutationId?: InputMaybe<Scalars['String']>;
   /** The content of the object */
   content?: InputMaybe<Scalars['String']>;
-  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17 */
   date?: InputMaybe<Scalars['String']>;
   language?: InputMaybe<LanguageCodeEnum>;
   /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
@@ -2001,7 +1826,7 @@ export type CreateReleaseInput = {
   clientMutationId?: InputMaybe<Scalars['String']>;
   /** The content of the object */
   content?: InputMaybe<Scalars['String']>;
-  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17 */
   date?: InputMaybe<Scalars['String']>;
   language?: InputMaybe<LanguageCodeEnum>;
   /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
@@ -2047,33 +1872,6 @@ export type CreateTagPayload = {
   clientMutationId?: Maybe<Scalars['String']>;
   /** The created post_tag */
   tag?: Maybe<Tag>;
-};
-
-/** Input for the createTranslation mutation */
-export type CreateTranslationInput = {
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: InputMaybe<Scalars['String']>;
-  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
-  date?: InputMaybe<Scalars['String']>;
-  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
-  menuOrder?: InputMaybe<Scalars['Int']>;
-  /** The password used to protect the content of the object */
-  password?: InputMaybe<Scalars['String']>;
-  /** The slug of the object */
-  slug?: InputMaybe<Scalars['String']>;
-  /** The status of the object */
-  status?: InputMaybe<PostStatusEnum>;
-  /** The title of the object */
-  title?: InputMaybe<Scalars['String']>;
-};
-
-/** The payload for the createTranslation mutation */
-export type CreateTranslationPayload = {
-  __typename?: 'CreateTranslationPayload';
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The Post object mutation type. */
-  translation?: Maybe<Translation>;
 };
 
 /** Input for the createUser mutation */
@@ -2171,16 +1969,15 @@ export type DateQueryInput = {
   year?: InputMaybe<Scalars['Int']>;
 };
 
-/** Default images of different post types. Returns url of image of queried post type. Values come from Sivuston Asetukset -&gt; Oletuskuvat. */
 export type DefaultImages = {
   __typename?: 'DefaultImages';
-  /** Attachment URL for article image */
+  /** Attachment ID for article image */
   article?: Maybe<Scalars['String']>;
-  /** Attachment URL for event image */
+  /** Attachment ID for event image */
   event?: Maybe<Scalars['String']>;
-  /** Attachment URL for hero image */
+  /** Attachment ID for hero image */
   hero?: Maybe<Scalars['String']>;
-  /** Attachment URL for page image */
+  /** Attachment ID for page image */
   page?: Maybe<Scalars['String']>;
 };
 
@@ -2249,27 +2046,6 @@ export type DeleteCommentPayload = {
   /** The deleted comment object */
   comment?: Maybe<Comment>;
   /** The deleted comment ID */
-  deletedId?: Maybe<Scalars['ID']>;
-};
-
-/** Input for the deleteContact mutation */
-export type DeleteContactInput = {
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: InputMaybe<Scalars['String']>;
-  /** Whether the object should be force deleted instead of being moved to the trash */
-  forceDelete?: InputMaybe<Scalars['Boolean']>;
-  /** The ID of the contact to delete */
-  id: Scalars['ID'];
-};
-
-/** The payload for the deleteContact mutation */
-export type DeleteContactPayload = {
-  __typename?: 'DeleteContactPayload';
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The object before it was deleted */
-  contact?: Maybe<Contact>;
-  /** The ID of the deleted object */
   deletedId?: Maybe<Scalars['ID']>;
 };
 
@@ -2416,27 +2192,6 @@ export type DeleteTagPayload = {
   tag?: Maybe<Tag>;
 };
 
-/** Input for the deleteTranslation mutation */
-export type DeleteTranslationInput = {
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: InputMaybe<Scalars['String']>;
-  /** Whether the object should be force deleted instead of being moved to the trash */
-  forceDelete?: InputMaybe<Scalars['Boolean']>;
-  /** The ID of the translation to delete */
-  id: Scalars['ID'];
-};
-
-/** The payload for the deleteTranslation mutation */
-export type DeleteTranslationPayload = {
-  __typename?: 'DeleteTranslationPayload';
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The ID of the deleted object */
-  deletedId?: Maybe<Scalars['ID']>;
-  /** The object before it was deleted */
-  translation?: Maybe<Translation>;
-};
-
 /** Input for the deleteUser mutation */
 export type DeleteUserInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
@@ -2458,6 +2213,17 @@ export type DeleteUserPayload = {
   user?: Maybe<User>;
 };
 
+/**
+ * Resources (media) that provide extra description of a resource,
+ * facility, event or venue, such as images, videos, info pages, etc.
+ */
+export type DescriptionResources = {
+  __typename?: 'DescriptionResources';
+  externalLinks: Array<Scalars['String']>;
+  infoUrls: Array<Scalars['String']>;
+  mediaResources: Array<MediaResource>;
+};
+
 /** The discussion setting type */
 export type DiscussionSettings = {
   __typename?: 'DiscussionSettings';
@@ -2465,6 +2231,23 @@ export type DiscussionSettings = {
   defaultCommentStatus?: Maybe<Scalars['String']>;
   /** Salli linkki-ilmoitukset muista blogeista (pingback ja trackback) uusiin artikkeleihin. */
   defaultPingStatus?: Maybe<Scalars['String']>;
+};
+
+export type Division = {
+  __typename?: 'Division';
+  municipality?: Maybe<Scalars['String']>;
+  name?: Maybe<LocalizedObject>;
+  ocdId?: Maybe<Scalars['String']>;
+  type: Scalars['String'];
+};
+
+/** Elasticsearch results */
+export type ElasticSearchResult = {
+  __typename?: 'ElasticSearchResult';
+  _shards?: Maybe<Shards>;
+  hits?: Maybe<Hits>;
+  timed_out?: Maybe<Scalars['Boolean']>;
+  took?: Maybe<Scalars['Int']>;
 };
 
 /** Asset enqueued by the CMS */
@@ -2525,6 +2308,182 @@ export type EnqueuedStylesheet = EnqueuedAsset &
     version?: Maybe<Scalars['String']>;
   };
 
+/** Information about enrolled participant(s) in an event occurrence */
+export type Enrolment = {
+  __typename?: 'Enrolment';
+  enroller?: Maybe<Person>;
+  event?: Maybe<EventOccurrence>;
+  extraInformation?: Maybe<Scalars['String']>;
+  meta?: Maybe<NodeMeta>;
+  overseerCount?: Maybe<Scalars['Int']>;
+  overseers?: Maybe<Array<Person>>;
+  participantCategory?: Maybe<KeywordString>;
+  participantCount: Scalars['Int'];
+  participants?: Maybe<Array<Person>>;
+  requestedMethodOfNotification?: Maybe<ContactMedium>;
+  status?: Maybe<EnrolmentStatus>;
+};
+
+/** Rules about who can enroll to an event and how */
+export type EnrolmentPolicy = {
+  __typename?: 'EnrolmentPolicy';
+  allowedParticipantCategories: Array<KeywordString>;
+  enrolmentTime?: Maybe<TimeDescription>;
+  /** maximum number of people who can enrol together (at the same time) */
+  maximumEnrolmentCount?: Maybe<Scalars['Int']>;
+  meta?: Maybe<NodeMeta>;
+  /** minimum number of people who can enrol together (at the same time) */
+  minimumEnrolmentCount?: Maybe<Scalars['Int']>;
+  participantMaximumAge: Scalars['Int'];
+  participantMinimumAge: Scalars['Int'];
+  type: Array<EnrolmentPolicyType>;
+};
+
+export enum EnrolmentPolicyType {
+  Groups = 'GROUPS',
+  GroupsWithSupervisors = 'GROUPS_WITH_SUPERVISORS',
+  Individuals = 'INDIVIDUALS',
+  NoEnrolmentNeeded = 'NO_ENROLMENT_NEEDED',
+}
+
+export enum EnrolmentStatus {
+  Cancelled = 'CANCELLED',
+  Confirmed = 'CONFIRMED',
+  Declined = 'DECLINED',
+  Queued = 'QUEUED',
+  Requested = 'REQUESTED',
+}
+
+/**
+ * Request for equipment - if someone needs equipment for a purpose such
+ * as organising a volunteering event (as is the case in park cleaning
+ * bees), a specification of what is being requested.
+ */
+export type EquipmentRequest = {
+  __typename?: 'EquipmentRequest';
+  deliveryLocation?: Maybe<LocationDescription>;
+  estimatedAmount?: Maybe<Scalars['Int']>;
+  extraInformation: Scalars['String'];
+  meta?: Maybe<NodeMeta>;
+  requestedEquipment: Scalars['String'];
+  requestedForEvent?: Maybe<Event>;
+  returnLocation?: Maybe<LocationDescription>;
+};
+
+/**
+ * An organised event - something that happens at a specific time, has a
+ * specific topic or content, and people can participate.  Examples include
+ * meetups, concerts, volunteering occasions (or bees), happenings.  This
+ * corresponds to Linked events/courses event, beta.kultus
+ * PalvelutarjotinEventNode, Kukkuu event.
+ */
+export type Event = {
+  __typename?: 'Event';
+  contactPerson?: Maybe<LegalEntity>;
+  description?: Maybe<LanguageString>;
+  descriptionResources?: Maybe<DescriptionResources>;
+  enrolmentPolicy?: Maybe<EnrolmentPolicy>;
+  eventDataSource?: Maybe<Scalars['String']>;
+  eventLanguages: Array<UnifiedSearchLanguageEnum>;
+  keywords: Array<KeywordString>;
+  meta?: Maybe<NodeMeta>;
+  name?: Maybe<LanguageString>;
+  occurrences: Array<EventOccurrence>;
+  organiser?: Maybe<LegalEntity>;
+  pricing?: Maybe<Array<EventPricing>>;
+  published?: Maybe<Scalars['DateTime']>;
+  publisher?: Maybe<LegalEntity>;
+  shortDescription?: Maybe<Scalars['String']>;
+  subEvents: Array<Event>;
+  superEvent?: Maybe<Event>;
+  targetAudience?: Maybe<Array<KeywordString>>;
+};
+
+export type EventDetails = {
+  __typename?: 'EventDetails';
+  audience: Array<Audience>;
+  audienceMaxAge?: Maybe<Scalars['String']>;
+  audienceMinAge?: Maybe<Scalars['String']>;
+  createdTime?: Maybe<Scalars['String']>;
+  customData?: Maybe<Scalars['String']>;
+  dataSource?: Maybe<Scalars['String']>;
+  datePublished?: Maybe<Scalars['String']>;
+  description?: Maybe<LocalizedObject>;
+  endTime?: Maybe<Scalars['String']>;
+  enrolmentEndTime?: Maybe<Scalars['String']>;
+  enrolmentStartTime?: Maybe<Scalars['String']>;
+  eventStatus?: Maybe<Scalars['String']>;
+  externalLinks: Array<ExternalLink>;
+  id: Scalars['ID'];
+  images: Array<Image>;
+  inLanguage: Array<InLanguage>;
+  infoUrl?: Maybe<LocalizedObject>;
+  internalContext?: Maybe<Scalars['String']>;
+  internalId?: Maybe<Scalars['String']>;
+  internalType?: Maybe<Scalars['String']>;
+  keywords: Array<Keyword>;
+  lastModifiedTime?: Maybe<Scalars['String']>;
+  location?: Maybe<Place>;
+  locationExtraInfo?: Maybe<LocalizedObject>;
+  maximumAttendeeCapacity?: Maybe<Scalars['Int']>;
+  minimumAttendeeCapacity?: Maybe<Scalars['Int']>;
+  name: LocalizedObject;
+  offers: Array<Offer>;
+  provider?: Maybe<LocalizedObject>;
+  providerContactInfo?: Maybe<Scalars['String']>;
+  publisher?: Maybe<Scalars['ID']>;
+  remainingAttendeeCapacity?: Maybe<Scalars['Int']>;
+  shortDescription?: Maybe<LocalizedObject>;
+  startTime?: Maybe<Scalars['String']>;
+  subEvents: Array<InternalIdObject>;
+  superEvent?: Maybe<InternalIdObject>;
+  superEventType?: Maybe<Scalars['String']>;
+  typeId?: Maybe<EventTypeId>;
+};
+
+export type EventListResponse = {
+  __typename?: 'EventListResponse';
+  data: Array<EventDetails>;
+  meta: Meta;
+};
+
+export type EventOccurrence = {
+  __typename?: 'EventOccurrence';
+  /** for events where equipment is requested from the City of Helsinki */
+  cityEquipmentRequests?: Maybe<Array<EquipmentRequest>>;
+  currentlyAvailableParticipantCount?: Maybe<Scalars['Int']>;
+  enrolments: Array<Enrolment>;
+  /**
+   * for information - for example, to guide people who are looking for
+   * big or small events, or to give city officials a hint on how much
+   * equipment is needed
+   */
+  estimatedAttendeeCount?: Maybe<Scalars['Int']>;
+  happensAt?: Maybe<TimeDescription>;
+  location?: Maybe<LocationDescription>;
+  maximumAttendeeCount?: Maybe<Scalars['Int']>;
+  meta?: Maybe<NodeMeta>;
+  minimumAttendeeCount?: Maybe<Scalars['Int']>;
+  /** which event this is an occurrence of */
+  ofEvent?: Maybe<Event>;
+  status?: Maybe<EventOccurrenceStatus>;
+};
+
+export enum EventOccurrenceStatus {
+  Cancelled = 'CANCELLED',
+  Postponed = 'POSTPONED',
+  Published = 'PUBLISHED',
+  Rescheduled = 'RESCHEDULED',
+  Unpublished = 'UNPUBLISHED',
+}
+
+/** TODO: improve (a lot) over Linked events' offer type */
+export type EventPricing = {
+  __typename?: 'EventPricing';
+  meta?: Maybe<NodeMeta>;
+  todo?: Maybe<Scalars['String']>;
+};
+
 /** Collection Module: EventSearch */
 export type EventSearch = {
   __typename?: 'EventSearch';
@@ -2534,12 +2493,7 @@ export type EventSearch = {
   module?: Maybe<Scalars['String']>;
   /** List of modules */
   modules?: Maybe<Array<Maybe<CollectionModulesUnionType>>>;
-  /**
-   * Show all -link, final link is combination of Tapahtuma- ja kurssikarusellin
-   *                 hakutulosten osoite -link and search params of the module, for example:
-   *                 https://client-url.com/search/?sort=end_time&amp;super_event_type=umbrella,none&amp;language=fi&amp;start=2022-10-29
-   *
-   */
+  /** Show all -link */
   showAllLink?: Maybe<Scalars['String']>;
   /** Module title */
   title?: Maybe<Scalars['String']>;
@@ -2560,12 +2514,7 @@ export type EventSearchCarousel = {
   modules?: Maybe<Array<Maybe<CollectionModulesUnionType>>>;
   /** Events order */
   orderNewestFirst?: Maybe<Scalars['Boolean']>;
-  /**
-   * Show all -link, final link is combination of Tapahtuma- ja kurssikarusellin
-   *                                     hakutulosten osoite -link and search params of the module, for example:
-   *                                     https://client-url.com/search/?sort=end_time&amp;super_event_type=umbrella,none&amp;language=fi&amp;start=2022-10-29
-   *
-   */
+  /** Show all -link */
   showAllLink?: Maybe<Scalars['String']>;
   /** Module title */
   title?: Maybe<Scalars['String']>;
@@ -2611,6 +2560,18 @@ export type EventSelectedCarousel = {
   title?: Maybe<Scalars['String']>;
 };
 
+export enum EventTypeId {
+  Course = 'Course',
+  General = 'General',
+}
+
+export type ExternalLink = {
+  __typename?: 'ExternalLink';
+  language?: Maybe<Scalars['String']>;
+  link?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
 /** The general setting type */
 export type GeneralSettings = {
   __typename?: 'GeneralSettings';
@@ -2631,6 +2592,152 @@ export type GeneralSettings = {
   /** Site URL. */
   url?: Maybe<Scalars['String']>;
 };
+
+/** CRS object properties. */
+export type GeoJsoncrsProperties =
+  | GeoJsonLinkedCrsProperties
+  | GeoJsonNamedCrsProperties;
+
+/** Enumeration of all GeoJSON CRS object types. */
+export enum GeoJsoncrsType {
+  Link = 'link',
+  Name = 'name',
+}
+
+/** Coordinate Reference System (CRS) object. */
+export type GeoJsonCoordinateReferenceSystem = {
+  __typename?: 'GeoJSONCoordinateReferenceSystem';
+  properties: GeoJsoncrsProperties;
+  type: GeoJsoncrsType;
+};
+
+/** An object that links a geometry to properties in order to provide context. */
+export type GeoJsonFeature = GeoJsonInterface & {
+  __typename?: 'GeoJSONFeature';
+  bbox?: Maybe<Array<Maybe<Scalars['Float']>>>;
+  crs: GeoJsonCoordinateReferenceSystem;
+  geometry?: Maybe<GeoJsonGeometryInterface>;
+  id?: Maybe<Scalars['String']>;
+  properties?: Maybe<Scalars['JSONObject']>;
+  type: GeoJsonType;
+};
+
+/** A set of multiple features. */
+export type GeoJsonFeatureCollection = GeoJsonInterface & {
+  __typename?: 'GeoJSONFeatureCollection';
+  bbox?: Maybe<Array<Maybe<Scalars['Float']>>>;
+  crs: GeoJsonCoordinateReferenceSystem;
+  features: Array<GeoJsonFeature>;
+  type: GeoJsonType;
+};
+
+/** A set of multiple geometries, possibly of various types. */
+export type GeoJsonGeometryCollection = GeoJsonInterface & {
+  __typename?: 'GeoJSONGeometryCollection';
+  bbox?: Maybe<Array<Maybe<Scalars['Float']>>>;
+  crs: GeoJsonCoordinateReferenceSystem;
+  geometries: Array<GeoJsonGeometryInterface>;
+  type: GeoJsonType;
+};
+
+export type GeoJsonGeometryInterface = {
+  bbox?: Maybe<Array<Maybe<Scalars['Float']>>>;
+  coordinates?: Maybe<Scalars['GeoJSONCoordinates']>;
+  crs: GeoJsonCoordinateReferenceSystem;
+  type: GeoJsonType;
+};
+
+export type GeoJsonInterface = {
+  bbox?: Maybe<Array<Maybe<Scalars['Float']>>>;
+  crs: GeoJsonCoordinateReferenceSystem;
+  type: GeoJsonType;
+};
+
+/** Object describing a single connected sequence of geographical points. */
+export type GeoJsonLineString = GeoJsonGeometryInterface &
+  GeoJsonInterface & {
+    __typename?: 'GeoJSONLineString';
+    bbox?: Maybe<Array<Maybe<Scalars['Float']>>>;
+    coordinates?: Maybe<Scalars['GeoJSONCoordinates']>;
+    crs: GeoJsonCoordinateReferenceSystem;
+    type: GeoJsonType;
+  };
+
+/** Properties for link based CRS object. */
+export type GeoJsonLinkedCrsProperties = {
+  __typename?: 'GeoJSONLinkedCRSProperties';
+  href: Scalars['String'];
+  type?: Maybe<Scalars['String']>;
+};
+
+/** Object describing multiple connected sequences of geographical points. */
+export type GeoJsonMultiLineString = GeoJsonGeometryInterface &
+  GeoJsonInterface & {
+    __typename?: 'GeoJSONMultiLineString';
+    bbox?: Maybe<Array<Maybe<Scalars['Float']>>>;
+    coordinates?: Maybe<Scalars['GeoJSONCoordinates']>;
+    crs: GeoJsonCoordinateReferenceSystem;
+    type: GeoJsonType;
+  };
+
+/** Object describing multiple geographical points. */
+export type GeoJsonMultiPoint = GeoJsonGeometryInterface &
+  GeoJsonInterface & {
+    __typename?: 'GeoJSONMultiPoint';
+    bbox?: Maybe<Array<Maybe<Scalars['Float']>>>;
+    coordinates?: Maybe<Scalars['GeoJSONCoordinates']>;
+    crs: GeoJsonCoordinateReferenceSystem;
+    type: GeoJsonType;
+  };
+
+/** Object describing multiple shapes formed by sets of geographical points. */
+export type GeoJsonMultiPolygon = GeoJsonGeometryInterface &
+  GeoJsonInterface & {
+    __typename?: 'GeoJSONMultiPolygon';
+    bbox?: Maybe<Array<Maybe<Scalars['Float']>>>;
+    coordinates?: Maybe<Scalars['GeoJSONCoordinates']>;
+    crs: GeoJsonCoordinateReferenceSystem;
+    type: GeoJsonType;
+  };
+
+/** Properties for name based CRS object. */
+export type GeoJsonNamedCrsProperties = {
+  __typename?: 'GeoJSONNamedCRSProperties';
+  name: Scalars['String'];
+};
+
+/** Object describing a single geographical point. */
+export type GeoJsonPoint = GeoJsonGeometryInterface &
+  GeoJsonInterface & {
+    __typename?: 'GeoJSONPoint';
+    bbox?: Maybe<Array<Maybe<Scalars['Float']>>>;
+    coordinates?: Maybe<Scalars['GeoJSONCoordinates']>;
+    crs: GeoJsonCoordinateReferenceSystem;
+    type: GeoJsonType;
+  };
+
+/** Object describing a single shape formed by a set of geographical points. */
+export type GeoJsonPolygon = GeoJsonGeometryInterface &
+  GeoJsonInterface & {
+    __typename?: 'GeoJSONPolygon';
+    bbox?: Maybe<Array<Maybe<Scalars['Float']>>>;
+    coordinates?: Maybe<Scalars['GeoJSONCoordinates']>;
+    crs: GeoJsonCoordinateReferenceSystem;
+    type: GeoJsonType;
+  };
+
+/** Enumeration of all GeoJSON object types. */
+export enum GeoJsonType {
+  Feature = 'Feature',
+  FeatureCollection = 'FeatureCollection',
+  GeometryCollection = 'GeometryCollection',
+  LineString = 'LineString',
+  MultiLineString = 'MultiLineString',
+  MultiPoint = 'MultiPoint',
+  MultiPolygon = 'MultiPolygon',
+  Point = 'Point',
+  Polygon = 'Polygon',
+}
 
 /** Content node with hierarchical (parent/child) relationships */
 export type HierarchicalContentNode = {
@@ -2801,6 +2908,98 @@ export type HierarchicalTermNode = {
   parentDatabaseId?: Maybe<Scalars['Int']>;
   /** The globally unique identifier of the parent node. */
   parentId?: Maybe<Scalars['ID']>;
+};
+
+export type HitTotal = {
+  __typename?: 'HitTotal';
+  relation?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['Int']>;
+};
+
+export type Hits = {
+  __typename?: 'Hits';
+  hits?: Maybe<Array<Maybe<SingleHit>>>;
+  max_score?: Maybe<Scalars['Float']>;
+  total?: Maybe<HitTotal>;
+};
+
+export enum IdentificationStrength {
+  /** If the person has authenticated with at least some method */
+  Authenticated = 'AUTHENTICATED',
+  /** If the person has done some identifiable action such as payment */
+  Indirect = 'INDIRECT',
+  /** If the person has proved their legal identity */
+  LegallyConnected = 'LEGALLY_CONNECTED',
+  /** If this person is just a pseudoperson for contacting */
+  Nonidentifiable = 'NONIDENTIFIABLE',
+  /** If the identity of this person is not known at all */
+  Unidentified = 'UNIDENTIFIED',
+}
+
+export type Image = {
+  __typename?: 'Image';
+  createdTime?: Maybe<Scalars['String']>;
+  cropping?: Maybe<Scalars['String']>;
+  dataSource?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['ID']>;
+  internalContext?: Maybe<Scalars['String']>;
+  internalId: Scalars['String'];
+  internalType?: Maybe<Scalars['String']>;
+  lastModifiedTime?: Maybe<Scalars['String']>;
+  license?: Maybe<Scalars['String']>;
+  name: Scalars['String'];
+  photographerName?: Maybe<Scalars['String']>;
+  publisher?: Maybe<Scalars['String']>;
+  url: Scalars['String'];
+};
+
+export type InLanguage = {
+  __typename?: 'InLanguage';
+  id?: Maybe<Scalars['ID']>;
+  internalContext?: Maybe<Scalars['String']>;
+  internalId?: Maybe<Scalars['String']>;
+  internalType?: Maybe<Scalars['String']>;
+  name?: Maybe<LocalizedObject>;
+  translationAvailable?: Maybe<Scalars['Boolean']>;
+};
+
+export type InternalIdObject = {
+  __typename?: 'InternalIdObject';
+  internalId?: Maybe<Scalars['String']>;
+};
+
+export type Keyword = {
+  __typename?: 'Keyword';
+  aggregate?: Maybe<Scalars['Boolean']>;
+  altLabels?: Maybe<Array<Maybe<Scalars['String']>>>;
+  createdTime?: Maybe<Scalars['String']>;
+  dataSource?: Maybe<Scalars['String']>;
+  deprecated?: Maybe<Scalars['Boolean']>;
+  hasUpcomingEvents?: Maybe<Scalars['Boolean']>;
+  id?: Maybe<Scalars['ID']>;
+  image?: Maybe<Image>;
+  internalContext?: Maybe<Scalars['String']>;
+  internalId: Scalars['String'];
+  internalType?: Maybe<Scalars['String']>;
+  lastModifiedTime?: Maybe<Scalars['String']>;
+  nEvents?: Maybe<Scalars['Int']>;
+  name?: Maybe<LocalizedObject>;
+  publisher?: Maybe<Scalars['ID']>;
+};
+
+export type KeywordListResponse = {
+  __typename?: 'KeywordListResponse';
+  data: Array<Keyword>;
+  meta: Meta;
+};
+
+/**
+ * TODO: merge all free tags, categories, and keywords
+ * KEYWORDS ARE GIVEN FROM events-proxy (https://tapahtumat-proxy.test.kuva.hel.ninja/proxy/graphql)
+ */
+export type KeywordString = {
+  __typename?: 'KeywordString';
+  name: Scalars['String'];
 };
 
 /** The landingPage type */
@@ -3334,6 +3533,14 @@ export enum LanguageCodeFilterEnum {
   Sv = 'SV',
 }
 
+/** TODO: convert all String's to LanguageString's if linguistic content */
+export type LanguageString = {
+  __typename?: 'LanguageString';
+  en?: Maybe<Scalars['String']>;
+  fi?: Maybe<Scalars['String']>;
+  sv?: Maybe<Scalars['String']>;
+};
+
 /** Layout: LayoutArticleHighlights */
 export type LayoutArticleHighlights = {
   __typename?: 'LayoutArticleHighlights';
@@ -3406,17 +3613,6 @@ export type LayoutCollection = {
   collection?: Maybe<Collection>;
 };
 
-/** Layout: LayoutContact */
-export type LayoutContact = {
-  __typename?: 'LayoutContact';
-  /** Contacts */
-  contacts?: Maybe<Array<Maybe<Contact>>>;
-  /** Description */
-  description?: Maybe<Scalars['String']>;
-  /** Title */
-  title?: Maybe<Scalars['String']>;
-};
-
 /** Layout: LayoutLinkList */
 export type LayoutLinkList = {
   __typename?: 'LayoutLinkList';
@@ -3464,6 +3660,8 @@ export type LayoutPagesCarousel = {
   title?: Maybe<Scalars['String']>;
 };
 
+export type LegalEntity = Organisation | Person;
+
 /** Link field */
 export type Link = {
   __typename?: 'Link';
@@ -3475,17 +3673,98 @@ export type Link = {
   url?: Maybe<Scalars['String']>;
 };
 
-/** Collection Module: LocationsSelected */
-export type LocationsSelected = {
-  __typename?: 'LocationsSelected';
-  /** List of location IDs */
-  locations?: Maybe<Array<Maybe<Scalars['Int']>>>;
-  /** Module type */
-  module?: Maybe<Scalars['String']>;
-  /** List of modules */
-  modules?: Maybe<Array<Maybe<CollectionModulesUnionType>>>;
-  /** Module title */
-  title?: Maybe<Scalars['String']>;
+export type LinkedeventsPlace = {
+  __typename?: 'LinkedeventsPlace';
+  _at_context?: Maybe<Scalars['String']>;
+  _at_id?: Maybe<Scalars['String']>;
+  _at_type?: Maybe<Scalars['String']>;
+  address_country?: Maybe<Scalars['String']>;
+  address_locality?: Maybe<LinkedeventsPlaceLocalityString>;
+  address_region?: Maybe<Scalars['String']>;
+  contact_type?: Maybe<Scalars['String']>;
+  created_time?: Maybe<Scalars['String']>;
+  custom_data?: Maybe<Scalars['String']>;
+  data_source?: Maybe<Scalars['String']>;
+  deleted?: Maybe<Scalars['Boolean']>;
+  description?: Maybe<LinkedeventsPlaceLocalityString>;
+  divisions?: Maybe<Array<Maybe<LinkedeventsPlaceDivision>>>;
+  email?: Maybe<Scalars['String']>;
+  has_upcoming_events?: Maybe<Scalars['Boolean']>;
+  id?: Maybe<Scalars['String']>;
+  image?: Maybe<Scalars['String']>;
+  info_url?: Maybe<LinkedeventsPlaceLocalityString>;
+  last_modified_time?: Maybe<Scalars['String']>;
+  n_events?: Maybe<Scalars['Int']>;
+  name?: Maybe<LinkedeventsPlaceLocalityString>;
+  /** Raw Linkedevents Place fields */
+  origin?: Maybe<Scalars['String']>;
+  parent?: Maybe<Scalars['String']>;
+  position?: Maybe<LinkedeventsPlacePosition>;
+  post_office_box_num?: Maybe<Scalars['String']>;
+  postal_code?: Maybe<Scalars['String']>;
+  publisher?: Maybe<Scalars['String']>;
+  replaced_by?: Maybe<Scalars['String']>;
+  street_address?: Maybe<LinkedeventsPlaceLocalityString>;
+  telephone?: Maybe<Scalars['String']>;
+};
+
+export type LinkedeventsPlaceDivision = {
+  __typename?: 'LinkedeventsPlaceDivision';
+  municipality?: Maybe<Scalars['String']>;
+  name?: Maybe<LinkedeventsPlaceLocalityString>;
+  ocd_id?: Maybe<Scalars['String']>;
+  type?: Maybe<Scalars['String']>;
+};
+
+export type LinkedeventsPlaceLocalityString = {
+  __typename?: 'LinkedeventsPlaceLocalityString';
+  en?: Maybe<Scalars['String']>;
+  fi?: Maybe<Scalars['String']>;
+  sv?: Maybe<Scalars['String']>;
+};
+
+export type LinkedeventsPlacePosition = {
+  __typename?: 'LinkedeventsPlacePosition';
+  coordinates?: Maybe<Array<Maybe<Scalars['Float']>>>;
+  type?: Maybe<Scalars['String']>;
+};
+
+export type LocalizedCmsImage = {
+  __typename?: 'LocalizedCmsImage';
+  en?: Maybe<CmsImage>;
+  fi?: Maybe<CmsImage>;
+  sv?: Maybe<CmsImage>;
+};
+
+export type LocalizedCmsKeywords = {
+  __typename?: 'LocalizedCmsKeywords';
+  en?: Maybe<Array<Maybe<Scalars['String']>>>;
+  fi?: Maybe<Array<Maybe<Scalars['String']>>>;
+  sv?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type LocalizedObject = {
+  __typename?: 'LocalizedObject';
+  en?: Maybe<Scalars['String']>;
+  fi?: Maybe<Scalars['String']>;
+  sv?: Maybe<Scalars['String']>;
+};
+
+/** Free-form location, not necessarily at a know venue. */
+export type LocationDescription = {
+  __typename?: 'LocationDescription';
+  address?: Maybe<Address>;
+  administrativeDivisions?: Maybe<Array<Maybe<AdministrativeDivision>>>;
+  explanation?: Maybe<Scalars['String']>;
+  geoLocation?: Maybe<GeoJsonFeature>;
+  url?: Maybe<LanguageString>;
+  venue?: Maybe<UnifiedSearchVenue>;
+};
+
+export type LocationImage = {
+  __typename?: 'LocationImage';
+  caption?: Maybe<LanguageString>;
+  url?: Maybe<Scalars['String']>;
 };
 
 /** File details for a Media Item */
@@ -3844,6 +4123,13 @@ export type MediaItemToTermNodeConnectionWhereArgs = {
   updateTermMetaCache?: InputMaybe<Scalars['Boolean']>;
 };
 
+/** TODO: take this from Linked events Image type. */
+export type MediaResource = {
+  __typename?: 'MediaResource';
+  meta?: Maybe<NodeMeta>;
+  todo?: Maybe<Scalars['String']>;
+};
+
 /** Details of an available size for a media item */
 export type MediaSize = {
   __typename?: 'MediaSize';
@@ -4091,6 +4377,13 @@ export type MenuToMenuItemConnectionWhereArgs = {
   parentId?: InputMaybe<Scalars['ID']>;
 };
 
+export type Meta = {
+  __typename?: 'Meta';
+  count: Scalars['Int'];
+  next?: Maybe<Scalars['String']>;
+  previous?: Maybe<Scalars['String']>;
+};
+
 /** The MimeType of the object */
 export enum MimeTypeEnum {
   /** MimeType application/msword */
@@ -4159,10 +4452,308 @@ export enum MimeTypeEnum {
   VideoXFlv = 'VIDEO_X_FLV',
 }
 
+/** The root mutation */
+export type Mutation = {
+  __typename?: 'Mutation';
+  _empty?: Maybe<Scalars['String']>;
+  /** The payload for the createCategory mutation */
+  createCategory?: Maybe<CreateCategoryPayload>;
+  /** The payload for the createCollection mutation */
+  createCollection?: Maybe<CreateCollectionPayload>;
+  /** The payload for the createComment mutation */
+  createComment?: Maybe<CreateCommentPayload>;
+  /** The payload for the createLandingPage mutation */
+  createLandingPage?: Maybe<CreateLandingPagePayload>;
+  /** The payload for the createMediaItem mutation */
+  createMediaItem?: Maybe<CreateMediaItemPayload>;
+  /** The payload for the createPage mutation */
+  createPage?: Maybe<CreatePagePayload>;
+  /** The payload for the createPost mutation */
+  createPost?: Maybe<CreatePostPayload>;
+  /** The payload for the createPostFormat mutation */
+  createPostFormat?: Maybe<CreatePostFormatPayload>;
+  /** The payload for the createRelease mutation */
+  createRelease?: Maybe<CreateReleasePayload>;
+  /** The payload for the createTag mutation */
+  createTag?: Maybe<CreateTagPayload>;
+  /** The payload for the createUser mutation */
+  createUser?: Maybe<CreateUserPayload>;
+  /** The payload for the deleteCategory mutation */
+  deleteCategory?: Maybe<DeleteCategoryPayload>;
+  /** The payload for the deleteCollection mutation */
+  deleteCollection?: Maybe<DeleteCollectionPayload>;
+  /** The payload for the deleteComment mutation */
+  deleteComment?: Maybe<DeleteCommentPayload>;
+  /** The payload for the deleteLandingPage mutation */
+  deleteLandingPage?: Maybe<DeleteLandingPagePayload>;
+  /** The payload for the deleteMediaItem mutation */
+  deleteMediaItem?: Maybe<DeleteMediaItemPayload>;
+  /** The payload for the deletePage mutation */
+  deletePage?: Maybe<DeletePagePayload>;
+  /** The payload for the deletePost mutation */
+  deletePost?: Maybe<DeletePostPayload>;
+  /** The payload for the deletePostFormat mutation */
+  deletePostFormat?: Maybe<DeletePostFormatPayload>;
+  /** The payload for the deleteRelease mutation */
+  deleteRelease?: Maybe<DeleteReleasePayload>;
+  /** The payload for the deleteTag mutation */
+  deleteTag?: Maybe<DeleteTagPayload>;
+  /** The payload for the deleteUser mutation */
+  deleteUser?: Maybe<DeleteUserPayload>;
+  /** Increase the count. */
+  increaseCount?: Maybe<Scalars['Int']>;
+  /** The payload for the registerUser mutation */
+  registerUser?: Maybe<RegisterUserPayload>;
+  /** The payload for the resetUserPassword mutation */
+  resetUserPassword?: Maybe<ResetUserPasswordPayload>;
+  /** The payload for the restoreComment mutation */
+  restoreComment?: Maybe<RestoreCommentPayload>;
+  /** The payload for the sendPasswordResetEmail mutation */
+  sendPasswordResetEmail?: Maybe<SendPasswordResetEmailPayload>;
+  /** The payload for the UpdateCategory mutation */
+  updateCategory?: Maybe<UpdateCategoryPayload>;
+  /** The payload for the updateCollection mutation */
+  updateCollection?: Maybe<UpdateCollectionPayload>;
+  /** The payload for the updateComment mutation */
+  updateComment?: Maybe<UpdateCommentPayload>;
+  /** The payload for the updateLandingPage mutation */
+  updateLandingPage?: Maybe<UpdateLandingPagePayload>;
+  /** The payload for the updateMediaItem mutation */
+  updateMediaItem?: Maybe<UpdateMediaItemPayload>;
+  /** The payload for the updatePage mutation */
+  updatePage?: Maybe<UpdatePagePayload>;
+  /** The payload for the updatePost mutation */
+  updatePost?: Maybe<UpdatePostPayload>;
+  /** The payload for the UpdatePostFormat mutation */
+  updatePostFormat?: Maybe<UpdatePostFormatPayload>;
+  /** The payload for the updateRelease mutation */
+  updateRelease?: Maybe<UpdateReleasePayload>;
+  /** The payload for the updateSettings mutation */
+  updateSettings?: Maybe<UpdateSettingsPayload>;
+  /** The payload for the UpdateTag mutation */
+  updateTag?: Maybe<UpdateTagPayload>;
+  /** The payload for the updateUser mutation */
+  updateUser?: Maybe<UpdateUserPayload>;
+};
+
+/** The root mutation */
+export type MutationCreateCategoryArgs = {
+  input: CreateCategoryInput;
+};
+
+/** The root mutation */
+export type MutationCreateCollectionArgs = {
+  input: CreateCollectionInput;
+};
+
+/** The root mutation */
+export type MutationCreateCommentArgs = {
+  input: CreateCommentInput;
+};
+
+/** The root mutation */
+export type MutationCreateLandingPageArgs = {
+  input: CreateLandingPageInput;
+};
+
+/** The root mutation */
+export type MutationCreateMediaItemArgs = {
+  input: CreateMediaItemInput;
+};
+
+/** The root mutation */
+export type MutationCreatePageArgs = {
+  input: CreatePageInput;
+};
+
+/** The root mutation */
+export type MutationCreatePostArgs = {
+  input: CreatePostInput;
+};
+
+/** The root mutation */
+export type MutationCreatePostFormatArgs = {
+  input: CreatePostFormatInput;
+};
+
+/** The root mutation */
+export type MutationCreateReleaseArgs = {
+  input: CreateReleaseInput;
+};
+
+/** The root mutation */
+export type MutationCreateTagArgs = {
+  input: CreateTagInput;
+};
+
+/** The root mutation */
+export type MutationCreateUserArgs = {
+  input: CreateUserInput;
+};
+
+/** The root mutation */
+export type MutationDeleteCategoryArgs = {
+  input: DeleteCategoryInput;
+};
+
+/** The root mutation */
+export type MutationDeleteCollectionArgs = {
+  input: DeleteCollectionInput;
+};
+
+/** The root mutation */
+export type MutationDeleteCommentArgs = {
+  input: DeleteCommentInput;
+};
+
+/** The root mutation */
+export type MutationDeleteLandingPageArgs = {
+  input: DeleteLandingPageInput;
+};
+
+/** The root mutation */
+export type MutationDeleteMediaItemArgs = {
+  input: DeleteMediaItemInput;
+};
+
+/** The root mutation */
+export type MutationDeletePageArgs = {
+  input: DeletePageInput;
+};
+
+/** The root mutation */
+export type MutationDeletePostArgs = {
+  input: DeletePostInput;
+};
+
+/** The root mutation */
+export type MutationDeletePostFormatArgs = {
+  input: DeletePostFormatInput;
+};
+
+/** The root mutation */
+export type MutationDeleteReleaseArgs = {
+  input: DeleteReleaseInput;
+};
+
+/** The root mutation */
+export type MutationDeleteTagArgs = {
+  input: DeleteTagInput;
+};
+
+/** The root mutation */
+export type MutationDeleteUserArgs = {
+  input: DeleteUserInput;
+};
+
+/** The root mutation */
+export type MutationIncreaseCountArgs = {
+  count?: InputMaybe<Scalars['Int']>;
+};
+
+/** The root mutation */
+export type MutationRegisterUserArgs = {
+  input: RegisterUserInput;
+};
+
+/** The root mutation */
+export type MutationResetUserPasswordArgs = {
+  input: ResetUserPasswordInput;
+};
+
+/** The root mutation */
+export type MutationRestoreCommentArgs = {
+  input: RestoreCommentInput;
+};
+
+/** The root mutation */
+export type MutationSendPasswordResetEmailArgs = {
+  input: SendPasswordResetEmailInput;
+};
+
+/** The root mutation */
+export type MutationUpdateCategoryArgs = {
+  input: UpdateCategoryInput;
+};
+
+/** The root mutation */
+export type MutationUpdateCollectionArgs = {
+  input: UpdateCollectionInput;
+};
+
+/** The root mutation */
+export type MutationUpdateCommentArgs = {
+  input: UpdateCommentInput;
+};
+
+/** The root mutation */
+export type MutationUpdateLandingPageArgs = {
+  input: UpdateLandingPageInput;
+};
+
+/** The root mutation */
+export type MutationUpdateMediaItemArgs = {
+  input: UpdateMediaItemInput;
+};
+
+/** The root mutation */
+export type MutationUpdatePageArgs = {
+  input: UpdatePageInput;
+};
+
+/** The root mutation */
+export type MutationUpdatePostArgs = {
+  input: UpdatePostInput;
+};
+
+/** The root mutation */
+export type MutationUpdatePostFormatArgs = {
+  input: UpdatePostFormatInput;
+};
+
+/** The root mutation */
+export type MutationUpdateReleaseArgs = {
+  input: UpdateReleaseInput;
+};
+
+/** The root mutation */
+export type MutationUpdateSettingsArgs = {
+  input: UpdateSettingsInput;
+};
+
+/** The root mutation */
+export type MutationUpdateTagArgs = {
+  input: UpdateTagInput;
+};
+
+/** The root mutation */
+export type MutationUpdateUserArgs = {
+  input: UpdateUserInput;
+};
+
+export type Neighborhood = {
+  __typename?: 'Neighborhood';
+  id: Scalars['ID'];
+  name: LocalizedObject;
+};
+
+export type NeighborhoodListResponse = {
+  __typename?: 'NeighborhoodListResponse';
+  data: Array<Neighborhood>;
+  meta: Meta;
+};
+
 /** An object with an ID */
 export type Node = {
   /** The globally unique ID for the object */
   id: Scalars['ID'];
+};
+
+export type NodeMeta = {
+  __typename?: 'NodeMeta';
+  createdAt?: Maybe<Scalars['DateTime']>;
+  id: Scalars['ID'];
+  updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
 /** A node that can have an author assigned to it */
@@ -4335,6 +4926,87 @@ export type Notification = {
   title?: Maybe<Scalars['String']>;
 };
 
+export type Offer = {
+  __typename?: 'Offer';
+  description?: Maybe<LocalizedObject>;
+  infoUrl?: Maybe<LocalizedObject>;
+  isFree?: Maybe<Scalars['Boolean']>;
+  price?: Maybe<LocalizedObject>;
+};
+
+export type Ontology = {
+  __typename?: 'Ontology';
+  id?: Maybe<Scalars['Int']>;
+  label?: Maybe<Scalars['String']>;
+};
+
+export type OntologyTree = {
+  __typename?: 'OntologyTree';
+  ancestorIds?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  childIds?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  id?: Maybe<Scalars['ID']>;
+  level?: Maybe<Scalars['Int']>;
+  name?: Maybe<LanguageString>;
+  parentId?: Maybe<Scalars['ID']>;
+};
+
+export type OntologyWord = {
+  __typename?: 'OntologyWord';
+  id?: Maybe<Scalars['ID']>;
+  label?: Maybe<LanguageString>;
+};
+
+export type Ontologyword = {
+  __typename?: 'Ontologyword';
+  can_add_clarification?: Maybe<Scalars['Boolean']>;
+  can_add_schoolyear?: Maybe<Scalars['Boolean']>;
+  extra_searchwords_fi?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['Int']>;
+  ontologyword_en?: Maybe<Scalars['String']>;
+  ontologyword_fi?: Maybe<Scalars['String']>;
+  ontologyword_sv?: Maybe<Scalars['String']>;
+  unit_ids?: Maybe<Array<Maybe<Scalars['Int']>>>;
+};
+
+export type OpeningHour = {
+  __typename?: 'OpeningHour';
+  date: Scalars['String'];
+  times: Array<Time>;
+};
+
+export type OpeningHours = {
+  __typename?: 'OpeningHours';
+  data?: Maybe<Array<Maybe<OpeningHoursDay>>>;
+  is_open_now_url?: Maybe<Scalars['String']>;
+  today?: Maybe<Array<Maybe<OpeningHoursTimes>>>;
+  url?: Maybe<Scalars['String']>;
+};
+
+export type OpeningHoursDay = {
+  __typename?: 'OpeningHoursDay';
+  date?: Maybe<Scalars['String']>;
+  times?: Maybe<Array<Maybe<OpeningHoursTimes>>>;
+};
+
+export type OpeningHoursTimes = {
+  __typename?: 'OpeningHoursTimes';
+  endTime?: Maybe<Scalars['String']>;
+  endTimeOnNextDay?: Maybe<Scalars['Boolean']>;
+  fullDay?: Maybe<Scalars['Boolean']>;
+  resourceState?: Maybe<Scalars['String']>;
+  startTime?: Maybe<Scalars['String']>;
+};
+
+export type OrderByDistance = {
+  latitude: Scalars['Float'];
+  longitude: Scalars['Float'];
+  order?: InputMaybe<SortOrder>;
+};
+
+export type OrderByName = {
+  order?: InputMaybe<SortOrder>;
+};
+
 /** The cardinality of the connection order */
 export enum OrderEnum {
   /** Sort the query result set in an ascending order */
@@ -4342,6 +5014,33 @@ export enum OrderEnum {
   /** Sort the query result set in a descending order */
   Desc = 'DESC',
 }
+
+/** TODO: merge beta.kultus organisation, etc */
+export type Organisation = {
+  __typename?: 'Organisation';
+  contactDetails?: Maybe<ContactInfo>;
+  meta?: Maybe<NodeMeta>;
+};
+
+export type OrganizationDetails = {
+  __typename?: 'OrganizationDetails';
+  affiliatedOrganizations?: Maybe<Array<Maybe<Scalars['String']>>>;
+  classification?: Maybe<Scalars['String']>;
+  createdTime?: Maybe<Scalars['String']>;
+  dataSource?: Maybe<Scalars['String']>;
+  dissolutionDate?: Maybe<Scalars['String']>;
+  foundingDate?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['ID']>;
+  internalContext?: Maybe<Scalars['String']>;
+  internalId: Scalars['String'];
+  internalType?: Maybe<Scalars['String']>;
+  isAffiliated: Scalars['Boolean'];
+  lastModifiedTime?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  parentOrganization?: Maybe<Scalars['String']>;
+  replacedBy?: Maybe<Scalars['String']>;
+  subOrganizations?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
 
 /** The page type */
 export type Page = ContentNode &
@@ -4565,10 +5264,8 @@ export type PageModulesUnionType =
   | LayoutArticles
   | LayoutArticlesCarousel
   | LayoutCollection
-  | LayoutContact
   | LayoutPages
-  | LayoutPagesCarousel
-  | LocationsSelected;
+  | LayoutPagesCarousel;
 
 export type PageSidebarUnionType =
   | LayoutArticles
@@ -4714,6 +5411,119 @@ export type PageToTermNodeConnectionWhereArgs = {
   updateTermMetaCache?: InputMaybe<Scalars['Boolean']>;
 };
 
+export type PalvelukarttaUnit = {
+  __typename?: 'PalvelukarttaUnit';
+  accessibility_viewpoints?: Maybe<Scalars['String']>;
+  address_city_en?: Maybe<Scalars['String']>;
+  address_city_fi?: Maybe<Scalars['String']>;
+  address_city_sv?: Maybe<Scalars['String']>;
+  address_zip?: Maybe<Scalars['String']>;
+  call_charge_info_en?: Maybe<Scalars['String']>;
+  call_charge_info_fi?: Maybe<Scalars['String']>;
+  call_charge_info_sv?: Maybe<Scalars['String']>;
+  created_time?: Maybe<Scalars['String']>;
+  data_source_url?: Maybe<Scalars['String']>;
+  dept_id?: Maybe<Scalars['String']>;
+  desc_en?: Maybe<Scalars['String']>;
+  desc_fi?: Maybe<Scalars['String']>;
+  desc_sv?: Maybe<Scalars['String']>;
+  easting_etrs_gk25?: Maybe<Scalars['Int']>;
+  easting_etrs_tm35fin?: Maybe<Scalars['Int']>;
+  extra_searchwords_en?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['Int']>;
+  latitude?: Maybe<Scalars['Float']>;
+  longitude?: Maybe<Scalars['Float']>;
+  manual_coordinates?: Maybe<Scalars['Boolean']>;
+  modified_time?: Maybe<Scalars['String']>;
+  name_en?: Maybe<Scalars['String']>;
+  name_fi?: Maybe<Scalars['String']>;
+  name_sv?: Maybe<Scalars['String']>;
+  northing_etrs_gk25?: Maybe<Scalars['Int']>;
+  northing_etrs_tm35fin?: Maybe<Scalars['Int']>;
+  ontologytree_ids?: Maybe<Array<Maybe<Scalars['Int']>>>;
+  ontologyword_ids?: Maybe<Array<Maybe<Scalars['Int']>>>;
+  ontologyword_ids_enriched?: Maybe<Array<Maybe<Ontologyword>>>;
+  org_id?: Maybe<Scalars['String']>;
+  organizer_name?: Maybe<Scalars['String']>;
+  organizer_type?: Maybe<Scalars['String']>;
+  /** Raw palvelukartta Unit fields */
+  origin?: Maybe<Scalars['String']>;
+  phone?: Maybe<Scalars['String']>;
+  picture_caption_en?: Maybe<Scalars['String']>;
+  picture_caption_fi?: Maybe<Scalars['String']>;
+  picture_caption_sv?: Maybe<Scalars['String']>;
+  picture_url?: Maybe<Scalars['String']>;
+  provider_type?: Maybe<Scalars['String']>;
+  street_address_en?: Maybe<Scalars['String']>;
+  street_address_fi?: Maybe<Scalars['String']>;
+  street_address_sv?: Maybe<Scalars['String']>;
+  www_en?: Maybe<Scalars['String']>;
+  www_fi?: Maybe<Scalars['String']>;
+  www_sv?: Maybe<Scalars['String']>;
+};
+
+/** TODO: take from Profile */
+export type Person = {
+  __typename?: 'Person';
+  contactDetails?: Maybe<ContactInfo>;
+  identificationStrength?: Maybe<IdentificationStrength>;
+  meta?: Maybe<NodeMeta>;
+  name?: Maybe<Scalars['String']>;
+  preferredLanguages?: Maybe<Array<UnifiedSearchLanguageEnum>>;
+  preferredMedium?: Maybe<ContactMedium>;
+};
+
+export type PhoneNumber = {
+  __typename?: 'PhoneNumber';
+  countryCode: Scalars['String'];
+  restNumber: Scalars['String'];
+};
+
+export type Place = {
+  __typename?: 'Place';
+  addressCountry?: Maybe<Scalars['String']>;
+  addressLocality?: Maybe<LocalizedObject>;
+  addressRegion?: Maybe<Scalars['String']>;
+  contactType?: Maybe<Scalars['String']>;
+  createdTime?: Maybe<Scalars['String']>;
+  customData?: Maybe<Scalars['String']>;
+  dataSource?: Maybe<Scalars['String']>;
+  deleted?: Maybe<Scalars['Boolean']>;
+  description?: Maybe<Scalars['String']>;
+  divisions?: Maybe<Array<Division>>;
+  email?: Maybe<Scalars['String']>;
+  hasUpcomingEvents?: Maybe<Scalars['Boolean']>;
+  id?: Maybe<Scalars['ID']>;
+  image?: Maybe<Image>;
+  infoUrl?: Maybe<LocalizedObject>;
+  internalContext?: Maybe<Scalars['String']>;
+  internalId: Scalars['String'];
+  internalType?: Maybe<Scalars['String']>;
+  lastModifiedTime?: Maybe<Scalars['String']>;
+  nEvents?: Maybe<Scalars['Int']>;
+  name?: Maybe<LocalizedObject>;
+  parent?: Maybe<Scalars['ID']>;
+  position?: Maybe<PlacePosition>;
+  postOfficeBoxNum?: Maybe<Scalars['String']>;
+  postalCode?: Maybe<Scalars['String']>;
+  publisher?: Maybe<Scalars['ID']>;
+  replacedBy?: Maybe<Scalars['String']>;
+  streetAddress?: Maybe<LocalizedObject>;
+  telephone?: Maybe<LocalizedObject>;
+};
+
+export type PlaceListResponse = {
+  __typename?: 'PlaceListResponse';
+  data: Array<Place>;
+  meta: Meta;
+};
+
+export type PlacePosition = {
+  __typename?: 'PlacePosition';
+  coordinates: Array<Scalars['Float']>;
+  type: Scalars['String'];
+};
+
 /** An plugin object */
 export type Plugin = Node & {
   __typename?: 'Plugin';
@@ -4758,6 +5568,12 @@ export enum PluginStatusEnum {
   /** The plugin has an upgrade available. */
   Upgrade = 'UPGRADE',
 }
+
+export type Point = {
+  __typename?: 'Point';
+  coordinates: Array<Scalars['Float']>;
+  type?: Maybe<Scalars['String']>;
+};
 
 /** The post type */
 export type Post = ContentNode &
@@ -5252,10 +6068,8 @@ export type PostModulesUnionType =
   | LayoutArticles
   | LayoutArticlesCarousel
   | LayoutCollection
-  | LayoutContact
   | LayoutPages
-  | LayoutPagesCarousel
-  | LocationsSelected;
+  | LayoutPagesCarousel;
 
 /** The format of post field data. */
 export enum PostObjectFieldFormatEnum {
@@ -5792,6 +6606,763 @@ export type PostTypeLabelDetails = {
   viewItems?: Maybe<Scalars['String']>;
 };
 
+/** The root entry point into the Graph */
+export type Query = {
+  __typename?: 'Query';
+  _empty?: Maybe<Scalars['String']>;
+  aboutPages: AboutPagesResponse;
+  accessibilityPages: AccessibilityPagesResponse;
+  administrativeDivisions?: Maybe<Array<Maybe<AdministrativeDivision>>>;
+  /** Entry point to get all settings for the site */
+  allSettings?: Maybe<Settings>;
+  /** Connection between the RootQuery type and the category type */
+  categories?: Maybe<RootQueryToCategoryConnection>;
+  /** A 0bject */
+  category?: Maybe<Category>;
+  /** An object of the collection Type. Collections */
+  collection?: Maybe<Collection>;
+  /**
+   * A collection object
+   * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
+   */
+  collectionBy?: Maybe<Collection>;
+  collectionDetails: CollectionDetails;
+  collectionList: CollectionListResponse;
+  /** Connection between the RootQuery type and the collection type */
+  collections?: Maybe<RootQueryToCollectionConnection>;
+  /** Returns a Comment */
+  comment?: Maybe<Comment>;
+  /** Connection between the RootQuery type and the Comment type */
+  comments?: Maybe<RootQueryToCommentConnection>;
+  /** A node used to manage content */
+  contentNode?: Maybe<ContentNode>;
+  /** Connection between the RootQuery type and the ContentNode type */
+  contentNodes?: Maybe<RootQueryToContentNodeConnection>;
+  /** Fetch a Content Type node by unique Identifier */
+  contentType?: Maybe<ContentType>;
+  /** Connection between the RootQuery type and the ContentType type */
+  contentTypes?: Maybe<RootQueryToContentTypeConnection>;
+  /** Default Images */
+  defaultImages?: Maybe<DefaultImages>;
+  /** Get language list */
+  defaultLanguage?: Maybe<Language>;
+  /** Fields of the &#039;DiscussionSettings&#039; settings group */
+  discussionSettings?: Maybe<DiscussionSettings>;
+  eventDetails: EventDetails;
+  eventList: EventListResponse;
+  eventsByIds: EventListResponse;
+  /** Fields of the &#039;GeneralSettings&#039; settings group */
+  generalSettings?: Maybe<GeneralSettings>;
+  keywordDetails: Keyword;
+  keywordList: KeywordListResponse;
+  /** An object of the landingPage Type. Landing Pages */
+  landingPage?: Maybe<LandingPage>;
+  /**
+   * A landingPage object
+   * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
+   */
+  landingPageBy?: Maybe<LandingPage>;
+  /** Connection between the RootQuery type and the landingPage type */
+  landingPages?: Maybe<RootQueryToLandingPageConnection>;
+  /** List available languages */
+  languages?: Maybe<Array<Maybe<Language>>>;
+  /** An object of the mediaItem Type.  */
+  mediaItem?: Maybe<MediaItem>;
+  /**
+   * A mediaItem object
+   * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
+   */
+  mediaItemBy?: Maybe<MediaItem>;
+  /** Connection between the RootQuery type and the mediaItem type */
+  mediaItems?: Maybe<RootQueryToMediaItemConnection>;
+  /** A WordPress navigation menu */
+  menu?: Maybe<Menu>;
+  /** A WordPress navigation menu item */
+  menuItem?: Maybe<MenuItem>;
+  /** Connection between the RootQuery type and the MenuItem type */
+  menuItems?: Maybe<RootQueryToMenuItemConnection>;
+  /** Connection between the RootQuery type and the Menu type */
+  menus?: Maybe<RootQueryToMenuConnection>;
+  neighborhoodList: NeighborhoodListResponse;
+  /** Fetches an object given its ID */
+  node?: Maybe<Node>;
+  /** Fetches an object given its Unique Resource Identifier */
+  nodeByUri?: Maybe<UniformResourceIdentifiable>;
+  notification?: Maybe<Notification>;
+  ontologyTree?: Maybe<Array<Maybe<OntologyTree>>>;
+  ontologyWords?: Maybe<Array<Maybe<OntologyWord>>>;
+  organizationDetails: OrganizationDetails;
+  /** An object of the page Type.  */
+  page?: Maybe<Page>;
+  /**
+   * A page object
+   * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
+   */
+  pageBy?: Maybe<Page>;
+  pageByTemplate?: Maybe<Page>;
+  /** Connection between the RootQuery type and the page type */
+  pages?: Maybe<RootQueryToPageConnection>;
+  placeDetails: Place;
+  placeList: PlaceListResponse;
+  /** A WordPress plugin */
+  plugin?: Maybe<Plugin>;
+  /** Connection between the RootQuery type and the Plugin type */
+  plugins?: Maybe<RootQueryToPluginConnection>;
+  /** An object of the post Type.  */
+  post?: Maybe<Post>;
+  /**
+   * A post object
+   * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
+   */
+  postBy?: Maybe<Post>;
+  /** A 0bject */
+  postFormat?: Maybe<PostFormat>;
+  /** Connection between the RootQuery type and the postFormat type */
+  postFormats?: Maybe<RootQueryToPostFormatConnection>;
+  /** Connection between the RootQuery type and the post type */
+  posts?: Maybe<RootQueryToPostConnection>;
+  /** Fields of the &#039;ReadingSettings&#039; settings group */
+  readingSettings?: Maybe<ReadingSettings>;
+  /** Connection between the RootQuery type and the EnqueuedScript type */
+  registeredScripts?: Maybe<RootQueryToEnqueuedScriptConnection>;
+  /** Connection between the RootQuery type and the EnqueuedStylesheet type */
+  registeredStylesheets?: Maybe<RootQueryToEnqueuedStylesheetConnection>;
+  /** An object of the release Type. Releases */
+  release?: Maybe<Release>;
+  /**
+   * A release object
+   * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
+   */
+  releaseBy?: Maybe<Release>;
+  /** Connection between the RootQuery type and the release type */
+  releases?: Maybe<RootQueryToReleaseConnection>;
+  /** Connection between the RootQuery type and the ContentRevisionUnion type */
+  revisions?: Maybe<RootQueryToContentRevisionUnionConnection>;
+  /** The SEO Framework settings */
+  seoSettings?: Maybe<SeoSettings>;
+  /** Site Settings */
+  siteSettings?: Maybe<SiteSettings>;
+  /** A 0bject */
+  tag?: Maybe<Tag>;
+  /** Connection between the RootQuery type and the tag type */
+  tags?: Maybe<RootQueryToTagConnection>;
+  /** Connection between the RootQuery type and the Taxonomy type */
+  taxonomies?: Maybe<RootQueryToTaxonomyConnection>;
+  /** Fetch a Taxonomy node by unique Identifier */
+  taxonomy?: Maybe<Taxonomy>;
+  /** A node in a taxonomy used to group and relate content nodes */
+  termNode?: Maybe<TermNode>;
+  /** Connection between the RootQuery type and the TermNode type */
+  terms?: Maybe<RootQueryToTermNodeConnection>;
+  /** A Theme object */
+  theme?: Maybe<Theme>;
+  /** Connection between the RootQuery type and the Theme type */
+  themes?: Maybe<RootQueryToThemeConnection>;
+  /** Translate string using pll_translate_string() (Polylang) */
+  translateString?: Maybe<Scalars['String']>;
+  unifiedSearch?: Maybe<SearchResultConnection>;
+  unifiedSearchCompletionSuggestions?: Maybe<SearchSuggestionConnection>;
+  /** Returns a user */
+  user?: Maybe<User>;
+  /** Returns a user role */
+  userRole?: Maybe<UserRole>;
+  /** Connection between the RootQuery type and the UserRole type */
+  userRoles?: Maybe<RootQueryToUserRoleConnection>;
+  /** Connection between the RootQuery type and the User type */
+  users?: Maybe<RootQueryToUserConnection>;
+  venue: Venue;
+  venuesByIds: Array<Venue>;
+  /** Returns the current user */
+  viewer?: Maybe<User>;
+  /** Fields of the &#039;WritingSettings&#039; settings group */
+  writingSettings?: Maybe<WritingSettings>;
+};
+
+/** The root entry point into the Graph */
+export type QueryAdministrativeDivisionsArgs = {
+  helsinkiCommonOnly?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** The root entry point into the Graph */
+export type QueryCategoriesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<RootQueryToCategoryConnectionWhereArgs>;
+};
+
+/** The root entry point into the Graph */
+export type QueryCategoryArgs = {
+  id: Scalars['ID'];
+  idType?: InputMaybe<CategoryIdType>;
+};
+
+/** The root entry point into the Graph */
+export type QueryCollectionArgs = {
+  asPreview?: InputMaybe<Scalars['Boolean']>;
+  id: Scalars['ID'];
+  idType?: InputMaybe<CollectionIdType>;
+};
+
+/** The root entry point into the Graph */
+export type QueryCollectionByArgs = {
+  collectionId?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['ID']>;
+  slug?: InputMaybe<Scalars['String']>;
+  uri?: InputMaybe<Scalars['String']>;
+};
+
+/** The root entry point into the Graph */
+export type QueryCollectionDetailsArgs = {
+  draft?: InputMaybe<Scalars['Boolean']>;
+  slug?: InputMaybe<Scalars['ID']>;
+};
+
+/** The root entry point into the Graph */
+export type QueryCollectionListArgs = {
+  visibleOnFrontpage?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** The root entry point into the Graph */
+export type QueryCollectionsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<RootQueryToCollectionConnectionWhereArgs>;
+};
+
+/** The root entry point into the Graph */
+export type QueryCommentArgs = {
+  id: Scalars['ID'];
+};
+
+/** The root entry point into the Graph */
+export type QueryCommentsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<RootQueryToCommentConnectionWhereArgs>;
+};
+
+/** The root entry point into the Graph */
+export type QueryContentNodeArgs = {
+  asPreview?: InputMaybe<Scalars['Boolean']>;
+  contentType?: InputMaybe<ContentTypeEnum>;
+  id: Scalars['ID'];
+  idType?: InputMaybe<ContentNodeIdTypeEnum>;
+};
+
+/** The root entry point into the Graph */
+export type QueryContentNodesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<RootQueryToContentNodeConnectionWhereArgs>;
+};
+
+/** The root entry point into the Graph */
+export type QueryContentTypeArgs = {
+  id: Scalars['ID'];
+  idType?: InputMaybe<ContentTypeIdTypeEnum>;
+};
+
+/** The root entry point into the Graph */
+export type QueryContentTypesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+};
+
+/** The root entry point into the Graph */
+export type QueryDefaultImagesArgs = {
+  language: Scalars['String'];
+};
+
+/** The root entry point into the Graph */
+export type QueryEventDetailsArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+  include?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+/** The root entry point into the Graph */
+export type QueryEventListArgs = {
+  allOngoing?: InputMaybe<Scalars['Boolean']>;
+  allOngoingAnd?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  allOngoingOr?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  audienceMaxAgeGt?: InputMaybe<Scalars['String']>;
+  audienceMaxAgeLt?: InputMaybe<Scalars['String']>;
+  audienceMinAgeGt?: InputMaybe<Scalars['String']>;
+  audienceMinAgeLt?: InputMaybe<Scalars['String']>;
+  combinedText?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  division?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  end?: InputMaybe<Scalars['String']>;
+  endsAfter?: InputMaybe<Scalars['String']>;
+  endsBefore?: InputMaybe<Scalars['String']>;
+  eventType?: InputMaybe<Array<InputMaybe<EventTypeId>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  inLanguage?: InputMaybe<Scalars['String']>;
+  include?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  internetBased?: InputMaybe<Scalars['Boolean']>;
+  internetOngoingAnd?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  internetOngoingOr?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  isFree?: InputMaybe<Scalars['Boolean']>;
+  keyword?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  keywordAnd?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  keywordNot?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  keywordOrSet1?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  keywordOrSet2?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  keywordOrSet3?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  language?: InputMaybe<Scalars['String']>;
+  localOngoingAnd?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  localOngoingOr?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  localOngoingOrSet1?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  localOngoingOrSet2?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  localOngoingOrSet3?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  location?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  page?: InputMaybe<Scalars['Int']>;
+  pageSize?: InputMaybe<Scalars['Int']>;
+  publisher?: InputMaybe<Scalars['ID']>;
+  sort?: InputMaybe<Scalars['String']>;
+  start?: InputMaybe<Scalars['String']>;
+  startsAfter?: InputMaybe<Scalars['String']>;
+  startsBefore?: InputMaybe<Scalars['String']>;
+  suitableFor?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  superEvent?: InputMaybe<Scalars['ID']>;
+  superEventType?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  text?: InputMaybe<Scalars['String']>;
+  translation?: InputMaybe<Scalars['String']>;
+};
+
+/** The root entry point into the Graph */
+export type QueryEventsByIdsArgs = {
+  end?: InputMaybe<Scalars['String']>;
+  eventType?: InputMaybe<Array<InputMaybe<EventTypeId>>>;
+  ids: Array<Scalars['ID']>;
+  include?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  page?: InputMaybe<Scalars['Int']>;
+  pageSize?: InputMaybe<Scalars['Int']>;
+  sort?: InputMaybe<Scalars['String']>;
+  start?: InputMaybe<Scalars['String']>;
+};
+
+/** The root entry point into the Graph */
+export type QueryKeywordDetailsArgs = {
+  id: Scalars['ID'];
+};
+
+/** The root entry point into the Graph */
+export type QueryKeywordListArgs = {
+  dataSource?: InputMaybe<Scalars['String']>;
+  hasUpcomingEvents?: InputMaybe<Scalars['Boolean']>;
+  page?: InputMaybe<Scalars['Int']>;
+  pageSize?: InputMaybe<Scalars['Int']>;
+  showAllKeywords?: InputMaybe<Scalars['Boolean']>;
+  sort?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
+};
+
+/** The root entry point into the Graph */
+export type QueryLandingPageArgs = {
+  asPreview?: InputMaybe<Scalars['Boolean']>;
+  id: Scalars['ID'];
+  idType?: InputMaybe<LandingPageIdType>;
+};
+
+/** The root entry point into the Graph */
+export type QueryLandingPageByArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+  landingPageId?: InputMaybe<Scalars['Int']>;
+  slug?: InputMaybe<Scalars['String']>;
+  uri?: InputMaybe<Scalars['String']>;
+};
+
+/** The root entry point into the Graph */
+export type QueryLandingPagesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<RootQueryToLandingPageConnectionWhereArgs>;
+};
+
+/** The root entry point into the Graph */
+export type QueryMediaItemArgs = {
+  asPreview?: InputMaybe<Scalars['Boolean']>;
+  id: Scalars['ID'];
+  idType?: InputMaybe<MediaItemIdType>;
+};
+
+/** The root entry point into the Graph */
+export type QueryMediaItemByArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+  mediaItemId?: InputMaybe<Scalars['Int']>;
+  slug?: InputMaybe<Scalars['String']>;
+  uri?: InputMaybe<Scalars['String']>;
+};
+
+/** The root entry point into the Graph */
+export type QueryMediaItemsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<RootQueryToMediaItemConnectionWhereArgs>;
+};
+
+/** The root entry point into the Graph */
+export type QueryMenuArgs = {
+  id: Scalars['ID'];
+  idType?: InputMaybe<MenuNodeIdTypeEnum>;
+};
+
+/** The root entry point into the Graph */
+export type QueryMenuItemArgs = {
+  id: Scalars['ID'];
+  idType?: InputMaybe<MenuItemNodeIdTypeEnum>;
+};
+
+/** The root entry point into the Graph */
+export type QueryMenuItemsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<RootQueryToMenuItemConnectionWhereArgs>;
+};
+
+/** The root entry point into the Graph */
+export type QueryMenusArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<RootQueryToMenuConnectionWhereArgs>;
+};
+
+/** The root entry point into the Graph */
+export type QueryNodeArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+/** The root entry point into the Graph */
+export type QueryNodeByUriArgs = {
+  uri: Scalars['String'];
+};
+
+/** The root entry point into the Graph */
+export type QueryNotificationArgs = {
+  language: Scalars['String'];
+};
+
+/** The root entry point into the Graph */
+export type QueryOntologyTreeArgs = {
+  leavesOnly?: InputMaybe<Scalars['Boolean']>;
+  rootId?: InputMaybe<Scalars['ID']>;
+};
+
+/** The root entry point into the Graph */
+export type QueryOntologyWordsArgs = {
+  ids?: InputMaybe<Array<Scalars['ID']>>;
+};
+
+/** The root entry point into the Graph */
+export type QueryOrganizationDetailsArgs = {
+  id: Scalars['ID'];
+};
+
+/** The root entry point into the Graph */
+export type QueryPageArgs = {
+  asPreview?: InputMaybe<Scalars['Boolean']>;
+  id: Scalars['ID'];
+  idType?: InputMaybe<PageIdType>;
+};
+
+/** The root entry point into the Graph */
+export type QueryPageByArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+  pageId?: InputMaybe<Scalars['Int']>;
+  uri?: InputMaybe<Scalars['String']>;
+};
+
+/** The root entry point into the Graph */
+export type QueryPageByTemplateArgs = {
+  language?: InputMaybe<Scalars['String']>;
+  template?: InputMaybe<TemplateEnum>;
+};
+
+/** The root entry point into the Graph */
+export type QueryPagesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<RootQueryToPageConnectionWhereArgs>;
+};
+
+/** The root entry point into the Graph */
+export type QueryPlaceDetailsArgs = {
+  id: Scalars['ID'];
+};
+
+/** The root entry point into the Graph */
+export type QueryPlaceListArgs = {
+  dataSource?: InputMaybe<Scalars['String']>;
+  divisions?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  hasUpcomingEvents?: InputMaybe<Scalars['Boolean']>;
+  page?: InputMaybe<Scalars['Int']>;
+  pageSize?: InputMaybe<Scalars['Int']>;
+  showAllPlaces?: InputMaybe<Scalars['Boolean']>;
+  sort?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
+};
+
+/** The root entry point into the Graph */
+export type QueryPluginArgs = {
+  id: Scalars['ID'];
+};
+
+/** The root entry point into the Graph */
+export type QueryPluginsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<RootQueryToPluginConnectionWhereArgs>;
+};
+
+/** The root entry point into the Graph */
+export type QueryPostArgs = {
+  asPreview?: InputMaybe<Scalars['Boolean']>;
+  id: Scalars['ID'];
+  idType?: InputMaybe<PostIdType>;
+};
+
+/** The root entry point into the Graph */
+export type QueryPostByArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+  postId?: InputMaybe<Scalars['Int']>;
+  slug?: InputMaybe<Scalars['String']>;
+  uri?: InputMaybe<Scalars['String']>;
+};
+
+/** The root entry point into the Graph */
+export type QueryPostFormatArgs = {
+  id: Scalars['ID'];
+  idType?: InputMaybe<PostFormatIdType>;
+};
+
+/** The root entry point into the Graph */
+export type QueryPostFormatsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<RootQueryToPostFormatConnectionWhereArgs>;
+};
+
+/** The root entry point into the Graph */
+export type QueryPostsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<RootQueryToPostConnectionWhereArgs>;
+};
+
+/** The root entry point into the Graph */
+export type QueryRegisteredScriptsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+};
+
+/** The root entry point into the Graph */
+export type QueryRegisteredStylesheetsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+};
+
+/** The root entry point into the Graph */
+export type QueryReleaseArgs = {
+  asPreview?: InputMaybe<Scalars['Boolean']>;
+  id: Scalars['ID'];
+  idType?: InputMaybe<ReleaseIdType>;
+};
+
+/** The root entry point into the Graph */
+export type QueryReleaseByArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+  releaseId?: InputMaybe<Scalars['Int']>;
+  slug?: InputMaybe<Scalars['String']>;
+  uri?: InputMaybe<Scalars['String']>;
+};
+
+/** The root entry point into the Graph */
+export type QueryReleasesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<RootQueryToReleaseConnectionWhereArgs>;
+};
+
+/** The root entry point into the Graph */
+export type QueryRevisionsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<RootQueryToContentRevisionUnionConnectionWhereArgs>;
+};
+
+/** The root entry point into the Graph */
+export type QuerySiteSettingsArgs = {
+  language: Scalars['String'];
+};
+
+/** The root entry point into the Graph */
+export type QueryTagArgs = {
+  id: Scalars['ID'];
+  idType?: InputMaybe<TagIdType>;
+};
+
+/** The root entry point into the Graph */
+export type QueryTagsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<RootQueryToTagConnectionWhereArgs>;
+};
+
+/** The root entry point into the Graph */
+export type QueryTaxonomiesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+};
+
+/** The root entry point into the Graph */
+export type QueryTaxonomyArgs = {
+  id: Scalars['ID'];
+  idType?: InputMaybe<TaxonomyIdTypeEnum>;
+};
+
+/** The root entry point into the Graph */
+export type QueryTermNodeArgs = {
+  id: Scalars['ID'];
+  idType?: InputMaybe<TermNodeIdTypeEnum>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+};
+
+/** The root entry point into the Graph */
+export type QueryTermsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<RootQueryToTermNodeConnectionWhereArgs>;
+};
+
+/** The root entry point into the Graph */
+export type QueryThemeArgs = {
+  id: Scalars['ID'];
+};
+
+/** The root entry point into the Graph */
+export type QueryThemesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+};
+
+/** The root entry point into the Graph */
+export type QueryTranslateStringArgs = {
+  language: LanguageCodeEnum;
+  string: Scalars['String'];
+};
+
+/** The root entry point into the Graph */
+export type QueryUnifiedSearchArgs = {
+  administrativeDivisionId?: InputMaybe<Scalars['ID']>;
+  administrativeDivisionIds?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  index?: InputMaybe<Scalars['String']>;
+  languages?: Array<UnifiedSearchLanguage>;
+  last?: InputMaybe<Scalars['Int']>;
+  ontology?: InputMaybe<Scalars['String']>;
+  ontologyTreeId?: InputMaybe<Scalars['ID']>;
+  ontologyTreeIds?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  ontologyWordIds?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  openAt?: InputMaybe<Scalars['String']>;
+  orderByDistance?: InputMaybe<OrderByDistance>;
+  orderByName?: InputMaybe<OrderByName>;
+  q?: InputMaybe<Scalars['String']>;
+};
+
+/** The root entry point into the Graph */
+export type QueryUnifiedSearchCompletionSuggestionsArgs = {
+  index?: InputMaybe<Scalars['String']>;
+  languages?: Array<UnifiedSearchLanguage>;
+  prefix?: InputMaybe<Scalars['String']>;
+  size?: InputMaybe<Scalars['Int']>;
+};
+
+/** The root entry point into the Graph */
+export type QueryUserArgs = {
+  id: Scalars['ID'];
+  idType?: InputMaybe<UserNodeIdTypeEnum>;
+};
+
+/** The root entry point into the Graph */
+export type QueryUserRoleArgs = {
+  id: Scalars['ID'];
+};
+
+/** The root entry point into the Graph */
+export type QueryUserRolesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+};
+
+/** The root entry point into the Graph */
+export type QueryUsersArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<RootQueryToUserConnectionWhereArgs>;
+};
+
+/** The root entry point into the Graph */
+export type QueryVenueArgs = {
+  id: Scalars['ID'];
+};
+
+/** The root entry point into the Graph */
+export type QueryVenuesByIdsArgs = {
+  ids?: InputMaybe<Array<Scalars['ID']>>;
+};
+
+export type RawJson = {
+  __typename?: 'RawJSON';
+  data?: Maybe<Scalars['String']>;
+};
+
 /** The reading setting type */
 export type ReadingSettings = {
   __typename?: 'ReadingSettings';
@@ -6160,6 +7731,20 @@ export type ResetUserPasswordPayload = {
   user?: Maybe<User>;
 };
 
+export enum ResourceState {
+  Closed = 'closed',
+  EnterOnly = 'enter_only',
+  ExitOnly = 'exit_only',
+  Open = 'open',
+  OpenAndReservable = 'open_and_reservable',
+  SelfService = 'self_service',
+  Undefined = 'undefined',
+  WeatherPermitting = 'weather_permitting',
+  WithKey = 'with_key',
+  WithKeyAndReservation = 'with_key_and_reservation',
+  WithReservation = 'with_reservation',
+}
+
 /** Input for the restoreComment mutation */
 export type RestoreCommentInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
@@ -6177,954 +7762,6 @@ export type RestoreCommentPayload = {
   comment?: Maybe<Comment>;
   /** The ID of the restored comment */
   restoredId?: Maybe<Scalars['ID']>;
-};
-
-/** The root mutation */
-export type RootMutation = {
-  __typename?: 'RootMutation';
-  /** The payload for the createCategory mutation */
-  createCategory?: Maybe<CreateCategoryPayload>;
-  /** The payload for the createCollection mutation */
-  createCollection?: Maybe<CreateCollectionPayload>;
-  /** The payload for the createComment mutation */
-  createComment?: Maybe<CreateCommentPayload>;
-  /** The payload for the createContact mutation */
-  createContact?: Maybe<CreateContactPayload>;
-  /** The payload for the createLandingPage mutation */
-  createLandingPage?: Maybe<CreateLandingPagePayload>;
-  /** The payload for the createMediaItem mutation */
-  createMediaItem?: Maybe<CreateMediaItemPayload>;
-  /** The payload for the createPage mutation */
-  createPage?: Maybe<CreatePagePayload>;
-  /** The payload for the createPost mutation */
-  createPost?: Maybe<CreatePostPayload>;
-  /** The payload for the createPostFormat mutation */
-  createPostFormat?: Maybe<CreatePostFormatPayload>;
-  /** The payload for the createRelease mutation */
-  createRelease?: Maybe<CreateReleasePayload>;
-  /** The payload for the createTag mutation */
-  createTag?: Maybe<CreateTagPayload>;
-  /** The payload for the createTranslation mutation */
-  createTranslation?: Maybe<CreateTranslationPayload>;
-  /** The payload for the createUser mutation */
-  createUser?: Maybe<CreateUserPayload>;
-  /** The payload for the deleteCategory mutation */
-  deleteCategory?: Maybe<DeleteCategoryPayload>;
-  /** The payload for the deleteCollection mutation */
-  deleteCollection?: Maybe<DeleteCollectionPayload>;
-  /** The payload for the deleteComment mutation */
-  deleteComment?: Maybe<DeleteCommentPayload>;
-  /** The payload for the deleteContact mutation */
-  deleteContact?: Maybe<DeleteContactPayload>;
-  /** The payload for the deleteLandingPage mutation */
-  deleteLandingPage?: Maybe<DeleteLandingPagePayload>;
-  /** The payload for the deleteMediaItem mutation */
-  deleteMediaItem?: Maybe<DeleteMediaItemPayload>;
-  /** The payload for the deletePage mutation */
-  deletePage?: Maybe<DeletePagePayload>;
-  /** The payload for the deletePost mutation */
-  deletePost?: Maybe<DeletePostPayload>;
-  /** The payload for the deletePostFormat mutation */
-  deletePostFormat?: Maybe<DeletePostFormatPayload>;
-  /** The payload for the deleteRelease mutation */
-  deleteRelease?: Maybe<DeleteReleasePayload>;
-  /** The payload for the deleteTag mutation */
-  deleteTag?: Maybe<DeleteTagPayload>;
-  /** The payload for the deleteTranslation mutation */
-  deleteTranslation?: Maybe<DeleteTranslationPayload>;
-  /** The payload for the deleteUser mutation */
-  deleteUser?: Maybe<DeleteUserPayload>;
-  /** Increase the count. */
-  increaseCount?: Maybe<Scalars['Int']>;
-  /** The payload for the registerUser mutation */
-  registerUser?: Maybe<RegisterUserPayload>;
-  /** The payload for the resetUserPassword mutation */
-  resetUserPassword?: Maybe<ResetUserPasswordPayload>;
-  /** The payload for the restoreComment mutation */
-  restoreComment?: Maybe<RestoreCommentPayload>;
-  /** The payload for the sendPasswordResetEmail mutation */
-  sendPasswordResetEmail?: Maybe<SendPasswordResetEmailPayload>;
-  /** The payload for the UpdateCategory mutation */
-  updateCategory?: Maybe<UpdateCategoryPayload>;
-  /** The payload for the updateCollection mutation */
-  updateCollection?: Maybe<UpdateCollectionPayload>;
-  /** The payload for the updateComment mutation */
-  updateComment?: Maybe<UpdateCommentPayload>;
-  /** The payload for the updateContact mutation */
-  updateContact?: Maybe<UpdateContactPayload>;
-  /** The payload for the updateLandingPage mutation */
-  updateLandingPage?: Maybe<UpdateLandingPagePayload>;
-  /** The payload for the updateMediaItem mutation */
-  updateMediaItem?: Maybe<UpdateMediaItemPayload>;
-  /** The payload for the updatePage mutation */
-  updatePage?: Maybe<UpdatePagePayload>;
-  /** The payload for the updatePost mutation */
-  updatePost?: Maybe<UpdatePostPayload>;
-  /** The payload for the UpdatePostFormat mutation */
-  updatePostFormat?: Maybe<UpdatePostFormatPayload>;
-  /** The payload for the updateRelease mutation */
-  updateRelease?: Maybe<UpdateReleasePayload>;
-  /** The payload for the updateSettings mutation */
-  updateSettings?: Maybe<UpdateSettingsPayload>;
-  /** The payload for the UpdateTag mutation */
-  updateTag?: Maybe<UpdateTagPayload>;
-  /** The payload for the updateTranslation mutation */
-  updateTranslation?: Maybe<UpdateTranslationPayload>;
-  /** The payload for the updateUser mutation */
-  updateUser?: Maybe<UpdateUserPayload>;
-};
-
-/** The root mutation */
-export type RootMutationCreateCategoryArgs = {
-  input: CreateCategoryInput;
-};
-
-/** The root mutation */
-export type RootMutationCreateCollectionArgs = {
-  input: CreateCollectionInput;
-};
-
-/** The root mutation */
-export type RootMutationCreateCommentArgs = {
-  input: CreateCommentInput;
-};
-
-/** The root mutation */
-export type RootMutationCreateContactArgs = {
-  input: CreateContactInput;
-};
-
-/** The root mutation */
-export type RootMutationCreateLandingPageArgs = {
-  input: CreateLandingPageInput;
-};
-
-/** The root mutation */
-export type RootMutationCreateMediaItemArgs = {
-  input: CreateMediaItemInput;
-};
-
-/** The root mutation */
-export type RootMutationCreatePageArgs = {
-  input: CreatePageInput;
-};
-
-/** The root mutation */
-export type RootMutationCreatePostArgs = {
-  input: CreatePostInput;
-};
-
-/** The root mutation */
-export type RootMutationCreatePostFormatArgs = {
-  input: CreatePostFormatInput;
-};
-
-/** The root mutation */
-export type RootMutationCreateReleaseArgs = {
-  input: CreateReleaseInput;
-};
-
-/** The root mutation */
-export type RootMutationCreateTagArgs = {
-  input: CreateTagInput;
-};
-
-/** The root mutation */
-export type RootMutationCreateTranslationArgs = {
-  input: CreateTranslationInput;
-};
-
-/** The root mutation */
-export type RootMutationCreateUserArgs = {
-  input: CreateUserInput;
-};
-
-/** The root mutation */
-export type RootMutationDeleteCategoryArgs = {
-  input: DeleteCategoryInput;
-};
-
-/** The root mutation */
-export type RootMutationDeleteCollectionArgs = {
-  input: DeleteCollectionInput;
-};
-
-/** The root mutation */
-export type RootMutationDeleteCommentArgs = {
-  input: DeleteCommentInput;
-};
-
-/** The root mutation */
-export type RootMutationDeleteContactArgs = {
-  input: DeleteContactInput;
-};
-
-/** The root mutation */
-export type RootMutationDeleteLandingPageArgs = {
-  input: DeleteLandingPageInput;
-};
-
-/** The root mutation */
-export type RootMutationDeleteMediaItemArgs = {
-  input: DeleteMediaItemInput;
-};
-
-/** The root mutation */
-export type RootMutationDeletePageArgs = {
-  input: DeletePageInput;
-};
-
-/** The root mutation */
-export type RootMutationDeletePostArgs = {
-  input: DeletePostInput;
-};
-
-/** The root mutation */
-export type RootMutationDeletePostFormatArgs = {
-  input: DeletePostFormatInput;
-};
-
-/** The root mutation */
-export type RootMutationDeleteReleaseArgs = {
-  input: DeleteReleaseInput;
-};
-
-/** The root mutation */
-export type RootMutationDeleteTagArgs = {
-  input: DeleteTagInput;
-};
-
-/** The root mutation */
-export type RootMutationDeleteTranslationArgs = {
-  input: DeleteTranslationInput;
-};
-
-/** The root mutation */
-export type RootMutationDeleteUserArgs = {
-  input: DeleteUserInput;
-};
-
-/** The root mutation */
-export type RootMutationIncreaseCountArgs = {
-  count?: InputMaybe<Scalars['Int']>;
-};
-
-/** The root mutation */
-export type RootMutationRegisterUserArgs = {
-  input: RegisterUserInput;
-};
-
-/** The root mutation */
-export type RootMutationResetUserPasswordArgs = {
-  input: ResetUserPasswordInput;
-};
-
-/** The root mutation */
-export type RootMutationRestoreCommentArgs = {
-  input: RestoreCommentInput;
-};
-
-/** The root mutation */
-export type RootMutationSendPasswordResetEmailArgs = {
-  input: SendPasswordResetEmailInput;
-};
-
-/** The root mutation */
-export type RootMutationUpdateCategoryArgs = {
-  input: UpdateCategoryInput;
-};
-
-/** The root mutation */
-export type RootMutationUpdateCollectionArgs = {
-  input: UpdateCollectionInput;
-};
-
-/** The root mutation */
-export type RootMutationUpdateCommentArgs = {
-  input: UpdateCommentInput;
-};
-
-/** The root mutation */
-export type RootMutationUpdateContactArgs = {
-  input: UpdateContactInput;
-};
-
-/** The root mutation */
-export type RootMutationUpdateLandingPageArgs = {
-  input: UpdateLandingPageInput;
-};
-
-/** The root mutation */
-export type RootMutationUpdateMediaItemArgs = {
-  input: UpdateMediaItemInput;
-};
-
-/** The root mutation */
-export type RootMutationUpdatePageArgs = {
-  input: UpdatePageInput;
-};
-
-/** The root mutation */
-export type RootMutationUpdatePostArgs = {
-  input: UpdatePostInput;
-};
-
-/** The root mutation */
-export type RootMutationUpdatePostFormatArgs = {
-  input: UpdatePostFormatInput;
-};
-
-/** The root mutation */
-export type RootMutationUpdateReleaseArgs = {
-  input: UpdateReleaseInput;
-};
-
-/** The root mutation */
-export type RootMutationUpdateSettingsArgs = {
-  input: UpdateSettingsInput;
-};
-
-/** The root mutation */
-export type RootMutationUpdateTagArgs = {
-  input: UpdateTagInput;
-};
-
-/** The root mutation */
-export type RootMutationUpdateTranslationArgs = {
-  input: UpdateTranslationInput;
-};
-
-/** The root mutation */
-export type RootMutationUpdateUserArgs = {
-  input: UpdateUserInput;
-};
-
-/** The root entry point into the Graph */
-export type RootQuery = {
-  __typename?: 'RootQuery';
-  /** Entry point to get all settings for the site */
-  allSettings?: Maybe<Settings>;
-  /** Connection between the RootQuery type and the category type */
-  categories?: Maybe<RootQueryToCategoryConnection>;
-  /** A 0bject */
-  category?: Maybe<Category>;
-  /** An object of the collection Type. Collections */
-  collection?: Maybe<Collection>;
-  /**
-   * A collection object
-   * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
-   */
-  collectionBy?: Maybe<Collection>;
-  /** Connection between the RootQuery type and the collection type */
-  collections?: Maybe<RootQueryToCollectionConnection>;
-  /** Returns a Comment */
-  comment?: Maybe<Comment>;
-  /** Connection between the RootQuery type and the Comment type */
-  comments?: Maybe<RootQueryToCommentConnection>;
-  /** An object of the contact Type. Contacts */
-  contact?: Maybe<Contact>;
-  /**
-   * A contact object
-   * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
-   */
-  contactBy?: Maybe<Contact>;
-  /** Connection between the RootQuery type and the contact type */
-  contacts?: Maybe<RootQueryToContactConnection>;
-  /** A node used to manage content */
-  contentNode?: Maybe<ContentNode>;
-  /** Connection between the RootQuery type and the ContentNode type */
-  contentNodes?: Maybe<RootQueryToContentNodeConnection>;
-  /** Fetch a Content Type node by unique Identifier */
-  contentType?: Maybe<ContentType>;
-  /** Connection between the RootQuery type and the ContentType type */
-  contentTypes?: Maybe<RootQueryToContentTypeConnection>;
-  /** Default Images */
-  defaultImages?: Maybe<DefaultImages>;
-  /** Get language list */
-  defaultLanguage?: Maybe<Language>;
-  /** Fields of the &#039;DiscussionSettings&#039; settings group */
-  discussionSettings?: Maybe<DiscussionSettings>;
-  /** Fields of the &#039;GeneralSettings&#039; settings group */
-  generalSettings?: Maybe<GeneralSettings>;
-  /** An object of the landingPage Type. Landing Pages */
-  landingPage?: Maybe<LandingPage>;
-  /**
-   * A landingPage object
-   * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
-   */
-  landingPageBy?: Maybe<LandingPage>;
-  /** Connection between the RootQuery type and the landingPage type */
-  landingPages?: Maybe<RootQueryToLandingPageConnection>;
-  /** List available languages */
-  languages?: Maybe<Array<Maybe<Language>>>;
-  /** An object of the mediaItem Type.  */
-  mediaItem?: Maybe<MediaItem>;
-  /**
-   * A mediaItem object
-   * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
-   */
-  mediaItemBy?: Maybe<MediaItem>;
-  /** Connection between the RootQuery type and the mediaItem type */
-  mediaItems?: Maybe<RootQueryToMediaItemConnection>;
-  /** A WordPress navigation menu */
-  menu?: Maybe<Menu>;
-  /** A WordPress navigation menu item */
-  menuItem?: Maybe<MenuItem>;
-  /** Connection between the RootQuery type and the MenuItem type */
-  menuItems?: Maybe<RootQueryToMenuItemConnection>;
-  /** Connection between the RootQuery type and the Menu type */
-  menus?: Maybe<RootQueryToMenuConnection>;
-  /** Fetches an object given its ID */
-  node?: Maybe<Node>;
-  /** Fetches an object given its Unique Resource Identifier */
-  nodeByUri?: Maybe<UniformResourceIdentifiable>;
-  notification?: Maybe<Notification>;
-  /** An object of the page Type.  */
-  page?: Maybe<Page>;
-  /**
-   * A page object
-   * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
-   */
-  pageBy?: Maybe<Page>;
-  /** Returns ID of page that uses the given template */
-  pageByTemplate?: Maybe<Page>;
-  /** Connection between the RootQuery type and the page type */
-  pages?: Maybe<RootQueryToPageConnection>;
-  /** A WordPress plugin */
-  plugin?: Maybe<Plugin>;
-  /** Connection between the RootQuery type and the Plugin type */
-  plugins?: Maybe<RootQueryToPluginConnection>;
-  /** An object of the post Type.  */
-  post?: Maybe<Post>;
-  /**
-   * A post object
-   * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
-   */
-  postBy?: Maybe<Post>;
-  /** A 0bject */
-  postFormat?: Maybe<PostFormat>;
-  /** Connection between the RootQuery type and the postFormat type */
-  postFormats?: Maybe<RootQueryToPostFormatConnection>;
-  /** Connection between the RootQuery type and the post type */
-  posts?: Maybe<RootQueryToPostConnection>;
-  /** Fields of the &#039;ReadingSettings&#039; settings group */
-  readingSettings?: Maybe<ReadingSettings>;
-  /** Connection between the RootQuery type and the EnqueuedScript type */
-  registeredScripts?: Maybe<RootQueryToEnqueuedScriptConnection>;
-  /** Connection between the RootQuery type and the EnqueuedStylesheet type */
-  registeredStylesheets?: Maybe<RootQueryToEnqueuedStylesheetConnection>;
-  /** An object of the release Type. Releases */
-  release?: Maybe<Release>;
-  /**
-   * A release object
-   * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
-   */
-  releaseBy?: Maybe<Release>;
-  /** Connection between the RootQuery type and the release type */
-  releases?: Maybe<RootQueryToReleaseConnection>;
-  /** Connection between the RootQuery type and the ContentRevisionUnion type */
-  revisions?: Maybe<RootQueryToContentRevisionUnionConnection>;
-  /** The SEO Framework settings */
-  seoSettings?: Maybe<SeoSettings>;
-  /** Site Settings */
-  siteSettings?: Maybe<SiteSettings>;
-  /** A 0bject */
-  tag?: Maybe<Tag>;
-  /** Connection between the RootQuery type and the tag type */
-  tags?: Maybe<RootQueryToTagConnection>;
-  /** Connection between the RootQuery type and the Taxonomy type */
-  taxonomies?: Maybe<RootQueryToTaxonomyConnection>;
-  /** Fetch a Taxonomy node by unique Identifier */
-  taxonomy?: Maybe<Taxonomy>;
-  /** A node in a taxonomy used to group and relate content nodes */
-  termNode?: Maybe<TermNode>;
-  /** Connection between the RootQuery type and the TermNode type */
-  terms?: Maybe<RootQueryToTermNodeConnection>;
-  /** A Theme object */
-  theme?: Maybe<Theme>;
-  /** Connection between the RootQuery type and the Theme type */
-  themes?: Maybe<RootQueryToThemeConnection>;
-  /** Translate string using pll_translate_string() (Polylang) */
-  translateString?: Maybe<Scalars['String']>;
-  /** An object of the translation Type. Translations */
-  translation?: Maybe<Translation>;
-  /**
-   * A translation object
-   * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
-   */
-  translationBy?: Maybe<Translation>;
-  /** Connection between the RootQuery type and the translation type */
-  translations?: Maybe<RootQueryToTranslationConnection>;
-  /** Returns a user */
-  user?: Maybe<User>;
-  /** Returns a user role */
-  userRole?: Maybe<UserRole>;
-  /** Connection between the RootQuery type and the UserRole type */
-  userRoles?: Maybe<RootQueryToUserRoleConnection>;
-  /** Connection between the RootQuery type and the User type */
-  users?: Maybe<RootQueryToUserConnection>;
-  /** Returns the current user */
-  viewer?: Maybe<User>;
-  /** Fields of the &#039;WritingSettings&#039; settings group */
-  writingSettings?: Maybe<WritingSettings>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryCategoriesArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<RootQueryToCategoryConnectionWhereArgs>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryCategoryArgs = {
-  id: Scalars['ID'];
-  idType?: InputMaybe<CategoryIdType>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryCollectionArgs = {
-  asPreview?: InputMaybe<Scalars['Boolean']>;
-  id: Scalars['ID'];
-  idType?: InputMaybe<CollectionIdType>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryCollectionByArgs = {
-  collectionId?: InputMaybe<Scalars['Int']>;
-  id?: InputMaybe<Scalars['ID']>;
-  slug?: InputMaybe<Scalars['String']>;
-  uri?: InputMaybe<Scalars['String']>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryCollectionsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<RootQueryToCollectionConnectionWhereArgs>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryCommentArgs = {
-  id: Scalars['ID'];
-};
-
-/** The root entry point into the Graph */
-export type RootQueryCommentsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<RootQueryToCommentConnectionWhereArgs>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryContactArgs = {
-  asPreview?: InputMaybe<Scalars['Boolean']>;
-  id: Scalars['ID'];
-  idType?: InputMaybe<ContactIdType>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryContactByArgs = {
-  contactId?: InputMaybe<Scalars['Int']>;
-  id?: InputMaybe<Scalars['ID']>;
-  slug?: InputMaybe<Scalars['String']>;
-  uri?: InputMaybe<Scalars['String']>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryContactsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<RootQueryToContactConnectionWhereArgs>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryContentNodeArgs = {
-  asPreview?: InputMaybe<Scalars['Boolean']>;
-  contentType?: InputMaybe<ContentTypeEnum>;
-  id: Scalars['ID'];
-  idType?: InputMaybe<ContentNodeIdTypeEnum>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryContentNodesArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<RootQueryToContentNodeConnectionWhereArgs>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryContentTypeArgs = {
-  id: Scalars['ID'];
-  idType?: InputMaybe<ContentTypeIdTypeEnum>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryContentTypesArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryDefaultImagesArgs = {
-  language: Scalars['String'];
-};
-
-/** The root entry point into the Graph */
-export type RootQueryLandingPageArgs = {
-  asPreview?: InputMaybe<Scalars['Boolean']>;
-  id: Scalars['ID'];
-  idType?: InputMaybe<LandingPageIdType>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryLandingPageByArgs = {
-  id?: InputMaybe<Scalars['ID']>;
-  landingPageId?: InputMaybe<Scalars['Int']>;
-  slug?: InputMaybe<Scalars['String']>;
-  uri?: InputMaybe<Scalars['String']>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryLandingPagesArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<RootQueryToLandingPageConnectionWhereArgs>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryMediaItemArgs = {
-  asPreview?: InputMaybe<Scalars['Boolean']>;
-  id: Scalars['ID'];
-  idType?: InputMaybe<MediaItemIdType>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryMediaItemByArgs = {
-  id?: InputMaybe<Scalars['ID']>;
-  mediaItemId?: InputMaybe<Scalars['Int']>;
-  slug?: InputMaybe<Scalars['String']>;
-  uri?: InputMaybe<Scalars['String']>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryMediaItemsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<RootQueryToMediaItemConnectionWhereArgs>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryMenuArgs = {
-  id: Scalars['ID'];
-  idType?: InputMaybe<MenuNodeIdTypeEnum>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryMenuItemArgs = {
-  id: Scalars['ID'];
-  idType?: InputMaybe<MenuItemNodeIdTypeEnum>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryMenuItemsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<RootQueryToMenuItemConnectionWhereArgs>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryMenusArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<RootQueryToMenuConnectionWhereArgs>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryNodeArgs = {
-  id?: InputMaybe<Scalars['ID']>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryNodeByUriArgs = {
-  uri: Scalars['String'];
-};
-
-/** The root entry point into the Graph */
-export type RootQueryNotificationArgs = {
-  language: Scalars['String'];
-};
-
-/** The root entry point into the Graph */
-export type RootQueryPageArgs = {
-  asPreview?: InputMaybe<Scalars['Boolean']>;
-  id: Scalars['ID'];
-  idType?: InputMaybe<PageIdType>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryPageByArgs = {
-  id?: InputMaybe<Scalars['ID']>;
-  pageId?: InputMaybe<Scalars['Int']>;
-  uri?: InputMaybe<Scalars['String']>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryPageByTemplateArgs = {
-  language?: InputMaybe<Scalars['String']>;
-  template?: InputMaybe<TemplateEnum>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryPagesArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<RootQueryToPageConnectionWhereArgs>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryPluginArgs = {
-  id: Scalars['ID'];
-};
-
-/** The root entry point into the Graph */
-export type RootQueryPluginsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<RootQueryToPluginConnectionWhereArgs>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryPostArgs = {
-  asPreview?: InputMaybe<Scalars['Boolean']>;
-  id: Scalars['ID'];
-  idType?: InputMaybe<PostIdType>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryPostByArgs = {
-  id?: InputMaybe<Scalars['ID']>;
-  postId?: InputMaybe<Scalars['Int']>;
-  slug?: InputMaybe<Scalars['String']>;
-  uri?: InputMaybe<Scalars['String']>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryPostFormatArgs = {
-  id: Scalars['ID'];
-  idType?: InputMaybe<PostFormatIdType>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryPostFormatsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<RootQueryToPostFormatConnectionWhereArgs>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryPostsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<RootQueryToPostConnectionWhereArgs>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryRegisteredScriptsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryRegisteredStylesheetsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryReleaseArgs = {
-  asPreview?: InputMaybe<Scalars['Boolean']>;
-  id: Scalars['ID'];
-  idType?: InputMaybe<ReleaseIdType>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryReleaseByArgs = {
-  id?: InputMaybe<Scalars['ID']>;
-  releaseId?: InputMaybe<Scalars['Int']>;
-  slug?: InputMaybe<Scalars['String']>;
-  uri?: InputMaybe<Scalars['String']>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryReleasesArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<RootQueryToReleaseConnectionWhereArgs>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryRevisionsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<RootQueryToContentRevisionUnionConnectionWhereArgs>;
-};
-
-/** The root entry point into the Graph */
-export type RootQuerySiteSettingsArgs = {
-  language: Scalars['String'];
-};
-
-/** The root entry point into the Graph */
-export type RootQueryTagArgs = {
-  id: Scalars['ID'];
-  idType?: InputMaybe<TagIdType>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryTagsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<RootQueryToTagConnectionWhereArgs>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryTaxonomiesArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryTaxonomyArgs = {
-  id: Scalars['ID'];
-  idType?: InputMaybe<TaxonomyIdTypeEnum>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryTermNodeArgs = {
-  id: Scalars['ID'];
-  idType?: InputMaybe<TermNodeIdTypeEnum>;
-  taxonomy?: InputMaybe<TaxonomyEnum>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryTermsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<RootQueryToTermNodeConnectionWhereArgs>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryThemeArgs = {
-  id: Scalars['ID'];
-};
-
-/** The root entry point into the Graph */
-export type RootQueryThemesArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryTranslateStringArgs = {
-  language: LanguageCodeEnum;
-  string: Scalars['String'];
-};
-
-/** The root entry point into the Graph */
-export type RootQueryTranslationArgs = {
-  asPreview?: InputMaybe<Scalars['Boolean']>;
-  id: Scalars['ID'];
-  idType?: InputMaybe<TranslationIdType>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryTranslationByArgs = {
-  id?: InputMaybe<Scalars['ID']>;
-  slug?: InputMaybe<Scalars['String']>;
-  translationId?: InputMaybe<Scalars['Int']>;
-  uri?: InputMaybe<Scalars['String']>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryTranslationsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<RootQueryToTranslationConnectionWhereArgs>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryUserArgs = {
-  id: Scalars['ID'];
-  idType?: InputMaybe<UserNodeIdTypeEnum>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryUserRoleArgs = {
-  id: Scalars['ID'];
-};
-
-/** The root entry point into the Graph */
-export type RootQueryUserRolesArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-};
-
-/** The root entry point into the Graph */
-export type RootQueryUsersArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<RootQueryToUserConnectionWhereArgs>;
 };
 
 /** Connection between the RootQuery type and the category type */
@@ -7333,66 +7970,6 @@ export type RootQueryToCommentConnectionWhereArgs = {
   status?: InputMaybe<Scalars['String']>;
   /** Include comments for a specific user ID. */
   userId?: InputMaybe<Scalars['ID']>;
-};
-
-/** Connection between the RootQuery type and the contact type */
-export type RootQueryToContactConnection = {
-  __typename?: 'RootQueryToContactConnection';
-  /** Edges for the RootQueryToContactConnection connection */
-  edges?: Maybe<Array<Maybe<RootQueryToContactConnectionEdge>>>;
-  /** The nodes of the connection, without the edges */
-  nodes?: Maybe<Array<Maybe<Contact>>>;
-  /** Information about pagination in a connection. */
-  pageInfo?: Maybe<WpPageInfo>;
-};
-
-/** An edge in a connection */
-export type RootQueryToContactConnectionEdge = {
-  __typename?: 'RootQueryToContactConnectionEdge';
-  /** A cursor for use in pagination */
-  cursor?: Maybe<Scalars['String']>;
-  /** The item at the end of the edge */
-  node?: Maybe<Contact>;
-};
-
-/** Arguments for filtering the RootQueryToContactConnection connection */
-export type RootQueryToContactConnectionWhereArgs = {
-  /** Filter the connection based on dates */
-  dateQuery?: InputMaybe<DateQueryInput>;
-  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
-  hasPassword?: InputMaybe<Scalars['Boolean']>;
-  /** Specific ID of the object */
-  id?: InputMaybe<Scalars['Int']>;
-  /** Array of IDs for the objects to retrieve */
-  in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Filter by Contacts by language code (Polylang) */
-  language?: InputMaybe<LanguageCodeFilterEnum>;
-  /** Get objects with a specific mimeType property */
-  mimeType?: InputMaybe<MimeTypeEnum>;
-  /** Slug / post_name of the object */
-  name?: InputMaybe<Scalars['String']>;
-  /** Specify objects to retrieve. Use slugs */
-  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
-  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
-  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
-  /** Use ID to return only children. Use 0 to return only top-level items */
-  parent?: InputMaybe<Scalars['ID']>;
-  /** Specify objects whose parent is in an array */
-  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Specify posts whose parent is not in an array */
-  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Show posts with a specific password. */
-  password?: InputMaybe<Scalars['String']>;
-  /** Show Posts based on a keyword search */
-  search?: InputMaybe<Scalars['String']>;
-  /** Retrieve posts where post status is in an array. */
-  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
-  /** Show posts with a specific status. */
-  status?: InputMaybe<PostStatusEnum>;
-  /** Title of the object */
-  title?: InputMaybe<Scalars['String']>;
 };
 
 /** Connection between the RootQuery type and the ContentNode type */
@@ -8250,64 +8827,6 @@ export type RootQueryToThemeConnectionEdge = {
   node?: Maybe<Theme>;
 };
 
-/** Connection between the RootQuery type and the translation type */
-export type RootQueryToTranslationConnection = {
-  __typename?: 'RootQueryToTranslationConnection';
-  /** Edges for the RootQueryToTranslationConnection connection */
-  edges?: Maybe<Array<Maybe<RootQueryToTranslationConnectionEdge>>>;
-  /** The nodes of the connection, without the edges */
-  nodes?: Maybe<Array<Maybe<Translation>>>;
-  /** Information about pagination in a connection. */
-  pageInfo?: Maybe<WpPageInfo>;
-};
-
-/** An edge in a connection */
-export type RootQueryToTranslationConnectionEdge = {
-  __typename?: 'RootQueryToTranslationConnectionEdge';
-  /** A cursor for use in pagination */
-  cursor?: Maybe<Scalars['String']>;
-  /** The item at the end of the edge */
-  node?: Maybe<Translation>;
-};
-
-/** Arguments for filtering the RootQueryToTranslationConnection connection */
-export type RootQueryToTranslationConnectionWhereArgs = {
-  /** Filter the connection based on dates */
-  dateQuery?: InputMaybe<DateQueryInput>;
-  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
-  hasPassword?: InputMaybe<Scalars['Boolean']>;
-  /** Specific ID of the object */
-  id?: InputMaybe<Scalars['Int']>;
-  /** Array of IDs for the objects to retrieve */
-  in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Get objects with a specific mimeType property */
-  mimeType?: InputMaybe<MimeTypeEnum>;
-  /** Slug / post_name of the object */
-  name?: InputMaybe<Scalars['String']>;
-  /** Specify objects to retrieve. Use slugs */
-  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
-  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
-  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
-  /** Use ID to return only children. Use 0 to return only top-level items */
-  parent?: InputMaybe<Scalars['ID']>;
-  /** Specify objects whose parent is in an array */
-  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Specify posts whose parent is not in an array */
-  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Show posts with a specific password. */
-  password?: InputMaybe<Scalars['String']>;
-  /** Show Posts based on a keyword search */
-  search?: InputMaybe<Scalars['String']>;
-  /** Retrieve posts where post status is in an array. */
-  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
-  /** Show posts with a specific status. */
-  status?: InputMaybe<PostStatusEnum>;
-  /** Title of the object */
-  title?: InputMaybe<Scalars['String']>;
-};
-
 /** Connection between the RootQuery type and the User type */
 export type RootQueryToUserConnection = {
   __typename?: 'RootQueryToUserConnection';
@@ -8419,6 +8938,44 @@ export type Seo = {
   twitterTitle?: Maybe<Scalars['String']>;
 };
 
+export type SearchResultConnection = {
+  __typename?: 'SearchResultConnection';
+  count?: Maybe<Scalars['Int']>;
+  edges: Array<SearchResultEdge>;
+  /** Elasticsearch raw results */
+  es_results?: Maybe<Array<Maybe<ElasticSearchResult>>>;
+  max_score?: Maybe<Scalars['Float']>;
+  pageInfo?: Maybe<SearchResultPageInfo>;
+};
+
+export type SearchResultEdge = {
+  __typename?: 'SearchResultEdge';
+  cursor: Scalars['String'];
+  node: SearchResultNode;
+};
+
+export type SearchResultNode = {
+  __typename?: 'SearchResultNode';
+  _score?: Maybe<Scalars['Float']>;
+  event?: Maybe<Event>;
+  id: Scalars['ID'];
+  searchCategories: Array<UnifiedSearchResultCategory>;
+  venue?: Maybe<UnifiedSearchVenue>;
+};
+
+export type SearchResultPageInfo = {
+  __typename?: 'SearchResultPageInfo';
+  endCursor?: Maybe<Scalars['String']>;
+  hasNextPage: Scalars['Boolean'];
+  hasPreviousPage: Scalars['Boolean'];
+  startCursor?: Maybe<Scalars['String']>;
+};
+
+export type SearchSuggestionConnection = {
+  __typename?: 'SearchSuggestionConnection';
+  suggestions: Array<Maybe<Suggestion>>;
+};
+
 /** Input for the sendPasswordResetEmail mutation */
 export type SendPasswordResetEmailInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
@@ -8473,12 +9030,76 @@ export type Settings = {
   writingSettingsUseSmilies?: Maybe<Scalars['Boolean']>;
 };
 
+export type Shards = {
+  __typename?: 'Shards';
+  failed?: Maybe<Scalars['Int']>;
+  skipped?: Maybe<Scalars['Int']>;
+  successful?: Maybe<Scalars['Int']>;
+  total?: Maybe<Scalars['Int']>;
+};
+
+export type SingleHit = {
+  __typename?: 'SingleHit';
+  _id?: Maybe<Scalars['String']>;
+  _index?: Maybe<Scalars['String']>;
+  _score?: Maybe<Scalars['Float']>;
+  _source?: Maybe<RawJson>;
+  _type?: Maybe<Scalars['String']>;
+};
+
 export type SiteSettings = {
   __typename?: 'SiteSettings';
   /** Attachment ID for logo */
   logo?: Maybe<Scalars['String']>;
   /** Identifying name */
   siteName?: Maybe<Scalars['String']>;
+};
+
+export enum SortOrder {
+  Ascending = 'ASCENDING',
+  Descending = 'DESCENDING',
+}
+
+export type StaticPage = {
+  __typename?: 'StaticPage';
+  contentSection?: Maybe<LocalizedObject>;
+  contentYype?: Maybe<Scalars['Int']>;
+  depth?: Maybe<Scalars['Int']>;
+  draftTitle?: Maybe<Scalars['String']>;
+  expireAt?: Maybe<Scalars['String']>;
+  expired?: Maybe<Scalars['Boolean']>;
+  firstPublishedAt?: Maybe<Scalars['String']>;
+  goLiveAt?: Maybe<Scalars['String']>;
+  hasUnpublishedChanges?: Maybe<Scalars['Boolean']>;
+  headingSection?: Maybe<LocalizedObject>;
+  id: Scalars['ID'];
+  keywords?: Maybe<LocalizedCmsKeywords>;
+  lastPublishedAt?: Maybe<Scalars['String']>;
+  latestRevisionCreatedAt?: Maybe<Scalars['String']>;
+  live?: Maybe<Scalars['Boolean']>;
+  liveRevision?: Maybe<Scalars['Int']>;
+  locked?: Maybe<Scalars['Boolean']>;
+  lockedAt?: Maybe<Scalars['String']>;
+  lockedBy?: Maybe<Scalars['String']>;
+  numchild?: Maybe<Scalars['Int']>;
+  owner?: Maybe<Scalars['Int']>;
+  path?: Maybe<Scalars['String']>;
+  searchDescription?: Maybe<Scalars['String']>;
+  seoTitle?: Maybe<Scalars['String']>;
+  showInMenus?: Maybe<Scalars['Boolean']>;
+  slug?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  urlPath?: Maybe<Scalars['String']>;
+};
+
+export type Subscription = {
+  __typename?: 'Subscription';
+  _empty?: Maybe<Scalars['String']>;
+};
+
+export type Suggestion = {
+  __typename?: 'Suggestion';
+  label: Scalars['String'];
 };
 
 /** The tag type */
@@ -8993,213 +9614,70 @@ export type Theme = Node & {
   version?: Maybe<Scalars['String']>;
 };
 
-/** The translation type */
-export type Translation = ContentNode &
-  DatabaseIdentifier &
-  Node &
-  NodeWithRevisions &
-  NodeWithTemplate &
-  NodeWithTitle &
-  UniformResourceIdentifiable & {
-    __typename?: 'Translation';
-    /** Connection between the ContentNode type and the ContentType type */
-    contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
-    /** The name of the Content Type the node belongs to */
-    contentTypeName: Scalars['String'];
-    /** The unique identifier stored in the database */
-    databaseId: Scalars['Int'];
-    /** Post publishing date. */
-    date?: Maybe<Scalars['String']>;
-    /** The publishing date set in GMT. */
-    dateGmt?: Maybe<Scalars['String']>;
-    /** The desired slug of the post */
-    desiredSlug?: Maybe<Scalars['String']>;
-    /** If a user has edited the node within the past 15 seconds, this will return the user that last edited. Null if the edit lock doesn&#039;t exist or is greater than 15 seconds */
-    editingLockedBy?: Maybe<ContentNodeToEditLockConnectionEdge>;
-    /** The RSS enclosure for the object */
-    enclosure?: Maybe<Scalars['String']>;
-    /** Connection between the ContentNode type and the EnqueuedScript type */
-    enqueuedScripts?: Maybe<ContentNodeToEnqueuedScriptConnection>;
-    /** Connection between the ContentNode type and the EnqueuedStylesheet type */
-    enqueuedStylesheets?: Maybe<ContentNodeToEnqueuedStylesheetConnection>;
-    /** The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table. */
-    guid?: Maybe<Scalars['String']>;
-    /** The globally unique identifier of the translation-cpt object. */
-    id: Scalars['ID'];
-    /** Whether the node is a Content Node */
-    isContentNode: Scalars['Boolean'];
-    /** Whether the object is a node in the preview state */
-    isPreview?: Maybe<Scalars['Boolean']>;
-    /** Whether the object is restricted from the current viewer */
-    isRestricted?: Maybe<Scalars['Boolean']>;
-    /** True if the node is a revision of another node */
-    isRevision?: Maybe<Scalars['Boolean']>;
-    /** Whether the node is a Term */
-    isTermNode: Scalars['Boolean'];
-    /** The user that most recently edited the node */
-    lastEditedBy?: Maybe<ContentNodeToEditLastConnectionEdge>;
-    /** The permalink of the post */
-    link?: Maybe<Scalars['String']>;
-    /** The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time. */
-    modified?: Maybe<Scalars['String']>;
-    /** The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT. */
-    modifiedGmt?: Maybe<Scalars['String']>;
-    /** Connection between the translation type and the translation type */
-    preview?: Maybe<TranslationToPreviewConnectionEdge>;
-    /** The database id of the preview node */
-    previewRevisionDatabaseId?: Maybe<Scalars['Int']>;
-    /** Whether the object is a node in the preview state */
-    previewRevisionId?: Maybe<Scalars['ID']>;
-    /** If the current node is a revision, this field exposes the node this is a revision of. Returns null if the node is not a revision of another node. */
-    revisionOf?: Maybe<NodeWithRevisionsToContentNodeConnectionEdge>;
-    /** Connection between the translation type and the translation type */
-    revisions?: Maybe<TranslationToRevisionConnection>;
-    /** The SEO Framework data of the translation */
-    seo?: Maybe<Seo>;
-    /** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
-    slug?: Maybe<Scalars['String']>;
-    /** The current status of the object */
-    status?: Maybe<Scalars['String']>;
-    /** The template assigned to the node */
-    template?: Maybe<ContentTemplate>;
-    /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
-    title?: Maybe<Scalars['String']>;
-    /**
-     * The id field matches the WP_Post-&gt;ID field.
-     * @deprecated Deprecated in favor of the databaseId field
-     */
-    translationId: Scalars['Int'];
-    /** Translations */
-    translations?: Maybe<Array<Maybe<TranslationResponse>>>;
-    /** The unique resource identifier path */
-    uri?: Maybe<Scalars['String']>;
-  };
-
-/** The translation type */
-export type TranslationEnqueuedScriptsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
+export type Time = {
+  __typename?: 'Time';
+  description: Scalars['String'];
+  endTime: Scalars['String'];
+  endTimeOnNextDay: Scalars['Boolean'];
+  fullDay: Scalars['Boolean'];
+  name: Scalars['String'];
+  periods: Array<Scalars['Int']>;
+  resourceState: ResourceState;
+  startTime: Scalars['String'];
 };
 
-/** The translation type */
-export type TranslationEnqueuedStylesheetsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
+/** any kind of description answering the question "when". */
+export type TimeDescription = {
+  __typename?: 'TimeDescription';
+  ending?: Maybe<Scalars['DateTime']>;
+  otherTime?: Maybe<TimeDescription>;
+  starting?: Maybe<Scalars['DateTime']>;
 };
 
-/** The translation type */
-export type TranslationRevisionsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<TranslationToRevisionConnectionWhereArgs>;
-};
-
-/** The translation type */
-export type TranslationTitleArgs = {
-  format?: InputMaybe<PostObjectFieldFormatEnum>;
-};
-
-/** The Type of Identifier used to fetch a single resource. Default is ID. */
-export enum TranslationIdType {
-  /** Identify a resource by the Database ID. */
-  DatabaseId = 'DATABASE_ID',
-  /** Identify a resource by the (hashed) Global ID. */
-  Id = 'ID',
-  /** Identify a resource by the slug. Available to non-hierarchcial Types where the slug is a unique identifier. */
-  Slug = 'SLUG',
-  /** Identify a resource by the URI. */
-  Uri = 'URI',
+export enum UnifiedSearchLanguage {
+  English = 'ENGLISH',
+  Finnish = 'FINNISH',
+  Swedish = 'SWEDISH',
 }
 
-/** Translation with language/value pairs */
-export type TranslationItems = {
-  __typename?: 'TranslationItems';
-  /** Translation string */
-  en?: Maybe<Scalars['String']>;
-  /** Translation string */
-  fi?: Maybe<Scalars['String']>;
-  /** Translation string */
-  sv?: Maybe<Scalars['String']>;
-};
+/** TODO: take from Profile or external source */
+export enum UnifiedSearchLanguageEnum {
+  Fi = 'FI',
+}
 
-/** Translation response contains translation key and translations */
-export type TranslationResponse = {
-  __typename?: 'TranslationResponse';
-  /** Translation key for frontend */
-  key?: Maybe<Scalars['String']>;
-  /** Translations for frontend */
-  translations?: Maybe<TranslationItems>;
-};
+export enum UnifiedSearchResultCategory {
+  Article = 'ARTICLE',
+  Artwork = 'ARTWORK',
+  Enrollable = 'ENROLLABLE',
+  Event = 'EVENT',
+  PointOfInterest = 'POINT_OF_INTEREST',
+  Reservable = 'RESERVABLE',
+  Service = 'SERVICE',
+}
 
-/** Connection between the translation type and the translation type */
-export type TranslationToPreviewConnectionEdge = {
-  __typename?: 'TranslationToPreviewConnectionEdge';
-  /** The node of the connection, without the edges */
-  node?: Maybe<Translation>;
-};
-
-/** Connection between the translation type and the translation type */
-export type TranslationToRevisionConnection = {
-  __typename?: 'TranslationToRevisionConnection';
-  /** Edges for the translationToRevisionConnection connection */
-  edges?: Maybe<Array<Maybe<TranslationToRevisionConnectionEdge>>>;
-  /** The nodes of the connection, without the edges */
-  nodes?: Maybe<Array<Maybe<Translation>>>;
-  /** Information about pagination in a connection. */
-  pageInfo?: Maybe<WpPageInfo>;
-};
-
-/** An edge in a connection */
-export type TranslationToRevisionConnectionEdge = {
-  __typename?: 'TranslationToRevisionConnectionEdge';
-  /** A cursor for use in pagination */
-  cursor?: Maybe<Scalars['String']>;
-  /** The item at the end of the edge */
-  node?: Maybe<Translation>;
-};
-
-/** Arguments for filtering the translationToRevisionConnection connection */
-export type TranslationToRevisionConnectionWhereArgs = {
-  /** Filter the connection based on dates */
-  dateQuery?: InputMaybe<DateQueryInput>;
-  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
-  hasPassword?: InputMaybe<Scalars['Boolean']>;
-  /** Specific ID of the object */
-  id?: InputMaybe<Scalars['Int']>;
-  /** Array of IDs for the objects to retrieve */
-  in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Get objects with a specific mimeType property */
-  mimeType?: InputMaybe<MimeTypeEnum>;
-  /** Slug / post_name of the object */
-  name?: InputMaybe<Scalars['String']>;
-  /** Specify objects to retrieve. Use slugs */
-  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
-  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
-  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
-  /** Use ID to return only children. Use 0 to return only top-level items */
-  parent?: InputMaybe<Scalars['ID']>;
-  /** Specify objects whose parent is in an array */
-  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Specify posts whose parent is not in an array */
-  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Show posts with a specific password. */
-  password?: InputMaybe<Scalars['String']>;
-  /** Show Posts based on a keyword search */
-  search?: InputMaybe<Scalars['String']>;
-  /** Retrieve posts where post status is in an array. */
-  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
-  /** Show posts with a specific status. */
-  status?: InputMaybe<PostStatusEnum>;
-  /** Title of the object */
-  title?: InputMaybe<Scalars['String']>;
+/**
+ * A place that forms a unit and can be used for some specific purpose -
+ * respa unit or resource, service map unit, beta.kultus venue, linked
+ * events place, Kukkuu venue
+ */
+export type UnifiedSearchVenue = {
+  __typename?: 'UnifiedSearchVenue';
+  accessibilityProfile?: Maybe<AccessibilityProfile>;
+  additionalInfo?: Maybe<Scalars['String']>;
+  arrivalInstructions?: Maybe<Scalars['String']>;
+  contactDetails?: Maybe<ContactInfo>;
+  description?: Maybe<LanguageString>;
+  descriptionResources?: Maybe<DescriptionResources>;
+  facilities?: Maybe<Array<VenueFacility>>;
+  images?: Maybe<Array<Maybe<LocationImage>>>;
+  location?: Maybe<LocationDescription>;
+  manager?: Maybe<LegalEntity>;
+  meta?: Maybe<NodeMeta>;
+  name?: Maybe<LanguageString>;
+  ontologyWords?: Maybe<Array<Maybe<OntologyWord>>>;
+  openingHours?: Maybe<OpeningHours>;
+  partOf?: Maybe<UnifiedSearchVenue>;
+  reservationPolicy?: Maybe<VenueReservationPolicy>;
 };
 
 /** Any node that has a URI */
@@ -9246,7 +9724,7 @@ export type UpdateCategoryPayload = {
 export type UpdateCollectionInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
   clientMutationId?: InputMaybe<Scalars['String']>;
-  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17 */
   date?: InputMaybe<Scalars['String']>;
   /** The ID of the collection object */
   id: Scalars['ID'];
@@ -9288,7 +9766,7 @@ export type UpdateCommentInput = {
   commentOn?: InputMaybe<Scalars['Int']>;
   /** Content of the comment. */
   content?: InputMaybe<Scalars['String']>;
-  /** The date of the object. Preferable to enter as year/month/day ( e.g. 01/31/2017 ) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  /** The date of the object. Preferable to enter as year/month/day ( e.g. 01/31/2017 ) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17 */
   date?: InputMaybe<Scalars['String']>;
   /** The ID of the comment being updated. */
   id: Scalars['ID'];
@@ -9309,41 +9787,11 @@ export type UpdateCommentPayload = {
   success?: Maybe<Scalars['Boolean']>;
 };
 
-/** Input for the updateContact mutation */
-export type UpdateContactInput = {
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: InputMaybe<Scalars['String']>;
-  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
-  date?: InputMaybe<Scalars['String']>;
-  /** The ID of the contact object */
-  id: Scalars['ID'];
-  language?: InputMaybe<LanguageCodeEnum>;
-  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
-  menuOrder?: InputMaybe<Scalars['Int']>;
-  /** The password used to protect the content of the object */
-  password?: InputMaybe<Scalars['String']>;
-  /** The slug of the object */
-  slug?: InputMaybe<Scalars['String']>;
-  /** The status of the object */
-  status?: InputMaybe<PostStatusEnum>;
-  /** The title of the object */
-  title?: InputMaybe<Scalars['String']>;
-};
-
-/** The payload for the updateContact mutation */
-export type UpdateContactPayload = {
-  __typename?: 'UpdateContactPayload';
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The Post object mutation type. */
-  contact?: Maybe<Contact>;
-};
-
 /** Input for the updateLandingPage mutation */
 export type UpdateLandingPageInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
   clientMutationId?: InputMaybe<Scalars['String']>;
-  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17 */
   date?: InputMaybe<Scalars['String']>;
   /** The ID of the landingPage object */
   id: Scalars['ID'];
@@ -9423,7 +9871,7 @@ export type UpdatePageInput = {
   clientMutationId?: InputMaybe<Scalars['String']>;
   /** The content of the object */
   content?: InputMaybe<Scalars['String']>;
-  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17 */
   date?: InputMaybe<Scalars['String']>;
   /** The ID of the page object */
   id: Scalars['ID'];
@@ -9486,7 +9934,7 @@ export type UpdatePostInput = {
   clientMutationId?: InputMaybe<Scalars['String']>;
   /** The content of the object */
   content?: InputMaybe<Scalars['String']>;
-  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17 */
   date?: InputMaybe<Scalars['String']>;
   /** The ID of the post object */
   id: Scalars['ID'];
@@ -9522,7 +9970,7 @@ export type UpdateReleaseInput = {
   clientMutationId?: InputMaybe<Scalars['String']>;
   /** The content of the object */
   content?: InputMaybe<Scalars['String']>;
-  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17 */
   date?: InputMaybe<Scalars['String']>;
   /** The ID of the release object */
   id: Scalars['ID'];
@@ -9621,35 +10069,6 @@ export type UpdateTagPayload = {
   clientMutationId?: Maybe<Scalars['String']>;
   /** The created post_tag */
   tag?: Maybe<Tag>;
-};
-
-/** Input for the updateTranslation mutation */
-export type UpdateTranslationInput = {
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: InputMaybe<Scalars['String']>;
-  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
-  date?: InputMaybe<Scalars['String']>;
-  /** The ID of the translation object */
-  id: Scalars['ID'];
-  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
-  menuOrder?: InputMaybe<Scalars['Int']>;
-  /** The password used to protect the content of the object */
-  password?: InputMaybe<Scalars['String']>;
-  /** The slug of the object */
-  slug?: InputMaybe<Scalars['String']>;
-  /** The status of the object */
-  status?: InputMaybe<PostStatusEnum>;
-  /** The title of the object */
-  title?: InputMaybe<Scalars['String']>;
-};
-
-/** The payload for the updateTranslation mutation */
-export type UpdateTranslationPayload = {
-  __typename?: 'UpdateTranslationPayload';
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The Post object mutation type. */
-  translation?: Maybe<Translation>;
 };
 
 /** Input for the updateUser mutation */
@@ -10361,9 +10780,53 @@ export enum UsersConnectionSearchColumnEnum {
   Login = 'LOGIN',
   /** A URL-friendly name for the user. The default is the user's username. */
   Nicename = 'NICENAME',
-  /** The URL of the user\s website. */
+  /** The URL of the users website. */
   Url = 'URL',
 }
+
+export type Venue = {
+  __typename?: 'Venue';
+  accessibilitySentences: Array<Maybe<AccessibilitySentences>>;
+  addressLocality?: Maybe<Scalars['String']>;
+  connections: Array<Maybe<Connection>>;
+  dataSource?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  email?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  image?: Maybe<Scalars['String']>;
+  infoUrl?: Maybe<Scalars['String']>;
+  /**
+   * This field is currently disabled because the Hauki integration is not enabled
+   * @deprecated Hauki integration is currently disabled so this field can not be accessed
+   */
+  isOpen?: Maybe<Scalars['Boolean']>;
+  name?: Maybe<Scalars['String']>;
+  ontologyTree: Array<Maybe<Ontology>>;
+  ontologyWords: Array<Maybe<Ontology>>;
+  /**
+   * This field is currently disabled because the Hauki integration is not enabled
+   * @deprecated Hauki integration is currently disabled so this field can not be accessed
+   */
+  openingHours?: Maybe<Array<OpeningHour>>;
+  position?: Maybe<Point>;
+  postalCode?: Maybe<Scalars['String']>;
+  streetAddress?: Maybe<Scalars['String']>;
+  telephone?: Maybe<Scalars['String']>;
+};
+
+/** TODO: combine beta.kultus Venue stuff with respa equipment type */
+export type VenueFacility = {
+  __typename?: 'VenueFacility';
+  categories?: Maybe<Array<KeywordString>>;
+  meta?: Maybe<NodeMeta>;
+  name: Scalars['String'];
+};
+
+/** TODO: this comes from respa resource/unit types */
+export type VenueReservationPolicy = {
+  __typename?: 'VenueReservationPolicy';
+  todo?: Maybe<Scalars['String']>;
+};
 
 /** Information about pagination in a connection. */
 export type WpPageInfo = {
@@ -10389,7457 +10852,105 @@ export type WritingSettings = {
   useSmilies?: Maybe<Scalars['Boolean']>;
 };
 
-export type CategoriesFragment = {
-  __typename?: 'PostToCategoryConnection';
-  edges?: Array<{
-    __typename?: 'PostToCategoryConnectionEdge';
-    node?: { __typename?: 'Category'; id: string; name?: string | null } | null;
-  } | null> | null;
-};
-
-export type PostFragment = {
-  __typename?: 'Post';
+export type ListVenueFragment = {
+  __typename?: 'Venue';
+  description?: string | null;
   id: string;
-  date?: string | null;
-  content?: string | null;
-  slug?: string | null;
-  title?: string | null;
-  uri?: string | null;
-  link?: string | null;
-  lead?: string | null;
-  categories?: {
-    __typename?: 'PostToCategoryConnection';
-    edges?: Array<{
-      __typename?: 'PostToCategoryConnectionEdge';
-      node?: {
-        __typename?: 'Category';
-        id: string;
-        name?: string | null;
-      } | null;
-    } | null> | null;
-  } | null;
-  seo?: {
-    __typename?: 'SEO';
-    title?: string | null;
-    description?: string | null;
-    openGraphTitle?: string | null;
-    openGraphDescription?: string | null;
-    openGraphType?: string | null;
-    twitterTitle?: string | null;
-    twitterDescription?: string | null;
-    canonicalUrl?: string | null;
-    socialImage?: {
-      __typename?: 'MediaItem';
-      mediaItemUrl?: string | null;
-    } | null;
-  } | null;
-  language?: {
-    __typename?: 'Language';
-    code?: LanguageCodeEnum | null;
-    id: string;
-    locale?: string | null;
-    name?: string | null;
-    slug?: string | null;
-  } | null;
-  translations?: Array<{
-    __typename?: 'Post';
-    uri?: string | null;
-    slug?: string | null;
-    language?: {
-      __typename?: 'Language';
-      code?: LanguageCodeEnum | null;
-      id: string;
-      locale?: string | null;
-      name?: string | null;
-      slug?: string | null;
-    } | null;
-    seo?: {
-      __typename?: 'SEO';
-      title?: string | null;
-      description?: string | null;
-      openGraphTitle?: string | null;
-      openGraphDescription?: string | null;
-      openGraphType?: string | null;
-      twitterTitle?: string | null;
-      twitterDescription?: string | null;
-      canonicalUrl?: string | null;
-      socialImage?: {
-        __typename?: 'MediaItem';
-        mediaItemUrl?: string | null;
-      } | null;
-    } | null;
-  } | null> | null;
-  featuredImage?: {
-    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-    node?: {
-      __typename?: 'MediaItem';
-      mediaItemUrl?: string | null;
-      link?: string | null;
-      altText?: string | null;
-      mimeType?: string | null;
-      title?: string | null;
-      uri?: string | null;
-    } | null;
-  } | null;
-  sidebar?: Array<
-    | {
-        __typename: 'LayoutArticles';
-        title?: string | null;
-        showAllLink?: string | null;
-        articles?: Array<{
-          __typename?: 'Post';
-          id: string;
-          uri?: string | null;
-          slug?: string | null;
-          link?: string | null;
-          date?: string | null;
-          title?: string | null;
-          lead?: string | null;
-          featuredImage?: {
-            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-            node?: {
-              __typename?: 'MediaItem';
-              altText?: string | null;
-              mediaItemUrl?: string | null;
-            } | null;
-          } | null;
-          categories?: {
-            __typename?: 'PostToCategoryConnection';
-            nodes?: Array<{
-              __typename?: 'Category';
-              name?: string | null;
-            } | null> | null;
-          } | null;
-        } | null> | null;
-      }
-    | {
-        __typename: 'LayoutLinkList';
-        anchor?: string | null;
-        title?: string | null;
-        description?: string | null;
-        links?: Array<{
-          __typename?: 'Link';
-          target?: string | null;
-          title?: string | null;
-          url?: string | null;
-        } | null> | null;
-      }
-    | {
-        __typename: 'LayoutPages';
-        title?: string | null;
-        description?: string | null;
-        pages?: Array<{
-          __typename?: 'Page';
-          id: string;
-          uri?: string | null;
-          slug?: string | null;
-          link?: string | null;
-          date?: string | null;
-          title?: string | null;
-          lead?: string | null;
-          featuredImage?: {
-            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-            node?: {
-              __typename?: 'MediaItem';
-              altText?: string | null;
-              mediaItemUrl?: string | null;
-            } | null;
-          } | null;
-        } | null> | null;
-      }
-    | null
-  > | null;
-  modules?: Array<
-    | {
-        __typename: 'EventSearch';
-        title?: string | null;
-        url?: string | null;
-        module?: string | null;
-      }
-    | {
-        __typename: 'EventSearchCarousel';
-        title?: string | null;
-        showAllLink?: string | null;
-        url?: string | null;
-        orderNewestFirst?: boolean | null;
-        eventsNearby?: boolean | null;
-        amountOfCards?: number | null;
-      }
-    | {
-        __typename: 'EventSelected';
-        title?: string | null;
-        events?: Array<string | null> | null;
-        module?: string | null;
-      }
-    | {
-        __typename: 'EventSelectedCarousel';
-        title?: string | null;
-        module?: string | null;
-        showAllLink?: string | null;
-        eventsNearby?: boolean | null;
-        events?: Array<string | null> | null;
-        amountOfCardsPerRow?: number | null;
-        amountOfCards?: number | null;
-      }
-    | { __typename?: 'LayoutArticleHighlights' }
-    | {
-        __typename: 'LayoutArticles';
-        title?: string | null;
-        showAllLink?: string | null;
-        articles?: Array<{
-          __typename?: 'Post';
-          id: string;
-          uri?: string | null;
-          slug?: string | null;
-          link?: string | null;
-          date?: string | null;
-          title?: string | null;
-          lead?: string | null;
-          featuredImage?: {
-            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-            node?: {
-              __typename?: 'MediaItem';
-              altText?: string | null;
-              mediaItemUrl?: string | null;
-            } | null;
-          } | null;
-          categories?: {
-            __typename?: 'PostToCategoryConnection';
-            nodes?: Array<{
-              __typename?: 'Category';
-              name?: string | null;
-            } | null> | null;
-          } | null;
-        } | null> | null;
-      }
-    | {
-        __typename: 'LayoutArticlesCarousel';
-        title?: string | null;
-        showMore?: Array<string | null> | null;
-        showAllLink?: string | null;
-        articles?: Array<{
-          __typename?: 'Post';
-          id: string;
-          uri?: string | null;
-          slug?: string | null;
-          link?: string | null;
-          date?: string | null;
-          title?: string | null;
-          lead?: string | null;
-          featuredImage?: {
-            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-            node?: {
-              __typename?: 'MediaItem';
-              altText?: string | null;
-              mediaItemUrl?: string | null;
-            } | null;
-          } | null;
-          categories?: {
-            __typename?: 'PostToCategoryConnection';
-            nodes?: Array<{
-              __typename?: 'Category';
-              name?: string | null;
-            } | null> | null;
-          } | null;
-        } | null> | null;
-      }
-    | {
-        __typename: 'LayoutCollection';
-        collection?: {
-          __typename?: 'Collection';
-          title?: string | null;
-        } | null;
-      }
-    | { __typename?: 'LayoutContact' }
-    | {
-        __typename: 'LayoutPages';
-        title?: string | null;
-        description?: string | null;
-        pages?: Array<{
-          __typename?: 'Page';
-          id: string;
-          uri?: string | null;
-          slug?: string | null;
-          link?: string | null;
-          date?: string | null;
-          title?: string | null;
-          lead?: string | null;
-          featuredImage?: {
-            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-            node?: {
-              __typename?: 'MediaItem';
-              altText?: string | null;
-              mediaItemUrl?: string | null;
-            } | null;
-          } | null;
-        } | null> | null;
-      }
-    | {
-        __typename: 'LayoutPagesCarousel';
-        title?: string | null;
-        description?: string | null;
-        pages?: Array<{
-          __typename?: 'Page';
-          id: string;
-          uri?: string | null;
-          slug?: string | null;
-          link?: string | null;
-          date?: string | null;
-          title?: string | null;
-          lead?: string | null;
-          featuredImage?: {
-            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-            node?: {
-              __typename?: 'MediaItem';
-              altText?: string | null;
-              mediaItemUrl?: string | null;
-            } | null;
-          } | null;
-        } | null> | null;
-      }
-    | {
-        __typename: 'LocationsSelected';
-        title?: string | null;
-        locations?: Array<number | null> | null;
-        module?: string | null;
-      }
-    | null
-  > | null;
-};
-
-export type ArticleQueryVariables = Exact<{
-  id: Scalars['ID'];
-}>;
-
-export type ArticleQuery = {
-  __typename?: 'RootQuery';
-  post?: {
-    __typename?: 'Post';
-    id: string;
-    date?: string | null;
-    content?: string | null;
-    slug?: string | null;
-    title?: string | null;
-    uri?: string | null;
-    link?: string | null;
-    lead?: string | null;
-    categories?: {
-      __typename?: 'PostToCategoryConnection';
-      edges?: Array<{
-        __typename?: 'PostToCategoryConnectionEdge';
-        node?: {
-          __typename?: 'Category';
-          id: string;
-          name?: string | null;
-        } | null;
-      } | null> | null;
-    } | null;
-    seo?: {
-      __typename?: 'SEO';
-      title?: string | null;
-      description?: string | null;
-      openGraphTitle?: string | null;
-      openGraphDescription?: string | null;
-      openGraphType?: string | null;
-      twitterTitle?: string | null;
-      twitterDescription?: string | null;
-      canonicalUrl?: string | null;
-      socialImage?: {
-        __typename?: 'MediaItem';
-        mediaItemUrl?: string | null;
-      } | null;
-    } | null;
-    language?: {
-      __typename?: 'Language';
-      code?: LanguageCodeEnum | null;
-      id: string;
-      locale?: string | null;
-      name?: string | null;
-      slug?: string | null;
-    } | null;
-    translations?: Array<{
-      __typename?: 'Post';
-      uri?: string | null;
-      slug?: string | null;
-      language?: {
-        __typename?: 'Language';
-        code?: LanguageCodeEnum | null;
-        id: string;
-        locale?: string | null;
-        name?: string | null;
-        slug?: string | null;
-      } | null;
-      seo?: {
-        __typename?: 'SEO';
-        title?: string | null;
-        description?: string | null;
-        openGraphTitle?: string | null;
-        openGraphDescription?: string | null;
-        openGraphType?: string | null;
-        twitterTitle?: string | null;
-        twitterDescription?: string | null;
-        canonicalUrl?: string | null;
-        socialImage?: {
-          __typename?: 'MediaItem';
-          mediaItemUrl?: string | null;
-        } | null;
-      } | null;
-    } | null> | null;
-    featuredImage?: {
-      __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-      node?: {
-        __typename?: 'MediaItem';
-        mediaItemUrl?: string | null;
-        link?: string | null;
-        altText?: string | null;
-        mimeType?: string | null;
-        title?: string | null;
-        uri?: string | null;
-      } | null;
-    } | null;
-    sidebar?: Array<
-      | {
-          __typename: 'LayoutArticles';
-          title?: string | null;
-          showAllLink?: string | null;
-          articles?: Array<{
-            __typename?: 'Post';
-            id: string;
-            uri?: string | null;
-            slug?: string | null;
-            link?: string | null;
-            date?: string | null;
-            title?: string | null;
-            lead?: string | null;
-            featuredImage?: {
-              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-              node?: {
-                __typename?: 'MediaItem';
-                altText?: string | null;
-                mediaItemUrl?: string | null;
-              } | null;
-            } | null;
-            categories?: {
-              __typename?: 'PostToCategoryConnection';
-              nodes?: Array<{
-                __typename?: 'Category';
-                name?: string | null;
-              } | null> | null;
-            } | null;
-          } | null> | null;
-        }
-      | {
-          __typename: 'LayoutLinkList';
-          anchor?: string | null;
-          title?: string | null;
-          description?: string | null;
-          links?: Array<{
-            __typename?: 'Link';
-            target?: string | null;
-            title?: string | null;
-            url?: string | null;
-          } | null> | null;
-        }
-      | {
-          __typename: 'LayoutPages';
-          title?: string | null;
-          description?: string | null;
-          pages?: Array<{
-            __typename?: 'Page';
-            id: string;
-            uri?: string | null;
-            slug?: string | null;
-            link?: string | null;
-            date?: string | null;
-            title?: string | null;
-            lead?: string | null;
-            featuredImage?: {
-              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-              node?: {
-                __typename?: 'MediaItem';
-                altText?: string | null;
-                mediaItemUrl?: string | null;
-              } | null;
-            } | null;
-          } | null> | null;
-        }
-      | null
-    > | null;
-    modules?: Array<
-      | {
-          __typename: 'EventSearch';
-          title?: string | null;
-          url?: string | null;
-          module?: string | null;
-        }
-      | {
-          __typename: 'EventSearchCarousel';
-          title?: string | null;
-          showAllLink?: string | null;
-          url?: string | null;
-          orderNewestFirst?: boolean | null;
-          eventsNearby?: boolean | null;
-          amountOfCards?: number | null;
-        }
-      | {
-          __typename: 'EventSelected';
-          title?: string | null;
-          events?: Array<string | null> | null;
-          module?: string | null;
-        }
-      | {
-          __typename: 'EventSelectedCarousel';
-          title?: string | null;
-          module?: string | null;
-          showAllLink?: string | null;
-          eventsNearby?: boolean | null;
-          events?: Array<string | null> | null;
-          amountOfCardsPerRow?: number | null;
-          amountOfCards?: number | null;
-        }
-      | { __typename?: 'LayoutArticleHighlights' }
-      | {
-          __typename: 'LayoutArticles';
-          title?: string | null;
-          showAllLink?: string | null;
-          articles?: Array<{
-            __typename?: 'Post';
-            id: string;
-            uri?: string | null;
-            slug?: string | null;
-            link?: string | null;
-            date?: string | null;
-            title?: string | null;
-            lead?: string | null;
-            featuredImage?: {
-              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-              node?: {
-                __typename?: 'MediaItem';
-                altText?: string | null;
-                mediaItemUrl?: string | null;
-              } | null;
-            } | null;
-            categories?: {
-              __typename?: 'PostToCategoryConnection';
-              nodes?: Array<{
-                __typename?: 'Category';
-                name?: string | null;
-              } | null> | null;
-            } | null;
-          } | null> | null;
-        }
-      | {
-          __typename: 'LayoutArticlesCarousel';
-          title?: string | null;
-          showMore?: Array<string | null> | null;
-          showAllLink?: string | null;
-          articles?: Array<{
-            __typename?: 'Post';
-            id: string;
-            uri?: string | null;
-            slug?: string | null;
-            link?: string | null;
-            date?: string | null;
-            title?: string | null;
-            lead?: string | null;
-            featuredImage?: {
-              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-              node?: {
-                __typename?: 'MediaItem';
-                altText?: string | null;
-                mediaItemUrl?: string | null;
-              } | null;
-            } | null;
-            categories?: {
-              __typename?: 'PostToCategoryConnection';
-              nodes?: Array<{
-                __typename?: 'Category';
-                name?: string | null;
-              } | null> | null;
-            } | null;
-          } | null> | null;
-        }
-      | {
-          __typename: 'LayoutCollection';
-          collection?: {
-            __typename?: 'Collection';
-            title?: string | null;
-          } | null;
-        }
-      | { __typename?: 'LayoutContact' }
-      | {
-          __typename: 'LayoutPages';
-          title?: string | null;
-          description?: string | null;
-          pages?: Array<{
-            __typename?: 'Page';
-            id: string;
-            uri?: string | null;
-            slug?: string | null;
-            link?: string | null;
-            date?: string | null;
-            title?: string | null;
-            lead?: string | null;
-            featuredImage?: {
-              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-              node?: {
-                __typename?: 'MediaItem';
-                altText?: string | null;
-                mediaItemUrl?: string | null;
-              } | null;
-            } | null;
-          } | null> | null;
-        }
-      | {
-          __typename: 'LayoutPagesCarousel';
-          title?: string | null;
-          description?: string | null;
-          pages?: Array<{
-            __typename?: 'Page';
-            id: string;
-            uri?: string | null;
-            slug?: string | null;
-            link?: string | null;
-            date?: string | null;
-            title?: string | null;
-            lead?: string | null;
-            featuredImage?: {
-              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-              node?: {
-                __typename?: 'MediaItem';
-                altText?: string | null;
-                mediaItemUrl?: string | null;
-              } | null;
-            } | null;
-          } | null> | null;
-        }
-      | {
-          __typename: 'LocationsSelected';
-          title?: string | null;
-          locations?: Array<number | null> | null;
-          module?: string | null;
-        }
-      | null
-    > | null;
-  } | null;
-};
-
-export type PostsQueryVariables = Exact<{
-  first?: InputMaybe<Scalars['Int']>;
-  after?: InputMaybe<Scalars['String']>;
-  search?: InputMaybe<Scalars['String']>;
-  language?: InputMaybe<LanguageCodeFilterEnum>;
-  categories?: InputMaybe<
-    Array<InputMaybe<Scalars['ID']>> | InputMaybe<Scalars['ID']>
-  >;
-  tags?: InputMaybe<
-    Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>
-  >;
-}>;
-
-export type PostsQuery = {
-  __typename?: 'RootQuery';
-  posts?: {
-    __typename?: 'RootQueryToPostConnection';
-    pageInfo?: {
-      __typename?: 'WPPageInfo';
-      endCursor?: string | null;
-      hasNextPage: boolean;
-      hasPreviousPage: boolean;
-      startCursor?: string | null;
-    } | null;
-    edges?: Array<{
-      __typename?: 'RootQueryToPostConnectionEdge';
-      cursor?: string | null;
-      node?: {
-        __typename?: 'Post';
-        id: string;
-        date?: string | null;
-        content?: string | null;
-        slug?: string | null;
-        title?: string | null;
-        uri?: string | null;
-        link?: string | null;
-        lead?: string | null;
-        categories?: {
-          __typename?: 'PostToCategoryConnection';
-          edges?: Array<{
-            __typename?: 'PostToCategoryConnectionEdge';
-            node?: {
-              __typename?: 'Category';
-              id: string;
-              name?: string | null;
-            } | null;
-          } | null> | null;
-        } | null;
-        seo?: {
-          __typename?: 'SEO';
-          title?: string | null;
-          description?: string | null;
-          openGraphTitle?: string | null;
-          openGraphDescription?: string | null;
-          openGraphType?: string | null;
-          twitterTitle?: string | null;
-          twitterDescription?: string | null;
-          canonicalUrl?: string | null;
-          socialImage?: {
-            __typename?: 'MediaItem';
-            mediaItemUrl?: string | null;
-          } | null;
-        } | null;
-        language?: {
-          __typename?: 'Language';
-          code?: LanguageCodeEnum | null;
-          id: string;
-          locale?: string | null;
-          name?: string | null;
-          slug?: string | null;
-        } | null;
-        translations?: Array<{
-          __typename?: 'Post';
-          uri?: string | null;
-          slug?: string | null;
-          language?: {
-            __typename?: 'Language';
-            code?: LanguageCodeEnum | null;
-            id: string;
-            locale?: string | null;
-            name?: string | null;
-            slug?: string | null;
-          } | null;
-          seo?: {
-            __typename?: 'SEO';
-            title?: string | null;
-            description?: string | null;
-            openGraphTitle?: string | null;
-            openGraphDescription?: string | null;
-            openGraphType?: string | null;
-            twitterTitle?: string | null;
-            twitterDescription?: string | null;
-            canonicalUrl?: string | null;
-            socialImage?: {
-              __typename?: 'MediaItem';
-              mediaItemUrl?: string | null;
-            } | null;
-          } | null;
-        } | null> | null;
-        featuredImage?: {
-          __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-          node?: {
-            __typename?: 'MediaItem';
-            mediaItemUrl?: string | null;
-            link?: string | null;
-            altText?: string | null;
-            mimeType?: string | null;
-            title?: string | null;
-            uri?: string | null;
-          } | null;
-        } | null;
-        sidebar?: Array<
-          | {
-              __typename: 'LayoutArticles';
-              title?: string | null;
-              showAllLink?: string | null;
-              articles?: Array<{
-                __typename?: 'Post';
-                id: string;
-                uri?: string | null;
-                slug?: string | null;
-                link?: string | null;
-                date?: string | null;
-                title?: string | null;
-                lead?: string | null;
-                featuredImage?: {
-                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                  node?: {
-                    __typename?: 'MediaItem';
-                    altText?: string | null;
-                    mediaItemUrl?: string | null;
-                  } | null;
-                } | null;
-                categories?: {
-                  __typename?: 'PostToCategoryConnection';
-                  nodes?: Array<{
-                    __typename?: 'Category';
-                    name?: string | null;
-                  } | null> | null;
-                } | null;
-              } | null> | null;
-            }
-          | {
-              __typename: 'LayoutLinkList';
-              anchor?: string | null;
-              title?: string | null;
-              description?: string | null;
-              links?: Array<{
-                __typename?: 'Link';
-                target?: string | null;
-                title?: string | null;
-                url?: string | null;
-              } | null> | null;
-            }
-          | {
-              __typename: 'LayoutPages';
-              title?: string | null;
-              description?: string | null;
-              pages?: Array<{
-                __typename?: 'Page';
-                id: string;
-                uri?: string | null;
-                slug?: string | null;
-                link?: string | null;
-                date?: string | null;
-                title?: string | null;
-                lead?: string | null;
-                featuredImage?: {
-                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                  node?: {
-                    __typename?: 'MediaItem';
-                    altText?: string | null;
-                    mediaItemUrl?: string | null;
-                  } | null;
-                } | null;
-              } | null> | null;
-            }
-          | null
-        > | null;
-        modules?: Array<
-          | {
-              __typename: 'EventSearch';
-              title?: string | null;
-              url?: string | null;
-              module?: string | null;
-            }
-          | {
-              __typename: 'EventSearchCarousel';
-              title?: string | null;
-              showAllLink?: string | null;
-              url?: string | null;
-              orderNewestFirst?: boolean | null;
-              eventsNearby?: boolean | null;
-              amountOfCards?: number | null;
-            }
-          | {
-              __typename: 'EventSelected';
-              title?: string | null;
-              events?: Array<string | null> | null;
-              module?: string | null;
-            }
-          | {
-              __typename: 'EventSelectedCarousel';
-              title?: string | null;
-              module?: string | null;
-              showAllLink?: string | null;
-              eventsNearby?: boolean | null;
-              events?: Array<string | null> | null;
-              amountOfCardsPerRow?: number | null;
-              amountOfCards?: number | null;
-            }
-          | { __typename?: 'LayoutArticleHighlights' }
-          | {
-              __typename: 'LayoutArticles';
-              title?: string | null;
-              showAllLink?: string | null;
-              articles?: Array<{
-                __typename?: 'Post';
-                id: string;
-                uri?: string | null;
-                slug?: string | null;
-                link?: string | null;
-                date?: string | null;
-                title?: string | null;
-                lead?: string | null;
-                featuredImage?: {
-                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                  node?: {
-                    __typename?: 'MediaItem';
-                    altText?: string | null;
-                    mediaItemUrl?: string | null;
-                  } | null;
-                } | null;
-                categories?: {
-                  __typename?: 'PostToCategoryConnection';
-                  nodes?: Array<{
-                    __typename?: 'Category';
-                    name?: string | null;
-                  } | null> | null;
-                } | null;
-              } | null> | null;
-            }
-          | {
-              __typename: 'LayoutArticlesCarousel';
-              title?: string | null;
-              showMore?: Array<string | null> | null;
-              showAllLink?: string | null;
-              articles?: Array<{
-                __typename?: 'Post';
-                id: string;
-                uri?: string | null;
-                slug?: string | null;
-                link?: string | null;
-                date?: string | null;
-                title?: string | null;
-                lead?: string | null;
-                featuredImage?: {
-                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                  node?: {
-                    __typename?: 'MediaItem';
-                    altText?: string | null;
-                    mediaItemUrl?: string | null;
-                  } | null;
-                } | null;
-                categories?: {
-                  __typename?: 'PostToCategoryConnection';
-                  nodes?: Array<{
-                    __typename?: 'Category';
-                    name?: string | null;
-                  } | null> | null;
-                } | null;
-              } | null> | null;
-            }
-          | {
-              __typename: 'LayoutCollection';
-              collection?: {
-                __typename?: 'Collection';
-                title?: string | null;
-              } | null;
-            }
-          | { __typename?: 'LayoutContact' }
-          | {
-              __typename: 'LayoutPages';
-              title?: string | null;
-              description?: string | null;
-              pages?: Array<{
-                __typename?: 'Page';
-                id: string;
-                uri?: string | null;
-                slug?: string | null;
-                link?: string | null;
-                date?: string | null;
-                title?: string | null;
-                lead?: string | null;
-                featuredImage?: {
-                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                  node?: {
-                    __typename?: 'MediaItem';
-                    altText?: string | null;
-                    mediaItemUrl?: string | null;
-                  } | null;
-                } | null;
-              } | null> | null;
-            }
-          | {
-              __typename: 'LayoutPagesCarousel';
-              title?: string | null;
-              description?: string | null;
-              pages?: Array<{
-                __typename?: 'Page';
-                id: string;
-                uri?: string | null;
-                slug?: string | null;
-                link?: string | null;
-                date?: string | null;
-                title?: string | null;
-                lead?: string | null;
-                featuredImage?: {
-                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                  node?: {
-                    __typename?: 'MediaItem';
-                    altText?: string | null;
-                    mediaItemUrl?: string | null;
-                  } | null;
-                } | null;
-              } | null> | null;
-            }
-          | {
-              __typename: 'LocationsSelected';
-              title?: string | null;
-              locations?: Array<number | null> | null;
-              module?: string | null;
-            }
-          | null
-        > | null;
-      } | null;
-    } | null> | null;
-  } | null;
-};
-
-export type CategoriesQueryVariables = Exact<{
-  first?: InputMaybe<Scalars['Int']>;
-  after?: InputMaybe<Scalars['String']>;
-  search?: InputMaybe<Scalars['String']>;
-  language?: InputMaybe<LanguageCodeFilterEnum>;
-}>;
-
-export type CategoriesQuery = {
-  __typename?: 'RootQuery';
-  categories?: {
-    __typename?: 'RootQueryToCategoryConnection';
-    nodes?: Array<{
-      __typename: 'Category';
-      id: string;
-      databaseId: number;
-      name?: string | null;
-      slug?: string | null;
-      uri?: string | null;
-      translations?: Array<{
-        __typename?: 'Category';
-        name?: string | null;
-        slug?: string | null;
-        uri?: string | null;
-        language?: {
-          __typename?: 'Language';
-          code?: LanguageCodeEnum | null;
-          id: string;
-          locale?: string | null;
-          name?: string | null;
-          slug?: string | null;
-        } | null;
-      } | null> | null;
-    } | null> | null;
-  } | null;
-};
-
-export type CategoryQueryVariables = Exact<{
-  id: Scalars['ID'];
-  language: LanguageCodeEnum;
-}>;
-
-export type CategoryQuery = {
-  __typename?: 'RootQuery';
-  category?: {
-    __typename: 'Category';
-    id: string;
-    databaseId: number;
-    name?: string | null;
-    slug?: string | null;
-    translation?: {
-      __typename?: 'Category';
-      name?: string | null;
-      slug?: string | null;
-      language?: {
-        __typename?: 'Language';
-        code?: LanguageCodeEnum | null;
-        id: string;
-        locale?: string | null;
-        name?: string | null;
-        slug?: string | null;
-      } | null;
-    } | null;
-  } | null;
-};
-
-export type LandingPageQueryVariables = Exact<{
-  id: Scalars['ID'];
-  languageCode: LanguageCodeEnum;
-}>;
-
-export type LandingPageQuery = {
-  __typename?: 'RootQuery';
-  landingPage?: {
-    __typename?: 'LandingPage';
-    id: string;
-    desktopImage?: {
-      __typename?: 'LandingPageToMediaItemConnection';
-      edges?: Array<{
-        __typename?: 'LandingPageToMediaItemConnectionEdge';
-        node?: {
-          __typename?: 'MediaItem';
-          mediaItemUrl?: string | null;
-        } | null;
-      } | null> | null;
-    } | null;
-    translation?: {
-      __typename?: 'LandingPage';
-      title?: string | null;
-      description?: string | null;
-      heroLink?: Array<string | null> | null;
-    } | null;
-  } | null;
-};
-
-export type LanguageFragment = {
-  __typename?: 'Language';
-  code?: LanguageCodeEnum | null;
-  id: string;
-  locale?: string | null;
+  image?: string | null;
   name?: string | null;
-  slug?: string | null;
+  ontologyWords: Array<{
+    __typename?: 'Ontology';
+    id?: number | null;
+    label?: string | null;
+  } | null>;
 };
 
-export type LanguagesQueryVariables = Exact<{ [key: string]: never }>;
+export type VenuesByIdsQueryVariables = Exact<{
+  ids: Array<Scalars['ID']> | Scalars['ID'];
+}>;
 
-export type LanguagesQuery = {
-  __typename?: 'RootQuery';
-  languages?: Array<{
-    __typename?: 'Language';
-    code?: LanguageCodeEnum | null;
-    id: string;
-    locale?: string | null;
-    name?: string | null;
-    slug?: string | null;
-  } | null> | null;
-};
-
-export type MenuItemFragment = {
-  __typename?: 'MenuItem';
-  id: string;
-  order?: number | null;
-  target?: string | null;
-  title?: string | null;
-  path?: string | null;
-  label?: string | null;
-  connectedNode?: {
-    __typename?: 'MenuItemToMenuItemLinkableConnectionEdge';
-    node?:
-      | { __typename?: 'Category' }
-      | {
-          __typename?: 'Page';
-          id: string;
-          content?: string | null;
-          slug?: string | null;
-          title?: string | null;
-          uri?: string | null;
-          link?: string | null;
-          lead?: string | null;
-          children?: {
-            __typename?: 'HierarchicalContentNodeToContentNodeChildrenConnection';
-            nodes?: Array<
-              | { __typename?: 'Collection' }
-              | { __typename?: 'Contact' }
-              | { __typename?: 'LandingPage' }
-              | { __typename?: 'MediaItem' }
-              | {
-                  __typename?: 'Page';
-                  id: string;
-                  content?: string | null;
-                  slug?: string | null;
-                  title?: string | null;
-                  uri?: string | null;
-                  link?: string | null;
-                  lead?: string | null;
-                  translations?: Array<{
-                    __typename?: 'Page';
-                    uri?: string | null;
-                    slug?: string | null;
-                    id: string;
-                    content?: string | null;
-                    title?: string | null;
-                    link?: string | null;
-                    lead?: string | null;
-                    language?: {
-                      __typename?: 'Language';
-                      code?: LanguageCodeEnum | null;
-                      id: string;
-                      locale?: string | null;
-                      name?: string | null;
-                      slug?: string | null;
-                    } | null;
-                    seo?: {
-                      __typename?: 'SEO';
-                      title?: string | null;
-                      description?: string | null;
-                      openGraphTitle?: string | null;
-                      openGraphDescription?: string | null;
-                      openGraphType?: string | null;
-                      twitterTitle?: string | null;
-                      twitterDescription?: string | null;
-                      canonicalUrl?: string | null;
-                      socialImage?: {
-                        __typename?: 'MediaItem';
-                        mediaItemUrl?: string | null;
-                      } | null;
-                    } | null;
-                    translations?: Array<{
-                      __typename?: 'Page';
-                      uri?: string | null;
-                      slug?: string | null;
-                      language?: {
-                        __typename?: 'Language';
-                        code?: LanguageCodeEnum | null;
-                        id: string;
-                        locale?: string | null;
-                        name?: string | null;
-                        slug?: string | null;
-                      } | null;
-                      seo?: {
-                        __typename?: 'SEO';
-                        title?: string | null;
-                        description?: string | null;
-                        openGraphTitle?: string | null;
-                        openGraphDescription?: string | null;
-                        openGraphType?: string | null;
-                        twitterTitle?: string | null;
-                        twitterDescription?: string | null;
-                        canonicalUrl?: string | null;
-                        socialImage?: {
-                          __typename?: 'MediaItem';
-                          mediaItemUrl?: string | null;
-                        } | null;
-                      } | null;
-                    } | null> | null;
-                    featuredImage?: {
-                      __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                      node?: {
-                        __typename?: 'MediaItem';
-                        mediaItemUrl?: string | null;
-                        link?: string | null;
-                        altText?: string | null;
-                        mimeType?: string | null;
-                        title?: string | null;
-                        uri?: string | null;
-                      } | null;
-                    } | null;
-                    sidebar?: Array<
-                      | {
-                          __typename: 'LayoutArticles';
-                          title?: string | null;
-                          showAllLink?: string | null;
-                          articles?: Array<{
-                            __typename?: 'Post';
-                            id: string;
-                            uri?: string | null;
-                            slug?: string | null;
-                            link?: string | null;
-                            date?: string | null;
-                            title?: string | null;
-                            lead?: string | null;
-                            featuredImage?: {
-                              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                              node?: {
-                                __typename?: 'MediaItem';
-                                altText?: string | null;
-                                mediaItemUrl?: string | null;
-                              } | null;
-                            } | null;
-                            categories?: {
-                              __typename?: 'PostToCategoryConnection';
-                              nodes?: Array<{
-                                __typename?: 'Category';
-                                name?: string | null;
-                              } | null> | null;
-                            } | null;
-                          } | null> | null;
-                        }
-                      | {
-                          __typename: 'LayoutLinkList';
-                          anchor?: string | null;
-                          title?: string | null;
-                          description?: string | null;
-                          links?: Array<{
-                            __typename?: 'Link';
-                            target?: string | null;
-                            title?: string | null;
-                            url?: string | null;
-                          } | null> | null;
-                        }
-                      | {
-                          __typename: 'LayoutPages';
-                          title?: string | null;
-                          description?: string | null;
-                          pages?: Array<{
-                            __typename?: 'Page';
-                            id: string;
-                            uri?: string | null;
-                            slug?: string | null;
-                            link?: string | null;
-                            date?: string | null;
-                            title?: string | null;
-                            lead?: string | null;
-                            featuredImage?: {
-                              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                              node?: {
-                                __typename?: 'MediaItem';
-                                altText?: string | null;
-                                mediaItemUrl?: string | null;
-                              } | null;
-                            } | null;
-                          } | null> | null;
-                        }
-                      | null
-                    > | null;
-                    modules?: Array<
-                      | {
-                          __typename: 'EventSearch';
-                          title?: string | null;
-                          url?: string | null;
-                          module?: string | null;
-                        }
-                      | {
-                          __typename: 'EventSearchCarousel';
-                          title?: string | null;
-                          showAllLink?: string | null;
-                          url?: string | null;
-                          orderNewestFirst?: boolean | null;
-                          eventsNearby?: boolean | null;
-                          amountOfCards?: number | null;
-                        }
-                      | {
-                          __typename: 'EventSelected';
-                          title?: string | null;
-                          events?: Array<string | null> | null;
-                          module?: string | null;
-                        }
-                      | {
-                          __typename: 'EventSelectedCarousel';
-                          title?: string | null;
-                          module?: string | null;
-                          showAllLink?: string | null;
-                          eventsNearby?: boolean | null;
-                          events?: Array<string | null> | null;
-                          amountOfCardsPerRow?: number | null;
-                          amountOfCards?: number | null;
-                        }
-                      | { __typename?: 'LayoutArticleHighlights' }
-                      | {
-                          __typename: 'LayoutArticles';
-                          title?: string | null;
-                          showAllLink?: string | null;
-                          articles?: Array<{
-                            __typename?: 'Post';
-                            id: string;
-                            uri?: string | null;
-                            slug?: string | null;
-                            link?: string | null;
-                            date?: string | null;
-                            title?: string | null;
-                            lead?: string | null;
-                            featuredImage?: {
-                              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                              node?: {
-                                __typename?: 'MediaItem';
-                                altText?: string | null;
-                                mediaItemUrl?: string | null;
-                              } | null;
-                            } | null;
-                            categories?: {
-                              __typename?: 'PostToCategoryConnection';
-                              nodes?: Array<{
-                                __typename?: 'Category';
-                                name?: string | null;
-                              } | null> | null;
-                            } | null;
-                          } | null> | null;
-                        }
-                      | {
-                          __typename: 'LayoutArticlesCarousel';
-                          title?: string | null;
-                          showMore?: Array<string | null> | null;
-                          showAllLink?: string | null;
-                          articles?: Array<{
-                            __typename?: 'Post';
-                            id: string;
-                            uri?: string | null;
-                            slug?: string | null;
-                            link?: string | null;
-                            date?: string | null;
-                            title?: string | null;
-                            lead?: string | null;
-                            featuredImage?: {
-                              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                              node?: {
-                                __typename?: 'MediaItem';
-                                altText?: string | null;
-                                mediaItemUrl?: string | null;
-                              } | null;
-                            } | null;
-                            categories?: {
-                              __typename?: 'PostToCategoryConnection';
-                              nodes?: Array<{
-                                __typename?: 'Category';
-                                name?: string | null;
-                              } | null> | null;
-                            } | null;
-                          } | null> | null;
-                        }
-                      | {
-                          __typename: 'LayoutCollection';
-                          collection?: {
-                            __typename?: 'Collection';
-                            title?: string | null;
-                          } | null;
-                        }
-                      | { __typename?: 'LayoutContact' }
-                      | {
-                          __typename: 'LayoutPages';
-                          title?: string | null;
-                          description?: string | null;
-                          pages?: Array<{
-                            __typename?: 'Page';
-                            id: string;
-                            uri?: string | null;
-                            slug?: string | null;
-                            link?: string | null;
-                            date?: string | null;
-                            title?: string | null;
-                            lead?: string | null;
-                            featuredImage?: {
-                              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                              node?: {
-                                __typename?: 'MediaItem';
-                                altText?: string | null;
-                                mediaItemUrl?: string | null;
-                              } | null;
-                            } | null;
-                          } | null> | null;
-                        }
-                      | {
-                          __typename: 'LayoutPagesCarousel';
-                          title?: string | null;
-                          description?: string | null;
-                          pages?: Array<{
-                            __typename?: 'Page';
-                            id: string;
-                            uri?: string | null;
-                            slug?: string | null;
-                            link?: string | null;
-                            date?: string | null;
-                            title?: string | null;
-                            lead?: string | null;
-                            featuredImage?: {
-                              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                              node?: {
-                                __typename?: 'MediaItem';
-                                altText?: string | null;
-                                mediaItemUrl?: string | null;
-                              } | null;
-                            } | null;
-                          } | null> | null;
-                        }
-                      | {
-                          __typename: 'LocationsSelected';
-                          title?: string | null;
-                          locations?: Array<number | null> | null;
-                          module?: string | null;
-                        }
-                      | null
-                    > | null;
-                  } | null> | null;
-                  seo?: {
-                    __typename?: 'SEO';
-                    title?: string | null;
-                    description?: string | null;
-                    openGraphTitle?: string | null;
-                    openGraphDescription?: string | null;
-                    openGraphType?: string | null;
-                    twitterTitle?: string | null;
-                    twitterDescription?: string | null;
-                    canonicalUrl?: string | null;
-                    socialImage?: {
-                      __typename?: 'MediaItem';
-                      mediaItemUrl?: string | null;
-                    } | null;
-                  } | null;
-                  language?: {
-                    __typename?: 'Language';
-                    code?: LanguageCodeEnum | null;
-                    id: string;
-                    locale?: string | null;
-                    name?: string | null;
-                    slug?: string | null;
-                  } | null;
-                  featuredImage?: {
-                    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                    node?: {
-                      __typename?: 'MediaItem';
-                      mediaItemUrl?: string | null;
-                      link?: string | null;
-                      altText?: string | null;
-                      mimeType?: string | null;
-                      title?: string | null;
-                      uri?: string | null;
-                    } | null;
-                  } | null;
-                  sidebar?: Array<
-                    | {
-                        __typename: 'LayoutArticles';
-                        title?: string | null;
-                        showAllLink?: string | null;
-                        articles?: Array<{
-                          __typename?: 'Post';
-                          id: string;
-                          uri?: string | null;
-                          slug?: string | null;
-                          link?: string | null;
-                          date?: string | null;
-                          title?: string | null;
-                          lead?: string | null;
-                          featuredImage?: {
-                            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                            node?: {
-                              __typename?: 'MediaItem';
-                              altText?: string | null;
-                              mediaItemUrl?: string | null;
-                            } | null;
-                          } | null;
-                          categories?: {
-                            __typename?: 'PostToCategoryConnection';
-                            nodes?: Array<{
-                              __typename?: 'Category';
-                              name?: string | null;
-                            } | null> | null;
-                          } | null;
-                        } | null> | null;
-                      }
-                    | {
-                        __typename: 'LayoutLinkList';
-                        anchor?: string | null;
-                        title?: string | null;
-                        description?: string | null;
-                        links?: Array<{
-                          __typename?: 'Link';
-                          target?: string | null;
-                          title?: string | null;
-                          url?: string | null;
-                        } | null> | null;
-                      }
-                    | {
-                        __typename: 'LayoutPages';
-                        title?: string | null;
-                        description?: string | null;
-                        pages?: Array<{
-                          __typename?: 'Page';
-                          id: string;
-                          uri?: string | null;
-                          slug?: string | null;
-                          link?: string | null;
-                          date?: string | null;
-                          title?: string | null;
-                          lead?: string | null;
-                          featuredImage?: {
-                            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                            node?: {
-                              __typename?: 'MediaItem';
-                              altText?: string | null;
-                              mediaItemUrl?: string | null;
-                            } | null;
-                          } | null;
-                        } | null> | null;
-                      }
-                    | null
-                  > | null;
-                  modules?: Array<
-                    | {
-                        __typename: 'EventSearch';
-                        title?: string | null;
-                        url?: string | null;
-                        module?: string | null;
-                      }
-                    | {
-                        __typename: 'EventSearchCarousel';
-                        title?: string | null;
-                        showAllLink?: string | null;
-                        url?: string | null;
-                        orderNewestFirst?: boolean | null;
-                        eventsNearby?: boolean | null;
-                        amountOfCards?: number | null;
-                      }
-                    | {
-                        __typename: 'EventSelected';
-                        title?: string | null;
-                        events?: Array<string | null> | null;
-                        module?: string | null;
-                      }
-                    | {
-                        __typename: 'EventSelectedCarousel';
-                        title?: string | null;
-                        module?: string | null;
-                        showAllLink?: string | null;
-                        eventsNearby?: boolean | null;
-                        events?: Array<string | null> | null;
-                        amountOfCardsPerRow?: number | null;
-                        amountOfCards?: number | null;
-                      }
-                    | { __typename?: 'LayoutArticleHighlights' }
-                    | {
-                        __typename: 'LayoutArticles';
-                        title?: string | null;
-                        showAllLink?: string | null;
-                        articles?: Array<{
-                          __typename?: 'Post';
-                          id: string;
-                          uri?: string | null;
-                          slug?: string | null;
-                          link?: string | null;
-                          date?: string | null;
-                          title?: string | null;
-                          lead?: string | null;
-                          featuredImage?: {
-                            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                            node?: {
-                              __typename?: 'MediaItem';
-                              altText?: string | null;
-                              mediaItemUrl?: string | null;
-                            } | null;
-                          } | null;
-                          categories?: {
-                            __typename?: 'PostToCategoryConnection';
-                            nodes?: Array<{
-                              __typename?: 'Category';
-                              name?: string | null;
-                            } | null> | null;
-                          } | null;
-                        } | null> | null;
-                      }
-                    | {
-                        __typename: 'LayoutArticlesCarousel';
-                        title?: string | null;
-                        showMore?: Array<string | null> | null;
-                        showAllLink?: string | null;
-                        articles?: Array<{
-                          __typename?: 'Post';
-                          id: string;
-                          uri?: string | null;
-                          slug?: string | null;
-                          link?: string | null;
-                          date?: string | null;
-                          title?: string | null;
-                          lead?: string | null;
-                          featuredImage?: {
-                            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                            node?: {
-                              __typename?: 'MediaItem';
-                              altText?: string | null;
-                              mediaItemUrl?: string | null;
-                            } | null;
-                          } | null;
-                          categories?: {
-                            __typename?: 'PostToCategoryConnection';
-                            nodes?: Array<{
-                              __typename?: 'Category';
-                              name?: string | null;
-                            } | null> | null;
-                          } | null;
-                        } | null> | null;
-                      }
-                    | {
-                        __typename: 'LayoutCollection';
-                        collection?: {
-                          __typename?: 'Collection';
-                          title?: string | null;
-                        } | null;
-                      }
-                    | { __typename?: 'LayoutContact' }
-                    | {
-                        __typename: 'LayoutPages';
-                        title?: string | null;
-                        description?: string | null;
-                        pages?: Array<{
-                          __typename?: 'Page';
-                          id: string;
-                          uri?: string | null;
-                          slug?: string | null;
-                          link?: string | null;
-                          date?: string | null;
-                          title?: string | null;
-                          lead?: string | null;
-                          featuredImage?: {
-                            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                            node?: {
-                              __typename?: 'MediaItem';
-                              altText?: string | null;
-                              mediaItemUrl?: string | null;
-                            } | null;
-                          } | null;
-                        } | null> | null;
-                      }
-                    | {
-                        __typename: 'LayoutPagesCarousel';
-                        title?: string | null;
-                        description?: string | null;
-                        pages?: Array<{
-                          __typename?: 'Page';
-                          id: string;
-                          uri?: string | null;
-                          slug?: string | null;
-                          link?: string | null;
-                          date?: string | null;
-                          title?: string | null;
-                          lead?: string | null;
-                          featuredImage?: {
-                            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                            node?: {
-                              __typename?: 'MediaItem';
-                              altText?: string | null;
-                              mediaItemUrl?: string | null;
-                            } | null;
-                          } | null;
-                        } | null> | null;
-                      }
-                    | {
-                        __typename: 'LocationsSelected';
-                        title?: string | null;
-                        locations?: Array<number | null> | null;
-                        module?: string | null;
-                      }
-                    | null
-                  > | null;
-                }
-              | { __typename?: 'Post' }
-              | { __typename?: 'Release' }
-              | { __typename?: 'Translation' }
-              | null
-            > | null;
-          } | null;
-          translations?: Array<{
-            __typename?: 'Page';
-            uri?: string | null;
-            slug?: string | null;
-            id: string;
-            content?: string | null;
-            title?: string | null;
-            link?: string | null;
-            lead?: string | null;
-            language?: {
-              __typename?: 'Language';
-              code?: LanguageCodeEnum | null;
-              id: string;
-              locale?: string | null;
-              name?: string | null;
-              slug?: string | null;
-            } | null;
-            seo?: {
-              __typename?: 'SEO';
-              title?: string | null;
-              description?: string | null;
-              openGraphTitle?: string | null;
-              openGraphDescription?: string | null;
-              openGraphType?: string | null;
-              twitterTitle?: string | null;
-              twitterDescription?: string | null;
-              canonicalUrl?: string | null;
-              socialImage?: {
-                __typename?: 'MediaItem';
-                mediaItemUrl?: string | null;
-              } | null;
-            } | null;
-            translations?: Array<{
-              __typename?: 'Page';
-              uri?: string | null;
-              slug?: string | null;
-              language?: {
-                __typename?: 'Language';
-                code?: LanguageCodeEnum | null;
-                id: string;
-                locale?: string | null;
-                name?: string | null;
-                slug?: string | null;
-              } | null;
-              seo?: {
-                __typename?: 'SEO';
-                title?: string | null;
-                description?: string | null;
-                openGraphTitle?: string | null;
-                openGraphDescription?: string | null;
-                openGraphType?: string | null;
-                twitterTitle?: string | null;
-                twitterDescription?: string | null;
-                canonicalUrl?: string | null;
-                socialImage?: {
-                  __typename?: 'MediaItem';
-                  mediaItemUrl?: string | null;
-                } | null;
-              } | null;
-            } | null> | null;
-            featuredImage?: {
-              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-              node?: {
-                __typename?: 'MediaItem';
-                mediaItemUrl?: string | null;
-                link?: string | null;
-                altText?: string | null;
-                mimeType?: string | null;
-                title?: string | null;
-                uri?: string | null;
-              } | null;
-            } | null;
-            sidebar?: Array<
-              | {
-                  __typename: 'LayoutArticles';
-                  title?: string | null;
-                  showAllLink?: string | null;
-                  articles?: Array<{
-                    __typename?: 'Post';
-                    id: string;
-                    uri?: string | null;
-                    slug?: string | null;
-                    link?: string | null;
-                    date?: string | null;
-                    title?: string | null;
-                    lead?: string | null;
-                    featuredImage?: {
-                      __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                      node?: {
-                        __typename?: 'MediaItem';
-                        altText?: string | null;
-                        mediaItemUrl?: string | null;
-                      } | null;
-                    } | null;
-                    categories?: {
-                      __typename?: 'PostToCategoryConnection';
-                      nodes?: Array<{
-                        __typename?: 'Category';
-                        name?: string | null;
-                      } | null> | null;
-                    } | null;
-                  } | null> | null;
-                }
-              | {
-                  __typename: 'LayoutLinkList';
-                  anchor?: string | null;
-                  title?: string | null;
-                  description?: string | null;
-                  links?: Array<{
-                    __typename?: 'Link';
-                    target?: string | null;
-                    title?: string | null;
-                    url?: string | null;
-                  } | null> | null;
-                }
-              | {
-                  __typename: 'LayoutPages';
-                  title?: string | null;
-                  description?: string | null;
-                  pages?: Array<{
-                    __typename?: 'Page';
-                    id: string;
-                    uri?: string | null;
-                    slug?: string | null;
-                    link?: string | null;
-                    date?: string | null;
-                    title?: string | null;
-                    lead?: string | null;
-                    featuredImage?: {
-                      __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                      node?: {
-                        __typename?: 'MediaItem';
-                        altText?: string | null;
-                        mediaItemUrl?: string | null;
-                      } | null;
-                    } | null;
-                  } | null> | null;
-                }
-              | null
-            > | null;
-            modules?: Array<
-              | {
-                  __typename: 'EventSearch';
-                  title?: string | null;
-                  url?: string | null;
-                  module?: string | null;
-                }
-              | {
-                  __typename: 'EventSearchCarousel';
-                  title?: string | null;
-                  showAllLink?: string | null;
-                  url?: string | null;
-                  orderNewestFirst?: boolean | null;
-                  eventsNearby?: boolean | null;
-                  amountOfCards?: number | null;
-                }
-              | {
-                  __typename: 'EventSelected';
-                  title?: string | null;
-                  events?: Array<string | null> | null;
-                  module?: string | null;
-                }
-              | {
-                  __typename: 'EventSelectedCarousel';
-                  title?: string | null;
-                  module?: string | null;
-                  showAllLink?: string | null;
-                  eventsNearby?: boolean | null;
-                  events?: Array<string | null> | null;
-                  amountOfCardsPerRow?: number | null;
-                  amountOfCards?: number | null;
-                }
-              | { __typename?: 'LayoutArticleHighlights' }
-              | {
-                  __typename: 'LayoutArticles';
-                  title?: string | null;
-                  showAllLink?: string | null;
-                  articles?: Array<{
-                    __typename?: 'Post';
-                    id: string;
-                    uri?: string | null;
-                    slug?: string | null;
-                    link?: string | null;
-                    date?: string | null;
-                    title?: string | null;
-                    lead?: string | null;
-                    featuredImage?: {
-                      __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                      node?: {
-                        __typename?: 'MediaItem';
-                        altText?: string | null;
-                        mediaItemUrl?: string | null;
-                      } | null;
-                    } | null;
-                    categories?: {
-                      __typename?: 'PostToCategoryConnection';
-                      nodes?: Array<{
-                        __typename?: 'Category';
-                        name?: string | null;
-                      } | null> | null;
-                    } | null;
-                  } | null> | null;
-                }
-              | {
-                  __typename: 'LayoutArticlesCarousel';
-                  title?: string | null;
-                  showMore?: Array<string | null> | null;
-                  showAllLink?: string | null;
-                  articles?: Array<{
-                    __typename?: 'Post';
-                    id: string;
-                    uri?: string | null;
-                    slug?: string | null;
-                    link?: string | null;
-                    date?: string | null;
-                    title?: string | null;
-                    lead?: string | null;
-                    featuredImage?: {
-                      __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                      node?: {
-                        __typename?: 'MediaItem';
-                        altText?: string | null;
-                        mediaItemUrl?: string | null;
-                      } | null;
-                    } | null;
-                    categories?: {
-                      __typename?: 'PostToCategoryConnection';
-                      nodes?: Array<{
-                        __typename?: 'Category';
-                        name?: string | null;
-                      } | null> | null;
-                    } | null;
-                  } | null> | null;
-                }
-              | {
-                  __typename: 'LayoutCollection';
-                  collection?: {
-                    __typename?: 'Collection';
-                    title?: string | null;
-                  } | null;
-                }
-              | { __typename?: 'LayoutContact' }
-              | {
-                  __typename: 'LayoutPages';
-                  title?: string | null;
-                  description?: string | null;
-                  pages?: Array<{
-                    __typename?: 'Page';
-                    id: string;
-                    uri?: string | null;
-                    slug?: string | null;
-                    link?: string | null;
-                    date?: string | null;
-                    title?: string | null;
-                    lead?: string | null;
-                    featuredImage?: {
-                      __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                      node?: {
-                        __typename?: 'MediaItem';
-                        altText?: string | null;
-                        mediaItemUrl?: string | null;
-                      } | null;
-                    } | null;
-                  } | null> | null;
-                }
-              | {
-                  __typename: 'LayoutPagesCarousel';
-                  title?: string | null;
-                  description?: string | null;
-                  pages?: Array<{
-                    __typename?: 'Page';
-                    id: string;
-                    uri?: string | null;
-                    slug?: string | null;
-                    link?: string | null;
-                    date?: string | null;
-                    title?: string | null;
-                    lead?: string | null;
-                    featuredImage?: {
-                      __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                      node?: {
-                        __typename?: 'MediaItem';
-                        altText?: string | null;
-                        mediaItemUrl?: string | null;
-                      } | null;
-                    } | null;
-                  } | null> | null;
-                }
-              | {
-                  __typename: 'LocationsSelected';
-                  title?: string | null;
-                  locations?: Array<number | null> | null;
-                  module?: string | null;
-                }
-              | null
-            > | null;
-          } | null> | null;
-          seo?: {
-            __typename?: 'SEO';
-            title?: string | null;
-            description?: string | null;
-            openGraphTitle?: string | null;
-            openGraphDescription?: string | null;
-            openGraphType?: string | null;
-            twitterTitle?: string | null;
-            twitterDescription?: string | null;
-            canonicalUrl?: string | null;
-            socialImage?: {
-              __typename?: 'MediaItem';
-              mediaItemUrl?: string | null;
-            } | null;
-          } | null;
-          language?: {
-            __typename?: 'Language';
-            code?: LanguageCodeEnum | null;
-            id: string;
-            locale?: string | null;
-            name?: string | null;
-            slug?: string | null;
-          } | null;
-          featuredImage?: {
-            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-            node?: {
-              __typename?: 'MediaItem';
-              mediaItemUrl?: string | null;
-              link?: string | null;
-              altText?: string | null;
-              mimeType?: string | null;
-              title?: string | null;
-              uri?: string | null;
-            } | null;
-          } | null;
-          sidebar?: Array<
-            | {
-                __typename: 'LayoutArticles';
-                title?: string | null;
-                showAllLink?: string | null;
-                articles?: Array<{
-                  __typename?: 'Post';
-                  id: string;
-                  uri?: string | null;
-                  slug?: string | null;
-                  link?: string | null;
-                  date?: string | null;
-                  title?: string | null;
-                  lead?: string | null;
-                  featuredImage?: {
-                    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                    node?: {
-                      __typename?: 'MediaItem';
-                      altText?: string | null;
-                      mediaItemUrl?: string | null;
-                    } | null;
-                  } | null;
-                  categories?: {
-                    __typename?: 'PostToCategoryConnection';
-                    nodes?: Array<{
-                      __typename?: 'Category';
-                      name?: string | null;
-                    } | null> | null;
-                  } | null;
-                } | null> | null;
-              }
-            | {
-                __typename: 'LayoutLinkList';
-                anchor?: string | null;
-                title?: string | null;
-                description?: string | null;
-                links?: Array<{
-                  __typename?: 'Link';
-                  target?: string | null;
-                  title?: string | null;
-                  url?: string | null;
-                } | null> | null;
-              }
-            | {
-                __typename: 'LayoutPages';
-                title?: string | null;
-                description?: string | null;
-                pages?: Array<{
-                  __typename?: 'Page';
-                  id: string;
-                  uri?: string | null;
-                  slug?: string | null;
-                  link?: string | null;
-                  date?: string | null;
-                  title?: string | null;
-                  lead?: string | null;
-                  featuredImage?: {
-                    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                    node?: {
-                      __typename?: 'MediaItem';
-                      altText?: string | null;
-                      mediaItemUrl?: string | null;
-                    } | null;
-                  } | null;
-                } | null> | null;
-              }
-            | null
-          > | null;
-          modules?: Array<
-            | {
-                __typename: 'EventSearch';
-                title?: string | null;
-                url?: string | null;
-                module?: string | null;
-              }
-            | {
-                __typename: 'EventSearchCarousel';
-                title?: string | null;
-                showAllLink?: string | null;
-                url?: string | null;
-                orderNewestFirst?: boolean | null;
-                eventsNearby?: boolean | null;
-                amountOfCards?: number | null;
-              }
-            | {
-                __typename: 'EventSelected';
-                title?: string | null;
-                events?: Array<string | null> | null;
-                module?: string | null;
-              }
-            | {
-                __typename: 'EventSelectedCarousel';
-                title?: string | null;
-                module?: string | null;
-                showAllLink?: string | null;
-                eventsNearby?: boolean | null;
-                events?: Array<string | null> | null;
-                amountOfCardsPerRow?: number | null;
-                amountOfCards?: number | null;
-              }
-            | { __typename?: 'LayoutArticleHighlights' }
-            | {
-                __typename: 'LayoutArticles';
-                title?: string | null;
-                showAllLink?: string | null;
-                articles?: Array<{
-                  __typename?: 'Post';
-                  id: string;
-                  uri?: string | null;
-                  slug?: string | null;
-                  link?: string | null;
-                  date?: string | null;
-                  title?: string | null;
-                  lead?: string | null;
-                  featuredImage?: {
-                    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                    node?: {
-                      __typename?: 'MediaItem';
-                      altText?: string | null;
-                      mediaItemUrl?: string | null;
-                    } | null;
-                  } | null;
-                  categories?: {
-                    __typename?: 'PostToCategoryConnection';
-                    nodes?: Array<{
-                      __typename?: 'Category';
-                      name?: string | null;
-                    } | null> | null;
-                  } | null;
-                } | null> | null;
-              }
-            | {
-                __typename: 'LayoutArticlesCarousel';
-                title?: string | null;
-                showMore?: Array<string | null> | null;
-                showAllLink?: string | null;
-                articles?: Array<{
-                  __typename?: 'Post';
-                  id: string;
-                  uri?: string | null;
-                  slug?: string | null;
-                  link?: string | null;
-                  date?: string | null;
-                  title?: string | null;
-                  lead?: string | null;
-                  featuredImage?: {
-                    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                    node?: {
-                      __typename?: 'MediaItem';
-                      altText?: string | null;
-                      mediaItemUrl?: string | null;
-                    } | null;
-                  } | null;
-                  categories?: {
-                    __typename?: 'PostToCategoryConnection';
-                    nodes?: Array<{
-                      __typename?: 'Category';
-                      name?: string | null;
-                    } | null> | null;
-                  } | null;
-                } | null> | null;
-              }
-            | {
-                __typename: 'LayoutCollection';
-                collection?: {
-                  __typename?: 'Collection';
-                  title?: string | null;
-                } | null;
-              }
-            | { __typename?: 'LayoutContact' }
-            | {
-                __typename: 'LayoutPages';
-                title?: string | null;
-                description?: string | null;
-                pages?: Array<{
-                  __typename?: 'Page';
-                  id: string;
-                  uri?: string | null;
-                  slug?: string | null;
-                  link?: string | null;
-                  date?: string | null;
-                  title?: string | null;
-                  lead?: string | null;
-                  featuredImage?: {
-                    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                    node?: {
-                      __typename?: 'MediaItem';
-                      altText?: string | null;
-                      mediaItemUrl?: string | null;
-                    } | null;
-                  } | null;
-                } | null> | null;
-              }
-            | {
-                __typename: 'LayoutPagesCarousel';
-                title?: string | null;
-                description?: string | null;
-                pages?: Array<{
-                  __typename?: 'Page';
-                  id: string;
-                  uri?: string | null;
-                  slug?: string | null;
-                  link?: string | null;
-                  date?: string | null;
-                  title?: string | null;
-                  lead?: string | null;
-                  featuredImage?: {
-                    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                    node?: {
-                      __typename?: 'MediaItem';
-                      altText?: string | null;
-                      mediaItemUrl?: string | null;
-                    } | null;
-                  } | null;
-                } | null> | null;
-              }
-            | {
-                __typename: 'LocationsSelected';
-                title?: string | null;
-                locations?: Array<number | null> | null;
-                module?: string | null;
-              }
-            | null
-          > | null;
-        }
-      | { __typename?: 'Post' }
-      | { __typename?: 'Tag' }
-      | null;
-  } | null;
-};
-
-export type MenuPageFieldsFragment = {
-  __typename?: 'Page';
-  id: string;
-  content?: string | null;
-  slug?: string | null;
-  title?: string | null;
-  uri?: string | null;
-  link?: string | null;
-  lead?: string | null;
-  translations?: Array<{
-    __typename?: 'Page';
-    uri?: string | null;
-    slug?: string | null;
-    id: string;
-    content?: string | null;
-    title?: string | null;
-    link?: string | null;
-    lead?: string | null;
-    language?: {
-      __typename?: 'Language';
-      code?: LanguageCodeEnum | null;
-      id: string;
-      locale?: string | null;
-      name?: string | null;
-      slug?: string | null;
-    } | null;
-    seo?: {
-      __typename?: 'SEO';
-      title?: string | null;
-      description?: string | null;
-      openGraphTitle?: string | null;
-      openGraphDescription?: string | null;
-      openGraphType?: string | null;
-      twitterTitle?: string | null;
-      twitterDescription?: string | null;
-      canonicalUrl?: string | null;
-      socialImage?: {
-        __typename?: 'MediaItem';
-        mediaItemUrl?: string | null;
-      } | null;
-    } | null;
-    translations?: Array<{
-      __typename?: 'Page';
-      uri?: string | null;
-      slug?: string | null;
-      language?: {
-        __typename?: 'Language';
-        code?: LanguageCodeEnum | null;
-        id: string;
-        locale?: string | null;
-        name?: string | null;
-        slug?: string | null;
-      } | null;
-      seo?: {
-        __typename?: 'SEO';
-        title?: string | null;
-        description?: string | null;
-        openGraphTitle?: string | null;
-        openGraphDescription?: string | null;
-        openGraphType?: string | null;
-        twitterTitle?: string | null;
-        twitterDescription?: string | null;
-        canonicalUrl?: string | null;
-        socialImage?: {
-          __typename?: 'MediaItem';
-          mediaItemUrl?: string | null;
-        } | null;
-      } | null;
-    } | null> | null;
-    featuredImage?: {
-      __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-      node?: {
-        __typename?: 'MediaItem';
-        mediaItemUrl?: string | null;
-        link?: string | null;
-        altText?: string | null;
-        mimeType?: string | null;
-        title?: string | null;
-        uri?: string | null;
-      } | null;
-    } | null;
-    sidebar?: Array<
-      | {
-          __typename: 'LayoutArticles';
-          title?: string | null;
-          showAllLink?: string | null;
-          articles?: Array<{
-            __typename?: 'Post';
-            id: string;
-            uri?: string | null;
-            slug?: string | null;
-            link?: string | null;
-            date?: string | null;
-            title?: string | null;
-            lead?: string | null;
-            featuredImage?: {
-              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-              node?: {
-                __typename?: 'MediaItem';
-                altText?: string | null;
-                mediaItemUrl?: string | null;
-              } | null;
-            } | null;
-            categories?: {
-              __typename?: 'PostToCategoryConnection';
-              nodes?: Array<{
-                __typename?: 'Category';
-                name?: string | null;
-              } | null> | null;
-            } | null;
-          } | null> | null;
-        }
-      | {
-          __typename: 'LayoutLinkList';
-          anchor?: string | null;
-          title?: string | null;
-          description?: string | null;
-          links?: Array<{
-            __typename?: 'Link';
-            target?: string | null;
-            title?: string | null;
-            url?: string | null;
-          } | null> | null;
-        }
-      | {
-          __typename: 'LayoutPages';
-          title?: string | null;
-          description?: string | null;
-          pages?: Array<{
-            __typename?: 'Page';
-            id: string;
-            uri?: string | null;
-            slug?: string | null;
-            link?: string | null;
-            date?: string | null;
-            title?: string | null;
-            lead?: string | null;
-            featuredImage?: {
-              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-              node?: {
-                __typename?: 'MediaItem';
-                altText?: string | null;
-                mediaItemUrl?: string | null;
-              } | null;
-            } | null;
-          } | null> | null;
-        }
-      | null
-    > | null;
-    modules?: Array<
-      | {
-          __typename: 'EventSearch';
-          title?: string | null;
-          url?: string | null;
-          module?: string | null;
-        }
-      | {
-          __typename: 'EventSearchCarousel';
-          title?: string | null;
-          showAllLink?: string | null;
-          url?: string | null;
-          orderNewestFirst?: boolean | null;
-          eventsNearby?: boolean | null;
-          amountOfCards?: number | null;
-        }
-      | {
-          __typename: 'EventSelected';
-          title?: string | null;
-          events?: Array<string | null> | null;
-          module?: string | null;
-        }
-      | {
-          __typename: 'EventSelectedCarousel';
-          title?: string | null;
-          module?: string | null;
-          showAllLink?: string | null;
-          eventsNearby?: boolean | null;
-          events?: Array<string | null> | null;
-          amountOfCardsPerRow?: number | null;
-          amountOfCards?: number | null;
-        }
-      | { __typename?: 'LayoutArticleHighlights' }
-      | {
-          __typename: 'LayoutArticles';
-          title?: string | null;
-          showAllLink?: string | null;
-          articles?: Array<{
-            __typename?: 'Post';
-            id: string;
-            uri?: string | null;
-            slug?: string | null;
-            link?: string | null;
-            date?: string | null;
-            title?: string | null;
-            lead?: string | null;
-            featuredImage?: {
-              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-              node?: {
-                __typename?: 'MediaItem';
-                altText?: string | null;
-                mediaItemUrl?: string | null;
-              } | null;
-            } | null;
-            categories?: {
-              __typename?: 'PostToCategoryConnection';
-              nodes?: Array<{
-                __typename?: 'Category';
-                name?: string | null;
-              } | null> | null;
-            } | null;
-          } | null> | null;
-        }
-      | {
-          __typename: 'LayoutArticlesCarousel';
-          title?: string | null;
-          showMore?: Array<string | null> | null;
-          showAllLink?: string | null;
-          articles?: Array<{
-            __typename?: 'Post';
-            id: string;
-            uri?: string | null;
-            slug?: string | null;
-            link?: string | null;
-            date?: string | null;
-            title?: string | null;
-            lead?: string | null;
-            featuredImage?: {
-              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-              node?: {
-                __typename?: 'MediaItem';
-                altText?: string | null;
-                mediaItemUrl?: string | null;
-              } | null;
-            } | null;
-            categories?: {
-              __typename?: 'PostToCategoryConnection';
-              nodes?: Array<{
-                __typename?: 'Category';
-                name?: string | null;
-              } | null> | null;
-            } | null;
-          } | null> | null;
-        }
-      | {
-          __typename: 'LayoutCollection';
-          collection?: {
-            __typename?: 'Collection';
-            title?: string | null;
-          } | null;
-        }
-      | { __typename?: 'LayoutContact' }
-      | {
-          __typename: 'LayoutPages';
-          title?: string | null;
-          description?: string | null;
-          pages?: Array<{
-            __typename?: 'Page';
-            id: string;
-            uri?: string | null;
-            slug?: string | null;
-            link?: string | null;
-            date?: string | null;
-            title?: string | null;
-            lead?: string | null;
-            featuredImage?: {
-              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-              node?: {
-                __typename?: 'MediaItem';
-                altText?: string | null;
-                mediaItemUrl?: string | null;
-              } | null;
-            } | null;
-          } | null> | null;
-        }
-      | {
-          __typename: 'LayoutPagesCarousel';
-          title?: string | null;
-          description?: string | null;
-          pages?: Array<{
-            __typename?: 'Page';
-            id: string;
-            uri?: string | null;
-            slug?: string | null;
-            link?: string | null;
-            date?: string | null;
-            title?: string | null;
-            lead?: string | null;
-            featuredImage?: {
-              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-              node?: {
-                __typename?: 'MediaItem';
-                altText?: string | null;
-                mediaItemUrl?: string | null;
-              } | null;
-            } | null;
-          } | null> | null;
-        }
-      | {
-          __typename: 'LocationsSelected';
-          title?: string | null;
-          locations?: Array<number | null> | null;
-          module?: string | null;
-        }
-      | null
-    > | null;
-  } | null> | null;
-  seo?: {
-    __typename?: 'SEO';
-    title?: string | null;
+export type VenuesByIdsQuery = {
+  __typename?: 'Query';
+  venuesByIds: Array<{
+    __typename?: 'Venue';
     description?: string | null;
-    openGraphTitle?: string | null;
-    openGraphDescription?: string | null;
-    openGraphType?: string | null;
-    twitterTitle?: string | null;
-    twitterDescription?: string | null;
-    canonicalUrl?: string | null;
-    socialImage?: {
-      __typename?: 'MediaItem';
-      mediaItemUrl?: string | null;
-    } | null;
-  } | null;
-  language?: {
-    __typename?: 'Language';
-    code?: LanguageCodeEnum | null;
     id: string;
-    locale?: string | null;
+    image?: string | null;
     name?: string | null;
-    slug?: string | null;
-  } | null;
-  featuredImage?: {
-    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-    node?: {
-      __typename?: 'MediaItem';
-      mediaItemUrl?: string | null;
-      link?: string | null;
-      altText?: string | null;
-      mimeType?: string | null;
-      title?: string | null;
-      uri?: string | null;
-    } | null;
-  } | null;
-  sidebar?: Array<
-    | {
-        __typename: 'LayoutArticles';
-        title?: string | null;
-        showAllLink?: string | null;
-        articles?: Array<{
-          __typename?: 'Post';
-          id: string;
-          uri?: string | null;
-          slug?: string | null;
-          link?: string | null;
-          date?: string | null;
-          title?: string | null;
-          lead?: string | null;
-          featuredImage?: {
-            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-            node?: {
-              __typename?: 'MediaItem';
-              altText?: string | null;
-              mediaItemUrl?: string | null;
-            } | null;
-          } | null;
-          categories?: {
-            __typename?: 'PostToCategoryConnection';
-            nodes?: Array<{
-              __typename?: 'Category';
-              name?: string | null;
-            } | null> | null;
-          } | null;
-        } | null> | null;
-      }
-    | {
-        __typename: 'LayoutLinkList';
-        anchor?: string | null;
-        title?: string | null;
-        description?: string | null;
-        links?: Array<{
-          __typename?: 'Link';
-          target?: string | null;
-          title?: string | null;
-          url?: string | null;
-        } | null> | null;
-      }
-    | {
-        __typename: 'LayoutPages';
-        title?: string | null;
-        description?: string | null;
-        pages?: Array<{
-          __typename?: 'Page';
-          id: string;
-          uri?: string | null;
-          slug?: string | null;
-          link?: string | null;
-          date?: string | null;
-          title?: string | null;
-          lead?: string | null;
-          featuredImage?: {
-            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-            node?: {
-              __typename?: 'MediaItem';
-              altText?: string | null;
-              mediaItemUrl?: string | null;
-            } | null;
-          } | null;
-        } | null> | null;
-      }
-    | null
-  > | null;
-  modules?: Array<
-    | {
-        __typename: 'EventSearch';
-        title?: string | null;
-        url?: string | null;
-        module?: string | null;
-      }
-    | {
-        __typename: 'EventSearchCarousel';
-        title?: string | null;
-        showAllLink?: string | null;
-        url?: string | null;
-        orderNewestFirst?: boolean | null;
-        eventsNearby?: boolean | null;
-        amountOfCards?: number | null;
-      }
-    | {
-        __typename: 'EventSelected';
-        title?: string | null;
-        events?: Array<string | null> | null;
-        module?: string | null;
-      }
-    | {
-        __typename: 'EventSelectedCarousel';
-        title?: string | null;
-        module?: string | null;
-        showAllLink?: string | null;
-        eventsNearby?: boolean | null;
-        events?: Array<string | null> | null;
-        amountOfCardsPerRow?: number | null;
-        amountOfCards?: number | null;
-      }
-    | { __typename?: 'LayoutArticleHighlights' }
-    | {
-        __typename: 'LayoutArticles';
-        title?: string | null;
-        showAllLink?: string | null;
-        articles?: Array<{
-          __typename?: 'Post';
-          id: string;
-          uri?: string | null;
-          slug?: string | null;
-          link?: string | null;
-          date?: string | null;
-          title?: string | null;
-          lead?: string | null;
-          featuredImage?: {
-            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-            node?: {
-              __typename?: 'MediaItem';
-              altText?: string | null;
-              mediaItemUrl?: string | null;
-            } | null;
-          } | null;
-          categories?: {
-            __typename?: 'PostToCategoryConnection';
-            nodes?: Array<{
-              __typename?: 'Category';
-              name?: string | null;
-            } | null> | null;
-          } | null;
-        } | null> | null;
-      }
-    | {
-        __typename: 'LayoutArticlesCarousel';
-        title?: string | null;
-        showMore?: Array<string | null> | null;
-        showAllLink?: string | null;
-        articles?: Array<{
-          __typename?: 'Post';
-          id: string;
-          uri?: string | null;
-          slug?: string | null;
-          link?: string | null;
-          date?: string | null;
-          title?: string | null;
-          lead?: string | null;
-          featuredImage?: {
-            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-            node?: {
-              __typename?: 'MediaItem';
-              altText?: string | null;
-              mediaItemUrl?: string | null;
-            } | null;
-          } | null;
-          categories?: {
-            __typename?: 'PostToCategoryConnection';
-            nodes?: Array<{
-              __typename?: 'Category';
-              name?: string | null;
-            } | null> | null;
-          } | null;
-        } | null> | null;
-      }
-    | {
-        __typename: 'LayoutCollection';
-        collection?: {
-          __typename?: 'Collection';
-          title?: string | null;
-        } | null;
-      }
-    | { __typename?: 'LayoutContact' }
-    | {
-        __typename: 'LayoutPages';
-        title?: string | null;
-        description?: string | null;
-        pages?: Array<{
-          __typename?: 'Page';
-          id: string;
-          uri?: string | null;
-          slug?: string | null;
-          link?: string | null;
-          date?: string | null;
-          title?: string | null;
-          lead?: string | null;
-          featuredImage?: {
-            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-            node?: {
-              __typename?: 'MediaItem';
-              altText?: string | null;
-              mediaItemUrl?: string | null;
-            } | null;
-          } | null;
-        } | null> | null;
-      }
-    | {
-        __typename: 'LayoutPagesCarousel';
-        title?: string | null;
-        description?: string | null;
-        pages?: Array<{
-          __typename?: 'Page';
-          id: string;
-          uri?: string | null;
-          slug?: string | null;
-          link?: string | null;
-          date?: string | null;
-          title?: string | null;
-          lead?: string | null;
-          featuredImage?: {
-            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-            node?: {
-              __typename?: 'MediaItem';
-              altText?: string | null;
-              mediaItemUrl?: string | null;
-            } | null;
-          } | null;
-        } | null> | null;
-      }
-    | {
-        __typename: 'LocationsSelected';
-        title?: string | null;
-        locations?: Array<number | null> | null;
-        module?: string | null;
-      }
-    | null
-  > | null;
+    ontologyWords: Array<{
+      __typename?: 'Ontology';
+      id?: number | null;
+      label?: string | null;
+    } | null>;
+  }>;
 };
 
-export type MenuQueryVariables = Exact<{
-  id: Scalars['ID'];
-}>;
-
-export type MenuQuery = {
-  __typename?: 'RootQuery';
-  menu?: {
-    __typename?: 'Menu';
-    id: string;
-    menuItems?: {
-      __typename?: 'MenuToMenuItemConnection';
-      nodes?: Array<{
-        __typename?: 'MenuItem';
-        id: string;
-        order?: number | null;
-        target?: string | null;
-        title?: string | null;
-        path?: string | null;
-        label?: string | null;
-        connectedNode?: {
-          __typename?: 'MenuItemToMenuItemLinkableConnectionEdge';
-          node?:
-            | { __typename?: 'Category' }
-            | {
-                __typename?: 'Page';
-                id: string;
-                content?: string | null;
-                slug?: string | null;
-                title?: string | null;
-                uri?: string | null;
-                link?: string | null;
-                lead?: string | null;
-                children?: {
-                  __typename?: 'HierarchicalContentNodeToContentNodeChildrenConnection';
-                  nodes?: Array<
-                    | { __typename?: 'Collection' }
-                    | { __typename?: 'Contact' }
-                    | { __typename?: 'LandingPage' }
-                    | { __typename?: 'MediaItem' }
-                    | {
-                        __typename?: 'Page';
-                        id: string;
-                        content?: string | null;
-                        slug?: string | null;
-                        title?: string | null;
-                        uri?: string | null;
-                        link?: string | null;
-                        lead?: string | null;
-                        translations?: Array<{
-                          __typename?: 'Page';
-                          uri?: string | null;
-                          slug?: string | null;
-                          id: string;
-                          content?: string | null;
-                          title?: string | null;
-                          link?: string | null;
-                          lead?: string | null;
-                          language?: {
-                            __typename?: 'Language';
-                            code?: LanguageCodeEnum | null;
-                            id: string;
-                            locale?: string | null;
-                            name?: string | null;
-                            slug?: string | null;
-                          } | null;
-                          seo?: {
-                            __typename?: 'SEO';
-                            title?: string | null;
-                            description?: string | null;
-                            openGraphTitle?: string | null;
-                            openGraphDescription?: string | null;
-                            openGraphType?: string | null;
-                            twitterTitle?: string | null;
-                            twitterDescription?: string | null;
-                            canonicalUrl?: string | null;
-                            socialImage?: {
-                              __typename?: 'MediaItem';
-                              mediaItemUrl?: string | null;
-                            } | null;
-                          } | null;
-                          translations?: Array<{
-                            __typename?: 'Page';
-                            uri?: string | null;
-                            slug?: string | null;
-                            language?: {
-                              __typename?: 'Language';
-                              code?: LanguageCodeEnum | null;
-                              id: string;
-                              locale?: string | null;
-                              name?: string | null;
-                              slug?: string | null;
-                            } | null;
-                            seo?: {
-                              __typename?: 'SEO';
-                              title?: string | null;
-                              description?: string | null;
-                              openGraphTitle?: string | null;
-                              openGraphDescription?: string | null;
-                              openGraphType?: string | null;
-                              twitterTitle?: string | null;
-                              twitterDescription?: string | null;
-                              canonicalUrl?: string | null;
-                              socialImage?: {
-                                __typename?: 'MediaItem';
-                                mediaItemUrl?: string | null;
-                              } | null;
-                            } | null;
-                          } | null> | null;
-                          featuredImage?: {
-                            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                            node?: {
-                              __typename?: 'MediaItem';
-                              mediaItemUrl?: string | null;
-                              link?: string | null;
-                              altText?: string | null;
-                              mimeType?: string | null;
-                              title?: string | null;
-                              uri?: string | null;
-                            } | null;
-                          } | null;
-                          sidebar?: Array<
-                            | {
-                                __typename: 'LayoutArticles';
-                                title?: string | null;
-                                showAllLink?: string | null;
-                                articles?: Array<{
-                                  __typename?: 'Post';
-                                  id: string;
-                                  uri?: string | null;
-                                  slug?: string | null;
-                                  link?: string | null;
-                                  date?: string | null;
-                                  title?: string | null;
-                                  lead?: string | null;
-                                  featuredImage?: {
-                                    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                                    node?: {
-                                      __typename?: 'MediaItem';
-                                      altText?: string | null;
-                                      mediaItemUrl?: string | null;
-                                    } | null;
-                                  } | null;
-                                  categories?: {
-                                    __typename?: 'PostToCategoryConnection';
-                                    nodes?: Array<{
-                                      __typename?: 'Category';
-                                      name?: string | null;
-                                    } | null> | null;
-                                  } | null;
-                                } | null> | null;
-                              }
-                            | {
-                                __typename: 'LayoutLinkList';
-                                anchor?: string | null;
-                                title?: string | null;
-                                description?: string | null;
-                                links?: Array<{
-                                  __typename?: 'Link';
-                                  target?: string | null;
-                                  title?: string | null;
-                                  url?: string | null;
-                                } | null> | null;
-                              }
-                            | {
-                                __typename: 'LayoutPages';
-                                title?: string | null;
-                                description?: string | null;
-                                pages?: Array<{
-                                  __typename?: 'Page';
-                                  id: string;
-                                  uri?: string | null;
-                                  slug?: string | null;
-                                  link?: string | null;
-                                  date?: string | null;
-                                  title?: string | null;
-                                  lead?: string | null;
-                                  featuredImage?: {
-                                    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                                    node?: {
-                                      __typename?: 'MediaItem';
-                                      altText?: string | null;
-                                      mediaItemUrl?: string | null;
-                                    } | null;
-                                  } | null;
-                                } | null> | null;
-                              }
-                            | null
-                          > | null;
-                          modules?: Array<
-                            | {
-                                __typename: 'EventSearch';
-                                title?: string | null;
-                                url?: string | null;
-                                module?: string | null;
-                              }
-                            | {
-                                __typename: 'EventSearchCarousel';
-                                title?: string | null;
-                                showAllLink?: string | null;
-                                url?: string | null;
-                                orderNewestFirst?: boolean | null;
-                                eventsNearby?: boolean | null;
-                                amountOfCards?: number | null;
-                              }
-                            | {
-                                __typename: 'EventSelected';
-                                title?: string | null;
-                                events?: Array<string | null> | null;
-                                module?: string | null;
-                              }
-                            | {
-                                __typename: 'EventSelectedCarousel';
-                                title?: string | null;
-                                module?: string | null;
-                                showAllLink?: string | null;
-                                eventsNearby?: boolean | null;
-                                events?: Array<string | null> | null;
-                                amountOfCardsPerRow?: number | null;
-                                amountOfCards?: number | null;
-                              }
-                            | { __typename?: 'LayoutArticleHighlights' }
-                            | {
-                                __typename: 'LayoutArticles';
-                                title?: string | null;
-                                showAllLink?: string | null;
-                                articles?: Array<{
-                                  __typename?: 'Post';
-                                  id: string;
-                                  uri?: string | null;
-                                  slug?: string | null;
-                                  link?: string | null;
-                                  date?: string | null;
-                                  title?: string | null;
-                                  lead?: string | null;
-                                  featuredImage?: {
-                                    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                                    node?: {
-                                      __typename?: 'MediaItem';
-                                      altText?: string | null;
-                                      mediaItemUrl?: string | null;
-                                    } | null;
-                                  } | null;
-                                  categories?: {
-                                    __typename?: 'PostToCategoryConnection';
-                                    nodes?: Array<{
-                                      __typename?: 'Category';
-                                      name?: string | null;
-                                    } | null> | null;
-                                  } | null;
-                                } | null> | null;
-                              }
-                            | {
-                                __typename: 'LayoutArticlesCarousel';
-                                title?: string | null;
-                                showMore?: Array<string | null> | null;
-                                showAllLink?: string | null;
-                                articles?: Array<{
-                                  __typename?: 'Post';
-                                  id: string;
-                                  uri?: string | null;
-                                  slug?: string | null;
-                                  link?: string | null;
-                                  date?: string | null;
-                                  title?: string | null;
-                                  lead?: string | null;
-                                  featuredImage?: {
-                                    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                                    node?: {
-                                      __typename?: 'MediaItem';
-                                      altText?: string | null;
-                                      mediaItemUrl?: string | null;
-                                    } | null;
-                                  } | null;
-                                  categories?: {
-                                    __typename?: 'PostToCategoryConnection';
-                                    nodes?: Array<{
-                                      __typename?: 'Category';
-                                      name?: string | null;
-                                    } | null> | null;
-                                  } | null;
-                                } | null> | null;
-                              }
-                            | {
-                                __typename: 'LayoutCollection';
-                                collection?: {
-                                  __typename?: 'Collection';
-                                  title?: string | null;
-                                } | null;
-                              }
-                            | { __typename?: 'LayoutContact' }
-                            | {
-                                __typename: 'LayoutPages';
-                                title?: string | null;
-                                description?: string | null;
-                                pages?: Array<{
-                                  __typename?: 'Page';
-                                  id: string;
-                                  uri?: string | null;
-                                  slug?: string | null;
-                                  link?: string | null;
-                                  date?: string | null;
-                                  title?: string | null;
-                                  lead?: string | null;
-                                  featuredImage?: {
-                                    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                                    node?: {
-                                      __typename?: 'MediaItem';
-                                      altText?: string | null;
-                                      mediaItemUrl?: string | null;
-                                    } | null;
-                                  } | null;
-                                } | null> | null;
-                              }
-                            | {
-                                __typename: 'LayoutPagesCarousel';
-                                title?: string | null;
-                                description?: string | null;
-                                pages?: Array<{
-                                  __typename?: 'Page';
-                                  id: string;
-                                  uri?: string | null;
-                                  slug?: string | null;
-                                  link?: string | null;
-                                  date?: string | null;
-                                  title?: string | null;
-                                  lead?: string | null;
-                                  featuredImage?: {
-                                    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                                    node?: {
-                                      __typename?: 'MediaItem';
-                                      altText?: string | null;
-                                      mediaItemUrl?: string | null;
-                                    } | null;
-                                  } | null;
-                                } | null> | null;
-                              }
-                            | {
-                                __typename: 'LocationsSelected';
-                                title?: string | null;
-                                locations?: Array<number | null> | null;
-                                module?: string | null;
-                              }
-                            | null
-                          > | null;
-                        } | null> | null;
-                        seo?: {
-                          __typename?: 'SEO';
-                          title?: string | null;
-                          description?: string | null;
-                          openGraphTitle?: string | null;
-                          openGraphDescription?: string | null;
-                          openGraphType?: string | null;
-                          twitterTitle?: string | null;
-                          twitterDescription?: string | null;
-                          canonicalUrl?: string | null;
-                          socialImage?: {
-                            __typename?: 'MediaItem';
-                            mediaItemUrl?: string | null;
-                          } | null;
-                        } | null;
-                        language?: {
-                          __typename?: 'Language';
-                          code?: LanguageCodeEnum | null;
-                          id: string;
-                          locale?: string | null;
-                          name?: string | null;
-                          slug?: string | null;
-                        } | null;
-                        featuredImage?: {
-                          __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                          node?: {
-                            __typename?: 'MediaItem';
-                            mediaItemUrl?: string | null;
-                            link?: string | null;
-                            altText?: string | null;
-                            mimeType?: string | null;
-                            title?: string | null;
-                            uri?: string | null;
-                          } | null;
-                        } | null;
-                        sidebar?: Array<
-                          | {
-                              __typename: 'LayoutArticles';
-                              title?: string | null;
-                              showAllLink?: string | null;
-                              articles?: Array<{
-                                __typename?: 'Post';
-                                id: string;
-                                uri?: string | null;
-                                slug?: string | null;
-                                link?: string | null;
-                                date?: string | null;
-                                title?: string | null;
-                                lead?: string | null;
-                                featuredImage?: {
-                                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                                  node?: {
-                                    __typename?: 'MediaItem';
-                                    altText?: string | null;
-                                    mediaItemUrl?: string | null;
-                                  } | null;
-                                } | null;
-                                categories?: {
-                                  __typename?: 'PostToCategoryConnection';
-                                  nodes?: Array<{
-                                    __typename?: 'Category';
-                                    name?: string | null;
-                                  } | null> | null;
-                                } | null;
-                              } | null> | null;
-                            }
-                          | {
-                              __typename: 'LayoutLinkList';
-                              anchor?: string | null;
-                              title?: string | null;
-                              description?: string | null;
-                              links?: Array<{
-                                __typename?: 'Link';
-                                target?: string | null;
-                                title?: string | null;
-                                url?: string | null;
-                              } | null> | null;
-                            }
-                          | {
-                              __typename: 'LayoutPages';
-                              title?: string | null;
-                              description?: string | null;
-                              pages?: Array<{
-                                __typename?: 'Page';
-                                id: string;
-                                uri?: string | null;
-                                slug?: string | null;
-                                link?: string | null;
-                                date?: string | null;
-                                title?: string | null;
-                                lead?: string | null;
-                                featuredImage?: {
-                                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                                  node?: {
-                                    __typename?: 'MediaItem';
-                                    altText?: string | null;
-                                    mediaItemUrl?: string | null;
-                                  } | null;
-                                } | null;
-                              } | null> | null;
-                            }
-                          | null
-                        > | null;
-                        modules?: Array<
-                          | {
-                              __typename: 'EventSearch';
-                              title?: string | null;
-                              url?: string | null;
-                              module?: string | null;
-                            }
-                          | {
-                              __typename: 'EventSearchCarousel';
-                              title?: string | null;
-                              showAllLink?: string | null;
-                              url?: string | null;
-                              orderNewestFirst?: boolean | null;
-                              eventsNearby?: boolean | null;
-                              amountOfCards?: number | null;
-                            }
-                          | {
-                              __typename: 'EventSelected';
-                              title?: string | null;
-                              events?: Array<string | null> | null;
-                              module?: string | null;
-                            }
-                          | {
-                              __typename: 'EventSelectedCarousel';
-                              title?: string | null;
-                              module?: string | null;
-                              showAllLink?: string | null;
-                              eventsNearby?: boolean | null;
-                              events?: Array<string | null> | null;
-                              amountOfCardsPerRow?: number | null;
-                              amountOfCards?: number | null;
-                            }
-                          | { __typename?: 'LayoutArticleHighlights' }
-                          | {
-                              __typename: 'LayoutArticles';
-                              title?: string | null;
-                              showAllLink?: string | null;
-                              articles?: Array<{
-                                __typename?: 'Post';
-                                id: string;
-                                uri?: string | null;
-                                slug?: string | null;
-                                link?: string | null;
-                                date?: string | null;
-                                title?: string | null;
-                                lead?: string | null;
-                                featuredImage?: {
-                                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                                  node?: {
-                                    __typename?: 'MediaItem';
-                                    altText?: string | null;
-                                    mediaItemUrl?: string | null;
-                                  } | null;
-                                } | null;
-                                categories?: {
-                                  __typename?: 'PostToCategoryConnection';
-                                  nodes?: Array<{
-                                    __typename?: 'Category';
-                                    name?: string | null;
-                                  } | null> | null;
-                                } | null;
-                              } | null> | null;
-                            }
-                          | {
-                              __typename: 'LayoutArticlesCarousel';
-                              title?: string | null;
-                              showMore?: Array<string | null> | null;
-                              showAllLink?: string | null;
-                              articles?: Array<{
-                                __typename?: 'Post';
-                                id: string;
-                                uri?: string | null;
-                                slug?: string | null;
-                                link?: string | null;
-                                date?: string | null;
-                                title?: string | null;
-                                lead?: string | null;
-                                featuredImage?: {
-                                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                                  node?: {
-                                    __typename?: 'MediaItem';
-                                    altText?: string | null;
-                                    mediaItemUrl?: string | null;
-                                  } | null;
-                                } | null;
-                                categories?: {
-                                  __typename?: 'PostToCategoryConnection';
-                                  nodes?: Array<{
-                                    __typename?: 'Category';
-                                    name?: string | null;
-                                  } | null> | null;
-                                } | null;
-                              } | null> | null;
-                            }
-                          | {
-                              __typename: 'LayoutCollection';
-                              collection?: {
-                                __typename?: 'Collection';
-                                title?: string | null;
-                              } | null;
-                            }
-                          | { __typename?: 'LayoutContact' }
-                          | {
-                              __typename: 'LayoutPages';
-                              title?: string | null;
-                              description?: string | null;
-                              pages?: Array<{
-                                __typename?: 'Page';
-                                id: string;
-                                uri?: string | null;
-                                slug?: string | null;
-                                link?: string | null;
-                                date?: string | null;
-                                title?: string | null;
-                                lead?: string | null;
-                                featuredImage?: {
-                                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                                  node?: {
-                                    __typename?: 'MediaItem';
-                                    altText?: string | null;
-                                    mediaItemUrl?: string | null;
-                                  } | null;
-                                } | null;
-                              } | null> | null;
-                            }
-                          | {
-                              __typename: 'LayoutPagesCarousel';
-                              title?: string | null;
-                              description?: string | null;
-                              pages?: Array<{
-                                __typename?: 'Page';
-                                id: string;
-                                uri?: string | null;
-                                slug?: string | null;
-                                link?: string | null;
-                                date?: string | null;
-                                title?: string | null;
-                                lead?: string | null;
-                                featuredImage?: {
-                                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                                  node?: {
-                                    __typename?: 'MediaItem';
-                                    altText?: string | null;
-                                    mediaItemUrl?: string | null;
-                                  } | null;
-                                } | null;
-                              } | null> | null;
-                            }
-                          | {
-                              __typename: 'LocationsSelected';
-                              title?: string | null;
-                              locations?: Array<number | null> | null;
-                              module?: string | null;
-                            }
-                          | null
-                        > | null;
-                      }
-                    | { __typename?: 'Post' }
-                    | { __typename?: 'Release' }
-                    | { __typename?: 'Translation' }
-                    | null
-                  > | null;
-                } | null;
-                translations?: Array<{
-                  __typename?: 'Page';
-                  uri?: string | null;
-                  slug?: string | null;
-                  id: string;
-                  content?: string | null;
-                  title?: string | null;
-                  link?: string | null;
-                  lead?: string | null;
-                  language?: {
-                    __typename?: 'Language';
-                    code?: LanguageCodeEnum | null;
-                    id: string;
-                    locale?: string | null;
-                    name?: string | null;
-                    slug?: string | null;
-                  } | null;
-                  seo?: {
-                    __typename?: 'SEO';
-                    title?: string | null;
-                    description?: string | null;
-                    openGraphTitle?: string | null;
-                    openGraphDescription?: string | null;
-                    openGraphType?: string | null;
-                    twitterTitle?: string | null;
-                    twitterDescription?: string | null;
-                    canonicalUrl?: string | null;
-                    socialImage?: {
-                      __typename?: 'MediaItem';
-                      mediaItemUrl?: string | null;
-                    } | null;
-                  } | null;
-                  translations?: Array<{
-                    __typename?: 'Page';
-                    uri?: string | null;
-                    slug?: string | null;
-                    language?: {
-                      __typename?: 'Language';
-                      code?: LanguageCodeEnum | null;
-                      id: string;
-                      locale?: string | null;
-                      name?: string | null;
-                      slug?: string | null;
-                    } | null;
-                    seo?: {
-                      __typename?: 'SEO';
-                      title?: string | null;
-                      description?: string | null;
-                      openGraphTitle?: string | null;
-                      openGraphDescription?: string | null;
-                      openGraphType?: string | null;
-                      twitterTitle?: string | null;
-                      twitterDescription?: string | null;
-                      canonicalUrl?: string | null;
-                      socialImage?: {
-                        __typename?: 'MediaItem';
-                        mediaItemUrl?: string | null;
-                      } | null;
-                    } | null;
-                  } | null> | null;
-                  featuredImage?: {
-                    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                    node?: {
-                      __typename?: 'MediaItem';
-                      mediaItemUrl?: string | null;
-                      link?: string | null;
-                      altText?: string | null;
-                      mimeType?: string | null;
-                      title?: string | null;
-                      uri?: string | null;
-                    } | null;
-                  } | null;
-                  sidebar?: Array<
-                    | {
-                        __typename: 'LayoutArticles';
-                        title?: string | null;
-                        showAllLink?: string | null;
-                        articles?: Array<{
-                          __typename?: 'Post';
-                          id: string;
-                          uri?: string | null;
-                          slug?: string | null;
-                          link?: string | null;
-                          date?: string | null;
-                          title?: string | null;
-                          lead?: string | null;
-                          featuredImage?: {
-                            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                            node?: {
-                              __typename?: 'MediaItem';
-                              altText?: string | null;
-                              mediaItemUrl?: string | null;
-                            } | null;
-                          } | null;
-                          categories?: {
-                            __typename?: 'PostToCategoryConnection';
-                            nodes?: Array<{
-                              __typename?: 'Category';
-                              name?: string | null;
-                            } | null> | null;
-                          } | null;
-                        } | null> | null;
-                      }
-                    | {
-                        __typename: 'LayoutLinkList';
-                        anchor?: string | null;
-                        title?: string | null;
-                        description?: string | null;
-                        links?: Array<{
-                          __typename?: 'Link';
-                          target?: string | null;
-                          title?: string | null;
-                          url?: string | null;
-                        } | null> | null;
-                      }
-                    | {
-                        __typename: 'LayoutPages';
-                        title?: string | null;
-                        description?: string | null;
-                        pages?: Array<{
-                          __typename?: 'Page';
-                          id: string;
-                          uri?: string | null;
-                          slug?: string | null;
-                          link?: string | null;
-                          date?: string | null;
-                          title?: string | null;
-                          lead?: string | null;
-                          featuredImage?: {
-                            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                            node?: {
-                              __typename?: 'MediaItem';
-                              altText?: string | null;
-                              mediaItemUrl?: string | null;
-                            } | null;
-                          } | null;
-                        } | null> | null;
-                      }
-                    | null
-                  > | null;
-                  modules?: Array<
-                    | {
-                        __typename: 'EventSearch';
-                        title?: string | null;
-                        url?: string | null;
-                        module?: string | null;
-                      }
-                    | {
-                        __typename: 'EventSearchCarousel';
-                        title?: string | null;
-                        showAllLink?: string | null;
-                        url?: string | null;
-                        orderNewestFirst?: boolean | null;
-                        eventsNearby?: boolean | null;
-                        amountOfCards?: number | null;
-                      }
-                    | {
-                        __typename: 'EventSelected';
-                        title?: string | null;
-                        events?: Array<string | null> | null;
-                        module?: string | null;
-                      }
-                    | {
-                        __typename: 'EventSelectedCarousel';
-                        title?: string | null;
-                        module?: string | null;
-                        showAllLink?: string | null;
-                        eventsNearby?: boolean | null;
-                        events?: Array<string | null> | null;
-                        amountOfCardsPerRow?: number | null;
-                        amountOfCards?: number | null;
-                      }
-                    | { __typename?: 'LayoutArticleHighlights' }
-                    | {
-                        __typename: 'LayoutArticles';
-                        title?: string | null;
-                        showAllLink?: string | null;
-                        articles?: Array<{
-                          __typename?: 'Post';
-                          id: string;
-                          uri?: string | null;
-                          slug?: string | null;
-                          link?: string | null;
-                          date?: string | null;
-                          title?: string | null;
-                          lead?: string | null;
-                          featuredImage?: {
-                            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                            node?: {
-                              __typename?: 'MediaItem';
-                              altText?: string | null;
-                              mediaItemUrl?: string | null;
-                            } | null;
-                          } | null;
-                          categories?: {
-                            __typename?: 'PostToCategoryConnection';
-                            nodes?: Array<{
-                              __typename?: 'Category';
-                              name?: string | null;
-                            } | null> | null;
-                          } | null;
-                        } | null> | null;
-                      }
-                    | {
-                        __typename: 'LayoutArticlesCarousel';
-                        title?: string | null;
-                        showMore?: Array<string | null> | null;
-                        showAllLink?: string | null;
-                        articles?: Array<{
-                          __typename?: 'Post';
-                          id: string;
-                          uri?: string | null;
-                          slug?: string | null;
-                          link?: string | null;
-                          date?: string | null;
-                          title?: string | null;
-                          lead?: string | null;
-                          featuredImage?: {
-                            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                            node?: {
-                              __typename?: 'MediaItem';
-                              altText?: string | null;
-                              mediaItemUrl?: string | null;
-                            } | null;
-                          } | null;
-                          categories?: {
-                            __typename?: 'PostToCategoryConnection';
-                            nodes?: Array<{
-                              __typename?: 'Category';
-                              name?: string | null;
-                            } | null> | null;
-                          } | null;
-                        } | null> | null;
-                      }
-                    | {
-                        __typename: 'LayoutCollection';
-                        collection?: {
-                          __typename?: 'Collection';
-                          title?: string | null;
-                        } | null;
-                      }
-                    | { __typename?: 'LayoutContact' }
-                    | {
-                        __typename: 'LayoutPages';
-                        title?: string | null;
-                        description?: string | null;
-                        pages?: Array<{
-                          __typename?: 'Page';
-                          id: string;
-                          uri?: string | null;
-                          slug?: string | null;
-                          link?: string | null;
-                          date?: string | null;
-                          title?: string | null;
-                          lead?: string | null;
-                          featuredImage?: {
-                            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                            node?: {
-                              __typename?: 'MediaItem';
-                              altText?: string | null;
-                              mediaItemUrl?: string | null;
-                            } | null;
-                          } | null;
-                        } | null> | null;
-                      }
-                    | {
-                        __typename: 'LayoutPagesCarousel';
-                        title?: string | null;
-                        description?: string | null;
-                        pages?: Array<{
-                          __typename?: 'Page';
-                          id: string;
-                          uri?: string | null;
-                          slug?: string | null;
-                          link?: string | null;
-                          date?: string | null;
-                          title?: string | null;
-                          lead?: string | null;
-                          featuredImage?: {
-                            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                            node?: {
-                              __typename?: 'MediaItem';
-                              altText?: string | null;
-                              mediaItemUrl?: string | null;
-                            } | null;
-                          } | null;
-                        } | null> | null;
-                      }
-                    | {
-                        __typename: 'LocationsSelected';
-                        title?: string | null;
-                        locations?: Array<number | null> | null;
-                        module?: string | null;
-                      }
-                    | null
-                  > | null;
-                } | null> | null;
-                seo?: {
-                  __typename?: 'SEO';
-                  title?: string | null;
-                  description?: string | null;
-                  openGraphTitle?: string | null;
-                  openGraphDescription?: string | null;
-                  openGraphType?: string | null;
-                  twitterTitle?: string | null;
-                  twitterDescription?: string | null;
-                  canonicalUrl?: string | null;
-                  socialImage?: {
-                    __typename?: 'MediaItem';
-                    mediaItemUrl?: string | null;
-                  } | null;
-                } | null;
-                language?: {
-                  __typename?: 'Language';
-                  code?: LanguageCodeEnum | null;
-                  id: string;
-                  locale?: string | null;
-                  name?: string | null;
-                  slug?: string | null;
-                } | null;
-                featuredImage?: {
-                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                  node?: {
-                    __typename?: 'MediaItem';
-                    mediaItemUrl?: string | null;
-                    link?: string | null;
-                    altText?: string | null;
-                    mimeType?: string | null;
-                    title?: string | null;
-                    uri?: string | null;
-                  } | null;
-                } | null;
-                sidebar?: Array<
-                  | {
-                      __typename: 'LayoutArticles';
-                      title?: string | null;
-                      showAllLink?: string | null;
-                      articles?: Array<{
-                        __typename?: 'Post';
-                        id: string;
-                        uri?: string | null;
-                        slug?: string | null;
-                        link?: string | null;
-                        date?: string | null;
-                        title?: string | null;
-                        lead?: string | null;
-                        featuredImage?: {
-                          __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                          node?: {
-                            __typename?: 'MediaItem';
-                            altText?: string | null;
-                            mediaItemUrl?: string | null;
-                          } | null;
-                        } | null;
-                        categories?: {
-                          __typename?: 'PostToCategoryConnection';
-                          nodes?: Array<{
-                            __typename?: 'Category';
-                            name?: string | null;
-                          } | null> | null;
-                        } | null;
-                      } | null> | null;
-                    }
-                  | {
-                      __typename: 'LayoutLinkList';
-                      anchor?: string | null;
-                      title?: string | null;
-                      description?: string | null;
-                      links?: Array<{
-                        __typename?: 'Link';
-                        target?: string | null;
-                        title?: string | null;
-                        url?: string | null;
-                      } | null> | null;
-                    }
-                  | {
-                      __typename: 'LayoutPages';
-                      title?: string | null;
-                      description?: string | null;
-                      pages?: Array<{
-                        __typename?: 'Page';
-                        id: string;
-                        uri?: string | null;
-                        slug?: string | null;
-                        link?: string | null;
-                        date?: string | null;
-                        title?: string | null;
-                        lead?: string | null;
-                        featuredImage?: {
-                          __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                          node?: {
-                            __typename?: 'MediaItem';
-                            altText?: string | null;
-                            mediaItemUrl?: string | null;
-                          } | null;
-                        } | null;
-                      } | null> | null;
-                    }
-                  | null
-                > | null;
-                modules?: Array<
-                  | {
-                      __typename: 'EventSearch';
-                      title?: string | null;
-                      url?: string | null;
-                      module?: string | null;
-                    }
-                  | {
-                      __typename: 'EventSearchCarousel';
-                      title?: string | null;
-                      showAllLink?: string | null;
-                      url?: string | null;
-                      orderNewestFirst?: boolean | null;
-                      eventsNearby?: boolean | null;
-                      amountOfCards?: number | null;
-                    }
-                  | {
-                      __typename: 'EventSelected';
-                      title?: string | null;
-                      events?: Array<string | null> | null;
-                      module?: string | null;
-                    }
-                  | {
-                      __typename: 'EventSelectedCarousel';
-                      title?: string | null;
-                      module?: string | null;
-                      showAllLink?: string | null;
-                      eventsNearby?: boolean | null;
-                      events?: Array<string | null> | null;
-                      amountOfCardsPerRow?: number | null;
-                      amountOfCards?: number | null;
-                    }
-                  | { __typename?: 'LayoutArticleHighlights' }
-                  | {
-                      __typename: 'LayoutArticles';
-                      title?: string | null;
-                      showAllLink?: string | null;
-                      articles?: Array<{
-                        __typename?: 'Post';
-                        id: string;
-                        uri?: string | null;
-                        slug?: string | null;
-                        link?: string | null;
-                        date?: string | null;
-                        title?: string | null;
-                        lead?: string | null;
-                        featuredImage?: {
-                          __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                          node?: {
-                            __typename?: 'MediaItem';
-                            altText?: string | null;
-                            mediaItemUrl?: string | null;
-                          } | null;
-                        } | null;
-                        categories?: {
-                          __typename?: 'PostToCategoryConnection';
-                          nodes?: Array<{
-                            __typename?: 'Category';
-                            name?: string | null;
-                          } | null> | null;
-                        } | null;
-                      } | null> | null;
-                    }
-                  | {
-                      __typename: 'LayoutArticlesCarousel';
-                      title?: string | null;
-                      showMore?: Array<string | null> | null;
-                      showAllLink?: string | null;
-                      articles?: Array<{
-                        __typename?: 'Post';
-                        id: string;
-                        uri?: string | null;
-                        slug?: string | null;
-                        link?: string | null;
-                        date?: string | null;
-                        title?: string | null;
-                        lead?: string | null;
-                        featuredImage?: {
-                          __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                          node?: {
-                            __typename?: 'MediaItem';
-                            altText?: string | null;
-                            mediaItemUrl?: string | null;
-                          } | null;
-                        } | null;
-                        categories?: {
-                          __typename?: 'PostToCategoryConnection';
-                          nodes?: Array<{
-                            __typename?: 'Category';
-                            name?: string | null;
-                          } | null> | null;
-                        } | null;
-                      } | null> | null;
-                    }
-                  | {
-                      __typename: 'LayoutCollection';
-                      collection?: {
-                        __typename?: 'Collection';
-                        title?: string | null;
-                      } | null;
-                    }
-                  | { __typename?: 'LayoutContact' }
-                  | {
-                      __typename: 'LayoutPages';
-                      title?: string | null;
-                      description?: string | null;
-                      pages?: Array<{
-                        __typename?: 'Page';
-                        id: string;
-                        uri?: string | null;
-                        slug?: string | null;
-                        link?: string | null;
-                        date?: string | null;
-                        title?: string | null;
-                        lead?: string | null;
-                        featuredImage?: {
-                          __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                          node?: {
-                            __typename?: 'MediaItem';
-                            altText?: string | null;
-                            mediaItemUrl?: string | null;
-                          } | null;
-                        } | null;
-                      } | null> | null;
-                    }
-                  | {
-                      __typename: 'LayoutPagesCarousel';
-                      title?: string | null;
-                      description?: string | null;
-                      pages?: Array<{
-                        __typename?: 'Page';
-                        id: string;
-                        uri?: string | null;
-                        slug?: string | null;
-                        link?: string | null;
-                        date?: string | null;
-                        title?: string | null;
-                        lead?: string | null;
-                        featuredImage?: {
-                          __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                          node?: {
-                            __typename?: 'MediaItem';
-                            altText?: string | null;
-                            mediaItemUrl?: string | null;
-                          } | null;
-                        } | null;
-                      } | null> | null;
-                    }
-                  | {
-                      __typename: 'LocationsSelected';
-                      title?: string | null;
-                      locations?: Array<number | null> | null;
-                      module?: string | null;
-                    }
-                  | null
-                > | null;
-              }
-            | { __typename?: 'Post' }
-            | { __typename?: 'Tag' }
-            | null;
-        } | null;
-      } | null> | null;
-    } | null;
-  } | null;
-};
-
-export type LayoutLinkListFragment = {
-  __typename: 'LayoutLinkList';
-  anchor?: string | null;
-  title?: string | null;
-  description?: string | null;
-  links?: Array<{
-    __typename?: 'Link';
-    target?: string | null;
-    title?: string | null;
-    url?: string | null;
-  } | null> | null;
-};
-
-export type LayoutArticlesFragment = {
-  __typename: 'LayoutArticles';
-  title?: string | null;
-  showAllLink?: string | null;
-  articles?: Array<{
-    __typename?: 'Post';
-    id: string;
-    uri?: string | null;
-    slug?: string | null;
-    link?: string | null;
-    date?: string | null;
-    title?: string | null;
-    lead?: string | null;
-    featuredImage?: {
-      __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-      node?: {
-        __typename?: 'MediaItem';
-        altText?: string | null;
-        mediaItemUrl?: string | null;
-      } | null;
-    } | null;
-    categories?: {
-      __typename?: 'PostToCategoryConnection';
-      nodes?: Array<{
-        __typename?: 'Category';
-        name?: string | null;
-      } | null> | null;
-    } | null;
-  } | null> | null;
-};
-
-export type LayoutArticlesCarouselFragment = {
-  __typename: 'LayoutArticlesCarousel';
-  title?: string | null;
-  showMore?: Array<string | null> | null;
-  showAllLink?: string | null;
-  articles?: Array<{
-    __typename?: 'Post';
-    id: string;
-    uri?: string | null;
-    slug?: string | null;
-    link?: string | null;
-    date?: string | null;
-    title?: string | null;
-    lead?: string | null;
-    featuredImage?: {
-      __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-      node?: {
-        __typename?: 'MediaItem';
-        altText?: string | null;
-        mediaItemUrl?: string | null;
-      } | null;
-    } | null;
-    categories?: {
-      __typename?: 'PostToCategoryConnection';
-      nodes?: Array<{
-        __typename?: 'Category';
-        name?: string | null;
-      } | null> | null;
-    } | null;
-  } | null> | null;
-};
-
-export type LayoutPagesFragment = {
-  __typename: 'LayoutPages';
-  title?: string | null;
-  description?: string | null;
-  pages?: Array<{
-    __typename?: 'Page';
-    id: string;
-    uri?: string | null;
-    slug?: string | null;
-    link?: string | null;
-    date?: string | null;
-    title?: string | null;
-    lead?: string | null;
-    featuredImage?: {
-      __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-      node?: {
-        __typename?: 'MediaItem';
-        altText?: string | null;
-        mediaItemUrl?: string | null;
-      } | null;
-    } | null;
-  } | null> | null;
-};
-
-export type LayoutPagesCarouselFragment = {
-  __typename: 'LayoutPagesCarousel';
-  title?: string | null;
-  description?: string | null;
-  pages?: Array<{
-    __typename?: 'Page';
-    id: string;
-    uri?: string | null;
-    slug?: string | null;
-    link?: string | null;
-    date?: string | null;
-    title?: string | null;
-    lead?: string | null;
-    featuredImage?: {
-      __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-      node?: {
-        __typename?: 'MediaItem';
-        altText?: string | null;
-        mediaItemUrl?: string | null;
-      } | null;
-    } | null;
-  } | null> | null;
-};
-
-export type EventSearchFragment = {
-  __typename: 'EventSearch';
-  title?: string | null;
-  url?: string | null;
-  module?: string | null;
-};
-
-export type EventSelectedFragment = {
-  __typename: 'EventSelected';
-  title?: string | null;
-  events?: Array<string | null> | null;
-  module?: string | null;
-};
-
-export type EventSearchCarouselFragment = {
-  __typename: 'EventSearchCarousel';
-  title?: string | null;
-  showAllLink?: string | null;
-  url?: string | null;
-  orderNewestFirst?: boolean | null;
-  eventsNearby?: boolean | null;
-  amountOfCards?: number | null;
-};
-
-export type EventSelectedCarouselFragment = {
-  __typename: 'EventSelectedCarousel';
-  title?: string | null;
-  module?: string | null;
-  showAllLink?: string | null;
-  eventsNearby?: boolean | null;
-  events?: Array<string | null> | null;
-  amountOfCardsPerRow?: number | null;
-  amountOfCards?: number | null;
-};
-
-export type LayoutCollectionFragment = {
-  __typename: 'LayoutCollection';
-  collection?: { __typename?: 'Collection'; title?: string | null } | null;
-};
-
-export type LayoutArticleHighlightsFragment = {
-  __typename: 'LayoutArticleHighlights';
-};
-
-export type LayoutContactFragment = { __typename: 'LayoutContact' };
-
-export type LocationsSelectedFragment = {
-  __typename: 'LocationsSelected';
-  title?: string | null;
-  locations?: Array<number | null> | null;
-  module?: string | null;
-};
-
-export type NotificationQueryVariables = Exact<{
-  language?: Scalars['String'];
-}>;
-
-export type NotificationQuery = {
-  __typename?: 'RootQuery';
-  notification?: {
-    __typename?: 'Notification';
-    content?: string | null;
-    title?: string | null;
-    level?: string | null;
-    startDate?: string | null;
-    endDate?: string | null;
-    linkText?: string | null;
-    linkUrl?: string | null;
-  } | null;
-};
-
-export type PageFragment = {
-  __typename?: 'Page';
-  id: string;
-  content?: string | null;
-  slug?: string | null;
-  title?: string | null;
-  uri?: string | null;
-  link?: string | null;
-  lead?: string | null;
-  seo?: {
-    __typename?: 'SEO';
-    title?: string | null;
-    description?: string | null;
-    openGraphTitle?: string | null;
-    openGraphDescription?: string | null;
-    openGraphType?: string | null;
-    twitterTitle?: string | null;
-    twitterDescription?: string | null;
-    canonicalUrl?: string | null;
-    socialImage?: {
-      __typename?: 'MediaItem';
-      mediaItemUrl?: string | null;
-    } | null;
-  } | null;
-  language?: {
-    __typename?: 'Language';
-    code?: LanguageCodeEnum | null;
-    id: string;
-    locale?: string | null;
-    name?: string | null;
-    slug?: string | null;
-  } | null;
-  translations?: Array<{
-    __typename?: 'Page';
-    uri?: string | null;
-    slug?: string | null;
-    language?: {
-      __typename?: 'Language';
-      code?: LanguageCodeEnum | null;
-      id: string;
-      locale?: string | null;
-      name?: string | null;
-      slug?: string | null;
-    } | null;
-    seo?: {
-      __typename?: 'SEO';
-      title?: string | null;
-      description?: string | null;
-      openGraphTitle?: string | null;
-      openGraphDescription?: string | null;
-      openGraphType?: string | null;
-      twitterTitle?: string | null;
-      twitterDescription?: string | null;
-      canonicalUrl?: string | null;
-      socialImage?: {
-        __typename?: 'MediaItem';
-        mediaItemUrl?: string | null;
-      } | null;
-    } | null;
-  } | null> | null;
-  featuredImage?: {
-    __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-    node?: {
-      __typename?: 'MediaItem';
-      mediaItemUrl?: string | null;
-      link?: string | null;
-      altText?: string | null;
-      mimeType?: string | null;
-      title?: string | null;
-      uri?: string | null;
-    } | null;
-  } | null;
-  sidebar?: Array<
-    | {
-        __typename: 'LayoutArticles';
-        title?: string | null;
-        showAllLink?: string | null;
-        articles?: Array<{
-          __typename?: 'Post';
-          id: string;
-          uri?: string | null;
-          slug?: string | null;
-          link?: string | null;
-          date?: string | null;
-          title?: string | null;
-          lead?: string | null;
-          featuredImage?: {
-            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-            node?: {
-              __typename?: 'MediaItem';
-              altText?: string | null;
-              mediaItemUrl?: string | null;
-            } | null;
-          } | null;
-          categories?: {
-            __typename?: 'PostToCategoryConnection';
-            nodes?: Array<{
-              __typename?: 'Category';
-              name?: string | null;
-            } | null> | null;
-          } | null;
-        } | null> | null;
-      }
-    | {
-        __typename: 'LayoutLinkList';
-        anchor?: string | null;
-        title?: string | null;
-        description?: string | null;
-        links?: Array<{
-          __typename?: 'Link';
-          target?: string | null;
-          title?: string | null;
-          url?: string | null;
-        } | null> | null;
-      }
-    | {
-        __typename: 'LayoutPages';
-        title?: string | null;
-        description?: string | null;
-        pages?: Array<{
-          __typename?: 'Page';
-          id: string;
-          uri?: string | null;
-          slug?: string | null;
-          link?: string | null;
-          date?: string | null;
-          title?: string | null;
-          lead?: string | null;
-          featuredImage?: {
-            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-            node?: {
-              __typename?: 'MediaItem';
-              altText?: string | null;
-              mediaItemUrl?: string | null;
-            } | null;
-          } | null;
-        } | null> | null;
-      }
-    | null
-  > | null;
-  modules?: Array<
-    | {
-        __typename: 'EventSearch';
-        title?: string | null;
-        url?: string | null;
-        module?: string | null;
-      }
-    | {
-        __typename: 'EventSearchCarousel';
-        title?: string | null;
-        showAllLink?: string | null;
-        url?: string | null;
-        orderNewestFirst?: boolean | null;
-        eventsNearby?: boolean | null;
-        amountOfCards?: number | null;
-      }
-    | {
-        __typename: 'EventSelected';
-        title?: string | null;
-        events?: Array<string | null> | null;
-        module?: string | null;
-      }
-    | {
-        __typename: 'EventSelectedCarousel';
-        title?: string | null;
-        module?: string | null;
-        showAllLink?: string | null;
-        eventsNearby?: boolean | null;
-        events?: Array<string | null> | null;
-        amountOfCardsPerRow?: number | null;
-        amountOfCards?: number | null;
-      }
-    | { __typename?: 'LayoutArticleHighlights' }
-    | {
-        __typename: 'LayoutArticles';
-        title?: string | null;
-        showAllLink?: string | null;
-        articles?: Array<{
-          __typename?: 'Post';
-          id: string;
-          uri?: string | null;
-          slug?: string | null;
-          link?: string | null;
-          date?: string | null;
-          title?: string | null;
-          lead?: string | null;
-          featuredImage?: {
-            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-            node?: {
-              __typename?: 'MediaItem';
-              altText?: string | null;
-              mediaItemUrl?: string | null;
-            } | null;
-          } | null;
-          categories?: {
-            __typename?: 'PostToCategoryConnection';
-            nodes?: Array<{
-              __typename?: 'Category';
-              name?: string | null;
-            } | null> | null;
-          } | null;
-        } | null> | null;
-      }
-    | {
-        __typename: 'LayoutArticlesCarousel';
-        title?: string | null;
-        showMore?: Array<string | null> | null;
-        showAllLink?: string | null;
-        articles?: Array<{
-          __typename?: 'Post';
-          id: string;
-          uri?: string | null;
-          slug?: string | null;
-          link?: string | null;
-          date?: string | null;
-          title?: string | null;
-          lead?: string | null;
-          featuredImage?: {
-            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-            node?: {
-              __typename?: 'MediaItem';
-              altText?: string | null;
-              mediaItemUrl?: string | null;
-            } | null;
-          } | null;
-          categories?: {
-            __typename?: 'PostToCategoryConnection';
-            nodes?: Array<{
-              __typename?: 'Category';
-              name?: string | null;
-            } | null> | null;
-          } | null;
-        } | null> | null;
-      }
-    | {
-        __typename: 'LayoutCollection';
-        collection?: {
-          __typename?: 'Collection';
-          title?: string | null;
-        } | null;
-      }
-    | { __typename?: 'LayoutContact' }
-    | {
-        __typename: 'LayoutPages';
-        title?: string | null;
-        description?: string | null;
-        pages?: Array<{
-          __typename?: 'Page';
-          id: string;
-          uri?: string | null;
-          slug?: string | null;
-          link?: string | null;
-          date?: string | null;
-          title?: string | null;
-          lead?: string | null;
-          featuredImage?: {
-            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-            node?: {
-              __typename?: 'MediaItem';
-              altText?: string | null;
-              mediaItemUrl?: string | null;
-            } | null;
-          } | null;
-        } | null> | null;
-      }
-    | {
-        __typename: 'LayoutPagesCarousel';
-        title?: string | null;
-        description?: string | null;
-        pages?: Array<{
-          __typename?: 'Page';
-          id: string;
-          uri?: string | null;
-          slug?: string | null;
-          link?: string | null;
-          date?: string | null;
-          title?: string | null;
-          lead?: string | null;
-          featuredImage?: {
-            __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-            node?: {
-              __typename?: 'MediaItem';
-              altText?: string | null;
-              mediaItemUrl?: string | null;
-            } | null;
-          } | null;
-        } | null> | null;
-      }
-    | {
-        __typename: 'LocationsSelected';
-        title?: string | null;
-        locations?: Array<number | null> | null;
-        module?: string | null;
-      }
-    | null
-  > | null;
-};
-
-export type PageQueryVariables = Exact<{
-  id: Scalars['ID'];
-}>;
-
-export type PageQuery = {
-  __typename?: 'RootQuery';
-  page?: {
-    __typename?: 'Page';
-    id: string;
-    content?: string | null;
-    slug?: string | null;
-    title?: string | null;
-    uri?: string | null;
-    link?: string | null;
-    lead?: string | null;
-    seo?: {
-      __typename?: 'SEO';
-      title?: string | null;
-      description?: string | null;
-      openGraphTitle?: string | null;
-      openGraphDescription?: string | null;
-      openGraphType?: string | null;
-      twitterTitle?: string | null;
-      twitterDescription?: string | null;
-      canonicalUrl?: string | null;
-      socialImage?: {
-        __typename?: 'MediaItem';
-        mediaItemUrl?: string | null;
-      } | null;
-    } | null;
-    language?: {
-      __typename?: 'Language';
-      code?: LanguageCodeEnum | null;
-      id: string;
-      locale?: string | null;
-      name?: string | null;
-      slug?: string | null;
-    } | null;
-    translations?: Array<{
-      __typename?: 'Page';
-      uri?: string | null;
-      slug?: string | null;
-      language?: {
-        __typename?: 'Language';
-        code?: LanguageCodeEnum | null;
-        id: string;
-        locale?: string | null;
-        name?: string | null;
-        slug?: string | null;
-      } | null;
-      seo?: {
-        __typename?: 'SEO';
-        title?: string | null;
-        description?: string | null;
-        openGraphTitle?: string | null;
-        openGraphDescription?: string | null;
-        openGraphType?: string | null;
-        twitterTitle?: string | null;
-        twitterDescription?: string | null;
-        canonicalUrl?: string | null;
-        socialImage?: {
-          __typename?: 'MediaItem';
-          mediaItemUrl?: string | null;
-        } | null;
-      } | null;
-    } | null> | null;
-    featuredImage?: {
-      __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-      node?: {
-        __typename?: 'MediaItem';
-        mediaItemUrl?: string | null;
-        link?: string | null;
-        altText?: string | null;
-        mimeType?: string | null;
-        title?: string | null;
-        uri?: string | null;
-      } | null;
-    } | null;
-    sidebar?: Array<
-      | {
-          __typename: 'LayoutArticles';
-          title?: string | null;
-          showAllLink?: string | null;
-          articles?: Array<{
-            __typename?: 'Post';
-            id: string;
-            uri?: string | null;
-            slug?: string | null;
-            link?: string | null;
-            date?: string | null;
-            title?: string | null;
-            lead?: string | null;
-            featuredImage?: {
-              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-              node?: {
-                __typename?: 'MediaItem';
-                altText?: string | null;
-                mediaItemUrl?: string | null;
-              } | null;
-            } | null;
-            categories?: {
-              __typename?: 'PostToCategoryConnection';
-              nodes?: Array<{
-                __typename?: 'Category';
-                name?: string | null;
-              } | null> | null;
-            } | null;
-          } | null> | null;
-        }
-      | {
-          __typename: 'LayoutLinkList';
-          anchor?: string | null;
-          title?: string | null;
-          description?: string | null;
-          links?: Array<{
-            __typename?: 'Link';
-            target?: string | null;
-            title?: string | null;
-            url?: string | null;
-          } | null> | null;
-        }
-      | {
-          __typename: 'LayoutPages';
-          title?: string | null;
-          description?: string | null;
-          pages?: Array<{
-            __typename?: 'Page';
-            id: string;
-            uri?: string | null;
-            slug?: string | null;
-            link?: string | null;
-            date?: string | null;
-            title?: string | null;
-            lead?: string | null;
-            featuredImage?: {
-              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-              node?: {
-                __typename?: 'MediaItem';
-                altText?: string | null;
-                mediaItemUrl?: string | null;
-              } | null;
-            } | null;
-          } | null> | null;
-        }
-      | null
-    > | null;
-    modules?: Array<
-      | {
-          __typename: 'EventSearch';
-          title?: string | null;
-          url?: string | null;
-          module?: string | null;
-        }
-      | {
-          __typename: 'EventSearchCarousel';
-          title?: string | null;
-          showAllLink?: string | null;
-          url?: string | null;
-          orderNewestFirst?: boolean | null;
-          eventsNearby?: boolean | null;
-          amountOfCards?: number | null;
-        }
-      | {
-          __typename: 'EventSelected';
-          title?: string | null;
-          events?: Array<string | null> | null;
-          module?: string | null;
-        }
-      | {
-          __typename: 'EventSelectedCarousel';
-          title?: string | null;
-          module?: string | null;
-          showAllLink?: string | null;
-          eventsNearby?: boolean | null;
-          events?: Array<string | null> | null;
-          amountOfCardsPerRow?: number | null;
-          amountOfCards?: number | null;
-        }
-      | { __typename?: 'LayoutArticleHighlights' }
-      | {
-          __typename: 'LayoutArticles';
-          title?: string | null;
-          showAllLink?: string | null;
-          articles?: Array<{
-            __typename?: 'Post';
-            id: string;
-            uri?: string | null;
-            slug?: string | null;
-            link?: string | null;
-            date?: string | null;
-            title?: string | null;
-            lead?: string | null;
-            featuredImage?: {
-              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-              node?: {
-                __typename?: 'MediaItem';
-                altText?: string | null;
-                mediaItemUrl?: string | null;
-              } | null;
-            } | null;
-            categories?: {
-              __typename?: 'PostToCategoryConnection';
-              nodes?: Array<{
-                __typename?: 'Category';
-                name?: string | null;
-              } | null> | null;
-            } | null;
-          } | null> | null;
-        }
-      | {
-          __typename: 'LayoutArticlesCarousel';
-          title?: string | null;
-          showMore?: Array<string | null> | null;
-          showAllLink?: string | null;
-          articles?: Array<{
-            __typename?: 'Post';
-            id: string;
-            uri?: string | null;
-            slug?: string | null;
-            link?: string | null;
-            date?: string | null;
-            title?: string | null;
-            lead?: string | null;
-            featuredImage?: {
-              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-              node?: {
-                __typename?: 'MediaItem';
-                altText?: string | null;
-                mediaItemUrl?: string | null;
-              } | null;
-            } | null;
-            categories?: {
-              __typename?: 'PostToCategoryConnection';
-              nodes?: Array<{
-                __typename?: 'Category';
-                name?: string | null;
-              } | null> | null;
-            } | null;
-          } | null> | null;
-        }
-      | {
-          __typename: 'LayoutCollection';
-          collection?: {
-            __typename?: 'Collection';
-            title?: string | null;
-          } | null;
-        }
-      | { __typename?: 'LayoutContact' }
-      | {
-          __typename: 'LayoutPages';
-          title?: string | null;
-          description?: string | null;
-          pages?: Array<{
-            __typename?: 'Page';
-            id: string;
-            uri?: string | null;
-            slug?: string | null;
-            link?: string | null;
-            date?: string | null;
-            title?: string | null;
-            lead?: string | null;
-            featuredImage?: {
-              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-              node?: {
-                __typename?: 'MediaItem';
-                altText?: string | null;
-                mediaItemUrl?: string | null;
-              } | null;
-            } | null;
-          } | null> | null;
-        }
-      | {
-          __typename: 'LayoutPagesCarousel';
-          title?: string | null;
-          description?: string | null;
-          pages?: Array<{
-            __typename?: 'Page';
-            id: string;
-            uri?: string | null;
-            slug?: string | null;
-            link?: string | null;
-            date?: string | null;
-            title?: string | null;
-            lead?: string | null;
-            featuredImage?: {
-              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-              node?: {
-                __typename?: 'MediaItem';
-                altText?: string | null;
-                mediaItemUrl?: string | null;
-              } | null;
-            } | null;
-          } | null> | null;
-        }
-      | {
-          __typename: 'LocationsSelected';
-          title?: string | null;
-          locations?: Array<number | null> | null;
-          module?: string | null;
-        }
-      | null
-    > | null;
-  } | null;
-};
-
-export type PageByTemplateQueryVariables = Exact<{
-  template?: InputMaybe<TemplateEnum>;
-  language?: InputMaybe<Scalars['String']>;
-}>;
-
-export type PageByTemplateQuery = {
-  __typename?: 'RootQuery';
-  pageByTemplate?: {
-    __typename?: 'Page';
-    id: string;
-    content?: string | null;
-    slug?: string | null;
-    title?: string | null;
-    uri?: string | null;
-    link?: string | null;
-    lead?: string | null;
-    seo?: {
-      __typename?: 'SEO';
-      title?: string | null;
-      description?: string | null;
-      openGraphTitle?: string | null;
-      openGraphDescription?: string | null;
-      openGraphType?: string | null;
-      twitterTitle?: string | null;
-      twitterDescription?: string | null;
-      canonicalUrl?: string | null;
-      socialImage?: {
-        __typename?: 'MediaItem';
-        mediaItemUrl?: string | null;
-      } | null;
-    } | null;
-    language?: {
-      __typename?: 'Language';
-      code?: LanguageCodeEnum | null;
-      id: string;
-      locale?: string | null;
-      name?: string | null;
-      slug?: string | null;
-    } | null;
-    translations?: Array<{
-      __typename?: 'Page';
-      uri?: string | null;
-      slug?: string | null;
-      language?: {
-        __typename?: 'Language';
-        code?: LanguageCodeEnum | null;
-        id: string;
-        locale?: string | null;
-        name?: string | null;
-        slug?: string | null;
-      } | null;
-      seo?: {
-        __typename?: 'SEO';
-        title?: string | null;
-        description?: string | null;
-        openGraphTitle?: string | null;
-        openGraphDescription?: string | null;
-        openGraphType?: string | null;
-        twitterTitle?: string | null;
-        twitterDescription?: string | null;
-        canonicalUrl?: string | null;
-        socialImage?: {
-          __typename?: 'MediaItem';
-          mediaItemUrl?: string | null;
-        } | null;
-      } | null;
-    } | null> | null;
-    featuredImage?: {
-      __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-      node?: {
-        __typename?: 'MediaItem';
-        mediaItemUrl?: string | null;
-        link?: string | null;
-        altText?: string | null;
-        mimeType?: string | null;
-        title?: string | null;
-        uri?: string | null;
-      } | null;
-    } | null;
-    sidebar?: Array<
-      | {
-          __typename: 'LayoutArticles';
-          title?: string | null;
-          showAllLink?: string | null;
-          articles?: Array<{
-            __typename?: 'Post';
-            id: string;
-            uri?: string | null;
-            slug?: string | null;
-            link?: string | null;
-            date?: string | null;
-            title?: string | null;
-            lead?: string | null;
-            featuredImage?: {
-              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-              node?: {
-                __typename?: 'MediaItem';
-                altText?: string | null;
-                mediaItemUrl?: string | null;
-              } | null;
-            } | null;
-            categories?: {
-              __typename?: 'PostToCategoryConnection';
-              nodes?: Array<{
-                __typename?: 'Category';
-                name?: string | null;
-              } | null> | null;
-            } | null;
-          } | null> | null;
-        }
-      | {
-          __typename: 'LayoutLinkList';
-          anchor?: string | null;
-          title?: string | null;
-          description?: string | null;
-          links?: Array<{
-            __typename?: 'Link';
-            target?: string | null;
-            title?: string | null;
-            url?: string | null;
-          } | null> | null;
-        }
-      | {
-          __typename: 'LayoutPages';
-          title?: string | null;
-          description?: string | null;
-          pages?: Array<{
-            __typename?: 'Page';
-            id: string;
-            uri?: string | null;
-            slug?: string | null;
-            link?: string | null;
-            date?: string | null;
-            title?: string | null;
-            lead?: string | null;
-            featuredImage?: {
-              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-              node?: {
-                __typename?: 'MediaItem';
-                altText?: string | null;
-                mediaItemUrl?: string | null;
-              } | null;
-            } | null;
-          } | null> | null;
-        }
-      | null
-    > | null;
-    modules?: Array<
-      | {
-          __typename: 'EventSearch';
-          title?: string | null;
-          url?: string | null;
-          module?: string | null;
-        }
-      | {
-          __typename: 'EventSearchCarousel';
-          title?: string | null;
-          showAllLink?: string | null;
-          url?: string | null;
-          orderNewestFirst?: boolean | null;
-          eventsNearby?: boolean | null;
-          amountOfCards?: number | null;
-        }
-      | {
-          __typename: 'EventSelected';
-          title?: string | null;
-          events?: Array<string | null> | null;
-          module?: string | null;
-        }
-      | {
-          __typename: 'EventSelectedCarousel';
-          title?: string | null;
-          module?: string | null;
-          showAllLink?: string | null;
-          eventsNearby?: boolean | null;
-          events?: Array<string | null> | null;
-          amountOfCardsPerRow?: number | null;
-          amountOfCards?: number | null;
-        }
-      | { __typename?: 'LayoutArticleHighlights' }
-      | {
-          __typename: 'LayoutArticles';
-          title?: string | null;
-          showAllLink?: string | null;
-          articles?: Array<{
-            __typename?: 'Post';
-            id: string;
-            uri?: string | null;
-            slug?: string | null;
-            link?: string | null;
-            date?: string | null;
-            title?: string | null;
-            lead?: string | null;
-            featuredImage?: {
-              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-              node?: {
-                __typename?: 'MediaItem';
-                altText?: string | null;
-                mediaItemUrl?: string | null;
-              } | null;
-            } | null;
-            categories?: {
-              __typename?: 'PostToCategoryConnection';
-              nodes?: Array<{
-                __typename?: 'Category';
-                name?: string | null;
-              } | null> | null;
-            } | null;
-          } | null> | null;
-        }
-      | {
-          __typename: 'LayoutArticlesCarousel';
-          title?: string | null;
-          showMore?: Array<string | null> | null;
-          showAllLink?: string | null;
-          articles?: Array<{
-            __typename?: 'Post';
-            id: string;
-            uri?: string | null;
-            slug?: string | null;
-            link?: string | null;
-            date?: string | null;
-            title?: string | null;
-            lead?: string | null;
-            featuredImage?: {
-              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-              node?: {
-                __typename?: 'MediaItem';
-                altText?: string | null;
-                mediaItemUrl?: string | null;
-              } | null;
-            } | null;
-            categories?: {
-              __typename?: 'PostToCategoryConnection';
-              nodes?: Array<{
-                __typename?: 'Category';
-                name?: string | null;
-              } | null> | null;
-            } | null;
-          } | null> | null;
-        }
-      | {
-          __typename: 'LayoutCollection';
-          collection?: {
-            __typename?: 'Collection';
-            title?: string | null;
-          } | null;
-        }
-      | { __typename?: 'LayoutContact' }
-      | {
-          __typename: 'LayoutPages';
-          title?: string | null;
-          description?: string | null;
-          pages?: Array<{
-            __typename?: 'Page';
-            id: string;
-            uri?: string | null;
-            slug?: string | null;
-            link?: string | null;
-            date?: string | null;
-            title?: string | null;
-            lead?: string | null;
-            featuredImage?: {
-              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-              node?: {
-                __typename?: 'MediaItem';
-                altText?: string | null;
-                mediaItemUrl?: string | null;
-              } | null;
-            } | null;
-          } | null> | null;
-        }
-      | {
-          __typename: 'LayoutPagesCarousel';
-          title?: string | null;
-          description?: string | null;
-          pages?: Array<{
-            __typename?: 'Page';
-            id: string;
-            uri?: string | null;
-            slug?: string | null;
-            link?: string | null;
-            date?: string | null;
-            title?: string | null;
-            lead?: string | null;
-            featuredImage?: {
-              __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-              node?: {
-                __typename?: 'MediaItem';
-                altText?: string | null;
-                mediaItemUrl?: string | null;
-              } | null;
-            } | null;
-          } | null> | null;
-        }
-      | {
-          __typename: 'LocationsSelected';
-          title?: string | null;
-          locations?: Array<number | null> | null;
-          module?: string | null;
-        }
-      | null
-    > | null;
-  } | null;
-};
-
-export type PageChildrenSearchQueryVariables = Exact<{
-  id: Scalars['ID'];
-  idType?: InputMaybe<PageIdType>;
-  search: Scalars['String'];
-  first?: InputMaybe<Scalars['Int']>;
-  after?: InputMaybe<Scalars['String']>;
-}>;
-
-export type PageChildrenSearchQuery = {
-  __typename?: 'RootQuery';
-  page?: {
-    __typename?: 'Page';
-    id: string;
-    children?: {
-      __typename?: 'HierarchicalContentNodeToContentNodeChildrenConnection';
-      pageInfo?: {
-        __typename?: 'WPPageInfo';
-        endCursor?: string | null;
-        hasNextPage: boolean;
-      } | null;
-      edges?: Array<{
-        __typename?: 'HierarchicalContentNodeToContentNodeChildrenConnectionEdge';
-        cursor?: string | null;
-        node?:
-          | { __typename?: 'Collection' }
-          | { __typename?: 'Contact' }
-          | { __typename?: 'LandingPage' }
-          | { __typename?: 'MediaItem' }
-          | {
-              __typename?: 'Page';
-              id: string;
-              content?: string | null;
-              slug?: string | null;
-              title?: string | null;
-              uri?: string | null;
-              link?: string | null;
-              lead?: string | null;
-              translations?: Array<{
-                __typename?: 'Page';
-                uri?: string | null;
-                slug?: string | null;
-                id: string;
-                content?: string | null;
-                title?: string | null;
-                link?: string | null;
-                lead?: string | null;
-                language?: {
-                  __typename?: 'Language';
-                  code?: LanguageCodeEnum | null;
-                  id: string;
-                  locale?: string | null;
-                  name?: string | null;
-                  slug?: string | null;
-                } | null;
-                seo?: {
-                  __typename?: 'SEO';
-                  title?: string | null;
-                  description?: string | null;
-                  openGraphTitle?: string | null;
-                  openGraphDescription?: string | null;
-                  openGraphType?: string | null;
-                  twitterTitle?: string | null;
-                  twitterDescription?: string | null;
-                  canonicalUrl?: string | null;
-                  socialImage?: {
-                    __typename?: 'MediaItem';
-                    mediaItemUrl?: string | null;
-                  } | null;
-                } | null;
-                translations?: Array<{
-                  __typename?: 'Page';
-                  uri?: string | null;
-                  slug?: string | null;
-                  language?: {
-                    __typename?: 'Language';
-                    code?: LanguageCodeEnum | null;
-                    id: string;
-                    locale?: string | null;
-                    name?: string | null;
-                    slug?: string | null;
-                  } | null;
-                  seo?: {
-                    __typename?: 'SEO';
-                    title?: string | null;
-                    description?: string | null;
-                    openGraphTitle?: string | null;
-                    openGraphDescription?: string | null;
-                    openGraphType?: string | null;
-                    twitterTitle?: string | null;
-                    twitterDescription?: string | null;
-                    canonicalUrl?: string | null;
-                    socialImage?: {
-                      __typename?: 'MediaItem';
-                      mediaItemUrl?: string | null;
-                    } | null;
-                  } | null;
-                } | null> | null;
-                featuredImage?: {
-                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                  node?: {
-                    __typename?: 'MediaItem';
-                    mediaItemUrl?: string | null;
-                    link?: string | null;
-                    altText?: string | null;
-                    mimeType?: string | null;
-                    title?: string | null;
-                    uri?: string | null;
-                  } | null;
-                } | null;
-                sidebar?: Array<
-                  | {
-                      __typename: 'LayoutArticles';
-                      title?: string | null;
-                      showAllLink?: string | null;
-                      articles?: Array<{
-                        __typename?: 'Post';
-                        id: string;
-                        uri?: string | null;
-                        slug?: string | null;
-                        link?: string | null;
-                        date?: string | null;
-                        title?: string | null;
-                        lead?: string | null;
-                        featuredImage?: {
-                          __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                          node?: {
-                            __typename?: 'MediaItem';
-                            altText?: string | null;
-                            mediaItemUrl?: string | null;
-                          } | null;
-                        } | null;
-                        categories?: {
-                          __typename?: 'PostToCategoryConnection';
-                          nodes?: Array<{
-                            __typename?: 'Category';
-                            name?: string | null;
-                          } | null> | null;
-                        } | null;
-                      } | null> | null;
-                    }
-                  | {
-                      __typename: 'LayoutLinkList';
-                      anchor?: string | null;
-                      title?: string | null;
-                      description?: string | null;
-                      links?: Array<{
-                        __typename?: 'Link';
-                        target?: string | null;
-                        title?: string | null;
-                        url?: string | null;
-                      } | null> | null;
-                    }
-                  | {
-                      __typename: 'LayoutPages';
-                      title?: string | null;
-                      description?: string | null;
-                      pages?: Array<{
-                        __typename?: 'Page';
-                        id: string;
-                        uri?: string | null;
-                        slug?: string | null;
-                        link?: string | null;
-                        date?: string | null;
-                        title?: string | null;
-                        lead?: string | null;
-                        featuredImage?: {
-                          __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                          node?: {
-                            __typename?: 'MediaItem';
-                            altText?: string | null;
-                            mediaItemUrl?: string | null;
-                          } | null;
-                        } | null;
-                      } | null> | null;
-                    }
-                  | null
-                > | null;
-                modules?: Array<
-                  | {
-                      __typename: 'EventSearch';
-                      title?: string | null;
-                      url?: string | null;
-                      module?: string | null;
-                    }
-                  | {
-                      __typename: 'EventSearchCarousel';
-                      title?: string | null;
-                      showAllLink?: string | null;
-                      url?: string | null;
-                      orderNewestFirst?: boolean | null;
-                      eventsNearby?: boolean | null;
-                      amountOfCards?: number | null;
-                    }
-                  | {
-                      __typename: 'EventSelected';
-                      title?: string | null;
-                      events?: Array<string | null> | null;
-                      module?: string | null;
-                    }
-                  | {
-                      __typename: 'EventSelectedCarousel';
-                      title?: string | null;
-                      module?: string | null;
-                      showAllLink?: string | null;
-                      eventsNearby?: boolean | null;
-                      events?: Array<string | null> | null;
-                      amountOfCardsPerRow?: number | null;
-                      amountOfCards?: number | null;
-                    }
-                  | { __typename?: 'LayoutArticleHighlights' }
-                  | {
-                      __typename: 'LayoutArticles';
-                      title?: string | null;
-                      showAllLink?: string | null;
-                      articles?: Array<{
-                        __typename?: 'Post';
-                        id: string;
-                        uri?: string | null;
-                        slug?: string | null;
-                        link?: string | null;
-                        date?: string | null;
-                        title?: string | null;
-                        lead?: string | null;
-                        featuredImage?: {
-                          __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                          node?: {
-                            __typename?: 'MediaItem';
-                            altText?: string | null;
-                            mediaItemUrl?: string | null;
-                          } | null;
-                        } | null;
-                        categories?: {
-                          __typename?: 'PostToCategoryConnection';
-                          nodes?: Array<{
-                            __typename?: 'Category';
-                            name?: string | null;
-                          } | null> | null;
-                        } | null;
-                      } | null> | null;
-                    }
-                  | {
-                      __typename: 'LayoutArticlesCarousel';
-                      title?: string | null;
-                      showMore?: Array<string | null> | null;
-                      showAllLink?: string | null;
-                      articles?: Array<{
-                        __typename?: 'Post';
-                        id: string;
-                        uri?: string | null;
-                        slug?: string | null;
-                        link?: string | null;
-                        date?: string | null;
-                        title?: string | null;
-                        lead?: string | null;
-                        featuredImage?: {
-                          __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                          node?: {
-                            __typename?: 'MediaItem';
-                            altText?: string | null;
-                            mediaItemUrl?: string | null;
-                          } | null;
-                        } | null;
-                        categories?: {
-                          __typename?: 'PostToCategoryConnection';
-                          nodes?: Array<{
-                            __typename?: 'Category';
-                            name?: string | null;
-                          } | null> | null;
-                        } | null;
-                      } | null> | null;
-                    }
-                  | {
-                      __typename: 'LayoutCollection';
-                      collection?: {
-                        __typename?: 'Collection';
-                        title?: string | null;
-                      } | null;
-                    }
-                  | { __typename?: 'LayoutContact' }
-                  | {
-                      __typename: 'LayoutPages';
-                      title?: string | null;
-                      description?: string | null;
-                      pages?: Array<{
-                        __typename?: 'Page';
-                        id: string;
-                        uri?: string | null;
-                        slug?: string | null;
-                        link?: string | null;
-                        date?: string | null;
-                        title?: string | null;
-                        lead?: string | null;
-                        featuredImage?: {
-                          __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                          node?: {
-                            __typename?: 'MediaItem';
-                            altText?: string | null;
-                            mediaItemUrl?: string | null;
-                          } | null;
-                        } | null;
-                      } | null> | null;
-                    }
-                  | {
-                      __typename: 'LayoutPagesCarousel';
-                      title?: string | null;
-                      description?: string | null;
-                      pages?: Array<{
-                        __typename?: 'Page';
-                        id: string;
-                        uri?: string | null;
-                        slug?: string | null;
-                        link?: string | null;
-                        date?: string | null;
-                        title?: string | null;
-                        lead?: string | null;
-                        featuredImage?: {
-                          __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                          node?: {
-                            __typename?: 'MediaItem';
-                            altText?: string | null;
-                            mediaItemUrl?: string | null;
-                          } | null;
-                        } | null;
-                      } | null> | null;
-                    }
-                  | {
-                      __typename: 'LocationsSelected';
-                      title?: string | null;
-                      locations?: Array<number | null> | null;
-                      module?: string | null;
-                    }
-                  | null
-                > | null;
-              } | null> | null;
-              seo?: {
-                __typename?: 'SEO';
-                title?: string | null;
-                description?: string | null;
-                openGraphTitle?: string | null;
-                openGraphDescription?: string | null;
-                openGraphType?: string | null;
-                twitterTitle?: string | null;
-                twitterDescription?: string | null;
-                canonicalUrl?: string | null;
-                socialImage?: {
-                  __typename?: 'MediaItem';
-                  mediaItemUrl?: string | null;
-                } | null;
-              } | null;
-              language?: {
-                __typename?: 'Language';
-                code?: LanguageCodeEnum | null;
-                id: string;
-                locale?: string | null;
-                name?: string | null;
-                slug?: string | null;
-              } | null;
-              featuredImage?: {
-                __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                node?: {
-                  __typename?: 'MediaItem';
-                  mediaItemUrl?: string | null;
-                  link?: string | null;
-                  altText?: string | null;
-                  mimeType?: string | null;
-                  title?: string | null;
-                  uri?: string | null;
-                } | null;
-              } | null;
-              sidebar?: Array<
-                | {
-                    __typename: 'LayoutArticles';
-                    title?: string | null;
-                    showAllLink?: string | null;
-                    articles?: Array<{
-                      __typename?: 'Post';
-                      id: string;
-                      uri?: string | null;
-                      slug?: string | null;
-                      link?: string | null;
-                      date?: string | null;
-                      title?: string | null;
-                      lead?: string | null;
-                      featuredImage?: {
-                        __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                        node?: {
-                          __typename?: 'MediaItem';
-                          altText?: string | null;
-                          mediaItemUrl?: string | null;
-                        } | null;
-                      } | null;
-                      categories?: {
-                        __typename?: 'PostToCategoryConnection';
-                        nodes?: Array<{
-                          __typename?: 'Category';
-                          name?: string | null;
-                        } | null> | null;
-                      } | null;
-                    } | null> | null;
-                  }
-                | {
-                    __typename: 'LayoutLinkList';
-                    anchor?: string | null;
-                    title?: string | null;
-                    description?: string | null;
-                    links?: Array<{
-                      __typename?: 'Link';
-                      target?: string | null;
-                      title?: string | null;
-                      url?: string | null;
-                    } | null> | null;
-                  }
-                | {
-                    __typename: 'LayoutPages';
-                    title?: string | null;
-                    description?: string | null;
-                    pages?: Array<{
-                      __typename?: 'Page';
-                      id: string;
-                      uri?: string | null;
-                      slug?: string | null;
-                      link?: string | null;
-                      date?: string | null;
-                      title?: string | null;
-                      lead?: string | null;
-                      featuredImage?: {
-                        __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                        node?: {
-                          __typename?: 'MediaItem';
-                          altText?: string | null;
-                          mediaItemUrl?: string | null;
-                        } | null;
-                      } | null;
-                    } | null> | null;
-                  }
-                | null
-              > | null;
-              modules?: Array<
-                | {
-                    __typename: 'EventSearch';
-                    title?: string | null;
-                    url?: string | null;
-                    module?: string | null;
-                  }
-                | {
-                    __typename: 'EventSearchCarousel';
-                    title?: string | null;
-                    showAllLink?: string | null;
-                    url?: string | null;
-                    orderNewestFirst?: boolean | null;
-                    eventsNearby?: boolean | null;
-                    amountOfCards?: number | null;
-                  }
-                | {
-                    __typename: 'EventSelected';
-                    title?: string | null;
-                    events?: Array<string | null> | null;
-                    module?: string | null;
-                  }
-                | {
-                    __typename: 'EventSelectedCarousel';
-                    title?: string | null;
-                    module?: string | null;
-                    showAllLink?: string | null;
-                    eventsNearby?: boolean | null;
-                    events?: Array<string | null> | null;
-                    amountOfCardsPerRow?: number | null;
-                    amountOfCards?: number | null;
-                  }
-                | { __typename?: 'LayoutArticleHighlights' }
-                | {
-                    __typename: 'LayoutArticles';
-                    title?: string | null;
-                    showAllLink?: string | null;
-                    articles?: Array<{
-                      __typename?: 'Post';
-                      id: string;
-                      uri?: string | null;
-                      slug?: string | null;
-                      link?: string | null;
-                      date?: string | null;
-                      title?: string | null;
-                      lead?: string | null;
-                      featuredImage?: {
-                        __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                        node?: {
-                          __typename?: 'MediaItem';
-                          altText?: string | null;
-                          mediaItemUrl?: string | null;
-                        } | null;
-                      } | null;
-                      categories?: {
-                        __typename?: 'PostToCategoryConnection';
-                        nodes?: Array<{
-                          __typename?: 'Category';
-                          name?: string | null;
-                        } | null> | null;
-                      } | null;
-                    } | null> | null;
-                  }
-                | {
-                    __typename: 'LayoutArticlesCarousel';
-                    title?: string | null;
-                    showMore?: Array<string | null> | null;
-                    showAllLink?: string | null;
-                    articles?: Array<{
-                      __typename?: 'Post';
-                      id: string;
-                      uri?: string | null;
-                      slug?: string | null;
-                      link?: string | null;
-                      date?: string | null;
-                      title?: string | null;
-                      lead?: string | null;
-                      featuredImage?: {
-                        __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                        node?: {
-                          __typename?: 'MediaItem';
-                          altText?: string | null;
-                          mediaItemUrl?: string | null;
-                        } | null;
-                      } | null;
-                      categories?: {
-                        __typename?: 'PostToCategoryConnection';
-                        nodes?: Array<{
-                          __typename?: 'Category';
-                          name?: string | null;
-                        } | null> | null;
-                      } | null;
-                    } | null> | null;
-                  }
-                | {
-                    __typename: 'LayoutCollection';
-                    collection?: {
-                      __typename?: 'Collection';
-                      title?: string | null;
-                    } | null;
-                  }
-                | { __typename?: 'LayoutContact' }
-                | {
-                    __typename: 'LayoutPages';
-                    title?: string | null;
-                    description?: string | null;
-                    pages?: Array<{
-                      __typename?: 'Page';
-                      id: string;
-                      uri?: string | null;
-                      slug?: string | null;
-                      link?: string | null;
-                      date?: string | null;
-                      title?: string | null;
-                      lead?: string | null;
-                      featuredImage?: {
-                        __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                        node?: {
-                          __typename?: 'MediaItem';
-                          altText?: string | null;
-                          mediaItemUrl?: string | null;
-                        } | null;
-                      } | null;
-                    } | null> | null;
-                  }
-                | {
-                    __typename: 'LayoutPagesCarousel';
-                    title?: string | null;
-                    description?: string | null;
-                    pages?: Array<{
-                      __typename?: 'Page';
-                      id: string;
-                      uri?: string | null;
-                      slug?: string | null;
-                      link?: string | null;
-                      date?: string | null;
-                      title?: string | null;
-                      lead?: string | null;
-                      featuredImage?: {
-                        __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                        node?: {
-                          __typename?: 'MediaItem';
-                          altText?: string | null;
-                          mediaItemUrl?: string | null;
-                        } | null;
-                      } | null;
-                    } | null> | null;
-                  }
-                | {
-                    __typename: 'LocationsSelected';
-                    title?: string | null;
-                    locations?: Array<number | null> | null;
-                    module?: string | null;
-                  }
-                | null
-              > | null;
-            }
-          | { __typename?: 'Post' }
-          | { __typename?: 'Release' }
-          | { __typename?: 'Translation' }
-          | null;
-      } | null> | null;
-    } | null;
-  } | null;
-};
-
-export type PagesQueryVariables = Exact<{
-  first?: InputMaybe<Scalars['Int']>;
-  after?: InputMaybe<Scalars['String']>;
-  search?: InputMaybe<Scalars['String']>;
-  language?: InputMaybe<LanguageCodeFilterEnum>;
-}>;
-
-export type PagesQuery = {
-  __typename?: 'RootQuery';
-  pages?: {
-    __typename?: 'RootQueryToPageConnection';
-    pageInfo?: {
-      __typename?: 'WPPageInfo';
-      endCursor?: string | null;
-      hasNextPage: boolean;
-      hasPreviousPage: boolean;
-      startCursor?: string | null;
-    } | null;
-    edges?: Array<{
-      __typename?: 'RootQueryToPageConnectionEdge';
-      cursor?: string | null;
-      node?: {
-        __typename?: 'Page';
-        id: string;
-        content?: string | null;
-        slug?: string | null;
-        title?: string | null;
-        uri?: string | null;
-        link?: string | null;
-        lead?: string | null;
-        seo?: {
-          __typename?: 'SEO';
-          title?: string | null;
-          description?: string | null;
-          openGraphTitle?: string | null;
-          openGraphDescription?: string | null;
-          openGraphType?: string | null;
-          twitterTitle?: string | null;
-          twitterDescription?: string | null;
-          canonicalUrl?: string | null;
-          socialImage?: {
-            __typename?: 'MediaItem';
-            mediaItemUrl?: string | null;
-          } | null;
-        } | null;
-        language?: {
-          __typename?: 'Language';
-          code?: LanguageCodeEnum | null;
-          id: string;
-          locale?: string | null;
-          name?: string | null;
-          slug?: string | null;
-        } | null;
-        translations?: Array<{
-          __typename?: 'Page';
-          uri?: string | null;
-          slug?: string | null;
-          language?: {
-            __typename?: 'Language';
-            code?: LanguageCodeEnum | null;
-            id: string;
-            locale?: string | null;
-            name?: string | null;
-            slug?: string | null;
-          } | null;
-          seo?: {
-            __typename?: 'SEO';
-            title?: string | null;
-            description?: string | null;
-            openGraphTitle?: string | null;
-            openGraphDescription?: string | null;
-            openGraphType?: string | null;
-            twitterTitle?: string | null;
-            twitterDescription?: string | null;
-            canonicalUrl?: string | null;
-            socialImage?: {
-              __typename?: 'MediaItem';
-              mediaItemUrl?: string | null;
-            } | null;
-          } | null;
-        } | null> | null;
-        featuredImage?: {
-          __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-          node?: {
-            __typename?: 'MediaItem';
-            mediaItemUrl?: string | null;
-            link?: string | null;
-            altText?: string | null;
-            mimeType?: string | null;
-            title?: string | null;
-            uri?: string | null;
-          } | null;
-        } | null;
-        sidebar?: Array<
-          | {
-              __typename: 'LayoutArticles';
-              title?: string | null;
-              showAllLink?: string | null;
-              articles?: Array<{
-                __typename?: 'Post';
-                id: string;
-                uri?: string | null;
-                slug?: string | null;
-                link?: string | null;
-                date?: string | null;
-                title?: string | null;
-                lead?: string | null;
-                featuredImage?: {
-                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                  node?: {
-                    __typename?: 'MediaItem';
-                    altText?: string | null;
-                    mediaItemUrl?: string | null;
-                  } | null;
-                } | null;
-                categories?: {
-                  __typename?: 'PostToCategoryConnection';
-                  nodes?: Array<{
-                    __typename?: 'Category';
-                    name?: string | null;
-                  } | null> | null;
-                } | null;
-              } | null> | null;
-            }
-          | {
-              __typename: 'LayoutLinkList';
-              anchor?: string | null;
-              title?: string | null;
-              description?: string | null;
-              links?: Array<{
-                __typename?: 'Link';
-                target?: string | null;
-                title?: string | null;
-                url?: string | null;
-              } | null> | null;
-            }
-          | {
-              __typename: 'LayoutPages';
-              title?: string | null;
-              description?: string | null;
-              pages?: Array<{
-                __typename?: 'Page';
-                id: string;
-                uri?: string | null;
-                slug?: string | null;
-                link?: string | null;
-                date?: string | null;
-                title?: string | null;
-                lead?: string | null;
-                featuredImage?: {
-                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                  node?: {
-                    __typename?: 'MediaItem';
-                    altText?: string | null;
-                    mediaItemUrl?: string | null;
-                  } | null;
-                } | null;
-              } | null> | null;
-            }
-          | null
-        > | null;
-        modules?: Array<
-          | {
-              __typename: 'EventSearch';
-              title?: string | null;
-              url?: string | null;
-              module?: string | null;
-            }
-          | {
-              __typename: 'EventSearchCarousel';
-              title?: string | null;
-              showAllLink?: string | null;
-              url?: string | null;
-              orderNewestFirst?: boolean | null;
-              eventsNearby?: boolean | null;
-              amountOfCards?: number | null;
-            }
-          | {
-              __typename: 'EventSelected';
-              title?: string | null;
-              events?: Array<string | null> | null;
-              module?: string | null;
-            }
-          | {
-              __typename: 'EventSelectedCarousel';
-              title?: string | null;
-              module?: string | null;
-              showAllLink?: string | null;
-              eventsNearby?: boolean | null;
-              events?: Array<string | null> | null;
-              amountOfCardsPerRow?: number | null;
-              amountOfCards?: number | null;
-            }
-          | { __typename?: 'LayoutArticleHighlights' }
-          | {
-              __typename: 'LayoutArticles';
-              title?: string | null;
-              showAllLink?: string | null;
-              articles?: Array<{
-                __typename?: 'Post';
-                id: string;
-                uri?: string | null;
-                slug?: string | null;
-                link?: string | null;
-                date?: string | null;
-                title?: string | null;
-                lead?: string | null;
-                featuredImage?: {
-                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                  node?: {
-                    __typename?: 'MediaItem';
-                    altText?: string | null;
-                    mediaItemUrl?: string | null;
-                  } | null;
-                } | null;
-                categories?: {
-                  __typename?: 'PostToCategoryConnection';
-                  nodes?: Array<{
-                    __typename?: 'Category';
-                    name?: string | null;
-                  } | null> | null;
-                } | null;
-              } | null> | null;
-            }
-          | {
-              __typename: 'LayoutArticlesCarousel';
-              title?: string | null;
-              showMore?: Array<string | null> | null;
-              showAllLink?: string | null;
-              articles?: Array<{
-                __typename?: 'Post';
-                id: string;
-                uri?: string | null;
-                slug?: string | null;
-                link?: string | null;
-                date?: string | null;
-                title?: string | null;
-                lead?: string | null;
-                featuredImage?: {
-                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                  node?: {
-                    __typename?: 'MediaItem';
-                    altText?: string | null;
-                    mediaItemUrl?: string | null;
-                  } | null;
-                } | null;
-                categories?: {
-                  __typename?: 'PostToCategoryConnection';
-                  nodes?: Array<{
-                    __typename?: 'Category';
-                    name?: string | null;
-                  } | null> | null;
-                } | null;
-              } | null> | null;
-            }
-          | {
-              __typename: 'LayoutCollection';
-              collection?: {
-                __typename?: 'Collection';
-                title?: string | null;
-              } | null;
-            }
-          | { __typename?: 'LayoutContact' }
-          | {
-              __typename: 'LayoutPages';
-              title?: string | null;
-              description?: string | null;
-              pages?: Array<{
-                __typename?: 'Page';
-                id: string;
-                uri?: string | null;
-                slug?: string | null;
-                link?: string | null;
-                date?: string | null;
-                title?: string | null;
-                lead?: string | null;
-                featuredImage?: {
-                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                  node?: {
-                    __typename?: 'MediaItem';
-                    altText?: string | null;
-                    mediaItemUrl?: string | null;
-                  } | null;
-                } | null;
-              } | null> | null;
-            }
-          | {
-              __typename: 'LayoutPagesCarousel';
-              title?: string | null;
-              description?: string | null;
-              pages?: Array<{
-                __typename?: 'Page';
-                id: string;
-                uri?: string | null;
-                slug?: string | null;
-                link?: string | null;
-                date?: string | null;
-                title?: string | null;
-                lead?: string | null;
-                featuredImage?: {
-                  __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-                  node?: {
-                    __typename?: 'MediaItem';
-                    altText?: string | null;
-                    mediaItemUrl?: string | null;
-                  } | null;
-                } | null;
-              } | null> | null;
-            }
-          | {
-              __typename: 'LocationsSelected';
-              title?: string | null;
-              locations?: Array<number | null> | null;
-              module?: string | null;
-            }
-          | null
-        > | null;
-      } | null;
-    } | null> | null;
-  } | null;
-};
-
-export type SeoFragment = {
-  __typename?: 'SEO';
-  title?: string | null;
-  description?: string | null;
-  openGraphTitle?: string | null;
-  openGraphDescription?: string | null;
-  openGraphType?: string | null;
-  twitterTitle?: string | null;
-  twitterDescription?: string | null;
-  canonicalUrl?: string | null;
-  socialImage?: {
-    __typename?: 'MediaItem';
-    mediaItemUrl?: string | null;
-  } | null;
-};
-
-export type TagQueryVariables = Exact<{
-  id: Scalars['ID'];
-  language: LanguageCodeEnum;
-}>;
-
-export type TagQuery = {
-  __typename?: 'RootQuery';
-  tag?: {
-    __typename: 'Tag';
-    id: string;
-    databaseId: number;
-    name?: string | null;
-    slug?: string | null;
-    translation?: {
-      __typename?: 'Tag';
-      name?: string | null;
-      slug?: string | null;
-      language?: {
-        __typename?: 'Language';
-        code?: LanguageCodeEnum | null;
-        id: string;
-        locale?: string | null;
-        name?: string | null;
-        slug?: string | null;
-      } | null;
-    } | null;
-  } | null;
-};
-
-export type TagsQueryVariables = Exact<{
-  first?: InputMaybe<Scalars['Int']>;
-  after?: InputMaybe<Scalars['String']>;
-  search?: InputMaybe<Scalars['String']>;
-  language?: InputMaybe<LanguageCodeFilterEnum>;
-}>;
-
-export type TagsQuery = {
-  __typename?: 'RootQuery';
-  tags?: {
-    __typename?: 'RootQueryToTagConnection';
-    nodes?: Array<{
-      __typename: 'Tag';
-      id: string;
-      databaseId: number;
-      name?: string | null;
-      slug?: string | null;
-      translations?: Array<{
-        __typename?: 'Tag';
-        name?: string | null;
-        slug?: string | null;
-        uri?: string | null;
-        language?: {
-          __typename?: 'Language';
-          code?: LanguageCodeEnum | null;
-          id: string;
-          locale?: string | null;
-          name?: string | null;
-          slug?: string | null;
-        } | null;
-      } | null> | null;
-    } | null> | null;
-  } | null;
-};
-
-export const CategoriesFragmentDoc = gql`
-  fragment Categories on PostToCategoryConnection {
-    edges {
-      node {
-        id
-        name
-      }
-    }
-  }
-`;
-export const SeoFragmentDoc = gql`
-  fragment SEO on SEO {
-    title
+export const ListVenueFragmentDoc = gql`
+  fragment listVenue on Venue {
     description
-    openGraphTitle
-    openGraphDescription
-    openGraphType
-    twitterTitle
-    twitterDescription
-    canonicalUrl
-    socialImage {
-      mediaItemUrl
-    }
-  }
-`;
-export const LanguageFragmentDoc = gql`
-  fragment Language on Language {
-    code
     id
-    locale
+    image
     name
-    slug
-  }
-`;
-export const LayoutLinkListFragmentDoc = gql`
-  fragment LayoutLinkList on LayoutLinkList {
-    anchor
-    title
-    description
-    links {
-      target
-      title
-      url
-    }
-    __typename
-  }
-`;
-export const LayoutArticlesFragmentDoc = gql`
-  fragment LayoutArticles on LayoutArticles {
-    title
-    articles {
+    ontologyWords {
       id
-      uri
-      slug
-      link
-      date
-      title
-      lead
-      featuredImage {
-        node {
-          altText
-          mediaItemUrl
-        }
-      }
-      categories {
-        nodes {
-          name
-        }
-      }
+      label
     }
-    showAllLink
-    __typename
   }
 `;
-export const LayoutPagesFragmentDoc = gql`
-  fragment LayoutPages on LayoutPages {
-    title
-    description
-    pages {
-      id
-      uri
-      slug
-      link
-      date
-      title
-      lead
-      featuredImage {
-        node {
-          altText
-          mediaItemUrl
-        }
-      }
-    }
-    __typename
-  }
-`;
-export const LayoutArticlesCarouselFragmentDoc = gql`
-  fragment LayoutArticlesCarousel on LayoutArticlesCarousel {
-    title
-    articles {
-      id
-      uri
-      slug
-      link
-      date
-      title
-      lead
-      featuredImage {
-        node {
-          altText
-          mediaItemUrl
-        }
-      }
-      categories {
-        nodes {
-          name
-        }
-      }
-    }
-    showMore
-    showAllLink
-    __typename
-  }
-`;
-export const LayoutPagesCarouselFragmentDoc = gql`
-  fragment LayoutPagesCarousel on LayoutPagesCarousel {
-    title
-    description
-    pages {
-      id
-      uri
-      slug
-      link
-      date
-      title
-      lead
-      featuredImage {
-        node {
-          altText
-          mediaItemUrl
-        }
-      }
-    }
-    __typename
-  }
-`;
-export const EventSearchFragmentDoc = gql`
-  fragment EventSearch on EventSearch {
-    title
-    url
-    module
-    __typename
-  }
-`;
-export const EventSelectedFragmentDoc = gql`
-  fragment EventSelected on EventSelected {
-    title
-    events
-    module
-    __typename
-  }
-`;
-export const EventSearchCarouselFragmentDoc = gql`
-  fragment EventSearchCarousel on EventSearchCarousel {
-    title
-    url
-    orderNewestFirst
-    eventsNearby
-    amountOfCards
-    __typename
-  }
-`;
-export const EventSelectedCarouselFragmentDoc = gql`
-  fragment EventSelectedCarousel on EventSelectedCarousel {
-    title
-    module
-    eventsNearby
-    events
-    amountOfCardsPerRow
-    amountOfCards
-    __typename
-  }
-`;
-export const LayoutCollectionFragmentDoc = gql`
-  fragment LayoutCollection on LayoutCollection {
-    collection {
-      title
-    }
-    __typename
-  }
-`;
-export const LocationsSelectedFragmentDoc = gql`
-  fragment LocationsSelected on LocationsSelected {
-    title
-    locations
-    module
-    __typename
-  }
-`;
-export const PostFragmentDoc = gql`
-  fragment Post on Post {
-    id
-    date
-    content
-    slug
-    title
-    uri
-    link
-    lead
-    categories {
-      ...Categories
-    }
-    seo {
-      ...SEO
-    }
-    language {
-      ...Language
-    }
-    translations {
-      uri
-      slug
-      language {
-        ...Language
-      }
-      seo {
-        ...SEO
-      }
-    }
-    featuredImage {
-      node {
-        mediaItemUrl
-        link
-        altText
-        mimeType
-        title
-        uri
-      }
-    }
-    sidebar {
-      ... on LayoutLinkList {
-        ...LayoutLinkList
-      }
-      ... on LayoutArticles {
-        ...LayoutArticles
-      }
-      ... on LayoutPages {
-        ...LayoutPages
-      }
-    }
-    modules {
-      ... on LayoutArticles {
-        ...LayoutArticles
-      }
-      ... on LayoutArticlesCarousel {
-        ...LayoutArticlesCarousel
-      }
-      ... on LayoutPages {
-        ...LayoutPages
-      }
-      ... on LayoutPagesCarousel {
-        ...LayoutPagesCarousel
-      }
-      ... on LayoutArticles {
-        ...LayoutArticles
-      }
-      ... on LayoutArticlesCarousel {
-        ...LayoutArticlesCarousel
-      }
-      ... on LayoutPages {
-        ...LayoutPages
-      }
-      ... on LayoutPagesCarousel {
-        ...LayoutPagesCarousel
-      }
-      ... on EventSearch {
-        ...EventSearch
-      }
-      ... on EventSelected {
-        ...EventSelected
-      }
-      ... on EventSearchCarousel {
-        ...EventSearchCarousel
-      }
-      ... on EventSelectedCarousel {
-        ...EventSelectedCarousel
-      }
-      ... on LayoutCollection {
-        ...LayoutCollection
-      }
-      ... on LocationsSelected {
-        ...LocationsSelected
-      }
+export const VenuesByIdsDocument = gql`
+  query VenuesByIds($ids: [ID!]!) {
+    venuesByIds(ids: $ids) {
+      ...listVenue
     }
   }
-  ${CategoriesFragmentDoc}
-  ${SeoFragmentDoc}
-  ${LanguageFragmentDoc}
-  ${LayoutLinkListFragmentDoc}
-  ${LayoutArticlesFragmentDoc}
-  ${LayoutPagesFragmentDoc}
-  ${LayoutArticlesCarouselFragmentDoc}
-  ${LayoutPagesCarouselFragmentDoc}
-  ${EventSearchFragmentDoc}
-  ${EventSelectedFragmentDoc}
-  ${EventSearchCarouselFragmentDoc}
-  ${EventSelectedCarouselFragmentDoc}
-  ${LayoutCollectionFragmentDoc}
-  ${LocationsSelectedFragmentDoc}
-`;
-export const PageFragmentDoc = gql`
-  fragment Page on Page {
-    id
-    content
-    slug
-    title
-    uri
-    link
-    lead
-    seo {
-      ...SEO
-    }
-    language {
-      ...Language
-    }
-    translations {
-      uri
-      slug
-      language {
-        ...Language
-      }
-      seo {
-        ...SEO
-      }
-    }
-    featuredImage {
-      node {
-        mediaItemUrl
-        link
-        altText
-        mimeType
-        title
-        uri
-      }
-    }
-    sidebar {
-      ... on LayoutLinkList {
-        ...LayoutLinkList
-      }
-      ... on LayoutArticles {
-        ...LayoutArticles
-      }
-      ... on LayoutPages {
-        ...LayoutPages
-      }
-    }
-    modules {
-      ... on LayoutArticles {
-        ...LayoutArticles
-      }
-      ... on LayoutArticlesCarousel {
-        ...LayoutArticlesCarousel
-      }
-      ... on LayoutPages {
-        ...LayoutPages
-      }
-      ... on LayoutPagesCarousel {
-        ...LayoutPagesCarousel
-      }
-      ... on EventSearch {
-        ...EventSearch
-      }
-      ... on EventSelected {
-        ...EventSelected
-      }
-      ... on EventSearchCarousel {
-        ...EventSearchCarousel
-      }
-      ... on EventSelectedCarousel {
-        ...EventSelectedCarousel
-      }
-      ... on LayoutCollection {
-        ...LayoutCollection
-      }
-      ... on LocationsSelected {
-        ...LocationsSelected
-      }
-    }
-  }
-  ${SeoFragmentDoc}
-  ${LanguageFragmentDoc}
-  ${LayoutLinkListFragmentDoc}
-  ${LayoutArticlesFragmentDoc}
-  ${LayoutPagesFragmentDoc}
-  ${LayoutArticlesCarouselFragmentDoc}
-  ${LayoutPagesCarouselFragmentDoc}
-  ${EventSearchFragmentDoc}
-  ${EventSelectedFragmentDoc}
-  ${EventSearchCarouselFragmentDoc}
-  ${EventSelectedCarouselFragmentDoc}
-  ${LayoutCollectionFragmentDoc}
-  ${LocationsSelectedFragmentDoc}
-`;
-export const MenuPageFieldsFragmentDoc = gql`
-  fragment menuPageFields on Page {
-    ...Page
-    translations {
-      ...Page
-    }
-  }
-  ${PageFragmentDoc}
-`;
-export const MenuItemFragmentDoc = gql`
-  fragment MenuItem on MenuItem {
-    id
-    order
-    target
-    title
-    path
-    label
-    connectedNode {
-      node {
-        ... on Page {
-          ...menuPageFields
-          children {
-            nodes {
-              ...menuPageFields
-            }
-          }
-        }
-      }
-    }
-  }
-  ${MenuPageFieldsFragmentDoc}
-`;
-export const LayoutArticleHighlightsFragmentDoc = gql`
-  fragment LayoutArticleHighlights on LayoutArticleHighlights {
-    __typename
-  }
-`;
-export const LayoutContactFragmentDoc = gql`
-  fragment LayoutContact on LayoutContact {
-    __typename
-  }
-`;
-export const ArticleDocument = gql`
-  query article($id: ID!) {
-    post(id: $id, idType: URI) {
-      ...Post
-    }
-  }
-  ${PostFragmentDoc}
+  ${ListVenueFragmentDoc}
 `;
 
 /**
- * __useArticleQuery__
+ * __useVenuesByIdsQuery__
  *
- * To run a query within a React component, call `useArticleQuery` and pass it any options that fit your needs.
- * When your component renders, `useArticleQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useVenuesByIdsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useVenuesByIdsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useArticleQuery({
+ * const { data, loading, error } = useVenuesByIdsQuery({
  *   variables: {
- *      id: // value for 'id'
+ *      ids: // value for 'ids'
  *   },
  * });
  */
-export function useArticleQuery(
-  baseOptions: Apollo.QueryHookOptions<ArticleQuery, ArticleQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<ArticleQuery, ArticleQueryVariables>(
-    ArticleDocument,
-    options,
-  );
-}
-export function useArticleLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    ArticleQuery,
-    ArticleQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<ArticleQuery, ArticleQueryVariables>(
-    ArticleDocument,
-    options,
-  );
-}
-export type ArticleQueryHookResult = ReturnType<typeof useArticleQuery>;
-export type ArticleLazyQueryHookResult = ReturnType<typeof useArticleLazyQuery>;
-export type ArticleQueryResult = Apollo.QueryResult<
-  ArticleQuery,
-  ArticleQueryVariables
->;
-export const PostsDocument = gql`
-  query posts(
-    $first: Int
-    $after: String
-    $search: String
-    $language: LanguageCodeFilterEnum
-    $categories: [ID]
-    $tags: [String]
-  ) {
-    posts(
-      first: $first
-      after: $after
-      where: {
-        search: $search
-        language: $language
-        categoryIn: $categories
-        tagSlugIn: $tags
-      }
-    ) {
-      pageInfo {
-        endCursor
-        hasNextPage
-        hasPreviousPage
-        startCursor
-      }
-      edges {
-        cursor
-        node {
-          ...Post
-        }
-      }
-    }
-  }
-  ${PostFragmentDoc}
-`;
-
-/**
- * __usePostsQuery__
- *
- * To run a query within a React component, call `usePostsQuery` and pass it any options that fit your needs.
- * When your component renders, `usePostsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = usePostsQuery({
- *   variables: {
- *      first: // value for 'first'
- *      after: // value for 'after'
- *      search: // value for 'search'
- *      language: // value for 'language'
- *      categories: // value for 'categories'
- *      tags: // value for 'tags'
- *   },
- * });
- */
-export function usePostsQuery(
-  baseOptions?: Apollo.QueryHookOptions<PostsQuery, PostsQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<PostsQuery, PostsQueryVariables>(
-    PostsDocument,
-    options,
-  );
-}
-export function usePostsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<PostsQuery, PostsQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<PostsQuery, PostsQueryVariables>(
-    PostsDocument,
-    options,
-  );
-}
-export type PostsQueryHookResult = ReturnType<typeof usePostsQuery>;
-export type PostsLazyQueryHookResult = ReturnType<typeof usePostsLazyQuery>;
-export type PostsQueryResult = Apollo.QueryResult<
-  PostsQuery,
-  PostsQueryVariables
->;
-export const CategoriesDocument = gql`
-  query categories(
-    $first: Int
-    $after: String
-    $search: String
-    $language: LanguageCodeFilterEnum
-  ) {
-    categories(
-      first: $first
-      after: $after
-      where: { language: $language, search: $search }
-    ) {
-      nodes {
-        id
-        databaseId
-        name
-        slug
-        uri
-        translations {
-          name
-          slug
-          uri
-          language {
-            ...Language
-          }
-        }
-        __typename
-      }
-    }
-  }
-  ${LanguageFragmentDoc}
-`;
-
-/**
- * __useCategoriesQuery__
- *
- * To run a query within a React component, call `useCategoriesQuery` and pass it any options that fit your needs.
- * When your component renders, `useCategoriesQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useCategoriesQuery({
- *   variables: {
- *      first: // value for 'first'
- *      after: // value for 'after'
- *      search: // value for 'search'
- *      language: // value for 'language'
- *   },
- * });
- */
-export function useCategoriesQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    CategoriesQuery,
-    CategoriesQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<CategoriesQuery, CategoriesQueryVariables>(
-    CategoriesDocument,
-    options,
-  );
-}
-export function useCategoriesLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    CategoriesQuery,
-    CategoriesQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<CategoriesQuery, CategoriesQueryVariables>(
-    CategoriesDocument,
-    options,
-  );
-}
-export type CategoriesQueryHookResult = ReturnType<typeof useCategoriesQuery>;
-export type CategoriesLazyQueryHookResult = ReturnType<
-  typeof useCategoriesLazyQuery
->;
-export type CategoriesQueryResult = Apollo.QueryResult<
-  CategoriesQuery,
-  CategoriesQueryVariables
->;
-export const CategoryDocument = gql`
-  query category($id: ID!, $language: LanguageCodeEnum!) {
-    category(id: $id, idType: SLUG) {
-      id
-      databaseId
-      name
-      slug
-      translation(language: $language) {
-        name
-        slug
-        language {
-          ...Language
-        }
-      }
-      __typename
-    }
-  }
-  ${LanguageFragmentDoc}
-`;
-
-/**
- * __useCategoryQuery__
- *
- * To run a query within a React component, call `useCategoryQuery` and pass it any options that fit your needs.
- * When your component renders, `useCategoryQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useCategoryQuery({
- *   variables: {
- *      id: // value for 'id'
- *      language: // value for 'language'
- *   },
- * });
- */
-export function useCategoryQuery(
-  baseOptions: Apollo.QueryHookOptions<CategoryQuery, CategoryQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<CategoryQuery, CategoryQueryVariables>(
-    CategoryDocument,
-    options,
-  );
-}
-export function useCategoryLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    CategoryQuery,
-    CategoryQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<CategoryQuery, CategoryQueryVariables>(
-    CategoryDocument,
-    options,
-  );
-}
-export type CategoryQueryHookResult = ReturnType<typeof useCategoryQuery>;
-export type CategoryLazyQueryHookResult = ReturnType<
-  typeof useCategoryLazyQuery
->;
-export type CategoryQueryResult = Apollo.QueryResult<
-  CategoryQuery,
-  CategoryQueryVariables
->;
-export const LandingPageDocument = gql`
-  query landingPage($id: ID!, $languageCode: LanguageCodeEnum!) {
-    landingPage(id: $id, idType: SLUG) {
-      id
-      desktopImage {
-        edges {
-          node {
-            mediaItemUrl
-          }
-        }
-      }
-      translation(language: $languageCode) {
-        title
-        description
-        heroLink
-      }
-    }
-  }
-`;
-
-/**
- * __useLandingPageQuery__
- *
- * To run a query within a React component, call `useLandingPageQuery` and pass it any options that fit your needs.
- * When your component renders, `useLandingPageQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useLandingPageQuery({
- *   variables: {
- *      id: // value for 'id'
- *      languageCode: // value for 'languageCode'
- *   },
- * });
- */
-export function useLandingPageQuery(
+export function useVenuesByIdsQuery(
   baseOptions: Apollo.QueryHookOptions<
-    LandingPageQuery,
-    LandingPageQueryVariables
+    VenuesByIdsQuery,
+    VenuesByIdsQueryVariables
   >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<LandingPageQuery, LandingPageQueryVariables>(
-    LandingPageDocument,
+  return Apollo.useQuery<VenuesByIdsQuery, VenuesByIdsQueryVariables>(
+    VenuesByIdsDocument,
     options,
   );
 }
-export function useLandingPageLazyQuery(
+export function useVenuesByIdsLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
-    LandingPageQuery,
-    LandingPageQueryVariables
+    VenuesByIdsQuery,
+    VenuesByIdsQueryVariables
   >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<LandingPageQuery, LandingPageQueryVariables>(
-    LandingPageDocument,
+  return Apollo.useLazyQuery<VenuesByIdsQuery, VenuesByIdsQueryVariables>(
+    VenuesByIdsDocument,
     options,
   );
 }
-export type LandingPageQueryHookResult = ReturnType<typeof useLandingPageQuery>;
-export type LandingPageLazyQueryHookResult = ReturnType<
-  typeof useLandingPageLazyQuery
+export type VenuesByIdsQueryHookResult = ReturnType<typeof useVenuesByIdsQuery>;
+export type VenuesByIdsLazyQueryHookResult = ReturnType<
+  typeof useVenuesByIdsLazyQuery
 >;
-export type LandingPageQueryResult = Apollo.QueryResult<
-  LandingPageQuery,
-  LandingPageQueryVariables
+export type VenuesByIdsQueryResult = Apollo.QueryResult<
+  VenuesByIdsQuery,
+  VenuesByIdsQueryVariables
 >;
-export const LanguagesDocument = gql`
-  query languages {
-    languages {
-      ...Language
-    }
-  }
-  ${LanguageFragmentDoc}
-`;
-
-/**
- * __useLanguagesQuery__
- *
- * To run a query within a React component, call `useLanguagesQuery` and pass it any options that fit your needs.
- * When your component renders, `useLanguagesQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useLanguagesQuery({
- *   variables: {
- *   },
- * });
- */
-export function useLanguagesQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    LanguagesQuery,
-    LanguagesQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<LanguagesQuery, LanguagesQueryVariables>(
-    LanguagesDocument,
-    options,
-  );
-}
-export function useLanguagesLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    LanguagesQuery,
-    LanguagesQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<LanguagesQuery, LanguagesQueryVariables>(
-    LanguagesDocument,
-    options,
-  );
-}
-export type LanguagesQueryHookResult = ReturnType<typeof useLanguagesQuery>;
-export type LanguagesLazyQueryHookResult = ReturnType<
-  typeof useLanguagesLazyQuery
->;
-export type LanguagesQueryResult = Apollo.QueryResult<
-  LanguagesQuery,
-  LanguagesQueryVariables
->;
-export const MenuDocument = gql`
-  query menu($id: ID!) {
-    menu(idType: NAME, id: $id) {
-      id
-      menuItems {
-        nodes {
-          ...MenuItem
-        }
-      }
-    }
-  }
-  ${MenuItemFragmentDoc}
-`;
-
-/**
- * __useMenuQuery__
- *
- * To run a query within a React component, call `useMenuQuery` and pass it any options that fit your needs.
- * When your component renders, `useMenuQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useMenuQuery({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useMenuQuery(
-  baseOptions: Apollo.QueryHookOptions<MenuQuery, MenuQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<MenuQuery, MenuQueryVariables>(MenuDocument, options);
-}
-export function useMenuLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<MenuQuery, MenuQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<MenuQuery, MenuQueryVariables>(
-    MenuDocument,
-    options,
-  );
-}
-export type MenuQueryHookResult = ReturnType<typeof useMenuQuery>;
-export type MenuLazyQueryHookResult = ReturnType<typeof useMenuLazyQuery>;
-export type MenuQueryResult = Apollo.QueryResult<MenuQuery, MenuQueryVariables>;
-export const NotificationDocument = gql`
-  query notification($language: String! = "fi") {
-    notification(language: $language) {
-      content
-      title
-      level
-      startDate
-      endDate
-      linkText
-      linkUrl
-    }
-  }
-`;
-
-/**
- * __useNotificationQuery__
- *
- * To run a query within a React component, call `useNotificationQuery` and pass it any options that fit your needs.
- * When your component renders, `useNotificationQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useNotificationQuery({
- *   variables: {
- *      language: // value for 'language'
- *   },
- * });
- */
-export function useNotificationQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    NotificationQuery,
-    NotificationQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<NotificationQuery, NotificationQueryVariables>(
-    NotificationDocument,
-    options,
-  );
-}
-export function useNotificationLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    NotificationQuery,
-    NotificationQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<NotificationQuery, NotificationQueryVariables>(
-    NotificationDocument,
-    options,
-  );
-}
-export type NotificationQueryHookResult = ReturnType<
-  typeof useNotificationQuery
->;
-export type NotificationLazyQueryHookResult = ReturnType<
-  typeof useNotificationLazyQuery
->;
-export type NotificationQueryResult = Apollo.QueryResult<
-  NotificationQuery,
-  NotificationQueryVariables
->;
-export const PageDocument = gql`
-  query page($id: ID!) {
-    page(id: $id, idType: URI) {
-      ...Page
-    }
-  }
-  ${PageFragmentDoc}
-`;
-
-/**
- * __usePageQuery__
- *
- * To run a query within a React component, call `usePageQuery` and pass it any options that fit your needs.
- * When your component renders, `usePageQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = usePageQuery({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function usePageQuery(
-  baseOptions: Apollo.QueryHookOptions<PageQuery, PageQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<PageQuery, PageQueryVariables>(PageDocument, options);
-}
-export function usePageLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<PageQuery, PageQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<PageQuery, PageQueryVariables>(
-    PageDocument,
-    options,
-  );
-}
-export type PageQueryHookResult = ReturnType<typeof usePageQuery>;
-export type PageLazyQueryHookResult = ReturnType<typeof usePageLazyQuery>;
-export type PageQueryResult = Apollo.QueryResult<PageQuery, PageQueryVariables>;
-export const PageByTemplateDocument = gql`
-  query pageByTemplate($template: TemplateEnum, $language: String) {
-    pageByTemplate(template: $template, language: $language) {
-      ...Page
-    }
-  }
-  ${PageFragmentDoc}
-`;
-
-/**
- * __usePageByTemplateQuery__
- *
- * To run a query within a React component, call `usePageByTemplateQuery` and pass it any options that fit your needs.
- * When your component renders, `usePageByTemplateQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = usePageByTemplateQuery({
- *   variables: {
- *      template: // value for 'template'
- *      language: // value for 'language'
- *   },
- * });
- */
-export function usePageByTemplateQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    PageByTemplateQuery,
-    PageByTemplateQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<PageByTemplateQuery, PageByTemplateQueryVariables>(
-    PageByTemplateDocument,
-    options,
-  );
-}
-export function usePageByTemplateLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    PageByTemplateQuery,
-    PageByTemplateQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<PageByTemplateQuery, PageByTemplateQueryVariables>(
-    PageByTemplateDocument,
-    options,
-  );
-}
-export type PageByTemplateQueryHookResult = ReturnType<
-  typeof usePageByTemplateQuery
->;
-export type PageByTemplateLazyQueryHookResult = ReturnType<
-  typeof usePageByTemplateLazyQuery
->;
-export type PageByTemplateQueryResult = Apollo.QueryResult<
-  PageByTemplateQuery,
-  PageByTemplateQueryVariables
->;
-export const PageChildrenSearchDocument = gql`
-  query PageChildrenSearch(
-    $id: ID!
-    $idType: PageIdType
-    $search: String!
-    $first: Int
-    $after: String
-  ) {
-    page(id: $id, idType: $idType) {
-      id
-      children(where: { search: $search }, first: $first, after: $after) {
-        pageInfo {
-          endCursor
-          hasNextPage
-        }
-        edges {
-          cursor
-          node {
-            ... on Page {
-              ...Page
-              translations {
-                ...Page
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  ${PageFragmentDoc}
-`;
-
-/**
- * __usePageChildrenSearchQuery__
- *
- * To run a query within a React component, call `usePageChildrenSearchQuery` and pass it any options that fit your needs.
- * When your component renders, `usePageChildrenSearchQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = usePageChildrenSearchQuery({
- *   variables: {
- *      id: // value for 'id'
- *      idType: // value for 'idType'
- *      search: // value for 'search'
- *      first: // value for 'first'
- *      after: // value for 'after'
- *   },
- * });
- */
-export function usePageChildrenSearchQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    PageChildrenSearchQuery,
-    PageChildrenSearchQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<
-    PageChildrenSearchQuery,
-    PageChildrenSearchQueryVariables
-  >(PageChildrenSearchDocument, options);
-}
-export function usePageChildrenSearchLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    PageChildrenSearchQuery,
-    PageChildrenSearchQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    PageChildrenSearchQuery,
-    PageChildrenSearchQueryVariables
-  >(PageChildrenSearchDocument, options);
-}
-export type PageChildrenSearchQueryHookResult = ReturnType<
-  typeof usePageChildrenSearchQuery
->;
-export type PageChildrenSearchLazyQueryHookResult = ReturnType<
-  typeof usePageChildrenSearchLazyQuery
->;
-export type PageChildrenSearchQueryResult = Apollo.QueryResult<
-  PageChildrenSearchQuery,
-  PageChildrenSearchQueryVariables
->;
-export const PagesDocument = gql`
-  query pages(
-    $first: Int
-    $after: String
-    $search: String
-    $language: LanguageCodeFilterEnum
-  ) {
-    pages(
-      first: $first
-      after: $after
-      where: { search: $search, language: $language }
-    ) {
-      pageInfo {
-        endCursor
-        hasNextPage
-        hasPreviousPage
-        startCursor
-      }
-      edges {
-        cursor
-        node {
-          ...Page
-        }
-      }
-    }
-  }
-  ${PageFragmentDoc}
-`;
-
-/**
- * __usePagesQuery__
- *
- * To run a query within a React component, call `usePagesQuery` and pass it any options that fit your needs.
- * When your component renders, `usePagesQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = usePagesQuery({
- *   variables: {
- *      first: // value for 'first'
- *      after: // value for 'after'
- *      search: // value for 'search'
- *      language: // value for 'language'
- *   },
- * });
- */
-export function usePagesQuery(
-  baseOptions?: Apollo.QueryHookOptions<PagesQuery, PagesQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<PagesQuery, PagesQueryVariables>(
-    PagesDocument,
-    options,
-  );
-}
-export function usePagesLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<PagesQuery, PagesQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<PagesQuery, PagesQueryVariables>(
-    PagesDocument,
-    options,
-  );
-}
-export type PagesQueryHookResult = ReturnType<typeof usePagesQuery>;
-export type PagesLazyQueryHookResult = ReturnType<typeof usePagesLazyQuery>;
-export type PagesQueryResult = Apollo.QueryResult<
-  PagesQuery,
-  PagesQueryVariables
->;
-export const TagDocument = gql`
-  query tag($id: ID!, $language: LanguageCodeEnum!) {
-    tag(id: $id, idType: SLUG) {
-      id
-      databaseId
-      name
-      slug
-      translation(language: $language) {
-        name
-        slug
-        language {
-          ...Language
-        }
-      }
-      __typename
-    }
-  }
-  ${LanguageFragmentDoc}
-`;
-
-/**
- * __useTagQuery__
- *
- * To run a query within a React component, call `useTagQuery` and pass it any options that fit your needs.
- * When your component renders, `useTagQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useTagQuery({
- *   variables: {
- *      id: // value for 'id'
- *      language: // value for 'language'
- *   },
- * });
- */
-export function useTagQuery(
-  baseOptions: Apollo.QueryHookOptions<TagQuery, TagQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<TagQuery, TagQueryVariables>(TagDocument, options);
-}
-export function useTagLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<TagQuery, TagQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<TagQuery, TagQueryVariables>(TagDocument, options);
-}
-export type TagQueryHookResult = ReturnType<typeof useTagQuery>;
-export type TagLazyQueryHookResult = ReturnType<typeof useTagLazyQuery>;
-export type TagQueryResult = Apollo.QueryResult<TagQuery, TagQueryVariables>;
-export const TagsDocument = gql`
-  query tags(
-    $first: Int
-    $after: String
-    $search: String
-    $language: LanguageCodeFilterEnum
-  ) {
-    tags(
-      first: $first
-      after: $after
-      where: { language: $language, search: $search }
-    ) {
-      nodes {
-        id
-        databaseId
-        name
-        slug
-        translations {
-          name
-          slug
-          uri
-          language {
-            ...Language
-          }
-        }
-        __typename
-      }
-    }
-  }
-  ${LanguageFragmentDoc}
-`;
-
-/**
- * __useTagsQuery__
- *
- * To run a query within a React component, call `useTagsQuery` and pass it any options that fit your needs.
- * When your component renders, `useTagsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useTagsQuery({
- *   variables: {
- *      first: // value for 'first'
- *      after: // value for 'after'
- *      search: // value for 'search'
- *      language: // value for 'language'
- *   },
- * });
- */
-export function useTagsQuery(
-  baseOptions?: Apollo.QueryHookOptions<TagsQuery, TagsQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<TagsQuery, TagsQueryVariables>(TagsDocument, options);
-}
-export function useTagsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<TagsQuery, TagsQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<TagsQuery, TagsQueryVariables>(
-    TagsDocument,
-    options,
-  );
-}
-export type TagsQueryHookResult = ReturnType<typeof useTagsQuery>;
-export type TagsLazyQueryHookResult = ReturnType<typeof useTagsLazyQuery>;
-export type TagsQueryResult = Apollo.QueryResult<TagsQuery, TagsQueryVariables>;

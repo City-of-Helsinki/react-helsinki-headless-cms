@@ -28,3 +28,17 @@ generates:
     hooks:
       afterOneFileWrite:
         - prettier --write
+  ./src/common/venuesService/__generated__.ts:
+    documents: ./src/common/venuesService/graphql/*.graphql
+    schema: ${VENUES_GRAPHQL_ENDPOINT}
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+    config:
+      withHooks: true
+      withComponent: false
+      flattenSelectionSet: true
+    hooks:
+      afterOneFileWrite:
+        - prettier --write
