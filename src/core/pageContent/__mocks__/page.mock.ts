@@ -4,6 +4,7 @@ import {
   EventSearchCarousel,
   EventSelected,
   EventSelectedCarousel,
+  LocationsSelected,
   LayoutArticle,
   LayoutArticleCarousel,
   LayoutLinkList,
@@ -153,6 +154,14 @@ export const pageEventSelected: EventSelected = {
   // initAmountOfEvents: 6, // TODO: add when initAmountOfEvents null-issue is fixed
   module: 'event_selected',
   __typename: 'EventSelected',
+};
+
+export const pageLocationsSelected: LocationsSelected = {
+  title: 'Locations selection',
+  locations: [41385, 39999, 40419, 40393, 41994],
+  // initAmountOfEvents: 6, // TODO: add when initAmountOfEvents null-issue is fixed
+  module: 'locations_selected',
+  __typename: 'LocationsSelected',
 };
 
 export const pageEventSearchCarousel: EventSearchCarousel = {

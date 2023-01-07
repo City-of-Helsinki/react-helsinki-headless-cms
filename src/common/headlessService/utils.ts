@@ -21,6 +21,7 @@ import {
   EventSearchCarousel,
   EventSelected,
   EventSelectedCarousel,
+  LocationsSelected,
   EventModule,
   Language,
 } from './types';
@@ -106,6 +107,16 @@ export function isEventSelectedCarousel(
   );
 }
 
+export function isLocationsSelected(
+  module: PageModule | PageSidebarModule,
+): module is LocationsSelected {
+  return (
+    (<LocationsSelected>module).locations !== undefined &&
+    // eslint-disable-next-line no-underscore-dangle
+    module.__typename === 'LocationsSelected'
+  );
+}
+
 export function isEventModule(
   module: PageModule | PageSidebarModule,
 ): module is EventModule {
@@ -113,7 +124,8 @@ export function isEventModule(
     isEventSearch(module) ||
     isEventSearchCarousel(module) ||
     isEventSelected(module) ||
-    isEventSelectedCarousel(module)
+    isEventSelectedCarousel(module) ||
+    isLocationsSelected(module)
   );
 }
 

@@ -21,6 +21,13 @@ export type EventSelectionCollectionType = Omit<
   events: string[];
 };
 
+export type LocationsSelectionCollectionType = Omit<
+  GeneralCollectionType,
+  'items'
+> & {
+  venues: number[];
+};
+
 export type EventSearchCollectionType = Omit<GeneralCollectionType, 'items'> & {
   url: string;
 };

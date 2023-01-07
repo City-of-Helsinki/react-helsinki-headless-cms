@@ -11,6 +11,7 @@ import {
   isEventSearchCarousel,
   isEventSelected,
   isEventSelectedCarousel,
+  isLocationsSelected,
   isEventType,
   isLayoutArticle,
   isLayoutArticleCarousel,
@@ -25,6 +26,7 @@ import {
   EventSearchCollectionType,
   EventSelectionCollectionType,
   GeneralCollectionType,
+  LocationsSelectionCollectionType,
 } from '../collection/types';
 
 export function getCollections(
@@ -66,6 +68,12 @@ export function getCollections(
           ...commonFields,
           events: module.events,
         } as EventSelectionCollectionType);
+      }
+      if (isLocationsSelected(module)) {
+        collections.push({
+          ...commonFields,
+          venues: module.locations,
+        } as LocationsSelectionCollectionType);
       }
     }
     return collections;

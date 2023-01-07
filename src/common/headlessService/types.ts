@@ -9,6 +9,7 @@ import {
   EventSearchCarouselFragment,
   EventSelectedFragment,
   EventSelectedCarouselFragment,
+  LocationsSelectedFragment,
   CategoryQuery,
   TagQuery,
   CategoriesQuery,
@@ -28,7 +29,8 @@ export type EventModule =
   | EventSearchFragment
   | EventSearchCarouselFragment
   | EventSelectedFragment
-  | EventSelectedCarouselFragment;
+  | EventSelectedCarouselFragment
+  | LocationsSelectedFragment;
 export type Category = CategoryQuery['category'];
 export type Categories = CategoriesQuery['categories'];
 export type Tag = TagQuery['tag'];
@@ -46,6 +48,7 @@ export type {
   EventSelectedFragment as EventSelected,
   EventSearchCarouselFragment as EventSearchCarousel,
   EventSelectedCarouselFragment as EventSelectedCarousel,
+  LocationsSelectedFragment as LocationsSelected,
   Notification as NotificationType,
 } from './__generated__';
 

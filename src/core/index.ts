@@ -27,6 +27,7 @@ export {
   EventSelected,
   EventSearchCarousel,
   EventSelectedCarousel,
+  LocationsSelected,
   NotificationType,
   LanguageCodeEnum,
   LanguageCodeFilterEnum,
