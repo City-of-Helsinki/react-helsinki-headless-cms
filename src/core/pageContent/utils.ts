@@ -18,7 +18,9 @@ import {
   isLayoutPage,
   isLayoutPageCarousel,
   isPageType,
+  isVenueType,
 } from '../../common/headlessService/utils';
+import { VenueType } from '../../common/venuesService/types';
 import { CardProps } from '../card/Card';
 import { type CollectionProps } from '../collection/Collection';
 import {
@@ -116,6 +118,22 @@ export function getEventCardProps(item: EventType, locale = 'fi'): CardProps {
   };
 }
 
+export function getLocationCardProps(item: VenueType): CardProps {
+  return {
+    id: item.id,
+    title: item.name,
+    url: item.id,
+    imageUrl: item.image,
+    ariaLabel: item.name,
+    hasLink: true,
+    withBorder: true,
+    withShadow: false,
+    clampText: true,
+    direction: 'responsive' as CardProps['direction'],
+    openLinkInNewTab: false,
+  };
+}
+
 export function getCollectionCards(
   collection: GeneralCollectionType,
   locale = 'fi',
@@ -124,7 +142,7 @@ export function getCollectionCards(
     if (isPageType(item) || isArticleType(item))
       result.push(getArticlePageCardProps(item));
     else if (isEventType(item)) result.push(getEventCardProps(item, locale));
-
+    else if (isVenueType(item)) result.push(getLocationCardProps(item));
     return result;
   }, []);
 }
@@ -133,5 +151,9 @@ export function getCollectionUIType(
   collection: CollectionType,
 ): CollectionProps['type'] {
   // eslint-disable-next-line no-underscore-dangle
-  return collection.__typename.includes('Carousel') ? 'carousel' : 'grid';
+  return collection.__typename.includes('Carousel') ||
+    // eslint-disable-next-line no-underscore-dangle
+    collection.__typename.includes('Locations')
+    ? 'carousel'
+    : 'grid';
 }
