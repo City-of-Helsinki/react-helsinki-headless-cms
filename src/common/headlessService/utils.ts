@@ -6,6 +6,7 @@ import {
   CollectionType,
   EventSearchCollectionType,
   EventSelectionCollectionType,
+  LocationsSelectionCollectionType,
 } from '../../core/collection/types';
 import {
   ArticleType,
@@ -168,6 +169,12 @@ export function isEventSearchCollection(
   collection: CollectionType,
 ): collection is EventSearchCollectionType {
   return (<EventSearchCollectionType>collection).url !== undefined;
+}
+
+export function isLocationsSelectionCollection(
+  collection: CollectionType,
+): collection is LocationsSelectionCollectionType {
+  return (<LocationsSelectionCollectionType>collection).venues !== undefined;
 }
 
 export function isLanguage(

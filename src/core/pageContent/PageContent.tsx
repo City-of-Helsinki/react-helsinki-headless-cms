@@ -11,6 +11,7 @@ import {
   Collection,
   EventSearchCollection,
   EventSelectionCollection,
+  LocationsSelectionCollection,
 } from '../collection/Collection';
 import { ArticleType, PageType } from '../../common/headlessService/types';
 import { Card } from '../card/Card';
@@ -23,6 +24,7 @@ import { ModuleItemTypeEnum } from '../../common/headlessService/constants';
 import {
   isEventSearchCollection,
   isEventSelectionCollection,
+  isLocationsSelectionCollection,
 } from '../../common/headlessService/utils';
 
 export type PageContentProps = {
@@ -83,6 +85,15 @@ export const defaultCollections = (
         if (isEventModulesEnabled) {
           collectionElements.push(
             <EventSelectionCollection
+              {...commonCollectionProps}
+              collection={collection}
+            />,
+          );
+        }
+      } else if (isLocationsSelectionCollection(collection)) {
+        if (isEventModulesEnabled) {
+          collectionElements.push(
+            <LocationsSelectionCollection
               {...commonCollectionProps}
               collection={collection}
             />,

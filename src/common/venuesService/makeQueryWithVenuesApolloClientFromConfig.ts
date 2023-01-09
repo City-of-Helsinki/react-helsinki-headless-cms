@@ -10,10 +10,10 @@ export default function makeQueryWithVenuesApolloClientFromConfig<Q, V>(
   useQuery: UseQuery<Q, V>,
 ) {
   return (baseOptions: Apollo.QueryHookOptions<Q, V> = {}) => {
-    const eventsApolloClientFromConfig = useVenuesApolloClientFromConfig();
+    const venuesApolloClientFromConfig = useVenuesApolloClientFromConfig();
 
     return useQuery({
-      client: eventsApolloClientFromConfig,
+      client: venuesApolloClientFromConfig,
       ...baseOptions,
     });
   };

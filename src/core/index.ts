@@ -95,6 +95,9 @@ export {
   EventSearchCollection,
   EventSearchCollectionProps,
   getEventCollectionCards,
+  LocationsSelectionCollection,
+  LocationsSelectionCollectionProps,
+  getLocationsCollectionCards,
 } from './collection/Collection';
 
 export {
@@ -102,6 +105,7 @@ export {
   GeneralCollectionType,
   EventSelectionCollectionType,
   EventSearchCollectionType,
+  LocationsSelectionCollectionType,
   CollectionType,
 } from './collection/types';
 
