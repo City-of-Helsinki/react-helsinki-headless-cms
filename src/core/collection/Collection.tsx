@@ -21,6 +21,7 @@ import {
 import { EventType } from '../../common/eventsService/types';
 import { useConfig } from '../configProvider/useConfig';
 import useEventsApolloClientFromConfig from '../configProvider/useEventsApolloClientFromConfig';
+import useVenuesApolloClientFromConfig from '../configProvider/useVenuesApolloClientFromConfig';
 import { getCollectionCards } from '../pageContent/utils';
 import { Config } from '../configProvider/configContext';
 import normalizeKeys from '../../linkedEvents/utils/normalizeKeys';
@@ -328,7 +329,7 @@ export function getLocationsCollectionCards(
         url={url}
         direction="fixed-vertical"
         customContent={
-          LocationCardContent && <LocationCardContent event={items[i]} />
+          LocationCardContent && <LocationCardContent location={items[i]} />
         }
       />
     );
@@ -349,7 +350,7 @@ export function LocationsSelectionCollection({
   locale,
   ...delegatedProps
 }: LocationsSelectionCollectionProps) {
-  const venuesApolloClient = useEventsApolloClientFromConfig();
+  const venuesApolloClient = useVenuesApolloClientFromConfig();
   const {
     utils: { getRoutedInternalHref },
     components: { LocationCardContent },
