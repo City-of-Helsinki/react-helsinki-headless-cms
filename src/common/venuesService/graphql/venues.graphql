@@ -4,6 +4,7 @@ fragment listVenue on Venue {
   image
   name
   streetAddress
+  addressLocality
   ontologyWords {
     id
     label

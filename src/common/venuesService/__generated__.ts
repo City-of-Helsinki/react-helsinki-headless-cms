@@ -10859,6 +10859,7 @@ export type ListVenueFragment = {
   image?: string | null;
   name?: string | null;
   streetAddress?: string | null;
+  addressLocality?: string | null;
   ontologyWords: Array<{
     __typename?: 'Ontology';
     id?: number | null;
@@ -10879,6 +10880,7 @@ export type VenuesByIdsQuery = {
     image?: string | null;
     name?: string | null;
     streetAddress?: string | null;
+    addressLocality?: string | null;
     ontologyWords: Array<{
       __typename?: 'Ontology';
       id?: number | null;
@@ -10894,6 +10896,7 @@ export const ListVenueFragmentDoc = gql`
     image
     name
     streetAddress
+    addressLocality
     ontologyWords {
       id
       label
