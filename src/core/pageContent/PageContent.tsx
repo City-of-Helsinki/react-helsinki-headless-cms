@@ -13,7 +13,11 @@ import {
   EventSelectionCollection,
   LocationsSelectionCollection,
 } from '../collection/Collection';
-import { ArticleType, PageType } from '../../common/headlessService/types';
+import {
+  ArticleType,
+  LanguageCodeEnum,
+  PageType,
+} from '../../common/headlessService/types';
 import { Card } from '../card/Card';
 import {
   getCollections,
@@ -96,6 +100,7 @@ export const defaultCollections = (
             <LocationsSelectionCollection
               {...commonCollectionProps}
               collection={collection}
+              locale={page.language.locale as LanguageCodeEnum}
             />,
           );
         }
