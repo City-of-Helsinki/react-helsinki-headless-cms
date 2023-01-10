@@ -1,3 +1,3 @@
 import { EventsByIdsQuery } from './__generated__';
 
-export type EventType = EventsByIdsQuery['eventsByIds']['data'][number];
+export type EventDetailsType = EventsByIdsQuery['eventsByIds']['data'][number];

@@ -1,4 +1,4 @@
-import { EventType } from '../../common/eventsService/types';
+import { EventDetailsType } from '../../common/eventsService/types';
 import {
   ArticleType,
   PageModule,
@@ -101,7 +101,10 @@ export function getArticlePageCardProps(
   };
 }
 
-export function getEventCardProps(item: EventType, locale = 'fi'): CardProps {
+export function getEventCardProps(
+  item: EventDetailsType,
+  locale = 'fi',
+): CardProps {
   const image = item.images.length > 0 ? item.images[0] : null;
   return {
     id: item.id,

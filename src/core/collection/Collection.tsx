@@ -18,7 +18,7 @@ import {
   GeneralCollectionType,
   LocationsSelectionCollectionType,
 } from './types';
-import { EventType } from '../../common/eventsService/types';
+import { EventDetailsType } from '../../common/eventsService/types';
 import { useConfig } from '../configProvider/useConfig';
 import useEventsApolloClientFromConfig from '../configProvider/useEventsApolloClientFromConfig';
 import useVenuesApolloClientFromConfig from '../configProvider/useVenuesApolloClientFromConfig';
@@ -164,7 +164,7 @@ export function Collection({
 
 export function getEventCollectionCards(
   collection: EventSelectionCollectionType | EventSearchCollectionType,
-  items: EventType[],
+  items: EventDetailsType[],
   getRoutedInternalHref: Config['utils']['getRoutedInternalHref'],
   EventCardContent: React.FC<Record<string, unknown>>,
 ) {
