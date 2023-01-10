@@ -321,7 +321,7 @@ export function getLocationsCollectionCards(
     __typename: 'GeneralCollectionType',
   };
   const cards = getCollectionCards(generalCollection).map((cardProps, i) => {
-    const url = getRoutedInternalHref(cardProps.url, null);
+    const url = getRoutedInternalHref(cardProps.url, ModuleItemTypeEnum.Venue);
     return (
       <Card
         key={cardProps.id}
@@ -383,7 +383,7 @@ export function LocationsSelectionCollection({
   const cards = getLocationsCollectionCards(
     collection,
     venuesList ?? [],
-    (link) => getRoutedInternalHref(link, null),
+    (link) => getRoutedInternalHref(link, ModuleItemTypeEnum.Venue),
     LocationCardContent,
   );
 

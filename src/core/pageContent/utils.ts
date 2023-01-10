@@ -122,7 +122,7 @@ export function getLocationCardProps(item: VenueType): CardProps {
   return {
     id: item.id,
     title: item.name,
-    url: item.id,
+    url: `/venues/${item.id.split(':')[1]}`,
     imageUrl: item.image,
     ariaLabel: item.name,
     hasLink: true,

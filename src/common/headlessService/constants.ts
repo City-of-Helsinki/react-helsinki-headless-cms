@@ -3,4 +3,5 @@ export enum ModuleItemTypeEnum {
   Page = 'page',
   Link = 'link',
   Event = 'event',
+  Venue = 'venue',
 }
