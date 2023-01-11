@@ -1,14 +1,10 @@
 import { ArticleType, PageType } from '../../common/headlessService/types';
-import { EventDetailsType } from '../../common/eventsService/types';
+import { EventType } from '../../common/eventsService/types';
 import { EventDetails, Meta } from '../../common/eventsService/__generated__';
 import { VenueType } from '../../common/venuesService/types';
 
 // TODO: HCRC-13 - Support also the event selection and the event search modules
-export type CollectionItemType =
-  | ArticleType
-  | PageType
-  | EventDetailsType
-  | VenueType;
+export type CollectionItemType = ArticleType | PageType | EventType | VenueType;
 
 export type GeneralCollectionType = {
   id?: string;

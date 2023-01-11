@@ -26,7 +26,7 @@ import {
   EventModule,
   Language,
 } from './types';
-import { EventDetailsType } from '../eventsService/types';
+import { EventType } from '../eventsService/types';
 import { VenueType } from '../venuesService/types';
 
 export function isLayoutArticle(
@@ -155,9 +155,7 @@ export function isPageType(item: CollectionItemType): item is PageType {
   );
 }
 
-export function isEventType(
-  item: CollectionItemType,
-): item is EventDetailsType {
+export function isEventType(item: CollectionItemType): item is EventType {
   // eslint-disable-next-line no-underscore-dangle
   return item.__typename === 'EventDetails';
 }
