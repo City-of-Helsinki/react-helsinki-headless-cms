@@ -102,6 +102,9 @@ fragment Post on Post {
     ... on LocationsSelected {
       ...LocationsSelected
     }
+    ... on LocationsSelectedCarousel {
+      ...LocationsSelectedCarousel
+    }
   }
 }
 

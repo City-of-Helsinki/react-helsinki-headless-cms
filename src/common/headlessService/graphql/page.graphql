@@ -77,6 +77,9 @@ fragment Page on Page {
     ... on LocationsSelected {
       ...LocationsSelected
     }
+    ... on LocationsSelectedCarousel {
+      ...LocationsSelectedCarousel
+    }
   }
 }
 
