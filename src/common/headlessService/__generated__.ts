@@ -604,7 +604,8 @@ export type CollectionModulesUnionType =
   | EventSearchCarousel
   | EventSelected
   | EventSelectedCarousel
-  | LocationsSelected;
+  | LocationsSelected
+  | LocationsSelectedCarousel;
 
 /** Connection between the collection type and the collection type */
 export type CollectionToPreviewConnectionEdge = {
@@ -3488,6 +3489,19 @@ export type LocationsSelected = {
   title?: Maybe<Scalars['String']>;
 };
 
+/** Collection Module: LocationsSelectedCarousel */
+export type LocationsSelectedCarousel = {
+  __typename?: 'LocationsSelectedCarousel';
+  /** List of location IDs */
+  locations?: Maybe<Array<Maybe<Scalars['Int']>>>;
+  /** Module type */
+  module?: Maybe<Scalars['String']>;
+  /** List of modules */
+  modules?: Maybe<Array<Maybe<CollectionModulesUnionType>>>;
+  /** Module title */
+  title?: Maybe<Scalars['String']>;
+};
+
 /** File details for a Media Item */
 export type MediaDetails = {
   __typename?: 'MediaDetails';
@@ -4568,7 +4582,8 @@ export type PageModulesUnionType =
   | LayoutContact
   | LayoutPages
   | LayoutPagesCarousel
-  | LocationsSelected;
+  | LocationsSelected
+  | LocationsSelectedCarousel;
 
 export type PageSidebarUnionType =
   | LayoutArticles
@@ -5255,7 +5270,8 @@ export type PostModulesUnionType =
   | LayoutContact
   | LayoutPages
   | LayoutPagesCarousel
-  | LocationsSelected;
+  | LocationsSelected
+  | LocationsSelectedCarousel;
 
 /** The format of post field data. */
 export enum PostObjectFieldFormatEnum {
@@ -10701,6 +10717,12 @@ export type PostFragment = {
         locations?: Array<number | null> | null;
         module?: string | null;
       }
+    | {
+        __typename: 'LocationsSelectedCarousel';
+        title?: string | null;
+        locations?: Array<number | null> | null;
+        module?: string | null;
+      }
     | null
   > | null;
 };
@@ -11011,6 +11033,12 @@ export type ArticleQuery = {
         }
       | {
           __typename: 'LocationsSelected';
+          title?: string | null;
+          locations?: Array<number | null> | null;
+          module?: string | null;
+        }
+      | {
+          __typename: 'LocationsSelectedCarousel';
           title?: string | null;
           locations?: Array<number | null> | null;
           module?: string | null;
@@ -11347,6 +11375,12 @@ export type PostsQuery = {
             }
           | {
               __typename: 'LocationsSelected';
+              title?: string | null;
+              locations?: Array<number | null> | null;
+              module?: string | null;
+            }
+          | {
+              __typename: 'LocationsSelectedCarousel';
               title?: string | null;
               locations?: Array<number | null> | null;
               module?: string | null;
@@ -11804,6 +11838,12 @@ export type MenuItemFragment = {
                           locations?: Array<number | null> | null;
                           module?: string | null;
                         }
+                      | {
+                          __typename: 'LocationsSelectedCarousel';
+                          title?: string | null;
+                          locations?: Array<number | null> | null;
+                          module?: string | null;
+                        }
                       | null
                     > | null;
                   } | null> | null;
@@ -12058,6 +12098,12 @@ export type MenuItemFragment = {
                       }
                     | {
                         __typename: 'LocationsSelected';
+                        title?: string | null;
+                        locations?: Array<number | null> | null;
+                        module?: string | null;
+                      }
+                    | {
+                        __typename: 'LocationsSelectedCarousel';
                         title?: string | null;
                         locations?: Array<number | null> | null;
                         module?: string | null;
@@ -12363,6 +12409,12 @@ export type MenuItemFragment = {
                   locations?: Array<number | null> | null;
                   module?: string | null;
                 }
+              | {
+                  __typename: 'LocationsSelectedCarousel';
+                  title?: string | null;
+                  locations?: Array<number | null> | null;
+                  module?: string | null;
+                }
               | null
             > | null;
           } | null> | null;
@@ -12617,6 +12669,12 @@ export type MenuItemFragment = {
               }
             | {
                 __typename: 'LocationsSelected';
+                title?: string | null;
+                locations?: Array<number | null> | null;
+                module?: string | null;
+              }
+            | {
+                __typename: 'LocationsSelectedCarousel';
                 title?: string | null;
                 locations?: Array<number | null> | null;
                 module?: string | null;
@@ -12931,6 +12989,12 @@ export type MenuPageFieldsFragment = {
           locations?: Array<number | null> | null;
           module?: string | null;
         }
+      | {
+          __typename: 'LocationsSelectedCarousel';
+          title?: string | null;
+          locations?: Array<number | null> | null;
+          module?: string | null;
+        }
       | null
     > | null;
   } | null> | null;
@@ -13185,6 +13249,12 @@ export type MenuPageFieldsFragment = {
       }
     | {
         __typename: 'LocationsSelected';
+        title?: string | null;
+        locations?: Array<number | null> | null;
+        module?: string | null;
+      }
+    | {
+        __typename: 'LocationsSelectedCarousel';
         title?: string | null;
         locations?: Array<number | null> | null;
         module?: string | null;
@@ -13533,6 +13603,12 @@ export type MenuQuery = {
                                 locations?: Array<number | null> | null;
                                 module?: string | null;
                               }
+                            | {
+                                __typename: 'LocationsSelectedCarousel';
+                                title?: string | null;
+                                locations?: Array<number | null> | null;
+                                module?: string | null;
+                              }
                             | null
                           > | null;
                         } | null> | null;
@@ -13787,6 +13863,12 @@ export type MenuQuery = {
                             }
                           | {
                               __typename: 'LocationsSelected';
+                              title?: string | null;
+                              locations?: Array<number | null> | null;
+                              module?: string | null;
+                            }
+                          | {
+                              __typename: 'LocationsSelectedCarousel';
                               title?: string | null;
                               locations?: Array<number | null> | null;
                               module?: string | null;
@@ -14092,6 +14174,12 @@ export type MenuQuery = {
                         locations?: Array<number | null> | null;
                         module?: string | null;
                       }
+                    | {
+                        __typename: 'LocationsSelectedCarousel';
+                        title?: string | null;
+                        locations?: Array<number | null> | null;
+                        module?: string | null;
+                      }
                     | null
                   > | null;
                 } | null> | null;
@@ -14350,6 +14438,12 @@ export type MenuQuery = {
                       locations?: Array<number | null> | null;
                       module?: string | null;
                     }
+                  | {
+                      __typename: 'LocationsSelectedCarousel';
+                      title?: string | null;
+                      locations?: Array<number | null> | null;
+                      module?: string | null;
+                    }
                   | null
                 > | null;
               }
@@ -14532,6 +14626,13 @@ export type LayoutContactFragment = { __typename: 'LayoutContact' };
 
 export type LocationsSelectedFragment = {
   __typename: 'LocationsSelected';
+  title?: string | null;
+  locations?: Array<number | null> | null;
+  module?: string | null;
+};
+
+export type LocationsSelectedCarouselFragment = {
+  __typename: 'LocationsSelectedCarousel';
   title?: string | null;
   locations?: Array<number | null> | null;
   module?: string | null;
@@ -14847,6 +14948,12 @@ export type PageFragment = {
         locations?: Array<number | null> | null;
         module?: string | null;
       }
+    | {
+        __typename: 'LocationsSelectedCarousel';
+        title?: string | null;
+        locations?: Array<number | null> | null;
+        module?: string | null;
+      }
     | null
   > | null;
 };
@@ -15145,6 +15252,12 @@ export type PageQuery = {
         }
       | {
           __typename: 'LocationsSelected';
+          title?: string | null;
+          locations?: Array<number | null> | null;
+          module?: string | null;
+        }
+      | {
+          __typename: 'LocationsSelectedCarousel';
           title?: string | null;
           locations?: Array<number | null> | null;
           module?: string | null;
@@ -15449,6 +15562,12 @@ export type PageByTemplateQuery = {
         }
       | {
           __typename: 'LocationsSelected';
+          title?: string | null;
+          locations?: Array<number | null> | null;
+          module?: string | null;
+        }
+      | {
+          __typename: 'LocationsSelectedCarousel';
           title?: string | null;
           locations?: Array<number | null> | null;
           module?: string | null;
@@ -15787,6 +15906,12 @@ export type PageChildrenSearchQuery = {
                       locations?: Array<number | null> | null;
                       module?: string | null;
                     }
+                  | {
+                      __typename: 'LocationsSelectedCarousel';
+                      title?: string | null;
+                      locations?: Array<number | null> | null;
+                      module?: string | null;
+                    }
                   | null
                 > | null;
               } | null> | null;
@@ -16041,6 +16166,12 @@ export type PageChildrenSearchQuery = {
                   }
                 | {
                     __typename: 'LocationsSelected';
+                    title?: string | null;
+                    locations?: Array<number | null> | null;
+                    module?: string | null;
+                  }
+                | {
+                    __typename: 'LocationsSelectedCarousel';
                     title?: string | null;
                     locations?: Array<number | null> | null;
                     module?: string | null;
@@ -16370,6 +16501,12 @@ export type PagesQuery = {
               locations?: Array<number | null> | null;
               module?: string | null;
             }
+          | {
+              __typename: 'LocationsSelectedCarousel';
+              title?: string | null;
+              locations?: Array<number | null> | null;
+              module?: string | null;
+            }
           | null
         > | null;
       } | null;
@@ -16656,6 +16793,14 @@ export const LocationsSelectedFragmentDoc = gql`
     __typename
   }
 `;
+export const LocationsSelectedCarouselFragmentDoc = gql`
+  fragment LocationsSelectedCarousel on LocationsSelectedCarousel {
+    title
+    locations
+    module
+    __typename
+  }
+`;
 export const PostFragmentDoc = gql`
   fragment Post on Post {
     id
@@ -16749,6 +16894,9 @@ export const PostFragmentDoc = gql`
       ... on LocationsSelected {
         ...LocationsSelected
       }
+      ... on LocationsSelectedCarousel {
+        ...LocationsSelectedCarousel
+      }
     }
   }
   ${CategoriesFragmentDoc}
@@ -16765,6 +16913,7 @@ export const PostFragmentDoc = gql`
   ${EventSelectedCarouselFragmentDoc}
   ${LayoutCollectionFragmentDoc}
   ${LocationsSelectedFragmentDoc}
+  ${LocationsSelectedCarouselFragmentDoc}
 `;
 export const PageFragmentDoc = gql`
   fragment Page on Page {
@@ -16843,6 +16992,9 @@ export const PageFragmentDoc = gql`
       ... on LocationsSelected {
         ...LocationsSelected
       }
+      ... on LocationsSelectedCarousel {
+        ...LocationsSelectedCarousel
+      }
     }
   }
   ${SeoFragmentDoc}
@@ -16858,6 +17010,7 @@ export const PageFragmentDoc = gql`
   ${EventSelectedCarouselFragmentDoc}
   ${LayoutCollectionFragmentDoc}
   ${LocationsSelectedFragmentDoc}
+  ${LocationsSelectedCarouselFragmentDoc}
 `;
 export const MenuPageFieldsFragmentDoc = gql`
   fragment menuPageFields on Page {

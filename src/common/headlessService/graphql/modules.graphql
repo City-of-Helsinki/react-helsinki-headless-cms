@@ -163,3 +163,10 @@ fragment LocationsSelected on LocationsSelected {
   module
   __typename
 }
+
+fragment LocationsSelectedCarousel on LocationsSelectedCarousel {
+  title
+  locations
+  module
+  __typename
+}

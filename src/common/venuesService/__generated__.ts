@@ -1,7 +1,5 @@
-/* eslint-disable no-use-before-define */
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = {
@@ -21,6 +19,9 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
+  _Any: any;
+  federation__FieldSet: any;
+  link__Import: any;
 };
 
 export type AccessibilitySentences = {
@@ -37,58 +38,6 @@ export type Connection = {
   url?: Maybe<Scalars['String']>;
 };
 
-export type Event = {
-  __typename?: 'Event';
-  endTime?: Maybe<Scalars['String']>;
-  id: Scalars['String'];
-  images: Array<Image>;
-  infoUrl?: Maybe<Scalars['String']>;
-  name: Scalars['String'];
-  offers: Array<Offer>;
-  shortDescription?: Maybe<Scalars['String']>;
-  startTime: Scalars['String'];
-};
-
-export type EventEdge = {
-  __typename?: 'EventEdge';
-  cursor: Scalars['String'];
-  node: Event;
-};
-
-export type EventQuery = {
-  ids?: InputMaybe<Array<Scalars['ID']>>;
-  keywords?: InputMaybe<Array<Scalars['String']>>;
-  language?: InputMaybe<Scalars['String']>;
-  location?: InputMaybe<Scalars['ID']>;
-  sort?: InputMaybe<Scalars['String']>;
-  start?: InputMaybe<Scalars['String']>;
-  superEventType?: InputMaybe<Scalars['String']>;
-  text?: InputMaybe<Scalars['String']>;
-  translation?: InputMaybe<Scalars['String']>;
-};
-
-export type EventsConnection = {
-  __typename?: 'EventsConnection';
-  edges: Array<EventEdge>;
-  pageInfo?: Maybe<PageInfo>;
-  totalCount?: Maybe<Scalars['Int']>;
-};
-
-export type Image = {
-  __typename?: 'Image';
-  alt?: Maybe<Scalars['String']>;
-  id: Scalars['String'];
-  url: Scalars['String'];
-};
-
-export type Offer = {
-  __typename?: 'Offer';
-  description?: Maybe<Scalars['String']>;
-  infoUrl?: Maybe<Scalars['String']>;
-  isFree: Scalars['Boolean'];
-  price?: Maybe<Scalars['String']>;
-};
-
 export type Ontology = {
   __typename?: 'Ontology';
   id?: Maybe<Scalars['Int']>;
@@ -101,15 +50,6 @@ export type OpeningHour = {
   times: Array<Time>;
 };
 
-export type PageInfo = {
-  __typename?: 'PageInfo';
-  count: Scalars['Int'];
-  endCursor?: Maybe<Scalars['String']>;
-  hasNextPage: Scalars['Boolean'];
-  hasPreviousPage: Scalars['Boolean'];
-  startCursor?: Maybe<Scalars['String']>;
-};
-
 export type Point = {
   __typename?: 'Point';
   coordinates: Array<Scalars['Float']>;
@@ -118,16 +58,9 @@ export type Point = {
 
 export type Query = {
   __typename?: 'Query';
-  _empty?: Maybe<Scalars['String']>;
-  events: EventsConnection;
+  _service: _Service;
   venue: Venue;
   venuesByIds: Array<Venue>;
-};
-
-export type QueryEventsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<EventQuery>;
 };
 
 export type QueryVenueArgs = {
@@ -193,6 +126,18 @@ export type Venue = {
   streetAddress?: Maybe<Scalars['String']>;
   telephone?: Maybe<Scalars['String']>;
 };
+
+export type _Service = {
+  __typename?: '_Service';
+  sdl?: Maybe<Scalars['String']>;
+};
+
+export enum Link__Purpose {
+  /** `EXECUTION` features provide metadata necessary for operation execution. */
+  Execution = 'EXECUTION',
+  /** `SECURITY` features provide metadata necessary to securely resolve fields. */
+  Security = 'SECURITY',
+}
 
 export type ListVenueFragment = {
   __typename?: 'Venue';
