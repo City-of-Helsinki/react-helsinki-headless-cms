@@ -12,6 +12,7 @@ import {
   isEventSelected,
   isEventSelectedCarousel,
   isLocationsSelected,
+  isLocationsSelectedCarousel,
   isEventType,
   isLayoutArticle,
   isLayoutArticleCarousel,
@@ -71,7 +72,7 @@ export function getCollections(
           events: module.events,
         } as EventSelectionCollectionType);
       }
-      if (isLocationsSelected(module)) {
+      if (isLocationsSelected(module) || isLocationsSelectedCarousel(module)) {
         collections.push({
           ...commonFields,
           venues: module.locations,

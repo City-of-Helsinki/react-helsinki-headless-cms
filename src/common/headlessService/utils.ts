@@ -23,6 +23,7 @@ import {
   EventSelected,
   EventSelectedCarousel,
   LocationsSelected,
+  LocationsSelectedCarousel,
   EventModule,
   Language,
 } from './types';
@@ -119,6 +120,16 @@ export function isLocationsSelected(
   );
 }
 
+export function isLocationsSelectedCarousel(
+  module: PageModule | PageSidebarModule,
+): module is LocationsSelectedCarousel {
+  return (
+    (<LocationsSelectedCarousel>module).locations !== undefined &&
+    // eslint-disable-next-line no-underscore-dangle
+    module.__typename === 'LocationsSelectedCarousel'
+  );
+}
+
 export function isEventModule(
   module: PageModule | PageSidebarModule,
 ): module is EventModule {
@@ -127,7 +138,8 @@ export function isEventModule(
     isEventSearchCarousel(module) ||
     isEventSelected(module) ||
     isEventSelectedCarousel(module) ||
-    isLocationsSelected(module)
+    isLocationsSelected(module) ||
+    isLocationsSelectedCarousel(module)
   );
 }
 
