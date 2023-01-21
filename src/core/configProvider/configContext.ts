@@ -40,7 +40,7 @@ export type Config = {
     ) => JSX.Element;
     Head?: (props: { children: React.ReactNode }) => JSX.Element;
     EventCardContent?: React.FC<Record<string, unknown>>;
-    LocationCardContent?: React.FC<Record<string, unknown>>;
+    VenueCardContent?: React.FC<Record<string, unknown>>;
     ArticleCardContent?: React.FC<Record<string, unknown>>;
   };
   apolloClient?: ApolloClient<NormalizedCacheObject>;

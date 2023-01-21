@@ -152,9 +152,5 @@ export function getCollectionUIType(
   collection: CollectionType,
 ): CollectionProps['type'] {
   // eslint-disable-next-line no-underscore-dangle
-  return collection.__typename.includes('Carousel') ||
-    // eslint-disable-next-line no-underscore-dangle
-    collection.__typename.includes('Locations')
-    ? 'carousel'
-    : 'grid';
+  return collection.__typename.includes('Carousel') ? 'carousel' : 'grid';
 }

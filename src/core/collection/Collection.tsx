@@ -311,7 +311,7 @@ export function getLocationsCollectionCards(
   collection: LocationsSelectionCollectionType,
   items: VenueType[],
   getRoutedInternalHref: Config['utils']['getRoutedInternalHref'],
-  LocationCardContent: React.FC<Record<string, unknown>>,
+  VenueCardContent: React.FC<Record<string, unknown>>,
 ) {
   const generalCollection: GeneralCollectionType = {
     id: collection.id,
@@ -329,7 +329,7 @@ export function getLocationsCollectionCards(
         url={url}
         direction="fixed-vertical"
         customContent={
-          LocationCardContent && <LocationCardContent location={items[i]} />
+          VenueCardContent && <VenueCardContent location={items[i]} />
         }
       />
     );
@@ -353,7 +353,7 @@ export function LocationsSelectionCollection({
   const venuesApolloClient = useVenuesApolloClientFromConfig();
   const {
     utils: { getRoutedInternalHref },
-    components: { LocationCardContent },
+    components: { VenueCardContent },
   } = useConfig();
 
   const { data, loading } = useVenuesByIdsQuery({
@@ -384,7 +384,7 @@ export function LocationsSelectionCollection({
     collection,
     venuesList ?? [],
     (link) => getRoutedInternalHref(link, ModuleItemTypeEnum.Venue),
-    LocationCardContent,
+    VenueCardContent,
   );
 
   return <Collection {...delegatedProps} cards={cards} />;
