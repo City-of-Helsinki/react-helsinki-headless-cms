@@ -26,13 +26,6 @@ export type PageSidebarModule = PageQuery['page']['sidebar'][number];
 export type Articles = PostsQuery['posts'];
 export type Pages = PagesQuery['pages'];
 export type PageChildren = PageChildrenSearchQuery['page']['children'];
-export type EventModule =
-  | EventSearchFragment
-  | EventSearchCarouselFragment
-  | EventSelectedFragment
-  | EventSelectedCarouselFragment
-  | LocationsSelectedFragment
-  | LocationsSelectedCarouselFragment;
 export type Category = CategoryQuery['category'];
 export type Categories = CategoriesQuery['categories'];
 export type Tag = TagQuery['tag'];

@@ -65,6 +65,7 @@ export const defaultCollections = (
   page: PageType | ArticleType,
   getRoutedInternalHref: (link: string, type: ModuleItemTypeEnum) => string,
   isEventModulesEnabled = true,
+  isVenueModulesEnabled = true,
 ) =>
   getCollections(page?.modules, true)?.reduce(
     (collectionElements, collection) => {
@@ -95,7 +96,7 @@ export const defaultCollections = (
           );
         }
       } else if (isLocationsSelectionCollection(collection)) {
-        if (isEventModulesEnabled) {
+        if (isVenueModulesEnabled) {
           collectionElements.push(
             <LocationsSelectionCollection
               {...commonCollectionProps}
@@ -148,11 +149,14 @@ export function PageContent(props: PageContentProps) {
     components: { Head },
     utils: { getRoutedInternalHref },
     eventsApolloClient,
+    venuesApolloClient,
     mainContentId,
   } = useConfig();
 
   const isEventModulesEnabled =
     eventsApolloClient !== undefined && eventsApolloClient !== 'disabled';
+  const isVenueModulesEnabled =
+    eventsApolloClient !== undefined && venuesApolloClient !== 'disabled';
 
   return (
     <main id={mainContentId || 'main-content'}>
@@ -183,6 +187,7 @@ export function PageContent(props: PageContentProps) {
                 page,
                 getRoutedInternalHref,
                 isEventModulesEnabled,
+                isVenueModulesEnabled,
               )
         }
         sidebarContent={
