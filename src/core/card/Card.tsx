@@ -19,12 +19,14 @@ export type CardProps = {
   text?: string;
   customContent?: React.ReactNode | string;
   hasLink?: boolean;
+  linkArrowLabel?: string;
   url?: string;
   withBorder?: boolean;
   withShadow?: boolean;
   direction?: 'fixed-horisontal' | 'fixed-vertical' | 'responsive';
   clampText?: boolean;
   openLinkInNewTab?: boolean;
+  style?: React.CSSProperties;
 };
 
 export function Card({
@@ -38,12 +40,14 @@ export function Card({
   text,
   customContent,
   hasLink,
+  linkArrowLabel,
   url,
   withBorder,
   withShadow,
   direction = 'responsive',
   clampText,
   openLinkInNewTab,
+  style,
 }: CardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const handleToggleActive = () => setIsHovered((val) => !val);
@@ -66,6 +70,7 @@ export function Card({
           direction && styles[direction],
           isHovered && styles.isHovered,
         )}
+        style={style}
       >
         <BackgroundImage
           id={id}
@@ -101,7 +106,13 @@ export function Card({
                 openInNewTab={openLinkInNewTab}
                 iconLeft={<IconArrowRight aria-hidden="true" />}
                 showExternalIcon={false}
-              />
+              >
+                {linkArrowLabel && (
+                  <span className={styles.linkArrowLabel}>
+                    {linkArrowLabel}
+                  </span>
+                )}
+              </Link>
             </div>
           )}
         </div>
