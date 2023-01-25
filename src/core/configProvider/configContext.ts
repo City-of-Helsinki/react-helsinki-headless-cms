@@ -40,10 +40,12 @@ export type Config = {
     ) => JSX.Element;
     Head?: (props: { children: React.ReactNode }) => JSX.Element;
     EventCardContent?: React.FC<Record<string, unknown>>;
+    VenueCardContent?: React.FC<Record<string, unknown>>;
     ArticleCardContent?: React.FC<Record<string, unknown>>;
   };
   apolloClient?: ApolloClient<NormalizedCacheObject>;
   eventsApolloClient?: ApolloClient<NormalizedCacheObject> | 'disabled';
+  venuesApolloClient?: ApolloClient<NormalizedCacheObject> | 'disabled';
   utils: {
     getIsHrefExternal: (href: string) => boolean;
     getRoutedInternalHref: (

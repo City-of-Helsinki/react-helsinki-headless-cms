@@ -6,6 +6,7 @@ import {
   CollectionType,
   EventSearchCollectionType,
   EventSelectionCollectionType,
+  LocationsSelectionCollectionType,
 } from '../../core/collection/types';
 import {
   ArticleType,
@@ -21,10 +22,12 @@ import {
   EventSearchCarousel,
   EventSelected,
   EventSelectedCarousel,
-  EventModule,
+  LocationsSelected,
+  LocationsSelectedCarousel,
   Language,
 } from './types';
 import { EventType } from '../eventsService/types';
+import { VenueType } from '../venuesService/types';
 
 export function isLayoutArticle(
   module: PageModule | PageSidebarModule,
@@ -106,14 +109,23 @@ export function isEventSelectedCarousel(
   );
 }
 
-export function isEventModule(
+export function isLocationsSelected(
   module: PageModule | PageSidebarModule,
-): module is EventModule {
+): module is LocationsSelected {
   return (
-    isEventSearch(module) ||
-    isEventSearchCarousel(module) ||
-    isEventSelected(module) ||
-    isEventSelectedCarousel(module)
+    (<LocationsSelected>module).locations !== undefined &&
+    // eslint-disable-next-line no-underscore-dangle
+    module.__typename === 'LocationsSelected'
+  );
+}
+
+export function isLocationsSelectedCarousel(
+  module: PageModule | PageSidebarModule,
+): module is LocationsSelectedCarousel {
+  return (
+    (<LocationsSelectedCarousel>module).locations !== undefined &&
+    // eslint-disable-next-line no-underscore-dangle
+    module.__typename === 'LocationsSelectedCarousel'
   );
 }
 
@@ -146,6 +158,11 @@ export function isEventType(item: CollectionItemType): item is EventType {
   return item.__typename === 'EventDetails';
 }
 
+export function isVenueType(item: CollectionItemType): item is VenueType {
+  // eslint-disable-next-line no-underscore-dangle
+  return item.__typename === 'Venue';
+}
+
 export function isEventSelectionCollection(
   collection: CollectionType,
 ): collection is EventSelectionCollectionType {
@@ -156,6 +173,12 @@ export function isEventSearchCollection(
   collection: CollectionType,
 ): collection is EventSearchCollectionType {
   return (<EventSearchCollectionType>collection).url !== undefined;
+}
+
+export function isLocationsSelectionCollection(
+  collection: CollectionType,
+): collection is LocationsSelectionCollectionType {
+  return (<LocationsSelectionCollectionType>collection).venues !== undefined;
 }
 
 export function isLanguage(

@@ -11,13 +11,17 @@ import {
   isEventSearchCarousel,
   isEventSelected,
   isEventSelectedCarousel,
+  isLocationsSelected,
+  isLocationsSelectedCarousel,
   isEventType,
   isLayoutArticle,
   isLayoutArticleCarousel,
   isLayoutPage,
   isLayoutPageCarousel,
   isPageType,
+  isVenueType,
 } from '../../common/headlessService/utils';
+import { VenueType } from '../../common/venuesService/types';
 import { CardProps } from '../card/Card';
 import { type CollectionProps } from '../collection/Collection';
 import {
@@ -25,6 +29,7 @@ import {
   EventSearchCollectionType,
   EventSelectionCollectionType,
   GeneralCollectionType,
+  LocationsSelectionCollectionType,
 } from '../collection/types';
 
 export function getCollections(
@@ -67,6 +72,12 @@ export function getCollections(
           events: module.events,
         } as EventSelectionCollectionType);
       }
+      if (isLocationsSelected(module) || isLocationsSelectedCarousel(module)) {
+        collections.push({
+          ...commonFields,
+          venues: module.locations,
+        } as LocationsSelectionCollectionType);
+      }
     }
     return collections;
   }, []);
@@ -108,6 +119,22 @@ export function getEventCardProps(item: EventType, locale = 'fi'): CardProps {
   };
 }
 
+export function getLocationCardProps(item: VenueType): CardProps {
+  return {
+    id: item.id,
+    title: item.name,
+    url: item.id.split(':')[1],
+    imageUrl: item.image,
+    ariaLabel: item.name,
+    hasLink: true,
+    withBorder: true,
+    withShadow: false,
+    clampText: true,
+    direction: 'responsive' as CardProps['direction'],
+    openLinkInNewTab: false,
+  };
+}
+
 export function getCollectionCards(
   collection: GeneralCollectionType,
   locale = 'fi',
@@ -116,7 +143,7 @@ export function getCollectionCards(
     if (isPageType(item) || isArticleType(item))
       result.push(getArticlePageCardProps(item));
     else if (isEventType(item)) result.push(getEventCardProps(item, locale));
-
+    else if (isVenueType(item)) result.push(getLocationCardProps(item));
     return result;
   }, []);
 }

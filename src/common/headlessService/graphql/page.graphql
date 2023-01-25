@@ -74,6 +74,12 @@ fragment Page on Page {
     ... on LayoutCollection {
       ...LayoutCollection
     }
+    ... on LocationsSelected {
+      ...LocationsSelected
+    }
+    ... on LocationsSelectedCarousel {
+      ...LocationsSelectedCarousel
+    }
   }
 }
 

@@ -4,6 +4,8 @@ import {
   EventSearchCarousel,
   EventSelected,
   EventSelectedCarousel,
+  LocationsSelected,
+  LocationsSelectedCarousel,
   LayoutArticle,
   LayoutArticleCarousel,
   LayoutLinkList,
@@ -155,6 +157,22 @@ export const pageEventSelected: EventSelected = {
   __typename: 'EventSelected',
 };
 
+export const pageLocationsSelected: LocationsSelected = {
+  title: 'Locations selection',
+  locations: [41385, 39999, 40419, 40393, 41994],
+  // initAmountOfEvents: 6, // TODO: add when initAmountOfEvents null-issue is fixed
+  module: 'locations_selected',
+  __typename: 'LocationsSelected',
+};
+
+export const pageLocationsSelectedCarousel: LocationsSelectedCarousel = {
+  title: 'Locations selection carousel',
+  locations: [41385, 39999, 40419, 40393, 41994],
+  // initAmountOfEvents: 6, // TODO: add when initAmountOfEvents null-issue is fixed
+  module: 'locations_selected',
+  __typename: 'LocationsSelectedCarousel',
+};
+
 export const pageEventSearchCarousel: EventSearchCarousel = {
   title: 'Event search carousel',
   url: 'https://api.hel.fi/linkedevents/v1/event/?sort=end_time&super_event_type=umbrella,none&language=fi&location=tprek:15417',
@@ -186,6 +204,8 @@ const modules = [
   pageEventSearchCarousel,
   pageEventSelected,
   pageEventSelectedCarousel,
+  pageLocationsSelected,
+  pageLocationsSelectedCarousel,
 ];
 
 const mockPage: PageQuery['page'] = {

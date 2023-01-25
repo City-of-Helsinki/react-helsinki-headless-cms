@@ -1,0 +1,18 @@
+fragment listVenue on Venue {
+  description
+  id
+  image
+  name
+  streetAddress
+  addressLocality
+  ontologyWords {
+    id
+    label
+  }
+}
+
+query VenuesByIds($ids: [ID!]!) {
+  venuesByIds(ids: $ids) {
+    ...listVenue
+  }
+}

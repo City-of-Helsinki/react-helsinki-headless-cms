@@ -603,7 +603,9 @@ export type CollectionModulesUnionType =
   | EventSearch
   | EventSearchCarousel
   | EventSelected
-  | EventSelectedCarousel;
+  | EventSelectedCarousel
+  | LocationsSelected
+  | LocationsSelectedCarousel;
 
 /** Connection between the collection type and the collection type */
 export type CollectionToPreviewConnectionEdge = {
@@ -3474,6 +3476,32 @@ export type Link = {
   url?: Maybe<Scalars['String']>;
 };
 
+/** Collection Module: LocationsSelected */
+export type LocationsSelected = {
+  __typename?: 'LocationsSelected';
+  /** List of location IDs */
+  locations?: Maybe<Array<Maybe<Scalars['Int']>>>;
+  /** Module type */
+  module?: Maybe<Scalars['String']>;
+  /** List of modules */
+  modules?: Maybe<Array<Maybe<CollectionModulesUnionType>>>;
+  /** Module title */
+  title?: Maybe<Scalars['String']>;
+};
+
+/** Collection Module: LocationsSelectedCarousel */
+export type LocationsSelectedCarousel = {
+  __typename?: 'LocationsSelectedCarousel';
+  /** List of location IDs */
+  locations?: Maybe<Array<Maybe<Scalars['Int']>>>;
+  /** Module type */
+  module?: Maybe<Scalars['String']>;
+  /** List of modules */
+  modules?: Maybe<Array<Maybe<CollectionModulesUnionType>>>;
+  /** Module title */
+  title?: Maybe<Scalars['String']>;
+};
+
 /** File details for a Media Item */
 export type MediaDetails = {
   __typename?: 'MediaDetails';
@@ -4553,7 +4581,9 @@ export type PageModulesUnionType =
   | LayoutCollection
   | LayoutContact
   | LayoutPages
-  | LayoutPagesCarousel;
+  | LayoutPagesCarousel
+  | LocationsSelected
+  | LocationsSelectedCarousel;
 
 export type PageSidebarUnionType =
   | LayoutArticles
@@ -5239,7 +5269,9 @@ export type PostModulesUnionType =
   | LayoutCollection
   | LayoutContact
   | LayoutPages
-  | LayoutPagesCarousel;
+  | LayoutPagesCarousel
+  | LocationsSelected
+  | LocationsSelectedCarousel;
 
 /** The format of post field data. */
 export enum PostObjectFieldFormatEnum {
@@ -10679,6 +10711,18 @@ export type PostFragment = {
           } | null;
         } | null> | null;
       }
+    | {
+        __typename: 'LocationsSelected';
+        title?: string | null;
+        locations?: Array<number | null> | null;
+        module?: string | null;
+      }
+    | {
+        __typename: 'LocationsSelectedCarousel';
+        title?: string | null;
+        locations?: Array<number | null> | null;
+        module?: string | null;
+      }
     | null
   > | null;
 };
@@ -10986,6 +11030,18 @@ export type ArticleQuery = {
               } | null;
             } | null;
           } | null> | null;
+        }
+      | {
+          __typename: 'LocationsSelected';
+          title?: string | null;
+          locations?: Array<number | null> | null;
+          module?: string | null;
+        }
+      | {
+          __typename: 'LocationsSelectedCarousel';
+          title?: string | null;
+          locations?: Array<number | null> | null;
+          module?: string | null;
         }
       | null
     > | null;
@@ -11316,6 +11372,18 @@ export type PostsQuery = {
                   } | null;
                 } | null;
               } | null> | null;
+            }
+          | {
+              __typename: 'LocationsSelected';
+              title?: string | null;
+              locations?: Array<number | null> | null;
+              module?: string | null;
+            }
+          | {
+              __typename: 'LocationsSelectedCarousel';
+              title?: string | null;
+              locations?: Array<number | null> | null;
+              module?: string | null;
             }
           | null
         > | null;
@@ -11764,6 +11832,18 @@ export type MenuItemFragment = {
                             } | null;
                           } | null> | null;
                         }
+                      | {
+                          __typename: 'LocationsSelected';
+                          title?: string | null;
+                          locations?: Array<number | null> | null;
+                          module?: string | null;
+                        }
+                      | {
+                          __typename: 'LocationsSelectedCarousel';
+                          title?: string | null;
+                          locations?: Array<number | null> | null;
+                          module?: string | null;
+                        }
                       | null
                     > | null;
                   } | null> | null;
@@ -12015,6 +12095,18 @@ export type MenuItemFragment = {
                             } | null;
                           } | null;
                         } | null> | null;
+                      }
+                    | {
+                        __typename: 'LocationsSelected';
+                        title?: string | null;
+                        locations?: Array<number | null> | null;
+                        module?: string | null;
+                      }
+                    | {
+                        __typename: 'LocationsSelectedCarousel';
+                        title?: string | null;
+                        locations?: Array<number | null> | null;
+                        module?: string | null;
                       }
                     | null
                   > | null;
@@ -12311,6 +12403,18 @@ export type MenuItemFragment = {
                     } | null;
                   } | null> | null;
                 }
+              | {
+                  __typename: 'LocationsSelected';
+                  title?: string | null;
+                  locations?: Array<number | null> | null;
+                  module?: string | null;
+                }
+              | {
+                  __typename: 'LocationsSelectedCarousel';
+                  title?: string | null;
+                  locations?: Array<number | null> | null;
+                  module?: string | null;
+                }
               | null
             > | null;
           } | null> | null;
@@ -12562,6 +12666,18 @@ export type MenuItemFragment = {
                     } | null;
                   } | null;
                 } | null> | null;
+              }
+            | {
+                __typename: 'LocationsSelected';
+                title?: string | null;
+                locations?: Array<number | null> | null;
+                module?: string | null;
+              }
+            | {
+                __typename: 'LocationsSelectedCarousel';
+                title?: string | null;
+                locations?: Array<number | null> | null;
+                module?: string | null;
               }
             | null
           > | null;
@@ -12867,6 +12983,18 @@ export type MenuPageFieldsFragment = {
             } | null;
           } | null> | null;
         }
+      | {
+          __typename: 'LocationsSelected';
+          title?: string | null;
+          locations?: Array<number | null> | null;
+          module?: string | null;
+        }
+      | {
+          __typename: 'LocationsSelectedCarousel';
+          title?: string | null;
+          locations?: Array<number | null> | null;
+          module?: string | null;
+        }
       | null
     > | null;
   } | null> | null;
@@ -13118,6 +13246,18 @@ export type MenuPageFieldsFragment = {
             } | null;
           } | null;
         } | null> | null;
+      }
+    | {
+        __typename: 'LocationsSelected';
+        title?: string | null;
+        locations?: Array<number | null> | null;
+        module?: string | null;
+      }
+    | {
+        __typename: 'LocationsSelectedCarousel';
+        title?: string | null;
+        locations?: Array<number | null> | null;
+        module?: string | null;
       }
     | null
   > | null;
@@ -13457,6 +13597,18 @@ export type MenuQuery = {
                                   } | null;
                                 } | null> | null;
                               }
+                            | {
+                                __typename: 'LocationsSelected';
+                                title?: string | null;
+                                locations?: Array<number | null> | null;
+                                module?: string | null;
+                              }
+                            | {
+                                __typename: 'LocationsSelectedCarousel';
+                                title?: string | null;
+                                locations?: Array<number | null> | null;
+                                module?: string | null;
+                              }
                             | null
                           > | null;
                         } | null> | null;
@@ -13708,6 +13860,18 @@ export type MenuQuery = {
                                   } | null;
                                 } | null;
                               } | null> | null;
+                            }
+                          | {
+                              __typename: 'LocationsSelected';
+                              title?: string | null;
+                              locations?: Array<number | null> | null;
+                              module?: string | null;
+                            }
+                          | {
+                              __typename: 'LocationsSelectedCarousel';
+                              title?: string | null;
+                              locations?: Array<number | null> | null;
+                              module?: string | null;
                             }
                           | null
                         > | null;
@@ -14004,6 +14168,18 @@ export type MenuQuery = {
                           } | null;
                         } | null> | null;
                       }
+                    | {
+                        __typename: 'LocationsSelected';
+                        title?: string | null;
+                        locations?: Array<number | null> | null;
+                        module?: string | null;
+                      }
+                    | {
+                        __typename: 'LocationsSelectedCarousel';
+                        title?: string | null;
+                        locations?: Array<number | null> | null;
+                        module?: string | null;
+                      }
                     | null
                   > | null;
                 } | null> | null;
@@ -14256,6 +14432,18 @@ export type MenuQuery = {
                         } | null;
                       } | null> | null;
                     }
+                  | {
+                      __typename: 'LocationsSelected';
+                      title?: string | null;
+                      locations?: Array<number | null> | null;
+                      module?: string | null;
+                    }
+                  | {
+                      __typename: 'LocationsSelectedCarousel';
+                      title?: string | null;
+                      locations?: Array<number | null> | null;
+                      module?: string | null;
+                    }
                   | null
                 > | null;
               }
@@ -14435,6 +14623,20 @@ export type LayoutArticleHighlightsFragment = {
 };
 
 export type LayoutContactFragment = { __typename: 'LayoutContact' };
+
+export type LocationsSelectedFragment = {
+  __typename: 'LocationsSelected';
+  title?: string | null;
+  locations?: Array<number | null> | null;
+  module?: string | null;
+};
+
+export type LocationsSelectedCarouselFragment = {
+  __typename: 'LocationsSelectedCarousel';
+  title?: string | null;
+  locations?: Array<number | null> | null;
+  module?: string | null;
+};
 
 export type NotificationQueryVariables = Exact<{
   language?: Scalars['String'];
@@ -14740,6 +14942,18 @@ export type PageFragment = {
           } | null;
         } | null> | null;
       }
+    | {
+        __typename: 'LocationsSelected';
+        title?: string | null;
+        locations?: Array<number | null> | null;
+        module?: string | null;
+      }
+    | {
+        __typename: 'LocationsSelectedCarousel';
+        title?: string | null;
+        locations?: Array<number | null> | null;
+        module?: string | null;
+      }
     | null
   > | null;
 };
@@ -15035,6 +15249,18 @@ export type PageQuery = {
               } | null;
             } | null;
           } | null> | null;
+        }
+      | {
+          __typename: 'LocationsSelected';
+          title?: string | null;
+          locations?: Array<number | null> | null;
+          module?: string | null;
+        }
+      | {
+          __typename: 'LocationsSelectedCarousel';
+          title?: string | null;
+          locations?: Array<number | null> | null;
+          module?: string | null;
         }
       | null
     > | null;
@@ -15333,6 +15559,18 @@ export type PageByTemplateQuery = {
               } | null;
             } | null;
           } | null> | null;
+        }
+      | {
+          __typename: 'LocationsSelected';
+          title?: string | null;
+          locations?: Array<number | null> | null;
+          module?: string | null;
+        }
+      | {
+          __typename: 'LocationsSelectedCarousel';
+          title?: string | null;
+          locations?: Array<number | null> | null;
+          module?: string | null;
         }
       | null
     > | null;
@@ -15662,6 +15900,18 @@ export type PageChildrenSearchQuery = {
                         } | null;
                       } | null> | null;
                     }
+                  | {
+                      __typename: 'LocationsSelected';
+                      title?: string | null;
+                      locations?: Array<number | null> | null;
+                      module?: string | null;
+                    }
+                  | {
+                      __typename: 'LocationsSelectedCarousel';
+                      title?: string | null;
+                      locations?: Array<number | null> | null;
+                      module?: string | null;
+                    }
                   | null
                 > | null;
               } | null> | null;
@@ -15913,6 +16163,18 @@ export type PageChildrenSearchQuery = {
                         } | null;
                       } | null;
                     } | null> | null;
+                  }
+                | {
+                    __typename: 'LocationsSelected';
+                    title?: string | null;
+                    locations?: Array<number | null> | null;
+                    module?: string | null;
+                  }
+                | {
+                    __typename: 'LocationsSelectedCarousel';
+                    title?: string | null;
+                    locations?: Array<number | null> | null;
+                    module?: string | null;
                   }
                 | null
               > | null;
@@ -16233,6 +16495,18 @@ export type PagesQuery = {
                 } | null;
               } | null> | null;
             }
+          | {
+              __typename: 'LocationsSelected';
+              title?: string | null;
+              locations?: Array<number | null> | null;
+              module?: string | null;
+            }
+          | {
+              __typename: 'LocationsSelectedCarousel';
+              title?: string | null;
+              locations?: Array<number | null> | null;
+              module?: string | null;
+            }
           | null
         > | null;
       } | null;
@@ -16511,6 +16785,22 @@ export const LayoutCollectionFragmentDoc = gql`
     __typename
   }
 `;
+export const LocationsSelectedFragmentDoc = gql`
+  fragment LocationsSelected on LocationsSelected {
+    title
+    locations
+    module
+    __typename
+  }
+`;
+export const LocationsSelectedCarouselFragmentDoc = gql`
+  fragment LocationsSelectedCarousel on LocationsSelectedCarousel {
+    title
+    locations
+    module
+    __typename
+  }
+`;
 export const PostFragmentDoc = gql`
   fragment Post on Post {
     id
@@ -16601,6 +16891,12 @@ export const PostFragmentDoc = gql`
       ... on LayoutCollection {
         ...LayoutCollection
       }
+      ... on LocationsSelected {
+        ...LocationsSelected
+      }
+      ... on LocationsSelectedCarousel {
+        ...LocationsSelectedCarousel
+      }
     }
   }
   ${CategoriesFragmentDoc}
@@ -16616,6 +16912,8 @@ export const PostFragmentDoc = gql`
   ${EventSearchCarouselFragmentDoc}
   ${EventSelectedCarouselFragmentDoc}
   ${LayoutCollectionFragmentDoc}
+  ${LocationsSelectedFragmentDoc}
+  ${LocationsSelectedCarouselFragmentDoc}
 `;
 export const PageFragmentDoc = gql`
   fragment Page on Page {
@@ -16691,6 +16989,12 @@ export const PageFragmentDoc = gql`
       ... on LayoutCollection {
         ...LayoutCollection
       }
+      ... on LocationsSelected {
+        ...LocationsSelected
+      }
+      ... on LocationsSelectedCarousel {
+        ...LocationsSelectedCarousel
+      }
     }
   }
   ${SeoFragmentDoc}
@@ -16705,6 +17009,8 @@ export const PageFragmentDoc = gql`
   ${EventSearchCarouselFragmentDoc}
   ${EventSelectedCarouselFragmentDoc}
   ${LayoutCollectionFragmentDoc}
+  ${LocationsSelectedFragmentDoc}
+  ${LocationsSelectedCarouselFragmentDoc}
 `;
 export const MenuPageFieldsFragmentDoc = gql`
   fragment menuPageFields on Page {

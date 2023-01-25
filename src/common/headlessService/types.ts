@@ -5,10 +5,6 @@ import {
   PagesQuery,
   PostsQuery,
   PageChildrenSearchQuery,
-  EventSearchFragment,
-  EventSearchCarouselFragment,
-  EventSelectedFragment,
-  EventSelectedCarouselFragment,
   CategoryQuery,
   TagQuery,
   CategoriesQuery,
@@ -24,11 +20,6 @@ export type PageSidebarModule = PageQuery['page']['sidebar'][number];
 export type Articles = PostsQuery['posts'];
 export type Pages = PagesQuery['pages'];
 export type PageChildren = PageChildrenSearchQuery['page']['children'];
-export type EventModule =
-  | EventSearchFragment
-  | EventSearchCarouselFragment
-  | EventSelectedFragment
-  | EventSelectedCarouselFragment;
 export type Category = CategoryQuery['category'];
 export type Categories = CategoriesQuery['categories'];
 export type Tag = TagQuery['tag'];
@@ -46,6 +37,8 @@ export type {
   EventSelectedFragment as EventSelected,
   EventSearchCarouselFragment as EventSearchCarousel,
   EventSelectedCarouselFragment as EventSelectedCarousel,
+  LocationsSelectedFragment as LocationsSelected,
+  LocationsSelectedCarouselFragment as LocationsSelectedCarousel,
   Notification as NotificationType,
 } from './__generated__';
 

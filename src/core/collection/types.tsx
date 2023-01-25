@@ -1,9 +1,10 @@
 import { ArticleType, PageType } from '../../common/headlessService/types';
 import { EventType } from '../../common/eventsService/types';
 import { EventDetails, Meta } from '../../common/eventsService/__generated__';
+import { VenueType } from '../../common/venuesService/types';
 
 // TODO: HCRC-13 - Support also the event selection and the event search modules
-export type CollectionItemType = ArticleType | PageType | EventType;
+export type CollectionItemType = ArticleType | PageType | EventType | VenueType;
 
 export type GeneralCollectionType = {
   id?: string;
@@ -21,6 +22,13 @@ export type EventSelectionCollectionType = Omit<
   events: string[];
 };
 
+export type LocationsSelectionCollectionType = Omit<
+  GeneralCollectionType,
+  'items'
+> & {
+  venues: number[];
+};
+
 export type EventSearchCollectionType = Omit<GeneralCollectionType, 'items'> & {
   url: string;
 };
@@ -28,7 +36,8 @@ export type EventSearchCollectionType = Omit<GeneralCollectionType, 'items'> & {
 export type CollectionType =
   | GeneralCollectionType
   | EventSelectionCollectionType
-  | EventSearchCollectionType;
+  | EventSearchCollectionType
+  | LocationsSelectionCollectionType;
 
 export type EventListResponse = {
   __typename?: 'EventListResponse';

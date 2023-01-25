@@ -11,8 +11,13 @@ import {
   Collection,
   EventSearchCollection,
   EventSelectionCollection,
+  LocationsSelectionCollection,
 } from '../collection/Collection';
-import { ArticleType, PageType } from '../../common/headlessService/types';
+import {
+  ArticleType,
+  LanguageCodeEnum,
+  PageType,
+} from '../../common/headlessService/types';
 import { Card } from '../card/Card';
 import {
   getCollections,
@@ -23,6 +28,7 @@ import { ModuleItemTypeEnum } from '../../common/headlessService/constants';
 import {
   isEventSearchCollection,
   isEventSelectionCollection,
+  isLocationsSelectionCollection,
 } from '../../common/headlessService/utils';
 
 export type PageContentProps = {
@@ -59,6 +65,7 @@ export const defaultCollections = (
   page: PageType | ArticleType,
   getRoutedInternalHref: (link: string, type: ModuleItemTypeEnum) => string,
   isEventModulesEnabled = true,
+  isVenueModulesEnabled = true,
 ) =>
   getCollections(page?.modules, true)?.reduce(
     (collectionElements, collection) => {
@@ -85,6 +92,16 @@ export const defaultCollections = (
             <EventSelectionCollection
               {...commonCollectionProps}
               collection={collection}
+            />,
+          );
+        }
+      } else if (isLocationsSelectionCollection(collection)) {
+        if (isVenueModulesEnabled) {
+          collectionElements.push(
+            <LocationsSelectionCollection
+              {...commonCollectionProps}
+              collection={collection}
+              locale={page.language.locale as LanguageCodeEnum}
             />,
           );
         }
@@ -132,11 +149,14 @@ export function PageContent(props: PageContentProps) {
     components: { Head },
     utils: { getRoutedInternalHref },
     eventsApolloClient,
+    venuesApolloClient,
     mainContentId,
   } = useConfig();
 
   const isEventModulesEnabled =
     eventsApolloClient !== undefined && eventsApolloClient !== 'disabled';
+  const isVenueModulesEnabled =
+    eventsApolloClient !== undefined && venuesApolloClient !== 'disabled';
 
   return (
     <main id={mainContentId || 'main-content'}>
@@ -167,6 +187,7 @@ export function PageContent(props: PageContentProps) {
                 page,
                 getRoutedInternalHref,
                 isEventModulesEnabled,
+                isVenueModulesEnabled,
               )
         }
         sidebarContent={
