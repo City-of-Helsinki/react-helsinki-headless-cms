@@ -1,6 +1,6 @@
 /* eslint-disable react/function-component-definition */
 
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ConfigProvider } from '../configProvider/ConfigProvider';
@@ -13,6 +13,10 @@ export default {
   title: 'Example/Card',
   component: Card,
 } as ComponentMeta<typeof Card>;
+
+const linkArrowLabelStyles = {
+  '--link-arrow-label-color': 'red',
+} as CSSProperties;
 
 const Template: ComponentStory<typeof Card> = (args) => (
   <ConfigProvider
@@ -31,10 +35,8 @@ const Template: ComponentStory<typeof Card> = (args) => (
         withShadow
         customContent={
           <>
-            <Tag variant="card" featured>
-              Maksuton
-            </Tag>
-            <Tag variant="card">Nuoret</Tag>
+            <Tag featured>Free</Tag>
+            <Tag>Youth</Tag>
           </>
         }
         imageLabel="Article"
@@ -46,4 +48,8 @@ const Template: ComponentStory<typeof Card> = (args) => (
 );
 
 export const CardDefault = Template.bind({});
-CardDefault.args = { ...card };
+CardDefault.args = {
+  ...card,
+  linkArrowLabel: 'This gives a label for the link arrow',
+  style: linkArrowLabelStyles,
+};

@@ -6,6 +6,8 @@
   --height-image: 8rem;
   --height-image-desktop: 14.5rem;
   --width-image: 8rem;
+  --link-arrow-color: black;
+  --link-arrow-label-color: var(--link-arrow-color);
 
   &.isHovered {
     .title {
@@ -145,18 +147,27 @@
   }
 
   .buttonWrapper {
+    vertical-align: middle;
+    line-height: var(--lineheight-l);
     display: flex;
     padding: 0 var(--spacing-s);
     padding-bottom: var(--spacing-2-xs);
+    color: var(--link-arrow-color);
     @include respond_above(s) {
       padding-bottom: var(--spacing-s);
     }
     order: 5;
     a {
       display: flex;
+      text-decoration: none;
+      color: var(--link-arrow-color);
       svg {
         height: var(--spacing-2-xl);
         width: var(--spacing-2-xl);
+      }
+      .linkArrowLabel {
+        color: var(--link-arrow-label-color);
+        padding-top: var(--spacing-xs);
       }
     }
   }
