@@ -32,11 +32,13 @@
     padding-bottom: #{$spacing-layout-s};
     &.carousel {
       margin-left: #{$spacing-layout-2-xs};
+      @media screen and (min-width: breakpoints.$breakpoint-m) {
+        margin-left: 0;
+      }
     }
     font-weight: 400;
     @media screen and (min-width: breakpoints.$breakpoint-m) {
       font-size: $fontsize-heading-l;
-      margin-left: 0;
     }
   }
   .description {
