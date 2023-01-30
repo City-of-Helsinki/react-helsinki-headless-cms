@@ -1,8 +1,15 @@
 import React, { createContext } from 'react';
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 
-import { LanguageCodeEnum } from '../../common/headlessService/types';
+import {
+  ArticleType,
+  LanguageCodeEnum,
+  PageType,
+} from '../../common/headlessService/types';
 import { ModuleItemTypeEnum } from '../../common/headlessService/constants';
+import { EventType } from '../../common/eventsService/types';
+import { VenueType } from '../../common/venuesService/types';
+import type { CardProps } from '../card/Card';
 
 export type Config = {
   siteName: string;
@@ -47,6 +54,9 @@ export type Config = {
   eventsApolloClient?: ApolloClient<NormalizedCacheObject> | 'disabled';
   venuesApolloClient?: ApolloClient<NormalizedCacheObject> | 'disabled';
   utils: {
+    getArticlePageCardProps(item: ArticleType | PageType): CardProps;
+    getEventCardProps: (item: EventType, locale: string) => CardProps;
+    getLocationCardProps: (item: VenueType) => CardProps;
     getIsHrefExternal: (href: string) => boolean;
     getRoutedInternalHref: (
       link: string | null | undefined,

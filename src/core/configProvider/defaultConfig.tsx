@@ -3,6 +3,11 @@ import React from 'react';
 import { ModuleItemTypeEnum } from '../../common/headlessService/constants';
 import { LanguageCodeEnum } from '../../common/headlessService/types';
 import getIsValidHttpUrl from '../../common/utils/getIsValidHttpUrl';
+import {
+  getArticlePageCardProps,
+  getEventCardProps,
+  getLocationCardProps,
+} from '../pageContent/utils';
 import { Config } from './configContext';
 
 export const defaultConfig: Config = {
@@ -49,6 +54,9 @@ export const defaultConfig: Config = {
     ),
   },
   utils: {
+    getArticlePageCardProps,
+    getEventCardProps,
+    getLocationCardProps,
     getIsHrefExternal: (href: string) => {
       if (!window) {
         throw Error(

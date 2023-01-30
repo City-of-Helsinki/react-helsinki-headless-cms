@@ -5,7 +5,7 @@ import { Button, LoadingSpinner } from 'hds-react';
 
 import styles from './collection.module.scss';
 import { Carousel, CarouselProps } from '../carousel/Carousel';
-import { Card } from '../card/Card';
+import { Card, CardProps } from '../card/Card';
 import Grid, { GridProps } from '../../common/components/grid/Grid';
 import {
   EventTypeId,
@@ -22,7 +22,6 @@ import { EventType } from '../../common/eventsService/types';
 import { useConfig } from '../configProvider/useConfig';
 import useEventsApolloClientFromConfig from '../configProvider/useEventsApolloClientFromConfig';
 import useVenuesApolloClientFromConfig from '../configProvider/useVenuesApolloClientFromConfig';
-import { getCollectionCards } from '../pageContent/utils';
 import { Config } from '../configProvider/configContext';
 import normalizeKeys from '../../linkedEvents/utils/normalizeKeys';
 import { ModuleItemTypeEnum } from '../../common/headlessService/constants';
@@ -31,6 +30,8 @@ import { useVenuesByIdsQuery } from '../../common/venuesService/__generated__';
 import { VenueType } from '../../common/venuesService/types';
 import { LanguageCodeEnum } from '../../common/headlessService/types';
 import { getVenueIds } from './utils';
+import { DEFAULT_LOCALE } from '../../constants';
+import { isPageType, isArticleType } from '../../common/headlessService/utils';
 
 export type CollectionProps = {
   title?: string;
@@ -162,33 +163,35 @@ export function Collection({
   );
 }
 
-export function getEventCollectionCards(
-  collection: EventSelectionCollectionType | EventSearchCollectionType,
-  items: EventType[],
-  getRoutedInternalHref: Config['utils']['getRoutedInternalHref'],
-  EventCardContent: React.FC<Record<string, unknown>>,
-) {
-  const generalCollection: GeneralCollectionType = {
-    id: collection.id,
-    title: collection.title,
-    description: collection.description,
-    items,
-    __typename: 'GeneralCollectionType',
-  };
-  const cards = getCollectionCards(generalCollection).map((cardProps, i) => {
-    const url = getRoutedInternalHref(cardProps.url, null);
-    return (
-      <Card
-        key={cardProps.id}
-        {...cardProps}
-        url={url}
-        direction="fixed-vertical"
-        customContent={
-          EventCardContent && <EventCardContent event={items[i]} />
-        }
-      />
-    );
-  });
+export function getEventCollectionCards({
+  items,
+  getRoutedInternalHref,
+  getEventCardProps,
+  EventCardContent,
+  locale = DEFAULT_LOCALE,
+}: {
+  items: EventType[];
+  getRoutedInternalHref: Config['utils']['getRoutedInternalHref'];
+  getEventCardProps: Config['utils']['getEventCardProps'];
+  EventCardContent: React.FC<Record<string, unknown>>;
+  locale?: string;
+}) {
+  const cards = items
+    .map((item) => getEventCardProps(item, locale))
+    .map((cardProps, i) => {
+      const url = getRoutedInternalHref(cardProps.url, null);
+      return (
+        <Card
+          key={cardProps.id}
+          {...cardProps}
+          url={url}
+          direction="fixed-vertical"
+          customContent={
+            EventCardContent && <EventCardContent event={items[i]} />
+          }
+        />
+      );
+    });
   return cards;
 }
 
@@ -202,7 +205,8 @@ export function EventSearchCollection({
 }: EventSearchCollectionProps) {
   const eventsApolloClient = useEventsApolloClientFromConfig();
   const {
-    utils: { getRoutedInternalHref },
+    currentLanguageCode,
+    utils: { getRoutedInternalHref, getEventCardProps },
     components: { EventCardContent },
   } = useConfig();
   const { url } = collection;
@@ -247,13 +251,14 @@ export function EventSearchCollection({
     );
   }
 
-  const cards = getEventCollectionCards(
-    collection,
-    eventsList?.data ?? [],
-    (link, type) =>
+  const cards = getEventCollectionCards({
+    items: eventsList?.data ?? [],
+    getRoutedInternalHref: (link, type) =>
       getRoutedInternalHref(link, type ?? ModuleItemTypeEnum.Event),
+    getEventCardProps,
     EventCardContent,
-  );
+    locale: currentLanguageCode,
+  });
 
   return <Collection {...delegatedProps} cards={cards} />;
 }
@@ -268,7 +273,8 @@ export function EventSelectionCollection({
 }: EventSelectionCollectionProps) {
   const eventsApolloClient = useEventsApolloClientFromConfig();
   const {
-    utils: { getRoutedInternalHref },
+    currentLanguageCode,
+    utils: { getRoutedInternalHref, getEventCardProps },
     components: { EventCardContent },
   } = useConfig();
   // TODO: use initAmountOfEvents -field when it's null-issue is fixed
@@ -296,44 +302,48 @@ export function EventSelectionCollection({
     );
   }
 
-  const cards = getEventCollectionCards(
-    collection,
-    eventsList?.data ?? [],
-    (link, type) =>
+  const cards = getEventCollectionCards({
+    items: eventsList?.data ?? [],
+    getRoutedInternalHref: (link, type) =>
       getRoutedInternalHref(link, type ?? ModuleItemTypeEnum.Event),
+    getEventCardProps,
     EventCardContent,
-  );
+    locale: currentLanguageCode,
+  });
 
   return <Collection {...delegatedProps} cards={cards} />;
 }
 
-export function getLocationsCollectionCards(
-  collection: LocationsSelectionCollectionType,
-  items: VenueType[],
-  getRoutedInternalHref: Config['utils']['getRoutedInternalHref'],
-  VenueCardContent: React.FC<Record<string, unknown>>,
-) {
-  const generalCollection: GeneralCollectionType = {
-    id: collection.id,
-    title: collection.title,
-    description: collection.description,
-    items,
-    __typename: 'GeneralCollectionType',
-  };
-  const cards = getCollectionCards(generalCollection).map((cardProps, i) => {
-    const url = getRoutedInternalHref(cardProps.url, ModuleItemTypeEnum.Venue);
-    return (
-      <Card
-        key={cardProps.id}
-        {...cardProps}
-        url={url}
-        direction="fixed-vertical"
-        customContent={
-          VenueCardContent && <VenueCardContent location={items[i]} />
-        }
-      />
-    );
-  });
+export function getLocationsCollectionCards({
+  items,
+  getRoutedInternalHref,
+  getLocationCardProps,
+  VenueCardContent,
+}: {
+  items: VenueType[];
+  getRoutedInternalHref: Config['utils']['getRoutedInternalHref'];
+  getLocationCardProps: Config['utils']['getLocationCardProps'];
+  VenueCardContent: React.FC<Record<string, unknown>>;
+}) {
+  const cards = items
+    .map((item) => getLocationCardProps(item))
+    .map((cardProps, i) => {
+      const url = getRoutedInternalHref(
+        cardProps.url,
+        ModuleItemTypeEnum.Venue,
+      );
+      return (
+        <Card
+          key={cardProps.id}
+          {...cardProps}
+          url={url}
+          direction="fixed-vertical"
+          customContent={
+            VenueCardContent && <VenueCardContent location={items[i]} />
+          }
+        />
+      );
+    });
   return cards;
 }
 
@@ -352,7 +362,7 @@ export function LocationsSelectionCollection({
 }: LocationsSelectionCollectionProps) {
   const venuesApolloClient = useVenuesApolloClientFromConfig();
   const {
-    utils: { getRoutedInternalHref },
+    utils: { getRoutedInternalHref, getLocationCardProps },
     components: { VenueCardContent },
   } = useConfig();
 
@@ -380,12 +390,52 @@ export function LocationsSelectionCollection({
     );
   }
 
-  const cards = getLocationsCollectionCards(
-    collection,
-    venuesList ?? [],
-    (link) => getRoutedInternalHref(link, ModuleItemTypeEnum.Venue),
+  const cards = getLocationsCollectionCards({
+    items: venuesList ?? [],
+    getRoutedInternalHref: (link) =>
+      getRoutedInternalHref(link, ModuleItemTypeEnum.Venue),
+    getLocationCardProps,
     VenueCardContent,
-  );
+  });
 
   return <Collection {...delegatedProps} cards={cards} />;
+}
+
+export type PageArticleCollectionProps = Omit<CollectionProps, 'cards'> & {
+  collection: GeneralCollectionType;
+};
+
+export function PageArticleCollection({
+  collection,
+  ...delegatedProps
+}: PageArticleCollectionProps) {
+  const {
+    utils: { getRoutedInternalHref, getArticlePageCardProps },
+  } = useConfig();
+
+  const cards = collection.items
+    .reduce((result: CardProps[], item) => {
+      if (isPageType(item) || isArticleType(item))
+        result.push(getArticlePageCardProps(item));
+      return result;
+    }, [])
+    .map((cardProps) => {
+      const url = getRoutedInternalHref(cardProps.url, null);
+      return (
+        <Card
+          key={cardProps.id}
+          {...cardProps}
+          url={url}
+          direction="fixed-vertical"
+        />
+      );
+    });
+
+  return (
+    <Collection
+      {...delegatedProps}
+      showAllUrl={collection.showAllUrl}
+      cards={cards}
+    />
+  );
 }
