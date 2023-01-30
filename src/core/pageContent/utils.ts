@@ -22,6 +22,7 @@ import {
   isVenueType,
 } from '../../common/headlessService/utils';
 import { VenueType } from '../../common/venuesService/types';
+import { DEFAULT_LOCALE } from '../../constants';
 import { CardProps } from '../card/Card';
 import { type CollectionProps } from '../collection/Collection';
 import {
@@ -102,14 +103,18 @@ export function getArticlePageCardProps(
   };
 }
 
-export function getEventCardProps(item: EventType, locale = 'fi'): CardProps {
+export function getEventCardProps(
+  item: EventType,
+  locale = DEFAULT_LOCALE,
+): CardProps {
   const image = item.images.length > 0 ? item.images[0] : null;
+  const name = item.name[locale] ?? item.name[DEFAULT_LOCALE];
   return {
     id: item.id,
-    title: item.name[locale],
+    title: name,
     url: item.internalId,
     imageUrl: image?.url,
-    ariaLabel: item.name[locale],
+    ariaLabel: name,
     hasLink: true,
     withBorder: true,
     withShadow: false,
@@ -137,7 +142,7 @@ export function getLocationCardProps(item: VenueType): CardProps {
 
 export function getCollectionCards(
   collection: GeneralCollectionType,
-  locale = 'fi',
+  locale = DEFAULT_LOCALE,
 ): CardProps[] {
   return collection.items.reduce((result: CardProps[], item) => {
     if (isPageType(item) || isArticleType(item))
