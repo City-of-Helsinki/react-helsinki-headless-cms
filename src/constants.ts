@@ -6,3 +6,4 @@ export const EVENTS_PROXY_ENDPOINT =
 export const LINKED_EVENTS_ENDPOINT =
   process.env.LINKED_EVENTS_ENDPOINT ??
   'https://api.hel.fi/linkedevents/v1/event/';
+export const DEFAULT_LOCALE = 'fi';
