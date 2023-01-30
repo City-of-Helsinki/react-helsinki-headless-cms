@@ -9,6 +9,7 @@ import { Breadcrumb } from './types';
 import { PageMeta } from './meta/PageMeta';
 import {
   Collection,
+  PageArticleCollection,
   EventSearchCollection,
   EventSelectionCollection,
   LocationsSelectionCollection,
@@ -18,13 +19,7 @@ import {
   LanguageCodeEnum,
   PageType,
 } from '../../common/headlessService/types';
-import { Card } from '../card/Card';
-import {
-  getCollections,
-  getCollectionCards,
-  getCollectionUIType,
-} from './utils';
-import { ModuleItemTypeEnum } from '../../common/headlessService/constants';
+import { getCollections, getCollectionUIType } from './utils';
 import {
   isEventSearchCollection,
   isEventSelectionCollection,
@@ -61,12 +56,15 @@ export const defaultContent = (page: PageType | ArticleType) => (
   />
 );
 
-export const defaultCollections = (
-  page: PageType | ArticleType,
-  getRoutedInternalHref: (link: string, type: ModuleItemTypeEnum) => string,
+export const defaultCollections = ({
+  page,
   isEventModulesEnabled = true,
   isVenueModulesEnabled = true,
-) =>
+}: {
+  page: PageType | ArticleType;
+  isEventModulesEnabled: boolean;
+  isVenueModulesEnabled: boolean;
+}) =>
   getCollections(page?.modules, true)?.reduce(
     (collectionElements, collection) => {
       const commonCollectionProps = {
@@ -106,23 +104,10 @@ export const defaultCollections = (
           );
         }
       } else {
-        const cards = getCollectionCards(collection).map((cardProps) => {
-          const url = getRoutedInternalHref(cardProps.url, null);
-          return (
-            <Card
-              key={cardProps.id}
-              {...cardProps}
-              url={url}
-              direction="fixed-vertical"
-            />
-          );
-        });
-
         collectionElements.push(
-          <Collection
+          <PageArticleCollection
             {...commonCollectionProps}
-            showAllUrl={collection.showAllUrl}
-            cards={cards}
+            collection={collection}
           />,
         );
       }
@@ -147,7 +132,6 @@ export function PageContent(props: PageContentProps) {
 
   const {
     components: { Head },
-    utils: { getRoutedInternalHref },
     eventsApolloClient,
     venuesApolloClient,
     mainContentId,
@@ -183,12 +167,11 @@ export function PageContent(props: PageContentProps) {
           typeof collections === 'function'
             ? collections(page)
             : collections ??
-              defaultCollections(
+              defaultCollections({
                 page,
-                getRoutedInternalHref,
                 isEventModulesEnabled,
                 isVenueModulesEnabled,
-              )
+              })
         }
         sidebarContent={
           <SidebarContent
