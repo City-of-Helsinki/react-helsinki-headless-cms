@@ -148,7 +148,14 @@ export function Collection({
       <div className={styles.collection}>
         {title && (
           <div className={styles.headerRow}>
-            <h1 className={styles.heading}>{title}</h1>
+            <h1
+              className={classNames(
+                styles.heading,
+                type === 'carousel' && styles.carousel,
+              )}
+            >
+              {title}
+            </h1>
             {showAllUrl && showAllText && (
               <Link className={styles.showAll} href={showAllUrl}>
                 {showAllText}
