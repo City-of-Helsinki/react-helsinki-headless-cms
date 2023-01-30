@@ -119,6 +119,12 @@ fragment eventCmsEventFields on EventDetails {
       ...localizedCmsEventFields
     }
   }
+  locationExtraInfo {
+    ...localizedCmsEventFields
+  }
+  enrolmentStartTime
+  enrolmentEndTime
+  remainingAttendeeCapacity
 }
 
 query EventList(

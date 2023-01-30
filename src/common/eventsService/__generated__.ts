@@ -685,6 +685,9 @@ export type EventCmsEventFieldsFragment = {
   endTime?: string | null;
   startTime?: string | null;
   publisher?: string | null;
+  enrolmentStartTime?: string | null;
+  enrolmentEndTime?: string | null;
+  remainingAttendeeCapacity?: number | null;
   externalLinks: Array<{
     __typename?: 'ExternalLink';
     name?: string | null;
@@ -841,6 +844,12 @@ export type EventCmsEventFieldsFragment = {
       sv?: string | null;
     } | null;
   }>;
+  locationExtraInfo?: {
+    __typename?: 'LocalizedObject';
+    en?: string | null;
+    fi?: string | null;
+    sv?: string | null;
+  } | null;
 };
 
 export type EventListQueryVariables = Exact<{
@@ -927,6 +936,9 @@ export type EventListQuery = {
       endTime?: string | null;
       startTime?: string | null;
       publisher?: string | null;
+      enrolmentStartTime?: string | null;
+      enrolmentEndTime?: string | null;
+      remainingAttendeeCapacity?: number | null;
       externalLinks: Array<{
         __typename?: 'ExternalLink';
         name?: string | null;
@@ -1083,6 +1095,12 @@ export type EventListQuery = {
           sv?: string | null;
         } | null;
       }>;
+      locationExtraInfo?: {
+        __typename?: 'LocalizedObject';
+        en?: string | null;
+        fi?: string | null;
+        sv?: string | null;
+      } | null;
     }>;
   };
 };
@@ -1117,6 +1135,9 @@ export type EventsByIdsQuery = {
       endTime?: string | null;
       startTime?: string | null;
       publisher?: string | null;
+      enrolmentStartTime?: string | null;
+      enrolmentEndTime?: string | null;
+      remainingAttendeeCapacity?: number | null;
       externalLinks: Array<{
         __typename?: 'ExternalLink';
         name?: string | null;
@@ -1273,6 +1294,12 @@ export type EventsByIdsQuery = {
           sv?: string | null;
         } | null;
       }>;
+      locationExtraInfo?: {
+        __typename?: 'LocalizedObject';
+        en?: string | null;
+        fi?: string | null;
+        sv?: string | null;
+      } | null;
     }>;
     meta: {
       __typename?: 'Meta';
@@ -1413,6 +1440,12 @@ export const EventCmsEventFieldsFragmentDoc = gql`
         ...localizedCmsEventFields
       }
     }
+    locationExtraInfo {
+      ...localizedCmsEventFields
+    }
+    enrolmentStartTime
+    enrolmentEndTime
+    remainingAttendeeCapacity
   }
   ${LocalizedCmsEventFieldsFragmentDoc}
   ${KeywordCmsEventFieldsFragmentDoc}
