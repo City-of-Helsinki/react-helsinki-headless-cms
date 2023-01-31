@@ -7,6 +7,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-top: #{$spacing-layout-m};
 
     .showAll {
       text-decoration: none;
@@ -21,6 +22,7 @@
   a {
     @media screen and (max-width: breakpoints.$breakpoint-m) {
       min-width: 80px;
+      padding-bottom: #{$spacing-layout-s};
     }
   }
 
@@ -28,11 +30,17 @@
     font-size: $fontsize-heading-m;
     line-height: $fontsize-heading-m;
     margin: 0;
-    padding: #{$spacing-layout-s} 0;
+
+    padding-bottom: #{$spacing-layout-s};
+    &.carousel {
+      margin-left: #{$spacing-layout-2-xs};
+      @media screen and (min-width: breakpoints.$breakpoint-m) {
+        margin-left: 0;
+      }
+    }
     font-weight: 400;
     @media screen and (min-width: breakpoints.$breakpoint-m) {
       font-size: $fontsize-heading-l;
-      padding: #{$spacing-layout-m} 0;
     }
   }
   .description {
