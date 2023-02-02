@@ -76,6 +76,7 @@ export {
   getCollections,
   getArticlePageCardProps,
   getEventCardProps,
+  getLocationCardProps,
   getCollectionCards,
   getCollectionUIType,
 } from './pageContent/utils';
