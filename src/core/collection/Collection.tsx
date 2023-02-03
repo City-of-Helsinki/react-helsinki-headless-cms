@@ -285,7 +285,7 @@ export function EventSelectionCollection({
     components: { EventCardContent },
   } = useConfig();
   // TODO: use initAmountOfEvents -field when it's null-issue is fixed
-  const pageSize = 4; // collection.initAmountOfEvents
+  const pageSize = collection.events.length; // collection.initAmountOfEvents
 
   const { data, loading } = useEventsByIdsQuery({
     client: eventsApolloClient !== 'disabled' && eventsApolloClient,
