@@ -54,7 +54,7 @@ export type Config = {
   eventsApolloClient?: ApolloClient<NormalizedCacheObject> | 'disabled';
   venuesApolloClient?: ApolloClient<NormalizedCacheObject> | 'disabled';
   utils: {
-    getArticlePageCardProps(item: ArticleType | PageType): CardProps;
+    getArticlePageCardProps: (item: ArticleType | PageType) => CardProps;
     getEventCardProps: (item: EventType, locale: string) => CardProps;
     getLocationCardProps: (item: VenueType) => CardProps;
     getIsHrefExternal: (href: string) => boolean;
