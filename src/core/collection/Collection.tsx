@@ -29,7 +29,7 @@ import { Link } from '../link/Link';
 import { useVenuesByIdsQuery } from '../../common/venuesService/__generated__';
 import { VenueType } from '../../common/venuesService/types';
 import { LanguageCodeEnum } from '../../common/headlessService/types';
-import { getVenueIds } from './utils';
+import { getVenueIds, isEventClosed } from './utils';
 import { DEFAULT_LOCALE } from '../../constants';
 import { isPageType, isArticleType } from '../../common/headlessService/utils';
 
@@ -299,7 +299,10 @@ export function EventSelectionCollection({
     },
   });
 
-  const eventsList = data?.eventsByIds;
+  // Reduce past events that are no longer available and therefore do not need to be displayed
+  const eventsList = data?.eventsByIds.data.filter(
+    (event) => !isEventClosed(event),
+  );
 
   if (!data && loading) {
     return (
@@ -310,7 +313,7 @@ export function EventSelectionCollection({
   }
 
   const cards = getEventCollectionCards({
-    items: eventsList?.data ?? [],
+    items: eventsList ?? [],
     getRoutedInternalHref: (link, type) =>
       getRoutedInternalHref(link, type ?? ModuleItemTypeEnum.Event),
     getEventCardProps,

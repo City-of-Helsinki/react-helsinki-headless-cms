@@ -110,6 +110,8 @@ export {
   CollectionType,
 } from './collection/types';
 
+export { getVenueIds, isEventClosed } from './collection/utils';
+
 export { Carousel, CarouselProps } from './carousel/Carousel';
 
 export { Card, CardProps } from './card/Card';
