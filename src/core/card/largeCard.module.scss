@@ -11,7 +11,7 @@
   --height-image: 12.75rem;
   --height-image-desktop: 40.5rem;
   --width-image: 8rem;
-  word-wrap: break-word;
+  word-break: break-word;
   min-width: fit-content;
   position: relative;
   background-color: var(--color-white);
@@ -22,7 +22,7 @@
   text-decoration: none;
 
   @include respond_above(s) {
-    word-wrap: unset;
+    word-break: unset;
   }
 
   &.isHovered {

@@ -3,7 +3,7 @@
 .cardWrapper {
   display: flex;
   flex-direction: column;
-  word-wrap: break-word;
+  word-break: break-word;
   min-width: fit-content;
   --height-image: 8rem;
   --height-image-desktop: 14.5rem;
@@ -12,7 +12,7 @@
   --link-arrow-label-color: var(--link-arrow-color);
 
   @include respond_above(s) {
-    word-wrap: unset;
+    word-break: unset;
   }
 
   &.isHovered {
