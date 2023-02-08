@@ -3,11 +3,17 @@
 .cardWrapper {
   display: flex;
   flex-direction: column;
+  word-wrap: break-word;
+  min-width: fit-content;
   --height-image: 8rem;
   --height-image-desktop: 14.5rem;
   --width-image: 8rem;
   --link-arrow-color: black;
   --link-arrow-label-color: var(--link-arrow-color);
+
+  @include respond_above(s) {
+    word-wrap: unset;
+  }
 
   &.isHovered {
     .title {
