@@ -8,6 +8,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  height: 100%;
 
   & > *:not(:last-child) {
     margin-bottom: $spacing-layout-2-xs;
@@ -30,6 +31,10 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+
+.contentWrapper {
+  flex-grow: 1;
 }
 
 .content {
