@@ -11,6 +11,7 @@
 
   display: flex;
   flex-direction: column;
+  height: 100%;
 
   & > *:not(:last-child) {
     margin-bottom: $spacing-layout-2-xs;

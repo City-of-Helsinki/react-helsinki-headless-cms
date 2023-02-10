@@ -46,7 +46,7 @@ export function PageContentLayout({
           imageLabel={imageLabel}
           backUrl={backUrl}
         />
-        <PageSection>
+        <PageSection className={styles.contentWrapper}>
           <ContentContainer>
             <div className={styles.content}>
               <div>
