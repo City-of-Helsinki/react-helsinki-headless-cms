@@ -66,6 +66,12 @@
   a {
     font-size: $fontsize-body-l;
   }
+
+  li {
+    margin: 0 0 $spacing-s 0;
+    font-size: $fontsize-body-l;
+    line-height: $lineheight-l;
+  }
 }
 
 .collectionsWrapper {

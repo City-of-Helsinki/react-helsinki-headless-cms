@@ -218,6 +218,7 @@ const mockPage: PageQuery['page'] = {
   <p><strong>Kulttuurikasvatussuunnitelma </strong></p>
   <p>Kulttuurikasvatussuunnitelma&nbsp;Helsingissä toimii Kulttuuri- ja vapaa-aika -toimialan, Kasvatus ja koulutus -toimialan&nbsp;(sis. yksityisen koulut)&nbsp;sekä taide-&nbsp;ja&nbsp;kulttuuritoimijoiden välisenä&nbsp;ohjaavana suunnitelmana.&nbsp;Yhteistyön tavoitteena on&nbsp;säännöllisten ja helposti&nbsp;lähestyttävien toimintatapojen, kuten kulttuuripolkujen,&nbsp;viestintäpalveluiden (esim. Kultus.fi) ja alan&nbsp;verkostojen&nbsp;kehittäminen ja ylläpitäminen. Suunnitelma koskee varhaiskasvatusta ja kouluja. Taide- ja taitoaineiden tavoitteet määritellään opetussuunnitelmissa ja varhaiskasvatussuunnitelmissa. Kulttuurikasvatusta voi sisältyä myös näiden kokonaisuuksien sisään.&nbsp;</p>
   <p>Helsingin kulttuurikasvatussuunnitelma koskee kulttuuriperinnön, kulttuuriperintökasvatuksen, taiteen ja taidekasvatuksen sisältöjä, menetelmiä ja paikkoja. Se ei kuitenkaan ohjaa lapsen, nuoren tai perheen vapaa-ajan kulttuuri- ja taidekasvatuksen yhteistyön muotoja.</p>
+  <ul><li>List item 1</li><li>List item 1</li><li>List item 1</li><ul><li>Nested list item 1</li></ul></ul>
   `,
   title: 'Kulttuurikasvatus',
   featuredImage: {
