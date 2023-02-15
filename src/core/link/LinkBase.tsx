@@ -188,7 +188,7 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
             {iconLeft}
           </span>
         )}
-        {children}
+        <span className={styles.content}>{children}</span>
         {showExternalIcon && external && (
           <IconLinkExternal
             size={mapLinkSizeToExternalIconSize[size]}
