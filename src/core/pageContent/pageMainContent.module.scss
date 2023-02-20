@@ -61,7 +61,7 @@
     font-size: $fontsize-heading-m;
     line-height: $lineheight-m;
     font-weight: 500;
-    @include breakpoints.respond-above(s) {
+    @include respond-above(s) {
       margin: $spacing-l 0;
     }
   }
