@@ -1,4 +1,6 @@
 import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import classNames from 'classnames';
 
 import { useConfig } from '../configProvider/useConfig';
 import SidebarContent from './sidebarContent/SidebarContent';
@@ -42,6 +44,7 @@ export type PageContentProps = {
   backUrl?: string;
   sidebarContentProps?: Partial<typeof SidebarContent>;
   PageContentLayoutComponent?: typeof PageContentLayout;
+  className?: string;
   // All other props
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [x: string]: any;
@@ -127,6 +130,7 @@ export function PageContent(props: PageContentProps) {
     PageContentLayoutComponent = PageContentLayout,
     content,
     shareLinks,
+    className,
     ...pageContentLayoutProps
   } = props;
 
@@ -143,7 +147,10 @@ export function PageContent(props: PageContentProps) {
     eventsApolloClient !== undefined && venuesApolloClient !== 'disabled';
 
   return (
-    <main id={mainContentId || 'main-content'}>
+    <main
+      id={mainContentId || 'main-content'}
+      className={classNames('page-main-content', className)}
+    >
       {Head && <PageMeta headComponent={Head} page={page} />}
       <PageContentLayoutComponent
         {...props}

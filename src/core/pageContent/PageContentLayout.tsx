@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { MAIN_CONTENT_ID } from '../../common/constants';
 import styles from './pageContentLayout.module.scss';
 import Hero from '../hero/Hero';
 import { ContentContainer } from '../contentContainer/ContentContainer';
@@ -37,7 +36,7 @@ export function PageContentLayout({
     <div className={styles.contentLayout}>
       {breadcrumbs && <div className={styles.breadcrumbs}>{breadcrumbs}</div>}
 
-      <main id={MAIN_CONTENT_ID} className={styles.mainLayout}>
+      <main className={styles.mainLayout}>
         <Hero
           id={id}
           container={heroContainer}
