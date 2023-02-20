@@ -36,7 +36,7 @@ export function PageContentLayout({
     <div className={styles.contentLayout}>
       {breadcrumbs && <div className={styles.breadcrumbs}>{breadcrumbs}</div>}
 
-      <main className={styles.mainLayout}>
+      <div className={styles.mainLayout}>
         <Hero
           id={id}
           container={heroContainer}
@@ -65,7 +65,7 @@ export function PageContentLayout({
             <ContentContainer>{collections}</ContentContainer>
           </PageSection>
         )}
-      </main>
+      </div>
     </div>
   );
 }
