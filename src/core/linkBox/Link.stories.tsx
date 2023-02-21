@@ -8,8 +8,12 @@ import { ConfigProvider } from '../configProvider/ConfigProvider';
 import { defaultConfig } from '../configProvider/defaultConfig';
 
 export default {
-  title: 'Example/LinkBox',
+  title: 'Core components/LinkBox',
   component: LinkBox,
+  argTypes: {
+    iconRight: { control: { type: null } },
+    iconLeft: { control: { type: null } },
+  },
 } as ComponentMeta<typeof LinkBox>;
 
 const Template: ComponentStory<typeof LinkBox> = (args) => (
@@ -20,7 +24,7 @@ const Template: ComponentStory<typeof LinkBox> = (args) => (
     }}
   >
     <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <LinkBox {...args} ariaLabel="Linkbox" href="/internal">
+      <LinkBox {...args} aria-label="Linkbox" href="/internal">
         <h1>Some content in the linkbox</h1>
       </LinkBox>
     </div>

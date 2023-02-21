@@ -9,8 +9,13 @@ import { ConfigProvider } from '../configProvider/ConfigProvider';
 import { defaultConfig } from '../configProvider/defaultConfig';
 
 export default {
-  title: 'Example/Link',
+  title: 'Core components/Link',
   component: Link,
+  subcomponents: { SecondaryLink },
+  argTypes: {
+    iconRight: { control: { type: null } },
+    iconLeft: { control: { type: null } },
+  },
 } as ComponentMeta<typeof Link>;
 
 const Template: ComponentStory<typeof Link> = (args) => (
@@ -21,29 +26,29 @@ const Template: ComponentStory<typeof Link> = (args) => (
     }}
   >
     <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <Link {...args} ariaLabel="External link" href="https://hel.fi">
+      <Link {...args} aria-label="External link" href="https://hel.fi">
         Externnal link
       </Link>
-      <Link {...args} ariaLabel="Internal link default" href="/internal">
+      <Link {...args} aria-label="Internal link default" href="/internal">
         Internal link default
       </Link>
       <SecondaryLink
         {...args}
-        ariaLabel="External secondary"
+        aria-label="External secondary"
         href="https://hel.fi"
       >
         External secondary link
       </SecondaryLink>
       <SecondaryLink
         {...args}
-        ariaLabel="Internal secondary with arrow right"
+        aria-label="Internal secondary with arrow right"
         href="/internal-3"
       >
         Secondary Internal link
       </SecondaryLink>
       <SecondaryLink
         {...args}
-        ariaLabel="Internal secondary with arrow right"
+        aria-label="Internal secondary with arrow right"
         href="/internal-3"
         variant="arrowRight"
       >

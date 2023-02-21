@@ -13,8 +13,16 @@ import cardMock from '../card/__mocks__/card.mock';
 import { GeneralCollectionType } from './types';
 
 export default {
-  title: 'Example/Collection',
+  title: 'Core components/Collection',
   component: Collection,
+  subcomponents: {
+    Card,
+  },
+  argTypes: {
+    cards: { control: { type: null } },
+    // collectionContainerProps: { control: { type: null } },
+    type: { control: { type: null } },
+  },
 } as ComponentMeta<typeof Collection>;
 
 const Template: ComponentStory<typeof Collection> = (args) => (

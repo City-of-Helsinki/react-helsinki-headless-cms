@@ -22,8 +22,17 @@ import { ArticleType, PageType } from '../../common/headlessService/types';
 import { GeneralCollectionType } from '../collection/types';
 
 export default {
-  title: 'Example/PageContent',
+  title: 'Core components/PageContent',
   component: PageContent,
+  subcomponents: { Collection, Card },
+  argTypes: {
+    heroContainer: { control: { type: null } },
+    breadcrumbs: { control: { type: null } },
+    shareLinks: { control: { type: null } },
+    collections: { control: { type: null } },
+    sidebarContentProps: { control: { type: null } },
+    content: { control: { type: null } },
+  },
 } as ComponentMeta<typeof PageContent>;
 
 const Template: ComponentStory<typeof PageContent> = (args) => (
@@ -54,16 +63,19 @@ const KorosWrapperComponent = ({ children = null }) => (
 
 export const PageContentDefault = Template.bind({});
 PageContentDefault.args = {
+  backUrl: '/',
   page: pageMock,
 };
 
 export const PageContentWithDefinedCollections = Template.bind({});
 PageContentWithDefinedCollections.args = {
+  backUrl: '/',
   page: pageMock,
 };
 
 export const PageContentWithFunctions = Template.bind({});
 PageContentWithFunctions.args = {
+  backUrl: '/',
   page: pageMock,
   content: (page: PageType | ArticleType) => (
     <PageMainContent
@@ -102,5 +114,6 @@ PageContentArticle.args = {
 
 export const PageContentWithSupportedContentTypes = Template.bind({});
 PageContentWithSupportedContentTypes.args = {
+  backUrl: '/',
   page: pageWithDiverseContent,
 };
