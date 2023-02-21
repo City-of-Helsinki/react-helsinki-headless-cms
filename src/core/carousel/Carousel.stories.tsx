@@ -10,8 +10,16 @@ import { defaultConfig } from '../configProvider/defaultConfig';
 import { ConfigProvider } from '../configProvider/ConfigProvider';
 
 export default {
-  title: 'Example/Carousel',
+  title: 'Core components/Carousel',
   component: Carousel,
+  subcomponents: { Card },
+  argTypes: {
+    title: { control: { type: 'text' } },
+    loadMoreButtonLabelText: { control: { type: 'text' } },
+    hasMore: { control: { type: 'boolean' } },
+    loading: { control: { type: 'boolean' } },
+    onLoadMore: { control: { type: 'null' } },
+  },
 } as ComponentMeta<typeof Carousel>;
 
 const Template: ComponentStory<typeof Carousel> = (args) => (
@@ -39,3 +47,7 @@ const Template: ComponentStory<typeof Carousel> = (args) => (
 );
 
 export const CarouselDefault = Template.bind({});
+CarouselDefault.args = {
+  itemsDesktop: 4,
+  itemsMobile: 2,
+};

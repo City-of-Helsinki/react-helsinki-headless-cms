@@ -7,7 +7,7 @@ import { PageSection } from './PageSection';
 import styles from './pageSection.module.scss';
 
 export default {
-  title: 'Example/PageSection',
+  title: 'Core components/PageSection',
   component: PageSection,
 } as ComponentMeta<typeof PageSection>;
 

@@ -9,7 +9,7 @@ import card from './__mocks__/card.mock';
 import { LargeCard } from './LargeCard';
 
 export default {
-  title: 'Example/LargeCard',
+  title: 'Core components/LargeCard',
   component: LargeCard,
 } as ComponentMeta<typeof LargeCard>;
 

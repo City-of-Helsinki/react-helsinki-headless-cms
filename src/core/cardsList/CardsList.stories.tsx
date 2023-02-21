@@ -10,8 +10,12 @@ import { ConfigProvider } from '../configProvider/ConfigProvider';
 import { defaultConfig } from '../configProvider/defaultConfig';
 
 export default {
-  title: 'Example/CardsList',
+  title: 'Core components/CardsList',
   component: CardsList,
+  subcomponents: { Card },
+  argTypes: {
+    children: { control: { type: null } },
+  },
 } as ComponentMeta<typeof CardsList>;
 
 const Template: ComponentStory<typeof CardsList> = (args) => (

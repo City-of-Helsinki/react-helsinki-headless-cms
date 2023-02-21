@@ -10,7 +10,7 @@ import { Card } from './Card';
 import { Tag } from '../../common/components/tag/Tag';
 
 export default {
-  title: 'Example/Card',
+  title: 'Core components/Card',
   component: Card,
 } as ComponentMeta<typeof Card>;
 

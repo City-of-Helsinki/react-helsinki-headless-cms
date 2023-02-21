@@ -22,10 +22,18 @@ import {
   getCollectionUIType,
 } from '../pageContent/utils';
 import { Card } from '../card/Card';
+import { GeneralCollectionType } from '../collection/types';
 
 export default {
-  title: 'Example/Page',
+  title: 'Core components/Page',
   component: Page,
+  subcomponents: { PageContent, Navigation, Notification, Collection },
+  argTypes: {
+    navigation: { control: { type: null } },
+    notification: { control: { type: null } },
+    content: { control: { type: null } },
+    footer: { control: { type: null } },
+  },
 } as ComponentMeta<typeof Page>;
 
 const domain = window.location.origin ?? 'http://localhost:6006';
@@ -110,17 +118,20 @@ PageDefault.args = {
           title={collection.title}
           collectionContainerProps={{ withDots: false }}
           type={getCollectionUIType(collection)}
-          cards={getCollectionCards(collection).map((cardProps) => (
-            <Card
-              key={cardProps.id}
-              {...cardProps}
-              imageUrl={
-                cardProps.imageUrl || pageMock.featuredImage?.node?.mediaItemUrl
-              }
-              direction="fixed-vertical"
-              clampText
-            />
-          ))}
+          cards={getCollectionCards(collection as GeneralCollectionType).map(
+            (cardProps) => (
+              <Card
+                key={cardProps.id}
+                {...cardProps}
+                imageUrl={
+                  cardProps.imageUrl ||
+                  pageMock.featuredImage?.node?.mediaItemUrl
+                }
+                direction="fixed-vertical"
+                clampText
+              />
+            ),
+          )}
         />
       ))}
     />

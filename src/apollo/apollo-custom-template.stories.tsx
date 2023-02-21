@@ -37,11 +37,35 @@ const ExampleNavigation = ({
   />
 );
 
+const CustomPageContentLayout: typeof PageContentLayout = ({
+  breadcrumbs,
+  content,
+  collections,
+  sidebarContent,
+}) => (
+  <div>
+    <div style={{ marginBottom: 30 }}>
+      <div>Breadcrumbs: {breadcrumbs}</div>
+    </div>
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr 1fr',
+        columnGap: 30,
+      }}
+    >
+      <div>Content: {content}</div>
+      <div>Sidebar: {sidebarContent}</div>
+      <div>Collections: {collections}</div>
+    </div>
+  </div>
+);
+
 const getTemplate =
-  (datasource: keyof typeof CmsEndpoint): ComponentStory<typeof Page> =>
+  (dataSource: keyof typeof CmsEndpoint): ComponentStory<typeof Page> =>
   (args) => {
     const { apolloClient, eventsApolloClient, internalHrefOrigins } =
-      useCmsEndpointConfig(datasource);
+      useCmsEndpointConfig(dataSource);
     return (
       <HelmetProvider>
         <ConfigProvider
@@ -78,18 +102,12 @@ const getTemplate =
   };
 
 export default {
-  title: 'Apollo examples/Basic',
+  title: 'Apollo examples/Custom template',
   component: Page,
   subcomponents: { PageContent, PageContentLayout, Notification, Navigation },
-  argTypes: {
-    navigation: { table: { disable: true } },
-    notification: { table: { disable: true } },
-    content: { table: { disable: true } },
-    footer: { table: { disable: true } },
-  },
 } as ComponentMeta<typeof Page>;
 
-const ApolloBasicExample = {
+const ApolloCustomLayoutExample = {
   args: {
     notification: <Notification />,
     content: (
@@ -98,6 +116,7 @@ const ApolloBasicExample = {
           { title: 'Root', link: '/' },
           { title: 'Nested', link: '/nested' },
         ]}
+        PageContentLayoutComponent={CustomPageContentLayout}
       />
     ),
     footer: <>TODO: Implement footer</>,
@@ -112,17 +131,8 @@ const getAppSpecificArgs = (dataSource: keyof typeof CmsEndpoint) => ({
       currentPage={cmsTestPage[dataSource]}
     />
   ),
-  ...ApolloBasicExample.args,
+  ...ApolloCustomLayoutExample.args,
 });
-
-export const ExampleUsingEventsDataSource = getTemplate('events').bind({});
-ExampleUsingEventsDataSource.args = getAppSpecificArgs('events');
-
-export const ExampleUsingHobbiesDataSource = getTemplate('hobbies').bind({});
-ExampleUsingHobbiesDataSource.args = getAppSpecificArgs('hobbies');
-
-export const ExampleUsingSportsDataSource = getTemplate('sports').bind({});
-ExampleUsingSportsDataSource.args = getAppSpecificArgs('sports');
 
 export const ExampleUsingKultusDataSource = getTemplate('kultus').bind({});
 ExampleUsingKultusDataSource.args = getAppSpecificArgs('kultus');

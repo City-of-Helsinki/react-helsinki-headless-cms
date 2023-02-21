@@ -30,8 +30,14 @@ import { PageMainContent } from '../pageContent/PageMainContent';
 import categories from '../archiveSearchPageContent/__mocks__/categories.mock';
 
 export default {
-  title: 'Example/ArchiveSearchPage',
+  title: 'Core components/ArchiveSearchPage',
   component: ArchiveSearchPage,
+  subcomponents: { ArchiveSearchPageContent, Navigation, Card },
+  argTypes: {
+    navigation: { control: { type: null } },
+    content: { control: { type: null } },
+    footer: { control: { type: null } },
+  },
 } as ComponentMeta<typeof ArchiveSearchPage>;
 
 const domain = window.location.origin ?? 'http://localhost:6006';
