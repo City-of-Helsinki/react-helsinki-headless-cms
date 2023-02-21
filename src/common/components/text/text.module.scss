@@ -12,7 +12,6 @@
   font-size: $fontsize-heading-m;
   line-height: $lineheight-m;
   font-weight: 500;
-
   @include breakpoints.respond-above(s) {
     margin: $spacing-l 0;
   }
@@ -21,25 +20,25 @@
 .h2 {
   margin: 0 0 $spacing-s 0;
   font-size: $fontsize-heading-l;
+  font-weight: 500;
 }
 
 .h3 {
   margin: 0 0 $spacing-s 0;
-
   font-size: $fontsize-heading-m;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .h4 {
   margin: 0 0 $spacing-s 0;
-
   font-size: $fontsize-heading-s;
+  font-weight: 500;
 }
 
 .h5 {
   margin: 0 0 $spacing-s 0;
-
   font-size: $fontsize-heading-xs;
+  font-weight: 500;
 }
 
 .body-l {
