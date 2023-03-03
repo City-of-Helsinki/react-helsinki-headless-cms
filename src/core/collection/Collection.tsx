@@ -126,10 +126,7 @@ export function Collection({
     // todo: initial grid items amout (3) take from config or headless cms when implemented
     grid: (
       <>
-        <CollectionGrid
-          cards={cards.slice(0, 3)}
-          {...collectionContainerProps}
-        />
+        <CollectionGrid cards={cards} {...collectionContainerProps} />
         {hasNext && (
           <Button
             className={styles.loadMoreButton}
