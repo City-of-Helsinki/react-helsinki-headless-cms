@@ -163,11 +163,7 @@
     .searchResultsContainer {
       display: flex;
       flex-direction: column;
-      padding-bottom: $spacing-2-xl;
-
-      @media screen and (min-width: breakpoints.$breakpoint-m) {
-        padding-bottom: 6rem;
-      }
+      padding-bottom: 6rem;
 
       .searchResultsContainerInner {
         display: flex;
