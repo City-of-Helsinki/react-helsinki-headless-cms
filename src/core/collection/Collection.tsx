@@ -126,10 +126,7 @@ export function Collection({
     // todo: initial grid items amout (3) take from config or headless cms when implemented
     grid: (
       <>
-        <CollectionGrid
-          cards={cards.slice(0, 3)}
-          {...collectionContainerProps}
-        />
+        <CollectionGrid cards={cards} {...collectionContainerProps} />
         {hasNext && (
           <Button
             className={styles.loadMoreButton}
@@ -146,23 +143,25 @@ export function Collection({
   return (
     <div className={classNames(styles[type], className)}>
       <div className={styles.collection}>
-        {title && (
-          <div className={styles.headerRow}>
-            <h1
-              className={classNames(
-                styles.heading,
-                type === 'carousel' && styles.carousel,
+        <div className={styles.headerRow}>
+          {title && (
+            <>
+              <h1
+                className={classNames(
+                  styles.heading,
+                  type === 'carousel' && styles.carousel,
+                )}
+              >
+                {title}
+              </h1>
+              {showAllUrl && showAllText && (
+                <Link className={styles.showAll} href={showAllUrl}>
+                  {showAllText}
+                </Link>
               )}
-            >
-              {title}
-            </h1>
-            {showAllUrl && showAllText && (
-              <Link className={styles.showAll} href={showAllUrl}>
-                {showAllText}
-              </Link>
-            )}
-          </div>
-        )}
+            </>
+          )}
+        </div>
         {description && <p className={styles.description}>{description}</p>}
         {componentForType[type]}
       </div>
