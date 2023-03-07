@@ -23,13 +23,12 @@ import { useConfig } from '../configProvider/useConfig';
 import useEventsApolloClientFromConfig from '../configProvider/useEventsApolloClientFromConfig';
 import useVenuesApolloClientFromConfig from '../configProvider/useVenuesApolloClientFromConfig';
 import { Config } from '../configProvider/configContext';
-import normalizeKeys from '../../linkedEvents/utils/normalizeKeys';
 import { ModuleItemTypeEnum } from '../../common/headlessService/constants';
 import { Link } from '../link/Link';
 import { useVenuesByIdsQuery } from '../../common/venuesService/__generated__';
 import { VenueType } from '../../common/venuesService/types';
 import { LanguageCodeEnum } from '../../common/headlessService/types';
-import { getVenueIds, isEventClosed } from './utils';
+import { getVenueIds, isEventClosed, normalizeParamsValues } from './utils';
 import { DEFAULT_LOCALE } from '../../constants';
 import { isPageType, isArticleType } from '../../common/headlessService/utils';
 
@@ -224,18 +223,9 @@ export function EventSearchCollection({
     url.split('?')[1] ?? url.split('?')[0],
   );
   const params = Object.fromEntries(searchParams.entries());
-
-  const normalizedParams = { ...normalizeKeys(params) };
-
-  // fix for course event type lower case
-  if (normalizedParams.eventType) {
-    normalizedParams.eventType =
-      normalizedParams.eventType.charAt(0).toUpperCase() +
-      normalizedParams.eventType.slice(1);
-  }
-
+  const normalizedParams = normalizeParamsValues(params);
   const variables = {
-    ...normalizeKeys(params),
+    ...normalizedParams,
     pageSize,
     include: ['in_language', 'keywords', 'location', 'audience'],
   };
