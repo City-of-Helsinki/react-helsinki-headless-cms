@@ -58,6 +58,7 @@ export function Navigation({
 
   return (
     <HDSNavigation
+      titleUrl="#"
       title={siteName}
       menuToggleAriaLabel={menuToggleAriaLabel}
       skipTo={`#${MAIN_CONTENT_ID}`}
