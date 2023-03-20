@@ -7,8 +7,18 @@ export function getVenueIds(ids: number[]): string[] {
   return ids.map((id) => `tprek:${id}`);
 }
 
-export const isEventClosed = (event: EventType): boolean =>
+export const isEventEndTimeInPast = (event: EventType): boolean =>
   !!event?.endTime && isPast(new Date(event.endTime));
+
+export const isEventEndTimeNullAndStartTimeInPast = (
+  event: EventType,
+): boolean =>
+  !!event?.startTime &&
+  event?.endTime === null &&
+  isPast(new Date(event.startTime));
+
+export const isEventClosed = (event: EventType): boolean =>
+  isEventEndTimeInPast(event) || isEventEndTimeNullAndStartTimeInPast(event);
 
 export const normalizeParamsValues = (params: Record<string, string>) => {
   const normalizedParams = { ...normalizeKeys(params) };
