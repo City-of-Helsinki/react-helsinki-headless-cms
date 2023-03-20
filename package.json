@@ -1,6 +1,6 @@
 {
   "name": "react-helsinki-headless-cms",
-  "version": "1.0.0-alpha122",
+  "version": "1.0.0-alpha123",
   "description": "React components for displaying Headless CMS content according to guidelines set by HDS",
   "main": "cjs/index.js",
   "module": "index.js",
@@ -98,6 +98,9 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
     "jest-axe": "^6.0.0",
+    "jest-fetch-mock": "^3.0.3",
+    "msw": "^1.1.0",
+    "msw-storybook-addon": "^1.8.0",
     "postcss": "^8.4.8",
     "prettier": "2.7.1",
     "react": "^17.0.2",
@@ -120,5 +123,8 @@
     "hds-design-tokens": "^2.3.0",
     "html-react-parser": "^1.4.8",
     "isomorphic-dompurify": "^0.18.0"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
