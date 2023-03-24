@@ -13,7 +13,7 @@ export type PageContentLayoutProps = {
   shareLinks?: React.ReactNode;
   collections?: React.ReactNode;
   sidebarContent: React.ReactNode;
-  imageSrc?: string;
+  imageSrc?: string | null;
   imageAlt?: string;
   imageLabel?: string;
   backUrl?: string;

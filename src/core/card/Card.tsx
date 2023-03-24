@@ -12,7 +12,7 @@ export type CardProps = {
   id?: string;
   ariaLabel?: string;
   className?: string;
-  imageUrl?: string;
+  imageUrl?: string | null;
   imageLabel?: string;
   title?: string;
   subTitle?: string;

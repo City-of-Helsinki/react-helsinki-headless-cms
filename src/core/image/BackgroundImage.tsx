@@ -6,7 +6,7 @@ import { useResolveImageUrl } from '../hooks/useResolveImageUrl';
 
 export type BackgroundImageProps = {
   id: string;
-  url: string;
+  url?: string | null;
   customFallbackUrl?: string;
   labelTag?: string;
 } & React.HTMLAttributes<HTMLDivElement>;

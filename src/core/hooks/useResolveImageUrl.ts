@@ -6,7 +6,7 @@ import testImage from '../../common/utils/testImage';
 
 export type ResolveImageProps = {
   id?: string;
-  url?: string;
+  url?: string | null;
   customFallbackUrl?: string;
 };
 
@@ -26,12 +26,16 @@ export const useResolveImageUrl = ({
         setShowFallbackImage(true);
       }
     };
-    testThatImageExist();
+    if (url) {
+      testThatImageExist();
+    } else {
+      setShowFallbackImage(true);
+    }
   }, [url]);
 
   const randomIndex = Math.abs(hash(id ?? '')) % fallbackImageUrls.length;
 
-  return showFallbackImage
+  return !url || showFallbackImage
     ? customFallbackUrl ?? fallbackImageUrls[randomIndex]
     : url;
 };

@@ -1,7 +1,11 @@
 /**
  * Test that loading image is successful
  */
-const testImage = (url: string): Promise<unknown> => {
+const testImage = (url?: string): Promise<unknown> => {
+  if (!url) {
+    return Promise.reject(new Error('No image URL given'));
+  }
+
   // Define the promise
   const imgPromise = new Promise<void>((resolve, reject) => {
     // Create the image
