@@ -32,7 +32,7 @@ export function Tag({
   return (
     <HDSTag
       onClick={handleClick}
-      {...(!onClick && { tabindex: -1 })}
+      {...(!onClick && { tabIndex: -1 })}
       theme={featured ? theme2 : theme1}
       className={classNames(
         styles.tag,
