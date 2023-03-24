@@ -12,7 +12,7 @@ export type LargeCardProps = {
   id?: string;
   ariaLabel?: string;
   imageLabel?: string;
-  imageUrl?: string;
+  imageUrl?: string | null;
   imagePosition?: 'right' | 'left';
   subTitle?: string;
   text?: string;
