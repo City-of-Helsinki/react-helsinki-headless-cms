@@ -82,4 +82,8 @@ export const defaultConfig: Config = {
     favIconSvgUrl: '/favicon.svg',
     manifestUrl: '/manifest.webmanifest',
   },
+  htmlSanitizer: {
+    allowedUnsafeTags: [],
+    trustedOrigins: [],
+  },
 };

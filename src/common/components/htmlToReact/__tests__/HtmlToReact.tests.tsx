@@ -45,7 +45,7 @@ describe('HtmlToReact', () => {
         [2, defaultAllowedUnsafeTags, defaultTrustedOrigins],
       ])(
         'renders %s iframes when allowedUnsafeTags is %s and trustedOrigins is %s',
-        async (expectedIframesCount, allowedUnsafeTags, trustedOrigins) => {
+        (expectedIframesCount, allowedUnsafeTags, trustedOrigins) => {
           const { container } = render(
             <HtmlToReact
               allowedUnsafeTags={allowedUnsafeTags}
