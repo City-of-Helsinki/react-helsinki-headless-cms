@@ -10,6 +10,7 @@ import { ModuleItemTypeEnum } from '../../common/headlessService/constants';
 import { EventType } from '../../common/eventsService/types';
 import { VenueType } from '../../common/venuesService/types';
 import type { CardProps } from '../card/Card';
+import { HtmlToReactProps } from '../../common/components/htmlToReact/HtmlToReact';
 
 export type Config = {
   siteName: string;
@@ -68,6 +69,10 @@ export type Config = {
     favIconUrl?: string;
     favIconSvgUrl?: string;
     manifestUrl?: string;
+  };
+  htmlSanitizer: {
+    allowedUnsafeTags: HtmlToReactProps['allowedUnsafeTags'];
+    trustedOrigins: HtmlToReactProps['trustedOrigins'];
   };
 };
 

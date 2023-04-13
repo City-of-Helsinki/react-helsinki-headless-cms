@@ -7,6 +7,7 @@ import styles from './pageMainContent.module.scss';
 import { formatDateFromString } from '../../common/utils/dates';
 import { Tag } from '../../common/components/tag/Tag';
 import { Link } from '../link/Link';
+import { useConfig } from '../configProvider/useConfig';
 
 export type PageMainContentProps = {
   title: string;
@@ -21,6 +22,10 @@ export function PageMainContent({
   date,
   categories,
 }: PageMainContentProps) {
+  const {
+    htmlSanitizer: { allowedUnsafeTags, trustedOrigins },
+  } = useConfig();
+
   return (
     <article className={styles.mainContent}>
       <header>
@@ -46,6 +51,8 @@ export function PageMainContent({
         components={{
           a: Link,
         }}
+        allowedUnsafeTags={allowedUnsafeTags}
+        trustedOrigins={trustedOrigins}
       >
         {content}
       </HtmlToReact>
