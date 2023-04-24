@@ -1,0 +1,36 @@
+{
+  "page": {
+    "id": "cG9zdDo4MA==",
+    "content": "\n<p>Demosivu</p>\n\n\n\n<p><a href=\"https://google.com\">Ulkoinen linkki</a></p>\n\n\n\n<p><a href=\"https://google.fi\" target=\"_blank\" rel=\"noreferrer noopener\">Ulkoinen linkki uusi ikkuna</a></p>\n\n\n\n<p><a href=\"https://kukkuu.hkih.stage.geniem.io/sivu-3/\" data-type=\"page\" data-id=\"24\">Sisäinen linkki</a></p>\n\n\n\n<p class=\"has-text-align-left\">Youtube: </p>\n\n\n\n<figure class=\"wp-block-embed aligncenter is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio\"><div class=\"wp-block-embed__wrapper\">\n<iframe loading=\"lazy\" title=\"Bohemian Rhapsody | Muppet Music Video | The Muppets\" width=\"500\" height=\"281\" src=\"https://www.youtube.com/embed/tgbNymZ7vqY?feature=oembed\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>\n</div><figcaption class=\"wp-element-caption\">Youtube caption</figcaption></figure>\n\n\n\n<p>Vimeo:</p>\n\n\n\n<figure class=\"wp-block-embed is-type-video is-provider-vimeo wp-block-embed-vimeo wp-embed-aspect-16-9 wp-has-aspect-ratio\"><div class=\"wp-block-embed__wrapper\">\n<iframe loading=\"lazy\" title=\"The New Vimeo Player (You Know, For Videos)\" src=\"https://player.vimeo.com/video/76979871?h=8272103f6e&amp;dnt=1&amp;app_id=122963\" width=\"500\" height=\"281\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>\n</div><figcaption class=\"wp-element-caption\">Vimeo caption</figcaption></figure>\n",
+    "slug": "demosivu",
+    "title": "Demosivu",
+    "uri": "/demosivu/",
+    "link": "https://kukkuu.hkih.stage.geniem.io/demosivu/",
+    "lead": "",
+    "seo": {
+      "title": "Demosivu &#x2d; Kukkuu",
+      "description": "Demosivu Ulkoinen linkki Ulkoinen linkki uusi ikkuna Sis&auml;inen linkki Youtube: Vimeo&#8230;",
+      "openGraphTitle": "Demosivu",
+      "openGraphDescription": "Demosivu Ulkoinen linkki Ulkoinen linkki uusi ikkuna Sis&auml;inen linkki Youtube: Vimeo&#8230;",
+      "openGraphType": "website",
+      "twitterTitle": "Demosivu",
+      "twitterDescription": "Demosivu Ulkoinen linkki Ulkoinen linkki uusi ikkuna Sis&auml;inen linkki Youtube: Vimeo&#8230;",
+      "canonicalUrl": "https://kukkuu.hkih.stage.geniem.io/demosivu/",
+      "socialImage": null,
+      "__typename": "SEO"
+    },
+    "language": {
+      "code": "FI",
+      "id": "TGFuZ3VhZ2U6Zmk=",
+      "locale": "fi",
+      "name": "Suomi",
+      "slug": "fi",
+      "__typename": "Language"
+    },
+    "featuredImage": null,
+    "sidebar": [],
+    "modules": [],
+    "__typename": "Page",
+    "translations": []
+  }
+}
