@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import DOMPurify from 'isomorphic-dompurify';
+import DOMPurify, { Config } from 'isomorphic-dompurify';
 import parse, {
   DOMNode,
   domToReact,
@@ -7,7 +7,79 @@ import parse, {
   attributesToProps,
 } from 'html-react-parser';
 
-import Text from '../text/Text';
+import { isTrustedOrigin, validateTrustedOriginsFormat } from './utils';
+import {
+  DefaultH2,
+  DefaultP,
+  IframeForEmbeddedMedia,
+} from './replaceComponents';
+
+const WHITELISTED_TAGS = [
+  // Content sectioning
+  'h1',
+  'h2',
+  'h3',
+  'h4',
+  'h5',
+  'h6',
+
+  // Text content
+  'blockquote',
+  'dd',
+  'dl',
+  'dt',
+  'figcaption',
+  'figure',
+  'hr',
+  'li',
+  'ol',
+  'p',
+  'pre',
+  'ul',
+
+  // Inline text semantics
+  'a',
+  'abbr',
+  'b',
+  'bdi',
+  'bdo',
+  'br',
+  'cite',
+  'code',
+  'data',
+  'dfn',
+  'em',
+  'i',
+  'kdb',
+  'mark',
+  'q',
+  'rp',
+  'rt',
+  'ruby',
+  's',
+  'samp',
+  'small',
+  'span',
+  'strong',
+  'sub',
+  'sup',
+  'time',
+  'u',
+  'var',
+  'wbr',
+
+  // Image and multimedia
+  'area',
+  'audio',
+  'img',
+  'map',
+  'track',
+  'video',
+
+  // SVG and MathML
+  'svg',
+  'math',
+];
 
 type Components = {
   p?: React.ComponentType<{ children: React.ReactNode }>;
@@ -19,20 +91,15 @@ type Components = {
     | React.ComponentType<React.TableHTMLAttributes<HTMLTableElement>>
     | string;
   img?: React.ComponentType<React.ImgHTMLAttributes<HTMLImageElement>> | string;
+  iframe?: React.ComponentType<React.IframeHTMLAttributes<HTMLIFrameElement>>;
 };
 
-type HtmlToReactProps = {
+export type HtmlToReactProps = {
   children: string;
   components?: Components;
+  allowedUnsafeTags?: Config['ALLOWED_TAGS'];
+  trustedOrigins?: string[];
 };
-
-function DefaultP({ children }: { children: React.ReactNode }) {
-  return <Text variant="body-l">{children}</Text>;
-}
-
-function DefaultH2({ children }: { children: React.ReactNode }) {
-  return <Text variant="h2">{children}</Text>;
-}
 
 function replaceDomNodeWithReactComponent(
   domNode: DOMNode,
@@ -43,14 +110,15 @@ function replaceDomNodeWithReactComponent(
     a: A = 'a',
     table: Table = 'table',
     img: IMG = 'img',
+    iframe: IFrame = IframeForEmbeddedMedia,
   }: Components = {},
+  trustedOrigins: HtmlToReactProps['trustedOrigins'] = [],
 ) {
   // html-react-parser advices to do an instanceof check
   // domNode instanceof Element
   // However, this will fail between contexts. As this code is meant to be used
   // as a dependency, different contexts are likely.
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof#instanceof_and_multiple_context_e.g._frames_or_windows
-
   if ('attribs' in domNode) {
     switch (domNode.name) {
       case 'p':
@@ -87,6 +155,16 @@ function replaceDomNodeWithReactComponent(
       case 'img':
         return <IMG {...attributesToProps(domNode.attribs)} width="100%" />;
 
+      case 'iframe':
+        if (isTrustedOrigin(domNode.attribs.src, trustedOrigins)) {
+          return <IFrame {...attributesToProps(domNode.attribs)} />;
+        }
+        // eslint-disable-next-line no-console
+        console.warn(
+          'The iframe src-attribute was not set to any of the trusted origins.',
+        );
+        return <div />;
+
       default:
         break;
     }
@@ -95,80 +173,22 @@ function replaceDomNodeWithReactComponent(
   return domNode;
 }
 
-export function HtmlToReact({ children: dirty, components }: HtmlToReactProps) {
+export function HtmlToReact({
+  children: dirty,
+  components,
+  allowedUnsafeTags = [],
+  trustedOrigins = [],
+}: HtmlToReactProps) {
+  validateTrustedOriginsFormat(trustedOrigins);
   const clean = useMemo(
     () =>
       DOMPurify.sanitize(dirty, {
         USE_PROFILES: { html: true },
         ADD_ATTR: ['target'],
-        ALLOWED_TAGS: [
-          // Content sectioning
-          'h1',
-          'h2',
-          'h3',
-          'h4',
-          'h5',
-          'h6',
-
-          // Text content
-          'blockquote',
-          'dd',
-          'dl',
-          'dt',
-          'figcaption',
-          'figure',
-          'hr',
-          'li',
-          'ol',
-          'p',
-          'pre',
-          'ul',
-
-          // Inline text semantics
-          'a',
-          'abbr',
-          'b',
-          'bdi',
-          'bdo',
-          'br',
-          'cite',
-          'code',
-          'data',
-          'dfn',
-          'em',
-          'i',
-          'kdb',
-          'mark',
-          'q',
-          'rp',
-          'rt',
-          'ruby',
-          's',
-          'samp',
-          'small',
-          'span',
-          'strong',
-          'sub',
-          'sup',
-          'time',
-          'u',
-          'var',
-          'wbr',
-
-          // Image and multimedia
-          'area',
-          'audio',
-          'img',
-          'map',
-          'track',
-          'video',
-
-          // SVG and MathML
-          'svg',
-          'math',
-        ],
+        ADD_TAGS: allowedUnsafeTags,
+        ALLOWED_TAGS: WHITELISTED_TAGS,
       }),
-    [dirty],
+    [dirty, allowedUnsafeTags],
   );
   const htmlReactParserOptions = {
     replace: (domNode) =>
@@ -176,6 +196,7 @@ export function HtmlToReact({ children: dirty, components }: HtmlToReactProps) {
         domNode,
         htmlReactParserOptions,
         components,
+        trustedOrigins,
       ),
   };
 
