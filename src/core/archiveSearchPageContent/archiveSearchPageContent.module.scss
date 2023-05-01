@@ -78,8 +78,9 @@
               font-weight: 500;
               border: 2px solid transparent;
               text-align: left;
-              background-color: none !important;
-              border-color: initial !important;
+              background-color: unset;
+              border-color: transparent !important;
+              margin: 0 8px;
               &:focus {
                 outline: 2px solid var(--color-black-90);
                 outline-offset: 0.25rem;
