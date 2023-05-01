@@ -80,7 +80,7 @@
               text-align: left;
               background-color: unset;
               border-color: transparent !important;
-              margin: 0 8px;
+              margin: 8px 0;
               &:focus {
                 outline: 2px solid var(--color-black-90);
                 outline-offset: 0.25rem;
@@ -103,7 +103,6 @@
               justify-content: center;
               align-items: center;
               height: 100%;
-              margin: 0 var(--spacing-xs);
             }
           }
         }
