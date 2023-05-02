@@ -66,6 +66,7 @@
           display: flex;
           flex-direction: column;
           min-height: 16px;
+          gap: 8px;
 
           & > :last-child {
             .clearButton {
@@ -78,6 +79,8 @@
               font-weight: 500;
               border: 2px solid transparent;
               text-align: left;
+              background-color: unset;
+              border-color: transparent !important;
               &:focus {
                 outline: 2px solid var(--color-black-90);
                 outline-offset: 0.25rem;
@@ -100,7 +103,6 @@
               justify-content: center;
               align-items: center;
               height: 100%;
-              margin: 0 var(--spacing-xs);
             }
           }
         }
