@@ -11010,7 +11010,6 @@ export type PostFragment = {
         url?: string | null;
         module?: string | null;
         showAllLink?: string | null;
-        showAllLinkCustom?: string | null;
       }
     | {
         __typename: 'EventSearchCarousel';
@@ -11324,7 +11323,6 @@ export type ArticleQuery = {
           url?: string | null;
           module?: string | null;
           showAllLink?: string | null;
-          showAllLinkCustom?: string | null;
         }
       | {
           __typename: 'EventSearchCarousel';
@@ -11663,7 +11661,6 @@ export type PostsQuery = {
               url?: string | null;
               module?: string | null;
               showAllLink?: string | null;
-              showAllLinkCustom?: string | null;
             }
           | {
               __typename: 'EventSearchCarousel';
@@ -12126,7 +12123,6 @@ export type MenuItemFragment = {
                           url?: string | null;
                           module?: string | null;
                           showAllLink?: string | null;
-                          showAllLinkCustom?: string | null;
                         }
                       | {
                           __typename: 'EventSearchCarousel';
@@ -12397,7 +12393,6 @@ export type MenuItemFragment = {
                         url?: string | null;
                         module?: string | null;
                         showAllLink?: string | null;
-                        showAllLinkCustom?: string | null;
                       }
                     | {
                         __typename: 'EventSearchCarousel';
@@ -12710,7 +12705,6 @@ export type MenuItemFragment = {
                   url?: string | null;
                   module?: string | null;
                   showAllLink?: string | null;
-                  showAllLinkCustom?: string | null;
                 }
               | {
                   __typename: 'EventSearchCarousel';
@@ -12981,7 +12975,6 @@ export type MenuItemFragment = {
                 url?: string | null;
                 module?: string | null;
                 showAllLink?: string | null;
-                showAllLinkCustom?: string | null;
               }
             | {
                 __typename: 'EventSearchCarousel';
@@ -13300,7 +13293,6 @@ export type MenuPageFieldsFragment = {
           url?: string | null;
           module?: string | null;
           showAllLink?: string | null;
-          showAllLinkCustom?: string | null;
         }
       | {
           __typename: 'EventSearchCarousel';
@@ -13562,7 +13554,6 @@ export type MenuPageFieldsFragment = {
         url?: string | null;
         module?: string | null;
         showAllLink?: string | null;
-        showAllLinkCustom?: string | null;
       }
     | {
         __typename: 'EventSearchCarousel';
@@ -13913,7 +13904,6 @@ export type MenuQuery = {
                                 url?: string | null;
                                 module?: string | null;
                                 showAllLink?: string | null;
-                                showAllLinkCustom?: string | null;
                               }
                             | {
                                 __typename: 'EventSearchCarousel';
@@ -14184,7 +14174,6 @@ export type MenuQuery = {
                               url?: string | null;
                               module?: string | null;
                               showAllLink?: string | null;
-                              showAllLinkCustom?: string | null;
                             }
                           | {
                               __typename: 'EventSearchCarousel';
@@ -14497,7 +14486,6 @@ export type MenuQuery = {
                         url?: string | null;
                         module?: string | null;
                         showAllLink?: string | null;
-                        showAllLinkCustom?: string | null;
                       }
                     | {
                         __typename: 'EventSearchCarousel';
@@ -14768,7 +14756,6 @@ export type MenuQuery = {
                       url?: string | null;
                       module?: string | null;
                       showAllLink?: string | null;
-                      showAllLinkCustom?: string | null;
                     }
                   | {
                       __typename: 'EventSearchCarousel';
@@ -15060,7 +15047,6 @@ export type EventSearchFragment = {
   url?: string | null;
   module?: string | null;
   showAllLink?: string | null;
-  showAllLinkCustom?: string | null;
 };
 
 export type EventSelectedFragment = {
@@ -15279,7 +15265,6 @@ export type PageFragment = {
         url?: string | null;
         module?: string | null;
         showAllLink?: string | null;
-        showAllLinkCustom?: string | null;
       }
     | {
         __typename: 'EventSearchCarousel';
@@ -15585,7 +15570,6 @@ export type PageQuery = {
           url?: string | null;
           module?: string | null;
           showAllLink?: string | null;
-          showAllLinkCustom?: string | null;
         }
       | {
           __typename: 'EventSearchCarousel';
@@ -15893,7 +15877,6 @@ export type PageByTemplateQuery = {
           url?: string | null;
           module?: string | null;
           showAllLink?: string | null;
-          showAllLinkCustom?: string | null;
         }
       | {
           __typename: 'EventSearchCarousel';
@@ -16234,7 +16217,6 @@ export type PageChildrenSearchQuery = {
                       url?: string | null;
                       module?: string | null;
                       showAllLink?: string | null;
-                      showAllLinkCustom?: string | null;
                     }
                   | {
                       __typename: 'EventSearchCarousel';
@@ -16505,7 +16487,6 @@ export type PageChildrenSearchQuery = {
                     url?: string | null;
                     module?: string | null;
                     showAllLink?: string | null;
-                    showAllLinkCustom?: string | null;
                   }
                 | {
                     __typename: 'EventSearchCarousel';
@@ -16842,7 +16823,6 @@ export type PagesQuery = {
               url?: string | null;
               module?: string | null;
               showAllLink?: string | null;
-              showAllLinkCustom?: string | null;
             }
           | {
               __typename: 'EventSearchCarousel';
@@ -17238,7 +17218,6 @@ export const EventSearchFragmentDoc = gql`
     url
     module
     showAllLink
-    showAllLinkCustom
     __typename
   }
 `;

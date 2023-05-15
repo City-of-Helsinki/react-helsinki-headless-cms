@@ -110,7 +110,6 @@ fragment EventSearch on EventSearch {
   url
   module
   showAllLink
-  showAllLinkCustom
   # TODO: add when initAmountOfEvents null-issue is fixed
   # initAmountOfEvents
   __typename
