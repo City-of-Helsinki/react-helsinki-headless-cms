@@ -65,6 +65,7 @@ export function getCollections(
         collections.push({
           ...commonFields,
           url: module.url,
+          showAllUrl: module.showAllLink,
         } as EventSearchCollectionType);
       }
       if (isEventSelected(module) || isEventSelectedCarousel(module)) {
