@@ -11010,6 +11010,7 @@ export type PostFragment = {
         url?: string | null;
         module?: string | null;
         showAllLink?: string | null;
+        showAllLinkCustom?: string | null;
       }
     | {
         __typename: 'EventSearchCarousel';
@@ -11019,6 +11020,7 @@ export type PostFragment = {
         eventsNearby?: boolean | null;
         amountOfCards?: number | null;
         showAllLink?: string | null;
+        showAllLinkCustom?: string | null;
       }
     | {
         __typename: 'EventSelected';
@@ -11322,6 +11324,7 @@ export type ArticleQuery = {
           url?: string | null;
           module?: string | null;
           showAllLink?: string | null;
+          showAllLinkCustom?: string | null;
         }
       | {
           __typename: 'EventSearchCarousel';
@@ -11331,6 +11334,7 @@ export type ArticleQuery = {
           eventsNearby?: boolean | null;
           amountOfCards?: number | null;
           showAllLink?: string | null;
+          showAllLinkCustom?: string | null;
         }
       | {
           __typename: 'EventSelected';
@@ -11659,6 +11663,7 @@ export type PostsQuery = {
               url?: string | null;
               module?: string | null;
               showAllLink?: string | null;
+              showAllLinkCustom?: string | null;
             }
           | {
               __typename: 'EventSearchCarousel';
@@ -11668,6 +11673,7 @@ export type PostsQuery = {
               eventsNearby?: boolean | null;
               amountOfCards?: number | null;
               showAllLink?: string | null;
+              showAllLinkCustom?: string | null;
             }
           | {
               __typename: 'EventSelected';
@@ -12120,6 +12126,7 @@ export type MenuItemFragment = {
                           url?: string | null;
                           module?: string | null;
                           showAllLink?: string | null;
+                          showAllLinkCustom?: string | null;
                         }
                       | {
                           __typename: 'EventSearchCarousel';
@@ -12129,6 +12136,7 @@ export type MenuItemFragment = {
                           eventsNearby?: boolean | null;
                           amountOfCards?: number | null;
                           showAllLink?: string | null;
+                          showAllLinkCustom?: string | null;
                         }
                       | {
                           __typename: 'EventSelected';
@@ -12389,6 +12397,7 @@ export type MenuItemFragment = {
                         url?: string | null;
                         module?: string | null;
                         showAllLink?: string | null;
+                        showAllLinkCustom?: string | null;
                       }
                     | {
                         __typename: 'EventSearchCarousel';
@@ -12398,6 +12407,7 @@ export type MenuItemFragment = {
                         eventsNearby?: boolean | null;
                         amountOfCards?: number | null;
                         showAllLink?: string | null;
+                        showAllLinkCustom?: string | null;
                       }
                     | {
                         __typename: 'EventSelected';
@@ -12700,6 +12710,7 @@ export type MenuItemFragment = {
                   url?: string | null;
                   module?: string | null;
                   showAllLink?: string | null;
+                  showAllLinkCustom?: string | null;
                 }
               | {
                   __typename: 'EventSearchCarousel';
@@ -12709,6 +12720,7 @@ export type MenuItemFragment = {
                   eventsNearby?: boolean | null;
                   amountOfCards?: number | null;
                   showAllLink?: string | null;
+                  showAllLinkCustom?: string | null;
                 }
               | {
                   __typename: 'EventSelected';
@@ -12969,6 +12981,7 @@ export type MenuItemFragment = {
                 url?: string | null;
                 module?: string | null;
                 showAllLink?: string | null;
+                showAllLinkCustom?: string | null;
               }
             | {
                 __typename: 'EventSearchCarousel';
@@ -12978,6 +12991,7 @@ export type MenuItemFragment = {
                 eventsNearby?: boolean | null;
                 amountOfCards?: number | null;
                 showAllLink?: string | null;
+                showAllLinkCustom?: string | null;
               }
             | {
                 __typename: 'EventSelected';
@@ -13286,6 +13300,7 @@ export type MenuPageFieldsFragment = {
           url?: string | null;
           module?: string | null;
           showAllLink?: string | null;
+          showAllLinkCustom?: string | null;
         }
       | {
           __typename: 'EventSearchCarousel';
@@ -13295,6 +13310,7 @@ export type MenuPageFieldsFragment = {
           eventsNearby?: boolean | null;
           amountOfCards?: number | null;
           showAllLink?: string | null;
+          showAllLinkCustom?: string | null;
         }
       | {
           __typename: 'EventSelected';
@@ -13546,6 +13562,7 @@ export type MenuPageFieldsFragment = {
         url?: string | null;
         module?: string | null;
         showAllLink?: string | null;
+        showAllLinkCustom?: string | null;
       }
     | {
         __typename: 'EventSearchCarousel';
@@ -13555,6 +13572,7 @@ export type MenuPageFieldsFragment = {
         eventsNearby?: boolean | null;
         amountOfCards?: number | null;
         showAllLink?: string | null;
+        showAllLinkCustom?: string | null;
       }
     | {
         __typename: 'EventSelected';
@@ -13895,6 +13913,7 @@ export type MenuQuery = {
                                 url?: string | null;
                                 module?: string | null;
                                 showAllLink?: string | null;
+                                showAllLinkCustom?: string | null;
                               }
                             | {
                                 __typename: 'EventSearchCarousel';
@@ -13904,6 +13923,7 @@ export type MenuQuery = {
                                 eventsNearby?: boolean | null;
                                 amountOfCards?: number | null;
                                 showAllLink?: string | null;
+                                showAllLinkCustom?: string | null;
                               }
                             | {
                                 __typename: 'EventSelected';
@@ -14164,6 +14184,7 @@ export type MenuQuery = {
                               url?: string | null;
                               module?: string | null;
                               showAllLink?: string | null;
+                              showAllLinkCustom?: string | null;
                             }
                           | {
                               __typename: 'EventSearchCarousel';
@@ -14173,6 +14194,7 @@ export type MenuQuery = {
                               eventsNearby?: boolean | null;
                               amountOfCards?: number | null;
                               showAllLink?: string | null;
+                              showAllLinkCustom?: string | null;
                             }
                           | {
                               __typename: 'EventSelected';
@@ -14475,6 +14497,7 @@ export type MenuQuery = {
                         url?: string | null;
                         module?: string | null;
                         showAllLink?: string | null;
+                        showAllLinkCustom?: string | null;
                       }
                     | {
                         __typename: 'EventSearchCarousel';
@@ -14484,6 +14507,7 @@ export type MenuQuery = {
                         eventsNearby?: boolean | null;
                         amountOfCards?: number | null;
                         showAllLink?: string | null;
+                        showAllLinkCustom?: string | null;
                       }
                     | {
                         __typename: 'EventSelected';
@@ -14744,6 +14768,7 @@ export type MenuQuery = {
                       url?: string | null;
                       module?: string | null;
                       showAllLink?: string | null;
+                      showAllLinkCustom?: string | null;
                     }
                   | {
                       __typename: 'EventSearchCarousel';
@@ -14753,6 +14778,7 @@ export type MenuQuery = {
                       eventsNearby?: boolean | null;
                       amountOfCards?: number | null;
                       showAllLink?: string | null;
+                      showAllLinkCustom?: string | null;
                     }
                   | {
                       __typename: 'EventSelected';
@@ -15034,6 +15060,7 @@ export type EventSearchFragment = {
   url?: string | null;
   module?: string | null;
   showAllLink?: string | null;
+  showAllLinkCustom?: string | null;
 };
 
 export type EventSelectedFragment = {
@@ -15051,6 +15078,7 @@ export type EventSearchCarouselFragment = {
   eventsNearby?: boolean | null;
   amountOfCards?: number | null;
   showAllLink?: string | null;
+  showAllLinkCustom?: string | null;
 };
 
 export type EventSelectedCarouselFragment = {
@@ -15251,6 +15279,7 @@ export type PageFragment = {
         url?: string | null;
         module?: string | null;
         showAllLink?: string | null;
+        showAllLinkCustom?: string | null;
       }
     | {
         __typename: 'EventSearchCarousel';
@@ -15260,6 +15289,7 @@ export type PageFragment = {
         eventsNearby?: boolean | null;
         amountOfCards?: number | null;
         showAllLink?: string | null;
+        showAllLinkCustom?: string | null;
       }
     | {
         __typename: 'EventSelected';
@@ -15555,6 +15585,7 @@ export type PageQuery = {
           url?: string | null;
           module?: string | null;
           showAllLink?: string | null;
+          showAllLinkCustom?: string | null;
         }
       | {
           __typename: 'EventSearchCarousel';
@@ -15564,6 +15595,7 @@ export type PageQuery = {
           eventsNearby?: boolean | null;
           amountOfCards?: number | null;
           showAllLink?: string | null;
+          showAllLinkCustom?: string | null;
         }
       | {
           __typename: 'EventSelected';
@@ -15861,6 +15893,7 @@ export type PageByTemplateQuery = {
           url?: string | null;
           module?: string | null;
           showAllLink?: string | null;
+          showAllLinkCustom?: string | null;
         }
       | {
           __typename: 'EventSearchCarousel';
@@ -15870,6 +15903,7 @@ export type PageByTemplateQuery = {
           eventsNearby?: boolean | null;
           amountOfCards?: number | null;
           showAllLink?: string | null;
+          showAllLinkCustom?: string | null;
         }
       | {
           __typename: 'EventSelected';
@@ -16200,6 +16234,7 @@ export type PageChildrenSearchQuery = {
                       url?: string | null;
                       module?: string | null;
                       showAllLink?: string | null;
+                      showAllLinkCustom?: string | null;
                     }
                   | {
                       __typename: 'EventSearchCarousel';
@@ -16209,6 +16244,7 @@ export type PageChildrenSearchQuery = {
                       eventsNearby?: boolean | null;
                       amountOfCards?: number | null;
                       showAllLink?: string | null;
+                      showAllLinkCustom?: string | null;
                     }
                   | {
                       __typename: 'EventSelected';
@@ -16469,6 +16505,7 @@ export type PageChildrenSearchQuery = {
                     url?: string | null;
                     module?: string | null;
                     showAllLink?: string | null;
+                    showAllLinkCustom?: string | null;
                   }
                 | {
                     __typename: 'EventSearchCarousel';
@@ -16478,6 +16515,7 @@ export type PageChildrenSearchQuery = {
                     eventsNearby?: boolean | null;
                     amountOfCards?: number | null;
                     showAllLink?: string | null;
+                    showAllLinkCustom?: string | null;
                   }
                 | {
                     __typename: 'EventSelected';
@@ -16804,6 +16842,7 @@ export type PagesQuery = {
               url?: string | null;
               module?: string | null;
               showAllLink?: string | null;
+              showAllLinkCustom?: string | null;
             }
           | {
               __typename: 'EventSearchCarousel';
@@ -16813,6 +16852,7 @@ export type PagesQuery = {
               eventsNearby?: boolean | null;
               amountOfCards?: number | null;
               showAllLink?: string | null;
+              showAllLinkCustom?: string | null;
             }
           | {
               __typename: 'EventSelected';
@@ -17198,6 +17238,7 @@ export const EventSearchFragmentDoc = gql`
     url
     module
     showAllLink
+    showAllLinkCustom
     __typename
   }
 `;
@@ -17217,6 +17258,7 @@ export const EventSearchCarouselFragmentDoc = gql`
     eventsNearby
     amountOfCards
     showAllLink
+    showAllLinkCustom
     __typename
   }
 `;
