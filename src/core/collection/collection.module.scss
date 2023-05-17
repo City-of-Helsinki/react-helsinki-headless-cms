@@ -32,10 +32,10 @@
   a {
     @media screen and (max-width: breakpoints.$breakpoint-m) {
       min-width: 80px;
-      padding-bottom: #{$spacing-l};
+      padding-bottom: #{$spacing-s};
 
       @media screen and (min-width: breakpoints.$breakpoint-m) {
-        padding-bottom: #{$spacing-s};
+        padding-bottom: #{$spacing-l};
       }
     }
   }
