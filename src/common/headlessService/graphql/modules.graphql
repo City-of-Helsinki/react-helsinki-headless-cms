@@ -109,6 +109,8 @@ fragment EventSearch on EventSearch {
   title
   url
   module
+  showAllLink
+  showAllLinkCustom
   # TODO: add when initAmountOfEvents null-issue is fixed
   # initAmountOfEvents
   __typename
@@ -129,6 +131,8 @@ fragment EventSearchCarousel on EventSearchCarousel {
   orderNewestFirst
   eventsNearby
   amountOfCards
+  showAllLink
+  showAllLinkCustom
   __typename
 }
 

@@ -142,7 +142,12 @@ export function Collection({
   return (
     <div className={classNames(styles[type], className)}>
       <div className={styles.collection}>
-        <div className={styles.headerRow}>
+        <div
+          className={classNames(
+            styles.headerRow,
+            showAllUrl ? styles.withShowAll : '',
+          )}
+        >
           {title && (
             <>
               <h1
