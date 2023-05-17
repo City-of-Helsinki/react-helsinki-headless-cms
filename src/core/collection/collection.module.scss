@@ -11,14 +11,17 @@
     height: 6.5rem;
 
     @media screen and (max-width: breakpoints.$breakpoint-m) {
-      height: 5.5rem;
       flex-direction: column;
       align-items: flex-start;
+      &.withShowAll {
+        margin-bottom: #{$spacing-l};
+      }
     }
 
     .showAll {
       text-decoration: none;
       font-weight: 500;
+      margin-left: #{$spacing-s};
       &:hover {
         text-decoration: underline;
       }
@@ -39,10 +42,6 @@
     margin: 0;
 
     padding-bottom: #{$spacing-layout-s};
-
-    @media screen and (max-width: breakpoints.$breakpoint-m) {
-      padding-bottom: 0;
-    }
 
     &.carousel {
       margin-left: #{$spacing-layout-2-xs};
