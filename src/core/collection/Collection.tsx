@@ -195,6 +195,7 @@ export function getEventCollectionCards({
           key={cardProps.id}
           {...cardProps}
           url={url}
+          title={`123-${locale}`}
           direction="fixed-vertical"
           customContent={
             EventCardContent && <EventCardContent event={items[i]} />
