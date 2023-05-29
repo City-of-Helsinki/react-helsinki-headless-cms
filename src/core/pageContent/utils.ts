@@ -109,7 +109,7 @@ export function getEventCardProps(
   locale = DEFAULT_LOCALE,
 ): CardProps {
   const image = item.images.length > 0 ? item.images[0] : null;
-  const name = item.name[locale] ?? item.name[DEFAULT_LOCALE];
+  const name = item.name[locale.toLowerCase()] ?? item.name[DEFAULT_LOCALE];
   return {
     id: item.id,
     title: name,
