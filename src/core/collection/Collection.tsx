@@ -301,7 +301,7 @@ export function EventSelectionCollection({
   const eventsListSorted = [];
 
   // sorting events in the same order it was defined in cms
-  if (eventsListFiltered.length > 0) {
+  if (eventsListFiltered?.length > 0) {
     collection.events.forEach((eventId) => {
       const event = eventsListFiltered.find(
         (eventData) => eventData.id === eventId,
