@@ -294,9 +294,23 @@ export function EventSelectionCollection({
   });
 
   // Reduce past events that are no longer available and therefore do not need to be displayed
-  const eventsList = data?.eventsByIds.data.filter(
+  const eventsListFiltered = data?.eventsByIds.data.filter(
     (event) => !isEventClosed(event),
   );
+
+  const eventsListSorted = [];
+
+  // sorting events in the same order it was defined in cms
+  if (eventsListFiltered.length > 0) {
+    collection.events.forEach((eventId) => {
+      const event = eventsListFiltered.find(
+        (eventData) => eventData.id === eventId,
+      );
+      if (event) {
+        eventsListSorted.push(event);
+      }
+    });
+  }
 
   if (!data && loading) {
     return (
@@ -307,7 +321,7 @@ export function EventSelectionCollection({
   }
 
   const cards = getEventCollectionCards({
-    items: eventsList ?? [],
+    items: eventsListSorted ?? [],
     getRoutedInternalHref: (link, type) =>
       getRoutedInternalHref(link, type ?? ModuleItemTypeEnum.Event),
     getEventCardProps,
