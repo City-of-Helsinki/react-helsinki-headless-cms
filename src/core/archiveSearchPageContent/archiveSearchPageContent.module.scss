@@ -207,8 +207,8 @@
           .loadingSpinner {
             margin: $spacing-layout-2-xs;
           }
-          button.loadMoreButton {
-            color: var(--color-white);
+          .loadMoreButton button {
+            color: var(--color-white) !important;
           }
         }
       }
