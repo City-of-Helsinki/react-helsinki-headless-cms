@@ -207,6 +207,9 @@
           .loadingSpinner {
             margin: $spacing-layout-2-xs;
           }
+          .loadMoreButton button {
+            color: var(--color-white) !important;
+          }
         }
       }
     }
