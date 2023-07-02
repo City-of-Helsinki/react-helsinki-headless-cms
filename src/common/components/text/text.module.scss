@@ -46,6 +46,12 @@
   font-size: $fontsize-body-l;
   line-height: $lineheight-l;
   white-space: pre-wrap;
+
+  strong {
+    letter-spacing: 0.2px;
+    font-size: $fontsize-heading-s;
+    font-weight: 500;
+  }
 }
 
 .body {
