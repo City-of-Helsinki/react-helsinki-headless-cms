@@ -67,22 +67,22 @@
   }
 
   h2 {
-    margin: $spacing-m 0;
+    margin: $spacing-4-xl 0 $spacing-m 0;
     font-size: $fontsize-heading-l;
     font-weight: 400;
     letter-spacing: -0.4px;
   }
 
   h3 {
-    margin: $spacing-m 0;
+    margin: $spacing-2-xl 0 $spacing-m 0;
     font-size: $fontsize-heading-m;
-    font-weight: 500;
+    font-weight: 400;
   }
 
   h4 {
     margin: $spacing-m 0;
     font-size: $fontsize-heading-s;
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: 0.2px;
   }
 
@@ -92,10 +92,11 @@
     font-weight: 500;
   }
 
-  ul {
-    margin: $spacing-m 0;
+  ul,
+  ol {
+    margin: $spacing-m 0 $spacing-l 0;
     li {
-      margin-bottom: $spacing-m;
+      margin-bottom: $spacing-s;
     }
   }
 
