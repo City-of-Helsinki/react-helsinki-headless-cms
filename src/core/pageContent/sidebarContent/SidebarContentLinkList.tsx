@@ -1,5 +1,6 @@
 import { IconArrowRight } from 'hds-react';
 import React from 'react';
+import parse from 'html-react-parser';
 
 import { HtmlToReact } from '../../../common/components/htmlToReact/HtmlToReact';
 import List from '../../../common/components/list/List';
@@ -41,7 +42,7 @@ export default function SidebarContentLinkList({
           .map((link) => (
             <Link
               key={link.title}
-              href={link.url || '#'}
+              href={parse(link.url).toString() || '#'}
               className={styles.link}
               iconRight={
                 !getIsHrefExternal(link.url) && (

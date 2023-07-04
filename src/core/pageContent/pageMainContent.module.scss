@@ -57,37 +57,55 @@
   }
 
   h1 {
-    margin: $spacing-s 0;
+    margin: $spacing-m 0;
     font-size: $fontsize-heading-m;
     line-height: $lineheight-m;
-    font-weight: 500;
+    font-weight: 400;
     @include respond-above(s) {
       margin: $spacing-l 0;
     }
   }
 
   h2 {
-    margin: 0 0 $spacing-s 0;
+    margin: $spacing-4-xl 0 $spacing-m 0;
     font-size: $fontsize-heading-l;
-    font-weight: 500;
+    font-weight: 400;
+    letter-spacing: -0.4px;
   }
 
   h3 {
-    margin: 0 0 $spacing-s 0;
+    margin: $spacing-2-xl 0 $spacing-m 0;
     font-size: $fontsize-heading-m;
-    font-weight: 500;
+    font-weight: 400;
   }
 
   h4 {
-    margin: 0 0 $spacing-s 0;
+    margin: $spacing-m 0;
     font-size: $fontsize-heading-s;
-    font-weight: 500;
+    font-weight: 400;
+    letter-spacing: 0.2px;
   }
 
   h5 {
-    margin: 0 0 $spacing-s 0;
+    margin: $spacing-m 0;
     font-size: $fontsize-heading-xs;
     font-weight: 500;
+  }
+
+  ul,
+  ol {
+    margin: $spacing-m 0 $spacing-l 0;
+    li {
+      margin-bottom: $spacing-s;
+    }
+  }
+
+  figure {
+    margin: $spacing-m 0 $spacing-l 0;
+    figcaption {
+      margin: $spacing-s 0;
+      font-size: $fontsize-body-m;
+    }
   }
 }
 

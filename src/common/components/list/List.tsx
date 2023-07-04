@@ -9,7 +9,7 @@ function getKey(...elements: JSX.Element[]): string {
 }
 
 type ListProps = {
-  items: (JSX.Element | JSX.Element[] | null | false)[];
+  items?: (JSX.Element | JSX.Element[] | null | false)[];
   variant?:
     | 'spacing-4-xs'
     | 'spacing-3-xs'
@@ -35,7 +35,7 @@ type ListProps = {
 export default function List({ items, variant = 'spacing-m' }: ListProps) {
   return (
     <ul className={classNames(styles.list, styles[variant])}>
-      {items.map((item) =>
+      {items?.map((item) =>
         item ? (
           <li key={Array.isArray(item) ? getKey(...item) : getKey(item)}>
             {item}
