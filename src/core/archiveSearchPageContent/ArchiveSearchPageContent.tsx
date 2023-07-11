@@ -270,10 +270,9 @@ export function SearchPageContent(props: SearchPageContentProps) {
                   {hasMore && (
                     <div className={styles.loadMoreButton}>
                       <Button
-                        theme="coat"
                         variant="secondary"
+                        theme="black"
                         type="button"
-                        className={styles.hdsButtonOverrides}
                         onClick={onLoadMore}
                       >
                         {archiveSearch?.loadMoreButtonLabelText || ''}
