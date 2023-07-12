@@ -24,12 +24,21 @@
 
 .linkS {
   composes: hds-link--small from './LinkBase.scss';
+  svg {
+    min-width: 16px;
+  }
 }
 
 .linkM {
   composes: hds-link--medium from './LinkBase.scss';
+  svg {
+    min-width: 24px;
+  }
 }
 
 .linkL {
   composes: hds-link--large from './LinkBase.scss';
+  svg {
+    min-width: 48px;
+  }
 }
