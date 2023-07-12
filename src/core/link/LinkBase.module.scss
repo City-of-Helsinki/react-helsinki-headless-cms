@@ -25,20 +25,20 @@
 .linkS {
   composes: hds-link--small from './LinkBase.scss';
   svg {
-    min-width: 16px;
+    min-width: var(--spacing-layout-2-xs);
   }
 }
 
 .linkM {
   composes: hds-link--medium from './LinkBase.scss';
   svg {
-    min-width: 24px;
+    min-width: var(--spacing-layout-xs);
   }
 }
 
 .linkL {
   composes: hds-link--large from './LinkBase.scss';
   svg {
-    min-width: 48px;
+    min-width: var(--spacing-layout-m);
   }
 }
