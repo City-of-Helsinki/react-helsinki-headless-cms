@@ -31,5 +31,6 @@
   &.noOutline {
     --tag-focus-outline-color: none !important;
     cursor: default;
+    box-shadow: none;
   }
 }
