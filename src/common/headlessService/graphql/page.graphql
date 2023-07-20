@@ -32,6 +32,7 @@ fragment Page on Page {
       mimeType
       title
       uri
+      photographerName
     }
   }
   sidebar {

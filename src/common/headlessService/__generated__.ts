@@ -60,21 +60,6 @@ export enum AvatarRatingEnum {
   X = 'X',
 }
 
-/** Card field */
-export type Card = {
-  __typename?: 'Card';
-  /** Background Color */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** Description */
-  description?: Maybe<Scalars['String']>;
-  /** Icon */
-  icon?: Maybe<Scalars['String']>;
-  /** Link */
-  link?: Maybe<Link>;
-  /** Title */
-  title?: Maybe<Scalars['String']>;
-};
-
 /** The category type */
 export type Category = DatabaseIdentifier &
   HierarchicalNode &
@@ -2735,23 +2720,6 @@ export type GeneralSettings = {
   url?: Maybe<Scalars['String']>;
 };
 
-/** Hero field */
-export type Hero = {
-  __typename?: 'Hero';
-  /** The background color of the hero */
-  background_color?: Maybe<Scalars['String']>;
-  /** The background color of the hero */
-  background_image_url?: Maybe<Scalars['String']>;
-  /** The desctiption of the hero */
-  description?: Maybe<Scalars['String']>;
-  /** The title of the hero link */
-  link?: Maybe<Link>;
-  /** The title of the hero */
-  title?: Maybe<Scalars['String']>;
-  /** The wave motif of the hero */
-  wave_motif?: Maybe<Scalars['String']>;
-};
-
 /** Content node with hierarchical (parent/child) relationships */
 export type HierarchicalContentNode = {
   /** Returns ancestors of the node. Default ordered as lowest (closest to the child) to highest (closest to the root). */
@@ -3608,13 +3576,6 @@ export type LayoutArticlesCarousel = {
   title?: Maybe<Scalars['String']>;
 };
 
-/** Layout: LayoutCards */
-export type LayoutCards = {
-  __typename?: 'LayoutCards';
-  /** Cards */
-  cards?: Maybe<Array<Maybe<Card>>>;
-};
-
 /** Layout: LayoutCollection */
 export type LayoutCollection = {
   __typename?: 'LayoutCollection';
@@ -3629,17 +3590,6 @@ export type LayoutContact = {
   contacts?: Maybe<Array<Maybe<Contact>>>;
   /** Description */
   description?: Maybe<Scalars['String']>;
-  /** Title */
-  title?: Maybe<Scalars['String']>;
-};
-
-/** Layout: LayoutContent */
-export type LayoutContent = {
-  __typename?: 'LayoutContent';
-  /** Background Color */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** Title */
-  content?: Maybe<Scalars['String']>;
   /** Title */
   title?: Maybe<Scalars['String']>;
 };
@@ -4617,8 +4567,6 @@ export type Page = ContentNode &
     featuredImageId?: Maybe<Scalars['ID']>;
     /** The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table. */
     guid?: Maybe<Scalars['String']>;
-    /** Hero fields */
-    hero?: Maybe<Hero>;
     /** The globally unique identifier of the page object. */
     id: Scalars['ID'];
     /** Whether the node is a Content Node */
@@ -4788,10 +4736,8 @@ export type PageModulesUnionType =
   | LayoutArticleHighlights
   | LayoutArticles
   | LayoutArticlesCarousel
-  | LayoutCards
   | LayoutCollection
   | LayoutContact
-  | LayoutContent
   | LayoutPages
   | LayoutPagesCarousel
   | LocationsSelected
@@ -4799,7 +4745,6 @@ export type PageModulesUnionType =
 
 export type PageSidebarUnionType =
   | LayoutArticles
-  | LayoutCards
   | LayoutLinkList
   | LayoutPages;
 
@@ -5476,10 +5421,8 @@ export type PostModulesUnionType =
   | LayoutArticleHighlights
   | LayoutArticles
   | LayoutArticlesCarousel
-  | LayoutCards
   | LayoutCollection
   | LayoutContact
-  | LayoutContent
   | LayoutPages
   | LayoutPagesCarousel
   | LocationsSelected
@@ -5555,7 +5498,6 @@ export type PostPostFormatsNodeInput = {
 
 export type PostSidebarUnionType =
   | LayoutArticles
-  | LayoutCards
   | LayoutLinkList
   | LayoutPages;
 
@@ -10935,6 +10877,7 @@ export type PostFragment = {
       mimeType?: string | null;
       title?: string | null;
       uri?: string | null;
+      photographerName?: string | null;
     };
   } | null;
   sidebar?: Array<
@@ -10965,7 +10908,6 @@ export type PostFragment = {
           } | null;
         } | null> | null;
       }
-    | { __typename?: 'LayoutCards' }
     | {
         __typename: 'LayoutLinkList';
         anchor?: string | null;
@@ -11093,7 +11035,6 @@ export type PostFragment = {
           } | null;
         } | null> | null;
       }
-    | { __typename?: 'LayoutCards' }
     | {
         __typename: 'LayoutCollection';
         collection?: {
@@ -11102,7 +11043,6 @@ export type PostFragment = {
         } | null;
       }
     | { __typename?: 'LayoutContact' }
-    | { __typename?: 'LayoutContent' }
     | {
         __typename: 'LayoutPages';
         title?: string | null;
@@ -11249,6 +11189,7 @@ export type ArticleQuery = {
         mimeType?: string | null;
         title?: string | null;
         uri?: string | null;
+        photographerName?: string | null;
       };
     } | null;
     sidebar?: Array<
@@ -11279,7 +11220,6 @@ export type ArticleQuery = {
             } | null;
           } | null> | null;
         }
-      | { __typename?: 'LayoutCards' }
       | {
           __typename: 'LayoutLinkList';
           anchor?: string | null;
@@ -11407,7 +11347,6 @@ export type ArticleQuery = {
             } | null;
           } | null> | null;
         }
-      | { __typename?: 'LayoutCards' }
       | {
           __typename: 'LayoutCollection';
           collection?: {
@@ -11416,7 +11355,6 @@ export type ArticleQuery = {
           } | null;
         }
       | { __typename?: 'LayoutContact' }
-      | { __typename?: 'LayoutContent' }
       | {
           __typename: 'LayoutPages';
           title?: string | null;
@@ -11585,6 +11523,7 @@ export type PostsQuery = {
             mimeType?: string | null;
             title?: string | null;
             uri?: string | null;
+            photographerName?: string | null;
           };
         } | null;
         sidebar?: Array<
@@ -11618,7 +11557,6 @@ export type PostsQuery = {
                 } | null;
               } | null> | null;
             }
-          | { __typename?: 'LayoutCards' }
           | {
               __typename: 'LayoutLinkList';
               anchor?: string | null;
@@ -11752,7 +11690,6 @@ export type PostsQuery = {
                 } | null;
               } | null> | null;
             }
-          | { __typename?: 'LayoutCards' }
           | {
               __typename: 'LayoutCollection';
               collection?: {
@@ -11761,7 +11698,6 @@ export type PostsQuery = {
               } | null;
             }
           | { __typename?: 'LayoutContact' }
-          | { __typename?: 'LayoutContent' }
           | {
               __typename: 'LayoutPages';
               title?: string | null;
@@ -12048,6 +11984,7 @@ export type MenuItemFragment = {
                         mimeType?: string | null;
                         title?: string | null;
                         uri?: string | null;
+                        photographerName?: string | null;
                       };
                     } | null;
                     sidebar?: Array<
@@ -12081,7 +12018,6 @@ export type MenuItemFragment = {
                             } | null;
                           } | null> | null;
                         }
-                      | { __typename?: 'LayoutCards' }
                       | {
                           __typename: 'LayoutLinkList';
                           anchor?: string | null;
@@ -12215,7 +12151,6 @@ export type MenuItemFragment = {
                             } | null;
                           } | null> | null;
                         }
-                      | { __typename?: 'LayoutCards' }
                       | {
                           __typename: 'LayoutCollection';
                           collection?: {
@@ -12224,7 +12159,6 @@ export type MenuItemFragment = {
                           } | null;
                         }
                       | { __typename?: 'LayoutContact' }
-                      | { __typename?: 'LayoutContent' }
                       | {
                           __typename: 'LayoutPages';
                           title?: string | null;
@@ -12319,6 +12253,7 @@ export type MenuItemFragment = {
                       mimeType?: string | null;
                       title?: string | null;
                       uri?: string | null;
+                      photographerName?: string | null;
                     };
                   } | null;
                   sidebar?: Array<
@@ -12352,7 +12287,6 @@ export type MenuItemFragment = {
                           } | null;
                         } | null> | null;
                       }
-                    | { __typename?: 'LayoutCards' }
                     | {
                         __typename: 'LayoutLinkList';
                         anchor?: string | null;
@@ -12486,7 +12420,6 @@ export type MenuItemFragment = {
                           } | null;
                         } | null> | null;
                       }
-                    | { __typename?: 'LayoutCards' }
                     | {
                         __typename: 'LayoutCollection';
                         collection?: {
@@ -12495,7 +12428,6 @@ export type MenuItemFragment = {
                         } | null;
                       }
                     | { __typename?: 'LayoutContact' }
-                    | { __typename?: 'LayoutContent' }
                     | {
                         __typename: 'LayoutPages';
                         title?: string | null;
@@ -12632,6 +12564,7 @@ export type MenuItemFragment = {
                 mimeType?: string | null;
                 title?: string | null;
                 uri?: string | null;
+                photographerName?: string | null;
               };
             } | null;
             sidebar?: Array<
@@ -12665,7 +12598,6 @@ export type MenuItemFragment = {
                     } | null;
                   } | null> | null;
                 }
-              | { __typename?: 'LayoutCards' }
               | {
                   __typename: 'LayoutLinkList';
                   anchor?: string | null;
@@ -12799,7 +12731,6 @@ export type MenuItemFragment = {
                     } | null;
                   } | null> | null;
                 }
-              | { __typename?: 'LayoutCards' }
               | {
                   __typename: 'LayoutCollection';
                   collection?: {
@@ -12808,7 +12739,6 @@ export type MenuItemFragment = {
                   } | null;
                 }
               | { __typename?: 'LayoutContact' }
-              | { __typename?: 'LayoutContent' }
               | {
                   __typename: 'LayoutPages';
                   title?: string | null;
@@ -12903,6 +12833,7 @@ export type MenuItemFragment = {
               mimeType?: string | null;
               title?: string | null;
               uri?: string | null;
+              photographerName?: string | null;
             };
           } | null;
           sidebar?: Array<
@@ -12936,7 +12867,6 @@ export type MenuItemFragment = {
                   } | null;
                 } | null> | null;
               }
-            | { __typename?: 'LayoutCards' }
             | {
                 __typename: 'LayoutLinkList';
                 anchor?: string | null;
@@ -13070,7 +13000,6 @@ export type MenuItemFragment = {
                   } | null;
                 } | null> | null;
               }
-            | { __typename?: 'LayoutCards' }
             | {
                 __typename: 'LayoutCollection';
                 collection?: {
@@ -13079,7 +13008,6 @@ export type MenuItemFragment = {
                 } | null;
               }
             | { __typename?: 'LayoutContact' }
-            | { __typename?: 'LayoutContent' }
             | {
                 __typename: 'LayoutPages';
                 title?: string | null;
@@ -13225,6 +13153,7 @@ export type MenuPageFieldsFragment = {
         mimeType?: string | null;
         title?: string | null;
         uri?: string | null;
+        photographerName?: string | null;
       };
     } | null;
     sidebar?: Array<
@@ -13255,7 +13184,6 @@ export type MenuPageFieldsFragment = {
             } | null;
           } | null> | null;
         }
-      | { __typename?: 'LayoutCards' }
       | {
           __typename: 'LayoutLinkList';
           anchor?: string | null;
@@ -13383,7 +13311,6 @@ export type MenuPageFieldsFragment = {
             } | null;
           } | null> | null;
         }
-      | { __typename?: 'LayoutCards' }
       | {
           __typename: 'LayoutCollection';
           collection?: {
@@ -13392,7 +13319,6 @@ export type MenuPageFieldsFragment = {
           } | null;
         }
       | { __typename?: 'LayoutContact' }
-      | { __typename?: 'LayoutContent' }
       | {
           __typename: 'LayoutPages';
           title?: string | null;
@@ -13487,6 +13413,7 @@ export type MenuPageFieldsFragment = {
       mimeType?: string | null;
       title?: string | null;
       uri?: string | null;
+      photographerName?: string | null;
     };
   } | null;
   sidebar?: Array<
@@ -13517,7 +13444,6 @@ export type MenuPageFieldsFragment = {
           } | null;
         } | null> | null;
       }
-    | { __typename?: 'LayoutCards' }
     | {
         __typename: 'LayoutLinkList';
         anchor?: string | null;
@@ -13645,7 +13571,6 @@ export type MenuPageFieldsFragment = {
           } | null;
         } | null> | null;
       }
-    | { __typename?: 'LayoutCards' }
     | {
         __typename: 'LayoutCollection';
         collection?: {
@@ -13654,7 +13579,6 @@ export type MenuPageFieldsFragment = {
         } | null;
       }
     | { __typename?: 'LayoutContact' }
-    | { __typename?: 'LayoutContent' }
     | {
         __typename: 'LayoutPages';
         title?: string | null;
@@ -13835,6 +13759,7 @@ export type MenuQuery = {
                               mimeType?: string | null;
                               title?: string | null;
                               uri?: string | null;
+                              photographerName?: string | null;
                             };
                           } | null;
                           sidebar?: Array<
@@ -13868,7 +13793,6 @@ export type MenuQuery = {
                                   } | null;
                                 } | null> | null;
                               }
-                            | { __typename?: 'LayoutCards' }
                             | {
                                 __typename: 'LayoutLinkList';
                                 anchor?: string | null;
@@ -14002,7 +13926,6 @@ export type MenuQuery = {
                                   } | null;
                                 } | null> | null;
                               }
-                            | { __typename?: 'LayoutCards' }
                             | {
                                 __typename: 'LayoutCollection';
                                 collection?: {
@@ -14011,7 +13934,6 @@ export type MenuQuery = {
                                 } | null;
                               }
                             | { __typename?: 'LayoutContact' }
-                            | { __typename?: 'LayoutContent' }
                             | {
                                 __typename: 'LayoutPages';
                                 title?: string | null;
@@ -14106,6 +14028,7 @@ export type MenuQuery = {
                             mimeType?: string | null;
                             title?: string | null;
                             uri?: string | null;
+                            photographerName?: string | null;
                           };
                         } | null;
                         sidebar?: Array<
@@ -14139,7 +14062,6 @@ export type MenuQuery = {
                                 } | null;
                               } | null> | null;
                             }
-                          | { __typename?: 'LayoutCards' }
                           | {
                               __typename: 'LayoutLinkList';
                               anchor?: string | null;
@@ -14273,7 +14195,6 @@ export type MenuQuery = {
                                 } | null;
                               } | null> | null;
                             }
-                          | { __typename?: 'LayoutCards' }
                           | {
                               __typename: 'LayoutCollection';
                               collection?: {
@@ -14282,7 +14203,6 @@ export type MenuQuery = {
                               } | null;
                             }
                           | { __typename?: 'LayoutContact' }
-                          | { __typename?: 'LayoutContent' }
                           | {
                               __typename: 'LayoutPages';
                               title?: string | null;
@@ -14419,6 +14339,7 @@ export type MenuQuery = {
                       mimeType?: string | null;
                       title?: string | null;
                       uri?: string | null;
+                      photographerName?: string | null;
                     };
                   } | null;
                   sidebar?: Array<
@@ -14452,7 +14373,6 @@ export type MenuQuery = {
                           } | null;
                         } | null> | null;
                       }
-                    | { __typename?: 'LayoutCards' }
                     | {
                         __typename: 'LayoutLinkList';
                         anchor?: string | null;
@@ -14586,7 +14506,6 @@ export type MenuQuery = {
                           } | null;
                         } | null> | null;
                       }
-                    | { __typename?: 'LayoutCards' }
                     | {
                         __typename: 'LayoutCollection';
                         collection?: {
@@ -14595,7 +14514,6 @@ export type MenuQuery = {
                         } | null;
                       }
                     | { __typename?: 'LayoutContact' }
-                    | { __typename?: 'LayoutContent' }
                     | {
                         __typename: 'LayoutPages';
                         title?: string | null;
@@ -14690,6 +14608,7 @@ export type MenuQuery = {
                     mimeType?: string | null;
                     title?: string | null;
                     uri?: string | null;
+                    photographerName?: string | null;
                   };
                 } | null;
                 sidebar?: Array<
@@ -14723,7 +14642,6 @@ export type MenuQuery = {
                         } | null;
                       } | null> | null;
                     }
-                  | { __typename?: 'LayoutCards' }
                   | {
                       __typename: 'LayoutLinkList';
                       anchor?: string | null;
@@ -14857,7 +14775,6 @@ export type MenuQuery = {
                         } | null;
                       } | null> | null;
                     }
-                  | { __typename?: 'LayoutCards' }
                   | {
                       __typename: 'LayoutCollection';
                       collection?: {
@@ -14866,7 +14783,6 @@ export type MenuQuery = {
                       } | null;
                     }
                   | { __typename?: 'LayoutContact' }
-                  | { __typename?: 'LayoutContent' }
                   | {
                       __typename: 'LayoutPages';
                       title?: string | null;
@@ -15204,6 +15120,7 @@ export type PageFragment = {
       mimeType?: string | null;
       title?: string | null;
       uri?: string | null;
+      photographerName?: string | null;
     };
   } | null;
   sidebar?: Array<
@@ -15234,7 +15151,6 @@ export type PageFragment = {
           } | null;
         } | null> | null;
       }
-    | { __typename?: 'LayoutCards' }
     | {
         __typename: 'LayoutLinkList';
         anchor?: string | null;
@@ -15362,7 +15278,6 @@ export type PageFragment = {
           } | null;
         } | null> | null;
       }
-    | { __typename?: 'LayoutCards' }
     | {
         __typename: 'LayoutCollection';
         collection?: {
@@ -15371,7 +15286,6 @@ export type PageFragment = {
         } | null;
       }
     | { __typename?: 'LayoutContact' }
-    | { __typename?: 'LayoutContent' }
     | {
         __typename: 'LayoutPages';
         title?: string | null;
@@ -15510,6 +15424,7 @@ export type PageQuery = {
         mimeType?: string | null;
         title?: string | null;
         uri?: string | null;
+        photographerName?: string | null;
       };
     } | null;
     sidebar?: Array<
@@ -15540,7 +15455,6 @@ export type PageQuery = {
             } | null;
           } | null> | null;
         }
-      | { __typename?: 'LayoutCards' }
       | {
           __typename: 'LayoutLinkList';
           anchor?: string | null;
@@ -15668,7 +15582,6 @@ export type PageQuery = {
             } | null;
           } | null> | null;
         }
-      | { __typename?: 'LayoutCards' }
       | {
           __typename: 'LayoutCollection';
           collection?: {
@@ -15677,7 +15590,6 @@ export type PageQuery = {
           } | null;
         }
       | { __typename?: 'LayoutContact' }
-      | { __typename?: 'LayoutContent' }
       | {
           __typename: 'LayoutPages';
           title?: string | null;
@@ -15818,6 +15730,7 @@ export type PageByTemplateQuery = {
         mimeType?: string | null;
         title?: string | null;
         uri?: string | null;
+        photographerName?: string | null;
       };
     } | null;
     sidebar?: Array<
@@ -15848,7 +15761,6 @@ export type PageByTemplateQuery = {
             } | null;
           } | null> | null;
         }
-      | { __typename?: 'LayoutCards' }
       | {
           __typename: 'LayoutLinkList';
           anchor?: string | null;
@@ -15976,7 +15888,6 @@ export type PageByTemplateQuery = {
             } | null;
           } | null> | null;
         }
-      | { __typename?: 'LayoutCards' }
       | {
           __typename: 'LayoutCollection';
           collection?: {
@@ -15985,7 +15896,6 @@ export type PageByTemplateQuery = {
           } | null;
         }
       | { __typename?: 'LayoutContact' }
-      | { __typename?: 'LayoutContent' }
       | {
           __typename: 'LayoutPages';
           title?: string | null;
@@ -16156,6 +16066,7 @@ export type PageChildrenSearchQuery = {
                     mimeType?: string | null;
                     title?: string | null;
                     uri?: string | null;
+                    photographerName?: string | null;
                   };
                 } | null;
                 sidebar?: Array<
@@ -16189,7 +16100,6 @@ export type PageChildrenSearchQuery = {
                         } | null;
                       } | null> | null;
                     }
-                  | { __typename?: 'LayoutCards' }
                   | {
                       __typename: 'LayoutLinkList';
                       anchor?: string | null;
@@ -16323,7 +16233,6 @@ export type PageChildrenSearchQuery = {
                         } | null;
                       } | null> | null;
                     }
-                  | { __typename?: 'LayoutCards' }
                   | {
                       __typename: 'LayoutCollection';
                       collection?: {
@@ -16332,7 +16241,6 @@ export type PageChildrenSearchQuery = {
                       } | null;
                     }
                   | { __typename?: 'LayoutContact' }
-                  | { __typename?: 'LayoutContent' }
                   | {
                       __typename: 'LayoutPages';
                       title?: string | null;
@@ -16427,6 +16335,7 @@ export type PageChildrenSearchQuery = {
                   mimeType?: string | null;
                   title?: string | null;
                   uri?: string | null;
+                  photographerName?: string | null;
                 };
               } | null;
               sidebar?: Array<
@@ -16460,7 +16369,6 @@ export type PageChildrenSearchQuery = {
                       } | null;
                     } | null> | null;
                   }
-                | { __typename?: 'LayoutCards' }
                 | {
                     __typename: 'LayoutLinkList';
                     anchor?: string | null;
@@ -16594,7 +16502,6 @@ export type PageChildrenSearchQuery = {
                       } | null;
                     } | null> | null;
                   }
-                | { __typename?: 'LayoutCards' }
                 | {
                     __typename: 'LayoutCollection';
                     collection?: {
@@ -16603,7 +16510,6 @@ export type PageChildrenSearchQuery = {
                     } | null;
                   }
                 | { __typename?: 'LayoutContact' }
-                | { __typename?: 'LayoutContent' }
                 | {
                     __typename: 'LayoutPages';
                     title?: string | null;
@@ -16764,6 +16670,7 @@ export type PagesQuery = {
             mimeType?: string | null;
             title?: string | null;
             uri?: string | null;
+            photographerName?: string | null;
           };
         } | null;
         sidebar?: Array<
@@ -16797,7 +16704,6 @@ export type PagesQuery = {
                 } | null;
               } | null> | null;
             }
-          | { __typename?: 'LayoutCards' }
           | {
               __typename: 'LayoutLinkList';
               anchor?: string | null;
@@ -16931,7 +16837,6 @@ export type PagesQuery = {
                 } | null;
               } | null> | null;
             }
-          | { __typename?: 'LayoutCards' }
           | {
               __typename: 'LayoutCollection';
               collection?: {
@@ -16940,7 +16845,6 @@ export type PagesQuery = {
               } | null;
             }
           | { __typename?: 'LayoutContact' }
-          | { __typename?: 'LayoutContent' }
           | {
               __typename: 'LayoutPages';
               title?: string | null;
@@ -17334,6 +17238,7 @@ export const PostFragmentDoc = gql`
         mimeType
         title
         uri
+        photographerName
       }
     }
     sidebar {
@@ -17444,6 +17349,7 @@ export const PageFragmentDoc = gql`
         mimeType
         title
         uri
+        photographerName
       }
     }
     sidebar {

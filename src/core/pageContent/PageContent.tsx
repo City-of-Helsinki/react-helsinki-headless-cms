@@ -162,7 +162,7 @@ export function PageContent(props: PageContentProps) {
         id={page?.id ?? 'page'}
         imageSrc={page?.featuredImage?.node?.mediaItemUrl}
         imageAlt={page?.featuredImage?.node?.altText}
-        imageLabel={page?.featuredImage?.node?.altText}
+        imageLabel={page?.featuredImage?.node?.photographerName}
         backUrl={backUrl}
         content={
           typeof content === 'function'
