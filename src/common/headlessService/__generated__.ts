@@ -60,6 +60,21 @@ export enum AvatarRatingEnum {
   X = 'X',
 }
 
+/** Card field */
+export type Card = {
+  __typename?: 'Card';
+  /** Background Color */
+  backgroundColor?: Maybe<Scalars['String']>;
+  /** Description */
+  description?: Maybe<Scalars['String']>;
+  /** Icon */
+  icon?: Maybe<Scalars['String']>;
+  /** Link */
+  link?: Maybe<Link>;
+  /** Title */
+  title?: Maybe<Scalars['String']>;
+};
+
 /** The category type */
 export type Category = DatabaseIdentifier &
   HierarchicalNode &
@@ -2699,6 +2714,25 @@ export type EventSelectedCarousel = {
   title?: Maybe<Scalars['String']>;
 };
 
+/** Gallery Image */
+export type GalleryImage = {
+  __typename?: 'GalleryImage';
+  /** Caption of the image */
+  caption?: Maybe<Scalars['String']>;
+  /** Description of the image */
+  description?: Maybe<Scalars['String']>;
+  /** The url of the large image */
+  large?: Maybe<Scalars['String']>;
+  /** The url of the medium image */
+  medium?: Maybe<Scalars['String']>;
+  /** The url of the medium large image */
+  medium_large?: Maybe<Scalars['String']>;
+  /** The url of the thumbnail image */
+  thumbnail?: Maybe<Scalars['String']>;
+  /** Title of the image */
+  title?: Maybe<Scalars['String']>;
+};
+
 /** The general setting type */
 export type GeneralSettings = {
   __typename?: 'GeneralSettings';
@@ -2718,6 +2752,23 @@ export type GeneralSettings = {
   title?: Maybe<Scalars['String']>;
   /** Site URL. */
   url?: Maybe<Scalars['String']>;
+};
+
+/** Hero field */
+export type Hero = {
+  __typename?: 'Hero';
+  /** The background color of the hero */
+  background_color?: Maybe<Scalars['String']>;
+  /** The background color of the hero */
+  background_image_url?: Maybe<Scalars['String']>;
+  /** The desctiption of the hero */
+  description?: Maybe<Scalars['String']>;
+  /** The title of the hero link */
+  link?: Maybe<Link>;
+  /** The title of the hero */
+  title?: Maybe<Scalars['String']>;
+  /** The wave motif of the hero */
+  wave_motif?: Maybe<Scalars['String']>;
 };
 
 /** Content node with hierarchical (parent/child) relationships */
@@ -3026,6 +3077,25 @@ export type HierarchicalTermNodeEnqueuedStylesheetsArgs = {
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
+};
+
+/** Image */
+export type Image = {
+  __typename?: 'Image';
+  /** Caption of the image */
+  caption?: Maybe<Scalars['String']>;
+  /** Description of the image */
+  description?: Maybe<Scalars['String']>;
+  /** The url of the large image */
+  large?: Maybe<Scalars['String']>;
+  /** The url of the medium image */
+  medium?: Maybe<Scalars['String']>;
+  /** The url of the medium large image */
+  medium_large?: Maybe<Scalars['String']>;
+  /** The url of the thumbnail image */
+  thumbnail?: Maybe<Scalars['String']>;
+  /** Title of the image */
+  title?: Maybe<Scalars['String']>;
 };
 
 /** The landingPage type */
@@ -3576,6 +3646,30 @@ export type LayoutArticlesCarousel = {
   title?: Maybe<Scalars['String']>;
 };
 
+/** Layout: LayoutCard */
+export type LayoutCard = {
+  __typename?: 'LayoutCard';
+  /** Alignment */
+  alignment?: Maybe<Scalars['String']>;
+  /** Background Color */
+  backgroundColor?: Maybe<Scalars['String']>;
+  /** Description */
+  description?: Maybe<Scalars['String']>;
+  /** Image */
+  image?: Maybe<Scalars['String']>;
+  /** Link */
+  link?: Maybe<Link>;
+  /** Title */
+  title?: Maybe<Scalars['String']>;
+};
+
+/** Layout: LayoutCards */
+export type LayoutCards = {
+  __typename?: 'LayoutCards';
+  /** Cards */
+  cards?: Maybe<Array<Maybe<Card>>>;
+};
+
 /** Layout: LayoutCollection */
 export type LayoutCollection = {
   __typename?: 'LayoutCollection';
@@ -3592,6 +3686,37 @@ export type LayoutContact = {
   description?: Maybe<Scalars['String']>;
   /** Title */
   title?: Maybe<Scalars['String']>;
+};
+
+/** Layout: LayoutContent */
+export type LayoutContent = {
+  __typename?: 'LayoutContent';
+  /** Background Color */
+  backgroundColor?: Maybe<Scalars['String']>;
+  /** Title */
+  content?: Maybe<Scalars['String']>;
+  /** Title */
+  title?: Maybe<Scalars['String']>;
+};
+
+/** Layout: LayoutImage */
+export type LayoutImage = {
+  __typename?: 'LayoutImage';
+  /** Border */
+  border?: Maybe<Scalars['Boolean']>;
+  /** Image */
+  image?: Maybe<Image>;
+  /** Photographer name (overwrite) */
+  photographer_name?: Maybe<Scalars['String']>;
+  /** Lightbox */
+  show_on_lightbox?: Maybe<Scalars['Boolean']>;
+};
+
+/** Layout: LayoutImageGallery */
+export type LayoutImageGallery = {
+  __typename?: 'LayoutImageGallery';
+  /** Gallery */
+  gallery?: Maybe<Array<Maybe<GalleryImage>>>;
 };
 
 /** Layout: LayoutLinkList */
@@ -3639,6 +3764,32 @@ export type LayoutPagesCarousel = {
   pages?: Maybe<Array<Maybe<Page>>>;
   /** Title */
   title?: Maybe<Scalars['String']>;
+};
+
+/** Layout: LayoutSocialMediaFeed */
+export type LayoutSocialMediaFeed = {
+  __typename?: 'LayoutSocialMediaFeed';
+  /** Anchor */
+  anchor?: Maybe<Scalars['String']>;
+  /** Script */
+  script?: Maybe<Scalars['String']>;
+  /** Title */
+  title?: Maybe<Scalars['String']>;
+};
+
+/** Layout: LayoutSteps */
+export type LayoutSteps = {
+  __typename?: 'LayoutSteps';
+  /** Color */
+  color?: Maybe<Scalars['String']>;
+  /** Description */
+  description?: Maybe<Scalars['String']>;
+  /** Steps */
+  steps?: Maybe<Array<Maybe<Step>>>;
+  /** Title */
+  title?: Maybe<Scalars['String']>;
+  /** Type */
+  type?: Maybe<Scalars['String']>;
 };
 
 /** Link field */
@@ -4567,6 +4718,8 @@ export type Page = ContentNode &
     featuredImageId?: Maybe<Scalars['ID']>;
     /** The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table. */
     guid?: Maybe<Scalars['String']>;
+    /** Hero fields */
+    hero?: Maybe<Hero>;
     /** The globally unique identifier of the page object. */
     id: Scalars['ID'];
     /** Whether the node is a Content Node */
@@ -4736,15 +4889,23 @@ export type PageModulesUnionType =
   | LayoutArticleHighlights
   | LayoutArticles
   | LayoutArticlesCarousel
+  | LayoutCard
+  | LayoutCards
   | LayoutCollection
   | LayoutContact
+  | LayoutContent
+  | LayoutImage
+  | LayoutImageGallery
   | LayoutPages
   | LayoutPagesCarousel
+  | LayoutSocialMediaFeed
+  | LayoutSteps
   | LocationsSelected
   | LocationsSelectedCarousel;
 
 export type PageSidebarUnionType =
   | LayoutArticles
+  | LayoutCards
   | LayoutLinkList
   | LayoutPages;
 
@@ -5421,8 +5582,13 @@ export type PostModulesUnionType =
   | LayoutArticleHighlights
   | LayoutArticles
   | LayoutArticlesCarousel
+  | LayoutCard
+  | LayoutCards
   | LayoutCollection
   | LayoutContact
+  | LayoutContent
+  | LayoutImage
+  | LayoutImageGallery
   | LayoutPages
   | LayoutPagesCarousel
   | LocationsSelected
@@ -5498,6 +5664,7 @@ export type PostPostFormatsNodeInput = {
 
 export type PostSidebarUnionType =
   | LayoutArticles
+  | LayoutCards
   | LayoutLinkList
   | LayoutPages;
 
@@ -8726,6 +8893,15 @@ export type SiteSettings = {
   siteName?: Maybe<Scalars['String']>;
 };
 
+/** Step field */
+export type Step = {
+  __typename?: 'Step';
+  /** The content of the step */
+  content?: Maybe<Scalars['String']>;
+  /** The title of the step */
+  title?: Maybe<Scalars['String']>;
+};
+
 /** The tag type */
 export type Tag = DatabaseIdentifier &
   MenuItemLinkable &
@@ -10908,6 +11084,7 @@ export type PostFragment = {
           } | null;
         } | null> | null;
       }
+    | { __typename?: 'LayoutCards' }
     | {
         __typename: 'LayoutLinkList';
         anchor?: string | null;
@@ -11035,6 +11212,8 @@ export type PostFragment = {
           } | null;
         } | null> | null;
       }
+    | { __typename?: 'LayoutCard' }
+    | { __typename?: 'LayoutCards' }
     | {
         __typename: 'LayoutCollection';
         collection?: {
@@ -11043,6 +11222,9 @@ export type PostFragment = {
         } | null;
       }
     | { __typename?: 'LayoutContact' }
+    | { __typename?: 'LayoutContent' }
+    | { __typename?: 'LayoutImage' }
+    | { __typename?: 'LayoutImageGallery' }
     | {
         __typename: 'LayoutPages';
         title?: string | null;
@@ -11220,6 +11402,7 @@ export type ArticleQuery = {
             } | null;
           } | null> | null;
         }
+      | { __typename?: 'LayoutCards' }
       | {
           __typename: 'LayoutLinkList';
           anchor?: string | null;
@@ -11347,6 +11530,8 @@ export type ArticleQuery = {
             } | null;
           } | null> | null;
         }
+      | { __typename?: 'LayoutCard' }
+      | { __typename?: 'LayoutCards' }
       | {
           __typename: 'LayoutCollection';
           collection?: {
@@ -11355,6 +11540,9 @@ export type ArticleQuery = {
           } | null;
         }
       | { __typename?: 'LayoutContact' }
+      | { __typename?: 'LayoutContent' }
+      | { __typename?: 'LayoutImage' }
+      | { __typename?: 'LayoutImageGallery' }
       | {
           __typename: 'LayoutPages';
           title?: string | null;
@@ -11557,6 +11745,7 @@ export type PostsQuery = {
                 } | null;
               } | null> | null;
             }
+          | { __typename?: 'LayoutCards' }
           | {
               __typename: 'LayoutLinkList';
               anchor?: string | null;
@@ -11690,6 +11879,8 @@ export type PostsQuery = {
                 } | null;
               } | null> | null;
             }
+          | { __typename?: 'LayoutCard' }
+          | { __typename?: 'LayoutCards' }
           | {
               __typename: 'LayoutCollection';
               collection?: {
@@ -11698,6 +11889,9 @@ export type PostsQuery = {
               } | null;
             }
           | { __typename?: 'LayoutContact' }
+          | { __typename?: 'LayoutContent' }
+          | { __typename?: 'LayoutImage' }
+          | { __typename?: 'LayoutImageGallery' }
           | {
               __typename: 'LayoutPages';
               title?: string | null;
@@ -12018,6 +12212,7 @@ export type MenuItemFragment = {
                             } | null;
                           } | null> | null;
                         }
+                      | { __typename?: 'LayoutCards' }
                       | {
                           __typename: 'LayoutLinkList';
                           anchor?: string | null;
@@ -12151,6 +12346,8 @@ export type MenuItemFragment = {
                             } | null;
                           } | null> | null;
                         }
+                      | { __typename?: 'LayoutCard' }
+                      | { __typename?: 'LayoutCards' }
                       | {
                           __typename: 'LayoutCollection';
                           collection?: {
@@ -12159,6 +12356,9 @@ export type MenuItemFragment = {
                           } | null;
                         }
                       | { __typename?: 'LayoutContact' }
+                      | { __typename?: 'LayoutContent' }
+                      | { __typename?: 'LayoutImage' }
+                      | { __typename?: 'LayoutImageGallery' }
                       | {
                           __typename: 'LayoutPages';
                           title?: string | null;
@@ -12205,6 +12405,8 @@ export type MenuItemFragment = {
                             } | null;
                           } | null> | null;
                         }
+                      | { __typename?: 'LayoutSocialMediaFeed' }
+                      | { __typename?: 'LayoutSteps' }
                       | {
                           __typename: 'LocationsSelected';
                           title?: string | null;
@@ -12287,6 +12489,7 @@ export type MenuItemFragment = {
                           } | null;
                         } | null> | null;
                       }
+                    | { __typename?: 'LayoutCards' }
                     | {
                         __typename: 'LayoutLinkList';
                         anchor?: string | null;
@@ -12420,6 +12623,8 @@ export type MenuItemFragment = {
                           } | null;
                         } | null> | null;
                       }
+                    | { __typename?: 'LayoutCard' }
+                    | { __typename?: 'LayoutCards' }
                     | {
                         __typename: 'LayoutCollection';
                         collection?: {
@@ -12428,6 +12633,9 @@ export type MenuItemFragment = {
                         } | null;
                       }
                     | { __typename?: 'LayoutContact' }
+                    | { __typename?: 'LayoutContent' }
+                    | { __typename?: 'LayoutImage' }
+                    | { __typename?: 'LayoutImageGallery' }
                     | {
                         __typename: 'LayoutPages';
                         title?: string | null;
@@ -12474,6 +12682,8 @@ export type MenuItemFragment = {
                           } | null;
                         } | null> | null;
                       }
+                    | { __typename?: 'LayoutSocialMediaFeed' }
+                    | { __typename?: 'LayoutSteps' }
                     | {
                         __typename: 'LocationsSelected';
                         title?: string | null;
@@ -12598,6 +12808,7 @@ export type MenuItemFragment = {
                     } | null;
                   } | null> | null;
                 }
+              | { __typename?: 'LayoutCards' }
               | {
                   __typename: 'LayoutLinkList';
                   anchor?: string | null;
@@ -12731,6 +12942,8 @@ export type MenuItemFragment = {
                     } | null;
                   } | null> | null;
                 }
+              | { __typename?: 'LayoutCard' }
+              | { __typename?: 'LayoutCards' }
               | {
                   __typename: 'LayoutCollection';
                   collection?: {
@@ -12739,6 +12952,9 @@ export type MenuItemFragment = {
                   } | null;
                 }
               | { __typename?: 'LayoutContact' }
+              | { __typename?: 'LayoutContent' }
+              | { __typename?: 'LayoutImage' }
+              | { __typename?: 'LayoutImageGallery' }
               | {
                   __typename: 'LayoutPages';
                   title?: string | null;
@@ -12785,6 +13001,8 @@ export type MenuItemFragment = {
                     } | null;
                   } | null> | null;
                 }
+              | { __typename?: 'LayoutSocialMediaFeed' }
+              | { __typename?: 'LayoutSteps' }
               | {
                   __typename: 'LocationsSelected';
                   title?: string | null;
@@ -12867,6 +13085,7 @@ export type MenuItemFragment = {
                   } | null;
                 } | null> | null;
               }
+            | { __typename?: 'LayoutCards' }
             | {
                 __typename: 'LayoutLinkList';
                 anchor?: string | null;
@@ -13000,6 +13219,8 @@ export type MenuItemFragment = {
                   } | null;
                 } | null> | null;
               }
+            | { __typename?: 'LayoutCard' }
+            | { __typename?: 'LayoutCards' }
             | {
                 __typename: 'LayoutCollection';
                 collection?: {
@@ -13008,6 +13229,9 @@ export type MenuItemFragment = {
                 } | null;
               }
             | { __typename?: 'LayoutContact' }
+            | { __typename?: 'LayoutContent' }
+            | { __typename?: 'LayoutImage' }
+            | { __typename?: 'LayoutImageGallery' }
             | {
                 __typename: 'LayoutPages';
                 title?: string | null;
@@ -13054,6 +13278,8 @@ export type MenuItemFragment = {
                   } | null;
                 } | null> | null;
               }
+            | { __typename?: 'LayoutSocialMediaFeed' }
+            | { __typename?: 'LayoutSteps' }
             | {
                 __typename: 'LocationsSelected';
                 title?: string | null;
@@ -13184,6 +13410,7 @@ export type MenuPageFieldsFragment = {
             } | null;
           } | null> | null;
         }
+      | { __typename?: 'LayoutCards' }
       | {
           __typename: 'LayoutLinkList';
           anchor?: string | null;
@@ -13311,6 +13538,8 @@ export type MenuPageFieldsFragment = {
             } | null;
           } | null> | null;
         }
+      | { __typename?: 'LayoutCard' }
+      | { __typename?: 'LayoutCards' }
       | {
           __typename: 'LayoutCollection';
           collection?: {
@@ -13319,6 +13548,9 @@ export type MenuPageFieldsFragment = {
           } | null;
         }
       | { __typename?: 'LayoutContact' }
+      | { __typename?: 'LayoutContent' }
+      | { __typename?: 'LayoutImage' }
+      | { __typename?: 'LayoutImageGallery' }
       | {
           __typename: 'LayoutPages';
           title?: string | null;
@@ -13365,6 +13597,8 @@ export type MenuPageFieldsFragment = {
             } | null;
           } | null> | null;
         }
+      | { __typename?: 'LayoutSocialMediaFeed' }
+      | { __typename?: 'LayoutSteps' }
       | {
           __typename: 'LocationsSelected';
           title?: string | null;
@@ -13444,6 +13678,7 @@ export type MenuPageFieldsFragment = {
           } | null;
         } | null> | null;
       }
+    | { __typename?: 'LayoutCards' }
     | {
         __typename: 'LayoutLinkList';
         anchor?: string | null;
@@ -13571,6 +13806,8 @@ export type MenuPageFieldsFragment = {
           } | null;
         } | null> | null;
       }
+    | { __typename?: 'LayoutCard' }
+    | { __typename?: 'LayoutCards' }
     | {
         __typename: 'LayoutCollection';
         collection?: {
@@ -13579,6 +13816,9 @@ export type MenuPageFieldsFragment = {
         } | null;
       }
     | { __typename?: 'LayoutContact' }
+    | { __typename?: 'LayoutContent' }
+    | { __typename?: 'LayoutImage' }
+    | { __typename?: 'LayoutImageGallery' }
     | {
         __typename: 'LayoutPages';
         title?: string | null;
@@ -13625,6 +13865,8 @@ export type MenuPageFieldsFragment = {
           } | null;
         } | null> | null;
       }
+    | { __typename?: 'LayoutSocialMediaFeed' }
+    | { __typename?: 'LayoutSteps' }
     | {
         __typename: 'LocationsSelected';
         title?: string | null;
@@ -13793,6 +14035,7 @@ export type MenuQuery = {
                                   } | null;
                                 } | null> | null;
                               }
+                            | { __typename?: 'LayoutCards' }
                             | {
                                 __typename: 'LayoutLinkList';
                                 anchor?: string | null;
@@ -13926,6 +14169,8 @@ export type MenuQuery = {
                                   } | null;
                                 } | null> | null;
                               }
+                            | { __typename?: 'LayoutCard' }
+                            | { __typename?: 'LayoutCards' }
                             | {
                                 __typename: 'LayoutCollection';
                                 collection?: {
@@ -13934,6 +14179,9 @@ export type MenuQuery = {
                                 } | null;
                               }
                             | { __typename?: 'LayoutContact' }
+                            | { __typename?: 'LayoutContent' }
+                            | { __typename?: 'LayoutImage' }
+                            | { __typename?: 'LayoutImageGallery' }
                             | {
                                 __typename: 'LayoutPages';
                                 title?: string | null;
@@ -13980,6 +14228,8 @@ export type MenuQuery = {
                                   } | null;
                                 } | null> | null;
                               }
+                            | { __typename?: 'LayoutSocialMediaFeed' }
+                            | { __typename?: 'LayoutSteps' }
                             | {
                                 __typename: 'LocationsSelected';
                                 title?: string | null;
@@ -14062,6 +14312,7 @@ export type MenuQuery = {
                                 } | null;
                               } | null> | null;
                             }
+                          | { __typename?: 'LayoutCards' }
                           | {
                               __typename: 'LayoutLinkList';
                               anchor?: string | null;
@@ -14195,6 +14446,8 @@ export type MenuQuery = {
                                 } | null;
                               } | null> | null;
                             }
+                          | { __typename?: 'LayoutCard' }
+                          | { __typename?: 'LayoutCards' }
                           | {
                               __typename: 'LayoutCollection';
                               collection?: {
@@ -14203,6 +14456,9 @@ export type MenuQuery = {
                               } | null;
                             }
                           | { __typename?: 'LayoutContact' }
+                          | { __typename?: 'LayoutContent' }
+                          | { __typename?: 'LayoutImage' }
+                          | { __typename?: 'LayoutImageGallery' }
                           | {
                               __typename: 'LayoutPages';
                               title?: string | null;
@@ -14249,6 +14505,8 @@ export type MenuQuery = {
                                 } | null;
                               } | null> | null;
                             }
+                          | { __typename?: 'LayoutSocialMediaFeed' }
+                          | { __typename?: 'LayoutSteps' }
                           | {
                               __typename: 'LocationsSelected';
                               title?: string | null;
@@ -14373,6 +14631,7 @@ export type MenuQuery = {
                           } | null;
                         } | null> | null;
                       }
+                    | { __typename?: 'LayoutCards' }
                     | {
                         __typename: 'LayoutLinkList';
                         anchor?: string | null;
@@ -14506,6 +14765,8 @@ export type MenuQuery = {
                           } | null;
                         } | null> | null;
                       }
+                    | { __typename?: 'LayoutCard' }
+                    | { __typename?: 'LayoutCards' }
                     | {
                         __typename: 'LayoutCollection';
                         collection?: {
@@ -14514,6 +14775,9 @@ export type MenuQuery = {
                         } | null;
                       }
                     | { __typename?: 'LayoutContact' }
+                    | { __typename?: 'LayoutContent' }
+                    | { __typename?: 'LayoutImage' }
+                    | { __typename?: 'LayoutImageGallery' }
                     | {
                         __typename: 'LayoutPages';
                         title?: string | null;
@@ -14560,6 +14824,8 @@ export type MenuQuery = {
                           } | null;
                         } | null> | null;
                       }
+                    | { __typename?: 'LayoutSocialMediaFeed' }
+                    | { __typename?: 'LayoutSteps' }
                     | {
                         __typename: 'LocationsSelected';
                         title?: string | null;
@@ -14642,6 +14908,7 @@ export type MenuQuery = {
                         } | null;
                       } | null> | null;
                     }
+                  | { __typename?: 'LayoutCards' }
                   | {
                       __typename: 'LayoutLinkList';
                       anchor?: string | null;
@@ -14775,6 +15042,8 @@ export type MenuQuery = {
                         } | null;
                       } | null> | null;
                     }
+                  | { __typename?: 'LayoutCard' }
+                  | { __typename?: 'LayoutCards' }
                   | {
                       __typename: 'LayoutCollection';
                       collection?: {
@@ -14783,6 +15052,9 @@ export type MenuQuery = {
                       } | null;
                     }
                   | { __typename?: 'LayoutContact' }
+                  | { __typename?: 'LayoutContent' }
+                  | { __typename?: 'LayoutImage' }
+                  | { __typename?: 'LayoutImageGallery' }
                   | {
                       __typename: 'LayoutPages';
                       title?: string | null;
@@ -14829,6 +15101,8 @@ export type MenuQuery = {
                         } | null;
                       } | null> | null;
                     }
+                  | { __typename?: 'LayoutSocialMediaFeed' }
+                  | { __typename?: 'LayoutSteps' }
                   | {
                       __typename: 'LocationsSelected';
                       title?: string | null;
@@ -15151,6 +15425,7 @@ export type PageFragment = {
           } | null;
         } | null> | null;
       }
+    | { __typename?: 'LayoutCards' }
     | {
         __typename: 'LayoutLinkList';
         anchor?: string | null;
@@ -15278,6 +15553,8 @@ export type PageFragment = {
           } | null;
         } | null> | null;
       }
+    | { __typename?: 'LayoutCard' }
+    | { __typename?: 'LayoutCards' }
     | {
         __typename: 'LayoutCollection';
         collection?: {
@@ -15286,6 +15563,9 @@ export type PageFragment = {
         } | null;
       }
     | { __typename?: 'LayoutContact' }
+    | { __typename?: 'LayoutContent' }
+    | { __typename?: 'LayoutImage' }
+    | { __typename?: 'LayoutImageGallery' }
     | {
         __typename: 'LayoutPages';
         title?: string | null;
@@ -15332,6 +15612,8 @@ export type PageFragment = {
           } | null;
         } | null> | null;
       }
+    | { __typename?: 'LayoutSocialMediaFeed' }
+    | { __typename?: 'LayoutSteps' }
     | {
         __typename: 'LocationsSelected';
         title?: string | null;
@@ -15455,6 +15737,7 @@ export type PageQuery = {
             } | null;
           } | null> | null;
         }
+      | { __typename?: 'LayoutCards' }
       | {
           __typename: 'LayoutLinkList';
           anchor?: string | null;
@@ -15582,6 +15865,8 @@ export type PageQuery = {
             } | null;
           } | null> | null;
         }
+      | { __typename?: 'LayoutCard' }
+      | { __typename?: 'LayoutCards' }
       | {
           __typename: 'LayoutCollection';
           collection?: {
@@ -15590,6 +15875,9 @@ export type PageQuery = {
           } | null;
         }
       | { __typename?: 'LayoutContact' }
+      | { __typename?: 'LayoutContent' }
+      | { __typename?: 'LayoutImage' }
+      | { __typename?: 'LayoutImageGallery' }
       | {
           __typename: 'LayoutPages';
           title?: string | null;
@@ -15636,6 +15924,8 @@ export type PageQuery = {
             } | null;
           } | null> | null;
         }
+      | { __typename?: 'LayoutSocialMediaFeed' }
+      | { __typename?: 'LayoutSteps' }
       | {
           __typename: 'LocationsSelected';
           title?: string | null;
@@ -15761,6 +16051,7 @@ export type PageByTemplateQuery = {
             } | null;
           } | null> | null;
         }
+      | { __typename?: 'LayoutCards' }
       | {
           __typename: 'LayoutLinkList';
           anchor?: string | null;
@@ -15888,6 +16179,8 @@ export type PageByTemplateQuery = {
             } | null;
           } | null> | null;
         }
+      | { __typename?: 'LayoutCard' }
+      | { __typename?: 'LayoutCards' }
       | {
           __typename: 'LayoutCollection';
           collection?: {
@@ -15896,6 +16189,9 @@ export type PageByTemplateQuery = {
           } | null;
         }
       | { __typename?: 'LayoutContact' }
+      | { __typename?: 'LayoutContent' }
+      | { __typename?: 'LayoutImage' }
+      | { __typename?: 'LayoutImageGallery' }
       | {
           __typename: 'LayoutPages';
           title?: string | null;
@@ -15942,6 +16238,8 @@ export type PageByTemplateQuery = {
             } | null;
           } | null> | null;
         }
+      | { __typename?: 'LayoutSocialMediaFeed' }
+      | { __typename?: 'LayoutSteps' }
       | {
           __typename: 'LocationsSelected';
           title?: string | null;
@@ -16100,6 +16398,7 @@ export type PageChildrenSearchQuery = {
                         } | null;
                       } | null> | null;
                     }
+                  | { __typename?: 'LayoutCards' }
                   | {
                       __typename: 'LayoutLinkList';
                       anchor?: string | null;
@@ -16233,6 +16532,8 @@ export type PageChildrenSearchQuery = {
                         } | null;
                       } | null> | null;
                     }
+                  | { __typename?: 'LayoutCard' }
+                  | { __typename?: 'LayoutCards' }
                   | {
                       __typename: 'LayoutCollection';
                       collection?: {
@@ -16241,6 +16542,9 @@ export type PageChildrenSearchQuery = {
                       } | null;
                     }
                   | { __typename?: 'LayoutContact' }
+                  | { __typename?: 'LayoutContent' }
+                  | { __typename?: 'LayoutImage' }
+                  | { __typename?: 'LayoutImageGallery' }
                   | {
                       __typename: 'LayoutPages';
                       title?: string | null;
@@ -16287,6 +16591,8 @@ export type PageChildrenSearchQuery = {
                         } | null;
                       } | null> | null;
                     }
+                  | { __typename?: 'LayoutSocialMediaFeed' }
+                  | { __typename?: 'LayoutSteps' }
                   | {
                       __typename: 'LocationsSelected';
                       title?: string | null;
@@ -16369,6 +16675,7 @@ export type PageChildrenSearchQuery = {
                       } | null;
                     } | null> | null;
                   }
+                | { __typename?: 'LayoutCards' }
                 | {
                     __typename: 'LayoutLinkList';
                     anchor?: string | null;
@@ -16502,6 +16809,8 @@ export type PageChildrenSearchQuery = {
                       } | null;
                     } | null> | null;
                   }
+                | { __typename?: 'LayoutCard' }
+                | { __typename?: 'LayoutCards' }
                 | {
                     __typename: 'LayoutCollection';
                     collection?: {
@@ -16510,6 +16819,9 @@ export type PageChildrenSearchQuery = {
                     } | null;
                   }
                 | { __typename?: 'LayoutContact' }
+                | { __typename?: 'LayoutContent' }
+                | { __typename?: 'LayoutImage' }
+                | { __typename?: 'LayoutImageGallery' }
                 | {
                     __typename: 'LayoutPages';
                     title?: string | null;
@@ -16556,6 +16868,8 @@ export type PageChildrenSearchQuery = {
                       } | null;
                     } | null> | null;
                   }
+                | { __typename?: 'LayoutSocialMediaFeed' }
+                | { __typename?: 'LayoutSteps' }
                 | {
                     __typename: 'LocationsSelected';
                     title?: string | null;
@@ -16704,6 +17018,7 @@ export type PagesQuery = {
                 } | null;
               } | null> | null;
             }
+          | { __typename?: 'LayoutCards' }
           | {
               __typename: 'LayoutLinkList';
               anchor?: string | null;
@@ -16837,6 +17152,8 @@ export type PagesQuery = {
                 } | null;
               } | null> | null;
             }
+          | { __typename?: 'LayoutCard' }
+          | { __typename?: 'LayoutCards' }
           | {
               __typename: 'LayoutCollection';
               collection?: {
@@ -16845,6 +17162,9 @@ export type PagesQuery = {
               } | null;
             }
           | { __typename?: 'LayoutContact' }
+          | { __typename?: 'LayoutContent' }
+          | { __typename?: 'LayoutImage' }
+          | { __typename?: 'LayoutImageGallery' }
           | {
               __typename: 'LayoutPages';
               title?: string | null;
@@ -16891,6 +17211,8 @@ export type PagesQuery = {
                 } | null;
               } | null> | null;
             }
+          | { __typename?: 'LayoutSocialMediaFeed' }
+          | { __typename?: 'LayoutSteps' }
           | {
               __typename: 'LocationsSelected';
               title?: string | null;
