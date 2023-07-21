@@ -24,16 +24,6 @@ export type Scalars = {
   link__Import: any;
 };
 
-export type AboutPagesResponse = {
-  __typename?: 'AboutPagesResponse';
-  data: Array<StaticPage>;
-};
-
-export type AccessibilityPagesResponse = {
-  __typename?: 'AccessibilityPagesResponse';
-  data: Array<StaticPage>;
-};
-
 export type Audience = {
   __typename?: 'Audience';
   id?: Maybe<Scalars['ID']>;
@@ -63,51 +53,6 @@ export type CmsImage = {
   photographerCredit?: Maybe<LocalizedObject>;
   title?: Maybe<Scalars['String']>;
   url?: Maybe<Scalars['String']>;
-};
-
-export type CollectionDetails = {
-  __typename?: 'CollectionDetails';
-  boxColor?: Maybe<Scalars['String']>;
-  contentType?: Maybe<Scalars['Int']>;
-  curatedEvents: Array<Scalars['String']>;
-  curatedEventsTitle?: Maybe<LocalizedObject>;
-  depth?: Maybe<Scalars['Int']>;
-  description?: Maybe<LocalizedObject>;
-  draftTitle?: Maybe<Scalars['String']>;
-  eventListQuery?: Maybe<LocalizedObject>;
-  eventListTitle?: Maybe<LocalizedObject>;
-  expireAt?: Maybe<Scalars['String']>;
-  expired?: Maybe<Scalars['Boolean']>;
-  firstPublishedAt?: Maybe<Scalars['String']>;
-  goLiveAt?: Maybe<Scalars['String']>;
-  hasUnpublishedChanges?: Maybe<Scalars['Boolean']>;
-  heroImage?: Maybe<CmsImage>;
-  id: Scalars['ID'];
-  keywords?: Maybe<LocalizedCmsKeywords>;
-  lastPublishedAt?: Maybe<Scalars['String']>;
-  latestRevisionCreatedAt?: Maybe<Scalars['String']>;
-  linkText?: Maybe<LocalizedObject>;
-  linkUrl?: Maybe<LocalizedObject>;
-  live?: Maybe<Scalars['Boolean']>;
-  liveRevision?: Maybe<Scalars['Int']>;
-  locked?: Maybe<Scalars['Boolean']>;
-  lockedAt?: Maybe<Scalars['String']>;
-  lockedBy?: Maybe<Scalars['Int']>;
-  numchild?: Maybe<Scalars['Int']>;
-  owner?: Maybe<Scalars['Int']>;
-  path?: Maybe<Scalars['String']>;
-  searchDescription?: Maybe<Scalars['String']>;
-  seoTitle?: Maybe<Scalars['String']>;
-  showInMenus?: Maybe<Scalars['Boolean']>;
-  slug: Scalars['ID'];
-  socialMediaDescription?: Maybe<LocalizedObject>;
-  title: LocalizedObject;
-  urlPath?: Maybe<Scalars['String']>;
-};
-
-export type CollectionListResponse = {
-  __typename?: 'CollectionListResponse';
-  data: Array<CollectionDetails>;
 };
 
 export type Division = {
@@ -235,45 +180,6 @@ export type KeywordListResponse = {
   meta: Meta;
 };
 
-export type LandingPage = {
-  __typename?: 'LandingPage';
-  bottomBanner?: Maybe<BannerPage>;
-  contentType?: Maybe<Scalars['Int']>;
-  depth?: Maybe<Scalars['Int']>;
-  draftTitle?: Maybe<Scalars['String']>;
-  expireAt?: Maybe<Scalars['String']>;
-  expired?: Maybe<Scalars['Boolean']>;
-  firstPublishedAt?: Maybe<Scalars['String']>;
-  goLiveAt?: Maybe<Scalars['String']>;
-  hasUnpublishedChanges?: Maybe<Scalars['Boolean']>;
-  id: Scalars['ID'];
-  keywords?: Maybe<LocalizedCmsKeywords>;
-  lastPublishedAt?: Maybe<Scalars['String']>;
-  latestRevisionCreatedAt?: Maybe<Scalars['String']>;
-  live?: Maybe<Scalars['Boolean']>;
-  liveRevision?: Maybe<Scalars['Int']>;
-  locked?: Maybe<Scalars['Boolean']>;
-  lockedAt?: Maybe<Scalars['String']>;
-  lockedBy?: Maybe<Scalars['Int']>;
-  metaInformation?: Maybe<LocalizedObject>;
-  numchild?: Maybe<Scalars['Int']>;
-  owner?: Maybe<Scalars['Int']>;
-  pageTitle?: Maybe<LocalizedObject>;
-  path?: Maybe<Scalars['String']>;
-  searchDescription?: Maybe<Scalars['String']>;
-  seoTitle?: Maybe<Scalars['String']>;
-  showInMenus?: Maybe<Scalars['Boolean']>;
-  slug?: Maybe<Scalars['String']>;
-  title?: Maybe<LocalizedObject>;
-  topBanner?: Maybe<BannerPage>;
-  urlPath?: Maybe<Scalars['String']>;
-};
-
-export type LandingPagesResponse = {
-  __typename?: 'LandingPagesResponse';
-  data: Array<LandingPage>;
-};
-
 export type LocalizedCmsImage = {
   __typename?: 'LocalizedCmsImage';
   en?: Maybe<CmsImage>;
@@ -396,30 +302,15 @@ export type Query = {
   __typename?: 'Query';
   _empty?: Maybe<Scalars['String']>;
   _service: _Service;
-  aboutPages: AboutPagesResponse;
-  accessibilityPages: AccessibilityPagesResponse;
-  collectionDetails: CollectionDetails;
-  collectionList: CollectionListResponse;
   eventDetails: EventDetails;
   eventList: EventListResponse;
   eventsByIds: EventListResponse;
   keywordDetails: Keyword;
   keywordList: KeywordListResponse;
-  landingPage: LandingPage;
-  landingPages: LandingPagesResponse;
   neighborhoodList: NeighborhoodListResponse;
   organizationDetails: OrganizationDetails;
   placeDetails: Place;
   placeList: PlaceListResponse;
-};
-
-export type QueryCollectionDetailsArgs = {
-  draft?: InputMaybe<Scalars['Boolean']>;
-  slug?: InputMaybe<Scalars['ID']>;
-};
-
-export type QueryCollectionListArgs = {
-  visibleOnFrontpage?: InputMaybe<Scalars['Boolean']>;
 };
 
 export type QueryEventDetailsArgs = {
@@ -498,15 +389,6 @@ export type QueryKeywordListArgs = {
   showAllKeywords?: InputMaybe<Scalars['Boolean']>;
   sort?: InputMaybe<Scalars['String']>;
   text?: InputMaybe<Scalars['String']>;
-};
-
-export type QueryLandingPageArgs = {
-  draft?: InputMaybe<Scalars['Boolean']>;
-  id: Scalars['ID'];
-};
-
-export type QueryLandingPagesArgs = {
-  visibleOnFrontpage?: InputMaybe<Scalars['Boolean']>;
 };
 
 export type QueryOrganizationDetailsArgs = {

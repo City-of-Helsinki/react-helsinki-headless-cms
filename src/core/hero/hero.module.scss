@@ -23,11 +23,23 @@
         z-index: 1;
         right: 0;
         bottom: 0;
-        margin: 0 var(--padding);
-        background-color: var(--color-black-80);
+        margin: 0;
+        background-color: var(--color-black);
         color: var(--color-white);
-        padding: 4px var(--spacing-xs);
-        opacity: 0.9;
+        padding: 4px;
+        opacity: 0.6;
+        bottom: 32px;
+        font-size: var(--fontsize-body-s);
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        transform: rotate(180deg);
+        writing-mode: vertical-lr;
+        max-height: 80%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
     }
 

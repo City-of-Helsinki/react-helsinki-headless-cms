@@ -45,6 +45,7 @@ fragment Post on Post {
       mimeType
       title
       uri
+      photographerName
     }
   }
   sidebar {
