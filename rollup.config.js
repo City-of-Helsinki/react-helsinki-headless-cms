@@ -8,17 +8,16 @@ import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
 import includePaths from 'rollup-plugin-includepaths';
 import postcss from 'rollup-plugin-postcss';
-import ts from 'rollup-plugin-ts';
+import typescript from 'rollup-plugin-typescript2';
+import dts from 'rollup-plugin-dts';
 import nodePolyfills from 'rollup-plugin-polyfill-node';
 import copy from 'rollup-plugin-copy';
 import del from 'rollup-plugin-delete';
 
-export default buildConfig();
+const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
-function buildConfig() {
-  const extensions = ['.js', '.jsx', '.ts', '.tsx'];
-
-  return {
+export default [
+  {
     input: {
       index: 'src/core/index.ts',
       apollo: 'src/apollo/index.ts',
@@ -42,7 +41,7 @@ function buildConfig() {
       nodePolyfills(),
       includePaths({ paths: ['src'], extensions }),
       resolve(),
-      ts(),
+      typescript(),
       commonjs(),
       json(),
       postcss({
@@ -90,5 +89,18 @@ function buildConfig() {
       '@apollo/client',
       'date-fns',
     ],
-  };
-}
+  },
+  {
+    input: {
+      index: 'src/core/index.ts',
+      apollo: 'src/apollo/index.ts',
+    },
+    output: [
+      {
+        dir: 'dist',
+        format: 'es',
+      },
+    ],
+    plugins: [dts.default()],
+  },
+];
