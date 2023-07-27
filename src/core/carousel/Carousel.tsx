@@ -11,7 +11,6 @@ import {
   getSlideDotKey,
   getLoadMoreKey,
 } from './utils/utils';
-import { type CollectionProps } from '../collection/Collection';
 import { useConfig } from '../configProvider/useConfig';
 
 export type CarouselProps<T> = {
@@ -20,9 +19,9 @@ export type CarouselProps<T> = {
   itemsMobile?: 1 | 2;
   className?: string;
   withDots?: boolean;
-  onLoadMore?: CollectionProps['onLoadMore'];
-  hasMore?: CollectionProps['hasNext'];
-  loading?: CollectionProps['loading'];
+  onLoadMore?: () => void;
+  hasMore?: boolean;
+  loading?: boolean;
   loadMoreButtonLabelText?: string;
   title?: string;
 };
