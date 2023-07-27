@@ -37,7 +37,6 @@ const mockPage: ArticleQuery['post'] = {
       title: 'Picture with content title',
     },
   },
-  date: '2022-05-10T15:10:13',
   categories: {
     edges: [
       {

@@ -6,7 +6,6 @@
     "lib": ["dom", "es2015"],
     "outDir": "lib",
     "allowSyntheticDefaultImports": true,
-    "suppressImplicitAnyIndexErrors": true,
     "forceConsistentCasingInFileNames": true,
     "sourceMap": true,
     "declaration": true,
