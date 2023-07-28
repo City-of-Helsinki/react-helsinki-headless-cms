@@ -98,8 +98,10 @@
       margin-bottom: var(--spacing-2-xs);
 
       @include respond_above(s) {
-        font-size: var(--fontsize-heading-xl);
+        hyphens: auto;
+        font-size: var(--fontsize-heading-l);
         margin-bottom: var(--spacing-s);
+        word-break: break-word;
       }
     }
 
