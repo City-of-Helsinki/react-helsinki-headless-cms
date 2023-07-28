@@ -94,13 +94,8 @@ export default [
     input: {
       index: 'src/core/index.ts',
       apollo: 'src/apollo/index.ts',
-      nextjs: 'src/nextjs/index.ts',
     },
     output: [
-      {
-        dir: 'dist/cjs',
-        format: 'cjs',
-      },
       {
         dir: 'dist',
         format: 'es',
