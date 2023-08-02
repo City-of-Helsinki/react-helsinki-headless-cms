@@ -174,3 +174,69 @@ fragment LocationsSelectedCarousel on LocationsSelectedCarousel {
   module
   __typename
 }
+
+fragment LayoutCard on LayoutCard {
+  alignment
+  backgroundColor
+  description
+  link {
+    target
+    title
+    url
+  }
+  title
+  # bug in headless cms. Error 0: Fields "image" conflict because they return conflicting types "String" and "Image".
+  #  image
+  __typename
+}
+
+fragment LayoutCards on LayoutCards {
+  cards {
+    backgroundColor
+    description
+    icon
+    link {
+      target
+      title
+      url
+    }
+    title
+  }
+  __typename
+}
+
+fragment LayoutContent on LayoutContent {
+  backgroundColor
+  content
+  title
+  __typename
+}
+
+fragment LayoutImage on LayoutImage {
+  border
+  photographer_name
+  # bug in headless cms. Error 0: Fields "image" conflict because they return conflicting types "String" and "Image".
+  # image {
+  #   caption
+  #   description
+  #   large
+  #   medium
+  #   thumbnail
+  #   title
+  #   medium_large
+  # }
+  show_on_lightbox
+  __typename
+}
+
+fragment LayoutSteps on LayoutSteps {
+  color
+  description
+  steps {
+    content
+    title
+  }
+  title
+  type
+  __typename
+}

@@ -11,6 +11,11 @@ import {
 import {
   ArticleType,
   LayoutArticle,
+  LayoutContent,
+  LayoutCard,
+  LayoutCards,
+  LayoutImage,
+  LayoutSteps,
   LayoutLinkList,
   LayoutPage,
   LayoutPageCarousel,
@@ -28,6 +33,51 @@ import {
 } from './types';
 import { EventType } from '../eventsService/types';
 import { VenueType } from '../venuesService/types';
+
+export function isLayoutContent(
+  module: PageModule | PageSidebarModule,
+): module is LayoutContent {
+  return (
+    // eslint-disable-next-line no-underscore-dangle
+    module.__typename === 'LayoutContent'
+  );
+}
+
+export function isLayoutCard(
+  module: PageModule | PageSidebarModule,
+): module is LayoutCard {
+  return (
+    // eslint-disable-next-line no-underscore-dangle
+    module.__typename === 'LayoutCard'
+  );
+}
+
+export function isLayoutCards(
+  module: PageModule | PageSidebarModule,
+): module is LayoutCards {
+  return (
+    // eslint-disable-next-line no-underscore-dangle
+    module.__typename === 'LayoutCards'
+  );
+}
+
+export function isLayoutImage(
+  module: PageModule | PageSidebarModule,
+): module is LayoutImage {
+  return (
+    // eslint-disable-next-line no-underscore-dangle
+    module.__typename === 'LayoutImage'
+  );
+}
+
+export function isLayoutSteps(
+  module: PageModule | PageSidebarModule,
+): module is LayoutSteps {
+  return (
+    // eslint-disable-next-line no-underscore-dangle
+    module.__typename === 'LayoutSteps'
+  );
+}
 
 export function isLayoutArticle(
   module: PageModule | PageSidebarModule,

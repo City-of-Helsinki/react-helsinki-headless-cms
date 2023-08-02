@@ -11212,8 +11212,35 @@ export type PostFragment = {
           } | null;
         } | null> | null;
       }
-    | { __typename?: 'LayoutCard' }
-    | { __typename?: 'LayoutCards' }
+    | {
+        __typename: 'LayoutCard';
+        alignment?: string | null;
+        backgroundColor?: string | null;
+        description?: string | null;
+        title?: string | null;
+        link?: {
+          __typename?: 'Link';
+          target?: string | null;
+          title?: string | null;
+          url?: string | null;
+        } | null;
+      }
+    | {
+        __typename: 'LayoutCards';
+        cards?: Array<{
+          __typename?: 'Card';
+          backgroundColor?: string | null;
+          description?: string | null;
+          icon?: string | null;
+          title?: string | null;
+          link?: {
+            __typename?: 'Link';
+            target?: string | null;
+            title?: string | null;
+            url?: string | null;
+          } | null;
+        } | null> | null;
+      }
     | {
         __typename: 'LayoutCollection';
         collection?: {
@@ -11222,8 +11249,18 @@ export type PostFragment = {
         } | null;
       }
     | { __typename?: 'LayoutContact' }
-    | { __typename?: 'LayoutContent' }
-    | { __typename?: 'LayoutImage' }
+    | {
+        __typename: 'LayoutContent';
+        backgroundColor?: string | null;
+        content?: string | null;
+        title?: string | null;
+      }
+    | {
+        __typename: 'LayoutImage';
+        border?: boolean | null;
+        photographer_name?: string | null;
+        show_on_lightbox?: boolean | null;
+      }
     | { __typename?: 'LayoutImageGallery' }
     | {
         __typename: 'LayoutPages';
@@ -11530,8 +11567,35 @@ export type ArticleQuery = {
             } | null;
           } | null> | null;
         }
-      | { __typename?: 'LayoutCard' }
-      | { __typename?: 'LayoutCards' }
+      | {
+          __typename: 'LayoutCard';
+          alignment?: string | null;
+          backgroundColor?: string | null;
+          description?: string | null;
+          title?: string | null;
+          link?: {
+            __typename?: 'Link';
+            target?: string | null;
+            title?: string | null;
+            url?: string | null;
+          } | null;
+        }
+      | {
+          __typename: 'LayoutCards';
+          cards?: Array<{
+            __typename?: 'Card';
+            backgroundColor?: string | null;
+            description?: string | null;
+            icon?: string | null;
+            title?: string | null;
+            link?: {
+              __typename?: 'Link';
+              target?: string | null;
+              title?: string | null;
+              url?: string | null;
+            } | null;
+          } | null> | null;
+        }
       | {
           __typename: 'LayoutCollection';
           collection?: {
@@ -11540,8 +11604,18 @@ export type ArticleQuery = {
           } | null;
         }
       | { __typename?: 'LayoutContact' }
-      | { __typename?: 'LayoutContent' }
-      | { __typename?: 'LayoutImage' }
+      | {
+          __typename: 'LayoutContent';
+          backgroundColor?: string | null;
+          content?: string | null;
+          title?: string | null;
+        }
+      | {
+          __typename: 'LayoutImage';
+          border?: boolean | null;
+          photographer_name?: string | null;
+          show_on_lightbox?: boolean | null;
+        }
       | { __typename?: 'LayoutImageGallery' }
       | {
           __typename: 'LayoutPages';
@@ -11879,8 +11953,35 @@ export type PostsQuery = {
                 } | null;
               } | null> | null;
             }
-          | { __typename?: 'LayoutCard' }
-          | { __typename?: 'LayoutCards' }
+          | {
+              __typename: 'LayoutCard';
+              alignment?: string | null;
+              backgroundColor?: string | null;
+              description?: string | null;
+              title?: string | null;
+              link?: {
+                __typename?: 'Link';
+                target?: string | null;
+                title?: string | null;
+                url?: string | null;
+              } | null;
+            }
+          | {
+              __typename: 'LayoutCards';
+              cards?: Array<{
+                __typename?: 'Card';
+                backgroundColor?: string | null;
+                description?: string | null;
+                icon?: string | null;
+                title?: string | null;
+                link?: {
+                  __typename?: 'Link';
+                  target?: string | null;
+                  title?: string | null;
+                  url?: string | null;
+                } | null;
+              } | null> | null;
+            }
           | {
               __typename: 'LayoutCollection';
               collection?: {
@@ -11889,8 +11990,18 @@ export type PostsQuery = {
               } | null;
             }
           | { __typename?: 'LayoutContact' }
-          | { __typename?: 'LayoutContent' }
-          | { __typename?: 'LayoutImage' }
+          | {
+              __typename: 'LayoutContent';
+              backgroundColor?: string | null;
+              content?: string | null;
+              title?: string | null;
+            }
+          | {
+              __typename: 'LayoutImage';
+              border?: boolean | null;
+              photographer_name?: string | null;
+              show_on_lightbox?: boolean | null;
+            }
           | { __typename?: 'LayoutImageGallery' }
           | {
               __typename: 'LayoutPages';
@@ -12346,8 +12457,35 @@ export type MenuItemFragment = {
                             } | null;
                           } | null> | null;
                         }
-                      | { __typename?: 'LayoutCard' }
-                      | { __typename?: 'LayoutCards' }
+                      | {
+                          __typename: 'LayoutCard';
+                          alignment?: string | null;
+                          backgroundColor?: string | null;
+                          description?: string | null;
+                          title?: string | null;
+                          link?: {
+                            __typename?: 'Link';
+                            target?: string | null;
+                            title?: string | null;
+                            url?: string | null;
+                          } | null;
+                        }
+                      | {
+                          __typename: 'LayoutCards';
+                          cards?: Array<{
+                            __typename?: 'Card';
+                            backgroundColor?: string | null;
+                            description?: string | null;
+                            icon?: string | null;
+                            title?: string | null;
+                            link?: {
+                              __typename?: 'Link';
+                              target?: string | null;
+                              title?: string | null;
+                              url?: string | null;
+                            } | null;
+                          } | null> | null;
+                        }
                       | {
                           __typename: 'LayoutCollection';
                           collection?: {
@@ -12356,8 +12494,18 @@ export type MenuItemFragment = {
                           } | null;
                         }
                       | { __typename?: 'LayoutContact' }
-                      | { __typename?: 'LayoutContent' }
-                      | { __typename?: 'LayoutImage' }
+                      | {
+                          __typename: 'LayoutContent';
+                          backgroundColor?: string | null;
+                          content?: string | null;
+                          title?: string | null;
+                        }
+                      | {
+                          __typename: 'LayoutImage';
+                          border?: boolean | null;
+                          photographer_name?: string | null;
+                          show_on_lightbox?: boolean | null;
+                        }
                       | { __typename?: 'LayoutImageGallery' }
                       | {
                           __typename: 'LayoutPages';
@@ -12406,7 +12554,18 @@ export type MenuItemFragment = {
                           } | null> | null;
                         }
                       | { __typename?: 'LayoutSocialMediaFeed' }
-                      | { __typename?: 'LayoutSteps' }
+                      | {
+                          __typename: 'LayoutSteps';
+                          color?: string | null;
+                          description?: string | null;
+                          title?: string | null;
+                          type?: string | null;
+                          steps?: Array<{
+                            __typename?: 'Step';
+                            content?: string | null;
+                            title?: string | null;
+                          } | null> | null;
+                        }
                       | {
                           __typename: 'LocationsSelected';
                           title?: string | null;
@@ -12623,8 +12782,35 @@ export type MenuItemFragment = {
                           } | null;
                         } | null> | null;
                       }
-                    | { __typename?: 'LayoutCard' }
-                    | { __typename?: 'LayoutCards' }
+                    | {
+                        __typename: 'LayoutCard';
+                        alignment?: string | null;
+                        backgroundColor?: string | null;
+                        description?: string | null;
+                        title?: string | null;
+                        link?: {
+                          __typename?: 'Link';
+                          target?: string | null;
+                          title?: string | null;
+                          url?: string | null;
+                        } | null;
+                      }
+                    | {
+                        __typename: 'LayoutCards';
+                        cards?: Array<{
+                          __typename?: 'Card';
+                          backgroundColor?: string | null;
+                          description?: string | null;
+                          icon?: string | null;
+                          title?: string | null;
+                          link?: {
+                            __typename?: 'Link';
+                            target?: string | null;
+                            title?: string | null;
+                            url?: string | null;
+                          } | null;
+                        } | null> | null;
+                      }
                     | {
                         __typename: 'LayoutCollection';
                         collection?: {
@@ -12633,8 +12819,18 @@ export type MenuItemFragment = {
                         } | null;
                       }
                     | { __typename?: 'LayoutContact' }
-                    | { __typename?: 'LayoutContent' }
-                    | { __typename?: 'LayoutImage' }
+                    | {
+                        __typename: 'LayoutContent';
+                        backgroundColor?: string | null;
+                        content?: string | null;
+                        title?: string | null;
+                      }
+                    | {
+                        __typename: 'LayoutImage';
+                        border?: boolean | null;
+                        photographer_name?: string | null;
+                        show_on_lightbox?: boolean | null;
+                      }
                     | { __typename?: 'LayoutImageGallery' }
                     | {
                         __typename: 'LayoutPages';
@@ -12683,7 +12879,18 @@ export type MenuItemFragment = {
                         } | null> | null;
                       }
                     | { __typename?: 'LayoutSocialMediaFeed' }
-                    | { __typename?: 'LayoutSteps' }
+                    | {
+                        __typename: 'LayoutSteps';
+                        color?: string | null;
+                        description?: string | null;
+                        title?: string | null;
+                        type?: string | null;
+                        steps?: Array<{
+                          __typename?: 'Step';
+                          content?: string | null;
+                          title?: string | null;
+                        } | null> | null;
+                      }
                     | {
                         __typename: 'LocationsSelected';
                         title?: string | null;
@@ -12942,8 +13149,35 @@ export type MenuItemFragment = {
                     } | null;
                   } | null> | null;
                 }
-              | { __typename?: 'LayoutCard' }
-              | { __typename?: 'LayoutCards' }
+              | {
+                  __typename: 'LayoutCard';
+                  alignment?: string | null;
+                  backgroundColor?: string | null;
+                  description?: string | null;
+                  title?: string | null;
+                  link?: {
+                    __typename?: 'Link';
+                    target?: string | null;
+                    title?: string | null;
+                    url?: string | null;
+                  } | null;
+                }
+              | {
+                  __typename: 'LayoutCards';
+                  cards?: Array<{
+                    __typename?: 'Card';
+                    backgroundColor?: string | null;
+                    description?: string | null;
+                    icon?: string | null;
+                    title?: string | null;
+                    link?: {
+                      __typename?: 'Link';
+                      target?: string | null;
+                      title?: string | null;
+                      url?: string | null;
+                    } | null;
+                  } | null> | null;
+                }
               | {
                   __typename: 'LayoutCollection';
                   collection?: {
@@ -12952,8 +13186,18 @@ export type MenuItemFragment = {
                   } | null;
                 }
               | { __typename?: 'LayoutContact' }
-              | { __typename?: 'LayoutContent' }
-              | { __typename?: 'LayoutImage' }
+              | {
+                  __typename: 'LayoutContent';
+                  backgroundColor?: string | null;
+                  content?: string | null;
+                  title?: string | null;
+                }
+              | {
+                  __typename: 'LayoutImage';
+                  border?: boolean | null;
+                  photographer_name?: string | null;
+                  show_on_lightbox?: boolean | null;
+                }
               | { __typename?: 'LayoutImageGallery' }
               | {
                   __typename: 'LayoutPages';
@@ -13002,7 +13246,18 @@ export type MenuItemFragment = {
                   } | null> | null;
                 }
               | { __typename?: 'LayoutSocialMediaFeed' }
-              | { __typename?: 'LayoutSteps' }
+              | {
+                  __typename: 'LayoutSteps';
+                  color?: string | null;
+                  description?: string | null;
+                  title?: string | null;
+                  type?: string | null;
+                  steps?: Array<{
+                    __typename?: 'Step';
+                    content?: string | null;
+                    title?: string | null;
+                  } | null> | null;
+                }
               | {
                   __typename: 'LocationsSelected';
                   title?: string | null;
@@ -13219,8 +13474,35 @@ export type MenuItemFragment = {
                   } | null;
                 } | null> | null;
               }
-            | { __typename?: 'LayoutCard' }
-            | { __typename?: 'LayoutCards' }
+            | {
+                __typename: 'LayoutCard';
+                alignment?: string | null;
+                backgroundColor?: string | null;
+                description?: string | null;
+                title?: string | null;
+                link?: {
+                  __typename?: 'Link';
+                  target?: string | null;
+                  title?: string | null;
+                  url?: string | null;
+                } | null;
+              }
+            | {
+                __typename: 'LayoutCards';
+                cards?: Array<{
+                  __typename?: 'Card';
+                  backgroundColor?: string | null;
+                  description?: string | null;
+                  icon?: string | null;
+                  title?: string | null;
+                  link?: {
+                    __typename?: 'Link';
+                    target?: string | null;
+                    title?: string | null;
+                    url?: string | null;
+                  } | null;
+                } | null> | null;
+              }
             | {
                 __typename: 'LayoutCollection';
                 collection?: {
@@ -13229,8 +13511,18 @@ export type MenuItemFragment = {
                 } | null;
               }
             | { __typename?: 'LayoutContact' }
-            | { __typename?: 'LayoutContent' }
-            | { __typename?: 'LayoutImage' }
+            | {
+                __typename: 'LayoutContent';
+                backgroundColor?: string | null;
+                content?: string | null;
+                title?: string | null;
+              }
+            | {
+                __typename: 'LayoutImage';
+                border?: boolean | null;
+                photographer_name?: string | null;
+                show_on_lightbox?: boolean | null;
+              }
             | { __typename?: 'LayoutImageGallery' }
             | {
                 __typename: 'LayoutPages';
@@ -13279,7 +13571,18 @@ export type MenuItemFragment = {
                 } | null> | null;
               }
             | { __typename?: 'LayoutSocialMediaFeed' }
-            | { __typename?: 'LayoutSteps' }
+            | {
+                __typename: 'LayoutSteps';
+                color?: string | null;
+                description?: string | null;
+                title?: string | null;
+                type?: string | null;
+                steps?: Array<{
+                  __typename?: 'Step';
+                  content?: string | null;
+                  title?: string | null;
+                } | null> | null;
+              }
             | {
                 __typename: 'LocationsSelected';
                 title?: string | null;
@@ -13538,8 +13841,35 @@ export type MenuPageFieldsFragment = {
             } | null;
           } | null> | null;
         }
-      | { __typename?: 'LayoutCard' }
-      | { __typename?: 'LayoutCards' }
+      | {
+          __typename: 'LayoutCard';
+          alignment?: string | null;
+          backgroundColor?: string | null;
+          description?: string | null;
+          title?: string | null;
+          link?: {
+            __typename?: 'Link';
+            target?: string | null;
+            title?: string | null;
+            url?: string | null;
+          } | null;
+        }
+      | {
+          __typename: 'LayoutCards';
+          cards?: Array<{
+            __typename?: 'Card';
+            backgroundColor?: string | null;
+            description?: string | null;
+            icon?: string | null;
+            title?: string | null;
+            link?: {
+              __typename?: 'Link';
+              target?: string | null;
+              title?: string | null;
+              url?: string | null;
+            } | null;
+          } | null> | null;
+        }
       | {
           __typename: 'LayoutCollection';
           collection?: {
@@ -13548,8 +13878,18 @@ export type MenuPageFieldsFragment = {
           } | null;
         }
       | { __typename?: 'LayoutContact' }
-      | { __typename?: 'LayoutContent' }
-      | { __typename?: 'LayoutImage' }
+      | {
+          __typename: 'LayoutContent';
+          backgroundColor?: string | null;
+          content?: string | null;
+          title?: string | null;
+        }
+      | {
+          __typename: 'LayoutImage';
+          border?: boolean | null;
+          photographer_name?: string | null;
+          show_on_lightbox?: boolean | null;
+        }
       | { __typename?: 'LayoutImageGallery' }
       | {
           __typename: 'LayoutPages';
@@ -13598,7 +13938,18 @@ export type MenuPageFieldsFragment = {
           } | null> | null;
         }
       | { __typename?: 'LayoutSocialMediaFeed' }
-      | { __typename?: 'LayoutSteps' }
+      | {
+          __typename: 'LayoutSteps';
+          color?: string | null;
+          description?: string | null;
+          title?: string | null;
+          type?: string | null;
+          steps?: Array<{
+            __typename?: 'Step';
+            content?: string | null;
+            title?: string | null;
+          } | null> | null;
+        }
       | {
           __typename: 'LocationsSelected';
           title?: string | null;
@@ -13806,8 +14157,35 @@ export type MenuPageFieldsFragment = {
           } | null;
         } | null> | null;
       }
-    | { __typename?: 'LayoutCard' }
-    | { __typename?: 'LayoutCards' }
+    | {
+        __typename: 'LayoutCard';
+        alignment?: string | null;
+        backgroundColor?: string | null;
+        description?: string | null;
+        title?: string | null;
+        link?: {
+          __typename?: 'Link';
+          target?: string | null;
+          title?: string | null;
+          url?: string | null;
+        } | null;
+      }
+    | {
+        __typename: 'LayoutCards';
+        cards?: Array<{
+          __typename?: 'Card';
+          backgroundColor?: string | null;
+          description?: string | null;
+          icon?: string | null;
+          title?: string | null;
+          link?: {
+            __typename?: 'Link';
+            target?: string | null;
+            title?: string | null;
+            url?: string | null;
+          } | null;
+        } | null> | null;
+      }
     | {
         __typename: 'LayoutCollection';
         collection?: {
@@ -13816,8 +14194,18 @@ export type MenuPageFieldsFragment = {
         } | null;
       }
     | { __typename?: 'LayoutContact' }
-    | { __typename?: 'LayoutContent' }
-    | { __typename?: 'LayoutImage' }
+    | {
+        __typename: 'LayoutContent';
+        backgroundColor?: string | null;
+        content?: string | null;
+        title?: string | null;
+      }
+    | {
+        __typename: 'LayoutImage';
+        border?: boolean | null;
+        photographer_name?: string | null;
+        show_on_lightbox?: boolean | null;
+      }
     | { __typename?: 'LayoutImageGallery' }
     | {
         __typename: 'LayoutPages';
@@ -13866,7 +14254,18 @@ export type MenuPageFieldsFragment = {
         } | null> | null;
       }
     | { __typename?: 'LayoutSocialMediaFeed' }
-    | { __typename?: 'LayoutSteps' }
+    | {
+        __typename: 'LayoutSteps';
+        color?: string | null;
+        description?: string | null;
+        title?: string | null;
+        type?: string | null;
+        steps?: Array<{
+          __typename?: 'Step';
+          content?: string | null;
+          title?: string | null;
+        } | null> | null;
+      }
     | {
         __typename: 'LocationsSelected';
         title?: string | null;
@@ -14169,8 +14568,35 @@ export type MenuQuery = {
                                   } | null;
                                 } | null> | null;
                               }
-                            | { __typename?: 'LayoutCard' }
-                            | { __typename?: 'LayoutCards' }
+                            | {
+                                __typename: 'LayoutCard';
+                                alignment?: string | null;
+                                backgroundColor?: string | null;
+                                description?: string | null;
+                                title?: string | null;
+                                link?: {
+                                  __typename?: 'Link';
+                                  target?: string | null;
+                                  title?: string | null;
+                                  url?: string | null;
+                                } | null;
+                              }
+                            | {
+                                __typename: 'LayoutCards';
+                                cards?: Array<{
+                                  __typename?: 'Card';
+                                  backgroundColor?: string | null;
+                                  description?: string | null;
+                                  icon?: string | null;
+                                  title?: string | null;
+                                  link?: {
+                                    __typename?: 'Link';
+                                    target?: string | null;
+                                    title?: string | null;
+                                    url?: string | null;
+                                  } | null;
+                                } | null> | null;
+                              }
                             | {
                                 __typename: 'LayoutCollection';
                                 collection?: {
@@ -14179,8 +14605,18 @@ export type MenuQuery = {
                                 } | null;
                               }
                             | { __typename?: 'LayoutContact' }
-                            | { __typename?: 'LayoutContent' }
-                            | { __typename?: 'LayoutImage' }
+                            | {
+                                __typename: 'LayoutContent';
+                                backgroundColor?: string | null;
+                                content?: string | null;
+                                title?: string | null;
+                              }
+                            | {
+                                __typename: 'LayoutImage';
+                                border?: boolean | null;
+                                photographer_name?: string | null;
+                                show_on_lightbox?: boolean | null;
+                              }
                             | { __typename?: 'LayoutImageGallery' }
                             | {
                                 __typename: 'LayoutPages';
@@ -14229,7 +14665,18 @@ export type MenuQuery = {
                                 } | null> | null;
                               }
                             | { __typename?: 'LayoutSocialMediaFeed' }
-                            | { __typename?: 'LayoutSteps' }
+                            | {
+                                __typename: 'LayoutSteps';
+                                color?: string | null;
+                                description?: string | null;
+                                title?: string | null;
+                                type?: string | null;
+                                steps?: Array<{
+                                  __typename?: 'Step';
+                                  content?: string | null;
+                                  title?: string | null;
+                                } | null> | null;
+                              }
                             | {
                                 __typename: 'LocationsSelected';
                                 title?: string | null;
@@ -14446,8 +14893,35 @@ export type MenuQuery = {
                                 } | null;
                               } | null> | null;
                             }
-                          | { __typename?: 'LayoutCard' }
-                          | { __typename?: 'LayoutCards' }
+                          | {
+                              __typename: 'LayoutCard';
+                              alignment?: string | null;
+                              backgroundColor?: string | null;
+                              description?: string | null;
+                              title?: string | null;
+                              link?: {
+                                __typename?: 'Link';
+                                target?: string | null;
+                                title?: string | null;
+                                url?: string | null;
+                              } | null;
+                            }
+                          | {
+                              __typename: 'LayoutCards';
+                              cards?: Array<{
+                                __typename?: 'Card';
+                                backgroundColor?: string | null;
+                                description?: string | null;
+                                icon?: string | null;
+                                title?: string | null;
+                                link?: {
+                                  __typename?: 'Link';
+                                  target?: string | null;
+                                  title?: string | null;
+                                  url?: string | null;
+                                } | null;
+                              } | null> | null;
+                            }
                           | {
                               __typename: 'LayoutCollection';
                               collection?: {
@@ -14456,8 +14930,18 @@ export type MenuQuery = {
                               } | null;
                             }
                           | { __typename?: 'LayoutContact' }
-                          | { __typename?: 'LayoutContent' }
-                          | { __typename?: 'LayoutImage' }
+                          | {
+                              __typename: 'LayoutContent';
+                              backgroundColor?: string | null;
+                              content?: string | null;
+                              title?: string | null;
+                            }
+                          | {
+                              __typename: 'LayoutImage';
+                              border?: boolean | null;
+                              photographer_name?: string | null;
+                              show_on_lightbox?: boolean | null;
+                            }
                           | { __typename?: 'LayoutImageGallery' }
                           | {
                               __typename: 'LayoutPages';
@@ -14506,7 +14990,18 @@ export type MenuQuery = {
                               } | null> | null;
                             }
                           | { __typename?: 'LayoutSocialMediaFeed' }
-                          | { __typename?: 'LayoutSteps' }
+                          | {
+                              __typename: 'LayoutSteps';
+                              color?: string | null;
+                              description?: string | null;
+                              title?: string | null;
+                              type?: string | null;
+                              steps?: Array<{
+                                __typename?: 'Step';
+                                content?: string | null;
+                                title?: string | null;
+                              } | null> | null;
+                            }
                           | {
                               __typename: 'LocationsSelected';
                               title?: string | null;
@@ -14765,8 +15260,35 @@ export type MenuQuery = {
                           } | null;
                         } | null> | null;
                       }
-                    | { __typename?: 'LayoutCard' }
-                    | { __typename?: 'LayoutCards' }
+                    | {
+                        __typename: 'LayoutCard';
+                        alignment?: string | null;
+                        backgroundColor?: string | null;
+                        description?: string | null;
+                        title?: string | null;
+                        link?: {
+                          __typename?: 'Link';
+                          target?: string | null;
+                          title?: string | null;
+                          url?: string | null;
+                        } | null;
+                      }
+                    | {
+                        __typename: 'LayoutCards';
+                        cards?: Array<{
+                          __typename?: 'Card';
+                          backgroundColor?: string | null;
+                          description?: string | null;
+                          icon?: string | null;
+                          title?: string | null;
+                          link?: {
+                            __typename?: 'Link';
+                            target?: string | null;
+                            title?: string | null;
+                            url?: string | null;
+                          } | null;
+                        } | null> | null;
+                      }
                     | {
                         __typename: 'LayoutCollection';
                         collection?: {
@@ -14775,8 +15297,18 @@ export type MenuQuery = {
                         } | null;
                       }
                     | { __typename?: 'LayoutContact' }
-                    | { __typename?: 'LayoutContent' }
-                    | { __typename?: 'LayoutImage' }
+                    | {
+                        __typename: 'LayoutContent';
+                        backgroundColor?: string | null;
+                        content?: string | null;
+                        title?: string | null;
+                      }
+                    | {
+                        __typename: 'LayoutImage';
+                        border?: boolean | null;
+                        photographer_name?: string | null;
+                        show_on_lightbox?: boolean | null;
+                      }
                     | { __typename?: 'LayoutImageGallery' }
                     | {
                         __typename: 'LayoutPages';
@@ -14825,7 +15357,18 @@ export type MenuQuery = {
                         } | null> | null;
                       }
                     | { __typename?: 'LayoutSocialMediaFeed' }
-                    | { __typename?: 'LayoutSteps' }
+                    | {
+                        __typename: 'LayoutSteps';
+                        color?: string | null;
+                        description?: string | null;
+                        title?: string | null;
+                        type?: string | null;
+                        steps?: Array<{
+                          __typename?: 'Step';
+                          content?: string | null;
+                          title?: string | null;
+                        } | null> | null;
+                      }
                     | {
                         __typename: 'LocationsSelected';
                         title?: string | null;
@@ -15042,8 +15585,35 @@ export type MenuQuery = {
                         } | null;
                       } | null> | null;
                     }
-                  | { __typename?: 'LayoutCard' }
-                  | { __typename?: 'LayoutCards' }
+                  | {
+                      __typename: 'LayoutCard';
+                      alignment?: string | null;
+                      backgroundColor?: string | null;
+                      description?: string | null;
+                      title?: string | null;
+                      link?: {
+                        __typename?: 'Link';
+                        target?: string | null;
+                        title?: string | null;
+                        url?: string | null;
+                      } | null;
+                    }
+                  | {
+                      __typename: 'LayoutCards';
+                      cards?: Array<{
+                        __typename?: 'Card';
+                        backgroundColor?: string | null;
+                        description?: string | null;
+                        icon?: string | null;
+                        title?: string | null;
+                        link?: {
+                          __typename?: 'Link';
+                          target?: string | null;
+                          title?: string | null;
+                          url?: string | null;
+                        } | null;
+                      } | null> | null;
+                    }
                   | {
                       __typename: 'LayoutCollection';
                       collection?: {
@@ -15052,8 +15622,18 @@ export type MenuQuery = {
                       } | null;
                     }
                   | { __typename?: 'LayoutContact' }
-                  | { __typename?: 'LayoutContent' }
-                  | { __typename?: 'LayoutImage' }
+                  | {
+                      __typename: 'LayoutContent';
+                      backgroundColor?: string | null;
+                      content?: string | null;
+                      title?: string | null;
+                    }
+                  | {
+                      __typename: 'LayoutImage';
+                      border?: boolean | null;
+                      photographer_name?: string | null;
+                      show_on_lightbox?: boolean | null;
+                    }
                   | { __typename?: 'LayoutImageGallery' }
                   | {
                       __typename: 'LayoutPages';
@@ -15102,7 +15682,18 @@ export type MenuQuery = {
                       } | null> | null;
                     }
                   | { __typename?: 'LayoutSocialMediaFeed' }
-                  | { __typename?: 'LayoutSteps' }
+                  | {
+                      __typename: 'LayoutSteps';
+                      color?: string | null;
+                      description?: string | null;
+                      title?: string | null;
+                      type?: string | null;
+                      steps?: Array<{
+                        __typename?: 'Step';
+                        content?: string | null;
+                        title?: string | null;
+                      } | null> | null;
+                    }
                   | {
                       __typename: 'LocationsSelected';
                       title?: string | null;
@@ -15304,6 +15895,64 @@ export type LocationsSelectedCarouselFragment = {
   title?: string | null;
   locations?: Array<number | null> | null;
   module?: string | null;
+};
+
+export type LayoutCardFragment = {
+  __typename: 'LayoutCard';
+  alignment?: string | null;
+  backgroundColor?: string | null;
+  description?: string | null;
+  title?: string | null;
+  link?: {
+    __typename?: 'Link';
+    target?: string | null;
+    title?: string | null;
+    url?: string | null;
+  } | null;
+};
+
+export type LayoutCardsFragment = {
+  __typename: 'LayoutCards';
+  cards?: Array<{
+    __typename?: 'Card';
+    backgroundColor?: string | null;
+    description?: string | null;
+    icon?: string | null;
+    title?: string | null;
+    link?: {
+      __typename?: 'Link';
+      target?: string | null;
+      title?: string | null;
+      url?: string | null;
+    } | null;
+  } | null> | null;
+};
+
+export type LayoutContentFragment = {
+  __typename: 'LayoutContent';
+  backgroundColor?: string | null;
+  content?: string | null;
+  title?: string | null;
+};
+
+export type LayoutImageFragment = {
+  __typename: 'LayoutImage';
+  border?: boolean | null;
+  photographer_name?: string | null;
+  show_on_lightbox?: boolean | null;
+};
+
+export type LayoutStepsFragment = {
+  __typename: 'LayoutSteps';
+  color?: string | null;
+  description?: string | null;
+  title?: string | null;
+  type?: string | null;
+  steps?: Array<{
+    __typename?: 'Step';
+    content?: string | null;
+    title?: string | null;
+  } | null> | null;
 };
 
 export type NotificationQueryVariables = Exact<{
@@ -15553,8 +16202,35 @@ export type PageFragment = {
           } | null;
         } | null> | null;
       }
-    | { __typename?: 'LayoutCard' }
-    | { __typename?: 'LayoutCards' }
+    | {
+        __typename: 'LayoutCard';
+        alignment?: string | null;
+        backgroundColor?: string | null;
+        description?: string | null;
+        title?: string | null;
+        link?: {
+          __typename?: 'Link';
+          target?: string | null;
+          title?: string | null;
+          url?: string | null;
+        } | null;
+      }
+    | {
+        __typename: 'LayoutCards';
+        cards?: Array<{
+          __typename?: 'Card';
+          backgroundColor?: string | null;
+          description?: string | null;
+          icon?: string | null;
+          title?: string | null;
+          link?: {
+            __typename?: 'Link';
+            target?: string | null;
+            title?: string | null;
+            url?: string | null;
+          } | null;
+        } | null> | null;
+      }
     | {
         __typename: 'LayoutCollection';
         collection?: {
@@ -15563,8 +16239,18 @@ export type PageFragment = {
         } | null;
       }
     | { __typename?: 'LayoutContact' }
-    | { __typename?: 'LayoutContent' }
-    | { __typename?: 'LayoutImage' }
+    | {
+        __typename: 'LayoutContent';
+        backgroundColor?: string | null;
+        content?: string | null;
+        title?: string | null;
+      }
+    | {
+        __typename: 'LayoutImage';
+        border?: boolean | null;
+        photographer_name?: string | null;
+        show_on_lightbox?: boolean | null;
+      }
     | { __typename?: 'LayoutImageGallery' }
     | {
         __typename: 'LayoutPages';
@@ -15613,7 +16299,18 @@ export type PageFragment = {
         } | null> | null;
       }
     | { __typename?: 'LayoutSocialMediaFeed' }
-    | { __typename?: 'LayoutSteps' }
+    | {
+        __typename: 'LayoutSteps';
+        color?: string | null;
+        description?: string | null;
+        title?: string | null;
+        type?: string | null;
+        steps?: Array<{
+          __typename?: 'Step';
+          content?: string | null;
+          title?: string | null;
+        } | null> | null;
+      }
     | {
         __typename: 'LocationsSelected';
         title?: string | null;
@@ -15865,8 +16562,35 @@ export type PageQuery = {
             } | null;
           } | null> | null;
         }
-      | { __typename?: 'LayoutCard' }
-      | { __typename?: 'LayoutCards' }
+      | {
+          __typename: 'LayoutCard';
+          alignment?: string | null;
+          backgroundColor?: string | null;
+          description?: string | null;
+          title?: string | null;
+          link?: {
+            __typename?: 'Link';
+            target?: string | null;
+            title?: string | null;
+            url?: string | null;
+          } | null;
+        }
+      | {
+          __typename: 'LayoutCards';
+          cards?: Array<{
+            __typename?: 'Card';
+            backgroundColor?: string | null;
+            description?: string | null;
+            icon?: string | null;
+            title?: string | null;
+            link?: {
+              __typename?: 'Link';
+              target?: string | null;
+              title?: string | null;
+              url?: string | null;
+            } | null;
+          } | null> | null;
+        }
       | {
           __typename: 'LayoutCollection';
           collection?: {
@@ -15875,8 +16599,18 @@ export type PageQuery = {
           } | null;
         }
       | { __typename?: 'LayoutContact' }
-      | { __typename?: 'LayoutContent' }
-      | { __typename?: 'LayoutImage' }
+      | {
+          __typename: 'LayoutContent';
+          backgroundColor?: string | null;
+          content?: string | null;
+          title?: string | null;
+        }
+      | {
+          __typename: 'LayoutImage';
+          border?: boolean | null;
+          photographer_name?: string | null;
+          show_on_lightbox?: boolean | null;
+        }
       | { __typename?: 'LayoutImageGallery' }
       | {
           __typename: 'LayoutPages';
@@ -15925,7 +16659,18 @@ export type PageQuery = {
           } | null> | null;
         }
       | { __typename?: 'LayoutSocialMediaFeed' }
-      | { __typename?: 'LayoutSteps' }
+      | {
+          __typename: 'LayoutSteps';
+          color?: string | null;
+          description?: string | null;
+          title?: string | null;
+          type?: string | null;
+          steps?: Array<{
+            __typename?: 'Step';
+            content?: string | null;
+            title?: string | null;
+          } | null> | null;
+        }
       | {
           __typename: 'LocationsSelected';
           title?: string | null;
@@ -16179,8 +16924,35 @@ export type PageByTemplateQuery = {
             } | null;
           } | null> | null;
         }
-      | { __typename?: 'LayoutCard' }
-      | { __typename?: 'LayoutCards' }
+      | {
+          __typename: 'LayoutCard';
+          alignment?: string | null;
+          backgroundColor?: string | null;
+          description?: string | null;
+          title?: string | null;
+          link?: {
+            __typename?: 'Link';
+            target?: string | null;
+            title?: string | null;
+            url?: string | null;
+          } | null;
+        }
+      | {
+          __typename: 'LayoutCards';
+          cards?: Array<{
+            __typename?: 'Card';
+            backgroundColor?: string | null;
+            description?: string | null;
+            icon?: string | null;
+            title?: string | null;
+            link?: {
+              __typename?: 'Link';
+              target?: string | null;
+              title?: string | null;
+              url?: string | null;
+            } | null;
+          } | null> | null;
+        }
       | {
           __typename: 'LayoutCollection';
           collection?: {
@@ -16189,8 +16961,18 @@ export type PageByTemplateQuery = {
           } | null;
         }
       | { __typename?: 'LayoutContact' }
-      | { __typename?: 'LayoutContent' }
-      | { __typename?: 'LayoutImage' }
+      | {
+          __typename: 'LayoutContent';
+          backgroundColor?: string | null;
+          content?: string | null;
+          title?: string | null;
+        }
+      | {
+          __typename: 'LayoutImage';
+          border?: boolean | null;
+          photographer_name?: string | null;
+          show_on_lightbox?: boolean | null;
+        }
       | { __typename?: 'LayoutImageGallery' }
       | {
           __typename: 'LayoutPages';
@@ -16239,7 +17021,18 @@ export type PageByTemplateQuery = {
           } | null> | null;
         }
       | { __typename?: 'LayoutSocialMediaFeed' }
-      | { __typename?: 'LayoutSteps' }
+      | {
+          __typename: 'LayoutSteps';
+          color?: string | null;
+          description?: string | null;
+          title?: string | null;
+          type?: string | null;
+          steps?: Array<{
+            __typename?: 'Step';
+            content?: string | null;
+            title?: string | null;
+          } | null> | null;
+        }
       | {
           __typename: 'LocationsSelected';
           title?: string | null;
@@ -16532,8 +17325,35 @@ export type PageChildrenSearchQuery = {
                         } | null;
                       } | null> | null;
                     }
-                  | { __typename?: 'LayoutCard' }
-                  | { __typename?: 'LayoutCards' }
+                  | {
+                      __typename: 'LayoutCard';
+                      alignment?: string | null;
+                      backgroundColor?: string | null;
+                      description?: string | null;
+                      title?: string | null;
+                      link?: {
+                        __typename?: 'Link';
+                        target?: string | null;
+                        title?: string | null;
+                        url?: string | null;
+                      } | null;
+                    }
+                  | {
+                      __typename: 'LayoutCards';
+                      cards?: Array<{
+                        __typename?: 'Card';
+                        backgroundColor?: string | null;
+                        description?: string | null;
+                        icon?: string | null;
+                        title?: string | null;
+                        link?: {
+                          __typename?: 'Link';
+                          target?: string | null;
+                          title?: string | null;
+                          url?: string | null;
+                        } | null;
+                      } | null> | null;
+                    }
                   | {
                       __typename: 'LayoutCollection';
                       collection?: {
@@ -16542,8 +17362,18 @@ export type PageChildrenSearchQuery = {
                       } | null;
                     }
                   | { __typename?: 'LayoutContact' }
-                  | { __typename?: 'LayoutContent' }
-                  | { __typename?: 'LayoutImage' }
+                  | {
+                      __typename: 'LayoutContent';
+                      backgroundColor?: string | null;
+                      content?: string | null;
+                      title?: string | null;
+                    }
+                  | {
+                      __typename: 'LayoutImage';
+                      border?: boolean | null;
+                      photographer_name?: string | null;
+                      show_on_lightbox?: boolean | null;
+                    }
                   | { __typename?: 'LayoutImageGallery' }
                   | {
                       __typename: 'LayoutPages';
@@ -16592,7 +17422,18 @@ export type PageChildrenSearchQuery = {
                       } | null> | null;
                     }
                   | { __typename?: 'LayoutSocialMediaFeed' }
-                  | { __typename?: 'LayoutSteps' }
+                  | {
+                      __typename: 'LayoutSteps';
+                      color?: string | null;
+                      description?: string | null;
+                      title?: string | null;
+                      type?: string | null;
+                      steps?: Array<{
+                        __typename?: 'Step';
+                        content?: string | null;
+                        title?: string | null;
+                      } | null> | null;
+                    }
                   | {
                       __typename: 'LocationsSelected';
                       title?: string | null;
@@ -16809,8 +17650,35 @@ export type PageChildrenSearchQuery = {
                       } | null;
                     } | null> | null;
                   }
-                | { __typename?: 'LayoutCard' }
-                | { __typename?: 'LayoutCards' }
+                | {
+                    __typename: 'LayoutCard';
+                    alignment?: string | null;
+                    backgroundColor?: string | null;
+                    description?: string | null;
+                    title?: string | null;
+                    link?: {
+                      __typename?: 'Link';
+                      target?: string | null;
+                      title?: string | null;
+                      url?: string | null;
+                    } | null;
+                  }
+                | {
+                    __typename: 'LayoutCards';
+                    cards?: Array<{
+                      __typename?: 'Card';
+                      backgroundColor?: string | null;
+                      description?: string | null;
+                      icon?: string | null;
+                      title?: string | null;
+                      link?: {
+                        __typename?: 'Link';
+                        target?: string | null;
+                        title?: string | null;
+                        url?: string | null;
+                      } | null;
+                    } | null> | null;
+                  }
                 | {
                     __typename: 'LayoutCollection';
                     collection?: {
@@ -16819,8 +17687,18 @@ export type PageChildrenSearchQuery = {
                     } | null;
                   }
                 | { __typename?: 'LayoutContact' }
-                | { __typename?: 'LayoutContent' }
-                | { __typename?: 'LayoutImage' }
+                | {
+                    __typename: 'LayoutContent';
+                    backgroundColor?: string | null;
+                    content?: string | null;
+                    title?: string | null;
+                  }
+                | {
+                    __typename: 'LayoutImage';
+                    border?: boolean | null;
+                    photographer_name?: string | null;
+                    show_on_lightbox?: boolean | null;
+                  }
                 | { __typename?: 'LayoutImageGallery' }
                 | {
                     __typename: 'LayoutPages';
@@ -16869,7 +17747,18 @@ export type PageChildrenSearchQuery = {
                     } | null> | null;
                   }
                 | { __typename?: 'LayoutSocialMediaFeed' }
-                | { __typename?: 'LayoutSteps' }
+                | {
+                    __typename: 'LayoutSteps';
+                    color?: string | null;
+                    description?: string | null;
+                    title?: string | null;
+                    type?: string | null;
+                    steps?: Array<{
+                      __typename?: 'Step';
+                      content?: string | null;
+                      title?: string | null;
+                    } | null> | null;
+                  }
                 | {
                     __typename: 'LocationsSelected';
                     title?: string | null;
@@ -17152,8 +18041,35 @@ export type PagesQuery = {
                 } | null;
               } | null> | null;
             }
-          | { __typename?: 'LayoutCard' }
-          | { __typename?: 'LayoutCards' }
+          | {
+              __typename: 'LayoutCard';
+              alignment?: string | null;
+              backgroundColor?: string | null;
+              description?: string | null;
+              title?: string | null;
+              link?: {
+                __typename?: 'Link';
+                target?: string | null;
+                title?: string | null;
+                url?: string | null;
+              } | null;
+            }
+          | {
+              __typename: 'LayoutCards';
+              cards?: Array<{
+                __typename?: 'Card';
+                backgroundColor?: string | null;
+                description?: string | null;
+                icon?: string | null;
+                title?: string | null;
+                link?: {
+                  __typename?: 'Link';
+                  target?: string | null;
+                  title?: string | null;
+                  url?: string | null;
+                } | null;
+              } | null> | null;
+            }
           | {
               __typename: 'LayoutCollection';
               collection?: {
@@ -17162,8 +18078,18 @@ export type PagesQuery = {
               } | null;
             }
           | { __typename?: 'LayoutContact' }
-          | { __typename?: 'LayoutContent' }
-          | { __typename?: 'LayoutImage' }
+          | {
+              __typename: 'LayoutContent';
+              backgroundColor?: string | null;
+              content?: string | null;
+              title?: string | null;
+            }
+          | {
+              __typename: 'LayoutImage';
+              border?: boolean | null;
+              photographer_name?: string | null;
+              show_on_lightbox?: boolean | null;
+            }
           | { __typename?: 'LayoutImageGallery' }
           | {
               __typename: 'LayoutPages';
@@ -17212,7 +18138,18 @@ export type PagesQuery = {
               } | null> | null;
             }
           | { __typename?: 'LayoutSocialMediaFeed' }
-          | { __typename?: 'LayoutSteps' }
+          | {
+              __typename: 'LayoutSteps';
+              color?: string | null;
+              description?: string | null;
+              title?: string | null;
+              type?: string | null;
+              steps?: Array<{
+                __typename?: 'Step';
+                content?: string | null;
+                title?: string | null;
+              } | null> | null;
+            }
           | {
               __typename: 'LocationsSelected';
               title?: string | null;
@@ -17523,6 +18460,52 @@ export const LocationsSelectedCarouselFragmentDoc = gql`
     __typename
   }
 `;
+export const LayoutContentFragmentDoc = gql`
+  fragment LayoutContent on LayoutContent {
+    backgroundColor
+    content
+    title
+    __typename
+  }
+`;
+export const LayoutCardFragmentDoc = gql`
+  fragment LayoutCard on LayoutCard {
+    alignment
+    backgroundColor
+    description
+    link {
+      target
+      title
+      url
+    }
+    title
+    __typename
+  }
+`;
+export const LayoutCardsFragmentDoc = gql`
+  fragment LayoutCards on LayoutCards {
+    cards {
+      backgroundColor
+      description
+      icon
+      link {
+        target
+        title
+        url
+      }
+      title
+    }
+    __typename
+  }
+`;
+export const LayoutImageFragmentDoc = gql`
+  fragment LayoutImage on LayoutImage {
+    border
+    photographer_name
+    show_on_lightbox
+    __typename
+  }
+`;
 export const PostFragmentDoc = gql`
   fragment Post on Post {
     id
@@ -17620,6 +18603,18 @@ export const PostFragmentDoc = gql`
       ... on LocationsSelectedCarousel {
         ...LocationsSelectedCarousel
       }
+      ... on LayoutContent {
+        ...LayoutContent
+      }
+      ... on LayoutCard {
+        ...LayoutCard
+      }
+      ... on LayoutCards {
+        ...LayoutCards
+      }
+      ... on LayoutImage {
+        ...LayoutImage
+      }
     }
   }
   ${CategoriesFragmentDoc}
@@ -17637,6 +18632,23 @@ export const PostFragmentDoc = gql`
   ${LayoutCollectionFragmentDoc}
   ${LocationsSelectedFragmentDoc}
   ${LocationsSelectedCarouselFragmentDoc}
+  ${LayoutContentFragmentDoc}
+  ${LayoutCardFragmentDoc}
+  ${LayoutCardsFragmentDoc}
+  ${LayoutImageFragmentDoc}
+`;
+export const LayoutStepsFragmentDoc = gql`
+  fragment LayoutSteps on LayoutSteps {
+    color
+    description
+    steps {
+      content
+      title
+    }
+    title
+    type
+    __typename
+  }
 `;
 export const PageFragmentDoc = gql`
   fragment Page on Page {
@@ -17719,6 +18731,21 @@ export const PageFragmentDoc = gql`
       ... on LocationsSelectedCarousel {
         ...LocationsSelectedCarousel
       }
+      ... on LayoutContent {
+        ...LayoutContent
+      }
+      ... on LayoutCard {
+        ...LayoutCard
+      }
+      ... on LayoutCards {
+        ...LayoutCards
+      }
+      ... on LayoutImage {
+        ...LayoutImage
+      }
+      ... on LayoutSteps {
+        ...LayoutSteps
+      }
     }
   }
   ${SeoFragmentDoc}
@@ -17735,6 +18762,11 @@ export const PageFragmentDoc = gql`
   ${LayoutCollectionFragmentDoc}
   ${LocationsSelectedFragmentDoc}
   ${LocationsSelectedCarouselFragmentDoc}
+  ${LayoutContentFragmentDoc}
+  ${LayoutCardFragmentDoc}
+  ${LayoutCardsFragmentDoc}
+  ${LayoutImageFragmentDoc}
+  ${LayoutStepsFragmentDoc}
 `;
 export const MenuPageFieldsFragmentDoc = gql`
   fragment menuPageFields on Page {
