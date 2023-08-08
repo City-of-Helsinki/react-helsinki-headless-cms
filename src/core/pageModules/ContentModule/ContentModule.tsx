@@ -1,8 +1,11 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import classNames from 'classnames';
 import React from 'react';
 
 import { HtmlToReact } from '../../../common/components/htmlToReact/HtmlToReact';
 import { useConfig } from '../../configProvider/useConfig';
 import { Link } from '../../link/Link';
+import styles from '../pageModules.module.scss';
 
 export type ContentModuleProps = {
   content?: string;
@@ -21,8 +24,10 @@ export function ContentModule({
 
   return (
     <div
-      style={backgroundColor ? { backgroundColor } : {}}
-      className={className}
+      className={classNames(
+        backgroundColor ? styles[`background${backgroundColor}`] : '',
+        className,
+      )}
     >
       <HtmlToReact
         components={{

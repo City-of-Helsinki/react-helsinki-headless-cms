@@ -1,6 +1,6 @@
 {
   "name": "react-helsinki-headless-cms",
-  "version": "1.0.0-alpha184",
+  "version": "1.0.0-alpha185",
   "description": "React components for displaying Headless CMS content according to guidelines set by HDS",
   "main": "cjs/index.js",
   "module": "index.js",
@@ -97,7 +97,7 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "git-rev-sync": "^3.0.2",
     "graphql": "^16.3.0",
-    "hds-react": "2.8.0",
+    "hds-react": "2.16.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
     "jest-axe": "^6.0.0",

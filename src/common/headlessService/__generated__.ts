@@ -3656,7 +3656,7 @@ export type LayoutCard = {
   /** Description */
   description?: Maybe<Scalars['String']>;
   /** Image */
-  image?: Maybe<Scalars['String']>;
+  image?: Maybe<Image>;
   /** Link */
   link?: Maybe<Link>;
   /** Title */
@@ -5591,6 +5591,8 @@ export type PostModulesUnionType =
   | LayoutImageGallery
   | LayoutPages
   | LayoutPagesCarousel
+  | LayoutSocialMediaFeed
+  | LayoutSteps
   | LocationsSelected
   | LocationsSelectedCarousel;
 
@@ -11224,6 +11226,16 @@ export type PostFragment = {
           title?: string | null;
           url?: string | null;
         } | null;
+        image?: {
+          __typename?: 'Image';
+          caption?: string | null;
+          description?: string | null;
+          large?: string | null;
+          medium?: string | null;
+          medium_large?: string | null;
+          thumbnail?: string | null;
+          title?: string | null;
+        } | null;
       }
     | {
         __typename: 'LayoutCards';
@@ -11260,6 +11272,16 @@ export type PostFragment = {
         border?: boolean | null;
         photographer_name?: string | null;
         show_on_lightbox?: boolean | null;
+        image?: {
+          __typename?: 'Image';
+          caption?: string | null;
+          description?: string | null;
+          large?: string | null;
+          medium?: string | null;
+          thumbnail?: string | null;
+          title?: string | null;
+          medium_large?: string | null;
+        } | null;
       }
     | { __typename?: 'LayoutImageGallery' }
     | {
@@ -11308,6 +11330,8 @@ export type PostFragment = {
           } | null;
         } | null> | null;
       }
+    | { __typename?: 'LayoutSocialMediaFeed' }
+    | { __typename?: 'LayoutSteps' }
     | {
         __typename: 'LocationsSelected';
         title?: string | null;
@@ -11579,6 +11603,16 @@ export type ArticleQuery = {
             title?: string | null;
             url?: string | null;
           } | null;
+          image?: {
+            __typename?: 'Image';
+            caption?: string | null;
+            description?: string | null;
+            large?: string | null;
+            medium?: string | null;
+            medium_large?: string | null;
+            thumbnail?: string | null;
+            title?: string | null;
+          } | null;
         }
       | {
           __typename: 'LayoutCards';
@@ -11615,6 +11649,16 @@ export type ArticleQuery = {
           border?: boolean | null;
           photographer_name?: string | null;
           show_on_lightbox?: boolean | null;
+          image?: {
+            __typename?: 'Image';
+            caption?: string | null;
+            description?: string | null;
+            large?: string | null;
+            medium?: string | null;
+            thumbnail?: string | null;
+            title?: string | null;
+            medium_large?: string | null;
+          } | null;
         }
       | { __typename?: 'LayoutImageGallery' }
       | {
@@ -11663,6 +11707,8 @@ export type ArticleQuery = {
             } | null;
           } | null> | null;
         }
+      | { __typename?: 'LayoutSocialMediaFeed' }
+      | { __typename?: 'LayoutSteps' }
       | {
           __typename: 'LocationsSelected';
           title?: string | null;
@@ -11965,6 +12011,16 @@ export type PostsQuery = {
                 title?: string | null;
                 url?: string | null;
               } | null;
+              image?: {
+                __typename?: 'Image';
+                caption?: string | null;
+                description?: string | null;
+                large?: string | null;
+                medium?: string | null;
+                medium_large?: string | null;
+                thumbnail?: string | null;
+                title?: string | null;
+              } | null;
             }
           | {
               __typename: 'LayoutCards';
@@ -12001,6 +12057,16 @@ export type PostsQuery = {
               border?: boolean | null;
               photographer_name?: string | null;
               show_on_lightbox?: boolean | null;
+              image?: {
+                __typename?: 'Image';
+                caption?: string | null;
+                description?: string | null;
+                large?: string | null;
+                medium?: string | null;
+                thumbnail?: string | null;
+                title?: string | null;
+                medium_large?: string | null;
+              } | null;
             }
           | { __typename?: 'LayoutImageGallery' }
           | {
@@ -12049,6 +12115,8 @@ export type PostsQuery = {
                 } | null;
               } | null> | null;
             }
+          | { __typename?: 'LayoutSocialMediaFeed' }
+          | { __typename?: 'LayoutSteps' }
           | {
               __typename: 'LocationsSelected';
               title?: string | null;
@@ -12469,6 +12537,16 @@ export type MenuItemFragment = {
                             title?: string | null;
                             url?: string | null;
                           } | null;
+                          image?: {
+                            __typename?: 'Image';
+                            caption?: string | null;
+                            description?: string | null;
+                            large?: string | null;
+                            medium?: string | null;
+                            medium_large?: string | null;
+                            thumbnail?: string | null;
+                            title?: string | null;
+                          } | null;
                         }
                       | {
                           __typename: 'LayoutCards';
@@ -12505,6 +12583,16 @@ export type MenuItemFragment = {
                           border?: boolean | null;
                           photographer_name?: string | null;
                           show_on_lightbox?: boolean | null;
+                          image?: {
+                            __typename?: 'Image';
+                            caption?: string | null;
+                            description?: string | null;
+                            large?: string | null;
+                            medium?: string | null;
+                            thumbnail?: string | null;
+                            title?: string | null;
+                            medium_large?: string | null;
+                          } | null;
                         }
                       | { __typename?: 'LayoutImageGallery' }
                       | {
@@ -12794,6 +12882,16 @@ export type MenuItemFragment = {
                           title?: string | null;
                           url?: string | null;
                         } | null;
+                        image?: {
+                          __typename?: 'Image';
+                          caption?: string | null;
+                          description?: string | null;
+                          large?: string | null;
+                          medium?: string | null;
+                          medium_large?: string | null;
+                          thumbnail?: string | null;
+                          title?: string | null;
+                        } | null;
                       }
                     | {
                         __typename: 'LayoutCards';
@@ -12830,6 +12928,16 @@ export type MenuItemFragment = {
                         border?: boolean | null;
                         photographer_name?: string | null;
                         show_on_lightbox?: boolean | null;
+                        image?: {
+                          __typename?: 'Image';
+                          caption?: string | null;
+                          description?: string | null;
+                          large?: string | null;
+                          medium?: string | null;
+                          thumbnail?: string | null;
+                          title?: string | null;
+                          medium_large?: string | null;
+                        } | null;
                       }
                     | { __typename?: 'LayoutImageGallery' }
                     | {
@@ -13161,6 +13269,16 @@ export type MenuItemFragment = {
                     title?: string | null;
                     url?: string | null;
                   } | null;
+                  image?: {
+                    __typename?: 'Image';
+                    caption?: string | null;
+                    description?: string | null;
+                    large?: string | null;
+                    medium?: string | null;
+                    medium_large?: string | null;
+                    thumbnail?: string | null;
+                    title?: string | null;
+                  } | null;
                 }
               | {
                   __typename: 'LayoutCards';
@@ -13197,6 +13315,16 @@ export type MenuItemFragment = {
                   border?: boolean | null;
                   photographer_name?: string | null;
                   show_on_lightbox?: boolean | null;
+                  image?: {
+                    __typename?: 'Image';
+                    caption?: string | null;
+                    description?: string | null;
+                    large?: string | null;
+                    medium?: string | null;
+                    thumbnail?: string | null;
+                    title?: string | null;
+                    medium_large?: string | null;
+                  } | null;
                 }
               | { __typename?: 'LayoutImageGallery' }
               | {
@@ -13486,6 +13614,16 @@ export type MenuItemFragment = {
                   title?: string | null;
                   url?: string | null;
                 } | null;
+                image?: {
+                  __typename?: 'Image';
+                  caption?: string | null;
+                  description?: string | null;
+                  large?: string | null;
+                  medium?: string | null;
+                  medium_large?: string | null;
+                  thumbnail?: string | null;
+                  title?: string | null;
+                } | null;
               }
             | {
                 __typename: 'LayoutCards';
@@ -13522,6 +13660,16 @@ export type MenuItemFragment = {
                 border?: boolean | null;
                 photographer_name?: string | null;
                 show_on_lightbox?: boolean | null;
+                image?: {
+                  __typename?: 'Image';
+                  caption?: string | null;
+                  description?: string | null;
+                  large?: string | null;
+                  medium?: string | null;
+                  thumbnail?: string | null;
+                  title?: string | null;
+                  medium_large?: string | null;
+                } | null;
               }
             | { __typename?: 'LayoutImageGallery' }
             | {
@@ -13853,6 +14001,16 @@ export type MenuPageFieldsFragment = {
             title?: string | null;
             url?: string | null;
           } | null;
+          image?: {
+            __typename?: 'Image';
+            caption?: string | null;
+            description?: string | null;
+            large?: string | null;
+            medium?: string | null;
+            medium_large?: string | null;
+            thumbnail?: string | null;
+            title?: string | null;
+          } | null;
         }
       | {
           __typename: 'LayoutCards';
@@ -13889,6 +14047,16 @@ export type MenuPageFieldsFragment = {
           border?: boolean | null;
           photographer_name?: string | null;
           show_on_lightbox?: boolean | null;
+          image?: {
+            __typename?: 'Image';
+            caption?: string | null;
+            description?: string | null;
+            large?: string | null;
+            medium?: string | null;
+            thumbnail?: string | null;
+            title?: string | null;
+            medium_large?: string | null;
+          } | null;
         }
       | { __typename?: 'LayoutImageGallery' }
       | {
@@ -14169,6 +14337,16 @@ export type MenuPageFieldsFragment = {
           title?: string | null;
           url?: string | null;
         } | null;
+        image?: {
+          __typename?: 'Image';
+          caption?: string | null;
+          description?: string | null;
+          large?: string | null;
+          medium?: string | null;
+          medium_large?: string | null;
+          thumbnail?: string | null;
+          title?: string | null;
+        } | null;
       }
     | {
         __typename: 'LayoutCards';
@@ -14205,6 +14383,16 @@ export type MenuPageFieldsFragment = {
         border?: boolean | null;
         photographer_name?: string | null;
         show_on_lightbox?: boolean | null;
+        image?: {
+          __typename?: 'Image';
+          caption?: string | null;
+          description?: string | null;
+          large?: string | null;
+          medium?: string | null;
+          thumbnail?: string | null;
+          title?: string | null;
+          medium_large?: string | null;
+        } | null;
       }
     | { __typename?: 'LayoutImageGallery' }
     | {
@@ -14580,6 +14768,16 @@ export type MenuQuery = {
                                   title?: string | null;
                                   url?: string | null;
                                 } | null;
+                                image?: {
+                                  __typename?: 'Image';
+                                  caption?: string | null;
+                                  description?: string | null;
+                                  large?: string | null;
+                                  medium?: string | null;
+                                  medium_large?: string | null;
+                                  thumbnail?: string | null;
+                                  title?: string | null;
+                                } | null;
                               }
                             | {
                                 __typename: 'LayoutCards';
@@ -14616,6 +14814,16 @@ export type MenuQuery = {
                                 border?: boolean | null;
                                 photographer_name?: string | null;
                                 show_on_lightbox?: boolean | null;
+                                image?: {
+                                  __typename?: 'Image';
+                                  caption?: string | null;
+                                  description?: string | null;
+                                  large?: string | null;
+                                  medium?: string | null;
+                                  thumbnail?: string | null;
+                                  title?: string | null;
+                                  medium_large?: string | null;
+                                } | null;
                               }
                             | { __typename?: 'LayoutImageGallery' }
                             | {
@@ -14905,6 +15113,16 @@ export type MenuQuery = {
                                 title?: string | null;
                                 url?: string | null;
                               } | null;
+                              image?: {
+                                __typename?: 'Image';
+                                caption?: string | null;
+                                description?: string | null;
+                                large?: string | null;
+                                medium?: string | null;
+                                medium_large?: string | null;
+                                thumbnail?: string | null;
+                                title?: string | null;
+                              } | null;
                             }
                           | {
                               __typename: 'LayoutCards';
@@ -14941,6 +15159,16 @@ export type MenuQuery = {
                               border?: boolean | null;
                               photographer_name?: string | null;
                               show_on_lightbox?: boolean | null;
+                              image?: {
+                                __typename?: 'Image';
+                                caption?: string | null;
+                                description?: string | null;
+                                large?: string | null;
+                                medium?: string | null;
+                                thumbnail?: string | null;
+                                title?: string | null;
+                                medium_large?: string | null;
+                              } | null;
                             }
                           | { __typename?: 'LayoutImageGallery' }
                           | {
@@ -15272,6 +15500,16 @@ export type MenuQuery = {
                           title?: string | null;
                           url?: string | null;
                         } | null;
+                        image?: {
+                          __typename?: 'Image';
+                          caption?: string | null;
+                          description?: string | null;
+                          large?: string | null;
+                          medium?: string | null;
+                          medium_large?: string | null;
+                          thumbnail?: string | null;
+                          title?: string | null;
+                        } | null;
                       }
                     | {
                         __typename: 'LayoutCards';
@@ -15308,6 +15546,16 @@ export type MenuQuery = {
                         border?: boolean | null;
                         photographer_name?: string | null;
                         show_on_lightbox?: boolean | null;
+                        image?: {
+                          __typename?: 'Image';
+                          caption?: string | null;
+                          description?: string | null;
+                          large?: string | null;
+                          medium?: string | null;
+                          thumbnail?: string | null;
+                          title?: string | null;
+                          medium_large?: string | null;
+                        } | null;
                       }
                     | { __typename?: 'LayoutImageGallery' }
                     | {
@@ -15597,6 +15845,16 @@ export type MenuQuery = {
                         title?: string | null;
                         url?: string | null;
                       } | null;
+                      image?: {
+                        __typename?: 'Image';
+                        caption?: string | null;
+                        description?: string | null;
+                        large?: string | null;
+                        medium?: string | null;
+                        medium_large?: string | null;
+                        thumbnail?: string | null;
+                        title?: string | null;
+                      } | null;
                     }
                   | {
                       __typename: 'LayoutCards';
@@ -15633,6 +15891,16 @@ export type MenuQuery = {
                       border?: boolean | null;
                       photographer_name?: string | null;
                       show_on_lightbox?: boolean | null;
+                      image?: {
+                        __typename?: 'Image';
+                        caption?: string | null;
+                        description?: string | null;
+                        large?: string | null;
+                        medium?: string | null;
+                        thumbnail?: string | null;
+                        title?: string | null;
+                        medium_large?: string | null;
+                      } | null;
                     }
                   | { __typename?: 'LayoutImageGallery' }
                   | {
@@ -15909,6 +16177,16 @@ export type LayoutCardFragment = {
     title?: string | null;
     url?: string | null;
   } | null;
+  image?: {
+    __typename?: 'Image';
+    caption?: string | null;
+    description?: string | null;
+    large?: string | null;
+    medium?: string | null;
+    medium_large?: string | null;
+    thumbnail?: string | null;
+    title?: string | null;
+  } | null;
 };
 
 export type LayoutCardsFragment = {
@@ -15940,6 +16218,16 @@ export type LayoutImageFragment = {
   border?: boolean | null;
   photographer_name?: string | null;
   show_on_lightbox?: boolean | null;
+  image?: {
+    __typename?: 'Image';
+    caption?: string | null;
+    description?: string | null;
+    large?: string | null;
+    medium?: string | null;
+    thumbnail?: string | null;
+    title?: string | null;
+    medium_large?: string | null;
+  } | null;
 };
 
 export type LayoutStepsFragment = {
@@ -16214,6 +16502,16 @@ export type PageFragment = {
           title?: string | null;
           url?: string | null;
         } | null;
+        image?: {
+          __typename?: 'Image';
+          caption?: string | null;
+          description?: string | null;
+          large?: string | null;
+          medium?: string | null;
+          medium_large?: string | null;
+          thumbnail?: string | null;
+          title?: string | null;
+        } | null;
       }
     | {
         __typename: 'LayoutCards';
@@ -16250,6 +16548,16 @@ export type PageFragment = {
         border?: boolean | null;
         photographer_name?: string | null;
         show_on_lightbox?: boolean | null;
+        image?: {
+          __typename?: 'Image';
+          caption?: string | null;
+          description?: string | null;
+          large?: string | null;
+          medium?: string | null;
+          thumbnail?: string | null;
+          title?: string | null;
+          medium_large?: string | null;
+        } | null;
       }
     | { __typename?: 'LayoutImageGallery' }
     | {
@@ -16574,6 +16882,16 @@ export type PageQuery = {
             title?: string | null;
             url?: string | null;
           } | null;
+          image?: {
+            __typename?: 'Image';
+            caption?: string | null;
+            description?: string | null;
+            large?: string | null;
+            medium?: string | null;
+            medium_large?: string | null;
+            thumbnail?: string | null;
+            title?: string | null;
+          } | null;
         }
       | {
           __typename: 'LayoutCards';
@@ -16610,6 +16928,16 @@ export type PageQuery = {
           border?: boolean | null;
           photographer_name?: string | null;
           show_on_lightbox?: boolean | null;
+          image?: {
+            __typename?: 'Image';
+            caption?: string | null;
+            description?: string | null;
+            large?: string | null;
+            medium?: string | null;
+            thumbnail?: string | null;
+            title?: string | null;
+            medium_large?: string | null;
+          } | null;
         }
       | { __typename?: 'LayoutImageGallery' }
       | {
@@ -16936,6 +17264,16 @@ export type PageByTemplateQuery = {
             title?: string | null;
             url?: string | null;
           } | null;
+          image?: {
+            __typename?: 'Image';
+            caption?: string | null;
+            description?: string | null;
+            large?: string | null;
+            medium?: string | null;
+            medium_large?: string | null;
+            thumbnail?: string | null;
+            title?: string | null;
+          } | null;
         }
       | {
           __typename: 'LayoutCards';
@@ -16972,6 +17310,16 @@ export type PageByTemplateQuery = {
           border?: boolean | null;
           photographer_name?: string | null;
           show_on_lightbox?: boolean | null;
+          image?: {
+            __typename?: 'Image';
+            caption?: string | null;
+            description?: string | null;
+            large?: string | null;
+            medium?: string | null;
+            thumbnail?: string | null;
+            title?: string | null;
+            medium_large?: string | null;
+          } | null;
         }
       | { __typename?: 'LayoutImageGallery' }
       | {
@@ -17337,6 +17685,16 @@ export type PageChildrenSearchQuery = {
                         title?: string | null;
                         url?: string | null;
                       } | null;
+                      image?: {
+                        __typename?: 'Image';
+                        caption?: string | null;
+                        description?: string | null;
+                        large?: string | null;
+                        medium?: string | null;
+                        medium_large?: string | null;
+                        thumbnail?: string | null;
+                        title?: string | null;
+                      } | null;
                     }
                   | {
                       __typename: 'LayoutCards';
@@ -17373,6 +17731,16 @@ export type PageChildrenSearchQuery = {
                       border?: boolean | null;
                       photographer_name?: string | null;
                       show_on_lightbox?: boolean | null;
+                      image?: {
+                        __typename?: 'Image';
+                        caption?: string | null;
+                        description?: string | null;
+                        large?: string | null;
+                        medium?: string | null;
+                        thumbnail?: string | null;
+                        title?: string | null;
+                        medium_large?: string | null;
+                      } | null;
                     }
                   | { __typename?: 'LayoutImageGallery' }
                   | {
@@ -17662,6 +18030,16 @@ export type PageChildrenSearchQuery = {
                       title?: string | null;
                       url?: string | null;
                     } | null;
+                    image?: {
+                      __typename?: 'Image';
+                      caption?: string | null;
+                      description?: string | null;
+                      large?: string | null;
+                      medium?: string | null;
+                      medium_large?: string | null;
+                      thumbnail?: string | null;
+                      title?: string | null;
+                    } | null;
                   }
                 | {
                     __typename: 'LayoutCards';
@@ -17698,6 +18076,16 @@ export type PageChildrenSearchQuery = {
                     border?: boolean | null;
                     photographer_name?: string | null;
                     show_on_lightbox?: boolean | null;
+                    image?: {
+                      __typename?: 'Image';
+                      caption?: string | null;
+                      description?: string | null;
+                      large?: string | null;
+                      medium?: string | null;
+                      thumbnail?: string | null;
+                      title?: string | null;
+                      medium_large?: string | null;
+                    } | null;
                   }
                 | { __typename?: 'LayoutImageGallery' }
                 | {
@@ -18053,6 +18441,16 @@ export type PagesQuery = {
                 title?: string | null;
                 url?: string | null;
               } | null;
+              image?: {
+                __typename?: 'Image';
+                caption?: string | null;
+                description?: string | null;
+                large?: string | null;
+                medium?: string | null;
+                medium_large?: string | null;
+                thumbnail?: string | null;
+                title?: string | null;
+              } | null;
             }
           | {
               __typename: 'LayoutCards';
@@ -18089,6 +18487,16 @@ export type PagesQuery = {
               border?: boolean | null;
               photographer_name?: string | null;
               show_on_lightbox?: boolean | null;
+              image?: {
+                __typename?: 'Image';
+                caption?: string | null;
+                description?: string | null;
+                large?: string | null;
+                medium?: string | null;
+                thumbnail?: string | null;
+                title?: string | null;
+                medium_large?: string | null;
+              } | null;
             }
           | { __typename?: 'LayoutImageGallery' }
           | {
@@ -18479,6 +18887,15 @@ export const LayoutCardFragmentDoc = gql`
       url
     }
     title
+    image {
+      caption
+      description
+      large
+      medium
+      medium_large
+      thumbnail
+      title
+    }
     __typename
   }
 `;
@@ -18502,6 +18919,15 @@ export const LayoutImageFragmentDoc = gql`
   fragment LayoutImage on LayoutImage {
     border
     photographer_name
+    image {
+      caption
+      description
+      large
+      medium
+      thumbnail
+      title
+      medium_large
+    }
     show_on_lightbox
     __typename
   }

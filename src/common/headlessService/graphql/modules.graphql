@@ -185,8 +185,15 @@ fragment LayoutCard on LayoutCard {
     url
   }
   title
-  # bug in headless cms. Error 0: Fields "image" conflict because they return conflicting types "String" and "Image".
-  #  image
+  image {
+    caption
+    description
+    large
+    medium
+    medium_large
+    thumbnail
+    title
+  }
   __typename
 }
 
@@ -215,16 +222,15 @@ fragment LayoutContent on LayoutContent {
 fragment LayoutImage on LayoutImage {
   border
   photographer_name
-  # bug in headless cms. Error 0: Fields "image" conflict because they return conflicting types "String" and "Image".
-  # image {
-  #   caption
-  #   description
-  #   large
-  #   medium
-  #   thumbnail
-  #   title
-  #   medium_large
-  # }
+  image {
+    caption
+    description
+    large
+    medium
+    thumbnail
+    title
+    medium_large
+  }
   show_on_lightbox
   __typename
 }
