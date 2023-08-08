@@ -11331,7 +11331,18 @@ export type PostFragment = {
         } | null> | null;
       }
     | { __typename?: 'LayoutSocialMediaFeed' }
-    | { __typename?: 'LayoutSteps' }
+    | {
+        __typename: 'LayoutSteps';
+        color?: string | null;
+        description?: string | null;
+        title?: string | null;
+        type?: string | null;
+        steps?: Array<{
+          __typename?: 'Step';
+          content?: string | null;
+          title?: string | null;
+        } | null> | null;
+      }
     | {
         __typename: 'LocationsSelected';
         title?: string | null;
@@ -11708,7 +11719,18 @@ export type ArticleQuery = {
           } | null> | null;
         }
       | { __typename?: 'LayoutSocialMediaFeed' }
-      | { __typename?: 'LayoutSteps' }
+      | {
+          __typename: 'LayoutSteps';
+          color?: string | null;
+          description?: string | null;
+          title?: string | null;
+          type?: string | null;
+          steps?: Array<{
+            __typename?: 'Step';
+            content?: string | null;
+            title?: string | null;
+          } | null> | null;
+        }
       | {
           __typename: 'LocationsSelected';
           title?: string | null;
@@ -12116,7 +12138,18 @@ export type PostsQuery = {
               } | null> | null;
             }
           | { __typename?: 'LayoutSocialMediaFeed' }
-          | { __typename?: 'LayoutSteps' }
+          | {
+              __typename: 'LayoutSteps';
+              color?: string | null;
+              description?: string | null;
+              title?: string | null;
+              type?: string | null;
+              steps?: Array<{
+                __typename?: 'Step';
+                content?: string | null;
+                title?: string | null;
+              } | null> | null;
+            }
           | {
               __typename: 'LocationsSelected';
               title?: string | null;
@@ -18932,6 +18965,19 @@ export const LayoutImageFragmentDoc = gql`
     __typename
   }
 `;
+export const LayoutStepsFragmentDoc = gql`
+  fragment LayoutSteps on LayoutSteps {
+    color
+    description
+    steps {
+      content
+      title
+    }
+    title
+    type
+    __typename
+  }
+`;
 export const PostFragmentDoc = gql`
   fragment Post on Post {
     id
@@ -19041,6 +19087,9 @@ export const PostFragmentDoc = gql`
       ... on LayoutImage {
         ...LayoutImage
       }
+      ... on LayoutSteps {
+        ...LayoutSteps
+      }
     }
   }
   ${CategoriesFragmentDoc}
@@ -19062,19 +19111,7 @@ export const PostFragmentDoc = gql`
   ${LayoutCardFragmentDoc}
   ${LayoutCardsFragmentDoc}
   ${LayoutImageFragmentDoc}
-`;
-export const LayoutStepsFragmentDoc = gql`
-  fragment LayoutSteps on LayoutSteps {
-    color
-    description
-    steps {
-      content
-      title
-    }
-    title
-    type
-    __typename
-  }
+  ${LayoutStepsFragmentDoc}
 `;
 export const PageFragmentDoc = gql`
   fragment Page on Page {
