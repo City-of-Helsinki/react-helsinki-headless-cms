@@ -118,10 +118,9 @@ fragment Post on Post {
     ... on LayoutImage {
       ...LayoutImage
     }
-    # bug: LayoutSteps is not added to the post modules union types
-    # ... on LayoutSteps {
-    #   ...LayoutSteps
-    # }
+    ... on LayoutSteps {
+      ...LayoutSteps
+    }
   }
 }
 
