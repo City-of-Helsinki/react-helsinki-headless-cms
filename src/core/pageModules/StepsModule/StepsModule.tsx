@@ -6,7 +6,7 @@ import classNames from 'classnames';
 
 import styles from '../pageModules.module.scss';
 
-type Step = {
+export type Step = {
   content: string;
   title: string;
 };
