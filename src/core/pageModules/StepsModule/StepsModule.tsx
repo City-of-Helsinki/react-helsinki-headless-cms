@@ -11,8 +11,8 @@ export type Step = {
   title: string;
 };
 
-export type StepsModuleProps = {
-  steps: Step[];
+type StepsModuleProps = {
+  steps?: Step[];
   title?: string;
   helpText?: string;
   color?: string;
@@ -36,7 +36,7 @@ export function StepsModule({
         className,
       )}
       helpText={DOMPurify.sanitize(helpText)}
-      steps={steps.map((step) => ({
+      steps={steps?.map((step) => ({
         title: step.title,
         description: DOMPurify.sanitize(step.content),
       }))}

@@ -80,7 +80,18 @@ export const defaultContentModules = (
     } else if (isLayoutImage(module)) {
       contentModules.push(<ImageModule />);
     } else if (isLayoutSteps(module)) {
-      contentModules.push(<StepsModule />);
+      contentModules.push(
+        <StepsModule
+          title={module.title}
+          steps={module.steps.map((step) => ({
+            title: step.title,
+            content: step.content,
+          }))}
+          helpText={module.description}
+          color={module.color}
+          type={module.type}
+        />,
+      );
     }
     return null;
   });
