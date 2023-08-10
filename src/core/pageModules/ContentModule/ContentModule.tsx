@@ -25,19 +25,26 @@ export function ContentModule({
   return (
     <div
       className={classNames(
-        backgroundColor ? styles[`background${backgroundColor}`] : '',
-        className,
+        styles.pageModuleWrapper,
+        backgroundColor ? styles.withPadding : '',
       )}
     >
-      <HtmlToReact
-        components={{
-          a: Link,
-        }}
-        allowedUnsafeTags={allowedUnsafeTags}
-        trustedOrigins={trustedOrigins}
+      <div
+        className={classNames(
+          backgroundColor ? styles[`background${backgroundColor}`] : '',
+          className,
+        )}
       >
-        {content}
-      </HtmlToReact>
+        <HtmlToReact
+          components={{
+            a: Link,
+          }}
+          allowedUnsafeTags={allowedUnsafeTags}
+          trustedOrigins={trustedOrigins}
+        >
+          {content}
+        </HtmlToReact>
+      </div>
     </div>
   );
 }

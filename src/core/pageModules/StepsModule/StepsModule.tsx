@@ -29,18 +29,20 @@ export function StepsModule({
   className,
 }: StepsModuleProps) {
   return (
-    <StepByStep
-      numberedList={type === 'numbers'}
-      className={classNames(
-        color ? styles[`backgroundListItem${color}`] : '',
-        className,
-      )}
-      helpText={DOMPurify.sanitize(helpText)}
-      steps={steps?.map((step) => ({
-        title: step.title,
-        description: DOMPurify.sanitize(step.content),
-      }))}
-      title={title}
-    />
+    <div className={styles.pageModuleWrapper}>
+      <StepByStep
+        numberedList={type === 'numbers'}
+        className={classNames(
+          color ? styles[`backgroundListItem${color}`] : '',
+          className,
+        )}
+        helpText={DOMPurify.sanitize(helpText)}
+        steps={steps?.map((step) => ({
+          title: step.title,
+          description: DOMPurify.sanitize(step.content),
+        }))}
+        title={title}
+      />
+    </div>
   );
 }
