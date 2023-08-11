@@ -58,7 +58,7 @@
     @include respond_above(s) {
       padding-bottom: 0;
       min-height: var(--height-image-desktop);
-      flex: 3 1;
+      flex: 1.5 1;
     }
 
     .imageLabel {
