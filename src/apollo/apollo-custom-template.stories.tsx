@@ -1,7 +1,7 @@
 /* eslint-disable react/function-component-definition */
 
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 import { ConfigProvider } from '../core/configProvider/ConfigProvider';
@@ -62,7 +62,7 @@ const CustomPageContentLayout: typeof PageContentLayout = ({
 );
 
 const getTemplate =
-  (dataSource: keyof typeof CmsEndpoint): ComponentStory<typeof Page> =>
+  (dataSource: keyof typeof CmsEndpoint): StoryFn<typeof Page> =>
   (args) => {
     const { apolloClient, eventsApolloClient, internalHrefOrigins } =
       useCmsEndpointConfig(dataSource);
@@ -105,7 +105,7 @@ export default {
   title: 'Apollo examples/Custom template',
   component: Page,
   subcomponents: { PageContent, PageContentLayout, Notification, Navigation },
-} as ComponentMeta<typeof Page>;
+} as Meta<typeof Page>;
 
 const ApolloCustomLayoutExample = {
   args: {

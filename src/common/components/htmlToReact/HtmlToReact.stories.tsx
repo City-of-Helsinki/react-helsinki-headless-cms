@@ -1,7 +1,7 @@
 /* eslint-disable react/function-component-definition */
 
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 
 import kukkuuTestPage from '../../../mocks/responses/page/kukkuu-page-demosivu.json';
 import { HtmlToReact, HtmlToReactProps } from './HtmlToReact';
@@ -23,9 +23,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof HtmlToReact>;
+} as Meta<typeof HtmlToReact>;
 
-const Template: ComponentStory<typeof HtmlToReact> = ({
+const Template: StoryFn<typeof HtmlToReact> = ({
   content,
   ...args
 }: HtmlToReactProps & { content: string }) => (
@@ -34,9 +34,12 @@ const Template: ComponentStory<typeof HtmlToReact> = ({
   </div>
 );
 
-export const HtmlToReactMedia = Template.bind({});
-HtmlToReactMedia.args = {
-  content: 'Iframes', // A default HTML content to be tested
-  allowedUnsafeTags: ['iframe'],
-  trustedOrigins: ['https://www.youtube.com', 'https://player.vimeo.com'],
+export const HtmlToReactMedia = {
+  render: Template,
+
+  args: {
+    content: 'Iframes', // A default HTML content to be tested
+    allowedUnsafeTags: ['iframe'],
+    trustedOrigins: ['https://www.youtube.com', 'https://player.vimeo.com'],
+  },
 };

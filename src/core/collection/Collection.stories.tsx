@@ -1,7 +1,7 @@
 /* eslint-disable react/function-component-definition */
 
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 
 import { Collection } from './Collection';
 import page from '../pageContent/__mocks__/page.mock';
@@ -23,9 +23,9 @@ export default {
     // collectionContainerProps: { control: { type: null } },
     type: { control: { type: null } },
   },
-} as ComponentMeta<typeof Collection>;
+} as Meta<typeof Collection>;
 
-const Template: ComponentStory<typeof Collection> = (args) => (
+const Template: StoryFn<typeof Collection> = (args) => (
   <div style={{ margin: 24 }}>
     <ConfigProvider
       config={{
@@ -55,24 +55,30 @@ const cards = [
   />
 ));
 
-export const CollectionWithGrid = Template.bind({});
-CollectionWithGrid.args = {
-  cards,
-  title: 'Grid Collection Heading',
-  type: 'grid',
-  collectionContainerProps: { colsCount: 4 },
-  showAllUrl: '#',
+export const CollectionWithGrid = {
+  render: Template,
+
+  args: {
+    cards,
+    title: 'Grid Collection Heading',
+    type: 'grid',
+    collectionContainerProps: { colsCount: 4 },
+    showAllUrl: '#',
+  },
 };
 
-export const CollectionWithCarousel = Template.bind({});
-CollectionWithCarousel.args = {
-  cards,
-  title: 'Carousel Collection Heading',
-  type: 'carousel',
-  collectionContainerProps: {
-    itemsDesktop: 5,
-    itemsMobile: 2,
-    withDots: false,
+export const CollectionWithCarousel = {
+  render: Template,
+
+  args: {
+    cards,
+    title: 'Carousel Collection Heading',
+    type: 'carousel',
+    collectionContainerProps: {
+      itemsDesktop: 5,
+      itemsMobile: 2,
+      withDots: false,
+    },
+    showAllUrl: '#',
   },
-  showAllUrl: '#',
 };

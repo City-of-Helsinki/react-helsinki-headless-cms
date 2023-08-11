@@ -1,7 +1,7 @@
 /* eslint-disable react/function-component-definition */
 
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 
 import { Carousel } from './Carousel';
 import { Card } from '../card/Card';
@@ -20,9 +20,9 @@ export default {
     loading: { control: { type: 'boolean' } },
     onLoadMore: { control: { type: 'null' } },
   },
-} as ComponentMeta<typeof Carousel>;
+} as Meta<typeof Carousel>;
 
-const Template: ComponentStory<typeof Carousel> = (args) => (
+const Template: StoryFn<typeof Carousel> = (args) => (
   <ConfigProvider
     config={{
       ...defaultConfig,
@@ -46,8 +46,11 @@ const Template: ComponentStory<typeof Carousel> = (args) => (
   </ConfigProvider>
 );
 
-export const CarouselDefault = Template.bind({});
-CarouselDefault.args = {
-  itemsDesktop: 4,
-  itemsMobile: 2,
+export const CarouselDefault = {
+  render: Template,
+
+  args: {
+    itemsDesktop: 4,
+    itemsMobile: 2,
+  },
 };

@@ -4,9 +4,11 @@ import React, { useState } from 'react';
 import classNames from 'classnames';
 
 import styles from './card.module.scss';
+import colorStyles from '../styles/background.module.scss';
 import { LinkBox } from '../linkBox/LinkBox';
 import { Link } from '../link/Link';
 import { BackgroundImage } from '../image/BackgroundImage';
+import { getColor } from '../utils/string';
 
 export type CardProps = {
   id?: string;
@@ -23,10 +25,18 @@ export type CardProps = {
   url?: string;
   withBorder?: boolean;
   withShadow?: boolean;
-  direction?: 'fixed-horisontal' | 'fixed-vertical' | 'responsive';
+  direction?:
+    | 'fixed-horisontal'
+    | 'fixed-vertical'
+    | 'responsive'
+    | 'responsive-reverse';
+  imagePosition?: 'image-left' | 'image-right';
+  isDelimited?: boolean;
   clampText?: boolean;
   openLinkInNewTab?: boolean;
   style?: React.CSSProperties;
+  backgroundColor?: string;
+  primaryContent?: 'image' | 'text';
 };
 
 export function Card({
@@ -45,9 +55,13 @@ export function Card({
   withBorder,
   withShadow,
   direction = 'responsive',
+  imagePosition = 'image-left',
+  isDelimited = false,
   clampText,
   openLinkInNewTab,
   style,
+  backgroundColor,
+  primaryContent = 'text',
 }: CardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const handleToggleActive = () => setIsHovered((val) => !val);
@@ -68,7 +82,12 @@ export function Card({
           withBorder && styles.withBorder,
           withShadow && styles.withShadow,
           direction && styles[direction],
+          primaryContent === 'image' && styles['primary-image'],
+          imagePosition && styles[imagePosition],
           isHovered && styles.isHovered,
+          isDelimited && styles.isDelimited,
+          backgroundColor &&
+            colorStyles[`background${getColor(backgroundColor)}`],
         )}
         style={style}
       >

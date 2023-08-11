@@ -1,7 +1,7 @@
 /* eslint-disable react/function-component-definition */
 
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 
 import { PageSection } from './PageSection';
 import styles from './pageSection.module.scss';
@@ -9,9 +9,9 @@ import styles from './pageSection.module.scss';
 export default {
   title: 'Core components/PageSection',
   component: PageSection,
-} as ComponentMeta<typeof PageSection>;
+} as Meta<typeof PageSection>;
 
-const Template: ComponentStory<typeof PageSection> = () => (
+const Template: StoryFn<typeof PageSection> = () => (
   <div>
     <PageSection className={styles.pageSectionGrey}>
       <h1>Default section color cyan</h1>
@@ -25,4 +25,6 @@ const Template: ComponentStory<typeof PageSection> = () => (
   </div>
 );
 
-export const CardDefault = Template.bind({});
+export const CardDefault = {
+  render: Template,
+};

@@ -11,8 +11,8 @@
     "lint-fix": "yarn eslint \"src/**/*.{ts,tsx}\" --fix && yarn prettier ./src -w",
     "test": "jest",
     "build": "rollup -c --bundleConfigAsCjs",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
     "publish-canary": "yarn build && node ./scripts/publish-canary.js",
     "publish-stable": "yarn build && node ./scripts/publish-stable.js",
     "generate:graphql": "cross-env DOTENV_CONFIG_PATH=./.env graphql-codegen -r dotenv/config --config codegen.yml"
@@ -64,16 +64,15 @@
     "@rollup/plugin-commonjs": "^25.0.3",
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "^15.1.0",
-    "@storybook/addon-actions": "^6.4.19",
-    "@storybook/addon-essentials": "^6.4.19",
-    "@storybook/addon-interactions": "^6.4.19",
-    "@storybook/addon-links": "^6.4.19",
-    "@storybook/addon-viewport": "^6.4.22",
-    "@storybook/builder-webpack5": "^6.4.19",
-    "@storybook/manager-webpack5": "^6.4.19",
+    "@storybook/addon-actions": "^7.2.3",
+    "@storybook/addon-essentials": "^7.2.3",
+    "@storybook/addon-interactions": "^7.2.3",
+    "@storybook/addon-links": "^7.2.3",
+    "@storybook/addon-viewport": "^7.2.3",
     "@storybook/preset-scss": "^1.0.3",
-    "@storybook/react": "^6.4.19",
-    "@storybook/testing-library": "^0.0.9",
+    "@storybook/react": "^7.2.3",
+    "@storybook/react-webpack5": "^7.2.3",
+    "@storybook/testing-library": "^0.2.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^14.0.0-beta",
@@ -119,6 +118,7 @@
     "rollup-plugin-typescript2": "^0.35.0",
     "sass": "^1.49.9",
     "sass-loader": "^12.6.0",
+    "storybook": "^7.2.3",
     "style-loader": "^3.3.1",
     "tslib": "^2.6.1",
     "typescript": "^5.1.6",
@@ -127,7 +127,8 @@
   "dependencies": {
     "hds-design-tokens": "^2.3.0",
     "html-react-parser": "^1.4.8",
-    "isomorphic-dompurify": "^0.18.0"
+    "isomorphic-dompurify": "^0.18.0",
+    "lodash": "^4.17.21"
   },
   "msw": {
     "workerDirectory": "public"

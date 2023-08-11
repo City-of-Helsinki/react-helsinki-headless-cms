@@ -1,7 +1,7 @@
 /* eslint-disable react/function-component-definition */
 
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 import { ConfigProvider } from '../core/configProvider/ConfigProvider';
@@ -38,7 +38,7 @@ const ExampleNavigation = ({
 );
 
 const getTemplate =
-  (datasource: keyof typeof CmsEndpoint): ComponentStory<typeof Page> =>
+  (datasource: keyof typeof CmsEndpoint): StoryFn<typeof Page> =>
   (args) => {
     const { apolloClient, eventsApolloClient, internalHrefOrigins } =
       useCmsEndpointConfig(datasource);
@@ -87,7 +87,7 @@ export default {
     content: { table: { disable: true } },
     footer: { table: { disable: true } },
   },
-} as ComponentMeta<typeof Page>;
+} as Meta<typeof Page>;
 
 const ApolloBasicExample = {
   args: {

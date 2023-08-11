@@ -23,11 +23,40 @@
 
   &.responsive {
     flex-direction: row;
+    &.image-right {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &.responsive-reverse {
+    flex-direction: column;
   }
 
   &.fixed-horisontal {
     display: flex;
     flex-direction: row;
+
+    &.image-right {
+      flex-direction: row-reverse;
+    }
+  }
+
+  & :first-child {
+    flex: 1 1;
+  }
+
+  & :last-child {
+    flex: 2 1;
+  }
+
+  &.primary-image {
+    & :first-child {
+      flex: 2 1;
+    }
+
+    & :last-child {
+      flex: 1 1;
+    }
   }
 
   position: relative;
@@ -49,6 +78,35 @@
     margin-bottom: 0;
     &.responsive {
       flex-direction: column;
+      &.image-right {
+        flex-direction: column;
+      }
+    }
+
+    &.responsive-reverse {
+      flex-direction: row;
+
+      &.image-right {
+        flex-direction: row-reverse;
+      }
+    }
+
+    & :first-child {
+      flex: 1 1;
+    }
+
+    & :last-child {
+      flex: 2 1;
+    }
+
+    &.primary-image {
+      & :first-child {
+        flex: 2 1;
+      }
+
+      & :last-child {
+        flex: 1 1;
+      }
     }
   }
 
@@ -62,7 +120,9 @@
     text-decoration: none;
     position: relative;
 
-    &.fixed-vertical {
+    &.fixed-vertical,
+    &.responsive,
+    &.responsive-reverse {
       padding-bottom: 62.5%;
       @include respond_above(s) {
         min-height: var(--height-image-desktop);

@@ -5,6 +5,8 @@ import DOMPurify from 'isomorphic-dompurify';
 import classNames from 'classnames';
 
 import styles from '../pageModules.module.scss';
+import colorStyles from '../../styles/background.module.scss';
+import { getColor } from '../../utils/string';
 
 export type Step = {
   content: string;
@@ -33,7 +35,7 @@ export function StepsModule({
       <StepByStep
         numberedList={type === 'numbers'}
         className={classNames(
-          color ? styles[`backgroundListItem${color}`] : '',
+          color && colorStyles[`backgroundListItem${getColor(color)}`],
           className,
         )}
         helpText={DOMPurify.sanitize(helpText)}

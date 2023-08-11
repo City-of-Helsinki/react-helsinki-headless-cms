@@ -1,7 +1,7 @@
 /* eslint-disable react/function-component-definition */
 
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 import { LanguageCodeEnum } from '../../common/headlessService/types';
@@ -34,13 +34,13 @@ export default {
     content: { control: { type: null } },
     footer: { control: { type: null } },
   },
-} as ComponentMeta<typeof Page>;
+} as Meta<typeof Page>;
 
 const domain = window.location.origin ?? 'http://localhost:6006';
 const cmsDomain = new URL(
   process.env.CMS_GRAPHQL_ENDPOINT ?? 'https://hkih.stage.geniem.io/graphql',
 ).origin;
-const Template: ComponentStory<typeof Page> = (args) => (
+const Template: StoryFn<typeof Page> = (args) => (
   <HelmetProvider>
     <ConfigProvider
       config={{
@@ -70,71 +70,74 @@ const Template: ComponentStory<typeof Page> = (args) => (
   </HelmetProvider>
 );
 
-export const PageDefault = Template.bind({});
-PageDefault.args = {
-  navigation: (
-    <Navigation
-      languages={navigationLanguages}
-      menu={navigationMenu}
-      onTitleClick={() => {
-        // eslint-disable-next-line no-console
-        console.log('I should navigate');
-      }}
-      getPathnameForLanguage={({ slug, code }, currentLanguage) => {
-        const currentRatherComplexUrl = new URL(
-          `${domain}/${currentLanguage.slug}/cms-page/page-slug`,
-        );
-        if (code === LanguageCodeEnum.Fi) {
+export const PageDefault = {
+  render: Template,
+
+  args: {
+    navigation: (
+      <Navigation
+        languages={navigationLanguages}
+        menu={navigationMenu}
+        onTitleClick={() => {
+          // eslint-disable-next-line no-console
+          console.log('I should navigate');
+        }}
+        getPathnameForLanguage={({ slug, code }, currentLanguage) => {
+          const currentRatherComplexUrl = new URL(
+            `${domain}/${currentLanguage.slug}/cms-page/page-slug`,
+          );
+          if (code === LanguageCodeEnum.Fi) {
+            return new URL(
+              currentRatherComplexUrl.pathname.replace(
+                `/${currentLanguage.slug}`,
+                '',
+              ),
+              domain,
+            ).href;
+          }
           return new URL(
             currentRatherComplexUrl.pathname.replace(
               `/${currentLanguage.slug}`,
-              '',
+              slug,
             ),
             domain,
           ).href;
-        }
-        return new URL(
-          currentRatherComplexUrl.pathname.replace(
-            `/${currentLanguage.slug}`,
-            slug,
-          ),
-          domain,
-        ).href;
-      }}
-    />
-  ),
-  notification: <Notification notification={notificationMock} />,
-  content: (
-    <PageContent
-      page={pageMock}
-      backUrl="/"
-      breadcrumbs={[
-        { title: 'Root', link: '/' },
-        { title: 'Nested', link: '/nested' },
-      ]}
-      collections={getCollections(pageMock.modules)?.map((collection) => (
-        <Collection
-          key={`collection-${Math.random()}`}
-          title={collection.title}
-          collectionContainerProps={{ withDots: false }}
-          type={getCollectionUIType(collection)}
-          cards={getCollectionCards(collection as GeneralCollectionType).map(
-            (cardProps) => (
-              <Card
-                key={cardProps.id}
-                {...cardProps}
-                imageUrl={
-                  cardProps.imageUrl ||
-                  pageMock.featuredImage?.node?.mediaItemUrl
-                }
-                direction="fixed-vertical"
-                clampText
-              />
-            ),
-          )}
-        />
-      ))}
-    />
-  ),
-  footer: <>TODO: Implement footer</>,
+        }}
+      />
+    ),
+    notification: <Notification notification={notificationMock} />,
+    content: (
+      <PageContent
+        page={pageMock}
+        backUrl="/"
+        breadcrumbs={[
+          { title: 'Root', link: '/' },
+          { title: 'Nested', link: '/nested' },
+        ]}
+        collections={getCollections(pageMock.modules)?.map((collection) => (
+          <Collection
+            key={`collection-${Math.random()}`}
+            title={collection.title}
+            collectionContainerProps={{ withDots: false }}
+            type={getCollectionUIType(collection)}
+            cards={getCollectionCards(collection as GeneralCollectionType).map(
+              (cardProps) => (
+                <Card
+                  key={cardProps.id}
+                  {...cardProps}
+                  imageUrl={
+                    cardProps.imageUrl ||
+                    pageMock.featuredImage?.node?.mediaItemUrl
+                  }
+                  direction="fixed-vertical"
+                  clampText
+                />
+              ),
+            )}
+          />
+        ))}
+      />
+    ),
+    footer: <>TODO: Implement footer</>,
+  },
 };

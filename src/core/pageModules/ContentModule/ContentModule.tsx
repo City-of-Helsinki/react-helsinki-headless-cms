@@ -6,6 +6,8 @@ import { HtmlToReact } from '../../../common/components/htmlToReact/HtmlToReact'
 import { useConfig } from '../../configProvider/useConfig';
 import { Link } from '../../link/Link';
 import styles from '../pageModules.module.scss';
+import colorStyles from '../../styles/background.module.scss';
+import { getColor } from '../../utils/string';
 
 export type ContentModuleProps = {
   content?: string;
@@ -31,7 +33,8 @@ export function ContentModule({
     >
       <div
         className={classNames(
-          backgroundColor ? styles[`background${backgroundColor}`] : '',
+          backgroundColor &&
+            colorStyles[`background${getColor(backgroundColor)}`],
           className,
         )}
       >
