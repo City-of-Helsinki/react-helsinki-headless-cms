@@ -42,8 +42,6 @@ const Template: StoryFn<typeof Card> = (args) => (
         imageLabel="Article"
         openLinkInNewTab
       />
-      <div style={{ margin: 24 }} />
-      <Card {...args} title="Fallback image" />
     </div>
   </ConfigProvider>
 );
