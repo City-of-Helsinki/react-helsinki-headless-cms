@@ -3656,7 +3656,7 @@ export type LayoutCard = {
   /** Description */
   description?: Maybe<Scalars['String']>;
   /** Image */
-  image?: Maybe<Scalars['String']>;
+  image?: Maybe<Image>;
   /** Link */
   link?: Maybe<Link>;
   /** Title */
@@ -5591,6 +5591,8 @@ export type PostModulesUnionType =
   | LayoutImageGallery
   | LayoutPages
   | LayoutPagesCarousel
+  | LayoutSocialMediaFeed
+  | LayoutSteps
   | LocationsSelected
   | LocationsSelectedCarousel;
 
@@ -11271,6 +11273,8 @@ export type PostFragment = {
           } | null;
         } | null> | null;
       }
+    | { __typename?: 'LayoutSocialMediaFeed' }
+    | { __typename?: 'LayoutSteps' }
     | {
         __typename: 'LocationsSelected';
         title?: string | null;
@@ -11589,6 +11593,8 @@ export type ArticleQuery = {
             } | null;
           } | null> | null;
         }
+      | { __typename?: 'LayoutSocialMediaFeed' }
+      | { __typename?: 'LayoutSteps' }
       | {
           __typename: 'LocationsSelected';
           title?: string | null;
@@ -11938,6 +11944,8 @@ export type PostsQuery = {
                 } | null;
               } | null> | null;
             }
+          | { __typename?: 'LayoutSocialMediaFeed' }
+          | { __typename?: 'LayoutSteps' }
           | {
               __typename: 'LocationsSelected';
               title?: string | null;

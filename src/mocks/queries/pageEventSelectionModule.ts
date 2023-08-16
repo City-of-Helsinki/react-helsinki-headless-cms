@@ -35,7 +35,7 @@ export const futureEvents = [
         name: '',
         url: 'https://www.harrastushaku.fi/images/activityimages/8898_dscn7427.jpg',
         photographerName: null,
-        __typename: 'Image',
+        __typename: 'EventImage',
       },
     ],
     subEvents: [],
@@ -224,7 +224,7 @@ export const ongoingEvents = [
         name: '',
         url: 'https://www.harrastushaku.fi/images/activityimages/8453_HARRASTUSHAKUUN.jpg',
         photographerName: null,
-        __typename: 'Image',
+        __typename: 'EventImage',
       },
     ],
     subEvents: [],
@@ -416,7 +416,7 @@ export const pastEventsWithoutEndingTime = [
         name: '',
         url: 'https://www.harrastushaku.fi/images/activityimages/9725_1.jpg',
         photographerName: null,
-        __typename: 'Image',
+        __typename: 'EventImage',
       },
     ],
     subEvents: [],
@@ -607,7 +607,7 @@ export const pastEvents = [
         name: '',
         url: 'https://www.harrastushaku.fi/images/activityimages/8444_Ruukuntekij.jpg',
         photographerName: null,
-        __typename: 'Image',
+        __typename: 'EventImage',
       },
     ],
     subEvents: [],
@@ -786,7 +786,7 @@ export const pastEvents = [
         name: 'äly ja väläys.jpg',
         url: 'https://api.hel.fi/linkedevents/media/images/%C3%A4ly_ja_v%C3%A4l%C3%A4ys.jpg',
         photographerName: '',
-        __typename: 'Image',
+        __typename: 'EventImage',
       },
     ],
     subEvents: [],
@@ -1036,7 +1036,7 @@ export const pastEvents = [
     Example query taken from the real response of Hobbies staging CMS: https://hobbies-graphql-proxy.test.hel.ninja/proxy/graphql.
     The response is modified so that there are 2 ongoing events and the rest of them are in the past.
 
-    query: 
+    query:
     ```
     query EventsByIds($ids: [ID!]!, $eventType: [EventTypeId], $include: [String], $sort: String, $pageSize: Int, $page: Int, $start: String, $end: String) {
         eventsByIds(
