@@ -79,7 +79,7 @@ export type EventDetails = {
   eventStatus?: Maybe<Scalars['String']>;
   externalLinks: Array<ExternalLink>;
   id: Scalars['ID'];
-  images: Array<Image>;
+  images: Array<EventImage>;
   inLanguage: Array<InLanguage>;
   infoUrl?: Maybe<LocalizedObject>;
   internalContext?: Maybe<Scalars['String']>;
@@ -105,6 +105,23 @@ export type EventDetails = {
   typeId?: Maybe<EventTypeId>;
 };
 
+export type EventImage = {
+  __typename?: 'EventImage';
+  createdTime?: Maybe<Scalars['String']>;
+  cropping?: Maybe<Scalars['String']>;
+  dataSource?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['ID']>;
+  internalContext?: Maybe<Scalars['String']>;
+  internalId: Scalars['String'];
+  internalType?: Maybe<Scalars['String']>;
+  lastModifiedTime?: Maybe<Scalars['String']>;
+  license?: Maybe<Scalars['String']>;
+  name: Scalars['String'];
+  photographerName?: Maybe<Scalars['String']>;
+  publisher?: Maybe<Scalars['String']>;
+  url: Scalars['String'];
+};
+
 export type EventListResponse = {
   __typename?: 'EventListResponse';
   data: Array<EventDetails>;
@@ -121,23 +138,6 @@ export type ExternalLink = {
   language?: Maybe<Scalars['String']>;
   link?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
-};
-
-export type Image = {
-  __typename?: 'Image';
-  createdTime?: Maybe<Scalars['String']>;
-  cropping?: Maybe<Scalars['String']>;
-  dataSource?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['ID']>;
-  internalContext?: Maybe<Scalars['String']>;
-  internalId: Scalars['String'];
-  internalType?: Maybe<Scalars['String']>;
-  lastModifiedTime?: Maybe<Scalars['String']>;
-  license?: Maybe<Scalars['String']>;
-  name: Scalars['String'];
-  photographerName?: Maybe<Scalars['String']>;
-  publisher?: Maybe<Scalars['String']>;
-  url: Scalars['String'];
 };
 
 export type InLanguage = {
@@ -164,7 +164,7 @@ export type Keyword = {
   deprecated?: Maybe<Scalars['Boolean']>;
   hasUpcomingEvents?: Maybe<Scalars['Boolean']>;
   id?: Maybe<Scalars['ID']>;
-  image?: Maybe<Image>;
+  image?: Maybe<EventImage>;
   internalContext?: Maybe<Scalars['String']>;
   internalId: Scalars['String'];
   internalType?: Maybe<Scalars['String']>;
@@ -268,7 +268,7 @@ export type Place = {
   email?: Maybe<Scalars['String']>;
   hasUpcomingEvents?: Maybe<Scalars['Boolean']>;
   id?: Maybe<Scalars['ID']>;
-  image?: Maybe<Image>;
+  image?: Maybe<EventImage>;
   infoUrl?: Maybe<LocalizedObject>;
   internalContext?: Maybe<Scalars['String']>;
   internalId: Scalars['String'];
@@ -355,6 +355,7 @@ export type QueryEventListArgs = {
   page?: InputMaybe<Scalars['Int']>;
   pageSize?: InputMaybe<Scalars['Int']>;
   publisher?: InputMaybe<Scalars['ID']>;
+  publisherAncestor?: InputMaybe<Scalars['ID']>;
   sort?: InputMaybe<Scalars['String']>;
   start?: InputMaybe<Scalars['String']>;
   startsAfter?: InputMaybe<Scalars['String']>;
@@ -576,7 +577,7 @@ export type EventCmsEventFieldsFragment = {
     link?: string | null;
   }>;
   images: Array<{
-    __typename?: 'Image';
+    __typename?: 'EventImage';
     id?: string | null;
     name: string;
     url: string;
@@ -827,7 +828,7 @@ export type EventListQuery = {
         link?: string | null;
       }>;
       images: Array<{
-        __typename?: 'Image';
+        __typename?: 'EventImage';
         id?: string | null;
         name: string;
         url: string;
@@ -1026,7 +1027,7 @@ export type EventsByIdsQuery = {
         link?: string | null;
       }>;
       images: Array<{
-        __typename?: 'Image';
+        __typename?: 'EventImage';
         id?: string | null;
         name: string;
         url: string;
