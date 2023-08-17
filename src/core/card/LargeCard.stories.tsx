@@ -25,7 +25,7 @@ const Template: StoryFn<typeof LargeCard> = (args) => (
   >
     <div style={{ maxWidth: 1470, margin: 24 }}>
       <LargeCard {...args} url="https://hel.fi" hasLink />
-      <LargeCard {...args} imagePosition="left" />
+      <LargeCard {...args} imagePosition="image-left" />
       <LargeCard
         {...args}
         imageUrl="/broken/large/image.jpg"
