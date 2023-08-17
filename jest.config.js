@@ -24,5 +24,6 @@ module.exports = {
   testEnvironment: 'jest-environment-jsdom',
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
-  testPathIgnorePatterns: ['build'],
+  testPathIgnorePatterns: ['<rootDir>/(build|dist|temp)/'],
+  modulePathIgnorePatterns: ['<rootDir>/(build|dist|temp)/'],
 };
