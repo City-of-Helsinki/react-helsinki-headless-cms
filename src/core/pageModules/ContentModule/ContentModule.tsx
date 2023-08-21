@@ -28,16 +28,12 @@ export function ContentModule({
     <div
       className={classNames(
         styles.pageModuleWrapper,
+        backgroundColor &&
+          colorStyles[`background${getColor(backgroundColor)}`],
         backgroundColor ? styles.withPadding : '',
       )}
     >
-      <div
-        className={classNames(
-          backgroundColor &&
-            colorStyles[`background${getColor(backgroundColor)}`],
-          className,
-        )}
-      >
+      <div className={classNames(className)}>
         <HtmlToReact
           components={{
             a: Link,

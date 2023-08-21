@@ -1,12 +1,13 @@
 import React from 'react';
 
+import { Card, CardProps } from '../../card/Card';
 import styles from '../pageModules.module.scss';
 
-export type CardModuleProps = {
-  // todo: props
-};
-
 // todo: implement module
-export function CardModule() {
-  return <div className={styles.pageModuleWrapper}>Card</div>;
+export function CardModule(props: CardProps) {
+  return (
+    <div className={styles.pageModuleWrapper}>
+      <Card {...props} direction="responsive-reverse" imageLabel="" />
+    </div>
+  );
 }

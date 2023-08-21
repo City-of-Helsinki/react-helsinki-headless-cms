@@ -1,6 +1,12 @@
+@import 'breakpoints';
+
 .pageModuleWrapper {
-  margin: var(--spacing-s) 0;
+  margin: var(--spacing-layout-l) 0;
+  @include respond_above(s) {
+    margin: var(--spacing-layout-s) 0;
+  }
   &.withPadding {
-    padding: var(--spacing-s) 0;
+    padding: 30px;
+    border: 1px solid #000;
   }
 }
