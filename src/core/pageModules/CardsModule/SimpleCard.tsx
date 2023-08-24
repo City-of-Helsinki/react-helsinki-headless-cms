@@ -1,7 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
-import { Button } from 'hds-react';
+import { Button, IconAngleRight } from 'hds-react';
 
 import styles from '../PageModules.module.scss';
 import colorStyles from '../../styles/background.module.scss';
@@ -27,7 +27,7 @@ export function SimpleCard({
   linkTitle,
   linkTarget,
   linkUrl,
-  direction,
+  direction = 'vertical',
 }: CardProps) {
   const openInNewTab = (url: string): void => {
     const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
@@ -49,14 +49,31 @@ export function SimpleCard({
         styles.cardWrapper,
         backgroundColor &&
           colorStyles[`background${getColor(backgroundColor)}`],
-        direction && direction,
+        direction && styles[direction],
       )}
     >
-      {icon && <Icon name="1" />}
-      {title && <div className={styles.title}>{title}</div>}
-      {description && <div className={styles.description}>{description}</div>}
+      {icon && direction === 'horisontal' && (
+        <div className={classNames(styles.cardIconWrapper, styles.horisontal)}>
+          <Icon name="1" />
+        </div>
+      )}
+      <div className={styles.cardContent}>
+        {icon && direction === 'vertical' && (
+          <div className={styles.cardIconWrapper}>
+            <Icon name="1" />
+          </div>
+        )}
+        {title && <div className={styles.title}>{title}</div>}
+        {description && <div className={styles.description}>{description}</div>}
+      </div>
       {linkTitle && linkUrl && (
-        <Button variant="secondary" theme="black" onClick={handleClick}>
+        <Button
+          style={direction === 'vertical' ? { width: '100%' } : {}}
+          variant="secondary"
+          theme="black"
+          onClick={handleClick}
+          iconRight={<IconAngleRight />}
+        >
           {linkTitle}
         </Button>
       )}

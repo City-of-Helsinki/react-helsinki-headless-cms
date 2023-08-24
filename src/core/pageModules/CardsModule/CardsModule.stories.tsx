@@ -18,13 +18,6 @@ const items = [
     backgroundColor: 'fog',
     icon: '1',
   },
-  {
-    title: 'Card title',
-    description: 'Description',
-    link: { target: '_blank', title: 'link title', url: 'https://hel.fi' },
-    backgroundColor: 'fog',
-    icon: '1',
-  },
 ];
 
 const Template: StoryFn<typeof CardsModule> = () => (

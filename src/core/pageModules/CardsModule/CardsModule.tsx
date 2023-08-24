@@ -24,7 +24,13 @@ export type CardsModuleProps = {
 // todo: implement module
 export function CardsModule({ items }: CardsModuleProps) {
   return (
-    <div className={classNames(styles.pageModuleWrapper, styles.cardsWrapper)}>
+    <div
+      className={classNames(
+        styles.pageModuleWrapper,
+        styles.cardsWrapper,
+        items.length < 4 && styles.flexWrapper,
+      )}
+    >
       {items?.map((card) => (
         <SimpleCard
           title={card.title}
