@@ -1,12 +1,42 @@
 import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import classNames from 'classnames';
 
-import styles from '../pageModules.module.scss';
+import styles from '../PageModules.module.scss';
+import { SimpleCard } from './SimpleCard';
+
+type Card = {
+  backgroundColor?: string;
+  description?: string;
+  icon?: string;
+  title?: string;
+  link?: {
+    target?: string;
+    title?: string;
+    url?: string;
+  };
+};
 
 export type CardsModuleProps = {
-  // todo: props
+  items: Card[];
 };
 
 // todo: implement module
-export function CardsModule() {
-  return <div className={styles.pageModuleWrapper}>Cards</div>;
+export function CardsModule({ items }: CardsModuleProps) {
+  return (
+    <div className={classNames(styles.pageModuleWrapper, styles.cardsWrapper)}>
+      {items?.map((card) => (
+        <SimpleCard
+          title={card.title}
+          description={card.description}
+          linkTarget={card.link.target}
+          linkTitle={card.link.title}
+          linkUrl={card.link.url}
+          backgroundColor={card.backgroundColor}
+          direction={items.length === 1 ? 'horisontal' : 'vertical'}
+          icon={card.icon}
+        />
+      ))}
+    </div>
+  );
 }

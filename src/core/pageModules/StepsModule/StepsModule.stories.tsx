@@ -7,35 +7,35 @@ import { StepsModule } from './StepsModule';
 import { SELECT_COLORS } from '../constants';
 
 export default {
-  title: 'Core components/StepsModule module',
+  title: 'Core components/Steps module',
   component: StepsModule,
   args: {
-    title: "Steps title",
-    helpText: "Steps description",
-    color: "tram",
+    title: 'Steps title',
+    helpText: 'Steps description',
+    color: 'tram',
     steps: [
-              {title: "First step", content: "First step content"},
-              {title: "Second step", content: "Second step content"}, 
-              {title: "Third step", content: "Third step content"}
-          ],
-    type: "numbers",
+      { title: 'First step', content: 'First step content' },
+      { title: 'Second step', content: 'Second step content' },
+      { title: 'Third step', content: 'Third step content' },
+    ],
+    type: 'numbers',
   },
-  argTypes: { 
-    type: { 
-      control: 'radio', 
-      options: ['numbers', 'bullets'] 
+  argTypes: {
+    type: {
+      control: 'radio',
+      options: ['numbers', 'bullets'],
     },
-    color: { 
-      control: 'select', 
-      options:  SELECT_COLORS
-    }
-  }
+    color: {
+      control: 'select',
+      options: SELECT_COLORS,
+    },
+  },
 } as Meta<typeof StepsModule>;
 
 const Template: StoryFn<typeof StepsModule> = (args) => (
-    <div style={{margin: 24}}>
-      <StepsModule {...args} />
-    </div>
+  <div style={{ margin: 24 }}>
+    <StepsModule {...args} />
+  </div>
 );
 
 export const StepsModuleDefault = {

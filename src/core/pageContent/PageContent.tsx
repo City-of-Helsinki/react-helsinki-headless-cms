@@ -74,9 +74,21 @@ export const defaultContentModules = (
         />,
       );
     } else if (isLayoutCard(module)) {
-      contentModules.push(<CardModule />);
+      contentModules.push(
+        <CardModule
+          title={module.title}
+          text={module.description}
+          hasLink
+          url={module.link.url}
+          imageUrl={module.image.medium}
+          imagePosition={
+            module.alignment === 'right' ? 'image-right' : 'image-left'
+          }
+          isDelimited={module.alignment.startsWith('delimited')}
+        />,
+      );
     } else if (isLayoutCards(module)) {
-      contentModules.push(<CardsModule />);
+      contentModules.push(<CardsModule items={module.cards} />);
     } else if (isLayoutImage(module)) {
       contentModules.push(<ImageModule />);
     } else if (isLayoutSteps(module)) {

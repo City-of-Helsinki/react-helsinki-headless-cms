@@ -5,7 +5,7 @@ import React from 'react';
 import { HtmlToReact } from '../../../common/components/htmlToReact/HtmlToReact';
 import { useConfig } from '../../configProvider/useConfig';
 import { Link } from '../../link/Link';
-import styles from '../pageModules.module.scss';
+import styles from '../PageModules.module.scss';
 import colorStyles from '../../styles/background.module.scss';
 import { getColor } from '../../utils/string';
 

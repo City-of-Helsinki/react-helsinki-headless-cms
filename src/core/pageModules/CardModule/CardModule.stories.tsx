@@ -12,21 +12,21 @@ export default {
   title: 'Core components/Card module',
   component: CardModule,
   args: {
-    title: "Card title",
-    subTitle: "Card subtitle",
-    text: "Card text content",
-    backgroundColor: "coat-of-arms"
+    title: 'Card title',
+    subTitle: 'Card subtitle',
+    text: 'Card text content',
+    backgroundColor: 'coat-of-arms',
   },
-  argTypes: { 
-    backgroundColor: { 
-      control: 'select', 
-      options:  SELECT_COLORS
-    }
-  }
+  argTypes: {
+    backgroundColor: {
+      control: 'select',
+      options: SELECT_COLORS,
+    },
+  },
 } as Meta<typeof CardModule>;
 
 const Template: StoryFn<typeof CardModule> = (args) => (
-<ConfigProvider
+  <ConfigProvider
     config={{
       ...defaultConfig,
       siteName: 'RHHC Example',
@@ -35,9 +35,10 @@ const Template: StoryFn<typeof CardModule> = (args) => (
       },
     }}
   >
-    <div style={{margin: 24}}>
+    <div style={{ margin: 24 }}>
       <CardModule {...args} />
-    </div></ConfigProvider>
+    </div>
+  </ConfigProvider>
 );
 
 export const CardModuleDefault = {

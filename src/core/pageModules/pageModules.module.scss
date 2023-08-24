@@ -1,12 +1,36 @@
 @import 'breakpoints';
 
 .pageModuleWrapper {
-  margin: var(--spacing-layout-l) 0;
+  margin: var(--spacing-layout-2-xs) 0;
   @include respond_above(s) {
     margin: var(--spacing-layout-s) 0;
   }
   &.withPadding {
     padding: 30px;
     border: 1px solid #000;
+  }
+}
+
+.cardsWrapper {
+  display: flex;
+  gap: 24px;
+}
+
+.cardWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 30px;
+  min-width: 248px;
+  width: 100%;
+
+  & .title {
+    font-size: 32px;
+  }
+
+  & .description {
+    font-size: 18px;
+    line-height: 28px;
   }
 }
