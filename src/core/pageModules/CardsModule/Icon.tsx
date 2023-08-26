@@ -1,11 +1,22 @@
-import { IconAlertCircle } from 'hds-react';
-import React from 'react';
+import React, { Suspense } from 'react';
+
+import styles from '../PageModules.module.scss';
 
 type IconProps = {
-  name: '1';
+  name: string;
 };
 
 export function Icon({ name }: IconProps) {
-  const icon = name === '1' ? <IconAlertCircle /> : null;
-  return icon;
+  // eslint-disable-next-line react/jsx-no-useless-fragment
+  const fallback = () => <div className={styles.fallbackIcon} />;
+  const IconComponent = React.lazy(() =>
+    import('../../../common/components/icons').then((module) => ({
+      default: module[name] || fallback,
+    })),
+  );
+  return (
+    <Suspense fallback={<div className={styles.fallbackIcon} />}>
+      <IconComponent />
+    </Suspense>
+  );
 }

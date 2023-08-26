@@ -5,7 +5,7 @@ import { Button, IconAngleRight } from 'hds-react';
 
 import styles from '../PageModules.module.scss';
 import colorStyles from '../../styles/background.module.scss';
-import { getColor } from '../../utils/string';
+import { getColor, getIconName } from '../../utils/string';
 import { Icon } from './Icon';
 
 type CardProps = {
@@ -39,7 +39,7 @@ export function SimpleCard({
       if (linkTarget === '_blank') {
         openInNewTab(linkUrl);
       }
-      // todo: router push?
+      // todo: router push, we dont have router in the hcrc?
     }
   };
 
@@ -52,31 +52,33 @@ export function SimpleCard({
         direction && styles[direction],
       )}
     >
-      {icon && direction === 'horisontal' && (
-        <div className={classNames(styles.cardIconWrapper, styles.horisontal)}>
-          <Icon name="1" />
+      {icon && (
+        <div
+          className={classNames(
+            styles.cardIconWrapper,
+            direction && styles[direction],
+          )}
+        >
+          <Icon name={getIconName(icon)} />
         </div>
       )}
       <div className={styles.cardContent}>
-        {icon && direction === 'vertical' && (
-          <div className={styles.cardIconWrapper}>
-            <Icon name="1" />
-          </div>
-        )}
         {title && <div className={styles.title}>{title}</div>}
         {description && <div className={styles.description}>{description}</div>}
+        {linkTitle && linkUrl && (
+          <div className={styles.button}>
+            <Button
+              style={direction === 'vertical' ? { width: '100%' } : {}}
+              variant="secondary"
+              theme="black"
+              onClick={handleClick}
+              iconRight={<IconAngleRight />}
+            >
+              {linkTitle}
+            </Button>
+          </div>
+        )}
       </div>
-      {linkTitle && linkUrl && (
-        <Button
-          style={direction === 'vertical' ? { width: '100%' } : {}}
-          variant="secondary"
-          theme="black"
-          onClick={handleClick}
-          iconRight={<IconAngleRight />}
-        >
-          {linkTitle}
-        </Button>
-      )}
     </div>
   );
 }

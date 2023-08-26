@@ -16,7 +16,36 @@ const items = [
     description: 'Description',
     link: { target: '_blank', title: 'link title', url: 'https://hel.fi' },
     backgroundColor: 'fog',
-    icon: '1',
+    icon: 'alert-circle',
+  },
+  {
+    title: 'Card title',
+    description: 'Description',
+    link: { target: '_blank', title: 'link title', url: 'https://hel.fi' },
+    backgroundColor: 'fog',
+    icon: 'alert-circle',
+  },
+  {
+    title: 'Card title',
+    description: 'Description',
+    link: { target: '_blank', title: 'link title', url: 'https://hel.fi' },
+    backgroundColor: 'fog',
+    icon: 'alert-circle',
+  },
+  {
+    title: 'Card title',
+    description: 'Description',
+    link: { target: '_blank', title: 'link title', url: 'https://hel.fi' },
+    backgroundColor: 'fog',
+    icon: 'alert-circle',
+  },
+  {
+    title: 'Card title',
+    description:
+      ' Description Description Description Description  Description Description Description Description Description Description',
+    link: { target: '_blank', title: 'link title', url: 'https://hel.fi' },
+    backgroundColor: 'fog',
+    icon: 'alert-circle',
   },
 ];
 
