@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from '../PageModules.module.scss';
+import styles from '../pageModules.module.scss';
 
 export type ImageModuleProps = {
   // todo: props

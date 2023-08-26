@@ -3,7 +3,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { Button, IconAngleRight } from 'hds-react';
 
-import styles from '../PageModules.module.scss';
+import styles from '../pageModules.module.scss';
 import colorStyles from '../../styles/background.module.scss';
 import { getColor, getIconName } from '../../utils/string';
 import { Icon } from './Icon';

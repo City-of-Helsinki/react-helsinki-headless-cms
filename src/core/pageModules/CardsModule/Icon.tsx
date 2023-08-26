@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 
-import styles from '../PageModules.module.scss';
+import styles from '../pageModules.module.scss';
 
 type IconProps = {
   name: string;

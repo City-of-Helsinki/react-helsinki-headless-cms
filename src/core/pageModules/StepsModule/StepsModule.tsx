@@ -4,7 +4,7 @@ import DOMPurify from 'isomorphic-dompurify';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
 
-import styles from '../PageModules.module.scss';
+import styles from '../pageModules.module.scss';
 import colorStyles from '../../styles/background.module.scss';
 import { getColor } from '../../utils/string';
 

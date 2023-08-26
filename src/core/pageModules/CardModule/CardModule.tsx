@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Card, CardProps } from '../../card/Card';
-import styles from '../PageModules.module.scss';
+import styles from '../pageModules.module.scss';
 
 // todo: implement module
 export function CardModule(props: CardProps) {

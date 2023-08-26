@@ -2,7 +2,7 @@ import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
 
-import styles from '../PageModules.module.scss';
+import styles from '../pageModules.module.scss';
 import { SimpleCard } from './SimpleCard';
 
 type Card = {
