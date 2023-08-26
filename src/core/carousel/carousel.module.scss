@@ -105,7 +105,9 @@
             //li
             .slide {
               flex-flow: column;
-              transition: opacity 0.25s ease-in, padding 0.25s ease-in;
+              transition:
+                opacity 0.25s ease-in,
+                padding 0.25s ease-in;
               min-width: 100%;
               margin: 0;
               position: relative;
