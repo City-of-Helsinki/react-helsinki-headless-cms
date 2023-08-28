@@ -7,6 +7,7 @@ import styles from '../pageModules.module.scss';
 import colorStyles from '../../styles/background.module.scss';
 import { getColor, getIconName } from '../../utils/string';
 import { Icon } from './Icon';
+import { useConfig } from '../../configProvider/useConfig';
 
 type CardProps = {
   title?: string;
@@ -29,6 +30,10 @@ export function SimpleCard({
   linkUrl,
   direction = 'vertical',
 }: CardProps) {
+  const {
+    utils: { redirectToUrl },
+  } = useConfig();
+
   const openInNewTab = (url: string): void => {
     const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
     if (newWindow) newWindow.opener = null;
@@ -38,8 +43,9 @@ export function SimpleCard({
     if (linkUrl) {
       if (linkTarget === '_blank') {
         openInNewTab(linkUrl);
+      } else {
+        redirectToUrl(linkUrl);
       }
-      // todo: router push, we dont have router in the hcrc?
     }
   };
 
