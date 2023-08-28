@@ -34,7 +34,7 @@ describe('PageContent', () => {
     expect(document.getElementById(sidebarLinkList.anchor)).toBeInTheDocument();
     sidebarLinkList.links.forEach((link) => {
       const linkElement = screen.getByRole('link', {
-        name: new RegExp(link.title, 'g'),
+        name: new RegExp(link.title),
       });
 
       expect(linkElement).toBeInTheDocument();
