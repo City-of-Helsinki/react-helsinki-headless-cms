@@ -5,6 +5,8 @@ import { StoryFn, Meta } from '@storybook/react';
 
 import { CardsModule } from './CardsModule';
 import { SELECT_COLORS } from '../constants';
+import { ConfigProvider } from '../../configProvider/ConfigProvider';
+import { defaultConfig } from '../../configProvider/defaultConfig';
 
 export default {
   title: 'Core components/Cards module',
@@ -31,14 +33,20 @@ const getItems = () => {
 const items = getItems();
 
 const Template: StoryFn<typeof CardsModule> = () => (
-  <div style={{ margin: 24 }}>
-    <h2>1 Item</h2>
-    <CardsModule items={items.slice(0, 1)} />
-    <h2>Up to 3 items</h2>
-    <CardsModule items={items.slice(0, 3)} />
-    <h2>4+ items</h2>
-    <CardsModule items={items} />
-  </div>
+  <ConfigProvider
+    config={{
+      ...defaultConfig,
+    }}
+  >
+    <div style={{ margin: 24 }}>
+      <h2>1 Item</h2>
+      <CardsModule items={items.slice(0, 1)} />
+      <h2>Up to 3 items</h2>
+      <CardsModule items={items.slice(0, 3)} />
+      <h2>4+ items</h2>
+      <CardsModule items={items} />
+    </div>
+  </ConfigProvider>
 );
 
 export const CardsModuleDefault = {

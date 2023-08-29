@@ -7,6 +7,7 @@ import { ContentModule } from './ContentModule';
 import { ConfigProvider } from '../../configProvider/ConfigProvider';
 import { defaultConfig } from '../../configProvider/defaultConfig';
 import { SELECT_COLORS } from '../constants';
+import { RANDOM_CONTENT } from '../../../constants';
 
 export default {
   title: 'Core components/Content module',
@@ -30,7 +31,9 @@ const Template: StoryFn<typeof ContentModule> = (args) => (
     }}
   >
     <div style={{ margin: 24 }}>
+      <div>{RANDOM_CONTENT}</div>
       <ContentModule {...args} />
+      <div>{RANDOM_CONTENT}</div>
     </div>
   </ConfigProvider>
 );

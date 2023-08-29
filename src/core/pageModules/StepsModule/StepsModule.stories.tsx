@@ -5,6 +5,7 @@ import { StoryFn, Meta } from '@storybook/react';
 
 import { StepsModule } from './StepsModule';
 import { SELECT_COLORS } from '../constants';
+import { RANDOM_CONTENT } from '../../../constants';
 
 export default {
   title: 'Core components/Steps module',
@@ -12,7 +13,7 @@ export default {
   args: {
     title: 'Steps title',
     helpText: 'Steps description',
-    color: 'tram',
+    color: 'suomenlinna',
     steps: [
       { title: 'First step', content: 'First step content' },
       { title: 'Second step', content: 'Second step content' },
@@ -34,7 +35,9 @@ export default {
 
 const Template: StoryFn<typeof StepsModule> = (args) => (
   <div style={{ margin: 24 }}>
+    <div>{RANDOM_CONTENT}</div>
     <StepsModule {...args} />
+    <div>{RANDOM_CONTENT}</div>
   </div>
 );
 

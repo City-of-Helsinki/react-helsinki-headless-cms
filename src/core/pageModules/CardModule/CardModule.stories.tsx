@@ -7,15 +7,15 @@ import { CardModule } from './CardModule';
 import { ConfigProvider } from '../../configProvider/ConfigProvider';
 import { defaultConfig } from '../../configProvider/defaultConfig';
 import { SELECT_COLORS } from '../constants';
+import { RANDOM_CONTENT } from '../../../constants';
 
 export default {
   title: 'Core components/Card module',
   component: CardModule,
   args: {
     title: 'Card title',
-    subTitle: 'Card subtitle',
     text: 'Card text content',
-    backgroundColor: 'coat-of-arms',
+    backgroundColor: 'silver',
   },
   argTypes: {
     backgroundColor: {
@@ -36,7 +36,9 @@ const Template: StoryFn<typeof CardModule> = (args) => (
     }}
   >
     <div style={{ margin: 24 }}>
+      <div>{RANDOM_CONTENT}</div>
       <CardModule {...args} />
+      <div>{RANDOM_CONTENT}</div>
     </div>
   </ConfigProvider>
 );
