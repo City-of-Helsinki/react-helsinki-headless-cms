@@ -155,6 +155,10 @@
       }
     }
 
+    &.responsive-reverse {
+      padding-bottom: unset;
+    }
+
     &.isDelimited {
       @include respond_above(s) {
         position: absolute;

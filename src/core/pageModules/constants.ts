@@ -1,4 +1,5 @@
 export const SELECT_COLORS = [
+  '',
   'coat-of-arms',
   'gold',
   'silver',
