@@ -1,7 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import camelCase from 'lodash/camelCase';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import startCase from 'lodash/startCase';
+import { camelCase, startCase } from 'lodash-es';
 
 export const getColor = (color: string): string =>
   startCase(camelCase(color)).replace(/\s/g, '');

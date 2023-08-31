@@ -12,6 +12,7 @@ module.exports = {
   moduleNameMapper: {
     // return a mock css module
     '\\.(css|less|scss|sss|styl)$': 'identity-obj-proxy',
+     "^lodash-es$": "lodash"
   },
 
   setupFilesAfterEnv: ['<rootDir>/jest-setup.ts'],
