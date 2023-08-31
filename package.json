@@ -79,6 +79,7 @@
     "@types/dompurify": "^3.0.2",
     "@types/jest": "^29.5.3",
     "@types/jest-axe": "^3.5.5",
+    "@types/lodash-es": "^4.17.9",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
@@ -130,7 +131,7 @@
     "html-react-parser": "^4.2.1",
     "isomorphic-dompurify": "^1.8.0",
     "jest-environment-jsdom": "^29.6.2",
-    "lodash": "^4.17.21"
+    "lodash-es": "^4.17.21"
   },
   "msw": {
     "workerDirectory": "public"
