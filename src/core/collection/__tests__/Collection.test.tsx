@@ -33,9 +33,9 @@ describe('event selection module', () => {
     });
 
     // All the ongoing events should be shown
-    activeEvents.forEach((event) => {
+    activeEvents.forEach(async (event) => {
       expect(
-        screen.getByRole('link', { name: event.name.fi }),
+        await screen.findByRole('link', { name: event.name.fi }),
       ).toBeInTheDocument();
     });
 
@@ -53,6 +53,9 @@ describe('event selection module', () => {
 
     // No other cards than the ongoing events should be shown.
     // There is a linkbox that wraps the whole card and another link that wraps the arrow-icon
-    expect(screen.getAllByRole('link').length).toBe(activeEvents.length * 2);
+    // so the amount could be double the events.
+    // However, the another link is with aria-hidden,
+    // so the amount of the links should be the amounts of events.
+    expect(screen.getAllByRole('link').length).toBe(activeEvents.length);
   });
 });
