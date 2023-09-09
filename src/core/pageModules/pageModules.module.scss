@@ -24,6 +24,7 @@
   grid-gap: 24px;
   grid-row-gap: 24px;
 
+  /* for 2 or 3 items flex is used only above xl, otherwise cards are too narrow*/
   &.flexWrapper {
     display: flex;
     gap: 24px;
@@ -31,10 +32,7 @@
       width: 100%;
       min-width: 248px;
     }
-  }
 
-  /* for 2 or 3 items flex is used only above xl, otherwise cards are too narrow*/
-  &.gridWrapper {
     @include respond_below(xl) {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(248px, 1fr));
