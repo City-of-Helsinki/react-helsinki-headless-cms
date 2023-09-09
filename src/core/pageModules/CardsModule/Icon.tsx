@@ -7,9 +7,10 @@ type IconProps = {
 };
 
 export function Icon({ name }: IconProps) {
+  // eslint-disable-next-line react/jsx-no-useless-fragment
   const IconComponent = React.lazy(() =>
     import('../../../common/components/icons').then((module) => ({
-      default: module[name] || null,
+      default: module[name] || <div />,
     })),
   );
   return (
