@@ -7,11 +7,9 @@ type IconProps = {
 };
 
 export function Icon({ name }: IconProps) {
-  // eslint-disable-next-line react/jsx-no-useless-fragment
-  const fallback = () => <div className={styles.fallbackIcon} />;
   const IconComponent = React.lazy(() =>
     import('../../../common/components/icons').then((module) => ({
-      default: module[name] || fallback,
+      default: module[name] || null,
     })),
   );
   return (
