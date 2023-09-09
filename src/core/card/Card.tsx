@@ -8,7 +8,7 @@ import colorStyles from '../styles/background.module.scss';
 import { LinkBox } from '../linkBox/LinkBox';
 import { Link } from '../link/Link';
 import { BackgroundImage } from '../image/BackgroundImage';
-import { getColor } from '../utils/string';
+import { getColor, getTextFromHtml } from '../utils/string';
 
 export type CardProps = {
   id?: string;
@@ -112,7 +112,7 @@ export function Card({
               <div
                 className={classNames(styles.text, clampText && styles.clamp)}
               >
-                {text}
+                {getTextFromHtml(text)}
               </div>
             )}
             {customContent && (

@@ -5,7 +5,7 @@ import { Button, IconAngleRight } from 'hds-react';
 
 import styles from '../pageModules.module.scss';
 import colorStyles from '../../styles/background.module.scss';
-import { getColor, getIconName } from '../../utils/string';
+import { getColor, getIconName, getTextFromHtml } from '../../utils/string';
 import { Icon } from './Icon';
 import { useConfig } from '../../configProvider/useConfig';
 
@@ -70,7 +70,11 @@ export function SimpleCard({
       )}
       <div className={styles.cardContent}>
         {title && <div className={styles.title}>{title}</div>}
-        {description && <div className={styles.description}>{description}</div>}
+        {description && (
+          <div className={styles.description}>
+            {getTextFromHtml(description)}
+          </div>
+        )}
         {linkTitle && linkUrl && (
           <div className={styles.button}>
             <Button

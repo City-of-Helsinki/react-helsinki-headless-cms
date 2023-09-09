@@ -1,12 +1,11 @@
 import React from 'react';
 import { StepByStep } from 'hds-react';
-import DOMPurify from 'isomorphic-dompurify';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
 
 import styles from '../pageModules.module.scss';
 import colorStyles from '../../styles/background.module.scss';
-import { getColor } from '../../utils/string';
+import { getColor, getTextFromHtml } from '../../utils/string';
 
 export type Step = {
   content: string;
@@ -38,10 +37,10 @@ export function StepsModule({
           color && colorStyles[`backgroundListItem${getColor(color)}`],
           className,
         )}
-        helpText={DOMPurify.sanitize(helpText)}
+        helpText={getTextFromHtml(helpText)}
         steps={steps?.map((step) => ({
           title: step.title,
-          description: DOMPurify.sanitize(step.content),
+          description: getTextFromHtml(step.content),
         }))}
         title={title}
       />

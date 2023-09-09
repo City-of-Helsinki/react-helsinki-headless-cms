@@ -7,7 +7,13 @@ import styles from '../pageModules.module.scss';
 export function CardModule(props: CardProps) {
   return (
     <div className={styles.pageModuleWrapper}>
-      <Card {...props} direction="responsive-reverse" imageLabel="" />
+      <Card
+        {...props}
+        direction="responsive-reverse"
+        imageLabel=""
+        withBorder
+        hasLink={false}
+      />
     </div>
   );
 }
