@@ -13,6 +13,7 @@ export function CardModule(props: CardProps) {
         imageLabel=""
         withBorder
         hasLink={false}
+        clampText={false}
       />
     </div>
   );

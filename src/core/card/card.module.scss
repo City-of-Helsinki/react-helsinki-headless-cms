@@ -156,7 +156,9 @@
     }
 
     &.responsive-reverse {
-      padding-bottom: unset;
+      @include respond_above(s) {
+        padding-bottom: unset;
+      }
     }
 
     &.isDelimited {
@@ -229,9 +231,12 @@
       font-size: var(--fontsize-body-m);
       line-height: var(--lineheight-m);
       display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+      &.clamp {
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
       @include respond_above(s) {
         font-size: var(--fontsize-body-l);
         line-height: var(--lineheight-l);

@@ -28,6 +28,7 @@ export function ContentModule({
     <div
       className={classNames(
         styles.pageModuleWrapper,
+        styles.contentModuleWrapper,
         backgroundColor &&
           colorStyles[`background${getColor(backgroundColor)}`],
         backgroundColor ? styles.withPadding : '',
