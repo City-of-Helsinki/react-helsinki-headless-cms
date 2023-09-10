@@ -58,6 +58,7 @@ export function getCollections(
       collections.push({
         ...commonFields,
         items: module.pages,
+        showAllUrl: isLayoutPage(module) ? module.showAllLink : '',
       });
     }
     if (isEventSearchCollectionsEnables) {
