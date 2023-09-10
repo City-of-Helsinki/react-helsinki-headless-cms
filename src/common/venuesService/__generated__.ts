@@ -11,41 +11,50 @@ export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
   [SubKey in K]: Maybe<T[SubKey]>;
 };
+export type MakeEmpty<
+  T extends { [key: string]: unknown },
+  K extends keyof T,
+> = { [_ in K]?: never };
+export type Incremental<T> =
+  | T
+  | {
+      [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never;
+    };
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: string;
-  String: string;
-  Boolean: boolean;
-  Int: number;
-  Float: number;
-  _Any: any;
-  federation__FieldSet: any;
-  link__Import: any;
+  ID: { input: string; output: string };
+  String: { input: string; output: string };
+  Boolean: { input: boolean; output: boolean };
+  Int: { input: number; output: number };
+  Float: { input: number; output: number };
+  _Any: { input: any; output: any };
+  federation__FieldSet: { input: any; output: any };
+  link__Import: { input: any; output: any };
 };
 
 export type AccessibilitySentences = {
   __typename?: 'AccessibilitySentences';
-  groupName?: Maybe<Scalars['String']>;
-  sentences?: Maybe<Array<Maybe<Scalars['String']>>>;
+  groupName?: Maybe<Scalars['String']['output']>;
+  sentences?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
 };
 
 export type Ontology = {
   __typename?: 'Ontology';
-  id?: Maybe<Scalars['Int']>;
-  label?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['Int']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
 };
 
 export type OpeningHour = {
   __typename?: 'OpeningHour';
-  date: Scalars['String'];
+  date: Scalars['String']['output'];
   times: Array<Time>;
 };
 
 export type Point = {
   __typename?: 'Point';
-  coordinates: Array<Scalars['Float']>;
-  type?: Maybe<Scalars['String']>;
+  coordinates: Array<Scalars['Float']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
 };
 
 export type Query = {
@@ -56,11 +65,11 @@ export type Query = {
 };
 
 export type QueryVenueArgs = {
-  id: Scalars['ID'];
+  id: Scalars['ID']['input'];
 };
 
 export type QueryVenuesByIdsArgs = {
-  ids?: InputMaybe<Array<Scalars['ID']>>;
+  ids?: InputMaybe<Array<Scalars['ID']['input']>>;
 };
 
 export enum ResourceState {
@@ -79,33 +88,37 @@ export enum ResourceState {
 
 export type Time = {
   __typename?: 'Time';
-  description: Scalars['String'];
-  endTime: Scalars['String'];
-  endTimeOnNextDay: Scalars['Boolean'];
-  fullDay: Scalars['Boolean'];
-  name: Scalars['String'];
-  periods: Array<Scalars['Int']>;
+  description: Scalars['String']['output'];
+  endTime: Scalars['String']['output'];
+  endTimeOnNextDay: Scalars['Boolean']['output'];
+  fullDay: Scalars['Boolean']['output'];
+  name: Scalars['String']['output'];
+  periods: Array<Scalars['Int']['output']>;
   resourceState: ResourceState;
-  startTime: Scalars['String'];
+  startTime: Scalars['String']['output'];
 };
 
 export type Venue = {
   __typename?: 'Venue';
   accessibilitySentences: Array<Maybe<AccessibilitySentences>>;
-  addressLocality?: Maybe<Scalars['String']>;
+  addressLocality?: Maybe<Scalars['String']['output']>;
+  addressPostalFull?: Maybe<Scalars['String']['output']>;
   connections: Array<Maybe<VenueConnection>>;
-  dataSource?: Maybe<Scalars['String']>;
-  description?: Maybe<Scalars['String']>;
-  email?: Maybe<Scalars['String']>;
-  id: Scalars['String'];
-  image?: Maybe<Scalars['String']>;
-  infoUrl?: Maybe<Scalars['String']>;
+  dataSource?: Maybe<Scalars['String']['output']>;
+  departmentId?: Maybe<Scalars['ID']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  displayedServiceOwner?: Maybe<Scalars['String']['output']>;
+  displayedServiceOwnerType?: Maybe<Scalars['String']['output']>;
+  email?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  image?: Maybe<Scalars['String']['output']>;
+  infoUrl?: Maybe<Scalars['String']['output']>;
   /**
    *  This field is currently disabled because the Hauki integration is not enabled
    * @deprecated Hauki integration is currently disabled so this field can not be accessed
    */
-  isOpen?: Maybe<Scalars['Boolean']>;
-  name?: Maybe<Scalars['String']>;
+  isOpen?: Maybe<Scalars['Boolean']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
   ontologyTree: Array<Maybe<Ontology>>;
   ontologyWords: Array<Maybe<Ontology>>;
   /**
@@ -113,23 +126,26 @@ export type Venue = {
    * @deprecated Hauki integration is currently disabled so this field can not be accessed
    */
   openingHours?: Maybe<Array<OpeningHour>>;
+  organizationId?: Maybe<Scalars['ID']['output']>;
   position?: Maybe<Point>;
-  postalCode?: Maybe<Scalars['String']>;
-  streetAddress?: Maybe<Scalars['String']>;
-  telephone?: Maybe<Scalars['String']>;
+  postalCode?: Maybe<Scalars['String']['output']>;
+  providerType?: Maybe<Scalars['String']['output']>;
+  shortDescription?: Maybe<Scalars['String']['output']>;
+  streetAddress?: Maybe<Scalars['String']['output']>;
+  telephone?: Maybe<Scalars['String']['output']>;
 };
 
 export type VenueConnection = {
   __typename?: 'VenueConnection';
-  name?: Maybe<Scalars['String']>;
-  phone?: Maybe<Scalars['String']>;
-  sectionType?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']['output']>;
+  phone?: Maybe<Scalars['String']['output']>;
+  sectionType?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
 };
 
 export type _Service = {
   __typename?: '_Service';
-  sdl?: Maybe<Scalars['String']>;
+  sdl?: Maybe<Scalars['String']['output']>;
 };
 
 export enum Link__Purpose {
@@ -155,7 +171,7 @@ export type ListVenueFragment = {
 };
 
 export type VenuesByIdsQueryVariables = Exact<{
-  ids: Array<Scalars['ID']> | Scalars['ID'];
+  ids: Array<Scalars['ID']['input']> | Scalars['ID']['input'];
 }>;
 
 export type VenuesByIdsQuery = {

@@ -81,6 +81,7 @@ fragment LayoutPages on LayoutPages {
       }
     }
   }
+  showAllLink
   __typename
 }
 
