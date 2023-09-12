@@ -241,10 +241,6 @@
         overflow: hidden;
       }
 
-      &.responsive-reverse {
-        font-size: var(--fontsize-body-l);
-      }
-
       @include respond_above(s) {
         font-size: var(--fontsize-body-l);
         line-height: var(--lineheight-l);
@@ -256,6 +252,12 @@
           -webkit-box-orient: vertical;
         }
       }
+
+      &.responsive-reverse {
+        line-height: var(--lineheight-l);
+        font-size: var(--fontsize-body-l);
+      }
+
       p {
         margin: 0;
       }

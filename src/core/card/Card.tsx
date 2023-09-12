@@ -121,7 +121,8 @@ export function Card({
               <div
                 className={classNames(
                   styles.text,
-                  clampText && styles.clamp && direction && styles[direction],
+                  clampText && styles.clamp,
+                  direction && styles[direction],
                 )}
               >
                 {getTextFromHtml(text)}
