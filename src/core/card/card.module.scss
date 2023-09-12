@@ -210,6 +210,10 @@
       padding: 0;
       word-wrap: break-word;
 
+      &.responsive-reverse {
+        font-size: var(--fontsize-heading-m);
+      }
+
       @include respond_above(s) {
         margin-top: var(--spacing-2-xs);
         font-size: var(--fontsize-heading-m);
@@ -235,6 +239,10 @@
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
+      }
+
+      &.responsive-reverse {
+        font-size: var(--fontsize-body-l);
       }
 
       @include respond_above(s) {

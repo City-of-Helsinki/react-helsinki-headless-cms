@@ -106,11 +106,23 @@ export function Card({
           )}
         >
           <div className={styles.textWrapper}>
-            {title && <div className={styles.title}>{title}</div>}
+            {title && (
+              <div
+                className={classNames(
+                  styles.title,
+                  direction && styles[direction],
+                )}
+              >
+                {title}
+              </div>
+            )}
             {subTitle && <div className={styles.subTitle}>{subTitle}</div>}
             {text && (
               <div
-                className={classNames(styles.text, clampText && styles.clamp)}
+                className={classNames(
+                  styles.text,
+                  clampText && styles.clamp && direction && styles[direction],
+                )}
               >
                 {getTextFromHtml(text)}
               </div>

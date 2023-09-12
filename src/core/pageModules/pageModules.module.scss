@@ -73,6 +73,7 @@
 
   & .title {
     font-size: 32px;
+    margin-bottom: 16px;
   }
 
   & .description {
@@ -86,6 +87,12 @@
     display: flex;
     align-items: flex-end;
     width: 100%;
+
+    button {
+      div {
+        min-width: 24px;
+      }
+    }
   }
 }
 
@@ -107,4 +114,10 @@
 .fallbackIcon {
   width: 84px;
   height: 84px;
+}
+
+.stepsContainer {
+  & > div > p {
+    font-size: var(--fontsize-body-l);
+  }
 }

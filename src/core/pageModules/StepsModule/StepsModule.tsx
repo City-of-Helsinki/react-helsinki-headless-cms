@@ -35,6 +35,7 @@ export function StepsModule({
         numberedList={type === 'numbers'}
         className={classNames(
           color && colorStyles[`backgroundListItem${getColor(color)}`],
+          styles.stepsContainer,
           className,
         )}
         helpText={getTextFromHtml(helpText)}
