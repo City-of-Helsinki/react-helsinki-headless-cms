@@ -52,11 +52,11 @@
     }
   }
 
-  & :first-child {
+  &:first-child {
     flex: 1 1;
   }
 
-  & :last-child {
+  &:last-child {
     flex: 2 1;
   }
 
