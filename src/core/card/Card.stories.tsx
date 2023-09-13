@@ -1,7 +1,7 @@
 /* eslint-disable react/function-component-definition */
 
 import React, { CSSProperties } from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 
 import { ConfigProvider } from '../configProvider/ConfigProvider';
 import { defaultConfig } from '../configProvider/defaultConfig';
@@ -12,13 +12,13 @@ import { Tag } from '../../common/components/tag/Tag';
 export default {
   title: 'Core components/Card',
   component: Card,
-} as ComponentMeta<typeof Card>;
+} as Meta<typeof Card>;
 
 const linkArrowLabelStyles = {
   '--link-arrow-label-color': 'red',
 } as CSSProperties;
 
-const Template: ComponentStory<typeof Card> = (args) => (
+const Template: StoryFn<typeof Card> = (args) => (
   <ConfigProvider
     config={{
       ...defaultConfig,
@@ -28,7 +28,7 @@ const Template: ComponentStory<typeof Card> = (args) => (
       },
     }}
   >
-    <div style={{ maxWidth: 420, margin: 24 }}>
+    <div style={{ margin: 24 }}>
       <Card
         {...args}
         hasLink
@@ -42,14 +42,16 @@ const Template: ComponentStory<typeof Card> = (args) => (
         imageLabel="Article"
         openLinkInNewTab
       />
-      <Card {...args} title="Fallback image" />
     </div>
   </ConfigProvider>
 );
 
-export const CardDefault = Template.bind({});
-CardDefault.args = {
-  ...card,
-  linkArrowLabel: 'This gives a label for the link arrow',
-  style: linkArrowLabelStyles,
+export const CardDefault = {
+  render: Template,
+
+  args: {
+    ...card,
+    linkArrowLabel: 'This gives a label for the link arrow',
+    style: linkArrowLabelStyles,
+  },
 };

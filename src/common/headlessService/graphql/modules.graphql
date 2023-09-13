@@ -81,6 +81,7 @@ fragment LayoutPages on LayoutPages {
       }
     }
   }
+  showAllLink
   __typename
 }
 
@@ -172,5 +173,77 @@ fragment LocationsSelectedCarousel on LocationsSelectedCarousel {
   title
   locations
   module
+  __typename
+}
+
+fragment LayoutCard on LayoutCard {
+  alignment
+  backgroundColor
+  description
+  link {
+    target
+    title
+    url
+  }
+  title
+  image {
+    caption
+    description
+    large
+    medium
+    medium_large
+    thumbnail
+    title
+  }
+  __typename
+}
+
+fragment LayoutCards on LayoutCards {
+  cards {
+    backgroundColor
+    description
+    icon
+    link {
+      target
+      title
+      url
+    }
+    title
+  }
+  __typename
+}
+
+fragment LayoutContent on LayoutContent {
+  backgroundColor
+  content
+  title
+  __typename
+}
+
+fragment LayoutImage on LayoutImage {
+  border
+  photographer_name
+  image {
+    caption
+    description
+    large
+    medium
+    thumbnail
+    title
+    medium_large
+  }
+  show_on_lightbox
+  __typename
+}
+
+fragment LayoutSteps on LayoutSteps {
+  color
+  description
+  steps {
+    content
+    title
+  }
+  title
+  type
   __typename
 }

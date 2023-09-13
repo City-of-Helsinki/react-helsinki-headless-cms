@@ -1,7 +1,7 @@
 /* eslint-disable react/function-component-definition */
 
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 import { Koros } from 'hds-react';
 
 import { ConfigProvider } from '../configProvider/ConfigProvider';
@@ -33,9 +33,9 @@ export default {
     sidebarContentProps: { control: { type: null } },
     content: { control: { type: null } },
   },
-} as ComponentMeta<typeof PageContent>;
+} as Meta<typeof PageContent>;
 
-const Template: ComponentStory<typeof PageContent> = (args) => (
+const Template: StoryFn<typeof PageContent> = (args) => (
   <ConfigProvider
     config={{
       ...defaultConfig,
@@ -61,59 +61,75 @@ const KorosWrapperComponent = ({ children = null }) => (
   </div>
 );
 
-export const PageContentDefault = Template.bind({});
-PageContentDefault.args = {
-  backUrl: '/',
-  page: pageMock,
+export const PageContentDefault = {
+  render: Template,
+
+  args: {
+    backUrl: '/',
+    page: pageMock,
+  },
 };
 
-export const PageContentWithDefinedCollections = Template.bind({});
-PageContentWithDefinedCollections.args = {
-  backUrl: '/',
-  page: pageMock,
+export const PageContentWithDefinedCollections = {
+  render: Template,
+
+  args: {
+    backUrl: '/',
+    page: pageMock,
+  },
 };
 
-export const PageContentWithFunctions = Template.bind({});
-PageContentWithFunctions.args = {
-  backUrl: '/',
-  page: pageMock,
-  content: (page: PageType | ArticleType) => (
-    <PageMainContent
-      title={`${page?.title} (created with a custom function)`}
-      content={page?.content}
-    />
-  ),
-  collections: (page: PageType | ArticleType) =>
-    getCollections(page.modules, false)?.map(
-      (collection: GeneralCollectionType) => (
-        <Collection
-          key={`collection-${Math.random()}`}
-          title={`${collection.title} (created with a custom function)`}
-          cards={getCollectionCards(collection).map((cardProps) => (
-            <Card
-              key={cardProps.id}
-              {...cardProps}
-              imageUrl={
-                cardProps.imageUrl || pageMock.featuredImage?.node?.mediaItemUrl
-              }
-            />
-          ))}
-          type={getCollectionUIType(collection)}
-          collectionContainerProps={{ withDots: false }}
-        />
-      ),
+export const PageContentWithFunctions = {
+  render: Template,
+
+  args: {
+    backUrl: '/',
+    page: pageMock,
+    content: (page: PageType | ArticleType) => (
+      <PageMainContent
+        title={`${page?.title} (created with a custom function)`}
+        content={page?.content}
+      />
     ),
+    collections: (page: PageType | ArticleType) =>
+      getCollections(page.modules, false)?.map(
+        (collection: GeneralCollectionType) => (
+          <Collection
+            key={`collection-${Math.random()}`}
+            title={`${collection.title} (created with a custom function)`}
+            cards={getCollectionCards(collection).map((cardProps) => (
+              <Card
+                key={cardProps.id}
+                {...cardProps}
+                imageUrl={
+                  cardProps.imageUrl ||
+                  pageMock.featuredImage?.node?.mediaItemUrl
+                }
+              />
+            ))}
+            type={getCollectionUIType(collection)}
+            collectionContainerProps={{ withDots: false }}
+          />
+        ),
+      ),
+  },
 };
 
-export const PageContentArticle = Template.bind({});
-PageContentArticle.args = {
-  heroContainer: <KorosWrapperComponent />,
-  backUrl: '/',
-  page: articleMock,
+export const PageContentArticle = {
+  render: Template,
+
+  args: {
+    heroContainer: <KorosWrapperComponent />,
+    backUrl: '/',
+    page: articleMock,
+  },
 };
 
-export const PageContentWithSupportedContentTypes = Template.bind({});
-PageContentWithSupportedContentTypes.args = {
-  backUrl: '/',
-  page: pageWithDiverseContent,
+export const PageContentWithSupportedContentTypes = {
+  render: Template,
+
+  args: {
+    backUrl: '/',
+    page: pageWithDiverseContent,
+  },
 };

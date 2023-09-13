@@ -14,6 +14,7 @@ export type PageMainContentProps = {
   content: string;
   date?: string;
   categories?: ArticleType['categories'];
+  contentModules?: React.ReactNode[];
 };
 
 export function PageMainContent({
@@ -21,6 +22,7 @@ export function PageMainContent({
   content,
   date,
   categories,
+  contentModules,
 }: PageMainContentProps) {
   const {
     htmlSanitizer: { allowedUnsafeTags, trustedOrigins },
@@ -56,6 +58,7 @@ export function PageMainContent({
       >
         {content}
       </HtmlToReact>
+      {contentModules?.length > 0 && contentModules}
     </article>
   );
 }

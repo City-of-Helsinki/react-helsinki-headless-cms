@@ -75,6 +75,12 @@ export const defaultConfig: Config = {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     getRoutedInternalHref: (link: string, _type: ModuleItemTypeEnum): string =>
       link ?? '#',
+    redirectToUrl: (url: string) => {
+      if (url && window) {
+        window.location.href = url;
+      }
+      return null;
+    },
   },
   meta: {
     appleTouchIconUrl: 'apple-touch-icon.png',

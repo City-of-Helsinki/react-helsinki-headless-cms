@@ -106,6 +106,21 @@ fragment Post on Post {
     ... on LocationsSelectedCarousel {
       ...LocationsSelectedCarousel
     }
+    ... on LayoutContent {
+      ...LayoutContent
+    }
+    ... on LayoutCard {
+      ...LayoutCard
+    }
+    ... on LayoutCards {
+      ...LayoutCards
+    }
+    ... on LayoutImage {
+      ...LayoutImage
+    }
+    ... on LayoutSteps {
+      ...LayoutSteps
+    }
   }
 }
 

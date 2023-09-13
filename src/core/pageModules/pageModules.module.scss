@@ -1,0 +1,123 @@
+@import 'breakpoints';
+
+.pageModuleWrapper {
+  margin: var(--spacing-layout-2-xs) 0;
+  @include respond_above(s) {
+    margin: var(--spacing-layout-s) 0;
+  }
+  &.withPadding {
+    padding: 30px;
+  }
+
+  &.contentModuleWrapper {
+    /*fix for html to react custom styling*/
+    p {
+      margin: 0 !important;
+    }
+  }
+}
+
+.cardsWrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(248px, 1fr));
+  grid-auto-rows: 1fr;
+  grid-gap: var(--spacing-layout-xs);
+  grid-row-gap: var(--spacing-layout-xs);
+
+  /* for 2 or 3 items flex is used only above xl, otherwise cards are too narrow*/
+  &.flexWrapper {
+    @include respond_above(xl) {
+      display: flex;
+      gap: var(--spacing-layout-xs);
+      & > div {
+        width: 100%;
+        min-width: 248px;
+      }
+    }
+  }
+
+  /* for mobile view - always flex column vertical layout */
+  @include respond_below(m) {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-layout-2-xs);
+    & > div {
+      width: 100%;
+    }
+  }
+}
+
+.cardWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  // justify-content: space-between;
+
+  &.horisontal {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  & svg {
+    height: 84px;
+    width: 84px;
+  }
+}
+
+.cardContent {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+
+  & .title {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+
+  & .description {
+    font-size: 18px;
+    line-height: 28px;
+    margin-bottom: var(--spacing-layout-xs);
+  }
+
+  & .button {
+    flex-grow: 1;
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+
+    button {
+      div {
+        min-width: var(--spacing-layout-xs);
+      }
+    }
+  }
+}
+
+.cardIconWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 0;
+  margin-bottom: 8px;
+
+  &.horisontal {
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-right: 30px;
+    margin-bottom: 16px;
+  }
+}
+
+.fallbackIcon {
+  width: 84px;
+  height: 84px;
+}
+
+.stepsContainer {
+  & > div > p {
+    font-size: var(--fontsize-body-l);
+  }
+}

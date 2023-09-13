@@ -63,6 +63,7 @@ export type Config = {
       link: string | null | undefined,
       type?: ModuleItemTypeEnum,
     ) => string;
+    redirectToUrl: (url: string) => void;
   };
   meta?: {
     appleTouchIconUrl?: string;

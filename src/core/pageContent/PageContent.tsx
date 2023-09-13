@@ -25,8 +25,18 @@ import { getCollections, getCollectionUIType } from './utils';
 import {
   isEventSearchCollection,
   isEventSelectionCollection,
+  isLayoutCard,
+  isLayoutCards,
+  isLayoutContent,
+  isLayoutImage,
+  isLayoutSteps,
   isLocationsSelectionCollection,
 } from '../../common/headlessService/utils';
+import { ContentModule } from '../pageModules/ContentModule/ContentModule';
+import { CardModule } from '../pageModules/CardModule/CardModule';
+import { CardsModule } from '../pageModules/CardsModule/CardsModule';
+import { ImageModule } from '../pageModules/ImageModule/ImageModule';
+import { StepsModule } from '../pageModules/StepsModule/StepsModule';
 
 export type PageContentProps = {
   page?: PageType | ArticleType;
@@ -50,12 +60,63 @@ export type PageContentProps = {
   [x: string]: any;
 } & Partial<typeof PageContentLayout>;
 
+// Modules: Content, Image, Cards, Steps (possibly other in future)
+export const defaultContentModules = (
+  page: PageType | ArticleType,
+): React.ReactNode[] => {
+  const contentModules: React.ReactNode[] = [];
+  page?.modules?.map((module) => {
+    if (isLayoutContent(module)) {
+      contentModules.push(
+        <ContentModule
+          content={module.content}
+          backgroundColor={module.backgroundColor}
+        />,
+      );
+    } else if (isLayoutCard(module)) {
+      contentModules.push(
+        <CardModule
+          title={module.title}
+          text={module.description}
+          hasLink
+          url={module.link.url}
+          imageUrl={module.image.medium}
+          imagePosition={
+            module.alignment === 'right' ? 'image-right' : 'image-left'
+          }
+          isDelimited={module.alignment.startsWith('delimited')}
+        />,
+      );
+    } else if (isLayoutCards(module)) {
+      contentModules.push(<CardsModule items={module.cards} />);
+    } else if (isLayoutImage(module)) {
+      contentModules.push(<ImageModule />);
+    } else if (isLayoutSteps(module)) {
+      contentModules.push(
+        <StepsModule
+          title={module.title}
+          steps={module.steps.map((step) => ({
+            title: step.title,
+            content: step.content,
+          }))}
+          helpText={module.description}
+          color={module.color}
+          type={module.type}
+        />,
+      );
+    }
+    return null;
+  });
+  return contentModules;
+};
+
 export const defaultContent = (page: PageType | ArticleType) => (
   <PageMainContent
     title={page?.title}
     content={page?.content}
     date={(page as ArticleType)?.date}
     categories={(page as ArticleType)?.categories}
+    contentModules={defaultContentModules(page)}
   />
 );
 

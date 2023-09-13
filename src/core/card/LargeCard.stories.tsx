@@ -1,7 +1,7 @@
 /* eslint-disable react/function-component-definition */
 
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 
 import { ConfigProvider } from '../configProvider/ConfigProvider';
 import { defaultConfig } from '../configProvider/defaultConfig';
@@ -11,9 +11,9 @@ import { LargeCard } from './LargeCard';
 export default {
   title: 'Core components/LargeCard',
   component: LargeCard,
-} as ComponentMeta<typeof LargeCard>;
+} as Meta<typeof LargeCard>;
 
-const Template: ComponentStory<typeof LargeCard> = (args) => (
+const Template: StoryFn<typeof LargeCard> = (args) => (
   <ConfigProvider
     config={{
       ...defaultConfig,
@@ -25,7 +25,7 @@ const Template: ComponentStory<typeof LargeCard> = (args) => (
   >
     <div style={{ maxWidth: 1470, margin: 24 }}>
       <LargeCard {...args} url="https://hel.fi" hasLink />
-      <LargeCard {...args} imagePosition="left" />
+      <LargeCard {...args} imagePosition="image-left" />
       <LargeCard
         {...args}
         imageUrl="/broken/large/image.jpg"
@@ -35,5 +35,7 @@ const Template: ComponentStory<typeof LargeCard> = (args) => (
   </ConfigProvider>
 );
 
-export const LargeCardDefault = Template.bind({});
-LargeCardDefault.args = { ...card };
+export const LargeCardDefault = {
+  render: Template,
+  args: { ...card },
+};

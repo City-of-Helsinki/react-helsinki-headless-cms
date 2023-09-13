@@ -1,7 +1,7 @@
 /* eslint-disable react/function-component-definition */
 
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 
 import CardsList from './CardsList';
 import { Card } from '../card/Card';
@@ -16,31 +16,34 @@ export default {
   argTypes: {
     children: { control: { type: null } },
   },
-} as ComponentMeta<typeof CardsList>;
+} as Meta<typeof CardsList>;
 
-const Template: ComponentStory<typeof CardsList> = (args) => (
+const Template: StoryFn<typeof CardsList> = (args) => (
   <div style={{ margin: 24, overflow: 'hidden' }}>
     <CardsList {...args} />
   </div>
 );
 
-export const CardListDefault = Template.bind({});
-CardListDefault.args = {
-  children: (
-    <ConfigProvider
-      config={{
-        ...defaultConfig,
-        siteName: 'RHHC Example',
-        internalHrefOrigins: [],
-      }}
-    >
-      <Card {...card} hasLink />
-      <Card {...card} hasLink />
-      <Card {...card} hasLink />
-      <Card {...card} hasLink />
-      <Card {...card} hasLink />
-      <Card {...card} hasLink />
-      <Card {...card} hasLink />
-    </ConfigProvider>
-  ),
+export const CardListDefault = {
+  render: Template,
+
+  args: {
+    children: (
+      <ConfigProvider
+        config={{
+          ...defaultConfig,
+          siteName: 'RHHC Example',
+          internalHrefOrigins: [],
+        }}
+      >
+        <Card {...card} hasLink />
+        <Card {...card} hasLink />
+        <Card {...card} hasLink />
+        <Card {...card} hasLink />
+        <Card {...card} hasLink />
+        <Card {...card} hasLink />
+        <Card {...card} hasLink />
+      </ConfigProvider>
+    ),
+  },
 };

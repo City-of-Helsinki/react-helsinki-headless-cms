@@ -4,6 +4,10 @@ services:
     container_name: react-helsinki-headless-cms
     build:
       context: .
-      target: ${DOCKER_TARGET:-production}
+      target: ${DOCKER_TARGET:-development}
     ports:
       - '3000:3000'
+      - '6006:6006'  # Storybook
+    volumes:
+      - .:/app/
+      - /app/node_modules  # Exclude node_modules

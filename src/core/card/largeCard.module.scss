@@ -41,7 +41,7 @@
 
   @include respond_above(s) {
     flex-direction: row;
-    &.left {
+    &.image-left {
       flex-direction: row-reverse;
     }
   }

@@ -1,7 +1,7 @@
 /* eslint-disable react/function-component-definition */
 
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 
 import { Link } from './Link';
 import { SecondaryLink } from './SecondaryLink';
@@ -16,9 +16,9 @@ export default {
     iconRight: { control: { type: null } },
     iconLeft: { control: { type: null } },
   },
-} as ComponentMeta<typeof Link>;
+} as Meta<typeof Link>;
 
-const Template: ComponentStory<typeof Link> = (args) => (
+const Template: StoryFn<typeof Link> = (args) => (
   <ConfigProvider
     config={{
       ...defaultConfig,
@@ -58,4 +58,6 @@ const Template: ComponentStory<typeof Link> = (args) => (
   </ConfigProvider>
 );
 
-export const LinkDefault = Template.bind({});
+export const LinkDefault = {
+  render: Template,
+};

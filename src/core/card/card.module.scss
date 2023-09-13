@@ -1,6 +1,7 @@
 @import 'breakpoints';
 
 .cardWrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
   word-break: break-word;
@@ -13,6 +14,10 @@
 
   @include respond_above(s) {
     word-break: unset;
+    &.isDelimited {
+      overflow-y: hidden;
+      --height-image-desktop: 100%;
+    }
   }
 
   &.isHovered {
@@ -23,14 +28,58 @@
 
   &.responsive {
     flex-direction: row;
+    &.image-right {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &.responsive-reverse {
+    flex-direction: column;
   }
 
   &.fixed-horisontal {
     display: flex;
     flex-direction: row;
+    &.isDelimited {
+      flex-direction: row-reverse;
+    }
+
+    &.image-right {
+      flex-direction: row-reverse;
+      &.isDelimited {
+        flex-direction: row;
+      }
+    }
   }
 
-  position: relative;
+  & :first-child {
+    flex: 1 1;
+  }
+
+  & :last-child {
+    flex: 2 1;
+  }
+
+  &.primary-image {
+    & :first-child {
+      flex: 2 1;
+    }
+
+    & :last-child {
+      flex: 1 1;
+    }
+  }
+
+  &.isDelimited {
+    & :first-child {
+      flex: none;
+    }
+
+    & :last-child {
+      flex: none;
+    }
+  }
+
   background-color: var(--color-white);
   height: 100%;
   width: 100%;
@@ -49,6 +98,41 @@
     margin-bottom: 0;
     &.responsive {
       flex-direction: column;
+      &.image-right {
+        flex-direction: column;
+      }
+    }
+
+    &.responsive-reverse {
+      flex-direction: row;
+      &.isDelimited {
+        flex-direction: row-reverse;
+      }
+
+      &.image-right {
+        flex-direction: row-reverse;
+        &.isDelimited {
+          flex-direction: row;
+        }
+      }
+    }
+
+    & :first-child {
+      flex: 1 1;
+    }
+
+    & :last-child {
+      flex: 2 1;
+    }
+
+    &.primary-image {
+      & :first-child {
+        flex: 2 1;
+      }
+
+      & :last-child {
+        flex: 1 1;
+      }
     }
   }
 
@@ -62,10 +146,25 @@
     text-decoration: none;
     position: relative;
 
-    &.fixed-vertical {
+    &.fixed-vertical,
+    &.responsive,
+    &.responsive-reverse {
       padding-bottom: 62.5%;
       @include respond_above(s) {
         min-height: var(--height-image-desktop);
+      }
+    }
+
+    &.responsive-reverse {
+      @include respond_above(s) {
+        padding-bottom: unset;
+      }
+    }
+
+    &.isDelimited {
+      @include respond_above(s) {
+        position: absolute;
+        width: 100%;
       }
     }
 
@@ -88,6 +187,15 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+    position: unset;
+
+    @include respond_above(s) {
+      &.isDelimited {
+        margin: 24px;
+        width: 37.5%;
+        z-index: 1;
+      }
+    }
   }
 
   .textWrapper {
@@ -101,6 +209,10 @@
       margin: var(--spacing-2-xs) 0;
       padding: 0;
       word-wrap: break-word;
+
+      &.responsive-reverse {
+        font-size: var(--fontsize-heading-m);
+      }
 
       @include respond_above(s) {
         margin-top: var(--spacing-2-xs);
@@ -123,9 +235,12 @@
       font-size: var(--fontsize-body-m);
       line-height: var(--lineheight-m);
       display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+      &.clamp {
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
       @include respond_above(s) {
         font-size: var(--fontsize-body-l);
         line-height: var(--lineheight-l);
@@ -137,6 +252,12 @@
           -webkit-box-orient: vertical;
         }
       }
+
+      &.responsive-reverse {
+        line-height: var(--lineheight-l);
+        font-size: var(--fontsize-body-l);
+      }
+
       p {
         margin: 0;
       }
@@ -164,8 +285,14 @@
     order: 5;
     a {
       display: flex;
+      flex: 1 !important;
       text-decoration: none;
+      justify-content: flex-start !important;
+      align-items: center;
       color: var(--link-arrow-color);
+      & > span {
+        flex: none;
+      }
       svg {
         height: var(--spacing-2-xl);
         width: var(--spacing-2-xl);
