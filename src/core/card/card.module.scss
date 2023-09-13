@@ -52,30 +52,30 @@
     }
   }
 
-  & :first-child {
+  & > :first-child {
     flex: 1 1;
   }
 
-  & :last-child {
+  & > :last-child {
     flex: 2 1;
   }
 
   &.primary-image {
-    & :first-child {
+    & > :first-child {
       flex: 2 1;
     }
 
-    & :last-child {
+    & > :last-child {
       flex: 1 1;
     }
   }
 
   &.isDelimited {
-    & :first-child {
+    & > :first-child {
       flex: none;
     }
 
-    & :last-child {
+    & > :last-child {
       flex: none;
     }
   }
@@ -117,20 +117,20 @@
       }
     }
 
-    & :first-child {
+    & > :first-child {
       flex: 1 1;
     }
 
-    & :last-child {
+    & > :last-child {
       flex: 2 1;
     }
 
     &.primary-image {
-      & :first-child {
+      & > :first-child {
         flex: 2 1;
       }
 
-      & :last-child {
+      & > :last-child {
         flex: 1 1;
       }
     }
