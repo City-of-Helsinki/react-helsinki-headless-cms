@@ -134,6 +134,16 @@
         flex: 1 1;
       }
     }
+
+    &.fixed-vertical {
+      & > :first-child {
+        flex: initial;
+      }
+
+      & > :last-child {
+        flex: initial;
+      }
+    }
   }
 
   .imageWrapper {
