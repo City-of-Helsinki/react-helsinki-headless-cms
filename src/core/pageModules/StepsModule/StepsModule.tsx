@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 import styles from '../pageModules.module.scss';
 import colorStyles from '../../styles/background.module.scss';
-import { getColor, getTextFromHtml } from '../../utils/string';
+import { getColor, getTextFromHtml, isWhiteText } from '../../utils/string';
 
 export type Step = {
   content: string;
@@ -35,6 +35,7 @@ export function StepsModule({
         numberedList={type === 'numbers'}
         className={classNames(
           color && colorStyles[`backgroundListItem${getColor(color)}`],
+          color && isWhiteText(color) && colorStyles.whiteTextList,
           styles.stepsContainer,
           className,
         )}

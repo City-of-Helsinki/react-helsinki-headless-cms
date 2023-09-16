@@ -7,7 +7,7 @@ import { useConfig } from '../../configProvider/useConfig';
 import { Link } from '../../link/Link';
 import styles from '../pageModules.module.scss';
 import colorStyles from '../../styles/background.module.scss';
-import { getColor } from '../../utils/string';
+import { getColor, isWhiteText } from '../../utils/string';
 
 export type ContentModuleProps = {
   content?: string;
@@ -29,8 +29,12 @@ export function ContentModule({
       className={classNames(
         styles.pageModuleWrapper,
         styles.contentModuleWrapper,
+        backgroundColor
+          ? colorStyles[`background${getColor(backgroundColor)}`]
+          : colorStyles.backgroundColorFog,
         backgroundColor &&
-          colorStyles[`background${getColor(backgroundColor)}`],
+          isWhiteText(backgroundColor) &&
+          colorStyles.whiteText,
         backgroundColor ? styles.withPadding : '',
       )}
     >

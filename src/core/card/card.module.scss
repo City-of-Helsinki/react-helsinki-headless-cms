@@ -21,6 +21,9 @@
   }
 
   &.isHovered {
+    &:hover {
+      cursor: pointer;
+    }
     .title {
       text-decoration: underline;
     }

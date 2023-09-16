@@ -13,7 +13,7 @@ export default {
   args: {
     title: 'Steps title',
     helpText: 'Steps description',
-    color: 'suomenlinna',
+    color: 'silver',
     steps: [
       { title: 'First step', content: 'First step content' },
       { title: 'Second step', content: 'Second step content' },

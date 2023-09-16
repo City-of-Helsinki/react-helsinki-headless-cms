@@ -24,6 +24,15 @@
   grid-gap: var(--spacing-layout-xs);
   grid-row-gap: var(--spacing-layout-xs);
 
+  &.singleGridWrapper {
+    display: flex;
+    gap: var(--spacing-layout-xs);
+    & > div {
+      width: 100%;
+      min-width: 248px;
+    }
+  }
+
   /* for 2 or 3 items flex is used only above xl, otherwise cards are too narrow*/
   &.flexWrapper {
     @include respond_above(xl) {
