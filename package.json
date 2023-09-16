@@ -130,9 +130,8 @@
     "webpack": "^5.70.0"
   },
   "dependencies": {
-    "@types/he": "^1.2.1",
     "hds-design-tokens": "^2.3.0",
-    "he": "^1.2.0",
+    "html-entities": "^2.4.0",
     "html-react-parser": "^4.2.1",
     "isomorphic-dompurify": "^1.8.0",
     "jest-environment-jsdom": "^29.6.2",
