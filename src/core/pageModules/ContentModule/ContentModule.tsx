@@ -29,9 +29,8 @@ export function ContentModule({
       className={classNames(
         styles.pageModuleWrapper,
         styles.contentModuleWrapper,
-        backgroundColor
-          ? colorStyles[`background${getColor(backgroundColor)}`]
-          : colorStyles.backgroundColorFog,
+        backgroundColor &&
+          colorStyles[`background${getColor(backgroundColor)}`],
         backgroundColor &&
           isWhiteText(backgroundColor) &&
           colorStyles.whiteText,

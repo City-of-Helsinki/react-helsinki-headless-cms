@@ -78,7 +78,7 @@ export function Card({
         isHovered && styles.isHovered,
         backgroundColor
           ? colorStyles[`background${getColor(backgroundColor)}`]
-          : colorStyles.backgroundColorFog,
+          : isDelimited && colorStyles.backgroundColorFog,
         backgroundColor &&
           isWhiteText(backgroundColor) &&
           colorStyles.whiteText,
@@ -108,7 +108,7 @@ export function Card({
           className={classNames(
             backgroundColor
               ? colorStyles[`background${getColor(backgroundColor)}`]
-              : colorStyles.backgroundColorFog,
+              : isDelimited && colorStyles.backgroundColorFog,
             backgroundColor &&
               isWhiteText(backgroundColor) &&
               colorStyles.whiteText,

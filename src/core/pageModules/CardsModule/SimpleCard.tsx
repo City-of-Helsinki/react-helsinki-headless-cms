@@ -58,9 +58,8 @@ export function SimpleCard({
     <div
       className={classNames(
         styles.cardWrapper,
-        backgroundColor
-          ? colorStyles[`background${getColor(backgroundColor)}`]
-          : colorStyles.backgroundColorFog,
+        backgroundColor &&
+          colorStyles[`background${getColor(backgroundColor)}`],
         backgroundColor &&
           isWhiteText(backgroundColor) &&
           colorStyles.whiteText,
