@@ -78,7 +78,7 @@ export function Card({
         isHovered && styles.isHovered,
         backgroundColor
           ? colorStyles[`background${getColor(backgroundColor)}`]
-          : isDelimited && colorStyles.backgroundColorFog,
+          : isDelimited && colorStyles.backgroundFog,
         backgroundColor &&
           isWhiteText(backgroundColor) &&
           colorStyles.whiteText,
@@ -108,7 +108,7 @@ export function Card({
           className={classNames(
             backgroundColor
               ? colorStyles[`background${getColor(backgroundColor)}`]
-              : isDelimited && colorStyles.backgroundColorFog,
+              : isDelimited && colorStyles.backgroundFog,
             backgroundColor &&
               isWhiteText(backgroundColor) &&
               colorStyles.whiteText,
@@ -147,8 +147,9 @@ export function Card({
           <div
             className={classNames(
               styles.buttonWrapper,
-              backgroundColor &&
-                colorStyles[`background${getColor(backgroundColor)}`],
+              backgroundColor
+                ? colorStyles[`background${getColor(backgroundColor)}`]
+                : isDelimited && colorStyles.backgroundFog,
               backgroundColor &&
                 isWhiteText(backgroundColor) &&
                 colorStyles.whiteText,

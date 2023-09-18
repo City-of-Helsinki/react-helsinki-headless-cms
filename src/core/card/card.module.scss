@@ -81,6 +81,10 @@
     & > :last-child {
       flex: none;
     }
+
+    @include respond_below(s) {
+      background-color: var(--color-white);
+    }
   }
 
   background-color: var(--color-white);
@@ -202,6 +206,10 @@
     height: 100%;
     position: unset;
 
+    @include respond_below(s) {
+      background-color: var(--color-white) !important;
+    }
+
     @include respond_above(s) {
       &.isDelimited {
         margin: 24px;
@@ -215,6 +223,10 @@
     display: flex;
     flex-direction: column;
     padding: var(--spacing-s) var(--spacing-m);
+
+    @include respond_below(s) {
+      background-color: var(--color-white);
+    }
 
     .title {
       font-size: var(--fontsize-heading-s);
@@ -292,9 +304,15 @@
     padding: 0 var(--spacing-s);
     padding-bottom: var(--spacing-2-xs);
     color: var(--link-arrow-color);
+
+    @include respond_below(s) {
+      background-color: var(--color-white);
+    }
+
     @include respond_above(s) {
       padding-bottom: var(--spacing-s);
     }
+
     order: 5;
     a {
       display: flex;
