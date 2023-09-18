@@ -78,6 +78,7 @@ export const defaultContentModules = (
         <CardModule
           title={module.title}
           text={module.description}
+          backgroundColor={module.backgroundColor}
           hasLink
           url={module.link.url}
           imageUrl={module.image.medium}
