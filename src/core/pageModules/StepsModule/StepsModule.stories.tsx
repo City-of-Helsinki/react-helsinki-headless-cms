@@ -13,9 +13,13 @@ export default {
   args: {
     title: 'Steps title',
     helpText: 'Steps description',
-    color: 'suomenlinna',
+    color: 'silver',
     steps: [
-      { title: 'First step', content: 'First step content' },
+      {
+        title: 'First step',
+        content:
+          "Check if you&#8217;re eligible for the discount on this page. Remember mac &amp; cheese. Here&#8217;s some other symbols: €$?/'&#8221;&#8216;&#8221;;&lt;&gt;",
+      },
       { title: 'Second step', content: 'Second step content' },
       { title: 'Third step', content: 'Third step content' },
     ],

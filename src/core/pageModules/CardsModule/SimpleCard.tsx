@@ -5,7 +5,12 @@ import { Button, IconAngleRight } from 'hds-react';
 
 import styles from '../pageModules.module.scss';
 import colorStyles from '../../styles/background.module.scss';
-import { getColor, getIconName, getTextFromHtml } from '../../utils/string';
+import {
+  getColor,
+  getIconName,
+  getTextFromHtml,
+  isWhiteText,
+} from '../../utils/string';
 import { Icon } from './Icon';
 import { useConfig } from '../../configProvider/useConfig';
 
@@ -55,6 +60,9 @@ export function SimpleCard({
         styles.cardWrapper,
         backgroundColor &&
           colorStyles[`background${getColor(backgroundColor)}`],
+        backgroundColor &&
+          isWhiteText(backgroundColor) &&
+          colorStyles.whiteText,
         direction && styles[direction],
       )}
     >
@@ -76,7 +84,14 @@ export function SimpleCard({
           </div>
         )}
         {linkTitle && linkUrl && (
-          <div className={styles.button}>
+          <div
+            className={classNames(
+              styles.button,
+              backgroundColor &&
+                isWhiteText(backgroundColor) &&
+                colorStyles.whiteButton,
+            )}
+          >
             <Button
               style={direction === 'vertical' ? { width: '100%' } : {}}
               variant="secondary"

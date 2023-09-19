@@ -118,3 +118,23 @@
     background-color: var(--color-tram);
   }
 }
+
+.whiteText {
+  color: var(--color-white);
+}
+
+.whiteTextList {
+  li {
+    color: var(--color-white);
+    &::after {
+      color: var(--color-black);
+    }
+  }
+}
+
+.whiteButton {
+  button {
+    color: var(--color-white);
+    border-color: var(--color-white) !important;
+  }
+}

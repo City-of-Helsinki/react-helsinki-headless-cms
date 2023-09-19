@@ -24,6 +24,16 @@
   grid-gap: var(--spacing-layout-xs);
   grid-row-gap: var(--spacing-layout-xs);
 
+  &.singleGridWrapper {
+    display: flex;
+
+    gap: var(--spacing-layout-xs);
+    & > div {
+      width: 100%;
+      min-width: 248px;
+    }
+  }
+
   /* for 2 or 3 items flex is used only above xl, otherwise cards are too narrow*/
   &.flexWrapper {
     @include respond_above(xl) {
@@ -56,6 +66,10 @@
   &.horisontal {
     flex-direction: row;
     justify-content: flex-start;
+
+    @include respond_below(s) {
+      flex-direction: column;
+    }
   }
 
   & svg {
@@ -89,6 +103,9 @@
     width: 100%;
 
     button {
+      @include respond_below(s) {
+        width: 100%;
+      }
       div {
         min-width: var(--spacing-layout-xs);
       }
@@ -104,10 +121,12 @@
   margin-bottom: 8px;
 
   &.horisontal {
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin-right: 30px;
-    margin-bottom: 16px;
+    @include respond_above(s) {
+      justify-content: flex-start;
+      align-items: flex-start;
+      margin-right: 30px;
+      margin-bottom: 16px;
+    }
   }
 }
 

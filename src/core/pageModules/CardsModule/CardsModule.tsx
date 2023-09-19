@@ -29,6 +29,7 @@ export function CardsModule({ items }: CardsModuleProps) {
         styles.pageModuleWrapper,
         styles.cardsWrapper,
         items.length < 4 && styles.flexWrapper,
+        items.length === 1 && styles.singleGridWrapper,
       )}
     >
       {items?.map((card) => (

@@ -1,6 +1,6 @@
 {
   "name": "react-helsinki-headless-cms",
-  "version": "1.0.0-alpha207",
+  "version": "1.0.0-alpha214",
   "description": "React components for displaying Headless CMS content according to guidelines set by HDS",
   "main": "cjs/index.js",
   "module": "index.js",
@@ -131,6 +131,7 @@
   },
   "dependencies": {
     "hds-design-tokens": "^2.3.0",
+    "html-entities": "^2.4.0",
     "html-react-parser": "^4.2.1",
     "isomorphic-dompurify": "^1.8.0",
     "jest-environment-jsdom": "^29.6.2",

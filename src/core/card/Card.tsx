@@ -8,7 +8,7 @@ import colorStyles from '../styles/background.module.scss';
 import { LinkBox } from '../linkBox/LinkBox';
 import { Link } from '../link/Link';
 import { BackgroundImage } from '../image/BackgroundImage';
-import { getColor, getTextFromHtml } from '../utils/string';
+import { getColor, getTextFromHtml, isWhiteText } from '../utils/string';
 
 export type CardProps = {
   id?: string;
@@ -76,11 +76,18 @@ export function Card({
         primaryContent === 'image' && styles['primary-image'],
         imagePosition && styles[imagePosition],
         isHovered && styles.isHovered,
+        backgroundColor
+          ? colorStyles[`background${getColor(backgroundColor)}`]
+          : isDelimited && colorStyles.backgroundFog,
+        backgroundColor && styles.horizontalBorder,
         backgroundColor &&
-          colorStyles[`background${getColor(backgroundColor)}`],
+          isWhiteText(backgroundColor) &&
+          colorStyles.whiteText,
         isDelimited && styles.isDelimited,
       )}
       style={style}
+      onMouseEnter={handleToggleActive}
+      onMouseLeave={handleToggleActive}
     >
       <BackgroundImage
         id={id}
@@ -100,8 +107,12 @@ export function Card({
       >
         <div
           className={classNames(
+            backgroundColor
+              ? colorStyles[`background${getColor(backgroundColor)}`]
+              : isDelimited && colorStyles.backgroundFog,
             backgroundColor &&
-              colorStyles[`background${getColor(backgroundColor)}`],
+              isWhiteText(backgroundColor) &&
+              colorStyles.whiteText,
             isDelimited && styles.isDelimited,
           )}
         >
@@ -137,8 +148,12 @@ export function Card({
           <div
             className={classNames(
               styles.buttonWrapper,
+              backgroundColor
+                ? colorStyles[`background${getColor(backgroundColor)}`]
+                : isDelimited && colorStyles.backgroundFog,
               backgroundColor &&
-                colorStyles[`background${getColor(backgroundColor)}`],
+                isWhiteText(backgroundColor) &&
+                colorStyles.whiteText,
             )}
           >
             <Link
