@@ -11,6 +11,7 @@ export function CardModule(props: CardProps) {
         {...props}
         direction="responsive-reverse"
         imageLabel=""
+        withBorder
         hasLink={false}
         clampText={false}
       />

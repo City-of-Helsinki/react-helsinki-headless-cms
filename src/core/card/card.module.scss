@@ -156,6 +156,20 @@
     &.responsive,
     &.isDelimited {
       &.horizontalBorder {
+        // overriding withborder param
+        border: 1px solid var(--color-black-30);
+        @include respond_below(s) {
+          border: none;
+          // border: 1px solid var(--color-black-30);
+        }
+      }
+    }
+
+    &.responsive-reverse {
+      &.horizontalBorder {
+        // overriding withborder param
+        border: none;
+
         @include respond_below(s) {
           border: 1px solid var(--color-black-30);
         }
