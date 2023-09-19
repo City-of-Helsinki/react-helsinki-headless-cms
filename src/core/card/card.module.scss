@@ -155,7 +155,7 @@
     &.responsive,
     &.isDelimited {
       &.horizontalBorder {
-        @include respond_above(s) {
+        @include respond_below(s) {
           border: 1px solid var(--color-black-30);
         }
       }
