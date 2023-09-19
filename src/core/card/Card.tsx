@@ -79,6 +79,7 @@ export function Card({
         backgroundColor
           ? colorStyles[`background${getColor(backgroundColor)}`]
           : isDelimited && colorStyles.backgroundFog,
+        backgroundColor && styles.horizontalBorder,
         backgroundColor &&
           isWhiteText(backgroundColor) &&
           colorStyles.whiteText,
