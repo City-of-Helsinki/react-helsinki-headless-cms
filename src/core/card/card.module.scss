@@ -142,7 +142,8 @@
       }
     }
 
-    &.fixed-verticalб &.responsive {
+    &.fixed-vertical,
+    &.responsive {
       & > :first-child {
         flex: initial;
       }
