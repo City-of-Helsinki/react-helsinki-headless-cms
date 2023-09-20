@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import { IconArrowRight } from 'hds-react';
 import React, { useState } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -9,6 +11,7 @@ import { LinkBox } from '../linkBox/LinkBox';
 import { Link } from '../link/Link';
 import { BackgroundImage } from '../image/BackgroundImage';
 import { getColor, getTextFromHtml, isWhiteText } from '../utils/string';
+import { useConfig } from '../configProvider/useConfig';
 
 export type CardProps = {
   id?: string;
@@ -66,6 +69,25 @@ export function Card({
   const [isHovered, setIsHovered] = useState(false);
   const handleToggleActive = () => setIsHovered((val) => !val);
 
+  const {
+    utils: { redirectToUrl, getIsHrefExternal },
+  } = useConfig();
+
+  const openInNewTab = (): void => {
+    const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+    if (newWindow) newWindow.opener = null;
+  };
+
+  const handleClick = () => {
+    if (url) {
+      if (getIsHrefExternal(url)) {
+        openInNewTab();
+      } else {
+        redirectToUrl(url);
+      }
+    }
+  };
+
   const content = (
     <div
       className={classNames(
@@ -99,11 +121,13 @@ export function Card({
           isDelimited && styles.isDelimited,
         )}
       />
+
       <div
         className={classNames(
           styles.contentWrapper,
           isDelimited && styles.isDelimited,
         )}
+        onClick={handleClick}
       >
         <div
           className={classNames(
