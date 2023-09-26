@@ -7648,20 +7648,20 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
-hds-core@2.16.0:
-  version "2.16.0"
-  resolved "https://registry.yarnpkg.com/hds-core/-/hds-core-2.16.0.tgz#91305fe9f004bfb7c687769a2064ac9ba4e9ed69"
-  integrity sha512-UqcCAB6ecMpXnW57DFlVhAkPYBx9lh9mwCkNdHb+dPJqNIHCmquQUAzlxyX9qPwi99eIRbHXZHzc+SMOCIv1Qg==
+hds-core@2.17.0, hds-core@^2.17.0:
+  version "2.17.0"
+  resolved "https://registry.yarnpkg.com/hds-core/-/hds-core-2.17.0.tgz#05bb9febbaea6314df86e6930dfd485950daf37f"
+  integrity sha512-OKYAU3bGsogDXAuJ40WMaGDxNfSXPp4zvgIrHM/O/f2lenQTqVjdL2zJTMcIFufXevwxdiY1bmJ1qXyksMmtBw==
 
-hds-design-tokens@^2.3.0:
-  version "2.16.0"
-  resolved "https://registry.yarnpkg.com/hds-design-tokens/-/hds-design-tokens-2.16.0.tgz#918f397fef8bc57e094b34f0e1c92cdf84073f0d"
-  integrity sha512-mxGaf1tzycjcmRxMWxgnKvAZDo78vIWgzSgGqlnzdhGCXutyxvnHmkkJ6FvJXMx7RRAcp3ChbRUNH52HnzDCPw==
+hds-design-tokens@^2.17.0:
+  version "2.17.0"
+  resolved "https://registry.yarnpkg.com/hds-design-tokens/-/hds-design-tokens-2.17.0.tgz#13e755728424b6cb91fee30e72202b7911630866"
+  integrity sha512-Ad3PJ6ta4ALStt8rDjZxb4SMu/IBkr6vl1ZWY7hp2TfyIFpXrzB/Q0TWcaH99MUgO0S1OuFwhAp70ZzCwpkI/Q==
 
-hds-react@2.16.0:
-  version "2.16.0"
-  resolved "https://registry.yarnpkg.com/hds-react/-/hds-react-2.16.0.tgz#a3f338b5791950782e195b2dc9d5f3a0aea97b2d"
-  integrity sha512-vQ/VyAECUhwYe3Er/7myo/K+OeKKfAoRoAPvqmnQbxrdEtvv+YPoBSAae5ZgCDaoLGZg4uaWoUFTdtDNlHku9g==
+hds-react@^2.17.0:
+  version "2.17.0"
+  resolved "https://registry.yarnpkg.com/hds-react/-/hds-react-2.17.0.tgz#7dfffc7dc6673bb59bd222699c2893cbaa0b0557"
+  integrity sha512-nfN6sCCGGkZpv9++9qf0X3Dn+grTI5hPNXFGbFWCrV0dlTYBrDEzV2P3rsJiT6uYs5Yl0kqGBbr+uxQWw3s3wg==
   dependencies:
     "@babel/runtime" "7.17.9"
     "@emotion/styled-base" "^11.0.0"
@@ -7675,7 +7675,7 @@ hds-react@2.16.0:
     crc-32 "1.2.0"
     date-fns "2.16.1"
     downshift "6.0.6"
-    hds-core "2.16.0"
+    hds-core "2.17.0"
     kashe "1.0.4"
     lodash.get "^4.4.2"
     lodash.isequal "4.5.0"
