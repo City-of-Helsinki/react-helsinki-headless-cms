@@ -20,6 +20,9 @@
     "publish-stable": "yarn build && node ./scripts/publish-stable.js",
     "generate:graphql": "cross-env DOTENV_CONFIG_PATH=./.env graphql-codegen -r dotenv/config --config codegen.yml"
   },
+  "engines": {
+    "node": ">=18.17.1"
+  },
   "exports": {
     ".": {
       "import": "./index.js",
