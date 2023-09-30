@@ -5,17 +5,27 @@ import parse, {
   domToReact,
   HTMLReactParserOptions,
   attributesToProps,
+  Element,
 } from 'html-react-parser';
-import 'hds-core/lib/components/table/table.css';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
 
+import styles from './htmlToReact.module.scss';
 import { isTrustedOrigin, validateTrustedOriginsFormat } from './utils';
 import {
   DefaultH2,
   DefaultP,
   IframeForEmbeddedMedia,
 } from './replaceComponents';
+
+const hasClassName = (domNode: Element, className: string) =>
+  domNode.attribs.class?.split(/\s+/)?.includes(className) ?? false;
+
+const addClassNames = (
+  domNode: Element,
+  ...newClassNames: (string | string[] | Record<string, boolean>)[]
+) =>
+  classNames(...(domNode.attribs.class?.split(/\s+/) ?? []), ...newClassNames);
 
 const WHITELISTED_TAGS = [
   // Content sectioning
@@ -84,7 +94,13 @@ const WHITELISTED_TAGS = [
   'math',
 ];
 
-export const TABLE_VARIANTS = ['dark', 'dense', 'light', 'zebra'] as const;
+export const TABLE_VARIANTS = [
+  'dark',
+  'dense',
+  'light',
+  'with-vertical-lines',
+  'zebra',
+] as const;
 export type TableVariant = (typeof TABLE_VARIANTS)[number];
 export const DEFAULT_TABLE_VARIANTS: TableVariant[] = ['light'];
 
@@ -113,64 +129,30 @@ export type HtmlToReactProps = {
  * Inject HDS core table styles into children of <thead>
  * @see https://hds.hel.fi/components/table/code/
  */
-function mapTableHeaderChild(domNode: DOMNode) {
+function mapTableHeaderChild(
+  domNode: DOMNode,
+  options?: HTMLReactParserOptions,
+) {
   if ('attribs' in domNode && domNode.name === 'tr') {
     return (
       <tr
         {...attributesToProps(domNode.attribs)}
-        className="hds-table__header-row"
+        className={addClassNames(domNode, styles['hds-table__header-row'])}
       >
-        {domToReact(domNode.children)}
+        {domToReact(domNode.children, options)}
       </tr>
     );
   }
-  return domToReact([domNode]);
-}
-
-/**
- * Inject HDS core table styles into children of <table>
- * @see https://hds.hel.fi/components/table/code/
- */
-function mapTableChild(domNode: DOMNode) {
-  if ('attribs' in domNode) {
-    switch (domNode.name) {
-      case 'caption':
-        return (
-          <caption
-            {...attributesToProps(domNode.attribs)}
-            className="hds-table__caption"
-          >
-            {domToReact(domNode.children)}
-          </caption>
-        );
-
-      case 'thead':
-        return (
-          <thead {...attributesToProps(domNode.attribs)}>
-            {domNode.children.map((child) => mapTableHeaderChild(child))}
-          </thead>
-        );
-
-      case 'tbody':
-        return (
-          <tbody
-            {...attributesToProps(domNode.attribs)}
-            className="hds-table__content"
-          >
-            {domToReact(domNode.children)}
-          </tbody>
-        );
-      default:
-        break;
-    }
-  }
-  return domToReact([domNode]);
+  return domToReact([domNode], options);
 }
 
 function replaceDomNodeWithReactComponent(
   domNode: DOMNode,
   options?: HTMLReactParserOptions,
-  {
+  components: Components = {},
+  trustedOrigins: HtmlToReactProps['trustedOrigins'] = [],
+) {
+  const {
     p: P = DefaultP,
     h2: H2 = DefaultH2,
     a: A = 'a',
@@ -178,9 +160,8 @@ function replaceDomNodeWithReactComponent(
     tableVariants = DEFAULT_TABLE_VARIANTS,
     img: IMG = 'img',
     iframe: IFrame = IframeForEmbeddedMedia,
-  }: Components = {},
-  trustedOrigins: HtmlToReactProps['trustedOrigins'] = [],
-) {
+  } = components;
+
   // html-react-parser advices to do an instanceof check
   // domNode instanceof Element
   // However, this will fail between contexts. As this code is meant to be used
@@ -198,34 +179,84 @@ function replaceDomNodeWithReactComponent(
       case 'h2':
         return (
           <H2 {...attributesToProps(domNode.attribs)}>
-            {domToReact(domNode.children)}
+            {domToReact(domNode.children, options)}
           </H2>
         );
 
       case 'a':
         return (
           <A {...attributesToProps(domNode.attribs)}>
-            {domToReact(domNode.children)}
+            {domToReact(domNode.children, options)}
           </A>
+        );
+
+      case 'figure':
+        // Inject HDS core zebra table style into <table> if it's inside
+        // <figure class="is-style-stripes">,
+        // see https://hds.hel.fi/components/table/code/
+        return (
+          <figure
+            {...attributesToProps(domNode.attribs)}
+            className={addClassNames(domNode, {
+              [styles['striped-figure']]: hasClassName(
+                domNode,
+                'is-style-stripes',
+              ),
+            })}
+          >
+            {domToReact(domNode.children, options)}
+          </figure>
         );
 
       case 'table':
         // Inject HDS core table styles into <table> and its children,
         // see https://hds.hel.fi/components/table/code/
         return (
-          <div className="hds-table-container">
+          <div
+            className={addClassNames(domNode, styles['hds-table-container'])}
+          >
             <Table
               {...attributesToProps(domNode.attribs)}
-              className={classNames(
-                'hds-table',
+              className={addClassNames(
+                domNode,
+                styles['hds-table'],
                 tableVariants.map(
-                  (tableVariant) => `hds-table--${tableVariant}`,
+                  (tableVariant) => styles[`hds-table--${tableVariant}`],
                 ),
               )}
             >
-              {domNode.children.map((child) => mapTableChild(child))}
+              {domToReact(domNode.children, options)}
             </Table>
           </div>
+        );
+
+      case 'caption':
+        return (
+          <caption
+            {...attributesToProps(domNode.attribs)}
+            className={addClassNames(domNode, styles['hds-table__caption'])}
+          >
+            {domToReact(domNode.children, options)}
+          </caption>
+        );
+
+      case 'thead':
+        return (
+          <thead {...attributesToProps(domNode.attribs)}>
+            {domNode.children.map((child) =>
+              mapTableHeaderChild(child, options),
+            )}
+          </thead>
+        );
+
+      case 'tbody':
+        return (
+          <tbody
+            {...attributesToProps(domNode.attribs)}
+            className={addClassNames(domNode, styles['hds-table__content'])}
+          >
+            {domToReact(domNode.children, options)}
+          </tbody>
         );
 
       case 'img':

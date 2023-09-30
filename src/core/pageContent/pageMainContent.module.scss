@@ -22,36 +22,20 @@
       border-spacing: 0;
       border-collapse: collapse;
       background-color: transparent;
-      border-bottom: 1px solid var(--border-color-table);
 
       thead {
         display: table-header-group;
         vertical-align: middle;
-        border-color: var(--border-color-thead);
       }
 
       th {
-        border: 1px solid;
         padding: 0.5em;
-        border: 1px solid;
         word-break: normal;
       }
 
       td {
         padding: 0.5em;
-        border: 1px solid;
         word-break: normal;
-      }
-    }
-
-    &.is-style-stripes {
-      table {
-        td {
-          border-color: transparent !important;
-        }
-        tr.is-style-stripes {
-          background-color: #f0f0f0 !important;
-        }
       }
     }
   }
