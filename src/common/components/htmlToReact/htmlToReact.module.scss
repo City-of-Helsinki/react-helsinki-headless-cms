@@ -1,0 +1,7 @@
+@import '../../../core/styles/hdsCoreTable.module';
+
+.striped-figure {
+  table {
+    @extend .hds-table--zebra;
+  }
+}
