@@ -14,6 +14,7 @@ import { HtmlToReactProps } from '../../common/components/htmlToReact/HtmlToReac
 
 export type Config = {
   siteName: string;
+  origin?: string;
   mainContentId?: string;
   internalHrefOrigins: string[];
   currentLanguageCode: LanguageCodeEnum;

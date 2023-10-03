@@ -30,11 +30,10 @@ export function PageMeta({ page, headComponent: Head }: PageMetaProps) {
     openGraphTitle,
     openGraphType,
     openGraphDescription,
-    canonicalUrl,
   } = seoForCurrentLanguage ?? {};
   const image = seoForCurrentLanguage?.socialImage?.mediaItemUrl;
 
-  const { meta } = useConfig();
+  const { meta, origin, currentLanguageCode } = useConfig();
 
   return (
     <Head>
@@ -63,8 +62,10 @@ export function PageMeta({ page, headComponent: Head }: PageMetaProps) {
         hrefLang={page?.language?.locale}
         href={page?.seo?.canonicalUrl}
       />
-      <link rel="canonical" href={canonicalUrl} />
-      <link rel="canonical" href={canonicalUrl} />
+      <link
+        rel="canonical"
+        href={`${origin}${currentLanguageCode.toLowerCase()}/${page.slug}`}
+      />
       <link rel="icon" href={meta?.favIconUrl} sizes="any" />
       <link rel="icon" href={meta?.favIconSvgUrl} type="image/svg+xml" />
       <link rel="apple-touch-icon" href={meta?.appleTouchIconUrl} />
