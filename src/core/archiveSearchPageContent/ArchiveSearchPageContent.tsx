@@ -18,8 +18,12 @@ import { useConfig } from '../configProvider/useConfig';
 import { Config } from '../configProvider/configContext';
 import { CollectionItemType } from '../collection/types';
 import { PageSection } from '../pageSection/PageSection';
-import { SearchTag } from '../../common/headlessService/types';
-import BasicMeta from '../archiveSearchPage/ArchivePageMeta';
+import {
+  ArticleType,
+  PageType,
+  SearchTag,
+} from '../../common/headlessService/types';
+import { PageMeta } from '../pageContent/meta/PageMeta';
 
 export function SearchForm({
   archiveSearch,
@@ -107,8 +111,7 @@ export function SearchTags({
 }
 
 export interface SearchPageContentProps {
-  title?: string;
-  description?: string;
+  page?: PageType | ArticleType;
   customContent?: string | JSX.Element;
   items?: CollectionItemType[];
   isLoading?: boolean;
@@ -167,10 +170,10 @@ export function SearchPageContent(props: SearchPageContentProps) {
     tags,
     onSearch,
     onLoadMore,
-    title,
-    description,
+    page,
   } = props;
   const {
+    components: { Head },
     copy: { archiveSearch },
     mainContentId,
   } = useConfig();
@@ -210,7 +213,7 @@ export function SearchPageContent(props: SearchPageContentProps) {
       id={mainContentId || 'main-content'}
       className={classNames(styles.contentLayout, className)}
     >
-      <BasicMeta title={title} description={description} />
+      {Head && <PageMeta headComponent={Head} page={page} />}
       <div className={styles.mainLayout}>
         <PageSection
           korosBottom

@@ -30,7 +30,6 @@ export function PageMeta({ page, headComponent: Head }: PageMetaProps) {
     openGraphTitle,
     openGraphType,
     openGraphDescription,
-    canonicalUrl,
   } = seoForCurrentLanguage ?? {};
   const image = seoForCurrentLanguage?.socialImage?.mediaItemUrl;
 
@@ -50,21 +49,6 @@ export function PageMeta({ page, headComponent: Head }: PageMetaProps) {
       {twitterDescription && (
         <meta name="twitter:description" content={twitterDescription} />
       )}
-      {page?.translations?.map((translation) => (
-        <link
-          key={translation?.language?.locale}
-          rel="alternate"
-          hrefLang={translation?.language?.locale}
-          href={translation?.seo?.canonicalUrl}
-        />
-      ))}
-      <link
-        rel="alternate"
-        hrefLang={page?.language?.locale}
-        href={page?.seo?.canonicalUrl}
-      />
-      <link rel="canonical" href={canonicalUrl} />
-      <link rel="canonical" href={canonicalUrl} />
       <link rel="icon" href={meta?.favIconUrl} sizes="any" />
       <link rel="icon" href={meta?.favIconSvgUrl} type="image/svg+xml" />
       <link rel="apple-touch-icon" href={meta?.appleTouchIconUrl} />
