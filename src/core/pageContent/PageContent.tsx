@@ -220,7 +220,7 @@ export function PageContent(props: PageContentProps) {
   const getHeroProps = () => {
     const heroProps: HeroProps = {};
     if (isPageType(page)) {
-      heroProps.title = page.hero?.title;
+      heroProps.title = page.hero?.title || '';
       heroProps.description = page.hero?.description;
       heroProps.backgroundColor = page.hero?.background_color;
       heroProps.korosType = page.hero?.wave_motif as KorosType;
