@@ -112,7 +112,7 @@ export default function Hero({
           korosType && styles[korosType],
         )}
       >
-        <Container>
+        <Container wrapper={container}>
           <ContentContainer>
             <div className={styles.heroInner}>
               {imageUrl && (
