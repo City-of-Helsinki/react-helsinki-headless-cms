@@ -144,7 +144,9 @@ export default function Hero({
           flipHorizontal
           style={{
             fill: `var(--${
-              backgroundColor || 'hcrc-color-hero-bg, --color-fog-light'
+              backgroundColor
+                ? `color-${backgroundColor}`
+                : 'hcrc-color-hero-bg, --color-fog-light'
             })`,
           }}
         />
