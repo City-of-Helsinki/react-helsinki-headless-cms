@@ -86,11 +86,25 @@
   }
 
   .textContents {
+    position: relative;
+    &.withKoros {
+      padding-bottom: 85px;
+      margin-bottom: 1rem;
+    }
+
     h1 {
       font-weight: 400;
     }
     p {
       font-size: var(--fontsize-body-l);
+    }
+
+    .button {
+      margin-bottom: 2rem;
+    }
+
+    .heroKoros {
+      position: absolute;
     }
   }
 }

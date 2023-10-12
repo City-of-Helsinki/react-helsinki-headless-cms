@@ -66,6 +66,7 @@ export default function Hero({
         backgroundColor &&
           isWhiteText(backgroundColor) &&
           colorStyles.whiteText,
+        korosType && styles.withKoros,
       )}
     >
       <header>
@@ -94,7 +95,13 @@ export default function Hero({
           </Button>
         </div>
       )}
-      {korosType && <Koros type={korosType} />}
+      {korosType && (
+        <Koros
+          className={styles.heroKoros}
+          type={korosType}
+          style={{ fill: 'white' }}
+        />
+      )}
     </div>
   ) : null;
 
