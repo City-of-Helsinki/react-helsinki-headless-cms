@@ -11,7 +11,7 @@ import { ContentContainer } from '../contentContainer/ContentContainer';
 import { Image } from '../image/Image';
 import Text from '../../common/components/text/Text';
 import { HeroProps } from '../pageContent/types';
-import { isWhiteText } from '../utils/string';
+import { getColor, isWhiteText } from '../utils/string';
 import { useConfig } from '../configProvider/useConfig';
 
 export type HeroComponentProps = {
@@ -92,7 +92,14 @@ export default function Hero({
   ) : null;
 
   return (
-    <div className={classNames(styles.hero, className)}>
+    <div
+      className={classNames(
+        styles.hero,
+        className,
+        backgroundColor &&
+          colorStyles[`background${getColor(backgroundColor)}`],
+      )}
+    >
       <Container wrapper={container}>
         <ContentContainer>
           <div className={styles.heroInner}>
