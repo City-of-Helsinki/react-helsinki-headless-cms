@@ -114,14 +114,14 @@ export const defaultContentModules = (
 };
 
 export const defaultContent = (page: PageType | ArticleType) => {
-  let withTitle = true;
+  let hideTitle = false;
   if (isPageType(page)) {
-    withTitle = Boolean(page?.hero?.title);
+    hideTitle = Boolean(page?.hero?.title);
   }
 
   return (
     <PageMainContent
-      title={withTitle && page.title}
+      title={!hideTitle && page.title}
       content={page?.content}
       date={(page as ArticleType)?.date}
       categories={(page as ArticleType)?.categories}
