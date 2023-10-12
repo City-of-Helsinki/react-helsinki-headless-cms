@@ -78,7 +78,7 @@ export default function Hero({
       {actionText && actionUrl && (
         <div
           className={classNames(
-            styles.button,
+            !imageUrl && styles.button,
             backgroundColor &&
               !imageUrl &&
               isWhiteText(backgroundColor) &&
