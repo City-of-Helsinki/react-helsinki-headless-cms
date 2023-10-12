@@ -133,16 +133,16 @@ export default function Hero({
               </div>
             )}
           </div>
-          {korosType && (
-            <Koros
-              className={styles.heroKoros}
-              type={korosType}
-              style={{ fill: 'white' }}
-            />
-          )}
           {!imageUrl && textContents}
         </ContentContainer>
       </Container>
+      {korosType && (
+        <Koros
+          className={styles.heroKoros}
+          type={korosType}
+          style={{ fill: 'white' }}
+        />
+      )}
     </div>
   );
 }
