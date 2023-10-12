@@ -109,7 +109,7 @@ export default function Hero({
           backgroundColor &&
             colorStyles[`background${getColor(backgroundColor)}`],
           korosType && styles.withKoros,
-          korosType && styles[korosType],
+          korosType && !imageUrl && styles[korosType],
         )}
       >
         <Container wrapper={container}>
