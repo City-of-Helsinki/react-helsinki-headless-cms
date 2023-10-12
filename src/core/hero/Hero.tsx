@@ -98,7 +98,7 @@ export default function Hero({
     </div>
   );
 
-  return <>{title}</>;
+  if (!title) return null;
 
   return (
     <div
