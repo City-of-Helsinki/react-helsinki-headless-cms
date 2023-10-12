@@ -59,7 +59,7 @@ export default function Hero({
     }
   };
 
-  const textContents = title ? (
+  const textContents = (
     <div
       className={classNames(
         styles.textContents,
@@ -96,7 +96,9 @@ export default function Hero({
         </div>
       )}
     </div>
-  ) : null;
+  );
+
+  if (!title) return null;
 
   return (
     <div
