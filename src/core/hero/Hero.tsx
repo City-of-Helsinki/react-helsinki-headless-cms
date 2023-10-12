@@ -140,7 +140,8 @@ export default function Hero({
         <Koros
           className={styles.heroKoros}
           type={korosType}
-          style={{ fill: 'white' }}
+          flipHorizontal
+          style={{ fill: 'var(--color-coat-of-arms)' }}
         />
       )}
     </div>
