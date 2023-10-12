@@ -77,9 +77,27 @@ export function SimpleCard({
         </div>
       )}
       <div className={styles.cardContent}>
-        {title && <div className={styles.title}>{title}</div>}
+        {title && (
+          <div
+            className={classNames(
+              styles.title,
+              backgroundColor &&
+                isWhiteText(backgroundColor) &&
+                colorStyles.whiteText,
+            )}
+          >
+            {title}
+          </div>
+        )}
         {description && (
-          <div className={styles.description}>
+          <div
+            className={classNames(
+              styles.description,
+              backgroundColor &&
+                isWhiteText(backgroundColor) &&
+                colorStyles.whiteText,
+            )}
+          >
             {getTextFromHtml(description)}
           </div>
         )}
