@@ -126,7 +126,6 @@ export default function Hero({
                   {imageLabel && (
                     <div className={styles.label}>{imageLabel}</div>
                   )}
-                  {textContents}
                 </div>
               )}
 
@@ -140,6 +139,7 @@ export default function Hero({
                 </div>
               )}
             </div>
+            {!imageUrl && textContents}
           </ContentContainer>
         </Container>
         {korosType && (
@@ -163,7 +163,7 @@ export default function Hero({
           />
         )}
       </div>
-      {!imageUrl && textContents}
+      {imageUrl && textContents}
     </>
   );
 }
