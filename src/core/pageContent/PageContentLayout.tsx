@@ -4,6 +4,7 @@ import styles from './pageContentLayout.module.scss';
 import Hero from '../hero/Hero';
 import { ContentContainer } from '../contentContainer/ContentContainer';
 import { PageSection } from '../pageSection/PageSection';
+import { HeroProps } from './types';
 
 export type PageContentLayoutProps = {
   id: string;
@@ -17,7 +18,7 @@ export type PageContentLayoutProps = {
   imageAlt?: string;
   imageLabel?: string;
   backUrl?: string;
-};
+} & HeroProps;
 
 export function PageContentLayout({
   id,
@@ -31,11 +32,11 @@ export function PageContentLayout({
   imageAlt,
   imageLabel,
   backUrl,
+  ...heroProps
 }: PageContentLayoutProps) {
   return (
     <div className={styles.contentLayout}>
       {breadcrumbs && <div className={styles.breadcrumbs}>{breadcrumbs}</div>}
-
       <div className={styles.mainLayout}>
         <Hero
           id={id}
@@ -44,6 +45,7 @@ export function PageContentLayout({
           imageUrl={imageSrc}
           imageLabel={imageLabel}
           backUrl={backUrl}
+          {...heroProps}
         />
         <PageSection className={styles.contentWrapper}>
           <ContentContainer>

@@ -1,13 +1,14 @@
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
+import { KorosType } from 'hds-react';
 
 import { useConfig } from '../configProvider/useConfig';
 import SidebarContent from './sidebarContent/SidebarContent';
 import { PageContentLayout } from './PageContentLayout';
 import { PageMainContent } from './PageMainContent';
 import PageContentBreadcrumbs from './PageContentBreadcrumbs';
-import { Breadcrumb } from './types';
+import { Breadcrumb, HeroProps } from './types';
 import { PageMeta } from './meta/PageMeta';
 import {
   Collection,
@@ -216,6 +217,19 @@ export function PageContent(props: PageContentProps) {
   const isVenueModulesEnabled =
     eventsApolloClient !== undefined && venuesApolloClient !== 'disabled';
 
+  const getHeroProps = () => {
+    const heroProps: HeroProps = {};
+    if (isPageType(page)) {
+      heroProps.title = page.hero?.title;
+      heroProps.description = page.hero?.title;
+      heroProps.backgroundClassName = page.hero?.background_color;
+      heroProps.korosType = page.hero?.wave_motif as KorosType;
+      heroProps.actionUrl = page.hero?.link.url;
+      heroProps.actionText = page.hero?.link?.title;
+    }
+    return heroProps;
+  };
+
   return (
     <main
       id={mainContentId || 'main-content'}
@@ -225,6 +239,7 @@ export function PageContent(props: PageContentProps) {
       <PageContentLayoutComponent
         {...props}
         {...pageContentLayoutProps}
+        {...getHeroProps()}
         breadcrumbs={
           breadcrumbs && <PageContentBreadcrumbs breadcrumbs={breadcrumbs} />
         }

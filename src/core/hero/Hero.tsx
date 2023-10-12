@@ -1,7 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
-import { IconArrowLeft, Koros, KorosType } from 'hds-react';
+import { IconArrowLeft, Koros } from 'hds-react';
 
 import Container from '../../common/components/container/Container';
 import styles from './hero.module.scss';
@@ -9,22 +9,17 @@ import { Link } from '../link/Link';
 import { ContentContainer } from '../contentContainer/ContentContainer';
 import { Image } from '../image/Image';
 import Text from '../../common/components/text/Text';
+import { HeroProps } from '../pageContent/types';
 
-export type HeroProps = {
+export type HeroComponentProps = {
   id: string;
-  title?: string;
-  description?: string;
-  backgroundClassName?: string;
-  korosType?: KorosType;
-  actionUrl?: string;
-  actionText?: string;
   className?: string;
   backUrl?: string;
   imageUrl?: string;
   imageAlt?: string;
   imageLabel?: string;
   container?: JSX.Element;
-};
+} & HeroProps;
 
 export default function Hero({
   id,
@@ -40,7 +35,7 @@ export default function Hero({
   imageAlt,
   container,
   imageLabel,
-}: HeroProps) {
+}: HeroComponentProps) {
   const textContents = title ? (
     <>
       <header>
