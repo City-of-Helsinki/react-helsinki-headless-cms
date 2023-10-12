@@ -222,9 +222,10 @@ export function PageContent(props: PageContentProps) {
     if (isPageType(page)) {
       heroProps.title = page.hero?.title;
       heroProps.description = page.hero?.description;
-      heroProps.backgroundClassName = page.hero?.background_color;
+      heroProps.backgroundColor = page.hero?.background_color;
       heroProps.korosType = page.hero?.wave_motif as KorosType;
       heroProps.actionUrl = page.hero?.link.url;
+      heroProps.actionUrlTarget = page.hero?.link.target;
       heroProps.actionText = page.hero?.link?.title;
     }
     return heroProps;

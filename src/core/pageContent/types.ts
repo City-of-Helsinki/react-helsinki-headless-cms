@@ -8,8 +8,9 @@ export type Breadcrumb = {
 export type HeroProps = {
   title?: string;
   description?: string;
-  backgroundClassName?: string;
+  backgroundColor?: string;
   korosType?: KorosType;
   actionUrl?: string;
+  actionUrlTarget?: string;
   actionText?: string;
 };

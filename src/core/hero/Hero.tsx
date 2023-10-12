@@ -1,15 +1,18 @@
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
-import { IconArrowLeft, Koros } from 'hds-react';
+import { Button, IconAngleRight, IconArrowLeft, Koros } from 'hds-react';
 
 import Container from '../../common/components/container/Container';
 import styles from './hero.module.scss';
+import colorStyles from '../styles/background.module.scss';
 import { Link } from '../link/Link';
 import { ContentContainer } from '../contentContainer/ContentContainer';
 import { Image } from '../image/Image';
 import Text from '../../common/components/text/Text';
 import { HeroProps } from '../pageContent/types';
+import { isWhiteText } from '../utils/string';
+import { useConfig } from '../configProvider/useConfig';
 
 export type HeroComponentProps = {
   id: string;
@@ -25,10 +28,11 @@ export default function Hero({
   id,
   title,
   description,
-  backgroundClassName,
+  backgroundColor,
   korosType,
   actionText,
   actionUrl,
+  actionUrlTarget,
   className,
   backUrl,
   imageUrl,
@@ -36,6 +40,25 @@ export default function Hero({
   container,
   imageLabel,
 }: HeroComponentProps) {
+  const {
+    utils: { redirectToUrl },
+  } = useConfig();
+
+  const openInNewTab = (url: string): void => {
+    const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+    if (newWindow) newWindow.opener = null;
+  };
+
+  const handleClick = () => {
+    if (actionUrl) {
+      if (actionUrlTarget === '_blank') {
+        openInNewTab(actionUrl);
+      } else {
+        redirectToUrl(actionUrl);
+      }
+    }
+  };
+
   const textContents = title ? (
     <div className={styles.textContents}>
       <header>
@@ -43,15 +66,33 @@ export default function Hero({
           {title}
         </Text>
       </header>
-      {backgroundClassName && <div>{backgroundClassName}</div>}
       {description && <p>{description}</p>}
-      {actionText && actionUrl && <div>action button</div>}
+      {actionText && actionUrl && (
+        <div
+          className={classNames(
+            styles.button,
+            backgroundColor &&
+              !imageUrl &&
+              isWhiteText(backgroundColor) &&
+              colorStyles.whiteButton,
+          )}
+        >
+          <Button
+            variant="secondary"
+            theme="black"
+            onClick={handleClick}
+            iconRight={<IconAngleRight />}
+          >
+            {actionText}
+          </Button>
+        </div>
+      )}
       {korosType && <Koros type={korosType} />}
     </div>
   ) : null;
 
   return (
-    <div className={classNames(styles.hero, className, backgroundClassName)}>
+    <div className={classNames(styles.hero, className)}>
       <Container wrapper={container}>
         <ContentContainer>
           <div className={styles.heroInner}>
