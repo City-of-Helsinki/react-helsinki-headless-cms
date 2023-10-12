@@ -101,65 +101,69 @@ export default function Hero({
   if (!title) return null;
 
   return (
-    <div
-      className={classNames(
-        styles.hero,
-        className,
-        backgroundColor &&
-          colorStyles[`background${getColor(backgroundColor)}`],
-        korosType && styles.withKoros,
-        korosType && styles[korosType],
-      )}
-    >
-      <Container wrapper={container}>
-        <ContentContainer>
-          <div className={styles.heroInner}>
-            {imageUrl && (
-              <div>
-                <Image
-                  id={id}
-                  className={styles.imageContainer}
-                  src={imageUrl}
-                  alt={imageAlt}
-                />
-                {imageLabel && <div className={styles.label}>{imageLabel}</div>}
-                {textContents}
-              </div>
-            )}
+    <>
+      <div
+        className={classNames(
+          styles.hero,
+          className,
+          backgroundColor &&
+            colorStyles[`background${getColor(backgroundColor)}`],
+          korosType && styles.withKoros,
+          korosType && styles[korosType],
+        )}
+      >
+        <Container wrapper={container}>
+          <ContentContainer>
+            <div className={styles.heroInner}>
+              {imageUrl && (
+                <div>
+                  <Image
+                    id={id}
+                    className={styles.imageContainer}
+                    src={imageUrl}
+                    alt={imageAlt}
+                  />
+                  {imageLabel && (
+                    <div className={styles.label}>{imageLabel}</div>
+                  )}
+                  {textContents}
+                </div>
+              )}
 
-            {backUrl && (
-              <div className={styles.link}>
-                <Link
-                  href={backUrl}
-                  openInNewTab={false}
-                  iconLeft={<IconArrowLeft aria-hidden="true" />}
-                />
-              </div>
+              {backUrl && (
+                <div className={styles.link}>
+                  <Link
+                    href={backUrl}
+                    openInNewTab={false}
+                    iconLeft={<IconArrowLeft aria-hidden="true" />}
+                  />
+                </div>
+              )}
+            </div>
+          </ContentContainer>
+        </Container>
+        {korosType && (
+          <Koros
+            className={classNames(
+              styles.heroKoros,
+              korosType && styles[korosType],
             )}
-          </div>
-          {!imageUrl && textContents}
-        </ContentContainer>
-      </Container>
-      {korosType && (
-        <Koros
-          className={classNames(
-            styles.heroKoros,
-            korosType && styles[korosType],
-          )}
-          type={korosType}
-          flipHorizontal={!imageUrl}
-          style={{
-            fill: `var(--${
-              // eslint-disable-next-line no-nested-ternary
-              imageUrl
-                ? 'color-white'
-                : backgroundColor
-                ? `color-${backgroundColor}`
-                : 'hcrc-color-hero-bg, --color-fog-light'
-            })`,
-          }}
-        />
-      )}
-    </div>
+            type={korosType}
+            flipHorizontal={!imageUrl}
+            style={{
+              fill: `var(--${
+                // eslint-disable-next-line no-nested-ternary
+                imageUrl
+                  ? 'color-white'
+                  : backgroundColor
+                  ? `color-${backgroundColor}`
+                  : 'hcrc-color-hero-bg, --color-fog-light'
+              })`,
+            }}
+          />
+        )}
+      </div>
+      {!imageUrl && textContents}
+    </>
   );
 }
