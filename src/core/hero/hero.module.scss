@@ -3,9 +3,14 @@
 
 .hero {
   --hero-image-max-height: 600px;
-  margin-bottom: $spacing-l;
+  margin-bottom: $spacing-s;
   background-color: var(--hcrc-color-hero-bg, --color-fog-light);
   position: relative;
+
+  .heroKoros {
+    position: absolute;
+    bottom: -15px;
+  }
 
   .heroInner {
     position: relative;
@@ -15,10 +20,6 @@
 
     &.withKoros {
       padding-bottom: 85px;
-    }
-
-    .heroKoros {
-      position: absolute;
     }
 
     & > *:nth-child(1) {
@@ -105,7 +106,8 @@
     }
 
     .button {
-      margin-bottom: 2rem;
+      margin-bottom: $spacing-l;
+      z-index: 1;
     }
   }
 }
