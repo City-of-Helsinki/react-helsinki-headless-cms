@@ -221,7 +221,7 @@ export function PageContent(props: PageContentProps) {
     const heroProps: HeroProps = {};
     if (isPageType(page)) {
       heroProps.title = page.hero?.title;
-      heroProps.description = page.hero?.title;
+      heroProps.description = page.hero?.description;
       heroProps.backgroundClassName = page.hero?.background_color;
       heroProps.korosType = page.hero?.wave_motif as KorosType;
       heroProps.actionUrl = page.hero?.link.url;

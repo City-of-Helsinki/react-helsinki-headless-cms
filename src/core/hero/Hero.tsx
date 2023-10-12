@@ -37,17 +37,17 @@ export default function Hero({
   imageLabel,
 }: HeroComponentProps) {
   const textContents = title ? (
-    <>
+    <div className={styles.textContents}>
       <header>
         <Text as="h1" variant="h1">
           {title}
         </Text>
       </header>
       {backgroundClassName && <div>{backgroundClassName}</div>}
-      {description && <div>{description}</div>}
+      {description && <p>{description}</p>}
       {actionText && actionUrl && <div>action button</div>}
       {korosType && <Koros type={korosType} />}
-    </>
+    </div>
   ) : null;
 
   return (

@@ -84,4 +84,13 @@
       object-fit: cover;
     }
   }
+
+  .textContents {
+    h1 {
+      font-weight: 400;
+    }
+    p {
+      font-size: var(--fontsize-body-l);
+    }
+  }
 }
