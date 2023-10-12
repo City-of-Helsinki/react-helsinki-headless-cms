@@ -31,6 +31,7 @@ import {
   isLayoutImage,
   isLayoutSteps,
   isLocationsSelectionCollection,
+  isPageType,
 } from '../../common/headlessService/utils';
 import { ContentModule } from '../pageModules/ContentModule/ContentModule';
 import { CardModule } from '../pageModules/CardModule/CardModule';
@@ -111,15 +112,22 @@ export const defaultContentModules = (
   return contentModules;
 };
 
-export const defaultContent = (page: PageType | ArticleType) => (
-  <PageMainContent
-    title={`${page?.title}22222`}
-    content={page?.content}
-    date={(page as ArticleType)?.date}
-    categories={(page as ArticleType)?.categories}
-    contentModules={defaultContentModules(page)}
-  />
-);
+export const defaultContent = (page: PageType | ArticleType) => {
+  let withTitle = true;
+  if (isPageType(page)) {
+    withTitle = Boolean(page?.hero?.title);
+  }
+
+  return (
+    <PageMainContent
+      title={withTitle && page.title}
+      content={page?.content}
+      date={(page as ArticleType)?.date}
+      categories={(page as ArticleType)?.categories}
+      contentModules={defaultContentModules(page)}
+    />
+  );
+};
 
 export const defaultCollections = ({
   page,
@@ -220,7 +228,6 @@ export function PageContent(props: PageContentProps) {
         breadcrumbs={
           breadcrumbs && <PageContentBreadcrumbs breadcrumbs={breadcrumbs} />
         }
-        title={`${page.title}1111`}
         heroContainer={heroContainer}
         id={page?.id ?? 'page'}
         imageSrc={page?.featuredImage?.node?.mediaItemUrl}
