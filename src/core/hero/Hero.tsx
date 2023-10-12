@@ -39,6 +39,7 @@ export default function Hero({
   imageAlt,
   container,
   imageLabel,
+  isPageType,
 }: HeroComponentProps) {
   const {
     utils: { redirectToUrl },
@@ -98,7 +99,7 @@ export default function Hero({
     </div>
   );
 
-  if (!title) return null;
+  if (!title && isPageType) return null;
 
   return (
     <>
@@ -138,7 +139,7 @@ export default function Hero({
                   />
                 </div>
               )}
-              {!imageUrl && textContents}
+              {!imageUrl && title && textContents}
             </div>
           </ContentContainer>
         </Container>
@@ -164,9 +165,11 @@ export default function Hero({
           />
         )}
       </div>
-      <Container>
-        <ContentContainer>{imageUrl && textContents}</ContentContainer>
-      </Container>
+      {imageUrl && title && (
+        <Container>
+          <ContentContainer>{textContents}</ContentContainer>
+        </Container>
+      )}
     </>
   );
 }

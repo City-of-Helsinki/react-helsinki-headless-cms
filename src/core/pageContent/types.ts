@@ -13,4 +13,5 @@ export type HeroProps = {
   actionUrl?: string;
   actionUrlTarget?: string;
   actionText?: string;
+  isPageType?: boolean;
 };

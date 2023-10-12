@@ -227,6 +227,7 @@ export function PageContent(props: PageContentProps) {
       heroProps.actionUrl = page.hero?.link.url;
       heroProps.actionUrlTarget = page.hero?.link.target;
       heroProps.actionText = page.hero?.link?.title;
+      heroProps.isPageType = true;
     }
     return heroProps;
   };
