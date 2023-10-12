@@ -3,9 +3,13 @@
 
 .hero {
   --hero-image-max-height: 600px;
-  margin-bottom: $spacing-s;
   background-color: var(--hcrc-color-hero-bg, --color-fog-light);
   position: relative;
+  z-index: 1;
+
+  &.withKoros {
+    margin-bottom: $spacing-s;
+  }
 
   .heroKoros {
     position: absolute;
@@ -103,11 +107,11 @@
     }
     p {
       font-size: var(--fontsize-body-l);
+      margin-bottom: $spacing-l;
     }
 
     .button {
-      margin-bottom: $spacing-l;
-      z-index: 1;
+      margin-bottom: $spacing-xl;
     }
   }
 }

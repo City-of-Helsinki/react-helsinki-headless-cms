@@ -105,6 +105,7 @@ export default function Hero({
         className,
         backgroundColor &&
           colorStyles[`background${getColor(backgroundColor)}`],
+        korosType && styles.withKoros,
       )}
     >
       <Container wrapper={container}>
@@ -141,7 +142,11 @@ export default function Hero({
           className={styles.heroKoros}
           type={korosType}
           flipHorizontal
-          style={{ fill: 'var(--color-coat-of-arms)' }}
+          style={{
+            fill: `var(--${
+              backgroundColor || 'hcrc-color-hero-bg, --color-fog-light'
+            })`,
+          }}
         />
       )}
     </div>
