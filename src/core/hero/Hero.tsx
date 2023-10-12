@@ -108,6 +108,7 @@ export default function Hero({
         backgroundColor &&
           colorStyles[`background${getColor(backgroundColor)}`],
         korosType && styles.withKoros,
+        korosType && styles[korosType],
       )}
     >
       <Container wrapper={container}>
@@ -141,7 +142,10 @@ export default function Hero({
       </Container>
       {korosType && (
         <Koros
-          className={styles.heroKoros}
+          className={classNames(
+            styles.heroKoros,
+            korosType && styles[korosType],
+          )}
           type={korosType}
           flipHorizontal
           style={{

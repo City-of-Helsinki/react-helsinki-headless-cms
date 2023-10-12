@@ -8,11 +8,34 @@
 
   &.withKoros {
     margin-bottom: $spacing-s;
+
+    &.pulse,
+    &.storm {
+      margin-bottom: $spacing-m;
+    }
+
+    &.beat,
+    &.wave {
+      margin-bottom: $spacing-4-xl;
+    }
   }
 
   .heroKoros {
     position: absolute;
     bottom: -15px;
+
+    &.pulse,
+    &.storm {
+      bottom: -35px;
+    }
+
+    &.beat {
+      bottom: -70px;
+    }
+
+    &.wave {
+      bottom: -53px;
+    }
   }
 
   .heroInner {
