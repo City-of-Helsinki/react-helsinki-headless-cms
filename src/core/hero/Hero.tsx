@@ -60,7 +60,14 @@ export default function Hero({
   };
 
   const textContents = title ? (
-    <div className={styles.textContents}>
+    <div
+      className={classNames(
+        styles.textContents,
+        backgroundColor &&
+          isWhiteText(backgroundColor) &&
+          colorStyles.whiteText,
+      )}
+    >
       <header>
         <Text as="h1" variant="h1">
           {title}
