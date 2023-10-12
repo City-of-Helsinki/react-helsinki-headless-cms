@@ -138,8 +138,8 @@ export default function Hero({
                   />
                 </div>
               )}
+              {!imageUrl && textContents}
             </div>
-            {!imageUrl && textContents}
           </ContentContainer>
         </Container>
         {korosType && (
