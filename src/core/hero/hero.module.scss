@@ -12,6 +12,15 @@
     width: 100%;
     margin: 0;
     box-sizing: border-box;
+
+    &.withKoros {
+      padding-bottom: 85px;
+    }
+
+    .heroKoros {
+      position: absolute;
+    }
+
     & > *:nth-child(1) {
       position: relative;
       @media screen and (min-width: breakpoints.$breakpoint-xl) {
@@ -87,10 +96,6 @@
 
   .textContents {
     position: relative;
-    &.withKoros {
-      padding-bottom: 85px;
-      margin-bottom: 1rem;
-    }
 
     h1 {
       font-weight: 400;
@@ -101,10 +106,6 @@
 
     .button {
       margin-bottom: 2rem;
-    }
-
-    .heroKoros {
-      position: absolute;
     }
   }
 }
