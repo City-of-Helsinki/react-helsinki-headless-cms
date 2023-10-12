@@ -7,6 +7,7 @@ import { PageSection } from '../pageSection/PageSection';
 
 export type PageContentLayoutProps = {
   id: string;
+  title?: string;
   breadcrumbs?: React.ReactNode;
   heroContainer?: JSX.Element;
   content: React.ReactNode;
@@ -21,6 +22,7 @@ export type PageContentLayoutProps = {
 
 export function PageContentLayout({
   id,
+  title,
   breadcrumbs,
   heroContainer,
   content,
@@ -49,6 +51,7 @@ export function PageContentLayout({
           <ContentContainer>
             <div className={styles.content}>
               <div>
+                {title}
                 {content}
                 {shareLinks && shareLinks}
               </div>

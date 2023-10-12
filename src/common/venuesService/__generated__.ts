@@ -105,6 +105,7 @@ export type Venue = {
   addressPostalFull?: Maybe<Scalars['String']['output']>;
   connections: Array<Maybe<VenueConnection>>;
   dataSource?: Maybe<Scalars['String']['output']>;
+  department?: Maybe<VenueDepartment>;
   departmentId?: Maybe<Scalars['ID']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   displayedServiceOwner?: Maybe<Scalars['String']['output']>;
@@ -113,19 +114,12 @@ export type Venue = {
   id: Scalars['String']['output'];
   image?: Maybe<Scalars['String']['output']>;
   infoUrl?: Maybe<Scalars['String']['output']>;
-  /**
-   *  This field is currently disabled because the Hauki integration is not enabled
-   * @deprecated Hauki integration is currently disabled so this field can not be accessed
-   */
   isOpen?: Maybe<Scalars['Boolean']['output']>;
   name?: Maybe<Scalars['String']['output']>;
   ontologyTree: Array<Maybe<Ontology>>;
   ontologyWords: Array<Maybe<Ontology>>;
-  /**
-   *  This field is currently disabled because the Hauki integration is not enabled
-   * @deprecated Hauki integration is currently disabled so this field can not be accessed
-   */
   openingHours?: Maybe<Array<OpeningHour>>;
+  organization?: Maybe<VenueDepartment>;
   organizationId?: Maybe<Scalars['ID']['output']>;
   position?: Maybe<Point>;
   postalCode?: Maybe<Scalars['String']['output']>;
@@ -141,6 +135,27 @@ export type VenueConnection = {
   phone?: Maybe<Scalars['String']['output']>;
   sectionType?: Maybe<Scalars['String']['output']>;
   url?: Maybe<Scalars['String']['output']>;
+};
+
+export type VenueDepartment = {
+  __typename?: 'VenueDepartment';
+  abbreviation?: Maybe<Scalars['String']['output']>;
+  addressCity?: Maybe<Scalars['String']['output']>;
+  addressPostalFull?: Maybe<Scalars['String']['output']>;
+  addressZip?: Maybe<Scalars['String']['output']>;
+  businessId?: Maybe<Scalars['String']['output']>;
+  email?: Maybe<Scalars['String']['output']>;
+  hierarchyLevel?: Maybe<Scalars['Int']['output']>;
+  id: Scalars['ID']['output'];
+  municipalityCode?: Maybe<Scalars['Int']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  oid?: Maybe<Scalars['ID']['output']>;
+  organizationId?: Maybe<Scalars['ID']['output']>;
+  organizationType?: Maybe<Scalars['String']['output']>;
+  parentId?: Maybe<Scalars['ID']['output']>;
+  phone?: Maybe<Scalars['String']['output']>;
+  streetAddress?: Maybe<Scalars['String']['output']>;
+  www?: Maybe<Scalars['String']['output']>;
 };
 
 export type _Service = {

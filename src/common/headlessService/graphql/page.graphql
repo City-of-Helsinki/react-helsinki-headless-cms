@@ -9,6 +9,18 @@ fragment Page on Page {
   seo {
     ...SEO
   }
+  hero {
+    background_color
+    background_image_url
+    description
+    link {
+      target
+      title
+      url
+    }
+    title
+    wave_motif
+  }
   language {
     ...Language
   }
