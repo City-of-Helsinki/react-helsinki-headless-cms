@@ -147,10 +147,13 @@ export default function Hero({
             korosType && styles[korosType],
           )}
           type={korosType}
-          flipHorizontal
+          flipHorizontal={!imageUrl}
           style={{
             fill: `var(--${
-              backgroundColor
+              // eslint-disable-next-line no-nested-ternary
+              imageUrl
+                ? 'color-white'
+                : backgroundColor
                 ? `color-${backgroundColor}`
                 : 'hcrc-color-hero-bg, --color-fog-light'
             })`,
