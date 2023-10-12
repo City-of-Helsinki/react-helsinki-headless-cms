@@ -113,7 +113,7 @@ export const defaultContentModules = (
 
 export const defaultContent = (page: PageType | ArticleType) => (
   <PageMainContent
-    title={page?.title}
+    title={`${page?.title}22222`}
     content={page?.content}
     date={(page as ArticleType)?.date}
     categories={(page as ArticleType)?.categories}
