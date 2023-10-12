@@ -108,7 +108,7 @@ export default function Hero({
           className,
           backgroundColor &&
             colorStyles[`background${getColor(backgroundColor)}`],
-          korosType && styles.withKoros,
+          korosType && !imageUrl && styles.withKoros,
           korosType && !imageUrl && styles[korosType],
         )}
       >

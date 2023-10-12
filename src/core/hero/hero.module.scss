@@ -116,24 +116,25 @@
       object-fit: cover;
     }
   }
+}
 
-  .textContents {
-    position: relative;
+.textContents {
+  position: relative;
 
-    &.withKoros {
-      z-index: 1;
-    }
+  &.withKoros {
+    z-index: 1;
+  }
 
-    h1 {
-      font-weight: 400;
-    }
-    p {
-      font-size: var(--fontsize-body-l);
-      margin-bottom: $spacing-l;
-    }
+  h1 {
+    font-weight: 400;
+  }
 
-    .button {
-      margin-bottom: $spacing-xl;
-    }
+  p {
+    font-size: var(--fontsize-body-l);
+    margin-bottom: $spacing-l;
+  }
+
+  .button {
+    margin-bottom: $spacing-xl;
   }
 }
