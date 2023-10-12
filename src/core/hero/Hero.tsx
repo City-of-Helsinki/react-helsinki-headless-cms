@@ -146,6 +146,7 @@ export default function Hero({
           <Koros
             className={classNames(
               styles.heroKoros,
+              imageUrl && styles.withImage,
               korosType && styles[korosType],
             )}
             type={korosType}

@@ -36,6 +36,25 @@
     &.wave {
       bottom: -53px;
     }
+
+    &.withImage {
+      &.basic {
+        bottom: -70px;
+      }
+
+      &.pulse,
+      &.storm {
+        bottom: -50px;
+      }
+
+      &.beat {
+        bottom: -15px;
+      }
+
+      &.wave {
+        bottom: -32px;
+      }
+    }
   }
 
   .heroInner {
