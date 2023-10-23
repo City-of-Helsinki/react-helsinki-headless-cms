@@ -99,7 +99,7 @@ export default function Hero({
     </div>
   );
 
-  if (!title && isPageType) return null;
+  // if (!title && isPageType) return null;
 
   return (
     <>
