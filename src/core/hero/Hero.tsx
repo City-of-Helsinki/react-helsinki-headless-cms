@@ -39,7 +39,6 @@ export default function Hero({
   imageAlt,
   container,
   imageLabel,
-  isPageType,
 }: HeroComponentProps) {
   const {
     utils: { redirectToUrl },
