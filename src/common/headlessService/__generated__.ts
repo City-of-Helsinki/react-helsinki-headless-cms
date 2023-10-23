@@ -2723,6 +2723,8 @@ export type EventSelectedCarousel = {
   title?: Maybe<Scalars['String']['output']>;
 };
 
+export type FooterBlocksUnion = LayoutEditor | LayoutImage | LayoutMenu;
+
 /** Gallery Image */
 export type GalleryImage = {
   __typename?: 'GalleryImage';
@@ -2762,6 +2764,11 @@ export type GeneralSettings = {
   /** Site URL. */
   url?: Maybe<Scalars['String']['output']>;
 };
+
+export type GlobalSidebarBlocksUnion =
+  | LayoutArticleHighlights
+  | LayoutArticles
+  | LayoutEditor;
 
 /** Hero field */
 export type Hero = {
@@ -3708,6 +3715,13 @@ export type LayoutContent = {
   title?: Maybe<Scalars['String']['output']>;
 };
 
+/** Layout: LayoutEditor */
+export type LayoutEditor = {
+  __typename?: 'LayoutEditor';
+  /** Editor */
+  editor?: Maybe<Scalars['String']['output']>;
+};
+
 /** Layout: LayoutImage */
 export type LayoutImage = {
   __typename?: 'LayoutImage';
@@ -3717,7 +3731,7 @@ export type LayoutImage = {
   image?: Maybe<Image>;
   /** Photographer name (overwrite) */
   photographer_name?: Maybe<Scalars['String']['output']>;
-  /** Lightbox */
+  /** Show on lightbox */
   show_on_lightbox?: Maybe<Scalars['Boolean']['output']>;
 };
 
@@ -3741,6 +3755,13 @@ export type LayoutLinkList = {
   links?: Maybe<Array<Maybe<Link>>>;
   /** Title */
   title?: Maybe<Scalars['String']['output']>;
+};
+
+/** Layout: LayoutMenu */
+export type LayoutMenu = {
+  __typename?: 'LayoutMenu';
+  /** Menu */
+  menu?: Maybe<Scalars['String']['output']>;
 };
 
 /** Layout: LayoutPages */
@@ -6877,8 +6898,12 @@ export type RootQuery = {
   defaultLanguage?: Maybe<Language>;
   /** Fields of the &#039;DiscussionSettings&#039; settings group */
   discussionSettings?: Maybe<DiscussionSettings>;
+  /** Footer blocks */
+  footerBlocks?: Maybe<Array<Maybe<FooterBlocksUnion>>>;
   /** Fields of the &#039;GeneralSettings&#039; settings group */
   generalSettings?: Maybe<GeneralSettings>;
+  /** Global Sidebar blocks */
+  globalSidebarBlocks?: Maybe<Array<Maybe<GlobalSidebarBlocksUnion>>>;
   /** An object of the landingPage Type. Landing Pages */
   landingPage?: Maybe<LandingPage>;
   /**
@@ -7113,6 +7138,16 @@ export type RootQueryContentTypesArgs = {
 
 /** The root entry point into the Graph */
 export type RootQueryDefaultImagesArgs = {
+  language: Scalars['String']['input'];
+};
+
+/** The root entry point into the Graph */
+export type RootQueryFooterBlocksArgs = {
+  language: Scalars['String']['input'];
+};
+
+/** The root entry point into the Graph */
+export type RootQueryGlobalSidebarBlocksArgs = {
   language: Scalars['String']['input'];
 };
 
@@ -12371,6 +12406,20 @@ export type MenuItemFragment = {
                         mediaItemUrl?: string | null;
                       } | null;
                     } | null;
+                    hero?: {
+                      __typename?: 'Hero';
+                      background_color?: string | null;
+                      background_image_url?: string | null;
+                      description?: string | null;
+                      title?: string | null;
+                      wave_motif?: string | null;
+                      link?: {
+                        __typename?: 'Link';
+                        target?: string | null;
+                        title?: string | null;
+                        url?: string | null;
+                      } | null;
+                    } | null;
                     translations?: Array<{
                       __typename?: 'Page';
                       uri?: string | null;
@@ -12736,6 +12785,20 @@ export type MenuItemFragment = {
                     socialImage?: {
                       __typename?: 'MediaItem';
                       mediaItemUrl?: string | null;
+                    } | null;
+                  } | null;
+                  hero?: {
+                    __typename?: 'Hero';
+                    background_color?: string | null;
+                    background_image_url?: string | null;
+                    description?: string | null;
+                    title?: string | null;
+                    wave_motif?: string | null;
+                    link?: {
+                      __typename?: 'Link';
+                      target?: string | null;
+                      title?: string | null;
+                      url?: string | null;
                     } | null;
                   } | null;
                   language?: {
@@ -13107,6 +13170,20 @@ export type MenuItemFragment = {
                 mediaItemUrl?: string | null;
               } | null;
             } | null;
+            hero?: {
+              __typename?: 'Hero';
+              background_color?: string | null;
+              background_image_url?: string | null;
+              description?: string | null;
+              title?: string | null;
+              wave_motif?: string | null;
+              link?: {
+                __typename?: 'Link';
+                target?: string | null;
+                title?: string | null;
+                url?: string | null;
+              } | null;
+            } | null;
             translations?: Array<{
               __typename?: 'Page';
               uri?: string | null;
@@ -13472,6 +13549,20 @@ export type MenuItemFragment = {
             socialImage?: {
               __typename?: 'MediaItem';
               mediaItemUrl?: string | null;
+            } | null;
+          } | null;
+          hero?: {
+            __typename?: 'Hero';
+            background_color?: string | null;
+            background_image_url?: string | null;
+            description?: string | null;
+            title?: string | null;
+            wave_motif?: string | null;
+            link?: {
+              __typename?: 'Link';
+              target?: string | null;
+              title?: string | null;
+              url?: string | null;
             } | null;
           } | null;
           language?: {
@@ -13852,6 +13943,20 @@ export type MenuPageFieldsFragment = {
         mediaItemUrl?: string | null;
       } | null;
     } | null;
+    hero?: {
+      __typename?: 'Hero';
+      background_color?: string | null;
+      background_image_url?: string | null;
+      description?: string | null;
+      title?: string | null;
+      wave_motif?: string | null;
+      link?: {
+        __typename?: 'Link';
+        target?: string | null;
+        title?: string | null;
+        url?: string | null;
+      } | null;
+    } | null;
     translations?: Array<{
       __typename?: 'Page';
       uri?: string | null;
@@ -14208,6 +14313,20 @@ export type MenuPageFieldsFragment = {
     socialImage?: {
       __typename?: 'MediaItem';
       mediaItemUrl?: string | null;
+    } | null;
+  } | null;
+  hero?: {
+    __typename?: 'Hero';
+    background_color?: string | null;
+    background_image_url?: string | null;
+    description?: string | null;
+    title?: string | null;
+    wave_motif?: string | null;
+    link?: {
+      __typename?: 'Link';
+      target?: string | null;
+      title?: string | null;
+      url?: string | null;
     } | null;
   } | null;
   language?: {
@@ -14614,6 +14733,20 @@ export type MenuQuery = {
                               mediaItemUrl?: string | null;
                             } | null;
                           } | null;
+                          hero?: {
+                            __typename?: 'Hero';
+                            background_color?: string | null;
+                            background_image_url?: string | null;
+                            description?: string | null;
+                            title?: string | null;
+                            wave_motif?: string | null;
+                            link?: {
+                              __typename?: 'Link';
+                              target?: string | null;
+                              title?: string | null;
+                              url?: string | null;
+                            } | null;
+                          } | null;
                           translations?: Array<{
                             __typename?: 'Page';
                             uri?: string | null;
@@ -14979,6 +15112,20 @@ export type MenuQuery = {
                           socialImage?: {
                             __typename?: 'MediaItem';
                             mediaItemUrl?: string | null;
+                          } | null;
+                        } | null;
+                        hero?: {
+                          __typename?: 'Hero';
+                          background_color?: string | null;
+                          background_image_url?: string | null;
+                          description?: string | null;
+                          title?: string | null;
+                          wave_motif?: string | null;
+                          link?: {
+                            __typename?: 'Link';
+                            target?: string | null;
+                            title?: string | null;
+                            url?: string | null;
                           } | null;
                         } | null;
                         language?: {
@@ -15350,6 +15497,20 @@ export type MenuQuery = {
                       mediaItemUrl?: string | null;
                     } | null;
                   } | null;
+                  hero?: {
+                    __typename?: 'Hero';
+                    background_color?: string | null;
+                    background_image_url?: string | null;
+                    description?: string | null;
+                    title?: string | null;
+                    wave_motif?: string | null;
+                    link?: {
+                      __typename?: 'Link';
+                      target?: string | null;
+                      title?: string | null;
+                      url?: string | null;
+                    } | null;
+                  } | null;
                   translations?: Array<{
                     __typename?: 'Page';
                     uri?: string | null;
@@ -15715,6 +15876,20 @@ export type MenuQuery = {
                   socialImage?: {
                     __typename?: 'MediaItem';
                     mediaItemUrl?: string | null;
+                  } | null;
+                } | null;
+                hero?: {
+                  __typename?: 'Hero';
+                  background_color?: string | null;
+                  background_image_url?: string | null;
+                  description?: string | null;
+                  title?: string | null;
+                  wave_motif?: string | null;
+                  link?: {
+                    __typename?: 'Link';
+                    target?: string | null;
+                    title?: string | null;
+                    url?: string | null;
                   } | null;
                 } | null;
                 language?: {
@@ -16358,6 +16533,20 @@ export type PageFragment = {
       mediaItemUrl?: string | null;
     } | null;
   } | null;
+  hero?: {
+    __typename?: 'Hero';
+    background_color?: string | null;
+    background_image_url?: string | null;
+    description?: string | null;
+    title?: string | null;
+    wave_motif?: string | null;
+    link?: {
+      __typename?: 'Link';
+      target?: string | null;
+      title?: string | null;
+      url?: string | null;
+    } | null;
+  } | null;
   language?: {
     __typename?: 'Language';
     code?: LanguageCodeEnum | null;
@@ -16738,6 +16927,20 @@ export type PageQuery = {
       socialImage?: {
         __typename?: 'MediaItem';
         mediaItemUrl?: string | null;
+      } | null;
+    } | null;
+    hero?: {
+      __typename?: 'Hero';
+      background_color?: string | null;
+      background_image_url?: string | null;
+      description?: string | null;
+      title?: string | null;
+      wave_motif?: string | null;
+      link?: {
+        __typename?: 'Link';
+        target?: string | null;
+        title?: string | null;
+        url?: string | null;
       } | null;
     } | null;
     language?: {
@@ -17122,6 +17325,20 @@ export type PageByTemplateQuery = {
       socialImage?: {
         __typename?: 'MediaItem';
         mediaItemUrl?: string | null;
+      } | null;
+    } | null;
+    hero?: {
+      __typename?: 'Hero';
+      background_color?: string | null;
+      background_image_url?: string | null;
+      description?: string | null;
+      title?: string | null;
+      wave_motif?: string | null;
+      link?: {
+        __typename?: 'Link';
+        target?: string | null;
+        title?: string | null;
+        url?: string | null;
       } | null;
     } | null;
     language?: {
@@ -17546,6 +17763,20 @@ export type PageChildrenSearchQuery = {
                     mediaItemUrl?: string | null;
                   } | null;
                 } | null;
+                hero?: {
+                  __typename?: 'Hero';
+                  background_color?: string | null;
+                  background_image_url?: string | null;
+                  description?: string | null;
+                  title?: string | null;
+                  wave_motif?: string | null;
+                  link?: {
+                    __typename?: 'Link';
+                    target?: string | null;
+                    title?: string | null;
+                    url?: string | null;
+                  } | null;
+                } | null;
                 translations?: Array<{
                   __typename?: 'Page';
                   uri?: string | null;
@@ -17911,6 +18142,20 @@ export type PageChildrenSearchQuery = {
                 socialImage?: {
                   __typename?: 'MediaItem';
                   mediaItemUrl?: string | null;
+                } | null;
+              } | null;
+              hero?: {
+                __typename?: 'Hero';
+                background_color?: string | null;
+                background_image_url?: string | null;
+                description?: string | null;
+                title?: string | null;
+                wave_motif?: string | null;
+                link?: {
+                  __typename?: 'Link';
+                  target?: string | null;
+                  title?: string | null;
+                  url?: string | null;
                 } | null;
               } | null;
               language?: {
@@ -18296,6 +18541,20 @@ export type PagesQuery = {
           socialImage?: {
             __typename?: 'MediaItem';
             mediaItemUrl?: string | null;
+          } | null;
+        } | null;
+        hero?: {
+          __typename?: 'Hero';
+          background_color?: string | null;
+          background_image_url?: string | null;
+          description?: string | null;
+          title?: string | null;
+          wave_motif?: string | null;
+          link?: {
+            __typename?: 'Link';
+            target?: string | null;
+            title?: string | null;
+            url?: string | null;
           } | null;
         } | null;
         language?: {
@@ -19177,6 +19436,18 @@ export const PageFragmentDoc = gql`
     lead
     seo {
       ...SEO
+    }
+    hero {
+      background_color
+      background_image_url
+      description
+      link {
+        target
+        title
+        url
+      }
+      title
+      wave_motif
     }
     language {
       ...Language

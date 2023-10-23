@@ -1,13 +1,14 @@
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
+import { KorosType } from 'hds-react';
 
 import { useConfig } from '../configProvider/useConfig';
 import SidebarContent from './sidebarContent/SidebarContent';
 import { PageContentLayout } from './PageContentLayout';
 import { PageMainContent } from './PageMainContent';
 import PageContentBreadcrumbs from './PageContentBreadcrumbs';
-import { Breadcrumb } from './types';
+import { Breadcrumb, HeroProps } from './types';
 import { PageMeta } from './meta/PageMeta';
 import {
   Collection,
@@ -31,6 +32,7 @@ import {
   isLayoutImage,
   isLayoutSteps,
   isLocationsSelectionCollection,
+  isPageType,
 } from '../../common/headlessService/utils';
 import { ContentModule } from '../pageModules/ContentModule/ContentModule';
 import { CardModule } from '../pageModules/CardModule/CardModule';
@@ -111,15 +113,22 @@ export const defaultContentModules = (
   return contentModules;
 };
 
-export const defaultContent = (page: PageType | ArticleType) => (
-  <PageMainContent
-    title={page?.title}
-    content={page?.content}
-    date={(page as ArticleType)?.date}
-    categories={(page as ArticleType)?.categories}
-    contentModules={defaultContentModules(page)}
-  />
-);
+export const defaultContent = (page: PageType | ArticleType) => {
+  let hideTitle = false;
+  if (isPageType(page)) {
+    hideTitle = Boolean(page?.hero?.title);
+  }
+
+  return (
+    <PageMainContent
+      title={!hideTitle && page.title}
+      content={page?.content}
+      date={(page as ArticleType)?.date}
+      categories={(page as ArticleType)?.categories}
+      contentModules={defaultContentModules(page)}
+    />
+  );
+};
 
 export const defaultCollections = ({
   page,
@@ -208,6 +217,21 @@ export function PageContent(props: PageContentProps) {
   const isVenueModulesEnabled =
     eventsApolloClient !== undefined && venuesApolloClient !== 'disabled';
 
+  const getHeroProps = () => {
+    const heroProps: HeroProps = {};
+    if (isPageType(page)) {
+      heroProps.title = page.hero?.title || '';
+      heroProps.description = page.hero?.description;
+      heroProps.backgroundColor = page.hero?.background_color;
+      heroProps.korosType = page.hero?.wave_motif as KorosType;
+      heroProps.actionUrl = page.hero?.link.url;
+      heroProps.actionUrlTarget = page.hero?.link.target;
+      heroProps.actionText = page.hero?.link?.title;
+      heroProps.isPageType = true;
+    }
+    return heroProps;
+  };
+
   return (
     <main
       id={mainContentId || 'main-content'}
@@ -217,6 +241,7 @@ export function PageContent(props: PageContentProps) {
       <PageContentLayoutComponent
         {...props}
         {...pageContentLayoutProps}
+        {...getHeroProps()}
         breadcrumbs={
           breadcrumbs && <PageContentBreadcrumbs breadcrumbs={breadcrumbs} />
         }

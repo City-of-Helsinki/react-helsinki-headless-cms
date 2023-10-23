@@ -3,32 +3,83 @@
 
 .hero {
   --hero-image-max-height: 600px;
-  margin-bottom: $spacing-l;
   background-color: var(--hcrc-color-hero-bg, --color-fog-light);
   position: relative;
+
+  &.withKoros {
+    margin-bottom: $spacing-s;
+
+    &.pulse,
+    &.storm {
+      margin-bottom: $spacing-l;
+    }
+
+    &.beat,
+    &.wave {
+      margin-bottom: $spacing-4-xl;
+    }
+  }
+
+  .heroKoros {
+    position: absolute;
+    bottom: -15px;
+
+    &.pulse,
+    &.storm {
+      bottom: -35px;
+    }
+
+    &.beat {
+      bottom: -70px;
+    }
+
+    &.wave {
+      bottom: -53px;
+    }
+
+    &.withImage {
+      &.basic {
+        bottom: -70px;
+      }
+
+      &.pulse,
+      &.storm {
+        bottom: -50px;
+      }
+
+      &.beat {
+        bottom: -15px;
+      }
+
+      &.wave {
+        bottom: -32px;
+      }
+    }
+  }
 
   .heroInner {
     position: relative;
     width: 100%;
     margin: 0;
     box-sizing: border-box;
+
+    &.withKoros {
+      padding-bottom: 85px;
+    }
+
     & > *:nth-child(1) {
       position: relative;
-      @media screen and (min-width: breakpoints.$breakpoint-xl) {
-        z-index: 1;
-      }
 
       .label {
         position: absolute;
         z-index: 1;
         right: 0;
-        bottom: 0;
         margin: 0;
         background-color: var(--color-black);
         color: var(--color-white);
         padding: 4px;
         opacity: 0.6;
-        bottom: 32px;
+        bottom: 80px;
         font-size: var(--fontsize-body-s);
         -webkit-transform: rotate(180deg);
         -moz-transform: rotate(180deg);
@@ -83,5 +134,26 @@
       max-height: var(--hero-image-max-height);
       object-fit: cover;
     }
+  }
+}
+
+.textContents {
+  position: relative;
+
+  &.withKoros {
+    z-index: 1;
+  }
+
+  h1 {
+    font-weight: 400;
+  }
+
+  p {
+    font-size: var(--fontsize-body-l);
+    margin-bottom: $spacing-l;
+  }
+
+  .button {
+    margin-bottom: $spacing-xl;
   }
 }
