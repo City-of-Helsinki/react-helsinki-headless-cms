@@ -1,11 +1,12 @@
 import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import classNames from 'classnames';
 
 import styles from './pageContentLayout.module.scss';
 import Hero from '../hero/Hero';
 import { ContentContainer } from '../contentContainer/ContentContainer';
 import { PageSection } from '../pageSection/PageSection';
 import { HeroProps } from './types';
-import classNames from 'classnames';
 
 export type PageContentLayoutProps = {
   id: string;
@@ -51,7 +52,7 @@ export function PageContentLayout({
         <PageSection
           className={classNames(
             styles.contentWrapper,
-            !heroProps.title && !imageSrc ? styles.WithBorder : '',
+            !heroProps.title && !imageSrc ? styles.withBorder : '',
           )}
         >
           <ContentContainer>
