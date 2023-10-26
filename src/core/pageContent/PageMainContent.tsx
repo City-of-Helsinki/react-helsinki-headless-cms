@@ -30,11 +30,13 @@ export function PageMainContent({
 
   return (
     <article className={styles.mainContent}>
-      <header>
-        <Text as="h1" variant="h1">
-          {title}
-        </Text>
-      </header>
+      {title && (
+        <header>
+          <Text as="h1" variant="h1">
+            {title}
+          </Text>
+        </header>
+      )}
       {(date || categories) && (
         <div className={styles.articleData}>
           {date && (

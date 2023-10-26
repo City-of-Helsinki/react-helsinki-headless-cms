@@ -36,6 +36,9 @@
 
 .contentWrapper {
   flex-grow: 1;
+  &.withBorder {
+    border-top: 1px solid var(--color-black-20);
+  }
 }
 
 .content {

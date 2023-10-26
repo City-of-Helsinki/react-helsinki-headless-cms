@@ -29,7 +29,7 @@ export default function Hero({
   title,
   description,
   backgroundColor,
-  korosType,
+  korosType = 'basic',
   actionText,
   actionUrl,
   actionUrlTarget,
@@ -66,7 +66,7 @@ export default function Hero({
         backgroundColor &&
           isWhiteText(backgroundColor) &&
           colorStyles.whiteText,
-        korosType && styles.withKoros,
+        title && backgroundColor && korosType && styles.withKoros,
       )}
     >
       <header>
@@ -108,8 +108,16 @@ export default function Hero({
           className,
           backgroundColor &&
             colorStyles[`background${getColor(backgroundColor)}`],
-          korosType && !imageUrl && styles.withKoros,
-          korosType && !imageUrl && styles[korosType],
+          title &&
+            backgroundColor &&
+            korosType &&
+            !imageUrl &&
+            styles.withKoros,
+          title &&
+            backgroundColor &&
+            korosType &&
+            !imageUrl &&
+            styles[korosType],
         )}
       >
         <Container wrapper={container}>
@@ -142,7 +150,7 @@ export default function Hero({
             </div>
           </ContentContainer>
         </Container>
-        {korosType && (
+        {title && backgroundColor && korosType && (
           <Koros
             className={classNames(
               styles.heroKoros,

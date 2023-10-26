@@ -5,6 +5,7 @@ import Hero from '../hero/Hero';
 import { ContentContainer } from '../contentContainer/ContentContainer';
 import { PageSection } from '../pageSection/PageSection';
 import { HeroProps } from './types';
+import classNames from 'classnames';
 
 export type PageContentLayoutProps = {
   id: string;
@@ -47,7 +48,12 @@ export function PageContentLayout({
           backUrl={backUrl}
           {...heroProps}
         />
-        <PageSection className={styles.contentWrapper}>
+        <PageSection
+          className={classNames(
+            styles.contentWrapper,
+            !heroProps.title && !imageSrc ? styles.WithBorder : '',
+          )}
+        >
           <ContentContainer>
             <div className={styles.content}>
               <div>
