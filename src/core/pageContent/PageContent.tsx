@@ -223,7 +223,7 @@ export function PageContent(props: PageContentProps) {
       heroProps.title = page.hero?.title || '';
       heroProps.description = page.hero?.description;
       heroProps.backgroundColor = page.hero?.background_color;
-      heroProps.korosType = page.hero?.wave_motif as KorosType;
+      heroProps.korosType = (page.hero?.wave_motif as KorosType) || 'basic';
       heroProps.actionUrl = page.hero?.link.url;
       heroProps.actionUrlTarget = page.hero?.link.target;
       heroProps.actionText = page.hero?.link?.title;
