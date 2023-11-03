@@ -150,7 +150,7 @@ export default function Hero({
             </div>
           </ContentContainer>
         </Container>
-        {title && backgroundColor && korosType && (
+        {title && (backgroundColor || imageUrl) && korosType && (
           <Koros
             className={classNames(
               styles.heroKoros,
