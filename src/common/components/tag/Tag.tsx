@@ -1,7 +1,7 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
-import { RoundedTag as HDSTag } from 'hds-react';
+import { Tag as HDSTag } from 'hds-react';
 
 import styles from './tag.module.scss';
 import { theme1, theme2 } from './tagThemes';

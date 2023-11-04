@@ -10,12 +10,12 @@
     margin-bottom: $spacing-s;
 
     &.pulse,
-    &.storm {
+    &.wave {
       margin-bottom: $spacing-l;
     }
 
     &.beat,
-    &.wave {
+    &.vibration {
       margin-bottom: $spacing-4-xl;
     }
   }
@@ -44,7 +44,7 @@
     bottom: -15px;
 
     &.pulse,
-    &.storm {
+    &.wave {
       bottom: -35px;
     }
 
@@ -52,7 +52,7 @@
       bottom: -70px;
     }
 
-    &.wave {
+    &.vibration {
       bottom: -53px;
     }
 
@@ -62,7 +62,7 @@
       }
 
       &.pulse,
-      &.storm {
+      &.wave {
         bottom: -50px;
       }
 
@@ -70,7 +70,7 @@
         bottom: -15px;
       }
 
-      &.wave {
+      &.vibration {
         bottom: -32px;
       }
     }

@@ -49,7 +49,7 @@ const KorosWrapperComponent = ({ children = null }) => (
   <div style={{ position: 'relative' }}>
     {children}
     <Koros
-      flipHorizontal
+      flipVertical
       style={{
         position: 'absolute',
         bottom: -24,
