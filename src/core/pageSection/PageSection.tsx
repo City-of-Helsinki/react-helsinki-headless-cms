@@ -39,7 +39,7 @@ export function PageSection({
     >
       {korosTop && (
         <Koros
-          flipHorizontal
+          flipVertical
           className={classNames(styles.korosTop, korosTopClassName)}
         />
       )}

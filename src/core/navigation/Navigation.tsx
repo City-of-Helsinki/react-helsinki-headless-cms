@@ -1,10 +1,20 @@
 import React from 'react';
-import { Navigation as HDSNavigation } from 'hds-react';
-
 import {
-  Menu,
+  Header,
+  LanguageOption,
+  Logo,
+  logoFi,
+  LogoProps,
+  logoSv,
+} from 'hds-react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import classNames from 'classnames';
+
+import styles from './Navigation.module.scss';
+import {
   Language,
   LanguageCodeEnum,
+  Menu,
 } from '../../common/headlessService/types';
 import { useConfig } from '../configProvider/useConfig';
 import { MAIN_CONTENT_ID } from '../../common/constants';
@@ -23,8 +33,43 @@ export type NavigationProps = {
     allLanguages: Language[],
   ) => string;
   getIsItemActive?: (menuItem: MenuItem) => boolean;
+  /** @deprecated Not used anymore i.e. does nothing after HDS 3 was taken into use. */
   variant?: 'default' | 'inline';
 };
+
+const LOGO_ARIA_LABELS = {
+  EN: 'City of Helsinki',
+  FI: 'Helsingin kaupunki',
+  SV: 'Helsingfors stad',
+} as const satisfies Record<LanguageCodeEnum, string>;
+
+const LOGO_LABELS = {
+  EN: 'Helsinki',
+  FI: 'Helsinki',
+  SV: 'Helsingfors',
+} as const satisfies Record<LanguageCodeEnum, string>;
+
+const LOGO_SOURCES = {
+  EN: logoFi,
+  FI: logoFi,
+  SV: logoSv,
+} as const satisfies Record<LanguageCodeEnum, string>;
+
+/**
+ * Find language from language list by language code.
+ * @param {Language[]} languages - List of languages
+ * @param {string} languageCode - Language code
+ * @returns {Language | undefined} Language from given language list with the given
+ *                                 language code or undefined if not found
+ */
+function findLanguage(
+  languages: Language[],
+  languageCode: string,
+): Language | undefined {
+  return languages.find(
+    (language) => language.code?.toLowerCase() === languageCode.toLowerCase(),
+  );
+}
 
 export function Navigation({
   menu,
@@ -34,7 +79,7 @@ export function Navigation({
   onTitleClick,
   getPathnameForLanguage,
   getIsItemActive,
-  variant,
+  variant, // eslint-disable-line @typescript-eslint/no-unused-vars
 }: NavigationProps) {
   const {
     siteName,
@@ -44,10 +89,12 @@ export function Navigation({
     utils: { getRoutedInternalHref },
   } = useConfig();
 
-  const currentLanguage = languages?.find(
-    (language) =>
-      language.code?.toLowerCase() === currentLanguageCode?.toLowerCase(),
-  );
+  // Language selection is required
+  if (!languages || !languages.length) {
+    return null;
+  }
+
+  const currentLanguage = findLanguage(languages, currentLanguageCode);
 
   // Error out if language props are inconsistent
   if (languages && !currentLanguage) {
@@ -56,47 +103,64 @@ export function Navigation({
     );
   }
 
+  const languageOptions: LanguageOption[] = languages.map((language) => ({
+    label: language.name,
+    value: language.code?.toLowerCase(),
+    isPrimary: true,
+  }));
+
+  const onDidChangeLanguage = (newLanguageCode: string) => {
+    const newLanguage = findLanguage(languages, newLanguageCode);
+    const url = getPathnameForLanguage(newLanguage, currentLanguage, languages);
+    if (url && window) {
+      window.location.href = url;
+    }
+  };
+
+  const logoProps: LogoProps = {
+    size: 'large',
+    src: LOGO_SOURCES[currentLanguageCode],
+    alt: LOGO_LABELS[currentLanguageCode],
+  };
+
   return (
-    <HDSNavigation
-      titleUrl="#"
-      title={siteName}
-      menuToggleAriaLabel={menuToggleAriaLabel}
-      skipTo={`#${MAIN_CONTENT_ID}`}
-      skipToContentLabel={skipToContentLabel}
-      onTitleClick={onTitleClick}
-      logoLanguage={currentLanguageCode === LanguageCodeEnum.Sv ? 'sv' : 'fi'}
-      className={className}
+    <Header
+      onDidChangeLanguage={onDidChangeLanguage}
+      defaultLanguage={currentLanguage.code.toLowerCase()}
+      languages={languageOptions}
+      className={classNames(className, styles.maxWidthXl)}
     >
-      <HDSNavigation.Row variant={variant}>
+      <Header.SkipLink
+        skipTo={`#${MAIN_CONTENT_ID}`}
+        label={skipToContentLabel}
+      />
+      <Header.ActionBar
+        titleHref="#"
+        logoHref="#"
+        menuButtonAriaLabel={menuToggleAriaLabel}
+        title={siteName}
+        onTitleClick={onTitleClick}
+        onLogoClick={onTitleClick}
+        frontPageLabel={siteName}
+        logo={<Logo {...logoProps} />}
+        logoAriaLabel={LOGO_ARIA_LABELS[currentLanguageCode]}
+      >
+        <Header.LanguageSelector />
+        {userNavigation && userNavigation}
+      </Header.ActionBar>
+      <Header.NavigationMenu>
         {menu?.menuItems?.nodes?.map((navigationItem) => (
-          <HDSNavigation.Item
-            key={navigationItem.id}
+          <Header.Link
             as={A}
-            label={navigationItem.label}
+            id={navigationItem.id}
+            key={navigationItem.id}
             title={navigationItem.title}
+            label={navigationItem.label}
             href={getRoutedInternalHref(navigationItem.path)}
             active={getIsItemActive?.(navigationItem) ?? false}
           />
         ))}
-      </HDSNavigation.Row>
-      <HDSNavigation.Actions>
-        {userNavigation && userNavigation}
-        <HDSNavigation.LanguageSelector label={currentLanguage?.name}>
-          {languages?.map((language) => (
-            <HDSNavigation.Item
-              key={language.id}
-              as={A}
-              label={language.name}
-              lang={language.slug}
-              href={getPathnameForLanguage(
-                language,
-                currentLanguage,
-                languages,
-              )}
-            />
-          ))}
-        </HDSNavigation.LanguageSelector>
-      </HDSNavigation.Actions>
-    </HDSNavigation>
+      </Header.NavigationMenu>
+    </Header>
   );
 }

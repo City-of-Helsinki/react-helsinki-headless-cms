@@ -1,0 +1,15 @@
+@import 'breakpoints';
+@import 'spacing';
+
+// WORKAROUND: Trying to set var(--header-max-width) to var(--breakpoint-xl) instead of
+//             the default 1440px. Not an ideal solution, this may break e.g. if HDS
+//             Header's subcomponents change their class names.
+.maxWidthXl {
+  div[class^='HeaderActionBar-module_headerActionBar_'],
+  div[class*=' HeaderActionBar-module_headerActionBar_'],
+  nav[class^='HeaderNavigationMenu-module_headerNavigationMenu_'],
+  nav[class*=' HeaderNavigationMenu-module_headerNavigationMenu_'] {
+    margin: 0 auto;
+    max-width: var(--breakpoint-xl);
+  }
+}
