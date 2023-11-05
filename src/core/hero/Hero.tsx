@@ -158,7 +158,7 @@ export default function Hero({
               korosType && styles[korosType],
             )}
             type={korosType}
-            flipHorizontal={!imageUrl || !backgroundColor}
+            flipHorizontal={false}
             style={{
               fill: `var(--${
                 // eslint-disable-next-line no-nested-ternary
