@@ -115,7 +115,6 @@ export default function Hero({
             !imageUrl &&
             styles.withKoros,
           korosType && styles[korosType],
-          title && !imageUrl && !backgroundColor && styles.withMargin,
         )}
       >
         <Container wrapper={container}>
@@ -154,7 +153,6 @@ export default function Hero({
               styles.heroKoros,
               imageUrl && styles.withMargin,
               korosType && styles[korosType],
-              title && !imageUrl && !backgroundColor && styles.withMargin,
             )}
             type={korosType}
             flipHorizontal={!imageUrl}
