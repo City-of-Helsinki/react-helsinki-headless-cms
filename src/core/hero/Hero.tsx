@@ -118,6 +118,7 @@ export default function Hero({
             korosType &&
             !imageUrl &&
             styles[korosType],
+          title && !backgroundColor && !imageUrl && styles.withMargin,
         )}
       >
         <Container wrapper={container}>

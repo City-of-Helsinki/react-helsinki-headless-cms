@@ -20,6 +20,25 @@
     }
   }
 
+  &.withMargin {
+    &.basic {
+      margin-bottom: 70px;
+    }
+
+    &.pulse,
+    &.storm {
+      margin-bottom: 50px;
+    }
+
+    &.beat {
+      margin-bottom: 15px;
+    }
+
+    &.wave {
+      margin-bottom: 32px;
+    }
+  }
+
   .heroKoros {
     position: absolute;
     bottom: -15px;
