@@ -161,7 +161,7 @@
 
   .button {
     margin-bottom: $spacing-xl;
-    &:hover {
+    & button:hover {
       background-color: var(--color-white);
     }
   }
