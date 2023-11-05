@@ -154,8 +154,9 @@ export default function Hero({
           <Koros
             className={classNames(
               styles.heroKoros,
-              imageUrl && styles.withImage,
+              imageUrl && styles.withMargin,
               korosType && styles[korosType],
+              title && !backgroundColor && !imageUrl && styles.withMargin,
             )}
             type={korosType}
             flipHorizontal={!imageUrl}
