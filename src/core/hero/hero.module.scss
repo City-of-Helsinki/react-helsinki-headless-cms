@@ -158,14 +158,11 @@
 
 .textContents {
   position: relative;
+  z-index: 1;
 
   @media screen and (min-width: breakpoints.$breakpoint-m) {
     padding-right: 44px;
     max-width: 66.6666666667%;
-  }
-
-  &.withKoros {
-    z-index: 1;
   }
 
   h1 {
@@ -174,20 +171,12 @@
 
   p {
     font-size: var(--fontsize-body-l);
+    margin-bottom: $spacing-l;
     line-height: var(--lineheight-l);
   }
 
-  &.withMargin {
-    p {
-      margin-bottom: $spacing-l;
-    }
-  }
-
   .button {
-    &.withMargin {
-      margin-bottom: $spacing-xl;
-    }
-
+    margin-bottom: $spacing-xl;
     & button:hover {
       background-color: var(--color-white);
     }

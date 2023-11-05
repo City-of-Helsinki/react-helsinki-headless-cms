@@ -68,7 +68,6 @@ export default function Hero({
           isWhiteText(backgroundColor) &&
           colorStyles.whiteText,
         title && backgroundColor && korosType && styles.withKoros,
-        backgroundColor && styles.withMargin,
       )}
     >
       <header>
@@ -137,12 +136,7 @@ export default function Hero({
               )}
 
               {backUrl && (
-                <div
-                  className={classNames(
-                    styles.link,
-                    backgroundColor && styles.withMargin,
-                  )}
-                >
+                <div className={styles.link}>
                   <Link
                     href={backUrl}
                     openInNewTab={false}
