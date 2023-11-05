@@ -174,12 +174,20 @@
 
   p {
     font-size: var(--fontsize-body-l);
-    margin-bottom: $spacing-l;
     line-height: var(--lineheight-l);
   }
 
+  &.withMargin {
+    p {
+      margin-bottom: $spacing-l;
+    }
+  }
+
   .button {
-    margin-bottom: $spacing-xl;
+    &.withMargin {
+      margin-bottom: $spacing-xl;
+    }
+
     & button:hover {
       background-color: var(--color-white);
     }
