@@ -113,8 +113,11 @@ export default function Hero({
             korosType &&
             !imageUrl &&
             styles.withKoros,
-          korosType && styles[korosType],
-          title && !backgroundColor && !imageUrl && styles.withMargin,
+          title &&
+            backgroundColor &&
+            korosType &&
+            !imageUrl &&
+            styles[korosType],
         )}
       >
         <Container wrapper={container}>
@@ -153,10 +156,9 @@ export default function Hero({
               styles.heroKoros,
               imageUrl && styles.withMargin,
               korosType && styles[korosType],
-              title && !backgroundColor && !imageUrl && styles.withMargin,
             )}
             type={korosType}
-            flipHorizontal={!imageUrl}
+            flipHorizontal={!imageUrl || !backgroundColor}
             style={{
               fill: `var(--${
                 // eslint-disable-next-line no-nested-ternary
