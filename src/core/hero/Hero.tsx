@@ -64,6 +64,7 @@ export default function Hero({
       className={classNames(
         styles.textContents,
         backgroundColor &&
+          !imageUrl &&
           isWhiteText(backgroundColor) &&
           colorStyles.whiteText,
         title && backgroundColor && korosType && styles.withKoros,
