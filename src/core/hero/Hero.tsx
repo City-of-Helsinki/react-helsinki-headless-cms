@@ -113,11 +113,7 @@ export default function Hero({
             korosType &&
             !imageUrl &&
             styles.withKoros,
-          title &&
-            backgroundColor &&
-            korosType &&
-            !imageUrl &&
-            styles[korosType],
+          korosType && styles[korosType],
           title && !backgroundColor && !imageUrl && styles.withMargin,
         )}
       >
