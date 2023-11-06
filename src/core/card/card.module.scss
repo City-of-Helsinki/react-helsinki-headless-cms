@@ -243,6 +243,12 @@
     }
   }
 
+  .content {
+    @include respond_above(s) {
+      min-height: var(--height-image-desktop);
+    }
+  }
+
   .textWrapper {
     display: flex;
     flex-direction: column;
