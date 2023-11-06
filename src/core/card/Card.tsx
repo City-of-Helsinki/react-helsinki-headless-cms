@@ -131,6 +131,7 @@ export function Card({
       >
         <div
           className={classNames(
+            styles.content,
             backgroundColor
               ? colorStyles[`background${getColor(backgroundColor)}`]
               : isDelimited && colorStyles.backgroundFog,
