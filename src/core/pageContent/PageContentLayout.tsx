@@ -1,4 +1,6 @@
 import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import classNames from 'classnames';
 
 import styles from './pageContentLayout.module.scss';
 import Hero from '../hero/Hero';
@@ -47,7 +49,12 @@ export function PageContentLayout({
           backUrl={backUrl}
           {...heroProps}
         />
-        <PageSection className={styles.contentWrapper}>
+        <PageSection
+          className={classNames(
+            styles.contentWrapper,
+            !heroProps.title && !imageSrc ? styles.withBorder : '',
+          )}
+        >
           <ContentContainer>
             <div className={styles.content}>
               <div>

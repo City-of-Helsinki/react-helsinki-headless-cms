@@ -20,6 +20,25 @@
     }
   }
 
+  &.withMargin {
+    &.basic {
+      margin-bottom: 70px;
+    }
+
+    &.pulse,
+    &.storm {
+      margin-bottom: 50px;
+    }
+
+    &.beat {
+      margin-bottom: 15px;
+    }
+
+    &.wave {
+      margin-bottom: 32px;
+    }
+  }
+
   .heroKoros {
     position: absolute;
     bottom: -15px;
@@ -37,7 +56,7 @@
       bottom: -53px;
     }
 
-    &.withImage {
+    &.withMargin {
       &.basic {
         bottom: -70px;
       }
@@ -139,9 +158,11 @@
 
 .textContents {
   position: relative;
+  z-index: 1;
 
-  &.withKoros {
-    z-index: 1;
+  @media screen and (min-width: breakpoints.$breakpoint-m) {
+    padding-right: 44px;
+    max-width: 66.6666666667%;
   }
 
   h1 {
@@ -151,9 +172,13 @@
   p {
     font-size: var(--fontsize-body-l);
     margin-bottom: $spacing-l;
+    line-height: var(--lineheight-l);
   }
 
   .button {
     margin-bottom: $spacing-xl;
+    & button:hover {
+      background-color: var(--color-white);
+    }
   }
 }
