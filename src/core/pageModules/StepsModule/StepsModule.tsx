@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import styles from '../pageModules.module.scss';
 import colorStyles from '../../styles/background.module.scss';
 import { getColor, getTextFromHtml, isWhiteText } from '../../utils/string';
+import createHashKey from '../../utils/createHashKey';
 
 export type Step = {
   content: string;
@@ -29,6 +30,16 @@ export function StepsModule({
   type,
   className,
 }: StepsModuleProps) {
+  const stepsContents = steps?.map((step, index) => {
+    // The card module does not contain any proeprty that could be used as an unique id, so one needs to be created
+    const uniqueKey = createHashKey(`${index}-${step.title}-${step.content}`);
+    return {
+      key: uniqueKey,
+      title: step.title,
+      description: getTextFromHtml(step.content),
+    };
+  });
+
   return (
     <div className={styles.pageModuleWrapper}>
       <StepByStep
@@ -40,10 +51,7 @@ export function StepsModule({
           className,
         )}
         helpText={getTextFromHtml(helpText)}
-        steps={steps?.map((step) => ({
-          title: step.title,
-          description: getTextFromHtml(step.content),
-        }))}
+        steps={stepsContents}
         title={title}
       />
     </div>
