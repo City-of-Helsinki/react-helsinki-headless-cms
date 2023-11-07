@@ -39,6 +39,7 @@ import { CardModule } from '../pageModules/CardModule/CardModule';
 import { CardsModule } from '../pageModules/CardsModule/CardsModule';
 import { ImageModule } from '../pageModules/ImageModule/ImageModule';
 import { StepsModule } from '../pageModules/StepsModule/StepsModule';
+import createHashKey from '../utils/createHashKey';
 
 export type PageContentProps = {
   page?: PageType | ArticleType;
@@ -67,10 +68,12 @@ export const defaultContentModules = (
   page: PageType | ArticleType,
 ): React.ReactNode[] => {
   const contentModules: React.ReactNode[] = [];
-  page?.modules?.map((module) => {
+  page?.modules?.map((module, index) => {
+    const uniqueKey = createHashKey(`${index}-${JSON.stringify(module)}`);
     if (isLayoutContent(module)) {
       contentModules.push(
         <ContentModule
+          key={uniqueKey}
           content={module.content}
           backgroundColor={module.backgroundColor}
         />,
@@ -78,6 +81,7 @@ export const defaultContentModules = (
     } else if (isLayoutCard(module)) {
       contentModules.push(
         <CardModule
+          key={uniqueKey}
           title={module.title}
           text={module.description}
           backgroundColor={module.backgroundColor}
@@ -91,12 +95,13 @@ export const defaultContentModules = (
         />,
       );
     } else if (isLayoutCards(module)) {
-      contentModules.push(<CardsModule items={module.cards} />);
+      contentModules.push(<CardsModule key={uniqueKey} items={module.cards} />);
     } else if (isLayoutImage(module)) {
-      contentModules.push(<ImageModule />);
+      contentModules.push(<ImageModule key={uniqueKey} />);
     } else if (isLayoutSteps(module)) {
       contentModules.push(
         <StepsModule
+          key={uniqueKey}
           title={module.title}
           steps={module.steps.map((step) => ({
             title: step.title,

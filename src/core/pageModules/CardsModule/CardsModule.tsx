@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 import styles from '../pageModules.module.scss';
 import { SimpleCard } from './SimpleCard';
+import createHashKey from '../../utils/createHashKey';
 
 type Card = {
   backgroundColor?: string;
@@ -32,18 +33,25 @@ export function CardsModule({ items }: CardsModuleProps) {
         items.length === 1 && styles.singleGridWrapper,
       )}
     >
-      {items?.map((card) => (
-        <SimpleCard
-          title={card.title}
-          description={card.description}
-          linkTarget={card.link.target}
-          linkTitle={card.link.title}
-          linkUrl={card.link.url}
-          backgroundColor={card.backgroundColor}
-          direction={items.length === 1 ? 'horisontal' : 'vertical'}
-          icon={card.icon}
-        />
-      ))}
+      {items?.map((card, index) => {
+        // The card module does not contain any proeprty that could be used as an unique id, so one needs to be created
+        const uniqueKey = createHashKey(
+          `${index}-${card.title}-${card.description}`,
+        );
+        return (
+          <SimpleCard
+            key={uniqueKey}
+            title={card.title}
+            description={card.description}
+            linkTarget={card.link.target}
+            linkTitle={card.link.title}
+            linkUrl={card.link.url}
+            backgroundColor={card.backgroundColor}
+            direction={items.length === 1 ? 'horisontal' : 'vertical'}
+            icon={card.icon}
+          />
+        );
+      })}
     </div>
   );
 }
