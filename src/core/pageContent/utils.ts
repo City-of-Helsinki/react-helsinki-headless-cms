@@ -139,6 +139,9 @@ export function getLocationCardProps(item: VenueType): CardProps {
     clampText: true,
     direction: 'responsive' as CardProps['direction'],
     openLinkInNewTab: false,
+    withTitleIcon:
+      item.providerType === 'SELF_PRODUCED' &&
+      item.displayedServiceOwnerType === 'MUNICIPAL_SERVICE',
   };
 }
 

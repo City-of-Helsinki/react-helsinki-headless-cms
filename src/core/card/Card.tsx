@@ -20,6 +20,7 @@ export type CardProps = {
   imageUrl?: string | null;
   imageLabel?: string;
   title?: string;
+  withTitleIcon?: boolean;
   titleIcon?: React.ReactNode | string;
   subTitle?: string;
   text?: string;
@@ -50,6 +51,7 @@ export function Card({
   imageUrl,
   imageLabel,
   title,
+  withTitleIcon,
   titleIcon,
   subTitle,
   text,
@@ -152,7 +154,7 @@ export function Card({
                 )}
               >
                 {title}
-                {titleIcon && titleIcon}
+                {withTitleIcon && titleIcon && titleIcon}
               </div>
             )}
             {subTitle && <div className={styles.subTitle}>{subTitle}</div>}

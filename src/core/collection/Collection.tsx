@@ -355,6 +355,7 @@ export function getLocationsCollectionCards({
           key={cardProps.id}
           {...cardProps}
           url={url}
+          titleIcon={cardProps.withTitleIcon && <div>12345</div>}
           direction="fixed-vertical"
           customContent={
             VenueCardContent && <VenueCardContent location={items[i]} />

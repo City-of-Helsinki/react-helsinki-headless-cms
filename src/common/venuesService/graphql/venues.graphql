@@ -9,6 +9,8 @@ fragment listVenue on Venue {
     id
     label
   }
+  providerType
+  displayedServiceOwnerType
 }
 
 query VenuesByIds($ids: [ID!]!) {
