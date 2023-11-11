@@ -337,11 +337,13 @@ export function getLocationsCollectionCards({
   getRoutedInternalHref,
   getLocationCardProps,
   VenueCardContent,
+  CheckMarkIcon,
 }: {
   items: VenueType[];
   getRoutedInternalHref: Config['utils']['getRoutedInternalHref'];
   getLocationCardProps: Config['utils']['getLocationCardProps'];
   VenueCardContent: React.FC<Record<string, unknown>>;
+  CheckMarkIcon: React.FC<Record<string, unknown>>;
 }) {
   const cards = items
     .map((item) => getLocationCardProps(item))
@@ -355,7 +357,9 @@ export function getLocationsCollectionCards({
           key={cardProps.id}
           {...cardProps}
           url={url}
-          titleIcon={cardProps.withTitleIcon && <div>12345</div>}
+          titleIcon={
+            cardProps.withTitleIcon && CheckMarkIcon && <CheckMarkIcon />
+          }
           direction="fixed-vertical"
           customContent={
             VenueCardContent && <VenueCardContent location={items[i]} />
@@ -382,7 +386,7 @@ export function LocationsSelectionCollection({
   const venuesApolloClient = useVenuesApolloClientFromConfig();
   const {
     utils: { getRoutedInternalHref, getLocationCardProps },
-    components: { VenueCardContent },
+    components: { VenueCardContent, CheckMarkIcon },
   } = useConfig();
 
   const { data, loading } = useVenuesByIdsQuery({
@@ -415,6 +419,7 @@ export function LocationsSelectionCollection({
       getRoutedInternalHref(link, ModuleItemTypeEnum.Venue),
     getLocationCardProps,
     VenueCardContent,
+    CheckMarkIcon,
   });
 
   return <Collection {...delegatedProps} cards={cards} />;
