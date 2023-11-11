@@ -178,12 +178,14 @@ export function getEventCollectionCards({
   getRoutedInternalHref,
   getEventCardProps,
   EventCardContent,
+  CheckMarkIcon,
   locale = DEFAULT_LOCALE,
 }: {
   items: EventType[];
   getRoutedInternalHref: Config['utils']['getRoutedInternalHref'];
   getEventCardProps: Config['utils']['getEventCardProps'];
   EventCardContent: React.FC<Record<string, unknown>>;
+  CheckMarkIcon: React.FC<Record<string, unknown>>;
   locale?: string;
 }) {
   const cards = items
@@ -198,6 +200,9 @@ export function getEventCollectionCards({
           direction="fixed-vertical"
           customContent={
             EventCardContent && <EventCardContent event={items[i]} />
+          }
+          titleIcon={
+            cardProps.withTitleIcon && CheckMarkIcon && <CheckMarkIcon />
           }
         />
       );
@@ -217,7 +222,7 @@ export function EventSearchCollection({
   const {
     currentLanguageCode,
     utils: { getRoutedInternalHref, getEventCardProps },
-    components: { EventCardContent },
+    components: { EventCardContent, CheckMarkIcon },
   } = useConfig();
   const { url } = collection;
   // TODO: use initAmountOfEvents -field when it's null-issue is fixed
@@ -258,6 +263,7 @@ export function EventSearchCollection({
       getRoutedInternalHref(link, type ?? ModuleItemTypeEnum.Event),
     getEventCardProps,
     EventCardContent,
+    CheckMarkIcon,
     locale: currentLanguageCode,
   });
 
@@ -276,7 +282,7 @@ export function EventSelectionCollection({
   const {
     currentLanguageCode,
     utils: { getRoutedInternalHref, getEventCardProps },
-    components: { EventCardContent },
+    components: { EventCardContent, CheckMarkIcon },
   } = useConfig();
   // TODO: use initAmountOfEvents -field when it's null-issue is fixed
   const pageSize = collection.events.length; // collection.initAmountOfEvents
@@ -326,6 +332,7 @@ export function EventSelectionCollection({
       getRoutedInternalHref(link, type ?? ModuleItemTypeEnum.Event),
     getEventCardProps,
     EventCardContent,
+    CheckMarkIcon,
     locale: currentLanguageCode,
   });
 

@@ -123,6 +123,9 @@ export function getEventCardProps(
     clampText: true,
     direction: 'responsive' as CardProps['direction'],
     openLinkInNewTab: false,
+    withTitleIcon: ['ahjo', 'helsinki'].includes(
+      item?.publisher?.split(':')[0] ?? '',
+    ),
   };
 }
 
