@@ -107,7 +107,7 @@ export function getArticlePageCardProps(
 
 export function getEventCardProps(
   item: EventType,
-  organizationPrefixes,
+  organisationPrefixes,
   locale = DEFAULT_LOCALE,
 ): CardProps {
   const image = item.images.length > 0 ? item.images[0] : null;
@@ -124,7 +124,7 @@ export function getEventCardProps(
     clampText: true,
     direction: 'responsive' as CardProps['direction'],
     openLinkInNewTab: false,
-    withTitleIcon: organizationPrefixes.includes(
+    withTitleIcon: organisationPrefixes.includes(
       item?.publisher?.split(':')[0] ?? '',
     ),
   };

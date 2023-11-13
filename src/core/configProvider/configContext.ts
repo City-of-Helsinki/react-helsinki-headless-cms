@@ -60,7 +60,7 @@ export type Config = {
     getArticlePageCardProps: (item: ArticleType | PageType) => CardProps;
     getEventCardProps: (
       item: EventType,
-      organizationPrefixes: string[],
+      organisationPrefixes: string[],
       locale: string,
     ) => CardProps;
     getLocationCardProps: (item: VenueType) => CardProps;

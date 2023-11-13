@@ -179,16 +179,16 @@ export function getEventCollectionCards({
   getEventCardProps,
   EventCardContent,
   CheckMarkIcon,
-  locale = DEFAULT_LOCALE,
   organisationPrefixes,
+  locale = DEFAULT_LOCALE,
 }: {
   items: EventType[];
   getRoutedInternalHref: Config['utils']['getRoutedInternalHref'];
   getEventCardProps: Config['utils']['getEventCardProps'];
   EventCardContent: React.FC<Record<string, unknown>>;
   CheckMarkIcon: React.FC<Record<string, unknown>>;
-  locale?: string;
   organisationPrefixes: string[];
+  locale?: string;
 }) {
   const cards = items
     .map((item) => getEventCardProps(item, organisationPrefixes, locale))
@@ -267,8 +267,8 @@ export function EventSearchCollection({
     getEventCardProps,
     EventCardContent,
     CheckMarkIcon,
-    locale: currentLanguageCode,
     organisationPrefixes,
+    locale: currentLanguageCode,
   });
 
   return <Collection {...delegatedProps} cards={cards} />;
@@ -338,8 +338,8 @@ export function EventSelectionCollection({
     getEventCardProps,
     EventCardContent,
     CheckMarkIcon,
-    locale: currentLanguageCode,
     organisationPrefixes,
+    locale: currentLanguageCode,
   });
 
   return <Collection {...delegatedProps} cards={cards} />;
