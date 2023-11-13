@@ -3,7 +3,7 @@ import React from 'react';
 import { render, screen } from '../../../common/utils/testingLibrary';
 import pageMock, { sidebarLinkList } from '../__mocks__/page.mock';
 import { PageContent } from '../PageContent';
-import kukkuuPageDemosivu from '../../../mocks/responses/page/kukkuu-page-demosivu.json';
+import kukkuuPageDemosivu from '../../../mocks/responses/cms/page/kukkuu-page-demosivu.json';
 import { PageType } from '../../../common/headlessService/types';
 import { ConfigProvider } from '../../configProvider/ConfigProvider';
 import { Config } from '../../configProvider/configContext';
