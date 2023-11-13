@@ -51,7 +51,7 @@ export type Config = {
     EventCardContent?: React.FC<Record<string, unknown>>;
     VenueCardContent?: React.FC<Record<string, unknown>>;
     ArticleCardContent?: React.FC<Record<string, unknown>>;
-    CheckMarkIcon?: React.FC<Record<string, unknown>>;
+    HelsinkiCityOwnedIcon?: React.FC<Record<string, unknown>>;
   };
   apolloClient?: ApolloClient<NormalizedCacheObject>;
   eventsApolloClient?: ApolloClient<NormalizedCacheObject> | 'disabled';

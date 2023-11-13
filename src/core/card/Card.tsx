@@ -154,7 +154,7 @@ export function Card({
                 )}
               >
                 {title}
-                {withTitleIcon && titleIcon && titleIcon}
+                {withTitleIcon && titleIcon}
               </div>
             )}
             {subTitle && <div className={styles.subTitle}>{subTitle}</div>}
