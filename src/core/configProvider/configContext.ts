@@ -16,6 +16,7 @@ export type Config = {
   siteName: string;
   mainContentId?: string;
   internalHrefOrigins: string[];
+  organisationPrefixes: string[];
   currentLanguageCode: LanguageCodeEnum;
   fallbackImageUrls: string[];
   copy: {
@@ -57,7 +58,11 @@ export type Config = {
   venuesApolloClient?: ApolloClient<NormalizedCacheObject> | 'disabled';
   utils: {
     getArticlePageCardProps: (item: ArticleType | PageType) => CardProps;
-    getEventCardProps: (item: EventType, locale: string) => CardProps;
+    getEventCardProps: (
+      item: EventType,
+      organizationPrefixes: string[],
+      locale: string,
+    ) => CardProps;
     getLocationCardProps: (item: VenueType) => CardProps;
     getIsHrefExternal: (href: string) => boolean;
     getRoutedInternalHref: (

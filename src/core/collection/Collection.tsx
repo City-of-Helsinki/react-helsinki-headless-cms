@@ -180,6 +180,7 @@ export function getEventCollectionCards({
   EventCardContent,
   CheckMarkIcon,
   locale = DEFAULT_LOCALE,
+  organisationPrefixes,
 }: {
   items: EventType[];
   getRoutedInternalHref: Config['utils']['getRoutedInternalHref'];
@@ -187,9 +188,10 @@ export function getEventCollectionCards({
   EventCardContent: React.FC<Record<string, unknown>>;
   CheckMarkIcon: React.FC<Record<string, unknown>>;
   locale?: string;
+  organisationPrefixes: string[];
 }) {
   const cards = items
-    .map((item) => getEventCardProps(item, locale))
+    .map((item) => getEventCardProps(item, organisationPrefixes, locale))
     .map((cardProps, i) => {
       const url = getRoutedInternalHref(cardProps.url, null);
       return (
@@ -221,6 +223,7 @@ export function EventSearchCollection({
   const eventsApolloClient = useEventsApolloClientFromConfig();
   const {
     currentLanguageCode,
+    organisationPrefixes,
     utils: { getRoutedInternalHref, getEventCardProps },
     components: { EventCardContent, CheckMarkIcon },
   } = useConfig();
@@ -265,6 +268,7 @@ export function EventSearchCollection({
     EventCardContent,
     CheckMarkIcon,
     locale: currentLanguageCode,
+    organisationPrefixes,
   });
 
   return <Collection {...delegatedProps} cards={cards} />;
@@ -281,6 +285,7 @@ export function EventSelectionCollection({
   const eventsApolloClient = useEventsApolloClientFromConfig();
   const {
     currentLanguageCode,
+    organisationPrefixes,
     utils: { getRoutedInternalHref, getEventCardProps },
     components: { EventCardContent, CheckMarkIcon },
   } = useConfig();
@@ -334,6 +339,7 @@ export function EventSelectionCollection({
     EventCardContent,
     CheckMarkIcon,
     locale: currentLanguageCode,
+    organisationPrefixes,
   });
 
   return <Collection {...delegatedProps} cards={cards} />;

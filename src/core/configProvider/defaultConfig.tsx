@@ -21,6 +21,7 @@ export const defaultConfig: Config = {
     './images/event_placeholder_C.jpg',
     './images/event_placeholder_D.jpg',
   ],
+  organisationPrefixes: [],
   copy: {
     breadcrumbNavigationLabel: 'Breadcrumb navigation',
     breadcrumbListLabel: 'breadcrumbs',
