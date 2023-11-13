@@ -178,6 +178,8 @@ export type ListVenueFragment = {
   name?: string | null;
   streetAddress?: string | null;
   addressLocality?: string | null;
+  providerType?: string | null;
+  displayedServiceOwnerType?: string | null;
   ontologyWords: Array<{
     __typename?: 'Ontology';
     id?: number | null;
@@ -199,6 +201,8 @@ export type VenuesByIdsQuery = {
     name?: string | null;
     streetAddress?: string | null;
     addressLocality?: string | null;
+    providerType?: string | null;
+    displayedServiceOwnerType?: string | null;
     ontologyWords: Array<{
       __typename?: 'Ontology';
       id?: number | null;
@@ -219,6 +223,8 @@ export const ListVenueFragmentDoc = gql`
       id
       label
     }
+    providerType
+    displayedServiceOwnerType
   }
 `;
 export const VenuesByIdsDocument = gql`

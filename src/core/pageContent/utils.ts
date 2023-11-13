@@ -107,6 +107,7 @@ export function getArticlePageCardProps(
 
 export function getEventCardProps(
   item: EventType,
+  organisationPrefixes,
   locale = DEFAULT_LOCALE,
 ): CardProps {
   const image = item.images.length > 0 ? item.images[0] : null;
@@ -123,6 +124,9 @@ export function getEventCardProps(
     clampText: true,
     direction: 'responsive' as CardProps['direction'],
     openLinkInNewTab: false,
+    withTitleIcon: organisationPrefixes.includes(
+      item?.publisher?.split(':')[0] ?? '',
+    ),
   };
 }
 
@@ -139,6 +143,9 @@ export function getLocationCardProps(item: VenueType): CardProps {
     clampText: true,
     direction: 'responsive' as CardProps['direction'],
     openLinkInNewTab: false,
+    withTitleIcon:
+      item.providerType === 'SELF_PRODUCED' &&
+      item.displayedServiceOwnerType === 'MUNICIPAL_SERVICE',
   };
 }
 

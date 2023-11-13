@@ -178,16 +178,20 @@ export function getEventCollectionCards({
   getRoutedInternalHref,
   getEventCardProps,
   EventCardContent,
+  HelsinkiCityOwnedIcon,
+  organisationPrefixes,
   locale = DEFAULT_LOCALE,
 }: {
   items: EventType[];
   getRoutedInternalHref: Config['utils']['getRoutedInternalHref'];
   getEventCardProps: Config['utils']['getEventCardProps'];
   EventCardContent: React.FC<Record<string, unknown>>;
+  HelsinkiCityOwnedIcon: React.FC<Record<string, unknown>>;
+  organisationPrefixes: string[];
   locale?: string;
 }) {
   const cards = items
-    .map((item) => getEventCardProps(item, locale))
+    .map((item) => getEventCardProps(item, organisationPrefixes, locale))
     .map((cardProps, i) => {
       const url = getRoutedInternalHref(cardProps.url, null);
       return (
@@ -198,6 +202,10 @@ export function getEventCollectionCards({
           direction="fixed-vertical"
           customContent={
             EventCardContent && <EventCardContent event={items[i]} />
+          }
+          titleIcon={
+            cardProps.withTitleIcon &&
+            HelsinkiCityOwnedIcon && <HelsinkiCityOwnedIcon />
           }
         />
       );
@@ -216,8 +224,9 @@ export function EventSearchCollection({
   const eventsApolloClient = useEventsApolloClientFromConfig();
   const {
     currentLanguageCode,
+    organisationPrefixes,
     utils: { getRoutedInternalHref, getEventCardProps },
-    components: { EventCardContent },
+    components: { EventCardContent, HelsinkiCityOwnedIcon },
   } = useConfig();
   const { url } = collection;
   // TODO: use initAmountOfEvents -field when it's null-issue is fixed
@@ -258,6 +267,8 @@ export function EventSearchCollection({
       getRoutedInternalHref(link, type ?? ModuleItemTypeEnum.Event),
     getEventCardProps,
     EventCardContent,
+    HelsinkiCityOwnedIcon,
+    organisationPrefixes,
     locale: currentLanguageCode,
   });
 
@@ -275,8 +286,9 @@ export function EventSelectionCollection({
   const eventsApolloClient = useEventsApolloClientFromConfig();
   const {
     currentLanguageCode,
+    organisationPrefixes,
     utils: { getRoutedInternalHref, getEventCardProps },
-    components: { EventCardContent },
+    components: { EventCardContent, HelsinkiCityOwnedIcon },
   } = useConfig();
   // TODO: use initAmountOfEvents -field when it's null-issue is fixed
   const pageSize = collection.events.length; // collection.initAmountOfEvents
@@ -326,6 +338,8 @@ export function EventSelectionCollection({
       getRoutedInternalHref(link, type ?? ModuleItemTypeEnum.Event),
     getEventCardProps,
     EventCardContent,
+    HelsinkiCityOwnedIcon,
+    organisationPrefixes,
     locale: currentLanguageCode,
   });
 
@@ -337,11 +351,13 @@ export function getLocationsCollectionCards({
   getRoutedInternalHref,
   getLocationCardProps,
   VenueCardContent,
+  HelsinkiCityOwnedIcon,
 }: {
   items: VenueType[];
   getRoutedInternalHref: Config['utils']['getRoutedInternalHref'];
   getLocationCardProps: Config['utils']['getLocationCardProps'];
   VenueCardContent: React.FC<Record<string, unknown>>;
+  HelsinkiCityOwnedIcon: React.FC<Record<string, unknown>>;
 }) {
   const cards = items
     .map((item) => getLocationCardProps(item))
@@ -355,6 +371,10 @@ export function getLocationsCollectionCards({
           key={cardProps.id}
           {...cardProps}
           url={url}
+          titleIcon={
+            cardProps.withTitleIcon &&
+            HelsinkiCityOwnedIcon && <HelsinkiCityOwnedIcon />
+          }
           direction="fixed-vertical"
           customContent={
             VenueCardContent && <VenueCardContent location={items[i]} />
@@ -381,7 +401,7 @@ export function LocationsSelectionCollection({
   const venuesApolloClient = useVenuesApolloClientFromConfig();
   const {
     utils: { getRoutedInternalHref, getLocationCardProps },
-    components: { VenueCardContent },
+    components: { VenueCardContent, HelsinkiCityOwnedIcon },
   } = useConfig();
 
   const { data, loading } = useVenuesByIdsQuery({
@@ -414,6 +434,7 @@ export function LocationsSelectionCollection({
       getRoutedInternalHref(link, ModuleItemTypeEnum.Venue),
     getLocationCardProps,
     VenueCardContent,
+    HelsinkiCityOwnedIcon,
   });
 
   return <Collection {...delegatedProps} cards={cards} />;

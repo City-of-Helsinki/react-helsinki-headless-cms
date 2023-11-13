@@ -16,6 +16,7 @@ export type Config = {
   siteName: string;
   mainContentId?: string;
   internalHrefOrigins: string[];
+  organisationPrefixes: string[];
   currentLanguageCode: LanguageCodeEnum;
   fallbackImageUrls: string[];
   copy: {
@@ -50,13 +51,18 @@ export type Config = {
     EventCardContent?: React.FC<Record<string, unknown>>;
     VenueCardContent?: React.FC<Record<string, unknown>>;
     ArticleCardContent?: React.FC<Record<string, unknown>>;
+    HelsinkiCityOwnedIcon?: React.FC<Record<string, unknown>>;
   };
   apolloClient?: ApolloClient<NormalizedCacheObject>;
   eventsApolloClient?: ApolloClient<NormalizedCacheObject> | 'disabled';
   venuesApolloClient?: ApolloClient<NormalizedCacheObject> | 'disabled';
   utils: {
     getArticlePageCardProps: (item: ArticleType | PageType) => CardProps;
-    getEventCardProps: (item: EventType, locale: string) => CardProps;
+    getEventCardProps: (
+      item: EventType,
+      organisationPrefixes: string[],
+      locale: string,
+    ) => CardProps;
     getLocationCardProps: (item: VenueType) => CardProps;
     getIsHrefExternal: (href: string) => boolean;
     getRoutedInternalHref: (
