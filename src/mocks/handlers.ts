@@ -1,4 +1,4 @@
-import { queryPage } from './queries/page';
-import { queryPageEventSelectioModule } from './queries/pageEventSelectionModule';
+import { queryPage } from './queries/cms/page';
+import { queryEventsByIds } from './queries/linkedEvents/eventsByIds';
 
-export const handlers = [queryPageEventSelectioModule(), queryPage()];
+export const handlers = [queryEventsByIds(), queryPage()];

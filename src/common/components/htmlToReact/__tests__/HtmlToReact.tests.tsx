@@ -2,7 +2,7 @@ import React from 'react';
 
 import { render } from '../../../utils/testingLibrary';
 import { HtmlToReact, HtmlToReactProps } from '../HtmlToReact';
-import kukkuuPageDemosivu from '../../../../mocks/responses/page/kukkuu-page-demosivu.json';
+import kukkuuPageDemosivu from '../../../../mocks/responses/cms/page/kukkuu-page-demosivu.json';
 
 const defaultAllowedUnsafeTags = ['iframe'];
 const defaultTrustedOrigins = [

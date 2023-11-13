@@ -3,7 +3,7 @@
 import React from 'react';
 import { StoryFn, Meta } from '@storybook/react';
 
-import kukkuuTestPage from '../../../mocks/responses/page/kukkuu-page-demosivu.json';
+import kukkuuTestPage from '../../../mocks/responses/cms/page/kukkuu-page-demosivu.json';
 import { HtmlToReact, HtmlToReactProps, TABLE_VARIANTS } from './HtmlToReact';
 
 // Real embedded video content  from the Wordpress headless CMS.

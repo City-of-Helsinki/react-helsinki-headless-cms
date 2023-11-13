@@ -8,7 +8,7 @@ import {
   eventIds,
   activeEvents,
   pastEventsWithoutEndingTime,
-} from '../../../mocks/queries/pageEventSelectionModule';
+} from '../../../mocks/responses/linkedEvents/eventMocks';
 import { CmsEndpoint } from '../../../storybook-common/constants';
 import { getApolloConfig } from '../../../tests/apolloConfig';
 
