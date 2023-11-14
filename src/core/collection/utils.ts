@@ -2,6 +2,7 @@ import isPast from 'date-fns/isPast';
 
 import { EventType } from '../../common/eventsService/types';
 import normalizeKeys from '../../linkedEvents/utils/normalizeKeys';
+import { LINKEDEVENTS_DATE_NOW } from './constants';
 
 export function getVenueIds(ids: number[]): string[] {
   return ids.map((id) => `tprek:${id}`);
@@ -40,4 +41,18 @@ export const normalizeParamsValues = (params: Record<string, string>) => {
   });
 
   return normalizedParams;
+};
+
+export function isValidDate(dateString: string) {
+  return !Number.isNaN(Date.parse(dateString));
+}
+
+export const convertDateStringInPastToNow = (start: string): string => {
+  const startDate = new Date(start);
+  const now = new Date();
+
+  if (isValidDate(start) && startDate <= now) {
+    return LINKEDEVENTS_DATE_NOW;
+  }
+  return start;
 };
