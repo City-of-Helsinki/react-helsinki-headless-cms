@@ -1,0 +1,2239 @@
+{
+  "eventList": {
+    "meta": {
+      "count": 167,
+      "next": "https://api.hel.fi/linkedevents/v1/event/?division=kunta%3Ahelsinki&event_type=General&include=in_language%2Ckeywords%2Clocation%2Caudience&keyword=yso%3Ap1808%2Cyso%3Ap18434%2Cyso%3Ap27962%2Cyso%3Ap3064%2Cyso%3Ap20421%2Cyso%3Ap6422%2Cyso%3Ap2162%2Cyso%3Ap768%2Cyso%3Ap18718%2Cyso%3Ap24765%2Cyso%3Ap5470%2Cyso%3Ap23218%2Cyso%3Ap2841%2Cyso%3Ap29817%2Cyso%3Ap12257%2Cyso%3Ap3065&location=tprek%3A7265%2Ctprek%3A7256%2Ctprek%3A7255%2Ctprek%3A8740%2Ctprek%3A7259%2Ctprek%3A7260%2Ctprek%3A7254%2Ctprek%3A20633%2Ctprek%3A7258&page=2&page_size=9&sort=end_time&start=now&super_event_type=umbrella%2Cnone",
+      "previous": null,
+      "__typename": "Meta"
+    },
+    "data": [
+      {
+        "id": "kulke:60170",
+        "internalId": "https://api.hel.fi/linkedevents/v1/event/kulke:60170/",
+        "audienceMinAge": null,
+        "audienceMaxAge": null,
+        "eventStatus": "EventRescheduled",
+        "externalLinks": [],
+        "images": [
+          {
+            "id": "92851",
+            "name": "",
+            "url": "http://mocked-test-server.fi/instancedata/prime_product_resurssivaraus/kulke/embeds/EventPic_733550.jpg",
+            "photographerName": null,
+            "__typename": "EventImage"
+          }
+        ],
+        "subEvents": [],
+        "typeId": "General",
+        "superEvent": null,
+        "inLanguage": [],
+        "keywords": [
+          {
+            "id": "kulke:31",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:31/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Musiikki",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:32",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:32/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Tanssi",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:33",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:33/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Teatteri",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:351",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:351/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Teatteri ja sirkus",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:53",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:53/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Suomi",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "yso:p1278",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/yso:p1278/",
+            "dataSource": "yso",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": "dance (performing arts)",
+              "fi": "tanssi",
+              "sv": "dans",
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "yso:p1808",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/yso:p1808/",
+            "dataSource": "yso",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": "music",
+              "fi": "musiikki",
+              "sv": "musik",
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "yso:p2625",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/yso:p2625/",
+            "dataSource": "yso",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": "theatre (art forms)",
+              "fi": "teatteritaide",
+              "sv": "teaterkonst",
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          }
+        ],
+        "location": {
+          "id": "tprek:7258",
+          "divisions": [
+            {
+              "type": "muni",
+              "name": {
+                "en": null,
+                "fi": "Helsinki",
+                "sv": "Helsingfors",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            },
+            {
+              "type": "district",
+              "name": {
+                "en": null,
+                "fi": "Ullanlinna",
+                "sv": "Ulrikasborg",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            },
+            {
+              "type": "sub_district",
+              "name": {
+                "en": null,
+                "fi": "Kaartinkaupunki",
+                "sv": "Gardesstaden",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            },
+            {
+              "type": "neighborhood",
+              "name": {
+                "en": null,
+                "fi": "Kaartinkaupunki",
+                "sv": "Gardesstaden",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            }
+          ],
+          "hasUpcomingEvents": true,
+          "internalId": "https://api.hel.fi/linkedevents/v1/place/tprek:7258/",
+          "email": null,
+          "infoUrl": {
+            "en": "http://mocked-test-server.fi/",
+            "fi": "http://mocked-test-server.fi/",
+            "sv": "http://mocked-test-server.fi/",
+            "__typename": "LocalizedObject"
+          },
+          "name": {
+            "en": "Theatre",
+            "fi": "teatteri",
+            "sv": "teatern",
+            "__typename": "LocalizedObject"
+          },
+          "addressLocality": {
+            "en": "Helsinki",
+            "fi": "Helsinki",
+            "sv": "Helsingfors",
+            "__typename": "LocalizedObject"
+          },
+          "streetAddress": {
+            "en": "Kasarmikatu 46-48",
+            "fi": "Kasarmikatu 46-48",
+            "sv": "Kaserngatan 46-48",
+            "__typename": "LocalizedObject"
+          },
+          "postalCode": "00130",
+          "position": {
+            "coordinates": [24.947306, 60.16663],
+            "__typename": "PlacePosition"
+          },
+          "telephone": {
+            "en": null,
+            "fi": "+358 9 310 36563",
+            "sv": null,
+            "__typename": "LocalizedObject"
+          },
+          "__typename": "Place"
+        },
+        "offers": [
+          {
+            "isFree": false,
+            "price": {
+              "en": null,
+              "fi": "42,50 €",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "description": null,
+            "infoUrl": {
+              "en": null,
+              "fi": "https://mocked-ticket-service.fi/event/name-17157486",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Offer"
+          }
+        ],
+        "name": {
+          "en": null,
+          "fi": "Mahdoton rakkaus – Tangonäytelmä",
+          "sv": null,
+          "__typename": "LocalizedObject"
+        },
+        "description": {
+          "en": null,
+          "fi": "<p>Tangonäytelmä Mahdoton Rakkaus on esitys, joka nostaa esille uutta kotimaista tangomusiikkia unohtamatta genren kuolemattomia klassikoita. Ohjauksesta vastaa Sari Siikander, käsikirjoituksesta Taina West ja musiikin sovituksista Jasse Varpama. Tuotanto Elevent Group Oy.</p><p>Mahdoton rakkaus on tangomusiikin siivittämä kertomus ystävyydestä, rakastumisesta, sydänsuruista ja elämästä. Kun Joonas (Antti Koivula) toteuttaa pitkäaikaisen haaveensa ja ryhtyy baarimikoksi avaamalla tangobaarin, on ystävillä paikka, missä kokoontua ja käydä läpi elämäntilanteitaan. ”Baarimikko ei avaudu, baarimikolle avaudutaan” toteaa Krisse (Tiina Räsänen). Elämänmakuinen tarina kertoo viiden ystävän vaiheista rakkauden, sydänsurujen ja ystävyyden myllerryksessä. Mitä tapahtuu, kun Benkku (Aki Samuli) yrittää pokata tangolla tai kun Jossu (Heta Halonen) tekee bänät tekstarilla ja onko Jusa (Petri Hervanto) päässyt yli omasta tragediastaan?</p><p>Ammattitanssijoina esityksessä ovat Mikko ja Carina Ahti sekä Nina Krook ja Alejandro Marce Herlan. Mikko Ahti on tullut tutuksi Tanssii Tähtien Kanssa tv-ohjelmasta sekä eri teatteriproduktioista. Carina Ahti on tanssinut miehensä Mikon kanssa pitkän kilpauran ja he opettavat yhdessä esiintymisten lisäksi. Nina Krook on argentinalaisen tangon ammattilainen parinsa Alejandro Marce Herlanin kanssa.</p><p>”Tango on vahva osa suomalaista kulttuuria ja identiteettiä. Suomalaisilla on suorastaan intohimo tangoon niin laulaen, tanssien kuin soittaen” kertoo Tangokuninkaalliset ry puheenjohtaja Aki Samuli. ” Me Tangokuninkaalliset yhdistimme voimamme ja perustimme 2019 oman yhdistyksen Tanku Ry (Tangokuninkaalliset Ry) jonka päätavoitteena on ylläpitää, elävöittää ja kehittää sekä suojella tangomusiikkia. On mahtavaa, että neljä kruunattua tangolähettilästä on valittu ”Mahdoton rakkaus” tuotantoon” jatkaa Aki.</p><p>”Tangomusiikki herättää meissä suomalaisissa suuria tunteita. On upeaa päästä tekemään näyttämölle tangoon keskittyvä kokonaisuus” kertoo esityksen ohjaaja Sari Siikander. ”Musiikki on tarinallisesti suuressa roolissa tässä esityksessä” Sari lisää.</p><p>”Tarinassa laulu, tanssi ja musiikki yhdistyvät roolihenkilöihin aivan uudella tavalla ja vie tangon sellaiselle tasolle, jossa sitä ei ole koskaan Suomessa nähty eikä koettu. Näytös sopii kaikille ja erityisesti niille, joille tango musiikkina on vielä vieras” iloitsee Tanku ry:n puheenjohtaja ja tangokuningas Aki Samuli. ” Suomalaista tangoa voivat esittää kaikki ihmiset: miehet ja naiset, nuoret ja ikäihmiset. Ketään ei syrjitä. Tango yhdistää ja luo muistoja kerrottavaksi sukupolvilta aina toisille” hän jatkaa.</p><p>Esityksen ensi-ilta on 21.9.2023 Kulttuurikeskus Martinuksessa Vantaalla. Katso esityspäivät ja -paikat www.mahdotonrakkaus.fi ja ota sometilit seurantaan FB/IG @mahdotonrakkaus</p><p>Antti Koivula – Joonas – Baarin omistaja<br>Aki Samuli – Benkku - Sähköasentaja<br>Heta Halonen – Jossu - Musiikkiopettaja<br>Petri Hervanto – Jusa - koodaaja<br>Tiina Räsänen – Krisse – Personal trainer</p><p>Tanssijat:<br>Mikko Ahti<br>Carina Ahti<br>Nina Krook<br>Alejandro Marce Herlan.</p><p>Ohjaus: Sari Siikander<br>Käsikirjoitus: Taina West<br>Musiikin sovitus: Jasse Varpama<br>Puvustus: Helena Ahti-Hallberg<br>Lavastus: Elevent Group Oy</p><p>Ikäraja: S</p><p>Kesto n. 2 h, sisältää väliajan</p>",
+          "sv": null,
+          "__typename": "LocalizedObject"
+        },
+        "shortDescription": {
+          "en": null,
+          "fi": "Tangonäytelmä Mahdoton Rakkaus on esitys, joka nostaa esille uutta kotimaista tangomusiikkia unohtamatta genren kuolemattomia klassikoita. Ohjauksesta vastaa Sari Siikander, käsikirjoituksesta Taina West ja musiikin sovituksista Jasse Varpama. Tuotanto Elevent Group Oy.",
+          "sv": null,
+          "__typename": "LocalizedObject"
+        },
+        "endTime": null,
+        "startTime": "2023-11-13T17:00:00Z",
+        "publisher": "ahjo:u4804001050",
+        "provider": {
+          "en": null,
+          "fi": "Mocked provider",
+          "sv": null,
+          "__typename": "LocalizedObject"
+        },
+        "infoUrl": {
+          "en": null,
+          "fi": "http://mocked-test-server.fi/fi/tapahtumat/event/FA4DFCEDF7BD52C6E246FE0B32F5BC89/Mahdoton_rakkaus",
+          "sv": null,
+          "__typename": "LocalizedObject"
+        },
+        "audience": [],
+        "locationExtraInfo": null,
+        "enrolmentStartTime": null,
+        "enrolmentEndTime": null,
+        "remainingAttendeeCapacity": null,
+        "__typename": "EventDetails"
+      },
+      {
+        "id": "kulke:60997",
+        "internalId": "https://api.hel.fi/linkedevents/v1/event/kulke:60997/",
+        "audienceMinAge": null,
+        "audienceMaxAge": null,
+        "eventStatus": "EventRescheduled",
+        "externalLinks": [],
+        "images": [
+          {
+            "id": "96968",
+            "name": "",
+            "url": "http://mocked-test-server.fi/instancedata/prime_product_resurssivaraus/kulke/embeds/EventPic_730886.jpg",
+            "photographerName": null,
+            "__typename": "EventImage"
+          }
+        ],
+        "subEvents": [],
+        "typeId": "General",
+        "superEvent": null,
+        "inLanguage": [],
+        "keywords": [
+          {
+            "id": "kulke:31",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:31/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Musiikki",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:53",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:53/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Suomi",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:54",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:54/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Ruotsi",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:55",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:55/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Englanti",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "yso:p1808",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/yso:p1808/",
+            "dataSource": "yso",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": "music",
+              "fi": "musiikki",
+              "sv": "musik",
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          }
+        ],
+        "location": {
+          "id": "tprek:8740",
+          "divisions": [
+            {
+              "type": "muni",
+              "name": {
+                "en": null,
+                "fi": "Helsinki",
+                "sv": "Helsingfors",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            },
+            {
+              "type": "district",
+              "name": {
+                "en": null,
+                "fi": "Malmi",
+                "sv": "Malm",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            },
+            {
+              "type": "sub_district",
+              "name": {
+                "en": null,
+                "fi": "Ala-Malmi",
+                "sv": "Nedre Malm",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            },
+            {
+              "type": "neighborhood",
+              "name": {
+                "en": null,
+                "fi": "Malmi",
+                "sv": "Malm",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            }
+          ],
+          "hasUpcomingEvents": true,
+          "internalId": "https://api.hel.fi/linkedevents/v1/place/tprek:8740/",
+          "email": null,
+          "infoUrl": {
+            "en": "http://mocked-test-server.fi/",
+            "fi": "http://mocked-test-server.fi/",
+            "sv": "http://mocked-test-server.fi/",
+            "__typename": "LocalizedObject"
+          },
+          "name": {
+            "en": "Malmitalo",
+            "fi": "Malmitalo",
+            "sv": "Malms kulturhus",
+            "__typename": "LocalizedObject"
+          },
+          "addressLocality": {
+            "en": "Helsinki",
+            "fi": "Helsinki",
+            "sv": "Helsingfors",
+            "__typename": "LocalizedObject"
+          },
+          "streetAddress": {
+            "en": "Ala-Malmin tori 1",
+            "fi": "Ala-Malmin tori 1",
+            "sv": "Nedre Malms torg 1",
+            "__typename": "LocalizedObject"
+          },
+          "postalCode": "00700",
+          "position": {
+            "coordinates": [25.01497, 60.250507],
+            "__typename": "PlacePosition"
+          },
+          "telephone": {
+            "en": null,
+            "fi": "+358 9 310 80831",
+            "sv": null,
+            "__typename": "LocalizedObject"
+          },
+          "__typename": "Place"
+        },
+        "offers": [
+          {
+            "isFree": true,
+            "price": null,
+            "description": null,
+            "infoUrl": null,
+            "__typename": "Offer"
+          }
+        ],
+        "name": {
+          "en": "Sing-alongs at Malmitalo",
+          "fi": "Malmitalon yhteislaulut",
+          "sv": "Allsång på Malms kulturhus",
+          "__typename": "LocalizedObject"
+        },
+        "description": {
+          "en": "<p>Sing-alongs at Malmitalo – best Tuesday of the month!</p><p>Led by Jukka Okkonen and Pauli Kainulainen, you can once again sing your heart out in Malmisali!</p><p>Spring sing-alongs are held in Malmisali on 12 September, 17 October, 14 November and 19 December at 17.00.</p><p>We look forward to seeing you!</p>",
+          "fi": "<p>Malmitalon yhteislaulut – kuukauden paras tiistai!</p><p>Jukka Okkosen ja Pauli Kainulaisen johdolla saa Malmisalissa taas laulaa ihan sydämensä kyllyydestä!</p><p>Syksyn yhteislaulut järjestetään 12.9., 17.10., 14.11. sekä 19.12. klo 17.00 Malmisalissa. Tervetuloa!</p>",
+          "sv": "<p>Allsång på Malms kulturhus - den bästa tisdagen i månaden!</p><p>Nu får publiken åter sjunga för full hals i Malmsalen under ledning av Jukka Okkonen och Pauli Kainulainen!</p><p>Vårens allsång ordnas 12.9, 17.10, 14.11 samt 19.12 kl. 17.00 i Malmsalen.</p><p>Välkommen!</p>",
+          "__typename": "LocalizedObject"
+        },
+        "shortDescription": {
+          "en": "Sing-alongs at Malmitalo – best Tuesday of the month!",
+          "fi": "Malmitalon yhteislaulut – kuukauden paras tiistai!",
+          "sv": "Allsång på Malms kulturhus - den bästa tisdagen i månaden!",
+          "__typename": "LocalizedObject"
+        },
+        "endTime": null,
+        "startTime": "2023-11-14T15:00:00Z",
+        "publisher": "ahjo:u4804001050",
+        "provider": null,
+        "infoUrl": {
+          "en": "http://mocked-test-server.fi/en/events/event/250E39CE114678168B01EAE01225D7E9/Sing-alongs_at_Malmitalo",
+          "fi": "http://mocked-test-server.fi/fi/tapahtumat/event/250E39CE114678168B01EAE01225D7E9/Malmitalon_yhteislaulut",
+          "sv": "http://mocked-test-server.fi/sv/evenemang/event/250E39CE114678168B01EAE01225D7E9/Allsang_pa_Malms_kulturhus",
+          "__typename": "LocalizedObject"
+        },
+        "audience": [],
+        "locationExtraInfo": null,
+        "enrolmentStartTime": null,
+        "enrolmentEndTime": null,
+        "remainingAttendeeCapacity": null,
+        "__typename": "EventDetails"
+      },
+      {
+        "id": "kulke:59586",
+        "internalId": "https://api.hel.fi/linkedevents/v1/event/kulke:59586/",
+        "audienceMinAge": null,
+        "audienceMaxAge": null,
+        "eventStatus": "EventRescheduled",
+        "externalLinks": [],
+        "images": [
+          {
+            "id": "91109",
+            "name": "",
+            "url": "http://mocked-test-server.fi/instancedata/prime_product_resurssivaraus/kulke/embeds/EventPic_729007.jpg",
+            "photographerName": null,
+            "__typename": "EventImage"
+          }
+        ],
+        "subEvents": [],
+        "typeId": "General",
+        "superEvent": null,
+        "inLanguage": [],
+        "keywords": [
+          {
+            "id": "kulke:31",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:31/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Musiikki",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:348",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:348/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Musiikki",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:49",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:49/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "teatteri",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:53",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:53/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Suomi",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:54",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:54/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Ruotsi",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:55",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:55/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Englanti",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "yso:p1808",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/yso:p1808/",
+            "dataSource": "yso",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": "music",
+              "fi": "musiikki",
+              "sv": "musik",
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          }
+        ],
+        "location": {
+          "id": "tprek:7258",
+          "divisions": [
+            {
+              "type": "muni",
+              "name": {
+                "en": null,
+                "fi": "Helsinki",
+                "sv": "Helsingfors",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            },
+            {
+              "type": "district",
+              "name": {
+                "en": null,
+                "fi": "Ullanlinna",
+                "sv": "Ulrikasborg",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            },
+            {
+              "type": "sub_district",
+              "name": {
+                "en": null,
+                "fi": "Kaartinkaupunki",
+                "sv": "Gardesstaden",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            },
+            {
+              "type": "neighborhood",
+              "name": {
+                "en": null,
+                "fi": "Kaartinkaupunki",
+                "sv": "Gardesstaden",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            }
+          ],
+          "hasUpcomingEvents": true,
+          "internalId": "https://api.hel.fi/linkedevents/v1/place/tprek:7258/",
+          "email": null,
+          "infoUrl": {
+            "en": "http://mocked-test-server.fi/",
+            "fi": "http://mocked-test-server.fi/",
+            "sv": "http://mocked-test-server.fi/",
+            "__typename": "LocalizedObject"
+          },
+          "name": {
+            "en": "Theatre",
+            "fi": "teatteri",
+            "sv": "teatern",
+            "__typename": "LocalizedObject"
+          },
+          "addressLocality": {
+            "en": "Helsinki",
+            "fi": "Helsinki",
+            "sv": "Helsingfors",
+            "__typename": "LocalizedObject"
+          },
+          "streetAddress": {
+            "en": "Kasarmikatu 46-48",
+            "fi": "Kasarmikatu 46-48",
+            "sv": "Kaserngatan 46-48",
+            "__typename": "LocalizedObject"
+          },
+          "postalCode": "00130",
+          "position": {
+            "coordinates": [24.947306, 60.16663],
+            "__typename": "PlacePosition"
+          },
+          "telephone": {
+            "en": null,
+            "fi": "+358 9 310 36563",
+            "sv": null,
+            "__typename": "LocalizedObject"
+          },
+          "__typename": "Place"
+        },
+        "offers": [
+          {
+            "isFree": false,
+            "price": {
+              "en": "31,50 €",
+              "fi": "31,50 €",
+              "sv": "31,50 €",
+              "__typename": "LocalizedObject"
+            },
+            "description": null,
+            "infoUrl": {
+              "en": "https://mocked-ticket-service.fi/eventseries/name-3356547",
+              "fi": "https://mocked-ticket-service.fi/eventseries/name-3356547",
+              "sv": "https://mocked-ticket-service.fi/eventseries/name-3356547",
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Offer"
+          }
+        ],
+        "name": {
+          "en": "Murcof x Sergi Palau + Steve Hauschildt",
+          "fi": "Murcof x Sergi Palau + Steve Hauschildt",
+          "sv": "Murcof x Sergi Palau + Steve Hauschildt",
+          "__typename": "LocalizedObject"
+        },
+        "description": {
+          "en": "<p>Audiences will be able to experience and enjoy the immersive piece created jointly by master of minimalist electronic music Murcof and visual artist Sergi Palau at Savoy Theatre in Helsinki late in the year. The concert on Tuesday 14 November will also feature the performance of another veteran of electronic music, Steve Hauschildt.</p><p>Fernando Corona, a.k.a. Murcof, who draws influences from ambient, minimalist techno, industrial and classical music, has been making music since the late 1980s, playing with numerous rock and jazz bands. The Mexican-born Corona’s electronic project Murcof began at the turn of the millennium with him sampling contemporary classical music for his electronic sounds. Murcof’s latest studio album, which he created in cooperation with Alias Dance Company, is the spring 2021 release The Alias Sessions.</p><p>Sergi Palau, the man responsible for the concert’s visual presentation, is known as the founder of the Niño Viejo art collective. Palau, who is also a member of the visual creation laboratory Radiante and the artistic director of the VOlumens festival, has been a VJ at numerous festivals and worked with many musicians, such as Felix Da Housecat, Roni Size and Richie Hawtin.</p><p>The second performer of the night, the American artist Steve Hauschildt, is also one of the leading creators of electronic music, who is also known for his band Emeralds. Hauschildt creates his music using synthesizers, computers and digital processing, aiming to continuously develop his musical expression. Hauschildt’s widely acclaimed sixth studio album Nonlin was released in August 2018.</p><p>MURCOF x Sergi Palau (MX)<br>STEVE HAUSCHILDT (US)<br>Tue 14 November 2023 Helsinki, Savoy Theatre</p><p>Evening schedule:<br>18:00 Doors<br>19:00 STEVE HAUSCHILDT<br>20:15 MURCOF x SERGI PALAU</p><p>The stalls form a designated alcohol serving area for adults age 18 and older. The balcony is for people of all ages, no alcohol served.</p><p>TICKETS: In advance, from €31.50 + order fees (from €1.50 mocked-ticket-service.fi)<br>At the door €36.50, if not sold out.</p>",
+          "fi": "<p>Minimalistisen elektronisen musiikin taituri Murcofin ja visuaalisena taiteilijana tunnetun Sergi Palaun ainutlaatuinen immersiivinen yhteisteos nähdään Helsingin Savoy-teatterissa loppuvuodesta. Tiistaina 14. marraskuuta toteutuvan konsertti-illan täydentää toinen pitkän linjan elektronisen musiikin tekijä Steve Hauschildt.</p><p>Ennakkoluulottomasti muun muassa ambientista, minimalistisesta teknosta, industrialista ja klassisesta musiikista vaikutteita ammentava Murcof eli Fernando Corona on tehnyt musiikkia 80-luvun lopusta lähtien soittaen lukuisissa rock- ja jazzbändeissä. Meksikolaissyntyisen Coronan elektroninen projekti Murcof käynnistyi vuosituhannen alussa, kun hän aloitti samplaamaan modernia klassista musiikkia elektronisiin soundeihin. Murcofin viimeisin studioalbumi on yhteistyössä Alias Dance Companyn kanssa syntynyt ja keväällä 2021 julkaistu ”The Alias Sessions”.</p><p>Konsertin visuaalisesta ilmeestä vastaava Sergi Palau tunnetaan Niño Viejotaidekollektiivin perustajana. Myös visuaalisen luomisen laboratorion Radianten jäsen ja VOlumens-festivaalin taiteellinen johtaja Palau on toiminut VJ:nä lukuisilla festivaaleilla ja työskennellyt monien muusikoiden kuten Felix Da Housecatin, Roni Sizen ja Richie Hawtinin kanssa.</p><p>Illan toinen artisti on niinikään modernin elektronisen musiikin eturivin tekijöihin lukeutuva, myös Emeralds-yhtyeestä tunnettu yhdysvaltalainen Steve Hauschildt. Hauschildt hyödyntää musiikissaan syntetisaattoreita, tietokoneita ja digitaalista prosessointia kehittäen jatkuvasti omaa musiikillista muotokieltään. Hauschildtin ylistetty kuudes studioalbumi ”Nonlin” ilmestyi elokuussa 2018.</p><p>MURCOF x Sergi Palau (MX)<br>STEVE HAUSCHILDT (US)<br>Ti 14.11.2023 Helsinki, Savoy-teatteri</p><p>Illan aikataulu:<br>18:00 Ovet<br>19:00 STEVE HAUSCHILDT<br>20:15 MURCOF x SERGI PALAU</p><p>Permanto K18 anniskelualue. Parveke S, ei anniskelua</p><p>LIPUT: Ennakkoon alk. 31,50 EUR + tilausmaksut (alk. 1,50 € mocked-ticket-service.fi)<br>Ovelta 36,50 EUR, mikäli esitys ei ole loppuunmyyty.</p>",
+          "sv": "<p>Begåvningen inom minimalistisk elektronisk musik Murcofs och den visuella konstnären Sergi Palaus unika immersiva gemensamma verk ses på Savoyteatern i Helsingfors i slutet av året. Konsertkvällen som går av stapeln tisdagen den 14 november kompletteras av en annan artist med en lång meritförteckning inom elektronisk musik, Steve Hauschildt.</p><p>Murcof alias Fernando Corona, som fördomsfritt hämtar influenser från bland annat ambientmusik, minimalistisk tekno, industriell och klassisk musik har skapat musik sedan sent 80-tal och spelat i flera rock- och jazzband. Mexikanska Coronas elektroniska projekt Murcof startade i början av millenniet när han började sampla modern klassisk musik med elektroniska sound. Murcofs senaste studioalbum The Alias Sessions, som skapades i samarbete med Alias Dance Company, kom ut våren 2021.</p><p>Sergi Palau, mannen som skapat konsertens visuella uttryck, är känd som grundaren av konstkollektivet Niño Viejo. Palau, som också är medlem i laboratoriet Radiante för visuellt skapande och konstnärlig ledare för festivalen VOlumens har varit VJ på många festivaler och arbetat med ett stort antal musiker, till exempel Felix Da Housecat, Roni Size och Richie Hawtin.</p><p>Kvällens andra artist Steve Hauschildt (USA) är likaså en av de främsta namnen inom modern elektronisk musik och även känd från bandet Emeralds. I sin musik utnyttjar Hauschildt syntetisatorer, datorer och digital bearbetning och utvecklar ständigt sitt musikaliska formspråk. Hauschildts lovordade sjätte studioalbum Nonlin kom ut i augusti 2018.</p><p>MURCOF x Sergi Palau (MX)<br>STEVE HAUSCHILDT (US)<br>Tis. 14.11.2023 Helsingfors, Savoyteatern</p><p>Kvällens schema:<br>18:00 Doors<br>19:00 STEVE HAUSCHILDT<br>20:15 MURCOF x SERGI PALAU</p><p>Parkett utskänkningsområde, 18-årsgräns Läktare ingen utskänkning eller åldersgräns</p><p>BILJETTER: I förköp från 31,50 EUR + beställningsavgift (från 1,50 € mocked-ticket-service.fi)<br>Vid dörren 36,50 EUR, om spelningen inte är slutsåld.</p>",
+          "__typename": "LocalizedObject"
+        },
+        "shortDescription": {
+          "en": "Audiences will be able to experience and enjoy the immersive piece created jointly by master of minimalist electronic music Murcof and visual artist Sergi Palau at Savoy Theatre in Helsinki late in the year. The concert on Tuesday 14 November will also feature the performance of another veteran of electronic music, Steve Hauschildt.",
+          "fi": "Minimalistisen elektronisen musiikin taituri Murcofin ja visuaalisena taiteilijana tunnetun Sergi Palaun ainutlaatuinen immersiivinen yhteisteos nähdään Helsingin Savoy-teatterissa loppuvuodesta. Tiistaina 14. marraskuuta toteutuvan konsertti-illan täydentää toinen pitkän linjan elektronisen musiikin tekijä Steve Hauschildt.",
+          "sv": "Begåvningen inom minimalistisk elektronisk musik Murcofs och den visuella konstnären Sergi Palaus unika immersiva gemensamma verk ses på Savoyteatern i Helsingfors i slutet av året. Konsertkvällen som går av stapeln tisdagen den 14 november kompletteras av en annan artist med en lång meritförteckning inom elektronisk musik, Steve Hauschildt.",
+          "__typename": "LocalizedObject"
+        },
+        "endTime": null,
+        "startTime": "2023-11-14T17:00:00Z",
+        "publisher": "ahjo:u4804001050",
+        "provider": {
+          "en": "Mocked provider",
+          "fi": "Mocked provider",
+          "sv": "Mocked provider",
+          "__typename": "LocalizedObject"
+        },
+        "infoUrl": {
+          "en": "http://mocked-test-server.fi/en/events/event/94527E83247F2C90F2A7C93C29417D4A/Murcof_x_Sergi_Palau_Steve_Hauschildt",
+          "fi": "http://mocked-test-server.fi/fi/tapahtumat/event/94527E83247F2C90F2A7C93C29417D4A/Murcof_x_Sergi_Palau_Steve_Hauschildt",
+          "sv": "http://mocked-test-server.fi/sv/evenemang/event/94527E83247F2C90F2A7C93C29417D4A/Murcof_x_Sergi_Palau_Steve_Hauschildt",
+          "__typename": "LocalizedObject"
+        },
+        "audience": [],
+        "locationExtraInfo": null,
+        "enrolmentStartTime": null,
+        "enrolmentEndTime": null,
+        "remainingAttendeeCapacity": null,
+        "__typename": "EventDetails"
+      },
+      {
+        "id": "helsinki:ageujtsxuy",
+        "internalId": "https://api.hel.fi/linkedevents/v1/event/helsinki:ageujtsxuy/",
+        "audienceMinAge": null,
+        "audienceMaxAge": null,
+        "eventStatus": "EventScheduled",
+        "externalLinks": [],
+        "images": [
+          {
+            "id": "77040",
+            "name": "Musiikkitalo",
+            "url": "https://api.hel.fi/linkedevents/media/images/20140507_0814_L1002723_4110_xdjRvKO.jpg",
+            "photographerName": "Helsinki Partners (c) Jussi Hellsten",
+            "__typename": "EventImage"
+          }
+        ],
+        "subEvents": [],
+        "typeId": "General",
+        "superEvent": {
+          "internalId": "https://api.hel.fi/linkedevents/v1/event/helsinki:ageujts2t4/",
+          "__typename": "InternalIdObject"
+        },
+        "inLanguage": [],
+        "keywords": [
+          {
+            "id": "yso:p11185",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/yso:p11185/",
+            "dataSource": "yso",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": "concerts",
+              "fi": "konsertit",
+              "sv": "konserter (framträdanden)",
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "yso:p1304",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/yso:p1304/",
+            "dataSource": "yso",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": "festivals",
+              "fi": "festivaalit",
+              "sv": "festivaler",
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "yso:p1808",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/yso:p1808/",
+            "dataSource": "yso",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": "music",
+              "fi": "musiikki",
+              "sv": "musik",
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "yso:p18434",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/yso:p18434/",
+            "dataSource": "yso",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": "art music",
+              "fi": "taidemusiikki",
+              "sv": "konstmusik",
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          }
+        ],
+        "location": {
+          "id": "tprek:20633",
+          "divisions": [
+            {
+              "type": "muni",
+              "name": {
+                "en": null,
+                "fi": "Helsinki",
+                "sv": "Helsingfors",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            },
+            {
+              "type": "district",
+              "name": {
+                "en": null,
+                "fi": "Vironniemi",
+                "sv": "Estnäs",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            },
+            {
+              "type": "sub_district",
+              "name": {
+                "en": null,
+                "fi": "Kluuvi",
+                "sv": "Gloet",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            },
+            {
+              "type": "neighborhood",
+              "name": {
+                "en": null,
+                "fi": "Kluuvi",
+                "sv": "Gloet",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            }
+          ],
+          "hasUpcomingEvents": true,
+          "internalId": "https://api.hel.fi/linkedevents/v1/place/tprek:20633/",
+          "email": null,
+          "infoUrl": {
+            "en": "https://mocked-test-server.fi/en/",
+            "fi": "https://mocked-test-server.fi/",
+            "sv": "https://mocked-test-server.fi/sv/",
+            "__typename": "LocalizedObject"
+          },
+          "name": {
+            "en": "Musiikkitalo - Helsinki Music Centre",
+            "fi": "Musiikkitalo",
+            "sv": "Musikhuset",
+            "__typename": "LocalizedObject"
+          },
+          "addressLocality": {
+            "en": "Helsinki",
+            "fi": "Helsinki",
+            "sv": "Helsingfors",
+            "__typename": "LocalizedObject"
+          },
+          "streetAddress": {
+            "en": "Mannerheimintie 13a",
+            "fi": "Mannerheimintie 13a",
+            "sv": "Mannerheimvägen 13a",
+            "__typename": "LocalizedObject"
+          },
+          "postalCode": "00100",
+          "position": {
+            "coordinates": [24.935074, 60.1737],
+            "__typename": "PlacePosition"
+          },
+          "telephone": {
+            "en": null,
+            "fi": "+358 20 707 0400",
+            "sv": null,
+            "__typename": "LocalizedObject"
+          },
+          "__typename": "Place"
+        },
+        "offers": [
+          {
+            "isFree": false,
+            "price": {
+              "en": "5-40€",
+              "fi": "5-40€",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "description": {
+              "en": "",
+              "fi": "",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "infoUrl": {
+              "en": "https://mocked-test-server/aihe/rso-in-english/concerts-season-2023-2024",
+              "fi": "https://mocked-test-server/aihe/rso/konsertit-kausi-2023-2024",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Offer"
+          }
+        ],
+        "name": {
+          "en": "Orchestra Festival",
+          "fi": "Orkesterifestivaali",
+          "sv": null,
+          "__typename": "LocalizedObject"
+        },
+        "description": {
+          "en": "<p>description</p>",
+          "fi": "<p>description</p>",
+          "sv": null,
+          "__typename": "LocalizedObject"
+        },
+        "shortDescription": {
+          "en": "Orchestra Festival",
+          "fi": "Orkesteri festivaali",
+          "sv": null,
+          "__typename": "LocalizedObject"
+        },
+        "endTime": "2023-11-15T19:00:00Z",
+        "startTime": "2023-11-15T17:00:00Z",
+        "publisher": "ytj:0586977-6",
+        "provider": {
+          "en": "Mocked provider",
+          "fi": "Mocked provider",
+          "sv": null,
+          "__typename": "LocalizedObject"
+        },
+        "infoUrl": {
+          "en": "https://mocked-test-server/aihe/rso-in-english/concerts-season-2023-2024",
+          "fi": "https://mocked-test-server/aihe/rso/konsertit-kausi-2023-2024",
+          "sv": null,
+          "__typename": "LocalizedObject"
+        },
+        "audience": [],
+        "locationExtraInfo": {
+          "en": "Concert Hall, Paavo Hall",
+          "fi": "konserttisali, Paavo-sali",
+          "sv": null,
+          "__typename": "LocalizedObject"
+        },
+        "enrolmentStartTime": null,
+        "enrolmentEndTime": null,
+        "remainingAttendeeCapacity": null,
+        "__typename": "EventDetails"
+      },
+      {
+        "id": "kulke:61162",
+        "internalId": "https://api.hel.fi/linkedevents/v1/event/kulke:61162/",
+        "audienceMinAge": null,
+        "audienceMaxAge": null,
+        "eventStatus": "EventRescheduled",
+        "externalLinks": [],
+        "images": [
+          {
+            "id": "97932",
+            "name": "",
+            "url": "http://mocked-test-server.fi/instancedata/prime_product_resurssivaraus/kulke/embeds/EventPic_738079.jpg",
+            "photographerName": null,
+            "__typename": "EventImage"
+          }
+        ],
+        "subEvents": [],
+        "typeId": "General",
+        "superEvent": null,
+        "inLanguage": [],
+        "keywords": [
+          {
+            "id": "kulke:31",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:31/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Musiikki",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:47",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:47/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Caisa",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:53",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:53/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Suomi",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:54",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:54/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Ruotsi",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:55",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:55/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Englanti",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:596",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:596/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Muu",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:733",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:733/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Luennot ja keskustelut",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "yso:p14004",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/yso:p14004/",
+            "dataSource": "yso",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": "conversation",
+              "fi": "keskustelu",
+              "sv": "samtal",
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "yso:p15875",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/yso:p15875/",
+            "dataSource": "yso",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": "lectures",
+              "fi": "luennot",
+              "sv": "föreläsningar",
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "yso:p1808",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/yso:p1808/",
+            "dataSource": "yso",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": "music",
+              "fi": "musiikki",
+              "sv": "musik",
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          }
+        ],
+        "location": {
+          "id": "tprek:7256",
+          "divisions": [
+            {
+              "type": "muni",
+              "name": {
+                "en": null,
+                "fi": "Helsinki",
+                "sv": "Helsingfors",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            },
+            {
+              "type": "district",
+              "name": {
+                "en": null,
+                "fi": "Kallio",
+                "sv": "Berghäll",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            },
+            {
+              "type": "sub_district",
+              "name": {
+                "en": null,
+                "fi": "Vilhonvuori",
+                "sv": "Vilhemsberg",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            },
+            {
+              "type": "neighborhood",
+              "name": {
+                "en": null,
+                "fi": "Sörnäinen",
+                "sv": "Sörnäs",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            }
+          ],
+          "hasUpcomingEvents": true,
+          "internalId": "https://api.hel.fi/linkedevents/v1/place/tprek:7256/",
+          "email": null,
+          "infoUrl": {
+            "en": "http://mocked-test-server.fi/",
+            "fi": "http://mocked-test-server.fi/",
+            "sv": "http://mocked-test-server.fi/",
+            "__typename": "LocalizedObject"
+          },
+          "name": {
+            "en": "Cultural Centre Caisa",
+            "fi": "Caisa",
+            "sv": "Caisa",
+            "__typename": "LocalizedObject"
+          },
+          "addressLocality": {
+            "en": "Helsinki",
+            "fi": "Helsinki",
+            "sv": "Helsingfors",
+            "__typename": "LocalizedObject"
+          },
+          "streetAddress": {
+            "en": "Kaikukatu 4, Helsinki",
+            "fi": "Kaikukatu 4, Helsinki",
+            "sv": "Ekogatan 4, Helsinki",
+            "__typename": "LocalizedObject"
+          },
+          "postalCode": "00530",
+          "position": {
+            "coordinates": [24.960548, 60.182697],
+            "__typename": "PlacePosition"
+          },
+          "telephone": {
+            "en": null,
+            "fi": "+358 0 123 12312",
+            "sv": null,
+            "__typename": "LocalizedObject"
+          },
+          "__typename": "Place"
+        },
+        "offers": [
+          {
+            "isFree": true,
+            "price": null,
+            "description": null,
+            "infoUrl": null,
+            "__typename": "Offer"
+          }
+        ],
+        "name": {
+          "en": "Global Club Nights",
+          "fi": "Global Club Nights",
+          "sv": "Global Club Nights",
+          "__typename": "LocalizedObject"
+        },
+        "description": {
+          "en": "<p>Musicians</p>",
+          "fi": "<p>Muusikot</p>",
+          "sv": "<p>Musikerna</p>",
+          "__typename": "LocalizedObject"
+        },
+        "shortDescription": {
+          "en": "Musicians",
+          "fi": "Muusikot",
+          "sv": "Musikerna",
+          "__typename": "LocalizedObject"
+        },
+        "endTime": null,
+        "startTime": "2023-11-15T13:00:00Z",
+        "publisher": "ahjo:u4804001050",
+        "provider": null,
+        "infoUrl": {
+          "en": "http://mocked-test-server.fi/en/events/event/76B406523E7B0D29BCB1EFCFCD2786D9",
+          "fi": "http://mocked-test-server.fi/fi/tapahtumat/event/76B406523E7B0D29BCB1EFCFCD2786D9",
+          "sv": "http://mocked-test-server.fi/sv/evenemang/event/76B406523E7B0D29BCB1EFCFCD2786D9",
+          "__typename": "LocalizedObject"
+        },
+        "audience": [],
+        "locationExtraInfo": null,
+        "enrolmentStartTime": null,
+        "enrolmentEndTime": null,
+        "remainingAttendeeCapacity": null,
+        "__typename": "EventDetails"
+      },
+      {
+        "id": "kulke:60124",
+        "internalId": "https://api.hel.fi/linkedevents/v1/event/kulke:60124/",
+        "audienceMinAge": null,
+        "audienceMaxAge": null,
+        "eventStatus": "EventRescheduled",
+        "externalLinks": [],
+        "images": [
+          {
+            "id": "93919",
+            "name": "",
+            "url": "http://mocked-test-server.fi/instancedata/prime_product_resurssivaraus/kulke/embeds/EventPic_733071.jpg",
+            "photographerName": null,
+            "__typename": "EventImage"
+          }
+        ],
+        "subEvents": [],
+        "typeId": "General",
+        "superEvent": null,
+        "inLanguage": [],
+        "keywords": [
+          {
+            "id": "kulke:31",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:31/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Musiikki",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:44",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:44/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Stoa",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:53",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:53/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Suomi",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:54",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:54/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Ruotsi",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:55",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:55/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Englanti",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:596",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:596/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Muu",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:732",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:732/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Työpajat",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "yso:p1808",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/yso:p1808/",
+            "dataSource": "yso",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": "music",
+              "fi": "musiikki",
+              "sv": "musik",
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "yso:p39924",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/yso:p39924/",
+            "dataSource": "yso",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": "workshops (social inclusion)",
+              "fi": "työpajatoiminta",
+              "sv": "verkstadsverksamhet",
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          }
+        ],
+        "location": {
+          "id": "tprek:7259",
+          "divisions": [
+            {
+              "type": "muni",
+              "name": {
+                "en": null,
+                "fi": "Helsinki",
+                "sv": "Helsingfors",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            },
+            {
+              "type": "district",
+              "name": {
+                "en": null,
+                "fi": "Vartiokylä",
+                "sv": "Botby",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            },
+            {
+              "type": "sub_district",
+              "name": {
+                "en": null,
+                "fi": "Itäkeskus",
+                "sv": "Östra centrum",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            },
+            {
+              "type": "neighborhood",
+              "name": {
+                "en": null,
+                "fi": "Vartiokylä",
+                "sv": "Botby",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            }
+          ],
+          "hasUpcomingEvents": true,
+          "internalId": "https://api.hel.fi/linkedevents/v1/place/tprek:7259/",
+          "email": null,
+          "infoUrl": {
+            "en": "http://mocked-test-server.fi/",
+            "fi": "http://mocked-test-server.fi/",
+            "sv": "http://mocked-test-server.fi/",
+            "__typename": "LocalizedObject"
+          },
+          "name": {
+            "en": "Stoa",
+            "fi": "Stoa",
+            "sv": "Stoa",
+            "__typename": "LocalizedObject"
+          },
+          "addressLocality": {
+            "en": "Helsinki",
+            "fi": "Helsinki",
+            "sv": "Helsingfors",
+            "__typename": "LocalizedObject"
+          },
+          "streetAddress": {
+            "en": "Turunlinnantie 1",
+            "fi": "Turunlinnantie 1",
+            "sv": "Åbohusvägen 1",
+            "__typename": "LocalizedObject"
+          },
+          "postalCode": "00900",
+          "position": {
+            "coordinates": [25.07989, 60.212097],
+            "__typename": "PlacePosition"
+          },
+          "telephone": {
+            "en": null,
+            "fi": "+358 9 310 88405",
+            "sv": null,
+            "__typename": "LocalizedObject"
+          },
+          "__typename": "Place"
+        },
+        "offers": [
+          {
+            "isFree": true,
+            "price": null,
+            "description": null,
+            "infoUrl": null,
+            "__typename": "Offer"
+          }
+        ],
+        "name": {
+          "en": "Choir",
+          "fi": "Kuoro",
+          "sv": "Kör",
+          "__typename": "LocalizedObject"
+        },
+        "description": {
+          "en": "<p>Would you like to learn Finnish by singing in Finnish?</p>",
+          "fi": "<p>Haluatko opetella laulamaan suomeksi, suomalaisia ja kansainvälisiä lauluja yhdessä muiden kanssa?</p>",
+          "sv": "<p>Vill du lära dig sjunga finländska och internationella sånger på finska tillsammans med andra?</p>",
+          "__typename": "LocalizedObject"
+        },
+        "shortDescription": {
+          "en": "Would you like to learn Finnish by singing in Finnish?",
+          "fi": "Haluatko opetella laulamaan suomeksi, suomalaisia ja kansainvälisiä lauluja yhdessä muiden kanssa?",
+          "sv": "Vill du lära dig sjunga finländska och internationella sånger på finska tillsammans med andra?",
+          "__typename": "LocalizedObject"
+        },
+        "endTime": null,
+        "startTime": "2023-11-15T16:00:00Z",
+        "publisher": "ahjo:u4804001050",
+        "provider": null,
+        "infoUrl": {
+          "en": "http://mocked-test-server.fi/en/events/event/A73124ED64CA6F2CABD89885905F92B4",
+          "fi": "http://mocked-test-server.fi/fi/tapahtumat/event/A73124ED64CA6F2CABD89885905F92B4",
+          "sv": "http://mocked-test-server.fi/sv/evenemang/event/A73124ED64CA6F2CABD89885905F92B4",
+          "__typename": "LocalizedObject"
+        },
+        "audience": [],
+        "locationExtraInfo": null,
+        "enrolmentStartTime": null,
+        "enrolmentEndTime": null,
+        "remainingAttendeeCapacity": null,
+        "__typename": "EventDetails"
+      },
+      {
+        "id": "helsinki:ageujtsx34",
+        "internalId": "https://api.hel.fi/linkedevents/v1/event/helsinki:ageujtsx34/",
+        "audienceMinAge": null,
+        "audienceMaxAge": null,
+        "eventStatus": "EventScheduled",
+        "externalLinks": [],
+        "images": [
+          {
+            "id": "77040",
+            "name": "Musiikkitalo",
+            "url": "https://api.hel.fi/linkedevents/media/images/20140507_0814_L1002723_4110_xdjRvKO.jpg",
+            "photographerName": "Helsinki Partners (c) Jussi Hellsten",
+            "__typename": "EventImage"
+          }
+        ],
+        "subEvents": [],
+        "typeId": "General",
+        "superEvent": {
+          "internalId": "https://api.hel.fi/linkedevents/v1/event/helsinki:ageujts2t4/",
+          "__typename": "InternalIdObject"
+        },
+        "inLanguage": [],
+        "keywords": [
+          {
+            "id": "yso:p11185",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/yso:p11185/",
+            "dataSource": "yso",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": "concerts",
+              "fi": "konsertit",
+              "sv": "konserter (framträdanden)",
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "yso:p1304",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/yso:p1304/",
+            "dataSource": "yso",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": "festivals",
+              "fi": "festivaalit",
+              "sv": "festivaler",
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "yso:p1808",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/yso:p1808/",
+            "dataSource": "yso",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": "music",
+              "fi": "musiikki",
+              "sv": "musik",
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "yso:p18434",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/yso:p18434/",
+            "dataSource": "yso",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": "art music",
+              "fi": "taidemusiikki",
+              "sv": "konstmusik",
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          }
+        ],
+        "location": {
+          "id": "tprek:20633",
+          "divisions": [
+            {
+              "type": "muni",
+              "name": {
+                "en": null,
+                "fi": "Helsinki",
+                "sv": "Helsingfors",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            },
+            {
+              "type": "district",
+              "name": {
+                "en": null,
+                "fi": "Vironniemi",
+                "sv": "Estnäs",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            },
+            {
+              "type": "sub_district",
+              "name": {
+                "en": null,
+                "fi": "Kluuvi",
+                "sv": "Gloet",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            },
+            {
+              "type": "neighborhood",
+              "name": {
+                "en": null,
+                "fi": "Kluuvi",
+                "sv": "Gloet",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            }
+          ],
+          "hasUpcomingEvents": true,
+          "internalId": "https://api.hel.fi/linkedevents/v1/place/tprek:20633/",
+          "email": null,
+          "infoUrl": {
+            "en": "https://mocked-test-server.fi/en/",
+            "fi": "https://mocked-test-server.fi/",
+            "sv": "https://mocked-test-server.fi/sv/",
+            "__typename": "LocalizedObject"
+          },
+          "name": {
+            "en": "Musiikkitalo - Helsinki Music Centre",
+            "fi": "Musiikkitalo",
+            "sv": "Musikhuset",
+            "__typename": "LocalizedObject"
+          },
+          "addressLocality": {
+            "en": "Helsinki",
+            "fi": "Helsinki",
+            "sv": "Helsingfors",
+            "__typename": "LocalizedObject"
+          },
+          "streetAddress": {
+            "en": "Mannerheimintie 13a",
+            "fi": "Mannerheimintie 13a",
+            "sv": "Mannerheimvägen 13a",
+            "__typename": "LocalizedObject"
+          },
+          "postalCode": "00100",
+          "position": {
+            "coordinates": [24.935074, 60.1737],
+            "__typename": "PlacePosition"
+          },
+          "telephone": {
+            "en": null,
+            "fi": "+358 20 707 0400",
+            "sv": null,
+            "__typename": "LocalizedObject"
+          },
+          "__typename": "Place"
+        },
+        "offers": [
+          {
+            "isFree": false,
+            "price": {
+              "en": "5-40€",
+              "fi": "5-40€",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "description": {
+              "en": "",
+              "fi": "",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "infoUrl": {
+              "en": "https://mocked-test-server/aihe/rso-in-english/concerts-season-2023-2024",
+              "fi": "https://mocked-test-server/aihe/rso/konsertit-kausi-2023-2024",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Offer"
+          }
+        ],
+        "name": {
+          "en": "Orchestra Festival",
+          "fi": "Orkesteri festivaali",
+          "sv": null,
+          "__typename": "LocalizedObject"
+        },
+        "description": {
+          "en": "<p>Description</p>",
+          "fi": "<p>Kuvaus</p>",
+          "sv": null,
+          "__typename": "LocalizedObject"
+        },
+        "shortDescription": {
+          "en": "Description",
+          "fi": "Kuvaus.",
+          "sv": null,
+          "__typename": "LocalizedObject"
+        },
+        "endTime": "2023-11-16T19:00:00Z",
+        "startTime": "2023-11-16T17:00:00Z",
+        "publisher": "ytj:0586977-6",
+        "provider": {
+          "en": "Mocked provider",
+          "fi": "Mocked provider",
+          "sv": null,
+          "__typename": "LocalizedObject"
+        },
+        "infoUrl": {
+          "en": "https://mocked-test-server.fi/aihe/rso-in-english/concerts-season-2023-2024",
+          "fi": "https://mocked-test-server.fi/aihe/rso/konsertit-kausi-2023-2024",
+          "sv": null,
+          "__typename": "LocalizedObject"
+        },
+        "audience": [],
+        "locationExtraInfo": {
+          "en": "Concert Hall, Paavo Hall",
+          "fi": "konserttisali, Paavo-sali",
+          "sv": null,
+          "__typename": "LocalizedObject"
+        },
+        "enrolmentStartTime": null,
+        "enrolmentEndTime": null,
+        "remainingAttendeeCapacity": null,
+        "__typename": "EventDetails"
+      },
+      {
+        "id": "kulke:60113",
+        "internalId": "https://api.hel.fi/linkedevents/v1/event/kulke:60113/",
+        "audienceMinAge": null,
+        "audienceMaxAge": null,
+        "eventStatus": "EventRescheduled",
+        "externalLinks": [],
+        "images": [
+          {
+            "id": "93920",
+            "name": "",
+            "url": "http://mocked-test-server.fi/instancedata/prime_product_resurssivaraus/kulke/embeds/EventPic_733048.jpg",
+            "photographerName": null,
+            "__typename": "EventImage"
+          }
+        ],
+        "subEvents": [],
+        "typeId": "General",
+        "superEvent": null,
+        "inLanguage": [],
+        "keywords": [
+          {
+            "id": "kulke:31",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:31/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Musiikki",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:348",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:348/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Musiikki",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:44",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:44/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Stoa",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:53",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:53/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Suomi",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:732",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:732/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Työpajat",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "yso:p1808",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/yso:p1808/",
+            "dataSource": "yso",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": "music",
+              "fi": "musiikki",
+              "sv": "musik",
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "yso:p39924",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/yso:p39924/",
+            "dataSource": "yso",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": "workshops (social inclusion)",
+              "fi": "työpajatoiminta",
+              "sv": "verkstadsverksamhet",
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          }
+        ],
+        "location": {
+          "id": "tprek:7259",
+          "divisions": [
+            {
+              "type": "muni",
+              "name": {
+                "en": null,
+                "fi": "Helsinki",
+                "sv": "Helsingfors",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            },
+            {
+              "type": "district",
+              "name": {
+                "en": null,
+                "fi": "Vartiokylä",
+                "sv": "Botby",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            },
+            {
+              "type": "sub_district",
+              "name": {
+                "en": null,
+                "fi": "Itäkeskus",
+                "sv": "Östra centrum",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            },
+            {
+              "type": "neighborhood",
+              "name": {
+                "en": null,
+                "fi": "Vartiokylä",
+                "sv": "Botby",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            }
+          ],
+          "hasUpcomingEvents": true,
+          "internalId": "https://api.hel.fi/linkedevents/v1/place/tprek:7259/",
+          "email": null,
+          "infoUrl": {
+            "en": "http://mocked-test-server.fi/",
+            "fi": "http://mocked-test-server.fi/",
+            "sv": "http://mocked-test-server.fi/",
+            "__typename": "LocalizedObject"
+          },
+          "name": {
+            "en": "Stoa",
+            "fi": "Stoa",
+            "sv": "Stoa",
+            "__typename": "LocalizedObject"
+          },
+          "addressLocality": {
+            "en": "Helsinki",
+            "fi": "Helsinki",
+            "sv": "Helsingfors",
+            "__typename": "LocalizedObject"
+          },
+          "streetAddress": {
+            "en": "Turunlinnantie 1",
+            "fi": "Turunlinnantie 1",
+            "sv": "Åbohusvägen 1",
+            "__typename": "LocalizedObject"
+          },
+          "postalCode": "00900",
+          "position": {
+            "coordinates": [25.07989, 60.212097],
+            "__typename": "PlacePosition"
+          },
+          "telephone": {
+            "en": null,
+            "fi": "+358 9 310 88405",
+            "sv": null,
+            "__typename": "LocalizedObject"
+          },
+          "__typename": "Place"
+        },
+        "offers": [
+          {
+            "isFree": true,
+            "price": null,
+            "description": null,
+            "infoUrl": null,
+            "__typename": "Offer"
+          }
+        ],
+        "name": {
+          "en": null,
+          "fi": "Opi suomea laulaen – Laulupajat maahanmuuttaneille",
+          "sv": null,
+          "__typename": "LocalizedObject"
+        },
+        "description": {
+          "en": null,
+          "fi": "<p>Oletko maahanmuuttanut, joka haluaa opiskella suomea? Tule kokeilemaan hauskaa tapaa, joka huomioi musiikin monet mahdollisuudet vahvistaa suomen kielen oppimista.</p><p>Tilaisuus on aikuisille. Pääset laulamaan ja liikkumaan musiikin mukana yhdessä muiden kanssa ja samalla opit suomen kielen ääntämistä ja uusia sanoja. Tule mukaan laulamaan, vaikka osaisit vasta vähän suomea!</p><p>Kielenopiskelu laulaen on kotoutumiskoulutuksissa vuosien aikana kehitetty uusi toimintamalli. MuM Johanna Lehtinen-Schnabel on kehittänyt toimintamallin ja tutkii sitä edelleen. Toiminta huomioi vahvasti taiteen ja musiikin voimauttavan vaikutuksen tukien oppijan kokonaisvaltaista ilmaisua.   <br> <br>Kesto n. 80 min <br>Ryhmään mukaan on ilmoittauduttava etukäteen.   <br>Kysy lisää ja ilmoittaudu: sanna.nuutinen@hel.fi   <br>      <br>Syksyn laulupajakerrat: <br>to 7.9. klo 10 & 11.45   <br>to 5.10. klo 10 ja 11.45  <br>to 16.11. klo 10 & 11.45   <br>torstai joulukuussa</p>",
+          "sv": null,
+          "__typename": "LocalizedObject"
+        },
+        "shortDescription": {
+          "en": null,
+          "fi": "Oletko maahanmuuttanut, joka haluaa opiskella suomea? Tule kokeilemaan hauskaa tapaa, joka huomioi musiikin monet mahdollisuudet vahvistaa suomen kielen oppimista.",
+          "sv": null,
+          "__typename": "LocalizedObject"
+        },
+        "endTime": null,
+        "startTime": "2023-11-16T08:00:00Z",
+        "publisher": "ahjo:u4804001050",
+        "provider": null,
+        "infoUrl": {
+          "en": null,
+          "fi": "http://mocked-test-server.fi/fi/tapahtumat/event/C0759879CC0D2C4D2208B91FF86CC3B4/Opi_suomea_laulaen_",
+          "sv": null,
+          "__typename": "LocalizedObject"
+        },
+        "audience": [],
+        "locationExtraInfo": null,
+        "enrolmentStartTime": null,
+        "enrolmentEndTime": null,
+        "remainingAttendeeCapacity": null,
+        "__typename": "EventDetails"
+      },
+      {
+        "id": "kulke:61054",
+        "internalId": "https://api.hel.fi/linkedevents/v1/event/kulke:61054/",
+        "audienceMinAge": null,
+        "audienceMaxAge": null,
+        "eventStatus": "EventRescheduled",
+        "externalLinks": [],
+        "images": [
+          {
+            "id": "96971",
+            "name": "",
+            "url": "http://mocked-test-server.fi/instancedata/prime_product_resurssivaraus/kulke/embeds/EventPic_734797.jpg",
+            "photographerName": null,
+            "__typename": "EventImage"
+          }
+        ],
+        "subEvents": [],
+        "typeId": "General",
+        "superEvent": null,
+        "inLanguage": [],
+        "keywords": [
+          {
+            "id": "kulke:31",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:31/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Musiikki",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:45",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:45/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Vuotalo",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:53",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:53/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Suomi",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:54",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:54/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Ruotsi",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "kulke:55",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/kulke:55/",
+            "dataSource": "kulke",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": null,
+              "fi": "Englanti",
+              "sv": null,
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          },
+          {
+            "id": "yso:p1808",
+            "internalId": "https://api.hel.fi/linkedevents/v1/keyword/yso:p1808/",
+            "dataSource": "yso",
+            "hasUpcomingEvents": true,
+            "name": {
+              "en": "music",
+              "fi": "musiikki",
+              "sv": "musik",
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Keyword"
+          }
+        ],
+        "location": {
+          "id": "tprek:7260",
+          "divisions": [
+            {
+              "type": "muni",
+              "name": {
+                "en": null,
+                "fi": "Helsinki",
+                "sv": "Helsingfors",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            },
+            {
+              "type": "district",
+              "name": {
+                "en": null,
+                "fi": "Vuosaari",
+                "sv": "Nordsjö",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            },
+            {
+              "type": "sub_district",
+              "name": {
+                "en": null,
+                "fi": "Keski-Vuosaari",
+                "sv": "Mellersta Nordsjö",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            },
+            {
+              "type": "neighborhood",
+              "name": {
+                "en": null,
+                "fi": "Vuosaari",
+                "sv": "Nordsjö",
+                "__typename": "LocalizedObject"
+              },
+              "__typename": "Division"
+            }
+          ],
+          "hasUpcomingEvents": true,
+          "internalId": "https://api.hel.fi/linkedevents/v1/place/tprek:7260/",
+          "email": null,
+          "infoUrl": {
+            "en": "http://mocked-test-server.fi/",
+            "fi": "http://mocked-test-server.fi/",
+            "sv": "http://mocked-test-server.fi/",
+            "__typename": "LocalizedObject"
+          },
+          "name": {
+            "en": "Vuosaari House",
+            "fi": "Vuotalo",
+            "sv": "Nordhuset",
+            "__typename": "LocalizedObject"
+          },
+          "addressLocality": {
+            "en": "Helsinki",
+            "fi": "Helsinki",
+            "sv": "Helsingfors",
+            "__typename": "LocalizedObject"
+          },
+          "streetAddress": {
+            "en": "Mosaiikkitori 2",
+            "fi": "Mosaiikkitori 2",
+            "sv": "Mosaiktorget 2",
+            "__typename": "LocalizedObject"
+          },
+          "postalCode": "00980",
+          "position": {
+            "coordinates": [25.143385, 60.208565],
+            "__typename": "PlacePosition"
+          },
+          "telephone": {
+            "en": null,
+            "fi": "+358 9 310 88802",
+            "sv": null,
+            "__typename": "LocalizedObject"
+          },
+          "__typename": "Place"
+        },
+        "offers": [
+          {
+            "isFree": false,
+            "price": {
+              "en": "24 €",
+              "fi": "24 €",
+              "sv": "24 €",
+              "__typename": "LocalizedObject"
+            },
+            "description": null,
+            "infoUrl": {
+              "en": "https://mocked-ticket-service.fi/artist/jiri-nikkinen-the-beatles-tribute-band/jiri-nikkinen-the-beatles-tribute-band-3477797",
+              "fi": "https://mocked-ticket-service.fi/artist/jiri-nikkinen-the-beatles-tribute-band/jiri-nikkinen-the-beatles-tribute-band-3477797",
+              "sv": "https://mocked-ticket-service.fi/artist/jiri-nikkinen-the-beatles-tribute-band/jiri-nikkinen-the-beatles-tribute-band-3477797",
+              "__typename": "LocalizedObject"
+            },
+            "__typename": "Offer"
+          }
+        ],
+        "name": {
+          "en": "The Beatles Tribute Band: A Hard Day’s Night & Beatles For Sale album concert",
+          "fi": "the Beatles Tribute Band - A Hard Day's Night / Beatles For Sale - albumikonsertti",
+          "sv": "The Beatles Tribute Band: Albumkonserten A Hard Day’s Night & Beatles For Sale",
+          "__typename": "LocalizedObject"
+        },
+        "description": {
+          "en": "<p>A testguy and his ensemble will make an early start to celebrate the two Beatles albums released in 1964, which will be 60 years old in 2024.</p><p>As usual, the musicians perform the songs in the proper album order, in the right key and with the right arrangements, with care and love for the Beatles.</p><p>You can no longer experience The Beatles, but you can experience this. Take a journey back in time to 1964, accompanied by the music of the world’s greatest pop group!</p>",
+          "fi": "<p>A testguy bändeineen ottaa varaslähdön vuonna 1964 julkaistuille kahdelle Beatles-albumille, jotka täyttävät 2024 peräti 60 vuotta.</p><p>Levyt julkaistiin Beatlemanian kuumimpaan aikaan ja <i>A Hard Day’s Night</i> oli ensimmäinen albumi, joka sisälsi pelkästään yhtyeen omaa tuotantoa. Kaikki biisit <b>Lennon /McCartney</b>.</p><p>Tutuun tapaan <b>A testguy</b> ja kumppanit esittävät kappaleet niiden oikeassa albumijärjestyksessä, oikeista sävellajeista ja oikein sovituksin, pieteetillä ja rakkaudesta Beatlesiin.</p><p>The Beatlesia et enää voi kokea, mutta tämän voit. Lähde aikamatkalle vuoteen 1964 maailman merkittävimmän pop-yhtyeen musiikin saattelemana!</p>",
+          "sv": "<p>A testguy och bandet tar en tjuvstart till två Beatlesalbum från 1964, som 2024 fyller redan 60 år.</p><p>På bekant vis framför A testguy och bandet låtarna i den rätta albumordningen, i rätt tonart och med rätt arrangemang, pietetsfullt och av kärlek till The Beatles.</p><p>The Beatles kan du inte längre uppleva, men detta kan du. Gör en tidsresa till år 1964 till tonerna av världens största popgrupp!</p>",
+          "__typename": "LocalizedObject"
+        },
+        "shortDescription": {
+          "en": "A testguy and his ensemble will make an early start to celebrate the two Beatles albums released in 1964, which will be 60 years old in 2024.",
+          "fi": "A testguy bändeineen ottaa varaslähdön vuonna 1964 julkaistuille kahdelle Beatles-albumille, jotka täyttävät 2024 peräti 60 vuotta.",
+          "sv": "A testguy och bandet tar en tjuvstart till två Beatlesalbum från 1964, som 2024 fyller redan 60 år.",
+          "__typename": "LocalizedObject"
+        },
+        "endTime": null,
+        "startTime": "2023-11-16T16:00:00Z",
+        "publisher": "ahjo:u4804001050",
+        "provider": null,
+        "infoUrl": {
+          "en": "http://mocked-test-server.fi/en/events/event/B96FD02572D78FFF78980573312AC0BA/Jiri_Nikkinen_The_Beatles_Tribute_Band_A_Hard_Day_s_Night_Beatles_For_Sale_album_concert",
+          "fi": "http://mocked-test-server.fi/fi/tapahtumat/event/B96FD02572D78FFF78980573312AC0BA/Jiri_Nikkinen_the_Beatles_Tribute_Band_-_A_Hard_Day_s_Night_Beatles_For_Sale_-_albumikonsertti",
+          "sv": "http://mocked-test-server.fi/sv/evenemang/event/B96FD02572D78FFF78980573312AC0BA/Jiri_Nikkinen_The_Beatles_Tribute_Band_Albumkonserten_A_Hard_Day_s_Night_Beatles_For_Sale",
+          "__typename": "LocalizedObject"
+        },
+        "audience": [],
+        "locationExtraInfo": null,
+        "enrolmentStartTime": null,
+        "enrolmentEndTime": null,
+        "remainingAttendeeCapacity": null,
+        "__typename": "EventDetails"
+      }
+    ],
+    "__typename": "EventListResponse"
+  }
+}

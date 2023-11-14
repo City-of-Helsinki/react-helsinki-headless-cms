@@ -28,7 +28,12 @@ import { Link } from '../link/Link';
 import { useVenuesByIdsQuery } from '../../common/venuesService/__generated__';
 import { VenueType } from '../../common/venuesService/types';
 import { LanguageCodeEnum } from '../../common/headlessService/types';
-import { getVenueIds, isEventClosed, normalizeParamsValues } from './utils';
+import {
+  convertDateStringInPastToNow,
+  getVenueIds,
+  isEventClosed,
+  normalizeParamsValues,
+} from './utils';
 import { DEFAULT_LOCALE } from '../../constants';
 import { isPageType, isArticleType } from '../../common/headlessService/utils';
 
@@ -215,10 +220,17 @@ export function getEventCollectionCards({
 
 export type EventSearchCollectionProps = Omit<CollectionProps, 'cards'> & {
   collection: EventSearchCollectionType;
+  convertPastDatesToNow?: boolean;
 };
 
+/**
+ * EventSearchCollection uses an (LinkedEvents) URL to make a API query to fetch the related events.
+ *
+ * Use `convertPastDatesToNow = true` to fix an issue (between the CMS and the LinkedEvents) when old ended events are shown.
+ */
 export function EventSearchCollection({
   collection,
+  convertPastDatesToNow = true,
   ...delegatedProps
 }: EventSearchCollectionProps) {
   const eventsApolloClient = useEventsApolloClientFromConfig();
@@ -238,8 +250,12 @@ export function EventSearchCollection({
   );
   const params = Object.fromEntries(searchParams.entries());
   const normalizedParams = normalizeParamsValues(params);
+  const start = convertPastDatesToNow
+    ? convertDateStringInPastToNow(normalizedParams.start)
+    : normalizedParams.start;
   const variables = {
     ...normalizedParams,
+    start,
     pageSize,
     include: ['in_language', 'keywords', 'location', 'audience'],
   };
