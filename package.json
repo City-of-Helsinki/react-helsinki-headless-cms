@@ -137,7 +137,7 @@
     "hds-core": "^3.1.0",
     "hds-design-tokens": "^3.1.0",
     "html-entities": "^2.4.0",
-    "html-react-parser": "^4.2.1",
+    "html-react-parser": "^4.2.9",
     "isomorphic-dompurify": "^1.8.0",
     "jest-environment-jsdom": "^29.6.2",
     "lodash-es": "^4.17.21"
