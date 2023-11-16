@@ -138,7 +138,7 @@
     "html-entities": "^2.4.0",
     "html-react-parser": "^4.2.1",
     "isomorphic-dompurify": "^1.8.0",
-    "jest-environment-jsdom": "^29.6.2",
+    "jest-environment-jsdom": "^29.7.0",
     "lodash-es": "^4.17.21"
   },
   "msw": {
