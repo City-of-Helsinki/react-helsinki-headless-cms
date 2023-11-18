@@ -1,4 +1,5 @@
 import React from 'react';
+import { logoFi, logoSv } from 'hds-react';
 
 import { ModuleItemTypeEnum } from '../../common/headlessService/constants';
 import { LanguageCodeEnum } from '../../common/headlessService/types';
@@ -22,6 +23,26 @@ export const defaultConfig: Config = {
     './images/event_placeholder_D.jpg',
   ],
   organisationPrefixes: [],
+  // Here are the fallback translations for English/Finnish/Swedish:
+  fallbackTranslations: {
+    cityOfHelsinki: {
+      EN: 'City of Helsinki',
+      FI: 'Helsingin kaupunki',
+      SV: 'Helsingfors stad',
+    },
+    helsinki: {
+      EN: 'Helsinki',
+      FI: 'Helsinki',
+      SV: 'Helsingfors',
+    },
+    helsinkiLogo: {
+      EN: logoFi,
+      FI: logoFi,
+      SV: logoSv,
+    },
+  },
+  // Here are the current language's translations:
+  // FIXME: "copy" should be renamed for clarity
   copy: {
     breadcrumbNavigationLabel: 'Breadcrumb navigation',
     breadcrumbListLabel: 'breadcrumbs',

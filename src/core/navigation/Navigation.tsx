@@ -1,28 +1,24 @@
 import React from 'react';
-import {
-  Header,
-  LanguageOption,
-  Logo,
-  logoFi,
-  LogoProps,
-  logoSv,
-} from 'hds-react';
+import { groupBy } from 'lodash-es';
+import { Header, LanguageOption, Logo, LogoProps } from 'hds-react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
 
+import { Config } from '../configProvider/configContext';
 import styles from './Navigation.module.scss';
-import {
-  Language,
-  LanguageCodeEnum,
-  Menu,
-} from '../../common/headlessService/types';
+import { Language, Menu } from '../../common/headlessService/types';
 import { useConfig } from '../configProvider/useConfig';
-import { MAIN_CONTENT_ID } from '../../common/constants';
+import {
+  CITY_OF_HELSINKI_WEBSITE_URL,
+  MAIN_CONTENT_ID,
+  TOP_LEVEL_MENU_ITEM_PARENT_ID,
+} from '../../common/constants';
 
 type MenuItem = Omit<Menu['menuItems']['nodes'][0], '__typename'>;
 
 export type NavigationProps = {
   menu?: Menu;
+  universalBarMenu?: Menu;
   languages?: Language[];
   className?: string;
   userNavigation?: React.ReactNode;
@@ -33,27 +29,7 @@ export type NavigationProps = {
     allLanguages: Language[],
   ) => string;
   getIsItemActive?: (menuItem: MenuItem) => boolean;
-  /** @deprecated Not used anymore i.e. does nothing after HDS 3 was taken into use. */
-  variant?: 'default' | 'inline';
 };
-
-const LOGO_ARIA_LABELS = {
-  EN: 'City of Helsinki',
-  FI: 'Helsingin kaupunki',
-  SV: 'Helsingfors stad',
-} as const satisfies Record<LanguageCodeEnum, string>;
-
-const LOGO_LABELS = {
-  EN: 'Helsinki',
-  FI: 'Helsinki',
-  SV: 'Helsingfors',
-} as const satisfies Record<LanguageCodeEnum, string>;
-
-const LOGO_SOURCES = {
-  EN: logoFi,
-  FI: logoFi,
-  SV: logoSv,
-} as const satisfies Record<LanguageCodeEnum, string>;
 
 /**
  * Find language from language list by language code.
@@ -71,19 +47,69 @@ function findLanguage(
   );
 }
 
+interface MenuItemChildren {
+  [menuItemId: string]: MenuItem[];
+}
+
+type MenuLinkProps = {
+  menuItemChildren?: MenuItemChildren;
+  navigationItem: MenuItem;
+  getRoutedInternalHref: Config['utils']['getRoutedInternalHref'];
+  getIsItemActive: NavigationProps['getIsItemActive'];
+  A: Config['components']['A'];
+};
+
+/**
+ * Create a menu link element
+ * @param {MenuLinkProps} props - Properties, if menuItemChildren is undefined then the
+ *                                created element will not have dropdown links
+ * @return {React.JSX.Element} Header.Link element
+ */
+function createMenuLinkElement(props: MenuLinkProps) {
+  const {
+    menuItemChildren,
+    navigationItem,
+    getRoutedInternalHref,
+    getIsItemActive,
+    A,
+  } = props;
+  return (
+    <Header.Link
+      as={A}
+      id={navigationItem.id}
+      key={navigationItem.id}
+      title={navigationItem.title ?? undefined}
+      label={navigationItem.label ?? ''}
+      href={getRoutedInternalHref(navigationItem.path)}
+      active={getIsItemActive?.(navigationItem) ?? false}
+      dropdownLinks={
+        (menuItemChildren?.[navigationItem.id]?.length &&
+          menuItemChildren[navigationItem.id]?.map((childNavigationItem) =>
+            createMenuLinkElement({
+              ...props,
+              navigationItem: childNavigationItem,
+            }),
+          )) ||
+        undefined
+      }
+    />
+  );
+}
+
 export function Navigation({
   menu,
+  universalBarMenu,
   languages,
   className,
   userNavigation,
   onTitleClick,
   getPathnameForLanguage,
   getIsItemActive,
-  variant, // eslint-disable-line @typescript-eslint/no-unused-vars
 }: NavigationProps) {
   const {
     siteName,
     currentLanguageCode,
+    fallbackTranslations,
     copy: { menuToggleAriaLabel, skipToContentLabel },
     components: { A },
     utils: { getRoutedInternalHref },
@@ -119,8 +145,25 @@ export function Navigation({
 
   const logoProps: LogoProps = {
     size: 'large',
-    src: LOGO_SOURCES[currentLanguageCode],
-    alt: LOGO_LABELS[currentLanguageCode],
+    src: fallbackTranslations.helsinkiLogo[currentLanguageCode],
+    alt: fallbackTranslations.helsinki[currentLanguageCode],
+  };
+
+  const localizedCityOfHelsinki =
+    fallbackTranslations.cityOfHelsinki[currentLanguageCode];
+
+  const menuItemChildren: MenuItemChildren = groupBy(
+    menu?.menuItems?.nodes ?? [],
+    (menuItem) => menuItem.parentId ?? TOP_LEVEL_MENU_ITEM_PARENT_ID,
+  );
+
+  const sharedMenuLinkProps: Omit<
+    MenuLinkProps,
+    'navigationItem' | 'menuItemChildren'
+  > = {
+    getRoutedInternalHref,
+    getIsItemActive,
+    A,
   };
 
   return (
@@ -134,6 +177,16 @@ export function Navigation({
         skipTo={`#${MAIN_CONTENT_ID}`}
         label={skipToContentLabel}
       />
+      {universalBarMenu && (
+        <Header.UniversalBar
+          primaryLinkText={localizedCityOfHelsinki}
+          primaryLinkHref={CITY_OF_HELSINKI_WEBSITE_URL}
+        >
+          {universalBarMenu?.menuItems?.nodes?.map((navigationItem) =>
+            createMenuLinkElement({ ...sharedMenuLinkProps, navigationItem }),
+          )}
+        </Header.UniversalBar>
+      )}
       <Header.ActionBar
         titleHref="#"
         logoHref="#"
@@ -143,23 +196,20 @@ export function Navigation({
         onLogoClick={onTitleClick}
         frontPageLabel={siteName}
         logo={<Logo {...logoProps} />}
-        logoAriaLabel={LOGO_ARIA_LABELS[currentLanguageCode]}
+        logoAriaLabel={localizedCityOfHelsinki}
       >
         <Header.LanguageSelector />
         {userNavigation && userNavigation}
       </Header.ActionBar>
       <Header.NavigationMenu>
-        {menu?.menuItems?.nodes?.map((navigationItem) => (
-          <Header.Link
-            as={A}
-            id={navigationItem.id}
-            key={navigationItem.id}
-            title={navigationItem.title}
-            label={navigationItem.label}
-            href={getRoutedInternalHref(navigationItem.path)}
-            active={getIsItemActive?.(navigationItem) ?? false}
-          />
-        ))}
+        {menuItemChildren[TOP_LEVEL_MENU_ITEM_PARENT_ID]?.map(
+          (navigationItem) =>
+            createMenuLinkElement({
+              ...sharedMenuLinkProps,
+              menuItemChildren,
+              navigationItem,
+            }),
+        )}
       </Header.NavigationMenu>
     </Header>
   );

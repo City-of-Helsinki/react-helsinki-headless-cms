@@ -14,6 +14,7 @@ import { defaultConfig } from '../configProvider/defaultConfig';
 import { SearchPageContent as ArchiveSearchPageContent } from '../archiveSearchPageContent/ArchiveSearchPageContent';
 import navigationLanguages from '../navigation/__mocks__/navigationLanguages.mock';
 import navigationMenu from '../navigation/__mocks__/navigationMenu.mock';
+import navigationUniversalBarMenu from '../navigation/__mocks__/navigationUniversalBarMenu.mock';
 import { Navigation } from '../navigation/Navigation';
 import { ArchivePage as ArchiveSearchPage } from './ArchiveSearchPage';
 import articles from '../archiveSearchPageContent/__mocks__/articles.mock';
@@ -46,6 +47,7 @@ const navigation = (
   <Navigation
     languages={navigationLanguages}
     menu={navigationMenu}
+    universalBarMenu={navigationUniversalBarMenu}
     onTitleClick={() => {
       // eslint-disable-next-line no-console
       console.log('I should navigate');

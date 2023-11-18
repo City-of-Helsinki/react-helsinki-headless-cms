@@ -12340,6 +12340,7 @@ export type LanguagesQuery = {
 export type MenuItemFragment = {
   __typename?: 'MenuItem';
   id: string;
+  parentId?: string | null;
   order?: number | null;
   target?: string | null;
   title?: string | null;
@@ -14667,6 +14668,7 @@ export type MenuQuery = {
       nodes: Array<{
         __typename?: 'MenuItem';
         id: string;
+        parentId?: string | null;
         order?: number | null;
         target?: string | null;
         title?: string | null;
@@ -19567,6 +19569,7 @@ export const MenuPageFieldsFragmentDoc = gql`
 export const MenuItemFragmentDoc = gql`
   fragment MenuItem on MenuItem {
     id
+    parentId
     order
     target
     title
@@ -20009,7 +20012,7 @@ export const MenuDocument = gql`
   query menu($id: ID!) {
     menu(idType: NAME, id: $id) {
       id
-      menuItems {
+      menuItems(first: 100) {
         nodes {
           ...MenuItem
         }
