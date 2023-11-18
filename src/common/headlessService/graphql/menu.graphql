@@ -1,5 +1,6 @@
 fragment MenuItem on MenuItem {
   id
+  parentId
   order
   target
   title
@@ -29,7 +30,10 @@ fragment menuPageFields on Page {
 query menu($id: ID!) {
   menu(idType: NAME, id: $id) {
     id
-    menuItems {
+    # Using "first" to try to get all menu items without pagination, 100 was the maximum
+    # that could be received without pagination from production Headless CMS environment
+    # using "pages" query so hopefully the limit is not lower for menuItems
+    menuItems(first: 100) {
       nodes {
         ...MenuItem
       }
