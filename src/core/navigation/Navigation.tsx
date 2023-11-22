@@ -1,6 +1,6 @@
 import React from 'react';
 import { groupBy } from 'lodash-es';
-import { Header, LanguageOption, Logo, LogoProps } from 'hds-react';
+import { Header, LanguageOption, Logo } from 'hds-react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
 
@@ -9,10 +9,11 @@ import styles from './Navigation.module.scss';
 import { Language, Menu } from '../../common/headlessService/types';
 import { useConfig } from '../configProvider/useConfig';
 import {
-  CITY_OF_HELSINKI_WEBSITE_URL,
   MAIN_CONTENT_ID,
   TOP_LEVEL_MENU_ITEM_PARENT_ID,
 } from '../../common/constants';
+import { getTranslationWithFallback } from '../translation/getTranslationWithFallback';
+import { FallbackTranslationKey } from '../translation/types';
 
 type MenuItem = Omit<Menu['menuItems']['nodes'][0], '__typename'>;
 
@@ -106,14 +107,14 @@ export function Navigation({
   getPathnameForLanguage,
   getIsItemActive,
 }: NavigationProps) {
+  const config = useConfig();
   const {
     siteName,
     currentLanguageCode,
-    fallbackTranslations,
     copy: { menuToggleAriaLabel, skipToContentLabel },
     components: { A },
     utils: { getRoutedInternalHref },
-  } = useConfig();
+  } = config;
 
   // Language selection is required
   if (!languages || !languages.length) {
@@ -121,6 +122,8 @@ export function Navigation({
   }
 
   const currentLanguage = findLanguage(languages, currentLanguageCode);
+  const t = (field: FallbackTranslationKey) =>
+    getTranslationWithFallback(config, field, currentLanguageCode);
 
   // Error out if language props are inconsistent
   if (languages && !currentLanguage) {
@@ -142,15 +145,6 @@ export function Navigation({
       window.location.href = url;
     }
   };
-
-  const logoProps: LogoProps = {
-    size: 'large',
-    src: fallbackTranslations.helsinkiLogo[currentLanguageCode],
-    alt: fallbackTranslations.helsinki[currentLanguageCode],
-  };
-
-  const localizedCityOfHelsinki =
-    fallbackTranslations.cityOfHelsinki[currentLanguageCode];
 
   const menuItemChildren: MenuItemChildren = groupBy(
     menu?.menuItems?.nodes ?? [],
@@ -179,8 +173,8 @@ export function Navigation({
       />
       {universalBarMenu && (
         <Header.UniversalBar
-          primaryLinkText={localizedCityOfHelsinki}
-          primaryLinkHref={CITY_OF_HELSINKI_WEBSITE_URL}
+          primaryLinkText={t('headerUniversalBarPrimaryLinkText')}
+          primaryLinkHref={t('headerUniversalBarPrimaryLinkHref')}
         >
           {universalBarMenu?.menuItems?.nodes?.map((navigationItem) =>
             createMenuLinkElement({ ...sharedMenuLinkProps, navigationItem }),
@@ -195,8 +189,14 @@ export function Navigation({
         onTitleClick={onTitleClick}
         onLogoClick={onTitleClick}
         frontPageLabel={siteName}
-        logo={<Logo {...logoProps} />}
-        logoAriaLabel={localizedCityOfHelsinki}
+        logo={
+          <Logo
+            size="large"
+            src={t('headerActionBarLogoSrc')}
+            alt={t('headerActionBarLogoAlt')}
+          />
+        }
+        logoAriaLabel={t('headerActionBarLogoAriaLabel')}
       >
         <Header.LanguageSelector />
         {userNavigation && userNavigation}

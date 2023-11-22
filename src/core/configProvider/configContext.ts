@@ -11,18 +11,10 @@ import { EventType } from '../../common/eventsService/types';
 import { VenueType } from '../../common/venuesService/types';
 import type { CardProps } from '../card/Card';
 import { HtmlToReactProps } from '../../common/components/htmlToReact/HtmlToReact';
-
-export const FALLBACK_TRANSLATION_KEYS = [
-  'cityOfHelsinki',
-  'helsinki',
-  'helsinkiLogo',
-] as const;
-export type FallbackTranslationKey = (typeof FALLBACK_TRANSLATION_KEYS)[number];
-export type FallbackTranslation = Record<LanguageCodeEnum, string>;
-export type FallbackTranslations = Record<
-  FallbackTranslationKey,
-  FallbackTranslation
->;
+import {
+  FallbackTranslations,
+  OptionalTranslationsWithFallbacks,
+} from '../translation/types';
 
 export type Config = {
   siteName: string;
@@ -53,7 +45,7 @@ export type Config = {
       noResultsText: string;
       clearAll: string;
     };
-  };
+  } & OptionalTranslationsWithFallbacks;
   components: {
     A: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => JSX.Element;
     Img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => JSX.Element;
