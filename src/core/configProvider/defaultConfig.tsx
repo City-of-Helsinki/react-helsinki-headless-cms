@@ -1,5 +1,4 @@
 import React from 'react';
-import { logoFi, logoSv } from 'hds-react';
 
 import { ModuleItemTypeEnum } from '../../common/headlessService/constants';
 import { LanguageCodeEnum } from '../../common/headlessService/types';
@@ -10,6 +9,7 @@ import {
   getLocationCardProps,
 } from '../pageContent/utils';
 import { Config } from './configContext';
+import { FALLBACK_TRANSLATIONS } from '../translation/constants';
 
 export const defaultConfig: Config = {
   siteName: 'Test site',
@@ -24,23 +24,7 @@ export const defaultConfig: Config = {
   ],
   organisationPrefixes: [],
   // Here are the fallback translations for English/Finnish/Swedish:
-  fallbackTranslations: {
-    cityOfHelsinki: {
-      EN: 'City of Helsinki',
-      FI: 'Helsingin kaupunki',
-      SV: 'Helsingfors stad',
-    },
-    helsinki: {
-      EN: 'Helsinki',
-      FI: 'Helsinki',
-      SV: 'Helsingfors',
-    },
-    helsinkiLogo: {
-      EN: logoFi,
-      FI: logoFi,
-      SV: logoSv,
-    },
-  },
+  fallbackTranslations: FALLBACK_TRANSLATIONS,
   // Here are the current language's translations:
   // FIXME: "copy" should be renamed for clarity
   copy: {
