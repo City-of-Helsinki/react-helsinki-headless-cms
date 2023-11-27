@@ -87,7 +87,7 @@ export const defaultContentModules = (
           backgroundColor={module.backgroundColor}
           hasLink
           url={module.link.url}
-          imageUrl={module.image.medium}
+          imageUrl={module.image.medium_large}
           imagePosition={
             module.alignment === 'right' ? 'image-right' : 'image-left'
           }
