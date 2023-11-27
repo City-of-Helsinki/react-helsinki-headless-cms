@@ -19,7 +19,7 @@ type MenuItem = Omit<Menu['menuItems']['nodes'][0], '__typename'>;
 
 export type NavigationProps = {
   menu?: Menu;
-  universalBarMenu?: Menu;
+  universalBarMenu?: Menu | null;
   languages?: Language[];
   className?: string;
   userNavigation?: React.ReactNode;
