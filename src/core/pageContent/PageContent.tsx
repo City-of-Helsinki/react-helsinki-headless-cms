@@ -89,7 +89,9 @@ export const defaultContentModules = (
           url={module.link.url}
           imageUrl={module.image.medium_large}
           imagePosition={
-            module.alignment === 'right' ? 'image-right' : 'image-left'
+            module.alignment?.indexOf('left') === -1
+              ? 'image-right'
+              : 'image-left'
           }
           isDelimited={module.alignment.startsWith('delimited')}
         />,
