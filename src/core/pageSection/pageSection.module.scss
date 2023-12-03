@@ -7,7 +7,7 @@
   & .korosTop,
   & .korosBottom {
     position: absolute;
-    transform: scaleY(-1) translateZ(0);
+    margin-bottom: -1px;
   }
 
   .korosTop {
