@@ -228,7 +228,7 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    position: unset;
+    position: relative;
 
     @include respond_below(s) {
       background-color: var(--color-white) !important;
@@ -245,7 +245,7 @@
 
   .content {
     @include respond_above(s) {
-      min-height: var(--height-image-desktop);
+      height: 100%;
     }
   }
 
