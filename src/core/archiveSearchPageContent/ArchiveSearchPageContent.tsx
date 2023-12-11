@@ -270,7 +270,7 @@ export function SearchPageContent(props: SearchPageContentProps) {
                       <LoadingSpinner multicolor />
                     </div>
                   )}
-                  {hasMore && (
+                  {!isLoading && hasMore && (
                     <div className={styles.loadMoreButton}>
                       <Button
                         variant="secondary"
