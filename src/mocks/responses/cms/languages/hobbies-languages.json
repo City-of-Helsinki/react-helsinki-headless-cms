@@ -1,0 +1,31 @@
+{
+  "languages": [
+    {
+      "code": "FI",
+      "homeUrl": "https://harrastus.hkih.stage.geniem.io/fi/",
+      "id": "TGFuZ3VhZ2U6Zmk=",
+      "locale": "fi",
+      "name": "Suomi",
+      "slug": "fi",
+      "__typename": "Language"
+    },
+    {
+      "code": "EN",
+      "homeUrl": "https://harrastus.hkih.stage.geniem.io/en/",
+      "id": "TGFuZ3VhZ2U6ZW4=",
+      "locale": "en_US",
+      "name": "English",
+      "slug": "en",
+      "__typename": "Language"
+    },
+    {
+      "code": "SV",
+      "homeUrl": "https://harrastus.hkih.stage.geniem.io/sv/",
+      "id": "TGFuZ3VhZ2U6c3Y=",
+      "locale": "sv_SE",
+      "name": "Svenska",
+      "slug": "sv",
+      "__typename": "Language"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "notification": {
+    "content": "This is a test notification content",
+    "endDate": "",
+    "level": "info",
+    "linkText": "Read more",
+    "linkUrl": "https://hel.fi",
+    "startDate": "",
+    "title": "Test notification"
+  }
+}
