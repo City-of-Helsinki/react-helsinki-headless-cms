@@ -1,0 +1,29 @@
+{
+  "menu": {
+    "name": "Hobbies Helsinki Header FI",
+    "menuItems": {
+      "nodes": [
+        {
+          "parentId": null,
+          "id": "cG9zdDo5MA==",
+          "target": null,
+          "title": null,
+          "order": 1,
+          "path": "/haku",
+          "label": "Haku",
+          "connectedNode": null
+        },
+        {
+          "parentId": null,
+          "id": "cG9zdDoyMTA=",
+          "target": null,
+          "title": null,
+          "order": 2,
+          "path": "/artikkelit",
+          "label": "Ajankohtaista",
+          "connectedNode": null
+        }
+      ]
+    }
+  }
+}
