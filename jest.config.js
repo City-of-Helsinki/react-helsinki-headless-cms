@@ -4,7 +4,6 @@
 module.exports = {
   // Automatically clear mock calls and instances between every test
   clearMocks: true,
-
   // Indicates which provider should be used to instrument code for coverage
   coverageProvider: 'v8',
 
@@ -12,7 +11,7 @@ module.exports = {
   moduleNameMapper: {
     // return a mock css module
     '\\.(css|less|scss|sss|styl)$': 'identity-obj-proxy',
-     "^lodash-es$": "lodash"
+    '^lodash-es$': 'lodash',
   },
 
   setupFilesAfterEnv: ['<rootDir>/jest-setup.ts'],
