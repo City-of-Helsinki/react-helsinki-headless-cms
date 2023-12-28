@@ -162,6 +162,13 @@
       }
     }
 
+    .hdsButtonOverrides {
+      background-color: var(--hcrc-color-archive-search-btn);
+      &:hover {
+        background-color: var(--hcrc-color-archive-search-btn-hover);
+      }
+    }
+
     .searchResultsContainer {
       display: flex;
       flex-direction: column;
