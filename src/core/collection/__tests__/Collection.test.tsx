@@ -65,6 +65,19 @@ describe('event selection module', () => {
     // so the amount of the links should be the amounts of events.
     expect(screen.getAllByRole('link').length).toBe(activeEvents.length);
   });
+
+  it('renders an empty collection when no event ids was given', async () => {
+    const collection = { events: [] } as EventSelectionCollectionType;
+    const { container } = render(
+      <EventSelectionCollection collection={collection} type="carousel" />,
+      undefined,
+      { ...getApolloConfig(CmsEndpoint.events) },
+    );
+    await waitFor(() => {
+      expect(screen.queryByText(/Page is loading/)).not.toBeInTheDocument();
+    });
+    expect(container.getElementsByTagName('ul')[0].children).toHaveLength(0);
+  });
 });
 
 describe('event search module', () => {

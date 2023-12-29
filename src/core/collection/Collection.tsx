@@ -313,6 +313,7 @@ export function EventSelectionCollection({
     client: eventsApolloClient !== 'disabled' && eventsApolloClient,
     ssr: false,
     notifyOnNetworkStatusChange: true,
+    skip: collection.events.length === 0,
     variables: {
       ids: collection.events,
       pageSize,
