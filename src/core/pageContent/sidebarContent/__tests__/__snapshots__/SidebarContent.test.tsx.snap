@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SidebarContent containing link lists renders a link list when a valid item is included in the links 1`] = `
+<div>
+  <div
+    class="listContainer"
+  >
+    <h2>
+      Renders links into a link list
+    </h2>
+    <ul
+      class="list spacing-s"
+    >
+      <li>
+        <a
+          aria-label="link1"
+          class="link linkM disableVisitedStyles link link"
+          href="#"
+        >
+          <span
+            class="content"
+          >
+            link1
+          </span>
+          <span
+            aria-hidden="true"
+            class="iconRight verticalAlignSmallOrMediumIcon"
+          >
+            <svg
+              aria-hidden="true"
+              aria-label="arrow-right"
+              class="Icon-module_icon__1Jtzj icon_hds-icon__1YqNC Icon-module_s__2WGWe icon_hds-icon--size-s__2Lkik"
+              role="img"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M14 5.5L12.5 7L16.5 11H4V13H16.5L12.5 17L14 18.5L20.5 12L14 5.5Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+              />
+            </svg>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a
+          aria-label="link2. Opens in a new tab. Opens a different website."
+          class="link linkM disableVisitedStyles link link"
+          href="https://www.hel.fi"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <span
+            class="content"
+          >
+            link2
+          </span>
+          <svg
+            aria-hidden="true"
+            aria-label="link-external"
+            class="Icon-module_icon__1Jtzj icon_hds-icon__1YqNC Icon-module_s__2WGWe icon_hds-icon--size-s__2Lkik icon verticalAlignSmallOrMediumIcon"
+            role="img"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M5 3V19H21V21H3V3H5ZM21 3V12H19V6.413L9.91421 15.5L8.5 14.0858L17.585 5H12V3H21Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+`;

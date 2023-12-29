@@ -15,3 +15,9 @@ export type HeroProps = {
   actionText?: string;
   isPageType?: boolean;
 };
+
+export type LinkItem = {
+  target?: string | null;
+  title: string;
+  url: string;
+};
