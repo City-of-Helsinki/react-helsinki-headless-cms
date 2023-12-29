@@ -35,7 +35,7 @@ describe('event selection module', () => {
 
     render(
       <EventSelectionCollection collection={collection} type="carousel" />,
-      null,
+      undefined,
       { ...getApolloConfig(CmsEndpoint.events) },
     );
 
@@ -143,7 +143,7 @@ describe('event search module', () => {
 
       render(
         <EventSearchCollection collection={collection} type="carousel" />,
-        null,
+        undefined,
         { ...getApolloConfig(CmsEndpoint.events) },
       );
 
