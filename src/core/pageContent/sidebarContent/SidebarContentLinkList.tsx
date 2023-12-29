@@ -8,12 +8,7 @@ import { LayoutLinkList } from '../../../common/headlessService/types';
 import { useConfig } from '../../configProvider/useConfig';
 import { Link } from '../../link/Link';
 import styles from './sidebarContentLinkList.module.scss';
-
-type LinkItem = {
-  target?: string | null;
-  title?: string | null;
-  url?: string | null;
-};
+import { isLinkItem } from '../../../common/headlessService/utils';
 
 type SidebarContentLinkListProps = Omit<LayoutLinkList, '__typename'>;
 
@@ -38,7 +33,7 @@ export default function SidebarContentLinkList({
       <List
         variant="spacing-s"
         items={links
-          ?.filter((item): item is LinkItem => Boolean(item))
+          ?.filter((item) => isLinkItem(item))
           .map((link) => (
             <Link
               key={link.title}

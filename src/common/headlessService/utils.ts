@@ -33,6 +33,7 @@ import {
 } from './types';
 import { EventType } from '../eventsService/types';
 import { VenueType } from '../venuesService/types';
+import { LinkItem } from '../../core/pageContent/types';
 
 export function isLayoutContent(
   module: PageModule | PageSidebarModule,
@@ -235,6 +236,15 @@ export function isLanguage(
   language: Language | null | undefined,
 ): language is Language {
   return !!(<Language>language);
+}
+
+export function isLinkItem(item: unknown): item is LinkItem {
+  return (
+    typeof item === 'object' &&
+    'url' in item &&
+    'title' in item &&
+    Boolean(item.url && item.title)
+  );
 }
 
 export function filterPagesAndArticles(items: CollectionItemType[]) {
