@@ -9,14 +9,31 @@ fragment MenuItem on MenuItem {
   connectedNode {
     node {
       ... on Page {
-        ...menuPageFields
+        ...menuPageFields @skip(if: $menuIdentifiersOnly)
+        ...menuPageIdentifiers @include(if: $menuIdentifiersOnly)
         children {
           nodes {
-            ...menuPageFields
+            ...menuPageFields @skip(if: $menuIdentifiersOnly)
+            ...menuPageIdentifiers @include(if: $menuIdentifiersOnly)
           }
         }
       }
     }
+  }
+}
+
+fragment menuPageIdentifierFields on Page {
+  id
+  uri
+  slug
+  parentId
+  title
+}
+
+fragment menuPageIdentifiers on Page {
+  ...menuPageIdentifierFields
+  translations {
+    ...menuPageIdentifierFields
   }
 }
 
@@ -27,7 +44,7 @@ fragment menuPageFields on Page {
   }
 }
 
-query menu($id: ID!) {
+query menu($id: ID!, $menuIdentifiersOnly: Boolean = false) {
   menu(idType: NAME, id: $id) {
     id
     # Using "first" to try to get all menu items without pagination, 100 was the maximum
