@@ -7,6 +7,7 @@
   "types": "index.d.ts",
   "scripts": {
     "dev": "yarn storybook",
+    "typecheck": "tsc --project ./tsconfig.json --noEmit",
     "lint": "yarn eslint \"src/**/*.{ts,tsx}\" && yarn prettier ./src -c",
     "lint-fix": "yarn eslint \"src/**/*.{ts,tsx}\" --fix && yarn prettier ./src -w",
     "test": "jest",
