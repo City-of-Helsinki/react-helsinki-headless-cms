@@ -2,6 +2,7 @@
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
+import { IconEnvelope, IconPhone } from 'hds-react';
 
 import LinkBase from './LinkBase';
 import { useConfig } from '../configProvider/useConfig';
@@ -32,6 +33,7 @@ export function Link({
   openInNewTab,
   className,
   size = 'M',
+  iconRight,
   ...delegatedProps
 }: LinkProps) {
   const {
@@ -40,7 +42,10 @@ export function Link({
     copy: { openInExternalDomainAriaLabel, openInNewTabAriaLabel },
   } = useConfig();
 
-  const isExternal = getIsHrefExternal(href);
+  const isEmail = href?.startsWith('mailto:') || undefined;
+  const isPhone = href?.startsWith('tel:') || undefined;
+  const isExternal = getIsHrefExternal(href) && !isEmail && !isPhone;
+  const iconSize = size === 'S' ? 'xs' : 's';
 
   const linkComponent = (
     <LinkBase
@@ -53,6 +58,11 @@ export function Link({
       className={classNames(styles.link, className)}
       openInExternalDomainAriaLabel={openInExternalDomainAriaLabel}
       openInNewTabAriaLabel={openInNewTabAriaLabel}
+      iconRight={
+        iconRight ??
+        (isEmail && <IconEnvelope size={iconSize} aria-hidden />) ??
+        (isPhone && <IconPhone size={iconSize} aria-hidden />)
+      }
       disableVisitedStyles
     >
       {children ?? ''}

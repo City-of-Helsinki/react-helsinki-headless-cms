@@ -89,6 +89,6 @@
 }
 
 .hds-link--large .hds-icon-right {
-  margin-left: 16px;
+  margin-left: 0; /* 16px i.e. .hds-icon-left's margin-right value would be too much */
   vertical-align: middle;
 }
