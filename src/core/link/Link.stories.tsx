@@ -32,6 +32,12 @@ const Template: StoryFn<typeof Link> = (args) => (
       <Link {...args} aria-label="Internal link default" href="/internal">
         Internal link default
       </Link>
+      <Link {...args} aria-label="Email link" href="mailto:test@example.org">
+        test@example.org
+      </Link>
+      <Link {...args} aria-label="Phone link" href="tel:+358 12 345 6789">
+        +358 12 345 6789
+      </Link>
       <SecondaryLink
         {...args}
         aria-label="External secondary"
