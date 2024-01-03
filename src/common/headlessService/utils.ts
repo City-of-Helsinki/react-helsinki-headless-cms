@@ -193,25 +193,25 @@ export function isLayoutLinkList(
 export function isArticleType(item: CollectionItemType): item is ArticleType {
   return (
     // eslint-disable-next-line no-underscore-dangle
-    item.__typename === 'Post'
+    item?.__typename === 'Post'
   );
 }
 
 export function isPageType(item: CollectionItemType): item is PageType {
   return (
     // eslint-disable-next-line no-underscore-dangle
-    item.__typename === 'Page'
+    item?.__typename === 'Page'
   );
 }
 
 export function isEventType(item: CollectionItemType): item is EventType {
   // eslint-disable-next-line no-underscore-dangle
-  return item.__typename === 'EventDetails';
+  return item?.__typename === 'EventDetails';
 }
 
 export function isVenueType(item: CollectionItemType): item is VenueType {
   // eslint-disable-next-line no-underscore-dangle
-  return item.__typename === 'Venue';
+  return item?.__typename === 'Venue';
 }
 
 export function isEventSelectionCollection(
@@ -241,6 +241,7 @@ export function isLanguage(
 export function isLinkItem(item: unknown): item is LinkItem {
   return (
     typeof item === 'object' &&
+    item !== null &&
     'url' in item &&
     'title' in item &&
     Boolean(item.url && item.title)

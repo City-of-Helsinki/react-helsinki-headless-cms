@@ -21,8 +21,9 @@ describe('apollo navigation component', () => {
       <Navigation
         onTitleClick={() => {}}
         menuName="Hobbies Helsinki Header FI"
+        getPathnameForLanguage={() => '#'}
       />,
-      null,
+      undefined,
       {
         ...getApolloConfig(CmsEndpoint.hobbies),
       },

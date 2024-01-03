@@ -5,7 +5,7 @@ import { Header, LanguageOption, Logo } from 'hds-react';
 import classNames from 'classnames';
 
 import { Config } from '../configProvider/configContext';
-import styles from './Navigation.module.scss';
+import styles from './navigation.module.scss';
 import { Language, Menu } from '../../common/headlessService/types';
 import { useConfig } from '../configProvider/useConfig';
 import {
@@ -15,7 +15,10 @@ import {
 import { getTranslationWithFallback } from '../translation/getTranslationWithFallback';
 import { FallbackTranslationKey } from '../translation/types';
 
-type MenuItem = Omit<Menu['menuItems']['nodes'][0], '__typename'>;
+type MenuItem = Omit<
+  NonNullable<NonNullable<Menu>['menuItems']>['nodes'][0],
+  '__typename'
+>;
 
 export type NavigationProps = {
   menu?: Menu;
@@ -132,15 +135,27 @@ export function Navigation({
     );
   }
 
-  const languageOptions: LanguageOption[] = languages.map((language) => ({
-    label: language.name,
-    value: language.code?.toLowerCase(),
-    isPrimary: true,
-  }));
+  const languageOptions = languages.reduce(
+    (result: LanguageOption[], language) =>
+      language?.name && language?.code
+        ? [
+            ...result,
+            {
+              label: language.name,
+              value: language.code?.toLowerCase(),
+              isPrimary: true,
+            },
+          ]
+        : result,
+    [],
+  );
 
   const onDidChangeLanguage = (newLanguageCode: string) => {
     const newLanguage = findLanguage(languages, newLanguageCode);
-    const url = getPathnameForLanguage(newLanguage, currentLanguage, languages);
+    const url =
+      newLanguage && currentLanguage
+        ? getPathnameForLanguage(newLanguage, currentLanguage, languages)
+        : undefined;
     if (url && window) {
       window.location.href = url;
     }
@@ -163,7 +178,7 @@ export function Navigation({
   return (
     <Header
       onDidChangeLanguage={onDidChangeLanguage}
-      defaultLanguage={currentLanguage.code.toLowerCase()}
+      defaultLanguage={currentLanguage?.code?.toLowerCase()}
       languages={languageOptions}
       className={classNames(className, styles.maxWidthXl)}
     >

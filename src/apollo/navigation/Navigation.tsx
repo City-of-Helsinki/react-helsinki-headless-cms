@@ -6,13 +6,14 @@ import {
   Navigation as NavigationWithoutData,
   NavigationProps as NavigationPropsWithoutData,
 } from '../../core/navigation/Navigation';
+import { LanguageFragment } from '../../common/headlessService/__generated__';
 
 export type NavigationProps = Omit<
   NavigationPropsWithoutData,
   'menu' | 'languages' | 'getPathnameForLanguage'
 > & {
   menuName: string;
-  getPathnameForLanguage?: NavigationPropsWithoutData['getPathnameForLanguage'];
+  getPathnameForLanguage: NavigationPropsWithoutData['getPathnameForLanguage'];
 };
 
 export function Navigation({
@@ -26,10 +27,14 @@ export function Navigation({
       id: menuName,
     },
   });
+  const languages =
+    (languagesQuery.data?.languages?.filter(
+      (l) => !!l,
+    ) as LanguageFragment[]) ?? undefined;
   return (
     <NavigationWithoutData
       {...delegatedProps}
-      languages={languagesQuery.data?.languages}
+      languages={languages}
       menu={menuQuery.data?.menu}
       getPathnameForLanguage={getPathnameForLanguage}
     />
