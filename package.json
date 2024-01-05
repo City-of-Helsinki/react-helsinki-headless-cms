@@ -106,7 +106,7 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "git-rev-sync": "^3.0.2",
     "graphql": "^16.8.0",
-    "hds-react": "^3.2.0",
+    "hds-react": "^3.3.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.6.2",
     "jest-axe": "^8.0.0",
@@ -135,8 +135,8 @@
     "webpack": "^5.70.0"
   },
   "dependencies": {
-    "hds-core": "^3.2.0",
-    "hds-design-tokens": "^3.2.0",
+    "hds-core": "^3.3.0",
+    "hds-design-tokens": "^3.3.0",
     "html-entities": "^2.4.0",
     "html-react-parser": "^4.2.9",
     "isomorphic-dompurify": "^1.8.0",
