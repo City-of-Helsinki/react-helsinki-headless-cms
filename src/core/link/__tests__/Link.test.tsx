@@ -45,6 +45,26 @@ test('renders external link without external icon', () => {
   expect(screen.getByRole('link').lastChild.nodeName).not.toEqual('svg');
 });
 
+test('renders email link with envelope icon', () => {
+  render(<Link href="mailto:test@example.org">test@example.org</Link>);
+  const linkLastChild = screen.getByRole('link').lastChild;
+  expect(linkLastChild.nodeName).toEqual('SPAN');
+  const span = linkLastChild as HTMLSpanElement;
+  expect(span.lastChild.nodeName).toEqual('svg');
+  const svg = span.lastChild as SVGSVGElement;
+  expect(svg).toHaveAttribute('aria-label', 'envelope');
+});
+
+test('renders phone link with phone icon', () => {
+  render(<Link href="tel:+358 12 345 789">+358 12 345 789</Link>);
+  const linkLastChild = screen.getByRole('link').lastChild;
+  expect(linkLastChild.nodeName).toEqual('SPAN');
+  const span = linkLastChild as HTMLSpanElement;
+  expect(span.lastChild.nodeName).toEqual('svg');
+  const svg = span.lastChild as SVGSVGElement;
+  expect(svg).toHaveAttribute('aria-label', 'phone');
+});
+
 test('renders external link which opens in a new tab by default', () => {
   render(<Link href="https://www.google.com/">Search from google</Link>);
   const link = screen.getByRole('link', {
