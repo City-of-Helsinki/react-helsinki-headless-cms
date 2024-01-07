@@ -26,6 +26,7 @@ export function PageMainContent({
 }: PageMainContentProps) {
   const {
     htmlSanitizer: { allowedUnsafeTags, trustedOrigins },
+    utils: { redirectToArticlesSearch },
   } = useConfig();
 
   return (
@@ -43,7 +44,17 @@ export function PageMainContent({
             </div>
           )}
           {categories?.edges?.map((category) => (
-            <Tag className={styles.tag} key={category.node?.id}>
+            <Tag
+              className={styles.tag}
+              key={category.node?.id}
+              onClick={
+                redirectToArticlesSearch
+                  ? () => {
+                      redirectToArticlesSearch(category.node?.id);
+                    }
+                  : null
+              }
+            >
               {category.node?.name}
             </Tag>
           ))}
