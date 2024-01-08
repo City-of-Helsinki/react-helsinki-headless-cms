@@ -241,7 +241,7 @@ export function SearchPageContent(props: SearchPageContentProps) {
                 searchText={searchText}
               />
             </div>
-            {!isLoading && tags && (
+            {tags && (
               <SearchTags
                 tags={tags}
                 hasClearSearch={Boolean(searchText) && tags.length > 0}
