@@ -120,6 +120,7 @@ export interface SearchPageContentProps {
   className?: string;
   tags?: SearchTag[];
   currentTags?: SearchTag[];
+  withQuery?: boolean;
   currentText?: string;
   largeFirstItem?: boolean;
   onSearch?: (freeSearch: string, tags: SearchTag[]) => void;
@@ -172,6 +173,7 @@ export function SearchPageContent(props: SearchPageContentProps) {
     tags,
     currentTags,
     currentText,
+    withQuery,
     onSearch,
     onLoadMore,
     page,
@@ -186,11 +188,13 @@ export function SearchPageContent(props: SearchPageContentProps) {
   const [searchTags, setSearchTags] = useState<SearchTag[]>([]);
 
   useEffect(() => {
-    if (currentTags.length > 0) {
-      setSearchTags(currentTags);
+    if (withQuery) {
+      if (currentTags.length > 0) {
+        setSearchTags(currentTags);
+      }
+      setSearchText(currentText);
     }
-    setSearchText(currentText);
-  }, [currentTags, currentText]);
+  }, [currentTags, currentText, withQuery]);
 
   const handleSearch = (e: React.FormEvent): void => {
     e.preventDefault();
