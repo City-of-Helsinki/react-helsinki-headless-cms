@@ -202,15 +202,19 @@ export function SearchPageContent(props: SearchPageContentProps) {
   };
 
   const handleTagClick = (tag: SearchTag) => (): void => {
-    let selectedTags = [...searchTags];
-    if (selectedTags.includes(tag)) {
-      selectedTags = selectedTags.filter((selectedTag) => selectedTag !== tag);
-    } else {
-      selectedTags = [...selectedTags, tag];
-    }
+    if (!isLoading) {
+      let selectedTags = [...searchTags];
+      if (selectedTags.includes(tag)) {
+        selectedTags = selectedTags.filter(
+          (selectedTag) => selectedTag !== tag,
+        );
+      } else {
+        selectedTags = [...selectedTags, tag];
+      }
 
-    setSearchTags([...selectedTags]);
-    onSearch(searchText, selectedTags);
+      setSearchTags([...selectedTags]);
+      onSearch(searchText, selectedTags);
+    }
   };
 
   const clearTags = (): void => {
