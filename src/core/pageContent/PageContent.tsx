@@ -137,7 +137,7 @@ export const defaultContent = (
       date={(page as ArticleType)?.date}
       categories={(page as ArticleType)?.categories}
       contentModules={defaultContentModules(page)}
-      onArticlesSearch
+      onArticlesSearch={onArticlesSearch}
     />
   );
 };
