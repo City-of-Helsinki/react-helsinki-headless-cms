@@ -123,7 +123,7 @@ export const defaultContentModules = (
 
 export const defaultContent = (
   page: PageType | ArticleType,
-  onArticlesSearch: (tag: string) => void,
+  onArticlesSearch?: (tag: string) => void,
 ) => {
   let hideTitle = false;
   if (isPageType(page)) {
