@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
 import {
@@ -120,6 +120,7 @@ export interface SearchPageContentProps {
   className?: string;
   tags?: SearchTag[];
   currentTags?: SearchTag[];
+  currentText?: string;
   largeFirstItem?: boolean;
   onSearch?: (freeSearch: string, tags: SearchTag[]) => void;
   onLoadMore?: () => void;
@@ -170,6 +171,7 @@ export function SearchPageContent(props: SearchPageContentProps) {
     noResults,
     tags,
     currentTags,
+    currentText,
     onSearch,
     onLoadMore,
     page,
@@ -181,7 +183,14 @@ export function SearchPageContent(props: SearchPageContentProps) {
   } = useConfig();
 
   const [searchText, setSearchText] = useState<string>('');
-  const [searchTags, setSearchTags] = useState<SearchTag[]>(currentTags);
+  const [searchTags, setSearchTags] = useState<SearchTag[]>([]);
+
+  useEffect(() => {
+    if (currentTags.length > 0) {
+      setSearchTags(currentTags);
+    }
+    setSearchText(currentText);
+  }, [currentTags, currentText]);
 
   const handleSearch = (e: React.FormEvent): void => {
     e.preventDefault();
