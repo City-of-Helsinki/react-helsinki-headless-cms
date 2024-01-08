@@ -119,6 +119,7 @@ export interface SearchPageContentProps {
   noResults?: boolean;
   className?: string;
   tags?: SearchTag[];
+  currentTags?: SearchTag[];
   largeFirstItem?: boolean;
   onSearch?: (freeSearch: string, tags: SearchTag[]) => void;
   onLoadMore?: () => void;
@@ -168,6 +169,7 @@ export function SearchPageContent(props: SearchPageContentProps) {
     isLoading,
     noResults,
     tags,
+    currentTags,
     onSearch,
     onLoadMore,
     page,
@@ -179,7 +181,7 @@ export function SearchPageContent(props: SearchPageContentProps) {
   } = useConfig();
 
   const [searchText, setSearchText] = useState<string>('');
-  const [searchTags, setSearchTags] = useState<SearchTag[]>([]);
+  const [searchTags, setSearchTags] = useState<SearchTag[]>(currentTags);
 
   const handleSearch = (e: React.FormEvent): void => {
     e.preventDefault();
@@ -191,15 +193,15 @@ export function SearchPageContent(props: SearchPageContentProps) {
   };
 
   const handleTagClick = (tag: SearchTag) => (): void => {
-    let currentTags = [...searchTags];
-    if (currentTags.includes(tag)) {
-      currentTags = currentTags.filter((selectedTag) => selectedTag !== tag);
+    let selectedTags = [...searchTags];
+    if (selectedTags.includes(tag)) {
+      selectedTags = selectedTags.filter((selectedTag) => selectedTag !== tag);
     } else {
-      currentTags = [...currentTags, tag];
+      selectedTags = [...selectedTags, tag];
     }
 
-    setSearchTags([...currentTags]);
-    onSearch(searchText, currentTags);
+    setSearchTags([...selectedTags]);
+    onSearch(searchText, selectedTags);
   };
 
   const clearTags = (): void => {
@@ -230,7 +232,7 @@ export function SearchPageContent(props: SearchPageContentProps) {
                 searchText={searchText}
               />
             </div>
-            {tags && (
+            {!isLoading && tags && (
               <SearchTags
                 tags={tags}
                 hasClearSearch={Boolean(searchText) && tags.length > 0}
