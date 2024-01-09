@@ -58,6 +58,7 @@ export type PageContentProps = {
   sidebarContentProps?: Partial<typeof SidebarContent>;
   PageContentLayoutComponent?: typeof PageContentLayout;
   className?: string;
+  onArticlesSearch?: (tag: string) => void;
   // All other props
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [x: string]: any;
@@ -120,7 +121,10 @@ export const defaultContentModules = (
   return contentModules;
 };
 
-export const defaultContent = (page: PageType | ArticleType) => {
+export const defaultContent = (
+  page: PageType | ArticleType,
+  onArticlesSearch?: (tag: string) => void,
+) => {
   let hideTitle = false;
   if (isPageType(page)) {
     hideTitle = Boolean(page?.hero?.title);
@@ -133,6 +137,7 @@ export const defaultContent = (page: PageType | ArticleType) => {
       date={(page as ArticleType)?.date}
       categories={(page as ArticleType)?.categories}
       contentModules={defaultContentModules(page)}
+      onArticlesSearch={onArticlesSearch}
     />
   );
 };
@@ -209,6 +214,7 @@ export function PageContent(props: PageContentProps) {
     content,
     shareLinks,
     className,
+    onArticlesSearch,
     ...pageContentLayoutProps
   } = props;
 
@@ -261,7 +267,7 @@ export function PageContent(props: PageContentProps) {
         content={
           typeof content === 'function'
             ? content(page)
-            : content ?? defaultContent(page)
+            : content ?? defaultContent(page, onArticlesSearch)
         }
         shareLinks={shareLinks}
         collections={

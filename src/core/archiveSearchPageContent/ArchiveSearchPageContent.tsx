@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
 import {
@@ -119,6 +119,9 @@ export interface SearchPageContentProps {
   noResults?: boolean;
   className?: string;
   tags?: SearchTag[];
+  currentTags?: SearchTag[];
+  withQuery?: boolean;
+  currentText?: string;
   largeFirstItem?: boolean;
   onSearch?: (freeSearch: string, tags: SearchTag[]) => void;
   onLoadMore?: () => void;
@@ -168,6 +171,9 @@ export function SearchPageContent(props: SearchPageContentProps) {
     isLoading,
     noResults,
     tags,
+    currentTags,
+    currentText,
+    withQuery,
     onSearch,
     onLoadMore,
     page,
@@ -181,6 +187,15 @@ export function SearchPageContent(props: SearchPageContentProps) {
   const [searchText, setSearchText] = useState<string>('');
   const [searchTags, setSearchTags] = useState<SearchTag[]>([]);
 
+  useEffect(() => {
+    if (withQuery) {
+      if (currentTags.length > 0) {
+        setSearchTags(currentTags);
+      }
+      setSearchText(currentText);
+    }
+  }, [currentTags, currentText, withQuery]);
+
   const handleSearch = (e: React.FormEvent): void => {
     e.preventDefault();
     onSearch(searchText, searchTags);
@@ -191,15 +206,19 @@ export function SearchPageContent(props: SearchPageContentProps) {
   };
 
   const handleTagClick = (tag: SearchTag) => (): void => {
-    let currentTags = [...searchTags];
-    if (currentTags.includes(tag)) {
-      currentTags = currentTags.filter((selectedTag) => selectedTag !== tag);
-    } else {
-      currentTags = [...currentTags, tag];
-    }
+    if (!isLoading) {
+      let selectedTags = [...searchTags];
+      if (selectedTags.includes(tag)) {
+        selectedTags = selectedTags.filter(
+          (selectedTag) => selectedTag !== tag,
+        );
+      } else {
+        selectedTags = [...selectedTags, tag];
+      }
 
-    setSearchTags([...currentTags]);
-    onSearch(searchText, currentTags);
+      setSearchTags([...selectedTags]);
+      onSearch(searchText, selectedTags);
+    }
   };
 
   const clearTags = (): void => {
@@ -233,7 +252,7 @@ export function SearchPageContent(props: SearchPageContentProps) {
             {tags && (
               <SearchTags
                 tags={tags}
-                hasClearSearch={Boolean(searchText) && tags.length > 0}
+                hasClearSearch={Boolean(searchText) || currentTags.length > 0}
                 clearAllText={archiveSearch?.clearAll}
                 currentTags={searchTags}
                 handleTagClick={handleTagClick}

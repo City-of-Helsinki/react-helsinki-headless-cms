@@ -75,6 +75,7 @@ export type Config = {
       type?: ModuleItemTypeEnum,
     ) => string;
     redirectToUrl: (url: string) => void;
+    redirectToArticlesSearch?: (tag: string) => void;
   };
   meta?: {
     appleTouchIconUrl?: string;

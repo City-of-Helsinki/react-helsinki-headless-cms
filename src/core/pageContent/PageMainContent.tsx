@@ -15,6 +15,7 @@ export type PageMainContentProps = {
   date?: string;
   categories?: ArticleType['categories'];
   contentModules?: React.ReactNode[];
+  onArticlesSearch?: (tag: string) => void;
 };
 
 export function PageMainContent({
@@ -23,6 +24,7 @@ export function PageMainContent({
   date,
   categories,
   contentModules,
+  onArticlesSearch,
 }: PageMainContentProps) {
   const {
     htmlSanitizer: { allowedUnsafeTags, trustedOrigins },
@@ -43,7 +45,17 @@ export function PageMainContent({
             </div>
           )}
           {categories?.edges?.map((category) => (
-            <Tag className={styles.tag} key={category.node?.id}>
+            <Tag
+              className={styles.tag}
+              key={category.node?.id}
+              onClick={
+                onArticlesSearch
+                  ? () => {
+                      onArticlesSearch(category.node?.id);
+                    }
+                  : null
+              }
+            >
               {category.node?.name}
             </Tag>
           ))}
