@@ -97,7 +97,9 @@ export const PageContentWithFunctions = {
           <Collection
             key={`collection-${Math.random()}`}
             title={`${collection.title} (created with a custom function)`}
-            cards={getCollectionCards(collection).map((cardProps) => (
+            cards={getCollectionCards(collection, [
+              ...defaultConfig.organisationPrefixes,
+            ]).map((cardProps) => (
               <Card
                 key={cardProps.id}
                 {...cardProps}
