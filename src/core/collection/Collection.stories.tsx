@@ -40,12 +40,13 @@ const Template: StoryFn<typeof Collection> = (args) => (
 const collection = getCollections([
   page?.modules[0],
 ])[0] as GeneralCollectionType;
+const organisationPrefixes = [...defaultConfig.organisationPrefixes];
 const cards = [
-  ...getCollectionCards(collection),
-  ...getCollectionCards(collection),
-  ...getCollectionCards(collection),
-  ...getCollectionCards(collection),
-  ...getCollectionCards(collection),
+  ...getCollectionCards(collection, organisationPrefixes),
+  ...getCollectionCards(collection, organisationPrefixes),
+  ...getCollectionCards(collection, organisationPrefixes),
+  ...getCollectionCards(collection, organisationPrefixes),
+  ...getCollectionCards(collection, organisationPrefixes),
 ].map((cardProps, index) => (
   <Card
     key={`${cardProps.id}-${index.toString()}`}

@@ -120,20 +120,20 @@ export const PageDefault = {
             title={collection.title}
             collectionContainerProps={{ withDots: false }}
             type={getCollectionUIType(collection)}
-            cards={getCollectionCards(collection as GeneralCollectionType).map(
-              (cardProps) => (
-                <Card
-                  key={cardProps.id}
-                  {...cardProps}
-                  imageUrl={
-                    cardProps.imageUrl ||
-                    pageMock.featuredImage?.node?.mediaItemUrl
-                  }
-                  direction="fixed-vertical"
-                  clampText
-                />
-              ),
-            )}
+            cards={getCollectionCards(collection as GeneralCollectionType, [
+              ...defaultConfig.organisationPrefixes,
+            ]).map((cardProps) => (
+              <Card
+                key={cardProps.id}
+                {...cardProps}
+                imageUrl={
+                  cardProps.imageUrl ||
+                  pageMock.featuredImage?.node?.mediaItemUrl
+                }
+                direction="fixed-vertical"
+                clampText
+              />
+            ))}
           />
         ))}
       />

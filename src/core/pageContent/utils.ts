@@ -107,8 +107,8 @@ export function getArticlePageCardProps(
 
 export function getEventCardProps(
   item: EventType,
-  organisationPrefixes,
-  locale = DEFAULT_LOCALE,
+  organisationPrefixes: string[],
+  locale: string = DEFAULT_LOCALE,
 ): CardProps {
   const image = item.images.length > 0 ? item.images[0] : null;
   const name = item.name[locale.toLowerCase()] ?? item.name[DEFAULT_LOCALE];
@@ -151,12 +151,14 @@ export function getLocationCardProps(item: VenueType): CardProps {
 
 export function getCollectionCards(
   collection: GeneralCollectionType,
-  locale = DEFAULT_LOCALE,
+  organisationPrefixes: string[],
+  locale: string = DEFAULT_LOCALE,
 ): CardProps[] {
   return collection.items.reduce((result: CardProps[], item) => {
     if (isPageType(item) || isArticleType(item))
       result.push(getArticlePageCardProps(item));
-    else if (isEventType(item)) result.push(getEventCardProps(item, locale));
+    else if (isEventType(item))
+      result.push(getEventCardProps(item, organisationPrefixes, locale));
     else if (isVenueType(item)) result.push(getLocationCardProps(item));
     return result;
   }, []);
