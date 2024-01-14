@@ -116,6 +116,7 @@ export function Navigation({
     currentLanguageCode,
     copy: { menuToggleAriaLabel, skipToContentLabel },
     components: { A },
+    mainContentId,
     utils: { getRoutedInternalHref },
   } = config;
 
@@ -183,7 +184,7 @@ export function Navigation({
       className={classNames(className, styles.maxWidthXl)}
     >
       <Header.SkipLink
-        skipTo={`#${MAIN_CONTENT_ID}`}
+        skipTo={`#${mainContentId ?? MAIN_CONTENT_ID}`}
         label={skipToContentLabel}
       />
       {universalBarMenu && (

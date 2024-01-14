@@ -40,6 +40,7 @@ import { CardsModule } from '../pageModules/CardsModule/CardsModule';
 import { ImageModule } from '../pageModules/ImageModule/ImageModule';
 import { StepsModule } from '../pageModules/StepsModule/StepsModule';
 import createHashKey from '../utils/createHashKey';
+import { MAIN_CONTENT_ID } from '../../common/constants';
 
 export type PageContentProps = {
   page?: PageType | ArticleType;
@@ -247,7 +248,7 @@ export function PageContent(props: PageContentProps) {
 
   return (
     <main
-      id={mainContentId || 'main-content'}
+      id={mainContentId ?? MAIN_CONTENT_ID}
       className={classNames('page-main-content', className)}
     >
       {Head && <PageMeta headComponent={Head} page={page} />}
