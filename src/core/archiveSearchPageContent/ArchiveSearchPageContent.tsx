@@ -24,6 +24,7 @@ import {
   SearchTag,
 } from '../../common/headlessService/types';
 import { PageMeta } from '../pageContent/meta/PageMeta';
+import { MAIN_CONTENT_ID } from '../../common/constants';
 
 export function SearchForm({
   archiveSearch,
@@ -229,7 +230,7 @@ export function SearchPageContent(props: SearchPageContentProps) {
 
   return (
     <main
-      id={mainContentId || 'main-content'}
+      id={mainContentId ?? MAIN_CONTENT_ID}
       className={classNames(styles.contentLayout, className)}
     >
       {Head && <PageMeta headComponent={Head} page={page} />}
