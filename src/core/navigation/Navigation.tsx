@@ -1,11 +1,8 @@
 import React from 'react';
 import { groupBy } from 'lodash-es';
-import { Header, LanguageOption, Logo } from 'hds-react';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import classNames from 'classnames';
+import { Header, HeaderTheme, LanguageOption, Logo } from 'hds-react';
 
 import { Config } from '../configProvider/configContext';
-import styles from './navigation.module.scss';
 import { Language, Menu } from '../../common/headlessService/types';
 import { useConfig } from '../configProvider/useConfig';
 import {
@@ -176,12 +173,17 @@ export function Navigation({
     A,
   };
 
+  const theme: HeaderTheme = {
+    '--header-max-width': 'var(--breakpoint-xl)', // Would be 1440px if not overridden
+  };
+
   return (
     <Header
       onDidChangeLanguage={onDidChangeLanguage}
       defaultLanguage={currentLanguage?.code?.toLowerCase()}
       languages={languageOptions}
-      className={classNames(className, styles.maxWidthXl)}
+      className={className}
+      theme={theme}
     >
       <Header.SkipLink
         skipTo={`#${mainContentId ?? MAIN_CONTENT_ID}`}
