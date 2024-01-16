@@ -190,6 +190,7 @@ export {
   IconWhatsapp,
   IconWifi,
   IconWifiCrossed,
+  IconX,
   IconYle,
   IconYouth,
   IconYoutube,
