@@ -35,7 +35,7 @@ export function StepsModule({
     const uniqueKey = createHashKey(`${index}-${step.title}-${step.content}`);
     return {
       key: uniqueKey,
-      title: step.title,
+      title: getTextFromHtml(step.title),
       description: getTextFromHtml(step.content),
     };
   });
