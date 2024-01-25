@@ -7,6 +7,7 @@ import { IconEnvelope, IconPhone } from 'hds-react';
 import LinkBase from './LinkBase';
 import { useConfig } from '../configProvider/useConfig';
 import styles from './Link.module.scss';
+import { getChildrenByType } from '../utils/getChildrenByType';
 
 export type LinkProps = Omit<
   React.ComponentPropsWithoutRef<'a'>,
@@ -29,8 +30,8 @@ export type LinkProps = Omit<
 export function Link({
   href,
   children,
-  showExternalIcon,
-  openInNewTab,
+  showExternalIcon: forceShowExternalIcon,
+  openInNewTab: forceOpenInNewTab,
   className,
   size = 'M',
   iconRight,
@@ -46,16 +47,24 @@ export function Link({
   const isPhone = href?.startsWith('tel:') || undefined;
   const isExternal = getIsHrefExternal(href) && !isEmail && !isPhone;
   const iconSize = size === 'S' ? 'xs' : 's';
-
+  const hasImageInLink = getChildrenByType(children, ['img']).length > 0;
+  // The external links should always open in a new tab.
+  const openInNewTab = forceOpenInNewTab ?? isExternal;
+  // If the link contains an image, the external icon should be hidden by default,
+  // because an icon next to image does not look good.
+  const showExternalIcon =
+    forceShowExternalIcon ?? (isExternal && !hasImageInLink);
   const linkComponent = (
     <LinkBase
       size={size}
       {...delegatedProps}
       href={href}
-      openInNewTab={openInNewTab ?? isExternal}
+      openInNewTab={openInNewTab}
       external={isExternal}
-      showExternalIcon={showExternalIcon ?? isExternal}
-      className={classNames(styles.link, className)}
+      showExternalIcon={showExternalIcon}
+      className={classNames(styles.link, className, {
+        [styles.imgLink]: hasImageInLink,
+      })}
       openInExternalDomainAriaLabel={openInExternalDomainAriaLabel}
       openInNewTabAriaLabel={openInNewTabAriaLabel}
       iconRight={

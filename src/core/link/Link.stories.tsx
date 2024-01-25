@@ -27,7 +27,7 @@ const Template: StoryFn<typeof Link> = (args) => (
   >
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <Link {...args} aria-label="External link" href="https://hel.fi">
-        Externnal link
+        External link
       </Link>
       <Link {...args} aria-label="Internal link default" href="/internal">
         Internal link default
@@ -37,6 +37,18 @@ const Template: StoryFn<typeof Link> = (args) => (
       </Link>
       <Link {...args} aria-label="Phone link" href="tel:+358 12 345 6789">
         +358 12 345 6789
+      </Link>
+      <Link
+        {...args}
+        aria-label="External link with an image"
+        href="https://hel.fi"
+      >
+        External link with an image
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/b/b2/City_Branding_of_Helsinki.svg"
+          alt="City of Helsinki logo"
+          width="200px"
+        />
       </Link>
       <SecondaryLink
         {...args}
@@ -59,6 +71,18 @@ const Template: StoryFn<typeof Link> = (args) => (
         variant="arrowRight"
       >
         Secondary Internal link with arrow right
+      </SecondaryLink>
+      <SecondaryLink
+        {...args}
+        aria-label="External SecondaryLink with an image"
+        href="https://hel.fi"
+      >
+        External secondary link with an image
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/b/b2/City_Branding_of_Helsinki.svg"
+          alt="City of Helsinki logo"
+          width="200px"
+        />
       </SecondaryLink>
     </div>
   </ConfigProvider>
