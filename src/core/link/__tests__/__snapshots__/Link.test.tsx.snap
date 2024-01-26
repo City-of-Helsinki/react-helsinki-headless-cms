@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`the link with image should not show an external icon by default 1`] = `
+<div>
+  <a
+    aria-label="Text for an external link with image. Opens in a new tab. Opens a different website."
+    class="link linkM disableVisitedStyles link imgLink"
+    href="https://www.google.com/"
+    rel="noopener noreferrer"
+    target="_blank"
+  >
+    <span
+      class="content"
+    >
+      Text for an external link with image
+      <img
+        alt="this is an img inside an external link"
+        src="#"
+      />
+    </span>
+  </a>
+</div>
+`;

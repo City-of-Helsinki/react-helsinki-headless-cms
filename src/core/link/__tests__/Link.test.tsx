@@ -98,3 +98,15 @@ test('renders internal link with specified screen reader text', () => {
     screen.getByRole('link', { name: 'This is for screen reader' }),
   ).toBeInTheDocument();
 });
+
+test('the link with image should not show an external icon by default', () => {
+  const { container } = render(
+    <Link href="https://www.google.com/">
+      Text for an external link with image
+      <img src="#" alt="this is an img inside an external link" />
+    </Link>,
+  );
+  expect(container.childElementCount).toBe(1);
+  expect(container.lastChild.nodeName).not.toEqual('svg');
+  expect(container).toMatchSnapshot();
+});
