@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`findAllElementsOfType finds the elements of searched types # 1`] = `
+[
+  <li>
+    Should be included 1/2
+  </li>,
+  <li>
+    Should be included 2/2
+  </li>,
+]
+`;
+
+exports[`findAllElementsOfType finds the elements of searched types # 2`] = `
+[
+  <li>
+    Should be included 1/3
+  </li>,
+  <li>
+    Should be included 2/3
+  </li>,
+  <li>
+    Should be included 3/3
+  </li>,
+]
+`;
+
+exports[`findAllElementsOfType finds the elements of searched types # 3`] = `
+[
+  <li>
+    Should be included 1/3
+  </li>,
+  <ul>
+    <li>
+      Should be included 1/3
+    </li>
+  </ul>,
+  <li>
+    Should be included 2/3
+  </li>,
+  <li>
+    Should be included 3/3
+  </li>,
+  <ol>
+    <li>
+      Should be included 2/3
+    </li>
+    <li>
+      Should be included 3/3
+    </li>
+  </ol>,
+]
+`;
+
+exports[`findAllElementsOfType finds the elements of searched types # 4`] = `
+[
+  <li>
+    Should be included 1/3
+  </li>,
+  <li>
+    Should be included 2/3
+  </li>,
+  <li>
+    Should be included 3/3
+  </li>,
+]
+`;
+
+exports[`findAllElementsOfType finds the elements of searched types # 5`] = `
+[
+  <img
+    alt="should be included 1/2"
+    src="#"
+  />,
+  <img
+    alt="should be included 2/2"
+    src="#"
+  />,
+]
+`;

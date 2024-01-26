@@ -7,7 +7,7 @@ import { IconEnvelope, IconPhone } from 'hds-react';
 import LinkBase from './LinkBase';
 import { useConfig } from '../configProvider/useConfig';
 import styles from './Link.module.scss';
-import { getChildrenByType } from '../utils/getChildrenByType';
+import { findAllElementsOfType } from '../utils/findAllElementsOfType';
 
 export type LinkProps = Omit<
   React.ComponentPropsWithoutRef<'a'>,
@@ -47,7 +47,7 @@ export function Link({
   const isPhone = href?.startsWith('tel:') || undefined;
   const isExternal = getIsHrefExternal(href) && !isEmail && !isPhone;
   const iconSize = size === 'S' ? 'xs' : 's';
-  const hasImageInLink = getChildrenByType(children, ['img']).length > 0;
+  const hasImageInLink = findAllElementsOfType(children, ['img']).length > 0;
   // The external links should always open in a new tab.
   const openInNewTab = forceOpenInNewTab ?? isExternal;
   // If the link contains an image, the external icon should be hidden by default,

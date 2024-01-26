@@ -44,11 +44,13 @@ const Template: StoryFn<typeof Link> = (args) => (
         href="https://hel.fi"
       >
         External link with an image
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/b/b2/City_Branding_of_Helsinki.svg"
-          alt="City of Helsinki logo"
-          width="200px"
-        />
+        <span>
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/b/b2/City_Branding_of_Helsinki.svg"
+            alt="City of Helsinki logo"
+            width="200px"
+          />
+        </span>
       </Link>
       <SecondaryLink
         {...args}
