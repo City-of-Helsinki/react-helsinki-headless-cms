@@ -124,3 +124,4 @@ export { SearchPageContent } from './archiveSearchPageContent/ArchiveSearchPageC
 export { BackgroundImage, BackgroundImageProps } from './image/BackgroundImage';
 export { Image, ImageProps } from './image/Image';
 export { useResolveImageUrl } from './hooks/useResolveImageUrl';
+export * from './language';
