@@ -11,6 +11,12 @@ import {
 } from '../../common/constants';
 import { getTranslationWithFallback } from '../translation/getTranslationWithFallback';
 import { FallbackTranslationKey } from '../translation/types';
+import {
+  findLanguage,
+  isNonEmptyLanguage,
+  languageSorter,
+  toPrimaryLanguageOption,
+} from '../language';
 
 type MenuItem = Omit<
   NonNullable<NonNullable<Menu>['menuItems']>['nodes'][0],
@@ -31,22 +37,6 @@ export type NavigationProps = {
   ) => string;
   getIsItemActive?: (menuItem: MenuItem) => boolean;
 };
-
-/**
- * Find language from language list by language code.
- * @param {Language[]} languages - List of languages
- * @param {string} languageCode - Language code
- * @returns {Language | undefined} Language from given language list with the given
- *                                 language code or undefined if not found
- */
-function findLanguage(
-  languages: Language[],
-  languageCode: string,
-): Language | undefined {
-  return languages.find(
-    (language) => language.code?.toLowerCase() === languageCode.toLowerCase(),
-  );
-}
 
 interface MenuItemChildren {
   [menuItemId: string]: MenuItem[];
@@ -133,20 +123,10 @@ export function Navigation({
     );
   }
 
-  const languageOptions = languages.reduce(
-    (result: LanguageOption[], language) =>
-      language?.name && language?.code
-        ? [
-            ...result,
-            {
-              label: language.name,
-              value: language.code?.toLowerCase(),
-              isPrimary: true,
-            },
-          ]
-        : result,
-    [],
-  );
+  const languageOptions: LanguageOption[] = languages
+    .filter(isNonEmptyLanguage)
+    .sort(languageSorter)
+    .map(toPrimaryLanguageOption);
 
   const onDidChangeLanguage = (newLanguageCode: string) => {
     const newLanguage = findLanguage(languages, newLanguageCode);
