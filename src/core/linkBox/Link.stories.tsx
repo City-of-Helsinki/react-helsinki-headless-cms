@@ -31,6 +31,6 @@ const Template: StoryFn<typeof LinkBox> = (args) => (
   </ConfigProvider>
 );
 
-export const LinkDefault = {
+export const LinkboxDefault = {
   render: Template,
 };

@@ -8,6 +8,7 @@ import { Card } from '../card/Card';
 import card from '../card/__mocks__/card.mock';
 import { ConfigProvider } from '../configProvider/ConfigProvider';
 import { defaultConfig } from '../configProvider/defaultConfig';
+import { StoryContainer } from '../storyContainer/StoryContainer';
 
 export default {
   title: 'Core components/CardsList',
@@ -19,9 +20,9 @@ export default {
 } as Meta<typeof CardsList>;
 
 const Template: StoryFn<typeof CardsList> = (args) => (
-  <div style={{ margin: 24, overflow: 'hidden' }}>
+  <StoryContainer>
     <CardsList {...args} />
-  </div>
+  </StoryContainer>
 );
 
 export const CardListDefault = {

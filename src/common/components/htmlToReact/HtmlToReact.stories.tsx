@@ -5,6 +5,7 @@ import { StoryFn, Meta } from '@storybook/react';
 
 import kukkuuTestPage from '../../../mocks/responses/cms/page/kukkuu-page-demosivu.json';
 import { HtmlToReact, HtmlToReactProps, TABLE_VARIANTS } from './HtmlToReact';
+import { StoryContainer } from '../../../core/storyContainer/StoryContainer';
 
 // Real embedded video content  from the Wordpress headless CMS.
 const videoMediaIframeContent =
@@ -80,7 +81,7 @@ const Template: StoryFn<typeof HtmlToReact> = ({
 }: HtmlToReactProps & {
   tableVariants: HtmlToReactProps['components']['tableVariants'];
 }) => (
-  <div>
+  <StoryContainer>
     <HtmlToReact
       components={{ ...components, tableVariants }}
       allowedUnsafeTags={allowedUnsafeTags}
@@ -88,7 +89,7 @@ const Template: StoryFn<typeof HtmlToReact> = ({
     >
       {children}
     </HtmlToReact>
-  </div>
+  </StoryContainer>
 );
 
 export const HtmlToReactMedia = {

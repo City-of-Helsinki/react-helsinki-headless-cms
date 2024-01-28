@@ -8,6 +8,7 @@ import { defaultConfig } from '../configProvider/defaultConfig';
 import card from './__mocks__/card.mock';
 import { Card } from './Card';
 import { Tag } from '../../common/components/tag/Tag';
+import { StoryContainer } from '../storyContainer/StoryContainer';
 
 export default {
   title: 'Core components/Card',
@@ -28,30 +29,68 @@ const Template: StoryFn<typeof Card> = (args) => (
       },
     }}
   >
-    <div style={{ margin: 24 }}>
+    <StoryContainer maxWidth={640}>
       <Card
-        {...args}
+        withBorder
         hasLink
-        withShadow
-        customContent={
-          <>
-            <Tag featured>Free</Tag>
-            <Tag>Youth</Tag>
-          </>
-        }
-        imageLabel="Article"
         openLinkInNewTab
+        imageLabel="Article"
+        {...args}
       />
-    </div>
+    </StoryContainer>
   </ConfigProvider>
 );
 
-export const CardDefault = {
+export const CardDefaultResponsive = {
   render: Template,
+  args: {
+    ...card,
+  },
+};
 
+export const CardWithCustomTagsContent = {
+  render: Template,
+  args: {
+    ...card,
+    customContent: (
+      <>
+        <Tag featured>Free</Tag>
+        <Tag>Youth</Tag>
+      </>
+    ),
+  },
+};
+
+export const CardWithLinkLabel = {
+  render: Template,
   args: {
     ...card,
     linkArrowLabel: 'This gives a label for the link arrow',
     style: linkArrowLabelStyles,
+  },
+};
+
+export const CardWithShadow = {
+  render: Template,
+  args: {
+    ...card,
+    withShadow: true,
+  },
+};
+
+export const CardWithImageLabel = {
+  render: Template,
+  args: {
+    ...card,
+    imageLabel: 'This is a custom image label',
+  },
+};
+
+export const CardDelimited = {
+  render: Template,
+  args: {
+    ...card,
+    isDelimited: true,
+    text: 'Custom text contents',
   },
 };
