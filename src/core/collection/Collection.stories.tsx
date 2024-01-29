@@ -11,6 +11,7 @@ import { ConfigProvider } from '../configProvider/ConfigProvider';
 import { Card } from '../card/Card';
 import cardMock from '../card/__mocks__/card.mock';
 import { GeneralCollectionType } from './types';
+import { StoryContainer } from '../storyContainer/StoryContainer';
 
 export default {
   title: 'Core components/Collection',
@@ -26,7 +27,7 @@ export default {
 } as Meta<typeof Collection>;
 
 const Template: StoryFn<typeof Collection> = (args) => (
-  <div style={{ margin: 24 }}>
+  <StoryContainer>
     <ConfigProvider
       config={{
         ...defaultConfig,
@@ -34,7 +35,7 @@ const Template: StoryFn<typeof Collection> = (args) => (
     >
       <Collection {...args} />
     </ConfigProvider>
-  </div>
+  </StoryContainer>
 );
 
 const collection = getCollections([

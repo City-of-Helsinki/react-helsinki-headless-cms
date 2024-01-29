@@ -190,7 +190,7 @@ export function SearchPageContent(props: SearchPageContentProps) {
 
   useEffect(() => {
     if (withQuery) {
-      if (currentTags.length > 0) {
+      if (currentTags?.length > 0) {
         setSearchTags(currentTags);
       }
       setSearchText(currentText);
@@ -253,7 +253,7 @@ export function SearchPageContent(props: SearchPageContentProps) {
             {tags && (
               <SearchTags
                 tags={tags}
-                hasClearSearch={Boolean(searchText) || currentTags.length > 0}
+                hasClearSearch={Boolean(searchText) || currentTags?.length > 0}
                 clearAllText={archiveSearch?.clearAll}
                 currentTags={searchTags}
                 handleTagClick={handleTagClick}
