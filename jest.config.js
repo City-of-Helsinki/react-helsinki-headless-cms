@@ -11,7 +11,6 @@ module.exports = {
   moduleNameMapper: {
     // return a mock css module
     '\\.(css|less|scss|sss|styl)$': 'identity-obj-proxy',
-    'hds-core': 'identity-obj-proxy', // needed with HDS v3.4, otherwise tests fail
     '^lodash-es$': 'lodash',
   },
 
