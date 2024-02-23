@@ -11,7 +11,7 @@ import { Navigation } from './navigation/Navigation';
 import { Notification } from './notification/Notification';
 import { Page } from './page/Page';
 import { PageContentLayout } from '../core/pageContent/PageContentLayout';
-import { LanguageCodeEnum } from '../core';
+import { LanguageCodeEnum, PageType, getBreadcrumbsFromPage } from '../core';
 import { useCmsEndpointConfig } from '../storybook-common/useCmsEndpointConfig';
 import {
   CmsEndpoint,
@@ -94,10 +94,7 @@ const ApolloBasicExample = {
     notification: <Notification />,
     content: (
       <PageContent
-        breadcrumbs={[
-          { title: 'Root', link: '/' },
-          { title: 'Nested', link: '/nested' },
-        ]}
+        breadcrumbs={(page: PageType) => getBreadcrumbsFromPage(page)}
       />
     ),
     footer: <>TODO: Implement footer</>,
