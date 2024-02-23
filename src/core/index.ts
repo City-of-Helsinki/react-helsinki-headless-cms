@@ -79,6 +79,7 @@ export {
   getLocationCardProps,
   getCollectionCards,
   getCollectionUIType,
+  getBreadcrumbsFromPage,
 } from './pageContent/utils';
 
 // naming overlaps with type exported above

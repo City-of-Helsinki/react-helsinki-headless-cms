@@ -103,7 +103,7 @@ export type EventDetails = {
   name: LocalizedObject;
   offers: Array<Offer>;
   provider?: Maybe<LocalizedObject>;
-  providerContactInfo?: Maybe<Scalars['String']['output']>;
+  providerContactInfo?: Maybe<LocalizedObject>;
   publisher?: Maybe<Scalars['ID']['output']>;
   remainingAttendeeCapacity?: Maybe<Scalars['Int']['output']>;
   shortDescription?: Maybe<LocalizedObject>;

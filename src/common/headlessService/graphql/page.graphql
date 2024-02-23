@@ -47,6 +47,10 @@ fragment Page on Page {
       photographerName
     }
   }
+  breadcrumbs {
+    title
+    uri
+  }
   sidebar {
     ... on LayoutLinkList {
       ...LayoutLinkList

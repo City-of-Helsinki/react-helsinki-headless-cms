@@ -69,6 +69,15 @@ export enum AvatarRatingEnum {
   X = 'X',
 }
 
+/** Breadcumb field */
+export type Breadcrumb = {
+  __typename?: 'Breadcrumb';
+  /** The title of the page */
+  title?: Maybe<Scalars['String']['output']>;
+  /** The link of the page. */
+  uri?: Maybe<Scalars['String']['output']>;
+};
+
 /** Kortin kenttä */
 export type Card = {
   __typename?: 'Card';
@@ -4741,6 +4750,8 @@ export type Page = ContentNode &
     authorDatabaseId?: Maybe<Scalars['Int']['output']>;
     /** The globally unique identifier of the author of the node */
     authorId?: Maybe<Scalars['ID']['output']>;
+    /** Breadcrumb fields */
+    breadcrumbs?: Maybe<Array<Maybe<Breadcrumb>>>;
     /** Connection between the HierarchicalContentNode type and the ContentNode type */
     children?: Maybe<HierarchicalContentNodeToContentNodeChildrenConnection>;
     /** The content of the post. */
@@ -5126,6 +5137,8 @@ export type Post = ContentNode &
     authorDatabaseId?: Maybe<Scalars['Int']['output']>;
     /** The globally unique identifier of the author of the node */
     authorId?: Maybe<Scalars['ID']['output']>;
+    /** Breadcrumb fields */
+    breadcrumbs?: Maybe<Array<Maybe<Breadcrumb>>>;
     /** Connection between the Post type and the category type */
     categories?: Maybe<PostToCategoryConnection>;
     /** The content of the post. */
@@ -8999,8 +9012,6 @@ export type SiteSettings = {
   logo?: Maybe<Scalars['String']['output']>;
   /** Identifying name */
   siteName?: Maybe<Scalars['String']['output']>;
-  /** Default wave motif */
-  waveMotif?: Maybe<Scalars['String']['output']>;
 };
 
 /** Vaiheen kenttä */
@@ -11182,6 +11193,11 @@ export type PostFragment = {
       photographerName?: string | null;
     };
   } | null;
+  breadcrumbs?: Array<{
+    __typename?: 'Breadcrumb';
+    title?: string | null;
+    uri?: string | null;
+  } | null> | null;
   sidebar?: Array<
     | {
         __typename: 'LayoutArticles';
@@ -11572,6 +11588,11 @@ export type ArticleQuery = {
         photographerName?: string | null;
       };
     } | null;
+    breadcrumbs?: Array<{
+      __typename?: 'Breadcrumb';
+      title?: string | null;
+      uri?: string | null;
+    } | null> | null;
     sidebar?: Array<
       | {
           __typename: 'LayoutArticles';
@@ -11986,6 +12007,11 @@ export type PostsQuery = {
             photographerName?: string | null;
           };
         } | null;
+        breadcrumbs?: Array<{
+          __typename?: 'Breadcrumb';
+          title?: string | null;
+          uri?: string | null;
+        } | null> | null;
         sidebar?: Array<
           | {
               __typename: 'LayoutArticles';
@@ -12543,6 +12569,11 @@ export type MenuItemFragment = {
                         photographerName?: string | null;
                       };
                     } | null;
+                    breadcrumbs?: Array<{
+                      __typename?: 'Breadcrumb';
+                      title?: string | null;
+                      uri?: string | null;
+                    } | null> | null;
                     sidebar?: Array<
                       | {
                           __typename: 'LayoutArticles';
@@ -12904,6 +12935,11 @@ export type MenuItemFragment = {
                       photographerName?: string | null;
                     };
                   } | null;
+                  breadcrumbs?: Array<{
+                    __typename?: 'Breadcrumb';
+                    title?: string | null;
+                    uri?: string | null;
+                  } | null> | null;
                   sidebar?: Array<
                     | {
                         __typename: 'LayoutArticles';
@@ -13308,6 +13344,11 @@ export type MenuItemFragment = {
                 photographerName?: string | null;
               };
             } | null;
+            breadcrumbs?: Array<{
+              __typename?: 'Breadcrumb';
+              title?: string | null;
+              uri?: string | null;
+            } | null> | null;
             sidebar?: Array<
               | {
                   __typename: 'LayoutArticles';
@@ -13669,6 +13710,11 @@ export type MenuItemFragment = {
               photographerName?: string | null;
             };
           } | null;
+          breadcrumbs?: Array<{
+            __typename?: 'Breadcrumb';
+            title?: string | null;
+            uri?: string | null;
+          } | null> | null;
           sidebar?: Array<
             | {
                 __typename: 'LayoutArticles';
@@ -14107,6 +14153,11 @@ export type MenuPageFieldsFragment = {
         photographerName?: string | null;
       };
     } | null;
+    breadcrumbs?: Array<{
+      __typename?: 'Breadcrumb';
+      title?: string | null;
+      uri?: string | null;
+    } | null> | null;
     sidebar?: Array<
       | {
           __typename: 'LayoutArticles';
@@ -14459,6 +14510,11 @@ export type MenuPageFieldsFragment = {
       photographerName?: string | null;
     };
   } | null;
+  breadcrumbs?: Array<{
+    __typename?: 'Breadcrumb';
+    title?: string | null;
+    uri?: string | null;
+  } | null> | null;
   sidebar?: Array<
     | {
         __typename: 'LayoutArticles';
@@ -14902,6 +14958,11 @@ export type MenuQuery = {
                               photographerName?: string | null;
                             };
                           } | null;
+                          breadcrumbs?: Array<{
+                            __typename?: 'Breadcrumb';
+                            title?: string | null;
+                            uri?: string | null;
+                          } | null> | null;
                           sidebar?: Array<
                             | {
                                 __typename: 'LayoutArticles';
@@ -15263,6 +15324,11 @@ export type MenuQuery = {
                             photographerName?: string | null;
                           };
                         } | null;
+                        breadcrumbs?: Array<{
+                          __typename?: 'Breadcrumb';
+                          title?: string | null;
+                          uri?: string | null;
+                        } | null> | null;
                         sidebar?: Array<
                           | {
                               __typename: 'LayoutArticles';
@@ -15667,6 +15733,11 @@ export type MenuQuery = {
                       photographerName?: string | null;
                     };
                   } | null;
+                  breadcrumbs?: Array<{
+                    __typename?: 'Breadcrumb';
+                    title?: string | null;
+                    uri?: string | null;
+                  } | null> | null;
                   sidebar?: Array<
                     | {
                         __typename: 'LayoutArticles';
@@ -16028,6 +16099,11 @@ export type MenuQuery = {
                     photographerName?: string | null;
                   };
                 } | null;
+                breadcrumbs?: Array<{
+                  __typename?: 'Breadcrumb';
+                  title?: string | null;
+                  uri?: string | null;
+                } | null> | null;
                 sidebar?: Array<
                   | {
                       __typename: 'LayoutArticles';
@@ -16711,6 +16787,11 @@ export type PageFragment = {
       photographerName?: string | null;
     };
   } | null;
+  breadcrumbs?: Array<{
+    __typename?: 'Breadcrumb';
+    title?: string | null;
+    uri?: string | null;
+  } | null> | null;
   sidebar?: Array<
     | {
         __typename: 'LayoutArticles';
@@ -17107,6 +17188,11 @@ export type PageQuery = {
         photographerName?: string | null;
       };
     } | null;
+    breadcrumbs?: Array<{
+      __typename?: 'Breadcrumb';
+      title?: string | null;
+      uri?: string | null;
+    } | null> | null;
     sidebar?: Array<
       | {
           __typename: 'LayoutArticles';
@@ -17505,6 +17591,11 @@ export type PageByTemplateQuery = {
         photographerName?: string | null;
       };
     } | null;
+    breadcrumbs?: Array<{
+      __typename?: 'Breadcrumb';
+      title?: string | null;
+      uri?: string | null;
+    } | null> | null;
     sidebar?: Array<
       | {
           __typename: 'LayoutArticles';
@@ -17933,6 +18024,11 @@ export type PageChildrenSearchQuery = {
                     photographerName?: string | null;
                   };
                 } | null;
+                breadcrumbs?: Array<{
+                  __typename?: 'Breadcrumb';
+                  title?: string | null;
+                  uri?: string | null;
+                } | null> | null;
                 sidebar?: Array<
                   | {
                       __typename: 'LayoutArticles';
@@ -18294,6 +18390,11 @@ export type PageChildrenSearchQuery = {
                   photographerName?: string | null;
                 };
               } | null;
+              breadcrumbs?: Array<{
+                __typename?: 'Breadcrumb';
+                title?: string | null;
+                uri?: string | null;
+              } | null> | null;
               sidebar?: Array<
                 | {
                     __typename: 'LayoutArticles';
@@ -18721,6 +18822,11 @@ export type PagesQuery = {
             photographerName?: string | null;
           };
         } | null;
+        breadcrumbs?: Array<{
+          __typename?: 'Breadcrumb';
+          title?: string | null;
+          uri?: string | null;
+        } | null> | null;
         sidebar?: Array<
           | {
               __typename: 'LayoutArticles';
@@ -19445,6 +19551,10 @@ export const PostFragmentDoc = gql`
         photographerName
       }
     }
+    breadcrumbs {
+      title
+      uri
+    }
     sidebar {
       ... on LayoutLinkList {
         ...LayoutLinkList
@@ -19587,6 +19697,10 @@ export const PageFragmentDoc = gql`
         uri
         photographerName
       }
+    }
+    breadcrumbs {
+      title
+      uri
     }
     sidebar {
       ... on LayoutLinkList {

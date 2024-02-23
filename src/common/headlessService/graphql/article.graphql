@@ -48,6 +48,10 @@ fragment Post on Post {
       photographerName
     }
   }
+  breadcrumbs {
+    title
+    uri
+  }
   sidebar {
     ... on LayoutLinkList {
       ...LayoutLinkList

@@ -1,3 +1,5 @@
+import { uniqBy } from 'lodash-es';
+
 import { EventType } from '../../common/eventsService/types';
 import {
   ArticleType,
@@ -32,6 +34,7 @@ import {
   GeneralCollectionType,
   LocationsSelectionCollectionType,
 } from '../collection/types';
+import { Breadcrumb } from './types';
 
 export function getCollections(
   pageModules: PageModule[],
@@ -170,3 +173,20 @@ export function getCollectionUIType(
   // eslint-disable-next-line no-underscore-dangle
   return collection.__typename.includes('Carousel') ? 'carousel' : 'grid';
 }
+
+/**
+ * Create Breadcrumb objects from the pages' and articles' breadcrumbs.
+ * The duplicated root (and other duplicated links) are removed.
+ * @param page a page or an article
+ * @returns an unique list of breadcrumb objects
+ * */
+export const getBreadcrumbsFromPage = (
+  page: PageType | ArticleType,
+): Breadcrumb[] =>
+  uniqBy(
+    page.breadcrumbs.map((breadcrumb) => ({
+      title: breadcrumb.title,
+      link: breadcrumb.uri,
+    })),
+    'link',
+  );

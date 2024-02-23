@@ -44,7 +44,9 @@ import { MAIN_CONTENT_ID } from '../../common/constants';
 
 export type PageContentProps = {
   page?: PageType | ArticleType;
-  breadcrumbs?: Breadcrumb[];
+  breadcrumbs?:
+    | Breadcrumb[]
+    | ((page?: PageType | ArticleType) => Breadcrumb[]);
   content?:
     | React.ReactNode
     | ((page: PageType | ArticleType) => React.ReactNode);
@@ -257,7 +259,15 @@ export function PageContent(props: PageContentProps) {
         {...pageContentLayoutProps}
         {...getHeroProps()}
         breadcrumbs={
-          breadcrumbs && <PageContentBreadcrumbs breadcrumbs={breadcrumbs} />
+          breadcrumbs && (
+            <PageContentBreadcrumbs
+              breadcrumbs={
+                typeof breadcrumbs === 'function'
+                  ? breadcrumbs(page)
+                  : breadcrumbs
+              }
+            />
+          )
         }
         heroContainer={heroContainer}
         id={page?.id ?? 'page'}
