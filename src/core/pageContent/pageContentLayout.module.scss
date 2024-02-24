@@ -11,7 +11,7 @@
   height: 100%;
 
   & > *:not(:last-child) {
-    margin: $spacing-layout-2-xs 0;
+    margin: $spacing-layout-2-xs auto;
   }
 
   @media screen and (min-width: breakpoints.$breakpoint-m) {
