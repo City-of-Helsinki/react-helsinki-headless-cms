@@ -54,7 +54,8 @@ export { Notification, NotificationProps } from './notification/Notification';
 
 export { Page, PageProps } from './page/Page';
 
-export { PageContent, PageContentProps } from './pageContent/PageContent';
+export { PageContent } from './pageContent/PageContent';
+export { PageContentBreadcrumb } from './pageContent/PageContentBreadcrumb';
 
 export { ContentContainer } from './contentContainer/ContentContainer';
 
@@ -80,6 +81,8 @@ export {
   getCollectionCards,
   getCollectionUIType,
   getBreadcrumbsFromPage,
+  getBreadcrumbListItems,
+  disableBreadcrumbsLastLink,
 } from './pageContent/utils';
 
 // naming overlaps with type exported above
@@ -87,7 +90,7 @@ export { Tag as TagComponent } from '../common/components/tag/Tag';
 
 export { HtmlToReact } from '../common/components/htmlToReact/HtmlToReact';
 
-export type { Breadcrumb } from './pageContent/types';
+export type { PageContentProps } from './pageContent/types';
 
 export {
   Collection,
