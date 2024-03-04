@@ -1,15 +1,15 @@
-import { BreadcrumbProps, Breadcrumb as HdsBreadcrumb } from 'hds-react';
+import { Breadcrumb as HdsBreadcrumb } from 'hds-react';
 import React from 'react';
 
 import { useConfig } from '../configProvider/useConfig';
 import { getBreadcrumbListItems } from './utils';
-import type { Breadcrumb as CmsBreadcrumbs } from '../../common/headlessService/__generated__';
 import styles from './pageContentBreadcrumb.module.scss';
+import { BreadcrumbUnionType } from './types';
 
 export function PageContentBreadcrumb({
   breadcrumbs,
 }: {
-  breadcrumbs: BreadcrumbProps | CmsBreadcrumbs[];
+  breadcrumbs: BreadcrumbUnionType;
 }) {
   const {
     copy: { breadcrumbNavigationLabel },
