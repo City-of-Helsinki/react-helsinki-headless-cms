@@ -122,6 +122,10 @@ export const ArchiveSearchPageWithArticles = {
     navigation,
     content: (
       <ArchiveSearchPageContent
+        breadcrumbs={[
+          { title: 'Root', path: '/' },
+          { title: 'Article archive', path: null },
+        ]}
         items={articles.edges.map((edge) => edge.node)}
         tags={categories.nodes}
         onSearch={(freeSearch, tags) => {
@@ -147,6 +151,10 @@ export const ArchiveSearchPageWithPages = {
     navigation,
     content: (
       <ArchiveSearchPageContent
+        breadcrumbs={[
+          { title: 'Root', path: '/' },
+          { title: 'Article archive', path: null },
+        ]}
         items={pages.edges.map((edge) => edge.node)}
         onSearch={(freeSearch, tags) => {
           // eslint-disable-next-line no-console
@@ -171,6 +179,10 @@ export const ArchiveSearchPageWithPageSubPages = {
     navigation,
     content: (
       <ArchiveSearchPageContent
+        breadcrumbs={[
+          { title: 'Root', path: '/' },
+          { title: 'Article archive', path: null },
+        ]}
         customContent={
           <PageMainContent title={mockPage.title} content={mockPage.content} />
         }

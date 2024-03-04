@@ -5,6 +5,18 @@
   margin-top: var(--spacing-m);
 }
 
+.breadcrumbs {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--padding);
+  box-sizing: border-box;
+
+  & nav {
+    margin: 0;
+  }
+}
+
 .contentLayout {
   --padding: #{$spacing-layout-2-xs};
   --max-width: calc(#{breakpoints.$container-width-xl} + (2 * var(--padding)));

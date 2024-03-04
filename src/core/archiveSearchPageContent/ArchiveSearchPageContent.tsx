@@ -25,6 +25,8 @@ import {
 } from '../../common/headlessService/types';
 import { PageMeta } from '../pageContent/meta/PageMeta';
 import { MAIN_CONTENT_ID } from '../../common/constants';
+import type { BreadcrumbUnionType } from '../pageContent/types';
+import { PageContentBreadcrumb } from '../pageContent/PageContentBreadcrumb';
 
 export function SearchForm({
   archiveSearch,
@@ -113,6 +115,9 @@ export function SearchTags({
 
 export interface SearchPageContentProps {
   page?: PageType | ArticleType;
+  breadcrumbs?:
+    | BreadcrumbUnionType
+    | ((page?: PageType | ArticleType) => BreadcrumbUnionType);
   customContent?: string | JSX.Element;
   items?: CollectionItemType[];
   isLoading?: boolean;
@@ -166,6 +171,7 @@ export function ArchiveCollection({
 
 export function SearchPageContent(props: SearchPageContentProps) {
   const {
+    breadcrumbs,
     customContent,
     className,
     hasMore,
@@ -235,6 +241,15 @@ export function SearchPageContent(props: SearchPageContentProps) {
     >
       {Head && <PageMeta headComponent={Head} page={page} />}
       <div className={styles.mainLayout}>
+        {breadcrumbs && (
+          <div className={styles.breadcrumbs}>
+            {typeof breadcrumbs === 'function' ? (
+              <PageContentBreadcrumb breadcrumbs={breadcrumbs(page)} />
+            ) : (
+              <PageContentBreadcrumb breadcrumbs={breadcrumbs} />
+            )}
+          </div>
+        )}
         <PageSection
           korosBottom
           className={styles.searchFormContainer}
