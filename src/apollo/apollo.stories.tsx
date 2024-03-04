@@ -86,6 +86,8 @@ export default {
     notification: { table: { disable: true } },
     content: { table: { disable: true } },
     footer: { table: { disable: true } },
+    className: { table: { disable: true } },
+    pageTemplate: { table: { disable: true } },
   },
 } as Meta<typeof Page>;
 

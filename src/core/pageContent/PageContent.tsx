@@ -1,17 +1,14 @@
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
-import { KorosType } from 'hds-react';
 
 import { useConfig } from '../configProvider/useConfig';
 import SidebarContent from './sidebarContent/SidebarContent';
 import { PageContentLayout } from './PageContentLayout';
 import { PageMainContent } from './PageMainContent';
-import PageContentBreadcrumbs from './PageContentBreadcrumbs';
-import { Breadcrumb, HeroProps } from './types';
+import { PageContentProps } from './types';
 import { PageMeta } from './meta/PageMeta';
 import {
-  Collection,
   PageArticleCollection,
   EventSearchCollection,
   EventSelectionCollection,
@@ -22,7 +19,7 @@ import {
   LanguageCodeEnum,
   PageType,
 } from '../../common/headlessService/types';
-import { getCollections, getCollectionUIType } from './utils';
+import { getHeroProps, getCollections, getCollectionUIType } from './utils';
 import {
   isEventSearchCollection,
   isEventSelectionCollection,
@@ -41,31 +38,7 @@ import { ImageModule } from '../pageModules/ImageModule/ImageModule';
 import { StepsModule } from '../pageModules/StepsModule/StepsModule';
 import createHashKey from '../utils/createHashKey';
 import { MAIN_CONTENT_ID } from '../../common/constants';
-
-export type PageContentProps = {
-  page?: PageType | ArticleType;
-  breadcrumbs?:
-    | Breadcrumb[]
-    | ((page?: PageType | ArticleType) => Breadcrumb[]);
-  content?:
-    | React.ReactNode
-    | ((page: PageType | ArticleType) => React.ReactNode);
-  shareLinks?: React.ReactNode;
-  collections?:
-    | React.ReactElement<typeof Collection>[]
-    | ((
-        page: PageType | ArticleType,
-      ) => React.ReactElement<typeof Collection>[]);
-  heroContainer?: JSX.Element;
-  backUrl?: string;
-  sidebarContentProps?: Partial<typeof SidebarContent>;
-  PageContentLayoutComponent?: typeof PageContentLayout;
-  className?: string;
-  onArticlesSearch?: (tag: string) => void;
-  // All other props
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [x: string]: any;
-} & Partial<typeof PageContentLayout>;
+import { PageContentBreadcrumb } from './PageContentBreadcrumb';
 
 // Modules: Content, Image, Cards, Steps (possibly other in future)
 export const defaultContentModules = (
@@ -233,21 +206,6 @@ export function PageContent(props: PageContentProps) {
   const isVenueModulesEnabled =
     eventsApolloClient !== undefined && venuesApolloClient !== 'disabled';
 
-  const getHeroProps = () => {
-    const heroProps: HeroProps = {};
-    if (isPageType(page)) {
-      heroProps.title = page.hero?.title || '';
-      heroProps.description = page.hero?.description;
-      heroProps.backgroundColor = page.hero?.background_color;
-      heroProps.korosType = (page.hero?.wave_motif as KorosType) || 'basic';
-      heroProps.actionUrl = page.hero?.link.url;
-      heroProps.actionUrlTarget = page.hero?.link.target;
-      heroProps.actionText = page.hero?.link?.title;
-      heroProps.isPageType = true;
-    }
-    return heroProps;
-  };
-
   return (
     <main
       id={mainContentId ?? MAIN_CONTENT_ID}
@@ -257,17 +215,14 @@ export function PageContent(props: PageContentProps) {
       <PageContentLayoutComponent
         {...props}
         {...pageContentLayoutProps}
-        {...getHeroProps()}
+        {...getHeroProps(page)}
         breadcrumbs={
-          breadcrumbs && (
-            <PageContentBreadcrumbs
-              breadcrumbs={
-                typeof breadcrumbs === 'function'
-                  ? breadcrumbs(page)
-                  : breadcrumbs
-              }
-            />
-          )
+          breadcrumbs &&
+          (typeof breadcrumbs === 'function' ? (
+            <PageContentBreadcrumb breadcrumbs={breadcrumbs(page)} />
+          ) : (
+            <PageContentBreadcrumb breadcrumbs={breadcrumbs} />
+          ))
         }
         heroContainer={heroContainer}
         id={page?.id ?? 'page'}

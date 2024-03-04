@@ -17,6 +17,7 @@ import notificationMock from '../notification/__mocks__/notification.mock';
 import { Page } from './Page';
 import { Collection } from '../collection/Collection';
 import {
+  getBreadcrumbListItems,
   getCollectionCards,
   getCollections,
   getCollectionUIType,
@@ -110,10 +111,10 @@ export const PageDefault = {
       <PageContent
         page={pageMock}
         backUrl="/"
-        breadcrumbs={[
-          { title: 'Root', link: '/' },
-          { title: 'Nested', link: '/nested' },
-        ]}
+        breadcrumbs={getBreadcrumbListItems([
+          { title: 'Root', uri: '/' },
+          { title: 'Nested', uri: '/nested' },
+        ])}
         collections={getCollections(pageMock.modules)?.map((collection) => (
           <Collection
             key={`collection-${Math.random()}`}

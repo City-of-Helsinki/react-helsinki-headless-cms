@@ -2,10 +2,8 @@ import React from 'react';
 import { LoadingSpinner } from 'hds-react';
 
 import { usePageQuery } from '../../common/headlessService/page';
-import {
-  PageContent as PageContentWithoutData,
-  PageContentProps as PageContentPropsWithoutData,
-} from '../../core/pageContent/PageContent';
+import { PageContent as PageContentWithoutData } from '../../core/pageContent/PageContent';
+import type { PageContentProps as PageContentPropsWithoutData } from '../../core/pageContent/types';
 import styles from './pageContent.module.scss';
 import useApolloPageContext from '../page/useApolloPageContext';
 

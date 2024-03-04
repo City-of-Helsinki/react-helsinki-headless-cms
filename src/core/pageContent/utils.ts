@@ -1,4 +1,5 @@
 import { uniqBy } from 'lodash-es';
+import { BreadcrumbListItem, BreadcrumbProps, KorosType } from 'hds-react';
 
 import { EventType } from '../../common/eventsService/types';
 import {
@@ -34,7 +35,8 @@ import {
   GeneralCollectionType,
   LocationsSelectionCollectionType,
 } from '../collection/types';
-import { Breadcrumb } from './types';
+import { Breadcrumb as CmsBreadcrumb } from '../../common/headlessService/__generated__';
+import type { BreadcrumbUnionType, HeroProps } from './types';
 
 export function getCollections(
   pageModules: PageModule[],
@@ -175,18 +177,91 @@ export function getCollectionUIType(
 }
 
 /**
- * Create Breadcrumb objects from the pages' and articles' breadcrumbs.
+ * Create Breadcrumb list items from the pages' and articles' breadcrumbs.
  * The duplicated root (and other duplicated links) are removed.
  * @param page a page or an article
- * @returns an unique list of breadcrumb objects
+ * @returns an unique list of breadcrumb list items
  * */
 export const getBreadcrumbsFromPage = (
   page: PageType | ArticleType,
-): Breadcrumb[] =>
+): BreadcrumbListItem[] =>
   uniqBy(
     page.breadcrumbs.map((breadcrumb) => ({
       title: breadcrumb.title,
-      link: breadcrumb.uri,
+      path: breadcrumb.uri,
     })),
-    'link',
+    'path',
   );
+
+export function isHdsBreadcrumb(
+  item: BreadcrumbUnionType,
+): item is BreadcrumbProps {
+  return (
+    typeof item === 'object' &&
+    item !== null &&
+    'ariaLabel' in item &&
+    'list' in item &&
+    Boolean(item.ariaLabel && item.list)
+  );
+}
+
+export function isHdsBreadcrumbListItem(
+  item: unknown,
+): item is BreadcrumbListItem {
+  return (
+    typeof item === 'object' &&
+    item !== null &&
+    'path' in item &&
+    'title' in item &&
+    Boolean(item.path && item.title)
+  );
+}
+
+export function isCmsBreadcrumb(item: unknown): item is CmsBreadcrumb {
+  return (
+    typeof item === 'object' &&
+    item !== null &&
+    'uri' in item &&
+    'title' in item &&
+    Boolean(item.uri && item.title)
+  );
+}
+
+export function getHeroProps(page: PageType | ArticleType) {
+  const heroProps: HeroProps = {};
+  if (isPageType(page)) {
+    heroProps.title = page.hero?.title || '';
+    heroProps.description = page.hero?.description;
+    heroProps.backgroundColor = page.hero?.background_color;
+    heroProps.korosType = (page.hero?.wave_motif as KorosType) || 'basic';
+    heroProps.actionUrl = page.hero?.link.url;
+    heroProps.actionUrlTarget = page.hero?.link.target;
+    heroProps.actionText = page.hero?.link?.title;
+    heroProps.isPageType = true;
+  }
+  return heroProps;
+}
+
+export function disableBreadcrumbsLastLink(breadcrumbs: BreadcrumbListItem[]) {
+  const lastItem = breadcrumbs.pop();
+  breadcrumbs.push({ ...lastItem, path: null });
+  return breadcrumbs;
+}
+
+export function getBreadcrumbListItems(
+  breadcrumbs: BreadcrumbUnionType,
+  forceLastItemWithoutLink = true,
+): BreadcrumbListItem[] {
+  const getListItems = () => {
+    if (isHdsBreadcrumb(breadcrumbs)) {
+      return breadcrumbs.list;
+    }
+    return breadcrumbs.map((breadcrumb: BreadcrumbListItem | CmsBreadcrumb) => {
+      if (isHdsBreadcrumbListItem(breadcrumb)) return breadcrumb;
+      return { title: breadcrumb.title, path: breadcrumb.uri };
+    });
+  };
+  return forceLastItemWithoutLink
+    ? disableBreadcrumbsLastLink(getListItems())
+    : getListItems();
+}
