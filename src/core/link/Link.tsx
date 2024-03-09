@@ -22,6 +22,7 @@ export type LinkProps = Omit<
   variant?: 'default' | 'arrowRight';
   children?: React.ReactNode;
   className?: string;
+  inlineIcons?: boolean;
 };
 
 // TODO: LinkBase component should be replaced with hds Link, when all features are supported
@@ -35,6 +36,7 @@ export function Link({
   className,
   size = 'M',
   iconRight,
+  inlineIcons,
   ...delegatedProps
 }: LinkProps) {
   const {
@@ -72,6 +74,7 @@ export function Link({
         (isEmail && <IconEnvelope size={iconSize} aria-hidden />) ??
         (isPhone && <IconPhone size={iconSize} aria-hidden />)
       }
+      inlineIcons
       disableVisitedStyles
     >
       {children ?? ''}

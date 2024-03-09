@@ -62,6 +62,7 @@ export type LinkProps = Omit<
    * Additional styles
    */
   style?: React.CSSProperties;
+  inlineIcons?: boolean;
 };
 
 type LinkToIconSizeMappingType = {
@@ -131,6 +132,7 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
       openInNewTabAriaLabel,
       style = {},
       size = 'M',
+      inlineIcons,
       ...rest
     }: LinkProps,
     ref: React.Ref<HTMLAnchorElement>,
@@ -195,8 +197,35 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
           )}
         >
           {children}
+          {inlineIcons && showExternalIcon && external && (
+            <IconLinkExternal
+              size={mapLinkSizeToExternalIconSize[size]}
+              className={classNames(
+                styles.icon,
+                size === 'L'
+                  ? styles.verticalAlignBigIcon
+                  : styles.verticalAlignSmallOrMediumIcon,
+                styles.inline,
+              )}
+              aria-hidden
+            />
+          )}
+          {!inlineIcons && iconRight && (
+            <span
+              className={classNames(
+                styles.iconRight,
+                size === 'L'
+                  ? styles.verticalAlignBigIcon
+                  : styles.verticalAlignSmallOrMediumIcon,
+                styles.inline,
+              )}
+              aria-hidden="true"
+            >
+              {iconRight}
+            </span>
+          )}
         </span>
-        {showExternalIcon && external && (
+        {!inlineIcons && showExternalIcon && external && (
           <IconLinkExternal
             size={mapLinkSizeToExternalIconSize[size]}
             className={classNames(
@@ -208,7 +237,7 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
             aria-hidden
           />
         )}
-        {iconRight && (
+        {!inlineIcons && iconRight && (
           <span
             className={classNames(
               styles.iconRight,
