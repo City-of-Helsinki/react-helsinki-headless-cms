@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
 import { IconLinkExternal } from 'hds-react';
-import React, { Children, isValidElement, useCallback } from 'react';
+import React, { Children, isValidElement, useMemo } from 'react';
 import type { ReactElement, ReactNode } from 'react';
 
 import styles from './LinkBase.module.scss';
@@ -132,7 +132,7 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
       openInNewTabAriaLabel,
       style = {},
       size = 'M',
-      inlineIcons,
+      inlineIcons = false,
       ...rest
     }: LinkProps,
     ref: React.Ref<HTMLAnchorElement>,
@@ -168,7 +168,7 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
       S: 'xs',
     };
 
-    const getLeftIcon = useCallback(() => {
+    const leftIcon = useMemo(() => {
       return (
         (iconLeft && (
           <span className={styles.iconLeft} aria-hidden="true">
@@ -179,7 +179,7 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
       );
     }, [iconLeft]);
 
-    const getExternalIcon = useCallback(() => {
+    const externalIcon = useMemo(() => {
       return (
         (showExternalIcon && external && (
           <IconLinkExternal
@@ -195,9 +195,9 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
         )) ||
         null
       );
-    }, [iconLeft, mapLinkSizeToExternalIconSize]);
+    }, [showExternalIcon, external, mapLinkSizeToExternalIconSize]);
 
-    const getRightIcon = useCallback(() => {
+    const rightIcon = useMemo(() => {
       return (
         (iconRight && (
           <span
@@ -233,20 +233,20 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
         aria-label={composeAriaLabel()}
         {...rest}
       >
-        {!inlineIcons && getLeftIcon()}
+        {!inlineIcons && leftIcon}
         <span
           className={classNames(
             styles.content,
             iconLeft && styles.withLeftIcon,
           )}
         >
-          {!inlineIcons && getLeftIcon()}
+          {!inlineIcons && leftIcon}
           {children}
-          {inlineIcons && getExternalIcon()}
-          {inlineIcons && getRightIcon()}
+          {inlineIcons && externalIcon}
+          {inlineIcons && rightIcon}
         </span>
-        {!inlineIcons && getExternalIcon()}
-        {!inlineIcons && getRightIcon()}
+        {!inlineIcons && externalIcon}
+        {!inlineIcons && rightIcon}
       </a>
     );
   },
