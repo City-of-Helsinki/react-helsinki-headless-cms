@@ -240,7 +240,7 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
             iconLeft && styles.withLeftIcon,
           )}
         >
-          {!inlineIcons && leftIcon}
+          {inlineIcons && leftIcon}
           {children}
           {inlineIcons && externalIcon}
           {inlineIcons && rightIcon}
