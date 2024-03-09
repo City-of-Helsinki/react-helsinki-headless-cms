@@ -196,11 +196,11 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
             iconLeft && styles.withLeftIcon,
           )}
         >
-          !inlineIcons && iconLeft && (
-          <span className={styles.iconLeft} aria-hidden="true">
-            {iconLeft}
-          </span>
-        )}
+          {!inlineIcons && iconLeft && (
+            <span className={styles.iconLeft} aria-hidden="true">
+              {iconLeft}
+            </span>
+          )}
           {children}
           {inlineIcons && showExternalIcon && external && (
             <IconLinkExternal
