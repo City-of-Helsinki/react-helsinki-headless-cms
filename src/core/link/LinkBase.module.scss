@@ -51,4 +51,8 @@
   &.withLeftIcon {
     flex: 1 1 auto !important;
   }
+  svg {
+    position: relative;
+    top: 2px;
+  }
 }
