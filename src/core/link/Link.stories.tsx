@@ -8,6 +8,7 @@ import { SecondaryLink } from './SecondaryLink';
 import { ConfigProvider } from '../configProvider/ConfigProvider';
 import { defaultConfig } from '../configProvider/defaultConfig';
 import { StoryContainer } from '../storyContainer/StoryContainer';
+import { IconAngleRight } from 'hds-react';
 
 export default {
   title: 'Core components/Link',
@@ -87,6 +88,25 @@ const TemplateAll: StoryFn<typeof Link> = (args) => (
             alt="City of Helsinki logo"
             width="200px"
           />
+        </SecondaryLink>
+        <SecondaryLink
+          {...args}
+          aria-label="Internal secondary with arrow right inline icon"
+          href="/internal-3"
+          variant="arrowRight"
+          inlineIcons
+          iconRight={<IconAngleRight aria-hidden />}
+        >
+          Internal secondary with arrow right inline icon
+        </SecondaryLink>
+        <SecondaryLink
+          {...args}
+          aria-label="Internal secondary with arrow right icon (not inline)"
+          href="/internal-3"
+          variant="arrowRight"
+          iconRight={<IconAngleRight aria-hidden />}
+        >
+          Internal secondary with arrow right icon (not inline)
         </SecondaryLink>
       </div>
     </StoryContainer>

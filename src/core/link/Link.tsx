@@ -74,7 +74,7 @@ export function Link({
         (isEmail && <IconEnvelope size={iconSize} aria-hidden />) ??
         (isPhone && <IconPhone size={iconSize} aria-hidden />)
       }
-      inlineIcons
+      inlineIcons={inlineIcons}
       disableVisitedStyles
     >
       {children ?? ''}
