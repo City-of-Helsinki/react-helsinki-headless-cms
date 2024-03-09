@@ -205,19 +205,17 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
                 size === 'L'
                   ? styles.verticalAlignBigIcon
                   : styles.verticalAlignSmallOrMediumIcon,
-                styles.inline,
               )}
               aria-hidden
             />
           )}
-          {!inlineIcons && iconRight && (
+          {inlineIcons && iconRight && (
             <span
               className={classNames(
                 styles.iconRight,
                 size === 'L'
                   ? styles.verticalAlignBigIcon
                   : styles.verticalAlignSmallOrMediumIcon,
-                styles.inline,
               )}
               aria-hidden="true"
             >
