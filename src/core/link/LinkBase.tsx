@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
 import { IconLinkExternal } from 'hds-react';
-import React, { Children, isValidElement, useCallback, useMemo } from 'react';
+import React, { Children, isValidElement, useMemo } from 'react';
 import type { ReactElement, ReactNode } from 'react';
 
 import styles from './LinkBase.module.scss';
