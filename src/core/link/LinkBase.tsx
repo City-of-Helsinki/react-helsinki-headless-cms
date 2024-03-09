@@ -132,7 +132,7 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
       openInNewTabAriaLabel,
       style = {},
       size = 'M',
-      inlineIcons,
+      inlineIcons = false,
       ...rest
     }: LinkProps,
     ref: React.Ref<HTMLAnchorElement>,
