@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
 import { IconLinkExternal } from 'hds-react';
-import React, { Children, isValidElement } from 'react';
+import React, { Children, isValidElement, useCallback } from 'react';
 import type { ReactElement, ReactNode } from 'react';
 
 import styles from './LinkBase.module.scss';
@@ -168,6 +168,54 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
       S: 'xs',
     };
 
+    const getLeftIcon = useCallback(() => {
+      return (
+        (iconLeft && (
+          <span className={styles.iconLeft} aria-hidden="true">
+            {iconLeft}
+          </span>
+        )) ||
+        null
+      );
+    }, [iconLeft]);
+
+    const getExternalIcon = useCallback(() => {
+      return (
+        (showExternalIcon && external && (
+          <IconLinkExternal
+            size={mapLinkSizeToExternalIconSize[size]}
+            className={classNames(
+              styles.icon,
+              size === 'L'
+                ? styles.verticalAlignBigIcon
+                : styles.verticalAlignSmallOrMediumIcon,
+            )}
+            aria-hidden
+          />
+        )) ||
+        null
+      );
+    }, [iconLeft, mapLinkSizeToExternalIconSize]);
+
+    const getRightIcon = useCallback(() => {
+      return (
+        (iconRight && (
+          <span
+            className={classNames(
+              styles.iconRight,
+              size === 'L'
+                ? styles.verticalAlignBigIcon
+                : styles.verticalAlignSmallOrMediumIcon,
+            )}
+            aria-hidden="true"
+          >
+            {iconRight}
+          </span>
+        )) ||
+        null
+      );
+    }, [iconRight]);
+
     return (
       // eslint-disable-next-line react/jsx-no-target-blank
       <a
@@ -185,74 +233,20 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
         aria-label={composeAriaLabel()}
         {...rest}
       >
-        {!inlineIcons && iconLeft && (
-          <span className={styles.iconLeft} aria-hidden="true">
-            {iconLeft}
-          </span>
-        )}
+        {!inlineIcons && getLeftIcon()}
         <span
           className={classNames(
             styles.content,
             iconLeft && styles.withLeftIcon,
           )}
         >
-          {!inlineIcons && iconLeft && (
-            <span className={styles.iconLeft} aria-hidden="true">
-              {iconLeft}
-            </span>
-          )}
+          {!inlineIcons && getLeftIcon()}
           {children}
-          {inlineIcons && showExternalIcon && external && (
-            <IconLinkExternal
-              size={mapLinkSizeToExternalIconSize[size]}
-              className={classNames(
-                styles.icon,
-                size === 'L'
-                  ? styles.verticalAlignBigIcon
-                  : styles.verticalAlignSmallOrMediumIcon,
-              )}
-              aria-hidden
-            />
-          )}
-          {inlineIcons && iconRight && (
-            <span
-              className={classNames(
-                styles.iconRight,
-                size === 'L'
-                  ? styles.verticalAlignBigIcon
-                  : styles.verticalAlignSmallOrMediumIcon,
-              )}
-              aria-hidden="true"
-            >
-              {iconRight}
-            </span>
-          )}
+          {inlineIcons && getExternalIcon()}
+          {inlineIcons && getRightIcon()}
         </span>
-        {!inlineIcons && showExternalIcon && external && (
-          <IconLinkExternal
-            size={mapLinkSizeToExternalIconSize[size]}
-            className={classNames(
-              styles.icon,
-              size === 'L'
-                ? styles.verticalAlignBigIcon
-                : styles.verticalAlignSmallOrMediumIcon,
-            )}
-            aria-hidden
-          />
-        )}
-        {!inlineIcons && iconRight && (
-          <span
-            className={classNames(
-              styles.iconRight,
-              size === 'L'
-                ? styles.verticalAlignBigIcon
-                : styles.verticalAlignSmallOrMediumIcon,
-            )}
-            aria-hidden="true"
-          >
-            {iconRight}
-          </span>
-        )}
+        {!inlineIcons && getExternalIcon()}
+        {!inlineIcons && getRightIcon()}
       </a>
     );
   },
