@@ -185,7 +185,7 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
         aria-label={composeAriaLabel()}
         {...rest}
       >
-        {iconLeft && (
+        {!inlineIcons && iconLeft && (
           <span className={styles.iconLeft} aria-hidden="true">
             {iconLeft}
           </span>
@@ -196,6 +196,11 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
             iconLeft && styles.withLeftIcon,
           )}
         >
+          !inlineIcons && iconLeft && (
+          <span className={styles.iconLeft} aria-hidden="true">
+            {iconLeft}
+          </span>
+        )}
           {children}
           {inlineIcons && showExternalIcon && external && (
             <IconLinkExternal
