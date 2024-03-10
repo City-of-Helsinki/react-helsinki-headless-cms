@@ -168,34 +168,45 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
       S: 'xs',
     };
 
+    const ZERO_WIDTH_NO_BREAK_SPACE = '\uFEFF';
+
     const leftIcon = useMemo(() => {
       return (
         (iconLeft && (
           <span className={styles.iconLeft} aria-hidden="true">
+            {inlineIcons && ZERO_WIDTH_NO_BREAK_SPACE}
             {iconLeft}
           </span>
         )) ||
         null
       );
-    }, [iconLeft]);
+    }, [iconLeft, inlineIcons]);
 
     const externalIcon = useMemo(() => {
       return (
         (showExternalIcon && external && (
-          <IconLinkExternal
-            size={mapLinkSizeToExternalIconSize[size]}
-            className={classNames(
-              styles.icon,
-              size === 'L'
-                ? styles.verticalAlignBigIcon
-                : styles.verticalAlignSmallOrMediumIcon,
-            )}
-            aria-hidden
-          />
+          <span className={styles.externalWrapper}>
+            {inlineIcons && ZERO_WIDTH_NO_BREAK_SPACE}
+            <IconLinkExternal
+              size={mapLinkSizeToExternalIconSize[size]}
+              className={classNames(
+                styles.icon,
+                size === 'L'
+                  ? styles.verticalAlignBigIcon
+                  : styles.verticalAlignSmallOrMediumIcon,
+              )}
+              aria-hidden
+            />
+          </span>
         )) ||
         null
       );
-    }, [showExternalIcon, external, mapLinkSizeToExternalIconSize]);
+    }, [
+      showExternalIcon,
+      external,
+      mapLinkSizeToExternalIconSize,
+      inlineIcons,
+    ]);
 
     const rightIcon = useMemo(() => {
       return (
@@ -209,12 +220,13 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
             )}
             aria-hidden="true"
           >
+            {inlineIcons && ZERO_WIDTH_NO_BREAK_SPACE}
             {iconRight}
           </span>
         )) ||
         null
       );
-    }, [iconRight]);
+    }, [iconRight, inlineIcons]);
 
     return (
       // eslint-disable-next-line react/jsx-no-target-blank
