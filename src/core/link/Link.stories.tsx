@@ -1,6 +1,7 @@
 /* eslint-disable react/function-component-definition */
 
 import React from 'react';
+import { IconAngleRight } from 'hds-react';
 import { StoryFn, Meta } from '@storybook/react';
 
 import { Link } from './Link';
@@ -8,7 +9,6 @@ import { SecondaryLink } from './SecondaryLink';
 import { ConfigProvider } from '../configProvider/ConfigProvider';
 import { defaultConfig } from '../configProvider/defaultConfig';
 import { StoryContainer } from '../storyContainer/StoryContainer';
-import { IconAngleRight } from 'hds-react';
 
 export default {
   title: 'Core components/Link',

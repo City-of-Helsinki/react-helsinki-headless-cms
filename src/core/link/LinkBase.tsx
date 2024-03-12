@@ -170,20 +170,20 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
 
     const ZERO_WIDTH_NO_BREAK_SPACE = '\uFEFF';
 
-    const leftIcon = useMemo(() => {
-      return (
+    const leftIcon = useMemo(
+      () =>
         (iconLeft && (
           <span className={styles.iconLeft} aria-hidden="true">
             {inlineIcons && ZERO_WIDTH_NO_BREAK_SPACE}
             {iconLeft}
           </span>
         )) ||
-        null
-      );
-    }, [iconLeft, inlineIcons]);
+        null,
+      [iconLeft, inlineIcons],
+    );
 
-    const externalIcon = useMemo(() => {
-      return (
+    const externalIcon = useMemo(
+      () =>
         (showExternalIcon && external && (
           <span className={styles.externalWrapper}>
             {inlineIcons && ZERO_WIDTH_NO_BREAK_SPACE}
@@ -199,17 +199,12 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
             />
           </span>
         )) ||
-        null
-      );
-    }, [
-      showExternalIcon,
-      external,
-      mapLinkSizeToExternalIconSize,
-      inlineIcons,
-    ]);
+        null,
+      [showExternalIcon, external, mapLinkSizeToExternalIconSize, inlineIcons],
+    );
 
-    const rightIcon = useMemo(() => {
-      return (
+    const rightIcon = useMemo(
+      () =>
         (iconRight && (
           <span
             className={classNames(
@@ -224,9 +219,9 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
             {iconRight}
           </span>
         )) ||
-        null
-      );
-    }, [iconRight, inlineIcons]);
+        null,
+      [iconRight, inlineIcons],
+    );
 
     return (
       // eslint-disable-next-line react/jsx-no-target-blank
