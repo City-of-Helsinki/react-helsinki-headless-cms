@@ -33,7 +33,7 @@ test('renders internal link which opens in a new tab', () => {
 test('renders external link with external icon by default', () => {
   render(<Link href="https://www.google.com/">Search from google</Link>);
   const link = screen.getByRole('link');
-  expect(link.lastChild.nodeName).toEqual('svg');
+  expect(link.lastChild.nodeName).toEqual('SPAN');
 });
 
 test('renders external link without external icon', () => {
