@@ -23,7 +23,7 @@
 }
 
 .hds-link .vertical-align-small-or-medium-icon {
-  vertical-align: sub;
+  vertical-align: middle;
 }
 
 .hds-link .vertical-align-big-icon {
@@ -70,7 +70,7 @@
 
 .hds-link--medium .hds-icon-left {
   margin-right: 8px;
-  vertical-align: sub;
+  vertical-align: middle;
 }
 
 .hds-link--large .hds-icon-left {
@@ -79,13 +79,11 @@
 }
 
 .hds-link--small .hds-icon-right {
-  margin-left: 4px;
   vertical-align: text-top;
 }
 
 .hds-link--medium .hds-icon-right {
-  margin-left: 8px;
-  vertical-align: sub;
+  vertical-align: middle;
 }
 
 .hds-link--large .hds-icon-right {

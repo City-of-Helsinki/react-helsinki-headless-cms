@@ -8,10 +8,12 @@
 
 .iconLeft {
   composes: hds-icon-left from './LinkBase.scss';
+  white-space: nowrap;
 }
 
 .iconRight {
   composes: hds-icon-right from './LinkBase.scss';
+  white-space: nowrap;
 }
 
 .verticalAlignSmallOrMediumIcon {
@@ -51,4 +53,12 @@
   &.withLeftIcon {
     flex: 1 1 auto !important;
   }
+  svg {
+    position: relative;
+    top: 2px;
+  }
+}
+
+.externalWrapper {
+  white-space: nowrap;
 }

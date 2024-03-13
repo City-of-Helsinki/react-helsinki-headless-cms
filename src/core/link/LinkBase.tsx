@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
 import { IconLinkExternal } from 'hds-react';
-import React, { Children, isValidElement } from 'react';
+import React, { Children, isValidElement, useMemo } from 'react';
 import type { ReactElement, ReactNode } from 'react';
 
 import styles from './LinkBase.module.scss';
@@ -62,6 +62,7 @@ export type LinkProps = Omit<
    * Additional styles
    */
   style?: React.CSSProperties;
+  inlineIcons?: boolean;
 };
 
 type LinkToIconSizeMappingType = {
@@ -131,6 +132,7 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
       openInNewTabAriaLabel,
       style = {},
       size = 'M',
+      inlineIcons = false,
       ...rest
     }: LinkProps,
     ref: React.Ref<HTMLAnchorElement>,
@@ -166,6 +168,61 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
       S: 'xs',
     };
 
+    const ZERO_WIDTH_NO_BREAK_SPACE = '\uFEFF';
+
+    const leftIcon = useMemo(
+      () =>
+        (iconLeft && (
+          <span className={styles.iconLeft} aria-hidden="true">
+            {inlineIcons && ZERO_WIDTH_NO_BREAK_SPACE}
+            {iconLeft}
+          </span>
+        )) ||
+        null,
+      [iconLeft, inlineIcons],
+    );
+
+    const externalIcon = useMemo(
+      () =>
+        (showExternalIcon && external && (
+          <span className={styles.externalWrapper}>
+            {inlineIcons && ZERO_WIDTH_NO_BREAK_SPACE}
+            <IconLinkExternal
+              size={mapLinkSizeToExternalIconSize[size]}
+              className={classNames(
+                styles.icon,
+                size === 'L'
+                  ? styles.verticalAlignBigIcon
+                  : styles.verticalAlignSmallOrMediumIcon,
+              )}
+              aria-hidden
+            />
+          </span>
+        )) ||
+        null,
+      [showExternalIcon, external, mapLinkSizeToExternalIconSize, inlineIcons],
+    );
+
+    const rightIcon = useMemo(
+      () =>
+        (iconRight && (
+          <span
+            className={classNames(
+              styles.iconRight,
+              size === 'L'
+                ? styles.verticalAlignBigIcon
+                : styles.verticalAlignSmallOrMediumIcon,
+            )}
+            aria-hidden="true"
+          >
+            {inlineIcons && ZERO_WIDTH_NO_BREAK_SPACE}
+            {iconRight}
+          </span>
+        )) ||
+        null,
+      [iconRight, inlineIcons],
+    );
+
     return (
       // eslint-disable-next-line react/jsx-no-target-blank
       <a
@@ -183,44 +240,20 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
         aria-label={composeAriaLabel()}
         {...rest}
       >
-        {iconLeft && (
-          <span className={styles.iconLeft} aria-hidden="true">
-            {iconLeft}
-          </span>
-        )}
+        {!inlineIcons && leftIcon}
         <span
           className={classNames(
             styles.content,
             iconLeft && styles.withLeftIcon,
           )}
         >
+          {inlineIcons && leftIcon}
           {children}
+          {inlineIcons && externalIcon}
+          {inlineIcons && rightIcon}
         </span>
-        {showExternalIcon && external && (
-          <IconLinkExternal
-            size={mapLinkSizeToExternalIconSize[size]}
-            className={classNames(
-              styles.icon,
-              size === 'L'
-                ? styles.verticalAlignBigIcon
-                : styles.verticalAlignSmallOrMediumIcon,
-            )}
-            aria-hidden
-          />
-        )}
-        {iconRight && (
-          <span
-            className={classNames(
-              styles.iconRight,
-              size === 'L'
-                ? styles.verticalAlignBigIcon
-                : styles.verticalAlignSmallOrMediumIcon,
-            )}
-            aria-hidden="true"
-          >
-            {iconRight}
-          </span>
-        )}
+        {!inlineIcons && externalIcon}
+        {!inlineIcons && rightIcon}
       </a>
     );
   },

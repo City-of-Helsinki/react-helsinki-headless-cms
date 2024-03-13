@@ -1,6 +1,7 @@
 /* eslint-disable react/function-component-definition */
 
 import React from 'react';
+import { IconAngleRight } from 'hds-react';
 import { StoryFn, Meta } from '@storybook/react';
 
 import { Link } from './Link';
@@ -87,6 +88,25 @@ const TemplateAll: StoryFn<typeof Link> = (args) => (
             alt="City of Helsinki logo"
             width="200px"
           />
+        </SecondaryLink>
+        <SecondaryLink
+          {...args}
+          aria-label="Internal secondary with arrow right inline icon"
+          href="/internal-3"
+          variant="arrowRight"
+          inlineIcons
+          iconRight={<IconAngleRight aria-hidden />}
+        >
+          Internal secondary with arrow right inline icon
+        </SecondaryLink>
+        <SecondaryLink
+          {...args}
+          aria-label="Internal secondary with arrow right icon (not inline)"
+          href="/internal-3"
+          variant="arrowRight"
+          iconRight={<IconAngleRight aria-hidden />}
+        >
+          Internal secondary with arrow right icon (not inline)
         </SecondaryLink>
       </div>
     </StoryContainer>
