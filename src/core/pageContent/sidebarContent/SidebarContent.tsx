@@ -5,17 +5,20 @@ import { ModuleItemTypeEnum } from '../../../common/headlessService/constants';
 import { SidebarContent as SidebarContentType } from '../../../common/headlessService/types';
 import {
   isLayoutArticle,
+  isLayoutCards,
   isLayoutLinkList,
   isLayoutPage,
 } from '../../../common/headlessService/utils';
 import SidebarContentLinkList from './SidebarContentLinkList';
 import SidebarPostListItem from './SidebarPostListItem';
+import SidebarCardsList from './SidebarCardsList';
 
 type SidebarContentProps = {
   content?: SidebarContentType;
   SidebarContentLinkListComponent?: typeof SidebarContentLinkList;
   SidebarPostListComponent?: typeof List;
   SideBarPostListItemComponent?: typeof SidebarPostListItem;
+  SideBarCardsListComponent?: typeof SidebarCardsList;
 };
 
 export default function SidebarContent({
@@ -23,6 +26,7 @@ export default function SidebarContent({
   SidebarContentLinkListComponent = SidebarContentLinkList,
   SidebarPostListComponent = List,
   SideBarPostListItemComponent = SidebarPostListItem,
+  SideBarCardsListComponent = SidebarCardsList,
 }: SidebarContentProps) {
   return (
     <List
@@ -71,6 +75,10 @@ export default function SidebarContent({
                 ))}
               />
             );
+          }
+
+          if (isLayoutCards(item)) {
+            return <SideBarCardsListComponent key="cards" cards={item.cards} />;
           }
 
           return null;

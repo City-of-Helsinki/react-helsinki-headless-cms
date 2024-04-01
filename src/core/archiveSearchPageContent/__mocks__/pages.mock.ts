@@ -1,6 +1,11 @@
 import { PagesQuery } from '../../../common/headlessService/pages';
 
 const mockPages: PagesQuery['pages'] = {
+  pageInfo: {
+    endCursor: null,
+    hasNextPage: false,
+    hasPreviousPage: false,
+  },
   edges: [
     {
       node: {

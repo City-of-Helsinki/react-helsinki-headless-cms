@@ -11,7 +11,36 @@ import {
   LayoutLinkList,
   LayoutPage,
   LayoutPageCarousel,
+  LayoutCards,
 } from '../../../common/headlessService/types';
+
+export const sidebarCardsList: LayoutCards = {
+  cards: [
+    {
+      backgroundColor: 'silver',
+      description: 'This is a card description',
+      icon: 'angle-down',
+      title: 'Card 1',
+      link: {
+        target: '_blank',
+        title: 'Read more',
+        url: ' https://hel.fi',
+      },
+    },
+    {
+      backgroundColor: 'silver',
+      description: 'This is a card description',
+      icon: 'angle-down',
+      title: 'Card 2',
+      link: {
+        target: '',
+        title: 'Read more',
+        url: 'https://liikunta.hkih.stage.geniem.io/en/regulations-and-instructions/hygiene-in-pool-premises/',
+      },
+    },
+  ],
+  __typename: 'LayoutCards',
+};
 
 export const sidebarLinkList: LayoutLinkList = {
   anchor: '#interesting-links',
@@ -193,7 +222,12 @@ export const pageEventSelectedCarousel: EventSelectedCarousel = {
   __typename: 'EventSelectedCarousel',
 };
 
-const sidebar = [sidebarLinkList, sidebarArticleList, sidebarPageList];
+const sidebar = [
+  sidebarLinkList,
+  sidebarArticleList,
+  sidebarPageList,
+  sidebarCardsList,
+];
 
 const modules = [
   articleList,

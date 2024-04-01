@@ -162,11 +162,6 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
       }
       return label;
     };
-    const mapLinkSizeToExternalIconSize: LinkToIconSizeMappingType = {
-      L: 'l',
-      M: 's',
-      S: 'xs',
-    };
 
     const ZERO_WIDTH_NO_BREAK_SPACE = '\uFEFF';
 
@@ -182,8 +177,14 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
       [iconLeft, inlineIcons],
     );
 
-    const externalIcon = useMemo(
-      () =>
+    const externalIcon = useMemo(() => {
+      const mapLinkSizeToExternalIconSize: LinkToIconSizeMappingType = {
+        L: 'l',
+        M: 's',
+        S: 'xs',
+      };
+
+      return (
         (showExternalIcon && external && (
           <span className={styles.externalWrapper}>
             {inlineIcons && ZERO_WIDTH_NO_BREAK_SPACE}
@@ -199,9 +200,9 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
             />
           </span>
         )) ||
-        null,
-      [showExternalIcon, external, mapLinkSizeToExternalIconSize, inlineIcons],
-    );
+        null
+      );
+    }, [showExternalIcon, external, inlineIcons, size]);
 
     const rightIcon = useMemo(
       () =>
@@ -220,7 +221,7 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
           </span>
         )) ||
         null,
-      [iconRight, inlineIcons],
+      [iconRight, inlineIcons, size],
     );
 
     return (

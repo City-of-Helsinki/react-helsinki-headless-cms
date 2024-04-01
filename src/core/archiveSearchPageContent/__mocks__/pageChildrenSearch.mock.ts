@@ -1,6 +1,10 @@
 import { PageChildrenSearchQuery } from '../../../common/headlessService/__generated__';
 
 const mockPageWithChildren: PageChildrenSearchQuery['page']['children'] = {
+  pageInfo: {
+    endCursor: null,
+    hasNextPage: false,
+  },
   edges: [
     {
       node: {

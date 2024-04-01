@@ -61,6 +61,9 @@ fragment Page on Page {
     ... on LayoutPages {
       ...LayoutPages
     }
+    ... on LayoutCards {
+      ...LayoutCards
+    }
   }
   modules {
     # TODO: HCRC-13 - Support Event search and Event selection -modules
