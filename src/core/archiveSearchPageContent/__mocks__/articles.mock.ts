@@ -1,6 +1,11 @@
 import { PostsQuery } from '../../../common/headlessService/articles';
 
 const mockArticles: PostsQuery['posts'] = {
+  pageInfo: {
+    endCursor: null,
+    hasNextPage: false,
+    hasPreviousPage: false,
+  },
   edges: [
     {
       node: {
