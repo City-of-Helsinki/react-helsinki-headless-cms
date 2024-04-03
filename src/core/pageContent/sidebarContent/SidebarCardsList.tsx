@@ -3,6 +3,7 @@ import React from 'react';
 import { LayoutCards } from '../../../common/headlessService/types';
 import { SimpleCard } from '../../pageModules/CardsModule/SimpleCard';
 import styles from './sidebarCardsList.module.scss';
+import { useHeadlessCmsLink } from '../../configProvider/useHeadlessCmsLink';
 
 type CardsListItemProps = Omit<LayoutCards, '__typename'>;
 
@@ -19,7 +20,7 @@ export default function SidebarCardsList({ cards }: CardsListItemProps) {
           icon={card.icon}
           description={card.description}
           backgroundColor={card.backgroundColor}
-          linkUrl={card.link.url}
+          linkUrl={useHeadlessCmsLink(card.link.url)}
           linkTitle={card.link.title}
           linkTarget={card.link.target}
           direction="vertical"
