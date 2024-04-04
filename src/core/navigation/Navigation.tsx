@@ -1,6 +1,6 @@
 import React from 'react';
 import { groupBy } from 'lodash-es';
-import { Header, HeaderTheme, LanguageOption, Logo } from 'hds-react';
+import { Header, LanguageOption, Logo } from 'hds-react';
 
 import { Config } from '../configProvider/configContext';
 import { Language, Menu } from '../../common/headlessService/types';
@@ -153,7 +153,7 @@ export function Navigation({
     A,
   };
 
-  const theme: HeaderTheme = {
+  const overrideHeaderMaxWidth = {
     '--header-max-width': 'var(--breakpoint-xl)', // Would be 1440px if not overridden
   };
 
@@ -163,7 +163,12 @@ export function Navigation({
       defaultLanguage={currentLanguage?.code?.toLowerCase()}
       languages={languageOptions}
       className={className}
-      theme={theme}
+      style={
+        /* HDS v3.4–v3.6 has broken theme support with next.js SSR & hydration.
+         * FIXME: Replace with `theme={overrideHeaderMaxWidth}` when HDS theme support is fixed.
+         */
+        overrideHeaderMaxWidth as React.CSSProperties
+      }
     >
       <Header.SkipLink
         skipTo={`#${mainContentId ?? MAIN_CONTENT_ID}`}
