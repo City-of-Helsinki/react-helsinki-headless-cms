@@ -12867,6 +12867,9 @@ export type PostFragment = {
               __typename?: 'MediaItem';
               altText?: string | null;
               mediaItemUrl?: string | null;
+              medium_large?: string | null;
+              medium?: string | null;
+              thumbnail?: string | null;
             };
           } | null;
           categories?: {
@@ -12923,6 +12926,9 @@ export type PostFragment = {
               __typename?: 'MediaItem';
               altText?: string | null;
               mediaItemUrl?: string | null;
+              medium_large?: string | null;
+              medium?: string | null;
+              thumbnail?: string | null;
             };
           } | null;
         } | null> | null;
@@ -12983,6 +12989,9 @@ export type PostFragment = {
               __typename?: 'MediaItem';
               altText?: string | null;
               mediaItemUrl?: string | null;
+              medium_large?: string | null;
+              medium?: string | null;
+              thumbnail?: string | null;
             };
           } | null;
           categories?: {
@@ -13112,6 +13121,9 @@ export type PostFragment = {
               __typename?: 'MediaItem';
               altText?: string | null;
               mediaItemUrl?: string | null;
+              medium_large?: string | null;
+              medium?: string | null;
+              thumbnail?: string | null;
             };
           } | null;
         } | null> | null;
@@ -13286,6 +13298,9 @@ export type ArticleQuery = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                medium_large?: string | null;
+                medium?: string | null;
+                thumbnail?: string | null;
               };
             } | null;
             categories?: {
@@ -13342,6 +13357,9 @@ export type ArticleQuery = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                medium_large?: string | null;
+                medium?: string | null;
+                thumbnail?: string | null;
               };
             } | null;
           } | null> | null;
@@ -13402,6 +13420,9 @@ export type ArticleQuery = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                medium_large?: string | null;
+                medium?: string | null;
+                thumbnail?: string | null;
               };
             } | null;
             categories?: {
@@ -13531,6 +13552,9 @@ export type ArticleQuery = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                medium_large?: string | null;
+                medium?: string | null;
+                thumbnail?: string | null;
               };
             } | null;
           } | null> | null;
@@ -13729,6 +13753,9 @@ export type PostsQuery = {
                     __typename?: 'MediaItem';
                     altText?: string | null;
                     mediaItemUrl?: string | null;
+                    medium_large?: string | null;
+                    medium?: string | null;
+                    thumbnail?: string | null;
                   };
                 } | null;
                 categories?: {
@@ -13788,6 +13815,9 @@ export type PostsQuery = {
                     __typename?: 'MediaItem';
                     altText?: string | null;
                     mediaItemUrl?: string | null;
+                    medium_large?: string | null;
+                    medium?: string | null;
+                    thumbnail?: string | null;
                   };
                 } | null;
               } | null> | null;
@@ -13848,6 +13878,9 @@ export type PostsQuery = {
                     __typename?: 'MediaItem';
                     altText?: string | null;
                     mediaItemUrl?: string | null;
+                    medium_large?: string | null;
+                    medium?: string | null;
+                    thumbnail?: string | null;
                   };
                 } | null;
                 categories?: {
@@ -13983,6 +14016,9 @@ export type PostsQuery = {
                     __typename?: 'MediaItem';
                     altText?: string | null;
                     mediaItemUrl?: string | null;
+                    medium_large?: string | null;
+                    medium?: string | null;
+                    thumbnail?: string | null;
                   };
                 } | null;
               } | null> | null;
@@ -14315,6 +14351,9 @@ export type MenuItemFragment = {
                                 __typename?: 'MediaItem';
                                 altText?: string | null;
                                 mediaItemUrl?: string | null;
+                                medium_large?: string | null;
+                                medium?: string | null;
+                                thumbnail?: string | null;
                               };
                             } | null;
                             categories?: {
@@ -14374,6 +14413,9 @@ export type MenuItemFragment = {
                                 __typename?: 'MediaItem';
                                 altText?: string | null;
                                 mediaItemUrl?: string | null;
+                                medium_large?: string | null;
+                                medium?: string | null;
+                                thumbnail?: string | null;
                               };
                             } | null;
                           } | null> | null;
@@ -14434,6 +14476,9 @@ export type MenuItemFragment = {
                                 __typename?: 'MediaItem';
                                 altText?: string | null;
                                 mediaItemUrl?: string | null;
+                                medium_large?: string | null;
+                                medium?: string | null;
+                                thumbnail?: string | null;
                               };
                             } | null;
                             categories?: {
@@ -14569,6 +14614,9 @@ export type MenuItemFragment = {
                                 __typename?: 'MediaItem';
                                 altText?: string | null;
                                 mediaItemUrl?: string | null;
+                                medium_large?: string | null;
+                                medium?: string | null;
+                                thumbnail?: string | null;
                               };
                             } | null;
                           } | null> | null;
@@ -14705,6 +14753,9 @@ export type MenuItemFragment = {
                               __typename?: 'MediaItem';
                               altText?: string | null;
                               mediaItemUrl?: string | null;
+                              medium_large?: string | null;
+                              medium?: string | null;
+                              thumbnail?: string | null;
                             };
                           } | null;
                           categories?: {
@@ -14764,6 +14815,9 @@ export type MenuItemFragment = {
                               __typename?: 'MediaItem';
                               altText?: string | null;
                               mediaItemUrl?: string | null;
+                              medium_large?: string | null;
+                              medium?: string | null;
+                              thumbnail?: string | null;
                             };
                           } | null;
                         } | null> | null;
@@ -14824,6 +14878,9 @@ export type MenuItemFragment = {
                               __typename?: 'MediaItem';
                               altText?: string | null;
                               mediaItemUrl?: string | null;
+                              medium_large?: string | null;
+                              medium?: string | null;
+                              thumbnail?: string | null;
                             };
                           } | null;
                           categories?: {
@@ -14959,6 +15016,9 @@ export type MenuItemFragment = {
                               __typename?: 'MediaItem';
                               altText?: string | null;
                               mediaItemUrl?: string | null;
+                              medium_large?: string | null;
+                              medium?: string | null;
+                              thumbnail?: string | null;
                             };
                           } | null;
                         } | null> | null;
@@ -15138,6 +15198,9 @@ export type MenuItemFragment = {
                         __typename?: 'MediaItem';
                         altText?: string | null;
                         mediaItemUrl?: string | null;
+                        medium_large?: string | null;
+                        medium?: string | null;
+                        thumbnail?: string | null;
                       };
                     } | null;
                     categories?: {
@@ -15197,6 +15260,9 @@ export type MenuItemFragment = {
                         __typename?: 'MediaItem';
                         altText?: string | null;
                         mediaItemUrl?: string | null;
+                        medium_large?: string | null;
+                        medium?: string | null;
+                        thumbnail?: string | null;
                       };
                     } | null;
                   } | null> | null;
@@ -15257,6 +15323,9 @@ export type MenuItemFragment = {
                         __typename?: 'MediaItem';
                         altText?: string | null;
                         mediaItemUrl?: string | null;
+                        medium_large?: string | null;
+                        medium?: string | null;
+                        thumbnail?: string | null;
                       };
                     } | null;
                     categories?: {
@@ -15392,6 +15461,9 @@ export type MenuItemFragment = {
                         __typename?: 'MediaItem';
                         altText?: string | null;
                         mediaItemUrl?: string | null;
+                        medium_large?: string | null;
+                        medium?: string | null;
+                        thumbnail?: string | null;
                       };
                     } | null;
                   } | null> | null;
@@ -15528,6 +15600,9 @@ export type MenuItemFragment = {
                       __typename?: 'MediaItem';
                       altText?: string | null;
                       mediaItemUrl?: string | null;
+                      medium_large?: string | null;
+                      medium?: string | null;
+                      thumbnail?: string | null;
                     };
                   } | null;
                   categories?: {
@@ -15587,6 +15662,9 @@ export type MenuItemFragment = {
                       __typename?: 'MediaItem';
                       altText?: string | null;
                       mediaItemUrl?: string | null;
+                      medium_large?: string | null;
+                      medium?: string | null;
+                      thumbnail?: string | null;
                     };
                   } | null;
                 } | null> | null;
@@ -15647,6 +15725,9 @@ export type MenuItemFragment = {
                       __typename?: 'MediaItem';
                       altText?: string | null;
                       mediaItemUrl?: string | null;
+                      medium_large?: string | null;
+                      medium?: string | null;
+                      thumbnail?: string | null;
                     };
                   } | null;
                   categories?: {
@@ -15782,6 +15863,9 @@ export type MenuItemFragment = {
                       __typename?: 'MediaItem';
                       altText?: string | null;
                       mediaItemUrl?: string | null;
+                      medium_large?: string | null;
+                      medium?: string | null;
+                      thumbnail?: string | null;
                     };
                   } | null;
                 } | null> | null;
@@ -15995,6 +16079,9 @@ export type MenuPageFieldsFragment = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                medium_large?: string | null;
+                medium?: string | null;
+                thumbnail?: string | null;
               };
             } | null;
             categories?: {
@@ -16051,6 +16138,9 @@ export type MenuPageFieldsFragment = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                medium_large?: string | null;
+                medium?: string | null;
+                thumbnail?: string | null;
               };
             } | null;
           } | null> | null;
@@ -16111,6 +16201,9 @@ export type MenuPageFieldsFragment = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                medium_large?: string | null;
+                medium?: string | null;
+                thumbnail?: string | null;
               };
             } | null;
             categories?: {
@@ -16240,6 +16333,9 @@ export type MenuPageFieldsFragment = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                medium_large?: string | null;
+                medium?: string | null;
+                thumbnail?: string | null;
               };
             } | null;
           } | null> | null;
@@ -16376,6 +16472,9 @@ export type MenuPageFieldsFragment = {
               __typename?: 'MediaItem';
               altText?: string | null;
               mediaItemUrl?: string | null;
+              medium_large?: string | null;
+              medium?: string | null;
+              thumbnail?: string | null;
             };
           } | null;
           categories?: {
@@ -16432,6 +16531,9 @@ export type MenuPageFieldsFragment = {
               __typename?: 'MediaItem';
               altText?: string | null;
               mediaItemUrl?: string | null;
+              medium_large?: string | null;
+              medium?: string | null;
+              thumbnail?: string | null;
             };
           } | null;
         } | null> | null;
@@ -16492,6 +16594,9 @@ export type MenuPageFieldsFragment = {
               __typename?: 'MediaItem';
               altText?: string | null;
               mediaItemUrl?: string | null;
+              medium_large?: string | null;
+              medium?: string | null;
+              thumbnail?: string | null;
             };
           } | null;
           categories?: {
@@ -16621,6 +16726,9 @@ export type MenuPageFieldsFragment = {
               __typename?: 'MediaItem';
               altText?: string | null;
               mediaItemUrl?: string | null;
+              medium_large?: string | null;
+              medium?: string | null;
+              thumbnail?: string | null;
             };
           } | null;
         } | null> | null;
@@ -16848,6 +16956,9 @@ export type MenuQuery = {
                                       __typename?: 'MediaItem';
                                       altText?: string | null;
                                       mediaItemUrl?: string | null;
+                                      medium_large?: string | null;
+                                      medium?: string | null;
+                                      thumbnail?: string | null;
                                     };
                                   } | null;
                                   categories?: {
@@ -16907,6 +17018,9 @@ export type MenuQuery = {
                                       __typename?: 'MediaItem';
                                       altText?: string | null;
                                       mediaItemUrl?: string | null;
+                                      medium_large?: string | null;
+                                      medium?: string | null;
+                                      thumbnail?: string | null;
                                     };
                                   } | null;
                                 } | null> | null;
@@ -16967,6 +17081,9 @@ export type MenuQuery = {
                                       __typename?: 'MediaItem';
                                       altText?: string | null;
                                       mediaItemUrl?: string | null;
+                                      medium_large?: string | null;
+                                      medium?: string | null;
+                                      thumbnail?: string | null;
                                     };
                                   } | null;
                                   categories?: {
@@ -17102,6 +17219,9 @@ export type MenuQuery = {
                                       __typename?: 'MediaItem';
                                       altText?: string | null;
                                       mediaItemUrl?: string | null;
+                                      medium_large?: string | null;
+                                      medium?: string | null;
+                                      thumbnail?: string | null;
                                     };
                                   } | null;
                                 } | null> | null;
@@ -17238,6 +17358,9 @@ export type MenuQuery = {
                                     __typename?: 'MediaItem';
                                     altText?: string | null;
                                     mediaItemUrl?: string | null;
+                                    medium_large?: string | null;
+                                    medium?: string | null;
+                                    thumbnail?: string | null;
                                   };
                                 } | null;
                                 categories?: {
@@ -17297,6 +17420,9 @@ export type MenuQuery = {
                                     __typename?: 'MediaItem';
                                     altText?: string | null;
                                     mediaItemUrl?: string | null;
+                                    medium_large?: string | null;
+                                    medium?: string | null;
+                                    thumbnail?: string | null;
                                   };
                                 } | null;
                               } | null> | null;
@@ -17357,6 +17483,9 @@ export type MenuQuery = {
                                     __typename?: 'MediaItem';
                                     altText?: string | null;
                                     mediaItemUrl?: string | null;
+                                    medium_large?: string | null;
+                                    medium?: string | null;
+                                    thumbnail?: string | null;
                                   };
                                 } | null;
                                 categories?: {
@@ -17492,6 +17621,9 @@ export type MenuQuery = {
                                     __typename?: 'MediaItem';
                                     altText?: string | null;
                                     mediaItemUrl?: string | null;
+                                    medium_large?: string | null;
+                                    medium?: string | null;
+                                    thumbnail?: string | null;
                                   };
                                 } | null;
                               } | null> | null;
@@ -17671,6 +17803,9 @@ export type MenuQuery = {
                               __typename?: 'MediaItem';
                               altText?: string | null;
                               mediaItemUrl?: string | null;
+                              medium_large?: string | null;
+                              medium?: string | null;
+                              thumbnail?: string | null;
                             };
                           } | null;
                           categories?: {
@@ -17730,6 +17865,9 @@ export type MenuQuery = {
                               __typename?: 'MediaItem';
                               altText?: string | null;
                               mediaItemUrl?: string | null;
+                              medium_large?: string | null;
+                              medium?: string | null;
+                              thumbnail?: string | null;
                             };
                           } | null;
                         } | null> | null;
@@ -17790,6 +17928,9 @@ export type MenuQuery = {
                               __typename?: 'MediaItem';
                               altText?: string | null;
                               mediaItemUrl?: string | null;
+                              medium_large?: string | null;
+                              medium?: string | null;
+                              thumbnail?: string | null;
                             };
                           } | null;
                           categories?: {
@@ -17925,6 +18066,9 @@ export type MenuQuery = {
                               __typename?: 'MediaItem';
                               altText?: string | null;
                               mediaItemUrl?: string | null;
+                              medium_large?: string | null;
+                              medium?: string | null;
+                              thumbnail?: string | null;
                             };
                           } | null;
                         } | null> | null;
@@ -18061,6 +18205,9 @@ export type MenuQuery = {
                             __typename?: 'MediaItem';
                             altText?: string | null;
                             mediaItemUrl?: string | null;
+                            medium_large?: string | null;
+                            medium?: string | null;
+                            thumbnail?: string | null;
                           };
                         } | null;
                         categories?: {
@@ -18120,6 +18267,9 @@ export type MenuQuery = {
                             __typename?: 'MediaItem';
                             altText?: string | null;
                             mediaItemUrl?: string | null;
+                            medium_large?: string | null;
+                            medium?: string | null;
+                            thumbnail?: string | null;
                           };
                         } | null;
                       } | null> | null;
@@ -18180,6 +18330,9 @@ export type MenuQuery = {
                             __typename?: 'MediaItem';
                             altText?: string | null;
                             mediaItemUrl?: string | null;
+                            medium_large?: string | null;
+                            medium?: string | null;
+                            thumbnail?: string | null;
                           };
                         } | null;
                         categories?: {
@@ -18315,6 +18468,9 @@ export type MenuQuery = {
                             __typename?: 'MediaItem';
                             altText?: string | null;
                             mediaItemUrl?: string | null;
+                            medium_large?: string | null;
+                            medium?: string | null;
+                            thumbnail?: string | null;
                           };
                         } | null;
                       } | null> | null;
@@ -18413,6 +18569,9 @@ export type LayoutArticlesFragment = {
         __typename?: 'MediaItem';
         altText?: string | null;
         mediaItemUrl?: string | null;
+        medium_large?: string | null;
+        medium?: string | null;
+        thumbnail?: string | null;
       };
     } | null;
     categories?: {
@@ -18474,6 +18633,9 @@ export type LayoutPagesFragment = {
         __typename?: 'MediaItem';
         altText?: string | null;
         mediaItemUrl?: string | null;
+        medium_large?: string | null;
+        medium?: string | null;
+        thumbnail?: string | null;
       };
     } | null;
   } | null> | null;
@@ -18779,6 +18941,9 @@ export type PageFragment = {
               __typename?: 'MediaItem';
               altText?: string | null;
               mediaItemUrl?: string | null;
+              medium_large?: string | null;
+              medium?: string | null;
+              thumbnail?: string | null;
             };
           } | null;
           categories?: {
@@ -18835,6 +19000,9 @@ export type PageFragment = {
               __typename?: 'MediaItem';
               altText?: string | null;
               mediaItemUrl?: string | null;
+              medium_large?: string | null;
+              medium?: string | null;
+              thumbnail?: string | null;
             };
           } | null;
         } | null> | null;
@@ -18895,6 +19063,9 @@ export type PageFragment = {
               __typename?: 'MediaItem';
               altText?: string | null;
               mediaItemUrl?: string | null;
+              medium_large?: string | null;
+              medium?: string | null;
+              thumbnail?: string | null;
             };
           } | null;
           categories?: {
@@ -19024,6 +19195,9 @@ export type PageFragment = {
               __typename?: 'MediaItem';
               altText?: string | null;
               mediaItemUrl?: string | null;
+              medium_large?: string | null;
+              medium?: string | null;
+              thumbnail?: string | null;
             };
           } | null;
         } | null> | null;
@@ -19204,6 +19378,9 @@ export type PageQuery = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                medium_large?: string | null;
+                medium?: string | null;
+                thumbnail?: string | null;
               };
             } | null;
             categories?: {
@@ -19260,6 +19437,9 @@ export type PageQuery = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                medium_large?: string | null;
+                medium?: string | null;
+                thumbnail?: string | null;
               };
             } | null;
           } | null> | null;
@@ -19320,6 +19500,9 @@ export type PageQuery = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                medium_large?: string | null;
+                medium?: string | null;
+                thumbnail?: string | null;
               };
             } | null;
             categories?: {
@@ -19449,6 +19632,9 @@ export type PageQuery = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                medium_large?: string | null;
+                medium?: string | null;
+                thumbnail?: string | null;
               };
             } | null;
           } | null> | null;
@@ -19631,6 +19817,9 @@ export type PageByTemplateQuery = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                medium_large?: string | null;
+                medium?: string | null;
+                thumbnail?: string | null;
               };
             } | null;
             categories?: {
@@ -19687,6 +19876,9 @@ export type PageByTemplateQuery = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                medium_large?: string | null;
+                medium?: string | null;
+                thumbnail?: string | null;
               };
             } | null;
           } | null> | null;
@@ -19747,6 +19939,9 @@ export type PageByTemplateQuery = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                medium_large?: string | null;
+                medium?: string | null;
+                thumbnail?: string | null;
               };
             } | null;
             categories?: {
@@ -19876,6 +20071,9 @@ export type PageByTemplateQuery = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                medium_large?: string | null;
+                medium?: string | null;
+                thumbnail?: string | null;
               };
             } | null;
           } | null> | null;
@@ -20088,6 +20286,9 @@ export type PageChildrenSearchQuery = {
                             __typename?: 'MediaItem';
                             altText?: string | null;
                             mediaItemUrl?: string | null;
+                            medium_large?: string | null;
+                            medium?: string | null;
+                            thumbnail?: string | null;
                           };
                         } | null;
                         categories?: {
@@ -20147,6 +20348,9 @@ export type PageChildrenSearchQuery = {
                             __typename?: 'MediaItem';
                             altText?: string | null;
                             mediaItemUrl?: string | null;
+                            medium_large?: string | null;
+                            medium?: string | null;
+                            thumbnail?: string | null;
                           };
                         } | null;
                       } | null> | null;
@@ -20207,6 +20411,9 @@ export type PageChildrenSearchQuery = {
                             __typename?: 'MediaItem';
                             altText?: string | null;
                             mediaItemUrl?: string | null;
+                            medium_large?: string | null;
+                            medium?: string | null;
+                            thumbnail?: string | null;
                           };
                         } | null;
                         categories?: {
@@ -20342,6 +20549,9 @@ export type PageChildrenSearchQuery = {
                             __typename?: 'MediaItem';
                             altText?: string | null;
                             mediaItemUrl?: string | null;
+                            medium_large?: string | null;
+                            medium?: string | null;
+                            thumbnail?: string | null;
                           };
                         } | null;
                       } | null> | null;
@@ -20478,6 +20688,9 @@ export type PageChildrenSearchQuery = {
                           __typename?: 'MediaItem';
                           altText?: string | null;
                           mediaItemUrl?: string | null;
+                          medium_large?: string | null;
+                          medium?: string | null;
+                          thumbnail?: string | null;
                         };
                       } | null;
                       categories?: {
@@ -20537,6 +20750,9 @@ export type PageChildrenSearchQuery = {
                           __typename?: 'MediaItem';
                           altText?: string | null;
                           mediaItemUrl?: string | null;
+                          medium_large?: string | null;
+                          medium?: string | null;
+                          thumbnail?: string | null;
                         };
                       } | null;
                     } | null> | null;
@@ -20597,6 +20813,9 @@ export type PageChildrenSearchQuery = {
                           __typename?: 'MediaItem';
                           altText?: string | null;
                           mediaItemUrl?: string | null;
+                          medium_large?: string | null;
+                          medium?: string | null;
+                          thumbnail?: string | null;
                         };
                       } | null;
                       categories?: {
@@ -20732,6 +20951,9 @@ export type PageChildrenSearchQuery = {
                           __typename?: 'MediaItem';
                           altText?: string | null;
                           mediaItemUrl?: string | null;
+                          medium_large?: string | null;
+                          medium?: string | null;
+                          thumbnail?: string | null;
                         };
                       } | null;
                     } | null> | null;
@@ -20934,6 +21156,9 @@ export type PagesQuery = {
                     __typename?: 'MediaItem';
                     altText?: string | null;
                     mediaItemUrl?: string | null;
+                    medium_large?: string | null;
+                    medium?: string | null;
+                    thumbnail?: string | null;
                   };
                 } | null;
                 categories?: {
@@ -20993,6 +21218,9 @@ export type PagesQuery = {
                     __typename?: 'MediaItem';
                     altText?: string | null;
                     mediaItemUrl?: string | null;
+                    medium_large?: string | null;
+                    medium?: string | null;
+                    thumbnail?: string | null;
                   };
                 } | null;
               } | null> | null;
@@ -21053,6 +21281,9 @@ export type PagesQuery = {
                     __typename?: 'MediaItem';
                     altText?: string | null;
                     mediaItemUrl?: string | null;
+                    medium_large?: string | null;
+                    medium?: string | null;
+                    thumbnail?: string | null;
                   };
                 } | null;
                 categories?: {
@@ -21188,6 +21419,9 @@ export type PagesQuery = {
                     __typename?: 'MediaItem';
                     altText?: string | null;
                     mediaItemUrl?: string | null;
+                    medium_large?: string | null;
+                    medium?: string | null;
+                    thumbnail?: string | null;
                   };
                 } | null;
               } | null> | null;
@@ -21392,6 +21626,9 @@ export const LayoutArticlesFragmentDoc = gql`
         node {
           altText
           mediaItemUrl
+          medium_large: sourceUrl(size: MEDIUM_LARGE)
+          medium: sourceUrl(size: MEDIUM)
+          thumbnail: sourceUrl(size: THUMBNAIL)
         }
       }
       categories {
@@ -21420,6 +21657,9 @@ export const LayoutPagesFragmentDoc = gql`
         node {
           altText
           mediaItemUrl
+          medium_large: sourceUrl(size: MEDIUM_LARGE)
+          medium: sourceUrl(size: MEDIUM)
+          thumbnail: sourceUrl(size: THUMBNAIL)
         }
       }
     }
