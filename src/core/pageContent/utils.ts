@@ -98,7 +98,7 @@ export function getArticlePageCardProps(
     id: item.id,
     title: item.title,
     url: item.link,
-    imageUrl: item.featuredImage?.node?.mediaItemUrl,
+    imageUrl: item.featuredImage?.node?.medium_large,
     ariaLabel: item.title,
     text: getElementTextContent((item.lead || item.content) ?? ''),
     hasLink: true,
