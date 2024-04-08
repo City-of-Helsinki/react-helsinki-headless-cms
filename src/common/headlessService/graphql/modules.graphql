@@ -50,6 +50,9 @@ fragment LayoutArticlesCarousel on LayoutArticlesCarousel {
       node {
         altText
         mediaItemUrl
+        medium_large: sourceUrl(size: MEDIUM_LARGE)
+        medium: sourceUrl(size: MEDIUM)
+        thumbnail: sourceUrl(size: THUMBNAIL)
       }
     }
     categories {
@@ -100,6 +103,9 @@ fragment LayoutPagesCarousel on LayoutPagesCarousel {
       node {
         altText
         mediaItemUrl
+        medium_large: sourceUrl(size: MEDIUM_LARGE)
+        medium: sourceUrl(size: MEDIUM)
+        thumbnail: sourceUrl(size: THUMBNAIL)
       }
     }
   }

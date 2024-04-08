@@ -46,6 +46,9 @@ fragment Post on Post {
       title
       uri
       photographerName
+      medium_large: sourceUrl(size: MEDIUM_LARGE)
+      medium: sourceUrl(size: MEDIUM)
+      thumbnail: sourceUrl(size: THUMBNAIL)
     }
   }
   breadcrumbs {
