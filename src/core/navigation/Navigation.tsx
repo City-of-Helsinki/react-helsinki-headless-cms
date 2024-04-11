@@ -163,12 +163,7 @@ export function Navigation({
       defaultLanguage={currentLanguage?.code?.toLowerCase()}
       languages={languageOptions}
       className={className}
-      style={
-        /* HDS v3.4–v3.6 has broken theme support with next.js SSR & hydration.
-         * FIXME: Replace with `theme={overrideHeaderMaxWidth}` when HDS theme support is fixed.
-         */
-        overrideHeaderMaxWidth as React.CSSProperties
-      }
+      theme={overrideHeaderMaxWidth}
     >
       <Header.SkipLink
         skipTo={`#${mainContentId ?? MAIN_CONTENT_ID}`}
