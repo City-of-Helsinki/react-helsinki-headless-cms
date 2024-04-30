@@ -53,9 +53,9 @@ export function PageMeta({ page, headComponent: Head }: PageMetaProps) {
         </>
       )}
       {openGraphType && <meta property="og:type" content={openGraphType} />}
-      {xTitle && <meta name="twitter:title" content={twitterTitle} />}
+      {xTitle && <meta name="twitter:title" content={xTitle} />}
       {xDescription && (
-        <meta name="twitter:description" content={twitterDescription} />
+        <meta name="twitter:description" content={xDescription} />
       )}
       <link rel="icon" href={meta?.favIconUrl} sizes="any" />
       <link rel="icon" href={meta?.favIconSvgUrl} type="image/svg+xml" />
