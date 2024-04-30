@@ -32,6 +32,8 @@ export function PageMeta({ page, headComponent: Head }: PageMetaProps) {
     openGraphDescription,
   } = seoForCurrentLanguage ?? {};
   const image = seoForCurrentLanguage?.socialImage?.mediaItemUrl;
+  const xTitle = twitterTitle ?? title ?? undefined;
+  const xDescription = twitterDescription ?? description ?? undefined;
 
   const { meta } = useConfig();
 
@@ -43,11 +45,17 @@ export function PageMeta({ page, headComponent: Head }: PageMetaProps) {
       {openGraphDescription && (
         <meta property="og:description" content={openGraphDescription} />
       )}
-      {image && <meta property="og:image" content={image} />}
+      <meta name="twitter:card" content="summary_large_image" />
+      {image && (
+        <>
+          <meta property="og:image" content={image} />
+          <meta property="twitter:image" content={image} />
+        </>
+      )}
       {openGraphType && <meta property="og:type" content={openGraphType} />}
-      {twitterTitle && <meta name="twitter:title" content={twitterTitle} />}
-      {twitterDescription && (
-        <meta name="twitter:description" content={twitterDescription} />
+      {xTitle && <meta name="twitter:title" content={xTitle} />}
+      {xDescription && (
+        <meta name="twitter:description" content={xDescription} />
       )}
       <link rel="icon" href={meta?.favIconUrl} sizes="any" />
       <link rel="icon" href={meta?.favIconSvgUrl} type="image/svg+xml" />
