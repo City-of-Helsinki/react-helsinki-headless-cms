@@ -155,14 +155,14 @@ export function Collection({
         >
           {title && (
             <>
-              <h1
+              <h2
                 className={classNames(
                   styles.heading,
                   type === 'carousel' && styles.carousel,
                 )}
               >
                 {title}
-              </h1>
+              </h2>
               {showAllUrl && showAllText && (
                 <Link className={styles.showAll} href={showAllUrl}>
                   {showAllText}
