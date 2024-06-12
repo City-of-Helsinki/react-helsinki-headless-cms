@@ -86,11 +86,22 @@ export const CardWithImageLabel = {
   },
 };
 
+export const CardCentered = {
+  render: Template,
+  args: {
+    ...card,
+    alignment: 'center-left',
+    text: 'Custom text contents',
+  },
+};
+
 export const CardDelimited = {
   render: Template,
   args: {
     ...card,
-    isDelimited: true,
+    alignment: 'delimited-left',
+    withBorder: false,
     text: 'Custom text contents',
+    direction: 'responsive-reverse',
   },
 };

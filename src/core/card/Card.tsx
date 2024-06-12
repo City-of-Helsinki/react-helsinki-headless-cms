@@ -13,6 +13,20 @@ import { BackgroundImage } from '../image/BackgroundImage';
 import { getColor, getTextFromHtml, isWhiteText } from '../utils/string';
 import { useConfig } from '../configProvider/useConfig';
 
+export type CardDirection =
+  | 'fixed-horisontal'
+  | 'fixed-vertical'
+  | 'responsive'
+  | 'responsive-reverse';
+
+export type CardAlignment =
+  | 'left'
+  | 'right'
+  | 'center-left'
+  | 'center-right'
+  | 'delimited-left'
+  | 'delimited-right';
+
 export type CardProps = {
   id?: string;
   ariaLabel?: string;
@@ -30,13 +44,8 @@ export type CardProps = {
   url?: string;
   withBorder?: boolean;
   withShadow?: boolean;
-  direction?:
-    | 'fixed-horisontal'
-    | 'fixed-vertical'
-    | 'responsive'
-    | 'responsive-reverse';
-  imagePosition?: 'image-left' | 'image-right';
-  isDelimited?: boolean;
+  direction?: CardDirection;
+  alignment?: CardAlignment;
   clampText?: boolean;
   openLinkInNewTab?: boolean;
   style?: React.CSSProperties;
@@ -46,6 +55,7 @@ export type CardProps = {
 
 export function Card({
   id,
+  alignment,
   ariaLabel,
   className,
   imageUrl,
@@ -62,8 +72,6 @@ export function Card({
   withBorder,
   withShadow,
   direction = 'responsive',
-  imagePosition = 'image-left',
-  isDelimited = false,
   clampText,
   openLinkInNewTab,
   style,
@@ -72,6 +80,18 @@ export function Card({
 }: CardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const handleToggleActive = () => setIsHovered((val) => !val);
+  const isDelimited = alignment?.startsWith('delimited');
+  const isCentered = alignment?.startsWith('center');
+
+  const getImagePosition = () => {
+    if (alignment === undefined) {
+      return 'image-left';
+    } else {
+      return alignment.indexOf('left') === -1 ? 'image-right' : 'image-left';
+    }
+  };
+
+  const imagePosition = getImagePosition();
 
   const {
     utils: { redirectToUrl, getIsHrefExternal },
@@ -104,12 +124,13 @@ export function Card({
         isHovered && styles.isHovered,
         backgroundColor
           ? colorStyles[`background${getColor(backgroundColor)}`]
-          : isDelimited && colorStyles.backgroundFog,
+          : !isDelimited && colorStyles.backgroundFog,
         backgroundColor && styles.horizontalBorder,
         backgroundColor &&
           isWhiteText(backgroundColor) &&
           colorStyles.whiteText,
         isDelimited && styles.isDelimited,
+        isCentered && styles.isCentered,
       )}
       style={style}
       onMouseEnter={handleToggleActive}
@@ -123,6 +144,8 @@ export function Card({
           styles.imageWrapper,
           direction && styles[direction],
           isDelimited && styles.isDelimited,
+          isCentered && styles.isCentered,
+          imagePosition.includes('left') ? styles.left : styles.right,
         )}
       />
 
@@ -130,6 +153,7 @@ export function Card({
         className={classNames(
           styles.contentWrapper,
           isDelimited && styles.isDelimited,
+          isCentered && styles.isCentered,
         )}
         onClick={handleClick}
       >
@@ -138,11 +162,12 @@ export function Card({
             styles.content,
             backgroundColor
               ? colorStyles[`background${getColor(backgroundColor)}`]
-              : isDelimited && colorStyles.backgroundFog,
+              : colorStyles.backgroundFog,
             backgroundColor &&
               isWhiteText(backgroundColor) &&
               colorStyles.whiteText,
             isDelimited && styles.isDelimited,
+            isCentered && styles.isCentered,
           )}
         >
           <div className={styles.textWrapper}>
@@ -180,7 +205,7 @@ export function Card({
               styles.buttonWrapper,
               backgroundColor
                 ? colorStyles[`background${getColor(backgroundColor)}`]
-                : isDelimited && colorStyles.backgroundFog,
+                : (isDelimited || isCentered) && colorStyles.backgroundFog,
               backgroundColor &&
                 isWhiteText(backgroundColor) &&
                 colorStyles.whiteText,

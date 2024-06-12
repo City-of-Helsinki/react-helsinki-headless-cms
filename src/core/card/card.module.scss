@@ -14,6 +14,7 @@
 
   @include respond_above(s) {
     word-break: unset;
+    &.isCentered,
     &.isDelimited {
       overflow-y: hidden;
       --height-image-desktop: 100%;
@@ -43,12 +44,14 @@
   &.fixed-horisontal {
     display: flex;
     flex-direction: row;
+    &.isCentered,
     &.isDelimited {
       flex-direction: row-reverse;
     }
 
     &.image-right {
       flex-direction: row-reverse;
+      &.isCentered,
       &.isDelimited {
         flex-direction: row;
       }
@@ -73,6 +76,7 @@
     }
   }
 
+  &.isCentered,
   &.isDelimited {
     & > :first-child {
       flex: none;
@@ -112,12 +116,14 @@
 
     &.responsive-reverse {
       flex-direction: row;
+      &.isCentered,
       &.isDelimited {
         flex-direction: row-reverse;
       }
 
       &.image-right {
         flex-direction: row-reverse;
+        &.isCentered,
         &.isDelimited {
           flex-direction: row;
         }
@@ -154,6 +160,7 @@
     }
 
     &.responsive,
+    &.isCentered,
     &.isDelimited {
       &.horizontalBorder {
         // overriding withborder param
@@ -202,10 +209,32 @@
       }
     }
 
+    &.isCentered,
     &.isDelimited {
       @include respond_above(s) {
         position: absolute;
         width: 100%;
+      }
+    }
+
+    &.isDelimited {
+      @include respond_above(s) {
+        width: 62.5%;
+        &.left {
+          margin-right: 37.5%;
+        }
+        &.right {
+          margin-left: 37.5%;
+        }
+        @include respond_above(l) {
+          width: 80%;
+          &.left {
+            margin-right: 20%;
+          }
+          &.right {
+            margin-left: 20%;
+          }
+        }
       }
     }
 
@@ -235,10 +264,16 @@
     }
 
     @include respond_above(s) {
+      &.isCentered,
       &.isDelimited {
         margin: 24px;
         width: 37.5%;
         z-index: 1;
+      }
+      &.isDelimited {
+        width: 62.5%;
+        max-width: 460px;
+        margin: 42px 24px;
       }
     }
   }
