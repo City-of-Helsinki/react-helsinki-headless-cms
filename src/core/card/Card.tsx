@@ -86,9 +86,8 @@ export function Card({
   const getImagePosition = () => {
     if (alignment === undefined) {
       return 'image-left';
-    } else {
-      return alignment.indexOf('left') === -1 ? 'image-right' : 'image-left';
     }
+    return alignment.indexOf('left') === -1 ? 'image-right' : 'image-left';
   };
 
   const imagePosition = getImagePosition();
