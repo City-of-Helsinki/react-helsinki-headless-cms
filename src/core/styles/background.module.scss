@@ -1,4 +1,8 @@
 /*background colors*/
+.backgroundDefault {
+  background-color: white;
+}
+
 .backgroundCoatOfArms {
   background-color: var(--color-coat-of-arms);
 }
@@ -120,7 +124,7 @@
 }
 
 .whiteText {
-  color: var(--color-white);
+  color: var(--color-white) !important;
   h1 {
     color: var(--color-white) !important;
   }
@@ -139,5 +143,11 @@
   button {
     color: var(--color-white);
     border-color: var(--color-white) !important;
+  }
+}
+
+.whiteLink {
+  path {
+    color: var(--color-white);
   }
 }

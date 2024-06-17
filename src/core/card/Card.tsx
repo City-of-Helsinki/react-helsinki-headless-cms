@@ -121,9 +121,7 @@ export function Card({
         primaryContent === 'image' && styles['primary-image'],
         imagePosition && styles[imagePosition],
         isHovered && styles.isHovered,
-        backgroundColor
-          ? colorStyles[`background${getColor(backgroundColor)}`]
-          : !isDelimited && colorStyles.backgroundFog,
+
         backgroundColor && styles.horizontalBorder,
         backgroundColor &&
           isWhiteText(backgroundColor) &&
@@ -161,7 +159,7 @@ export function Card({
             styles.content,
             backgroundColor
               ? colorStyles[`background${getColor(backgroundColor)}`]
-              : colorStyles.backgroundFog,
+              : colorStyles.backgroundDefault,
             backgroundColor &&
               isWhiteText(backgroundColor) &&
               colorStyles.whiteText,
@@ -181,7 +179,18 @@ export function Card({
                 {withTitleIcon && titleIcon}
               </div>
             )}
-            {subTitle && <div className={styles.subTitle}>{subTitle}</div>}
+            {subTitle && (
+              <div
+                className={classNames(
+                  styles.subTitle,
+                  backgroundColor &&
+                    isWhiteText(backgroundColor) &&
+                    colorStyles.whiteText,
+                )}
+              >
+                {subTitle}
+              </div>
+            )}
             {text && (
               <div
                 className={classNames(
@@ -204,10 +213,10 @@ export function Card({
               styles.buttonWrapper,
               backgroundColor
                 ? colorStyles[`background${getColor(backgroundColor)}`]
-                : (isDelimited || isCentered) && colorStyles.backgroundFog,
+                : (isDelimited || isCentered) && colorStyles.backgroundDefault,
               backgroundColor &&
                 isWhiteText(backgroundColor) &&
-                colorStyles.whiteText,
+                colorStyles.whiteLink,
             )}
           >
             <Link
