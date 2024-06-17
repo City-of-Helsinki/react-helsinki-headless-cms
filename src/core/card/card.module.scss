@@ -81,6 +81,20 @@
     }
   }
 
+  &.isCentered,
+  &.isDelimited {
+    @include respond_above(s) {
+      & > :first-child {
+        flex: none;
+      }
+
+      & > :last-child {
+        flex: none;
+      }
+    }
+  }
+
+  // background-color: var(--color-white);
   height: 100%;
   width: 100%;
   text-decoration: none;
@@ -100,6 +114,14 @@
       flex-direction: column;
       &.image-right {
         flex-direction: column;
+        &.isCentered,
+        &.isDelimited {
+          flex-direction: row;
+        }
+      }
+      &.isCentered,
+      &.isDelimited {
+        flex-direction: row-reverse;
       }
     }
 
@@ -244,7 +266,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    // height: 100%;
     position: relative;
     align-self: stretch;
 
@@ -269,6 +290,10 @@
 
   .content {
     flex: 1;
+    @include respond_above(s) {
+      // min-height: var(--height-image-desktop);
+      // height: 100%;
+    }
   }
 
   .textWrapper {
