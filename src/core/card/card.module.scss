@@ -14,6 +14,7 @@
 
   @include respond_above(s) {
     word-break: unset;
+    &.isCentered,
     &.isDelimited {
       overflow-y: hidden;
       --height-image-desktop: 100%;
@@ -41,16 +42,23 @@
   }
 
   &.fixed-horisontal {
-    display: flex;
-    flex-direction: row;
+    &.isCentered,
     &.isDelimited {
       flex-direction: row-reverse;
     }
 
     &.image-right {
       flex-direction: row-reverse;
+      &.isCentered,
       &.isDelimited {
         flex-direction: row;
+      }
+    }
+    &.image-left {
+      flex-direction: row;
+      &.isCentered,
+      &.isDelimited {
+        flex-direction: row-reverse;
       }
     }
   }
@@ -73,21 +81,20 @@
     }
   }
 
+  &.isCentered,
   &.isDelimited {
-    & > :first-child {
-      flex: none;
-    }
+    @include respond_above(s) {
+      & > :first-child {
+        flex: none;
+      }
 
-    & > :last-child {
-      flex: none;
-    }
-
-    @include respond_below(s) {
-      background-color: var(--color-white);
+      & > :last-child {
+        flex: none;
+      }
     }
   }
 
-  background-color: var(--color-white);
+  // background-color: var(--color-white);
   height: 100%;
   width: 100%;
   text-decoration: none;
@@ -107,17 +114,27 @@
       flex-direction: column;
       &.image-right {
         flex-direction: column;
+        &.isCentered,
+        &.isDelimited {
+          flex-direction: row;
+        }
+      }
+      &.isCentered,
+      &.isDelimited {
+        flex-direction: row-reverse;
       }
     }
 
     &.responsive-reverse {
       flex-direction: row;
+      &.isCentered,
       &.isDelimited {
         flex-direction: row-reverse;
       }
 
       &.image-right {
         flex-direction: row-reverse;
+        &.isCentered,
         &.isDelimited {
           flex-direction: row;
         }
@@ -154,13 +171,13 @@
     }
 
     &.responsive,
+    &.isCentered,
     &.isDelimited {
       &.horizontalBorder {
         // overriding withborder param
         border: 1px solid var(--color-black-30);
         @include respond_below(s) {
           border: none;
-          // border: 1px solid var(--color-black-30);
         }
       }
     }
@@ -202,10 +219,32 @@
       }
     }
 
+    &.isCentered,
     &.isDelimited {
       @include respond_above(s) {
         position: absolute;
         width: 100%;
+      }
+    }
+
+    &.isDelimited {
+      @include respond_above(s) {
+        width: 62.5%;
+        &.left {
+          margin-right: 37.5%;
+        }
+        &.right {
+          margin-left: 37.5%;
+        }
+        @include respond_above(l) {
+          width: 80%;
+          &.left {
+            margin-right: 20%;
+          }
+          &.right {
+            margin-left: 20%;
+          }
+        }
       }
     }
 
@@ -227,26 +266,33 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%;
     position: relative;
+    align-self: stretch;
 
     @include respond_below(s) {
       background-color: var(--color-white) !important;
     }
 
     @include respond_above(s) {
+      &.isCentered,
       &.isDelimited {
         margin: 24px;
         width: 37.5%;
         z-index: 1;
       }
+      &.isDelimited {
+        width: 62.5%;
+        max-width: 460px;
+        margin: 42px 24px;
+      }
     }
   }
 
   .content {
+    flex: 1;
     @include respond_above(s) {
-      min-height: var(--height-image-desktop);
-      height: 100%;
+      // min-height: var(--height-image-desktop);
+      // height: 100%;
     }
   }
 
@@ -256,7 +302,7 @@
     padding: var(--spacing-s) var(--spacing-m);
 
     @include respond_below(s) {
-      background-color: var(--color-white);
+      // background-color: var(--color-white);
     }
 
     .title {
@@ -335,10 +381,6 @@
     padding: 0 var(--spacing-s);
     padding-bottom: var(--spacing-2-xs);
     color: var(--link-arrow-color);
-
-    @include respond_below(s) {
-      background-color: var(--color-white);
-    }
 
     @include respond_above(s) {
       padding-bottom: var(--spacing-s);

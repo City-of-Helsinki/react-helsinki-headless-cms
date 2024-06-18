@@ -39,6 +39,7 @@ import { StepsModule } from '../pageModules/StepsModule/StepsModule';
 import createHashKey from '../utils/createHashKey';
 import { MAIN_CONTENT_ID } from '../../common/constants';
 import { PageContentBreadcrumb } from './PageContentBreadcrumb';
+import { CardAlignment } from '../card/Card';
 
 // Modules: Content, Image, Cards, Steps (possibly other in future)
 export const defaultContentModules = (
@@ -65,12 +66,7 @@ export const defaultContentModules = (
           hasLink
           url={module.link.url}
           imageUrl={module.image.medium_large}
-          imagePosition={
-            module.alignment?.indexOf('left') === -1
-              ? 'image-right'
-              : 'image-left'
-          }
-          isDelimited={module.alignment.startsWith('delimited')}
+          alignment={module.alignment as CardAlignment}
         />,
       );
     } else if (isLayoutCards(module)) {
