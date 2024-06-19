@@ -32,7 +32,7 @@
 
   &.responsive {
     flex-direction: row;
-    &.image-right {
+    &.image-left {
       flex-direction: row-reverse;
     }
   }
@@ -47,14 +47,14 @@
       flex-direction: row-reverse;
     }
 
-    &.image-right {
+    &.image-left {
       flex-direction: row-reverse;
       &.isCentered,
       &.isDelimited {
         flex-direction: row;
       }
     }
-    &.image-left {
+    &.image-right {
       flex-direction: row;
       &.isCentered,
       &.isDelimited {
@@ -112,7 +112,7 @@
     margin-bottom: 0;
     &.responsive {
       flex-direction: column;
-      &.image-right {
+      &.image-left {
         flex-direction: column;
         &.isCentered,
         &.isDelimited {
@@ -132,7 +132,7 @@
         flex-direction: row-reverse;
       }
 
-      &.image-right {
+      &.image-left {
         flex-direction: row-reverse;
         &.isCentered,
         &.isDelimited {
@@ -230,18 +230,18 @@
     &.isDelimited {
       @include respond_above(s) {
         width: 62.5%;
-        &.left {
+        &.right {
           margin-right: 37.5%;
         }
-        &.right {
+        &.left {
           margin-left: 37.5%;
         }
         @include respond_above(l) {
           width: 80%;
-          &.left {
+          &.right {
             margin-right: 20%;
           }
-          &.right {
+          &.left {
             margin-left: 20%;
           }
         }

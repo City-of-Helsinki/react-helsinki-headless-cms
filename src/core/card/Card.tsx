@@ -130,8 +130,8 @@ export function Card({
         isCentered && styles.isCentered,
       )}
       style={style}
-      onMouseEnter={handleToggleActive}
-      onMouseLeave={handleToggleActive}
+      onMouseEnter={url && handleToggleActive}
+      onMouseLeave={url && handleToggleActive}
     >
       <BackgroundImage
         id={id}
