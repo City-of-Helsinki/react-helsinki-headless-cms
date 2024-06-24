@@ -213,7 +213,7 @@ export function Card({
               styles.buttonWrapper,
               backgroundColor
                 ? colorStyles[`background${getColor(backgroundColor)}`]
-                : (isDelimited || isCentered) && colorStyles.backgroundDefault,
+                : colorStyles.backgroundDefault,
               backgroundColor &&
                 isWhiteText(backgroundColor) &&
                 colorStyles.whiteLink,
