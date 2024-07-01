@@ -46,14 +46,16 @@ export function ImageGallery({
 
   useEffect(() => {
     const lightbox = lightboxRef.current;
-    const focusableElements = lightbox.querySelectorAll(
+    const focusableElements = lightbox?.querySelectorAll(
       'button, [tabindex]:not([tabindex="-1"])',
     );
-    const firstElement = focusableElements[0];
-    const lastElement = focusableElements[focusableElements.length - 1];
+    const firstElement = focusableElements ? focusableElements[0] : null;
+    const lastElement = focusableElements
+      ? focusableElements[focusableElements.length - 1]
+      : null;
 
     const handleTabKeyPress = (event) => {
-      if (event.key === 'Tab') {
+      if (focusableElements && event.key === 'Tab') {
         if (event.shiftKey && document.activeElement === firstElement) {
           event.preventDefault();
           lastElement.focus();
@@ -65,7 +67,7 @@ export function ImageGallery({
     };
 
     const handleEscapeKeyPress = (event) => {
-      if (event.key === 'Escape') {
+      if (focusableElements && event.key === 'Escape') {
         setIsLightboxVisible(false);
       }
     };
@@ -75,14 +77,14 @@ export function ImageGallery({
         barrierRef.current.focus();
         setInitialFocus(true);
       } else {
-        lightbox.addEventListener('keydown', handleTabKeyPress);
-        lightbox.addEventListener('keydown', handleEscapeKeyPress);
+        lightbox?.addEventListener('keydown', handleTabKeyPress);
+        lightbox?.addEventListener('keydown', handleEscapeKeyPress);
       }
     }
     setInitialFocus(false);
     return () => {
-      lightbox.removeEventListener('keydown', handleTabKeyPress);
-      lightbox.removeEventListener('keydown', handleEscapeKeyPress);
+      lightbox?.removeEventListener('keydown', handleTabKeyPress);
+      lightbox?.removeEventListener('keydown', handleEscapeKeyPress);
     };
   }, [isLightboxVisible, setIsLightboxVisible, initialFocus, setInitialFocus]);
 
