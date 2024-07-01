@@ -37,6 +37,7 @@ export type {
   LayoutCardFragment as LayoutCard,
   LayoutCardsFragment as LayoutCards,
   LayoutImageFragment as LayoutImage,
+  LayoutImageGalleryFragment as LayoutImageGallery,
   LayoutStepsFragment as LayoutSteps,
   EventSearchFragment as EventSearch,
   EventSelectedFragment as EventSelected,

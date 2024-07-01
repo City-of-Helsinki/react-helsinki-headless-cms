@@ -27,6 +27,7 @@ import {
   isLayoutCards,
   isLayoutContent,
   isLayoutImage,
+  isLayoutImageGallery,
   isLayoutSteps,
   isLocationsSelectionCollection,
   isPageType,
@@ -34,7 +35,7 @@ import {
 import { ContentModule } from '../pageModules/ContentModule/ContentModule';
 import { CardModule } from '../pageModules/CardModule/CardModule';
 import { CardsModule } from '../pageModules/CardsModule/CardsModule';
-import { ImageModule } from '../pageModules/ImageModule/ImageModule';
+import { ImageGalleryModule } from '../pageModules/ImageGalleryModule/ImageGalleryModule';
 import { StepsModule } from '../pageModules/StepsModule/StepsModule';
 import createHashKey from '../utils/createHashKey';
 import { MAIN_CONTENT_ID } from '../../common/constants';
@@ -72,7 +73,39 @@ export const defaultContentModules = (
     } else if (isLayoutCards(module)) {
       contentModules.push(<CardsModule key={uniqueKey} items={module.cards} />);
     } else if (isLayoutImage(module)) {
-      contentModules.push(<ImageModule key={uniqueKey} />);
+      contentModules.push(
+        <ImageGalleryModule
+          images={[
+            {
+              url: module.image?.medium_large,
+              previewUrl: module.image?.medium,
+              photographer: module.photographer_name,
+            },
+          ]}
+          key={uniqueKey}
+          withBorder={module.border}
+          withLightbox={module.show_on_lightbox}
+          lightboxUid={`lightbox-${index}`}
+          columns={1}
+        />,
+      );
+    } else if (isLayoutImageGallery(module)) {
+      contentModules.push(
+        <ImageGalleryModule
+          images={module.gallery?.map((image) => {
+            return {
+              url: image.medium_large,
+              previewUrl: image.medium,
+              photographer: image.caption,
+              title: image.title,
+            };
+          })}
+          key={uniqueKey}
+          withLightbox={true}
+          lightboxUid={`lightbox-${index}`}
+          columns={3}
+        />,
+      );
     } else if (isLayoutSteps(module)) {
       contentModules.push(
         <StepsModule

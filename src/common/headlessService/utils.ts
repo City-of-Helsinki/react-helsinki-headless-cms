@@ -15,6 +15,7 @@ import {
   LayoutCard,
   LayoutCards,
   LayoutImage,
+  LayoutImageGallery,
   LayoutSteps,
   LayoutLinkList,
   LayoutPage,
@@ -68,6 +69,15 @@ export function isLayoutImage(
   return (
     // eslint-disable-next-line no-underscore-dangle
     module.__typename === 'LayoutImage'
+  );
+}
+
+export function isLayoutImageGallery(
+  module: PageModule | PageSidebarModule,
+): module is LayoutImageGallery {
+  return (
+    // eslint-disable-next-line no-underscore-dangle
+    module.__typename === 'LayoutImageGallery'
   );
 }
 
