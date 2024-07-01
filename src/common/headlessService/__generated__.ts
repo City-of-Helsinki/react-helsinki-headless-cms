@@ -13094,7 +13094,19 @@ export type PostFragment = {
           medium_large?: string | null;
         } | null;
       }
-    | { __typename?: 'LayoutImageGallery' }
+    | {
+        __typename: 'LayoutImageGallery';
+        gallery?: Array<{
+          __typename?: 'GalleryImage';
+          caption?: string | null;
+          description?: string | null;
+          large?: string | null;
+          medium?: string | null;
+          thumbnail?: string | null;
+          title?: string | null;
+          medium_large?: string | null;
+        } | null> | null;
+      }
     | {
         __typename: 'LayoutPages';
         title?: string | null;
@@ -13525,7 +13537,19 @@ export type ArticleQuery = {
             medium_large?: string | null;
           } | null;
         }
-      | { __typename?: 'LayoutImageGallery' }
+      | {
+          __typename: 'LayoutImageGallery';
+          gallery?: Array<{
+            __typename?: 'GalleryImage';
+            caption?: string | null;
+            description?: string | null;
+            large?: string | null;
+            medium?: string | null;
+            thumbnail?: string | null;
+            title?: string | null;
+            medium_large?: string | null;
+          } | null> | null;
+        }
       | {
           __typename: 'LayoutPages';
           title?: string | null;
@@ -13989,7 +14013,19 @@ export type PostsQuery = {
                 medium_large?: string | null;
               } | null;
             }
-          | { __typename?: 'LayoutImageGallery' }
+          | {
+              __typename: 'LayoutImageGallery';
+              gallery?: Array<{
+                __typename?: 'GalleryImage';
+                caption?: string | null;
+                description?: string | null;
+                large?: string | null;
+                medium?: string | null;
+                thumbnail?: string | null;
+                title?: string | null;
+                medium_large?: string | null;
+              } | null> | null;
+            }
           | {
               __typename: 'LayoutPages';
               title?: string | null;
@@ -22052,6 +22088,20 @@ export const LayoutImageFragmentDoc = gql`
     __typename
   }
 `;
+export const LayoutImageGalleryFragmentDoc = gql`
+  fragment LayoutImageGallery on LayoutImageGallery {
+    gallery {
+      caption
+      description
+      large
+      medium
+      thumbnail
+      title
+      medium_large
+    }
+    __typename
+  }
+`;
 export const LayoutStepsFragmentDoc = gql`
   fragment LayoutSteps on LayoutSteps {
     color
@@ -22184,6 +22234,9 @@ export const PostFragmentDoc = gql`
       ... on LayoutImage {
         ...LayoutImage
       }
+      ... on LayoutImageGallery {
+        ...LayoutImageGallery
+      }
       ... on LayoutSteps {
         ...LayoutSteps
       }
@@ -22208,21 +22261,8 @@ export const PostFragmentDoc = gql`
   ${LayoutContentFragmentDoc}
   ${LayoutCardFragmentDoc}
   ${LayoutImageFragmentDoc}
+  ${LayoutImageGalleryFragmentDoc}
   ${LayoutStepsFragmentDoc}
-`;
-export const LayoutImageGalleryFragmentDoc = gql`
-  fragment LayoutImageGallery on LayoutImageGallery {
-    gallery {
-      caption
-      description
-      large
-      medium
-      thumbnail
-      title
-      medium_large
-    }
-    __typename
-  }
 `;
 export const PageFragmentDoc = gql`
   fragment Page on Page {

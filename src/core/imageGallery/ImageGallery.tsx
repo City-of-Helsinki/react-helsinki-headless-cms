@@ -1,9 +1,15 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/anchor-has-content */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+// eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
 import { Button, IconAngleLeft, IconAngleRight } from 'hds-react';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+
 import Grid from '../../common/components/grid/Grid';
 import { useConfig } from '../configProvider/useConfig';
-
 import styles from './imageGallery.module.scss';
 
 export type ImageItem = {
@@ -39,35 +45,32 @@ export function ImageGallery({
   } = useConfig();
 
   useEffect(() => {
+    const lightbox = lightboxRef.current;
+    const focusableElements = lightbox.querySelectorAll(
+      'button, [tabindex]:not([tabindex="-1"])',
+    );
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    const handleTabKeyPress = (event) => {
+      if (event.key === 'Tab') {
+        if (event.shiftKey && document.activeElement === firstElement) {
+          event.preventDefault();
+          lastElement.focus();
+        } else if (!event.shiftKey && document.activeElement === lastElement) {
+          event.preventDefault();
+          focusableElements[0].focus();
+        }
+      }
+    };
+
+    const handleEscapeKeyPress = (event) => {
+      if (event.key === 'Escape') {
+        setIsLightboxVisible(false);
+      }
+    };
+
     if (isLightboxVisible) {
-      const lightbox = lightboxRef.current;
-      const focusableElements = lightbox.querySelectorAll(
-        'button, [tabindex]:not([tabindex="-1"])',
-      );
-      const firstElement = focusableElements[0];
-      const lastElement = focusableElements[focusableElements.length - 1];
-
-      const handleTabKeyPress = (event) => {
-        if (event.key === 'Tab') {
-          if (event.shiftKey && document.activeElement === firstElement) {
-            event.preventDefault();
-            lastElement.focus();
-          } else if (
-            !event.shiftKey &&
-            document.activeElement === lastElement
-          ) {
-            event.preventDefault();
-            focusableElements[0].focus();
-          }
-        }
-      };
-
-      const handleEscapeKeyPress = (event) => {
-        if (event.key === 'Escape') {
-          setIsLightboxVisible(false);
-        }
-      };
-
       if (!initialFocus) {
         barrierRef.current.focus();
         setInitialFocus(true);
@@ -75,14 +78,12 @@ export function ImageGallery({
         lightbox.addEventListener('keydown', handleTabKeyPress);
         lightbox.addEventListener('keydown', handleEscapeKeyPress);
       }
-
-      return () => {
-        lightbox.removeEventListener('keydown', handleTabKeyPress);
-        lightbox.removeEventListener('keydown', handleEscapeKeyPress);
-      };
-    } else {
-      setInitialFocus(false);
     }
+    setInitialFocus(false);
+    return () => {
+      lightbox.removeEventListener('keydown', handleTabKeyPress);
+      lightbox.removeEventListener('keydown', handleEscapeKeyPress);
+    };
   }, [isLightboxVisible, setIsLightboxVisible, initialFocus, setInitialFocus]);
 
   const toggleLightbox = () => {
@@ -98,19 +99,18 @@ export function ImageGallery({
     }
   };
 
-  const handleNextClick = () => {
-    setImageIndex((prev) => {
-      return imageIndex === images.length - 1 ? 0 : prev + 1;
-    });
-  };
-
-  const handlePreviousClick = () => {
-    setImageIndex((prev) => {
-      return imageIndex === 0 ? images.length - 1 : prev - 1;
-    });
-  };
-
   const getLightbox = useCallback(() => {
+    const handleNextClick = () => {
+      setImageIndex((prev) =>
+        imageIndex === images.length - 1 ? 0 : prev + 1,
+      );
+    };
+
+    const handlePreviousClick = () => {
+      setImageIndex((prev) =>
+        imageIndex === 0 ? images.length - 1 : prev - 1,
+      );
+    };
     const imageTitle =
       images[imageIndex].title || images[imageIndex].photographer;
     const imagePhotogrpher = images[imageIndex].photographer;
@@ -119,7 +119,7 @@ export function ImageGallery({
       <div
         id={`${lightboxUid}`}
         role="dialog"
-        aria-modal={true}
+        aria-modal
         aria-labelledby={`${lightboxUid}-title`}
         className={styles.lightbox}
         onClick={toggleLightbox}
@@ -174,12 +174,12 @@ export function ImageGallery({
             <span className={styles.screenReaderText}>
               {closeButtonLabelText}
             </span>
-            <svg viewBox="0 0 24 24" aria-hidden="true" tabIndex={-1}></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true" tabIndex={-1} />
           </button>
         </div>
       </div>
     );
-  }, [images, imageIndex]);
+  }, [images, imageIndex, closeButtonLabelText, lightboxUid, next, previous]);
 
   return (
     <>
@@ -204,7 +204,7 @@ export function ImageGallery({
                   className={styles.link}
                   href="#"
                   aria-label={imageTitle}
-                ></a>
+                />
               </figure>
               <figcaption className={styles.photographer}>
                 {image.photographer}

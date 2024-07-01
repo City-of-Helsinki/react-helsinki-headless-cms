@@ -92,16 +92,14 @@ export const defaultContentModules = (
     } else if (isLayoutImageGallery(module)) {
       contentModules.push(
         <ImageGalleryModule
-          images={module.gallery?.map((image) => {
-            return {
-              url: image.medium_large,
-              previewUrl: image.medium,
-              photographer: image.caption,
-              title: image.title,
-            };
-          })}
+          images={module.gallery?.map((image) => ({
+            url: image.medium_large,
+            previewUrl: image.medium,
+            photographer: image.caption,
+            title: image.title,
+          }))}
           key={uniqueKey}
-          withLightbox={true}
+          withLightbox
           lightboxUid={`lightbox-${index}`}
           columns={3}
         />,
