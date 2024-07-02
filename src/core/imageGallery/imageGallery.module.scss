@@ -27,6 +27,9 @@
 .photographer {
   margin: var(--spacing-xs) 0;
   word-break: break-all;
+  &.withMargin {
+    margin: var(--spacing-xs);
+  }
 }
 
 .link {

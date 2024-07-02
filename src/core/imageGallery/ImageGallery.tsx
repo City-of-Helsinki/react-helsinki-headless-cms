@@ -175,7 +175,9 @@ export function ImageGallery({
           <figure className={styles.imageCardWrapper} aria-label={imageTitle}>
             <img alt={imageTitle} src={imageUrl} />
           </figure>
-          <figcaption className={styles.photographer}>
+          <figcaption
+            className={classNames(styles.photographer, styles.withMargin)}
+          >
             {imagePhotogrpher}
           </figcaption>
           <div className={styles.actionsWrapper}>
