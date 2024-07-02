@@ -223,16 +223,11 @@ export function ImageGallery({
             const imageTitle = image.title || image.photographer;
             return (
               <div
-                id={`${lightboxUid}-card-${i}`}
                 className={classNames(
                   styles.imageItemWrapper,
-                  withBorder ? styles.withBorder : '',
                   withLightbox ? styles.withLightbox : '',
                 )}
                 onClick={handleImageCardClick}
-                onKeyDown={handleEnterKeyPress}
-                onFocus={() => handleImageCardFocus(i)}
-                tabIndex={withLightbox && !isLightboxVisible ? 0 : -1}
               >
                 <figure
                   className={classNames(
@@ -242,8 +237,16 @@ export function ImageGallery({
                   aria-label={imageTitle}
                 >
                   <div
-                    className={styles.imageWrapper}
+                    tabIndex={withLightbox && !isLightboxVisible ? 0 : -1}
+                    id={`${lightboxUid}-card-${i}`}
+                    className={classNames(
+                      styles.imageWrapper,
+                      withBorder ? styles.withBorder : '',
+                      withLightbox ? styles.withLightbox : '',
+                    )}
                     style={{ backgroundImage: `url(${image.url}` }}
+                    onFocus={() => handleImageCardFocus(i)}
+                    onKeyDown={handleEnterKeyPress}
                   />
                 </figure>
                 <figcaption className={styles.photographer}>

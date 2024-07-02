@@ -11,6 +11,16 @@
     background-position: 50%;
     background-size: cover;
     box-sizing: border-box;
+    border: 2px solid transparent;
+
+    &.withLightbox:focus {
+      outline: 2px solid var(--color-black);
+      border: 2px solid var(--color-black);
+    }
+
+    &.withBorder {
+      border: 2px solid var(--color-black-90);
+    }
   }
 }
 
@@ -115,13 +125,5 @@
 
   &.withLightbox {
     cursor: pointer;
-  }
-
-  &.withLightbox:focus {
-    outline: 1px solid var(--color-black);
-  }
-
-  &.withBorder {
-    border: 2px solid var(--color-black);
   }
 }
