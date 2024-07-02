@@ -18,6 +18,7 @@
 .photographer {
   margin: var(--spacing-xs) 0;
   padding: 0 var(--spacing-xs);
+  word-break: break-all;
 }
 
 .link {
@@ -112,6 +113,7 @@
   display: flex;
   flex: 1;
   flex-direction: column;
+  overflow: hidden;
 
   &.withLightbox {
     cursor: pointer;
