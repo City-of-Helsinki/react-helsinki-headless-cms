@@ -15,20 +15,26 @@ export default {
       {
         title: 'Image title 1',
         photographer: 'Jussi Salo',
-        url: 'https://rastilacamping.hel.fi/wp-content/uploads/2023/04/Rastilan_leirintaalue_2015_kuva_Lauri_Rotko_36-1181x800.jpg',
+        url: 'https://liikunta.app-staging.hkih.hion.dev/app/uploads/2023/01/2ee4b4ed-kuntosali_liikuntamylly_2022_kuva_maarit_hohteri_24.jpg-muokattu-768x580.jpg',
+        previewUrl:
+          'https://liikunta.app-staging.hkih.hion.dev/app/uploads/2023/01/2ee4b4ed-kuntosali_liikuntamylly_2022_kuva_maarit_hohteri_24.jpg-muokattu-300x227.jpg',
       },
       {
         title: 'Image title 2',
         photographer: 'Jussi Salo',
-        url: 'https://rastilacamping.hel.fi/wp-content/uploads/2023/04/Rastila_Camping_2019_kuva_Karl_Henrik_Edlund_3.jpg',
+        url: 'https://liikunta.app-staging.hkih.hion.dev/app/uploads/2023/01/7318f461-vesiliikunta_pirkkolan_uimahalli_2022_kuva_maarit_hohteri_09.jpg-muokattu-768x512.jpg',
+        previewUrl:
+          'https://liikunta.app-staging.hkih.hion.dev/app/uploads/2023/01/7318f461-vesiliikunta_pirkkolan_uimahalli_2022_kuva_maarit_hohteri_09.jpg-muokattu-300x200.jpg',
       },
       {
         title: 'Image title 3',
         photographer: 'Jussi Salo',
-        url: 'https://rastilacamping.hel.fi/wp-content/uploads/2023/04/Rastilan_leirintaalue_2018_kuva_Jonna_Pennanen_29-1-1200x792.jpg',
+        url: 'https://liikunta.app-staging.hkih.hion.dev/app/uploads/2023/01/168d6a62-aki_rask_005-senioriliikuntaa-kamppi-8.11.2016-1.jpg-muokattu-768x511.jpg',
+        previewUrl:
+          'https://liikunta.app-staging.hkih.hion.dev/app/uploads/2023/01/168d6a62-aki_rask_005-senioriliikuntaa-kamppi-8.11.2016-1.jpg-muokattu-300x200.jpg',
       },
     ],
-    withBorder: true,
+    withBorder: false,
     withLightbox: true,
     columns: 3,
     lightboxUid: 1,

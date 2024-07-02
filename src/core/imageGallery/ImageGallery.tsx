@@ -34,15 +34,37 @@ export function ImageGallery({
   lightboxUid,
   columns = 5,
 }: ImageGalleryProps) {
+  const gridContainerRef = useRef(null);
   const lightboxRef = useRef(null);
   const barrierRef = useRef(null);
   const [imageIndex, setImageIndex] = useState<number>(0);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number>(-1);
   const [initialFocus, setInitialFocus] = useState<boolean>(false);
   const [isLightboxVisible, setIsLightboxVisible] = useState<boolean>(false);
 
   const {
     copy: { closeButtonLabelText, next, previous },
   } = useConfig();
+
+  const handleEnterKeyPress = (event) => {
+    if (withLightbox && event.key === 'Enter') {
+      setIsLightboxVisible(true);
+    }
+  };
+
+  const handleEscapeKeyPress = (event) => {
+    if (event.key === 'Escape') {
+      setIsLightboxVisible(false);
+    }
+  };
+
+  const handleImageCardFocus = (index: number) => {
+    setImageIndex(index);
+    // selected card index before opening the lightbox
+    setSelectedImageIndex(index);
+    barrierRef.current.focus();
+    setInitialFocus(true);
+  };
 
   useEffect(() => {
     const lightbox = lightboxRef.current;
@@ -66,34 +88,44 @@ export function ImageGallery({
       }
     };
 
-    const handleEscapeKeyPress = (event) => {
-      if (focusableElements && event.key === 'Escape') {
-        setIsLightboxVisible(false);
-      }
-    };
-
     if (isLightboxVisible) {
       if (!initialFocus) {
         barrierRef.current.focus();
         setInitialFocus(true);
-      } else {
         lightbox?.addEventListener('keydown', handleTabKeyPress);
         lightbox?.addEventListener('keydown', handleEscapeKeyPress);
       }
-    }
-    setInitialFocus(false);
-    return () => {
+    } else {
+      setInitialFocus(false);
       lightbox?.removeEventListener('keydown', handleTabKeyPress);
       lightbox?.removeEventListener('keydown', handleEscapeKeyPress);
-    };
-  }, [isLightboxVisible, setIsLightboxVisible, initialFocus, setInitialFocus]);
+    }
+  }, [
+    isLightboxVisible,
+    setIsLightboxVisible,
+    initialFocus,
+    setInitialFocus,
+    handleEscapeKeyPress,
+  ]);
+
+  useEffect(() => {
+    if (!isLightboxVisible && selectedImageIndex !== -1) {
+      const gridContainer = gridContainerRef.current;
+      const selectedCard = gridContainer?.querySelector(
+        `[id="${lightboxUid}-card-${selectedImageIndex}"]`,
+      );
+      if (selectedCard) {
+        selectedCard.focus();
+      }
+    }
+  }, [isLightboxVisible, selectedImageIndex]);
 
   const toggleLightbox = () => {
     setIsLightboxVisible((prev) => !prev);
   };
 
   const handleImageCardClick = (
-    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
     e.preventDefault();
     if (withLightbox) {
@@ -132,6 +164,7 @@ export function ImageGallery({
             e.stopPropagation();
           }}
           className={styles.lightboxContent}
+          onKeyDown={handleEscapeKeyPress}
         >
           <h2
             id={`${lightboxUid}-title`}
@@ -186,35 +219,40 @@ export function ImageGallery({
   return (
     <>
       {withLightbox && isLightboxVisible && getLightbox()}
-      <Grid colsCount={images.length === 1 ? 1 : columns}>
-        {images.map((image) => {
-          const imageTitle = image.title || image.photographer;
-          return (
-            <div
-              className={classNames(
-                styles.imageItemWrapper,
-                withBorder ? styles.withBorder : '',
-              )}
-            >
-              <figure
-                className={styles.imageCardWrapper}
-                aria-label={imageTitle}
+      <div ref={gridContainerRef}>
+        <Grid colsCount={images.length === 1 ? 1 : columns}>
+          {images.map((image, i) => {
+            const imageTitle = image.title || image.photographer;
+            return (
+              <div
+                id={`${lightboxUid}-card-${i}`}
+                className={classNames(
+                  styles.imageItemWrapper,
+                  withBorder ? styles.withBorder : '',
+                  withLightbox ? styles.withLightbox : '',
+                )}
+                onClick={handleImageCardClick}
+                onKeyDown={handleEnterKeyPress}
+                onFocus={() => handleImageCardFocus(i)}
+                tabIndex={withLightbox && !isLightboxVisible ? 0 : -1}
               >
-                <img alt={imageTitle} src={image.previewUrl} />
-                <a
-                  onClick={handleImageCardClick}
-                  className={styles.link}
-                  href="#"
+                <figure
+                  className={classNames(
+                    styles.imageCardWrapper,
+                    withLightbox ? styles.withLightbox : '',
+                  )}
                   aria-label={imageTitle}
-                />
-              </figure>
-              <figcaption className={styles.photographer}>
-                {image.photographer}
-              </figcaption>
-            </div>
-          );
-        })}
-      </Grid>
+                >
+                  <img alt={imageTitle} src={image.url} />
+                </figure>
+                <figcaption className={styles.photographer}>
+                  {image.photographer}
+                </figcaption>
+              </div>
+            );
+          })}
+        </Grid>
+      </div>
     </>
   );
 }
