@@ -1,8 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/anchor-has-content */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
 import { Button, IconAngleLeft, IconAngleRight } from 'hds-react';
@@ -62,7 +60,7 @@ export function ImageGallery({
     setImageIndex(index);
     // selected card index before opening the lightbox
     setSelectedImageIndex(index);
-    barrierRef.current.focus();
+    barrierRef.current?.focus();
     setInitialFocus(true);
   };
 
@@ -90,7 +88,7 @@ export function ImageGallery({
 
     if (isLightboxVisible) {
       if (!initialFocus) {
-        barrierRef.current.focus();
+        barrierRef.current?.focus();
         setInitialFocus(true);
         lightbox?.addEventListener('keydown', handleTabKeyPress);
         lightbox?.addEventListener('keydown', handleEscapeKeyPress);
@@ -115,7 +113,7 @@ export function ImageGallery({
         `[id="${lightboxUid}-card-${selectedImageIndex}"]`,
       );
       if (selectedCard) {
-        selectedCard.focus();
+        selectedCard?.focus();
       }
     }
   }, [isLightboxVisible, selectedImageIndex]);
