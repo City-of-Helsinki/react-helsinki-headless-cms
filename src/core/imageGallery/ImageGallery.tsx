@@ -241,7 +241,10 @@ export function ImageGallery({
                   )}
                   aria-label={imageTitle}
                 >
-                  <img alt={imageTitle} src={image.url} />
+                  <div
+                    className={styles.imageWrapper}
+                    style={{ backgroundImage: `url(${image.url}` }}
+                  />
                 </figure>
                 <figcaption className={styles.photographer}>
                   {image.photographer}

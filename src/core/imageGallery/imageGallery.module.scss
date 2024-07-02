@@ -6,18 +6,18 @@
   width: 100%;
   margin: 0 !important;
 
-  img {
-    display: flex;
-    flex: 1 0 0%;
-    height: 100%;
-    object-fit: cover;
+  .imgWrapper {
+    aspect-ratio: 3/2;
     width: 100%;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+    box-sizing: border-box;
   }
 }
 
 .photographer {
   margin: var(--spacing-xs) 0;
-  padding: 0 var(--spacing-xs);
   word-break: break-all;
 }
 
