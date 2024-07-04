@@ -51,7 +51,6 @@
   z-index: 10;
 
   & .lightboxContent {
-    max-width: 600px;
     background-color: var(--color-white);
     position: absolute;
     top: 50%;
@@ -61,6 +60,9 @@
     width: -webkit-fit-content;
     width: -moz-fit-content;
     width: fit-content;
+    img {
+      width: 100%;
+    }
   }
 }
 
