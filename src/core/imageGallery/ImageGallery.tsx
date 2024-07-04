@@ -13,7 +13,7 @@ export type ImageGalleryProps = {
   images: ImageItem[];
   withBorder?: boolean;
   withLightbox?: boolean;
-  lightboxUid: string | number;
+  lightboxUid: string;
   columns?: number;
 };
 
@@ -25,11 +25,11 @@ export function ImageGallery({
   columns = 5,
 }: ImageGalleryProps) {
   const gridContainerRef = useRef(null);
-  const [imageIndex, setImageIndex] = useState<number>(0);
-  const [selectedImageIndex, setSelectedImageIndex] = useState<number>(-1);
-  const [isLightboxVisible, setIsLightboxVisible] = useState<boolean>(false);
+  const [imageIndex, setImageIndex] = useState(0);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(-1);
+  const [isLightboxVisible, setIsLightboxVisible] = useState(false);
 
-  const handleEnterKeyPress = (event) => {
+  const handleEnterKeyPress = (event: React.KeyboardEvent) => {
     if (withLightbox && event.key === 'Enter') {
       setIsLightboxVisible(true);
     }

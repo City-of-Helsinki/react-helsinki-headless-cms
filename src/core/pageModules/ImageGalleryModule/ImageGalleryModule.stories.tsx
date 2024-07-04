@@ -37,7 +37,7 @@ export default {
     withBorder: false,
     withLightbox: true,
     columns: 3,
-    lightboxUid: 1,
+    lightboxUid: '1',
   },
   argTypes: {},
 } as Meta<typeof ImageGalleryModule>;

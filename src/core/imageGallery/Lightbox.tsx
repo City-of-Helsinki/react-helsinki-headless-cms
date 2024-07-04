@@ -14,7 +14,7 @@ interface LightboxProps {
   images: ImageItem[];
   imageIndex: number;
   isLightboxVisible: boolean;
-  lightboxUid: string | number;
+  lightboxUid: string;
   onClick: () => void;
   onNextClick: () => void;
   onPreviousClick: () => void;
@@ -34,14 +34,12 @@ export function Lightbox({
   const lightboxRef = useRef(null);
   const barrierRef = useRef(null);
 
-  const [initialFocus, setInitialFocus] = useState<boolean>(false);
-
   const {
     copy: { closeButtonLabelText, next, previous },
   } = useConfig();
 
   const handleEscapeKeyPress = useCallback(
-    (event) => {
+    (event: React.KeyboardEvent) => {
       if (event.key === 'Escape') {
         onEscapeClick();
       }
@@ -51,7 +49,9 @@ export function Lightbox({
 
   useEffect(() => {
     const lightbox = lightboxRef.current;
-    const focusableElements = lightbox?.querySelectorAll(
+    if (!lightbox) return;
+
+    const focusableElements = lightbox.querySelectorAll(
       'button, [tabindex]:not([tabindex="-1"])',
     );
     const firstElement = focusableElements ? focusableElements[0] : null;
@@ -59,7 +59,7 @@ export function Lightbox({
       ? focusableElements[focusableElements.length - 1]
       : null;
 
-    const handleTabKeyPress = (event) => {
+    const handleTabKeyPress = (event: React.KeyboardEvent) => {
       if (focusableElements && event.key === 'Tab') {
         if (event.shiftKey && document.activeElement === firstElement) {
           event.preventDefault();
@@ -72,18 +72,16 @@ export function Lightbox({
     };
 
     if (isLightboxVisible) {
-      if (!initialFocus) {
-        barrierRef.current?.focus();
-        setInitialFocus(true);
-        lightbox?.addEventListener('keydown', handleTabKeyPress);
-        lightbox?.addEventListener('keydown', handleEscapeKeyPress);
-      }
-    } else {
-      setInitialFocus(false);
+      barrierRef.current?.focus();
+      lightbox.addEventListener('keydown', handleTabKeyPress);
+      lightbox.addEventListener('keydown', handleEscapeKeyPress);
+    }
+
+    return () => {
       lightbox?.removeEventListener('keydown', handleTabKeyPress);
       lightbox?.removeEventListener('keydown', handleEscapeKeyPress);
-    }
-  }, [isLightboxVisible, initialFocus, setInitialFocus, handleEscapeKeyPress]);
+    };
+  }, [isLightboxVisible, handleEscapeKeyPress]);
 
   const imageTitle =
     images[imageIndex].title || images[imageIndex].photographer;
@@ -94,7 +92,7 @@ export function Lightbox({
 
   return (
     <div
-      id={`${lightboxUid}`}
+      id={lightboxUid}
       role="dialog"
       aria-modal
       aria-labelledby={`${lightboxUid}-title`}
@@ -109,53 +107,55 @@ export function Lightbox({
         className={styles.lightboxContent}
         onKeyDown={handleEscapeKeyPress}
       >
-        <h2
-          id={`${lightboxUid}-title`}
-          className={styles.screenReaderText}
-          ref={barrierRef}
-          tabIndex={-1}
-        >
-          {imageTitle}
-        </h2>
-        <figure className={styles.imageCardWrapper} aria-label={imageTitle}>
-          <img alt={imageTitle} src={imageUrl} />
-        </figure>
-        <figcaption
-          className={classNames(styles.photographer, styles.withMargin)}
-        >
-          {imagePhotogrpher}
-        </figcaption>
-        <div className={styles.actionsWrapper}>
-          <Button
-            iconLeft={<IconAngleLeft />}
-            onClick={onPreviousClick}
-            theme="black"
-            variant="secondary"
+        <div className={styles.inner}>
+          <h2
+            id={`${lightboxUid}-title`}
+            className={styles.screenReaderText}
+            ref={barrierRef}
+            tabIndex={-1}
           >
-            <span className={styles.screenReaderText}>{previous}</span>
-          </Button>
-          <Button
-            iconLeft={<IconAngleRight />}
-            onClick={onNextClick}
-            theme="black"
-            variant="secondary"
+            {imageTitle}
+          </h2>
+          <figure className={styles.imageCardWrapper} aria-label={imageTitle}>
+            <img alt={imageTitle} src={imageUrl} />
+          </figure>
+          <figcaption
+            className={classNames(styles.photographer, styles.withMargin)}
           >
-            <span className={styles.screenReaderText}>{next}</span>
-          </Button>
+            {imagePhotogrpher}
+          </figcaption>
+          <div className={styles.actionsWrapper}>
+            <Button
+              iconLeft={<IconAngleLeft />}
+              onClick={onPreviousClick}
+              theme="black"
+              variant="secondary"
+            >
+              <span className={styles.screenReaderText}>{previous}</span>
+            </Button>
+            <Button
+              iconLeft={<IconAngleRight />}
+              onClick={onNextClick}
+              theme="black"
+              variant="secondary"
+            >
+              <span className={styles.screenReaderText}>{next}</span>
+            </Button>
+          </div>
+          <button
+            className={styles.closeButton}
+            id={`close-${lightboxUid}`}
+            type="button"
+            aria-controls={lightboxUid.toString()}
+            aria-expanded="true"
+            onClick={onClick}
+          >
+            <span className={styles.screenReaderText}>
+              {closeButtonLabelText}
+            </span>
+            <svg viewBox="0 0 24 24" aria-hidden="true" tabIndex={-1} />
+          </button>
         </div>
-        <button
-          className={styles.closeButton}
-          id={`close-${lightboxUid}`}
-          type="button"
-          aria-controls={lightboxUid.toString()}
-          aria-expanded="true"
-          onClick={onClick}
-        >
-          <span className={styles.screenReaderText}>
-            {closeButtonLabelText}
-          </span>
-          <svg viewBox="0 0 24 24" aria-hidden="true" tabIndex={-1} />
-        </button>
       </div>
     </div>
   );
