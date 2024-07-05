@@ -3,53 +3,51 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import ReactDOM from 'react-dom';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { Button, IconAngleLeft, IconAngleRight } from 'hds-react';
 
 import { ImageItem } from './types';
 import styles from './imageGallery.module.scss';
 import { useConfig } from '../configProvider/useConfig';
+import useImageGalleryContext from './useImageGalleryContext';
 
 interface LightboxProps {
   images: ImageItem[];
-  imageIndex: number;
-  isLightboxVisible: boolean;
   lightboxUid: string;
-  onClick: () => void;
-  onNextClick: () => void;
-  onPreviousClick: () => void;
-  onEscapeClick: () => void;
 }
 
-export function Lightbox({
-  images,
-  imageIndex,
-  isLightboxVisible,
-  lightboxUid,
-  onClick,
-  onNextClick,
-  onPreviousClick,
-  onEscapeClick,
-}: LightboxProps) {
+export function Lightbox({ images, lightboxUid }: LightboxProps) {
   const lightboxRef = useRef(null);
   const barrierRef = useRef(null);
+
+  const { isLightboxVisible, imageIndex, setImageIndex, toggleLightbox } =
+    useImageGalleryContext();
 
   const {
     copy: { closeButtonLabelText, next, previous },
   } = useConfig();
 
+  const handleNextClick = () => {
+    setImageIndex((prev) => (imageIndex === images.length - 1 ? 0 : prev + 1));
+  };
+
+  const handlePreviousClick = () => {
+    setImageIndex((prev) => (imageIndex === 0 ? images.length - 1 : prev - 1));
+  };
+
   const handleEscapeKeyPress = useCallback(
     (event: React.KeyboardEvent) => {
       if (event.key === 'Escape') {
-        onEscapeClick();
+        toggleLightbox();
       }
     },
-    [onEscapeClick],
+    [toggleLightbox],
   );
 
   useEffect(() => {
     const lightbox = lightboxRef.current;
-    if (!lightbox) return;
+    if (!lightbox) return undefined;
 
     const focusableElements = lightbox.querySelectorAll(
       'button, [tabindex]:not([tabindex="-1"])',
@@ -88,16 +86,14 @@ export function Lightbox({
   const imagePhotogrpher = images[imageIndex].photographer;
   const imageUrl = images[imageIndex].url;
 
-  if (!isLightboxVisible) return null;
-
-  return (
+  const renderLightboxComponent = (): JSX.Element => (
     <div
       id={lightboxUid}
       role="dialog"
       aria-modal
       aria-labelledby={`${lightboxUid}-title`}
       className={styles.lightbox}
-      onClick={onClick}
+      onClick={toggleLightbox}
       ref={lightboxRef}
     >
       <div
@@ -127,7 +123,7 @@ export function Lightbox({
           <div className={styles.actionsWrapper}>
             <Button
               iconLeft={<IconAngleLeft />}
-              onClick={onPreviousClick}
+              onClick={handlePreviousClick}
               theme="black"
               variant="secondary"
             >
@@ -135,7 +131,7 @@ export function Lightbox({
             </Button>
             <Button
               iconLeft={<IconAngleRight />}
-              onClick={onNextClick}
+              onClick={handleNextClick}
               theme="black"
               variant="secondary"
             >
@@ -148,7 +144,7 @@ export function Lightbox({
             type="button"
             aria-controls={lightboxUid.toString()}
             aria-expanded="true"
-            onClick={onClick}
+            onClick={toggleLightbox}
           >
             <span className={styles.screenReaderText}>
               {closeButtonLabelText}
@@ -159,4 +155,8 @@ export function Lightbox({
       </div>
     </div>
   );
+
+  return isLightboxVisible
+    ? ReactDOM.createPortal(renderLightboxComponent(), document.body)
+    : null;
 }
