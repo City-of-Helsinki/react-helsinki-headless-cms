@@ -17,24 +17,20 @@ interface LightboxProps {
   lightboxUid: string;
 }
 
+interface CloseButtonProps {
+  lightboxUid: string;
+}
+
+interface ActionsProps {
+  images: ImageItem[];
+}
+
 export function Lightbox({ images, lightboxUid }: LightboxProps) {
   const lightboxRef = useRef(null);
   const barrierRef = useRef(null);
 
-  const { isLightboxVisible, imageIndex, setImageIndex, toggleLightbox } =
+  const { isLightboxVisible, imageIndex, toggleLightbox } =
     useImageGalleryContext();
-
-  const {
-    copy: { closeButtonLabelText, next, previous },
-  } = useConfig();
-
-  const handleNextClick = () => {
-    setImageIndex((prev) => (imageIndex === images.length - 1 ? 0 : prev + 1));
-  };
-
-  const handlePreviousClick = () => {
-    setImageIndex((prev) => (imageIndex === 0 ? images.length - 1 : prev - 1));
-  };
 
   const handleEscapeKeyPress = useCallback(
     (event: React.KeyboardEvent) => {
@@ -120,37 +116,8 @@ export function Lightbox({ images, lightboxUid }: LightboxProps) {
           >
             {imagePhotogrpher}
           </figcaption>
-          <div className={styles.actionsWrapper}>
-            <Button
-              iconLeft={<IconAngleLeft />}
-              onClick={handlePreviousClick}
-              theme="black"
-              variant="secondary"
-            >
-              <span className={styles.screenReaderText}>{previous}</span>
-            </Button>
-            <Button
-              iconLeft={<IconAngleRight />}
-              onClick={handleNextClick}
-              theme="black"
-              variant="secondary"
-            >
-              <span className={styles.screenReaderText}>{next}</span>
-            </Button>
-          </div>
-          <button
-            className={styles.closeButton}
-            id={`close-${lightboxUid}`}
-            type="button"
-            aria-controls={lightboxUid.toString()}
-            aria-expanded="true"
-            onClick={toggleLightbox}
-          >
-            <span className={styles.screenReaderText}>
-              {closeButtonLabelText}
-            </span>
-            <svg viewBox="0 0 24 24" aria-hidden="true" tabIndex={-1} />
-          </button>
+          <Lightbox.Actions images={images} />
+          <Lightbox.CloseButton lightboxUid={lightboxUid} />
         </div>
       </div>
     </div>
@@ -160,3 +127,62 @@ export function Lightbox({ images, lightboxUid }: LightboxProps) {
     ? ReactDOM.createPortal(renderLightboxComponent(), document.body)
     : null;
 }
+
+function Actions({ images }: ActionsProps) {
+  const { imageIndex, setImageIndex } = useImageGalleryContext();
+  const handleNextClick = () => {
+    setImageIndex((prev) => (imageIndex === images.length - 1 ? 0 : prev + 1));
+  };
+
+  const handlePreviousClick = () => {
+    setImageIndex((prev) => (imageIndex === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const {
+    copy: { previous, next },
+  } = useConfig();
+  return (
+    <div className={styles.actionsWrapper}>
+      <Button
+        iconLeft={<IconAngleLeft />}
+        onClick={handlePreviousClick}
+        theme="black"
+        variant="secondary"
+      >
+        <span className={styles.screenReaderText}>{previous}</span>
+      </Button>
+      <Button
+        iconLeft={<IconAngleRight />}
+        onClick={handleNextClick}
+        theme="black"
+        variant="secondary"
+      >
+        <span className={styles.screenReaderText}>{next}</span>
+      </Button>
+    </div>
+  );
+}
+
+function CloseButton({ lightboxUid }: CloseButtonProps) {
+  const { toggleLightbox } = useImageGalleryContext();
+
+  const {
+    copy: { closeButtonLabelText },
+  } = useConfig();
+  return (
+    <button
+      className={styles.closeButton}
+      id={`close-${lightboxUid}`}
+      type="button"
+      aria-controls={lightboxUid.toString()}
+      aria-expanded="true"
+      onClick={toggleLightbox}
+    >
+      <span className={styles.screenReaderText}>{closeButtonLabelText}</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true" tabIndex={-1} />
+    </button>
+  );
+}
+
+Lightbox.Actions = Actions;
+Lightbox.CloseButton = CloseButton;
