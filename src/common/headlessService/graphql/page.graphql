@@ -115,6 +115,9 @@ fragment Page on Page {
     ... on LayoutImage {
       ...LayoutImage
     }
+    ... on LayoutImageGallery {
+      ...LayoutImageGallery
+    }
     ... on LayoutSteps {
       ...LayoutSteps
     }

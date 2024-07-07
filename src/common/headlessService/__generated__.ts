@@ -6482,18 +6482,12 @@ export enum PostStatusEnum {
   DpRewriteRepublish = 'DP_REWRITE_REPUBLISH',
   /** Objects with the draft status */
   Draft = 'DRAFT',
-  /** Objects with the draft-revision status */
-  DraftRevision = 'DRAFT_REVISION',
   /** Objects with the future status */
   Future = 'FUTURE',
-  /** Objects with the future-revision status */
-  FutureRevision = 'FUTURE_REVISION',
   /** Objects with the inherit status */
   Inherit = 'INHERIT',
   /** Objects with the pending status */
   Pending = 'PENDING',
-  /** Objects with the pending-revision status */
-  PendingRevision = 'PENDING_REVISION',
   /** Objects with the private status */
   Private = 'PRIVATE',
   /** Objects with the publish status */
@@ -10249,6 +10243,8 @@ export type SiteSettings = {
   __typename?: 'SiteSettings';
   /** Attachment ID for logo */
   logo?: Maybe<Scalars['String']['output']>;
+  /** Redirects */
+  redirects?: Maybe<Scalars['String']['output']>;
   /** Identifying name */
   siteName?: Maybe<Scalars['String']['output']>;
 };
@@ -12122,8 +12118,6 @@ export enum UserRoleEnum {
   /** User role with specific capabilities */
   HeadlessCmsViewer = 'HEADLESS_CMS_VIEWER',
   /** User role with specific capabilities */
-  Revisor = 'REVISOR',
-  /** User role with specific capabilities */
   Subscriber = 'SUBSCRIBER',
 }
 
@@ -13100,7 +13094,19 @@ export type PostFragment = {
           medium_large?: string | null;
         } | null;
       }
-    | { __typename?: 'LayoutImageGallery' }
+    | {
+        __typename: 'LayoutImageGallery';
+        gallery?: Array<{
+          __typename?: 'GalleryImage';
+          caption?: string | null;
+          description?: string | null;
+          large?: string | null;
+          medium?: string | null;
+          thumbnail?: string | null;
+          title?: string | null;
+          medium_large?: string | null;
+        } | null> | null;
+      }
     | {
         __typename: 'LayoutPages';
         title?: string | null;
@@ -13531,7 +13537,19 @@ export type ArticleQuery = {
             medium_large?: string | null;
           } | null;
         }
-      | { __typename?: 'LayoutImageGallery' }
+      | {
+          __typename: 'LayoutImageGallery';
+          gallery?: Array<{
+            __typename?: 'GalleryImage';
+            caption?: string | null;
+            description?: string | null;
+            large?: string | null;
+            medium?: string | null;
+            thumbnail?: string | null;
+            title?: string | null;
+            medium_large?: string | null;
+          } | null> | null;
+        }
       | {
           __typename: 'LayoutPages';
           title?: string | null;
@@ -13995,7 +14013,19 @@ export type PostsQuery = {
                 medium_large?: string | null;
               } | null;
             }
-          | { __typename?: 'LayoutImageGallery' }
+          | {
+              __typename: 'LayoutImageGallery';
+              gallery?: Array<{
+                __typename?: 'GalleryImage';
+                caption?: string | null;
+                description?: string | null;
+                large?: string | null;
+                medium?: string | null;
+                thumbnail?: string | null;
+                title?: string | null;
+                medium_large?: string | null;
+              } | null> | null;
+            }
           | {
               __typename: 'LayoutPages';
               title?: string | null;
@@ -14593,7 +14623,19 @@ export type MenuItemFragment = {
                             medium_large?: string | null;
                           } | null;
                         }
-                      | { __typename?: 'LayoutImageGallery' }
+                      | {
+                          __typename: 'LayoutImageGallery';
+                          gallery?: Array<{
+                            __typename?: 'GalleryImage';
+                            caption?: string | null;
+                            description?: string | null;
+                            large?: string | null;
+                            medium?: string | null;
+                            thumbnail?: string | null;
+                            title?: string | null;
+                            medium_large?: string | null;
+                          } | null> | null;
+                        }
                       | {
                           __typename: 'LayoutPages';
                           title?: string | null;
@@ -14995,7 +15037,19 @@ export type MenuItemFragment = {
                           medium_large?: string | null;
                         } | null;
                       }
-                    | { __typename?: 'LayoutImageGallery' }
+                    | {
+                        __typename: 'LayoutImageGallery';
+                        gallery?: Array<{
+                          __typename?: 'GalleryImage';
+                          caption?: string | null;
+                          description?: string | null;
+                          large?: string | null;
+                          medium?: string | null;
+                          thumbnail?: string | null;
+                          title?: string | null;
+                          medium_large?: string | null;
+                        } | null> | null;
+                      }
                     | {
                         __typename: 'LayoutPages';
                         title?: string | null;
@@ -15440,7 +15494,19 @@ export type MenuItemFragment = {
                     medium_large?: string | null;
                   } | null;
                 }
-              | { __typename?: 'LayoutImageGallery' }
+              | {
+                  __typename: 'LayoutImageGallery';
+                  gallery?: Array<{
+                    __typename?: 'GalleryImage';
+                    caption?: string | null;
+                    description?: string | null;
+                    large?: string | null;
+                    medium?: string | null;
+                    thumbnail?: string | null;
+                    title?: string | null;
+                    medium_large?: string | null;
+                  } | null> | null;
+                }
               | {
                   __typename: 'LayoutPages';
                   title?: string | null;
@@ -15842,7 +15908,19 @@ export type MenuItemFragment = {
                   medium_large?: string | null;
                 } | null;
               }
-            | { __typename?: 'LayoutImageGallery' }
+            | {
+                __typename: 'LayoutImageGallery';
+                gallery?: Array<{
+                  __typename?: 'GalleryImage';
+                  caption?: string | null;
+                  description?: string | null;
+                  large?: string | null;
+                  medium?: string | null;
+                  thumbnail?: string | null;
+                  title?: string | null;
+                  medium_large?: string | null;
+                } | null> | null;
+              }
             | {
                 __typename: 'LayoutPages';
                 title?: string | null;
@@ -16312,7 +16390,19 @@ export type MenuPageFieldsFragment = {
             medium_large?: string | null;
           } | null;
         }
-      | { __typename?: 'LayoutImageGallery' }
+      | {
+          __typename: 'LayoutImageGallery';
+          gallery?: Array<{
+            __typename?: 'GalleryImage';
+            caption?: string | null;
+            description?: string | null;
+            large?: string | null;
+            medium?: string | null;
+            thumbnail?: string | null;
+            title?: string | null;
+            medium_large?: string | null;
+          } | null> | null;
+        }
       | {
           __typename: 'LayoutPages';
           title?: string | null;
@@ -16705,7 +16795,19 @@ export type MenuPageFieldsFragment = {
           medium_large?: string | null;
         } | null;
       }
-    | { __typename?: 'LayoutImageGallery' }
+    | {
+        __typename: 'LayoutImageGallery';
+        gallery?: Array<{
+          __typename?: 'GalleryImage';
+          caption?: string | null;
+          description?: string | null;
+          large?: string | null;
+          medium?: string | null;
+          thumbnail?: string | null;
+          title?: string | null;
+          medium_large?: string | null;
+        } | null> | null;
+      }
     | {
         __typename: 'LayoutPages';
         title?: string | null;
@@ -17198,7 +17300,19 @@ export type MenuQuery = {
                                   medium_large?: string | null;
                                 } | null;
                               }
-                            | { __typename?: 'LayoutImageGallery' }
+                            | {
+                                __typename: 'LayoutImageGallery';
+                                gallery?: Array<{
+                                  __typename?: 'GalleryImage';
+                                  caption?: string | null;
+                                  description?: string | null;
+                                  large?: string | null;
+                                  medium?: string | null;
+                                  thumbnail?: string | null;
+                                  title?: string | null;
+                                  medium_large?: string | null;
+                                } | null> | null;
+                              }
                             | {
                                 __typename: 'LayoutPages';
                                 title?: string | null;
@@ -17600,7 +17714,19 @@ export type MenuQuery = {
                                 medium_large?: string | null;
                               } | null;
                             }
-                          | { __typename?: 'LayoutImageGallery' }
+                          | {
+                              __typename: 'LayoutImageGallery';
+                              gallery?: Array<{
+                                __typename?: 'GalleryImage';
+                                caption?: string | null;
+                                description?: string | null;
+                                large?: string | null;
+                                medium?: string | null;
+                                thumbnail?: string | null;
+                                title?: string | null;
+                                medium_large?: string | null;
+                              } | null> | null;
+                            }
                           | {
                               __typename: 'LayoutPages';
                               title?: string | null;
@@ -18045,7 +18171,19 @@ export type MenuQuery = {
                           medium_large?: string | null;
                         } | null;
                       }
-                    | { __typename?: 'LayoutImageGallery' }
+                    | {
+                        __typename: 'LayoutImageGallery';
+                        gallery?: Array<{
+                          __typename?: 'GalleryImage';
+                          caption?: string | null;
+                          description?: string | null;
+                          large?: string | null;
+                          medium?: string | null;
+                          thumbnail?: string | null;
+                          title?: string | null;
+                          medium_large?: string | null;
+                        } | null> | null;
+                      }
                     | {
                         __typename: 'LayoutPages';
                         title?: string | null;
@@ -18447,7 +18585,19 @@ export type MenuQuery = {
                         medium_large?: string | null;
                       } | null;
                     }
-                  | { __typename?: 'LayoutImageGallery' }
+                  | {
+                      __typename: 'LayoutImageGallery';
+                      gallery?: Array<{
+                        __typename?: 'GalleryImage';
+                        caption?: string | null;
+                        description?: string | null;
+                        large?: string | null;
+                        medium?: string | null;
+                        thumbnail?: string | null;
+                        title?: string | null;
+                        medium_large?: string | null;
+                      } | null> | null;
+                    }
                   | {
                       __typename: 'LayoutPages';
                       title?: string | null;
@@ -18793,6 +18943,20 @@ export type LayoutImageFragment = {
     title?: string | null;
     medium_large?: string | null;
   } | null;
+};
+
+export type LayoutImageGalleryFragment = {
+  __typename: 'LayoutImageGallery';
+  gallery?: Array<{
+    __typename?: 'GalleryImage';
+    caption?: string | null;
+    description?: string | null;
+    large?: string | null;
+    medium?: string | null;
+    thumbnail?: string | null;
+    title?: string | null;
+    medium_large?: string | null;
+  } | null> | null;
 };
 
 export type LayoutStepsFragment = {
@@ -19174,7 +19338,19 @@ export type PageFragment = {
           medium_large?: string | null;
         } | null;
       }
-    | { __typename?: 'LayoutImageGallery' }
+    | {
+        __typename: 'LayoutImageGallery';
+        gallery?: Array<{
+          __typename?: 'GalleryImage';
+          caption?: string | null;
+          description?: string | null;
+          large?: string | null;
+          medium?: string | null;
+          thumbnail?: string | null;
+          title?: string | null;
+          medium_large?: string | null;
+        } | null> | null;
+      }
     | {
         __typename: 'LayoutPages';
         title?: string | null;
@@ -19611,7 +19787,19 @@ export type PageQuery = {
             medium_large?: string | null;
           } | null;
         }
-      | { __typename?: 'LayoutImageGallery' }
+      | {
+          __typename: 'LayoutImageGallery';
+          gallery?: Array<{
+            __typename?: 'GalleryImage';
+            caption?: string | null;
+            description?: string | null;
+            large?: string | null;
+            medium?: string | null;
+            thumbnail?: string | null;
+            title?: string | null;
+            medium_large?: string | null;
+          } | null> | null;
+        }
       | {
           __typename: 'LayoutPages';
           title?: string | null;
@@ -20050,7 +20238,19 @@ export type PageByTemplateQuery = {
             medium_large?: string | null;
           } | null;
         }
-      | { __typename?: 'LayoutImageGallery' }
+      | {
+          __typename: 'LayoutImageGallery';
+          gallery?: Array<{
+            __typename?: 'GalleryImage';
+            caption?: string | null;
+            description?: string | null;
+            large?: string | null;
+            medium?: string | null;
+            thumbnail?: string | null;
+            title?: string | null;
+            medium_large?: string | null;
+          } | null> | null;
+        }
       | {
           __typename: 'LayoutPages';
           title?: string | null;
@@ -20528,7 +20728,19 @@ export type PageChildrenSearchQuery = {
                         medium_large?: string | null;
                       } | null;
                     }
-                  | { __typename?: 'LayoutImageGallery' }
+                  | {
+                      __typename: 'LayoutImageGallery';
+                      gallery?: Array<{
+                        __typename?: 'GalleryImage';
+                        caption?: string | null;
+                        description?: string | null;
+                        large?: string | null;
+                        medium?: string | null;
+                        thumbnail?: string | null;
+                        title?: string | null;
+                        medium_large?: string | null;
+                      } | null> | null;
+                    }
                   | {
                       __typename: 'LayoutPages';
                       title?: string | null;
@@ -20930,7 +21142,19 @@ export type PageChildrenSearchQuery = {
                       medium_large?: string | null;
                     } | null;
                   }
-                | { __typename?: 'LayoutImageGallery' }
+                | {
+                    __typename: 'LayoutImageGallery';
+                    gallery?: Array<{
+                      __typename?: 'GalleryImage';
+                      caption?: string | null;
+                      description?: string | null;
+                      large?: string | null;
+                      medium?: string | null;
+                      thumbnail?: string | null;
+                      title?: string | null;
+                      medium_large?: string | null;
+                    } | null> | null;
+                  }
                 | {
                     __typename: 'LayoutPages';
                     title?: string | null;
@@ -21398,7 +21622,19 @@ export type PagesQuery = {
                 medium_large?: string | null;
               } | null;
             }
-          | { __typename?: 'LayoutImageGallery' }
+          | {
+              __typename: 'LayoutImageGallery';
+              gallery?: Array<{
+                __typename?: 'GalleryImage';
+                caption?: string | null;
+                description?: string | null;
+                large?: string | null;
+                medium?: string | null;
+                thumbnail?: string | null;
+                title?: string | null;
+                medium_large?: string | null;
+              } | null> | null;
+            }
           | {
               __typename: 'LayoutPages';
               title?: string | null;
@@ -21852,6 +22088,20 @@ export const LayoutImageFragmentDoc = gql`
     __typename
   }
 `;
+export const LayoutImageGalleryFragmentDoc = gql`
+  fragment LayoutImageGallery on LayoutImageGallery {
+    gallery {
+      caption
+      description
+      large
+      medium
+      thumbnail
+      title
+      medium_large
+    }
+    __typename
+  }
+`;
 export const LayoutStepsFragmentDoc = gql`
   fragment LayoutSteps on LayoutSteps {
     color
@@ -21984,6 +22234,9 @@ export const PostFragmentDoc = gql`
       ... on LayoutImage {
         ...LayoutImage
       }
+      ... on LayoutImageGallery {
+        ...LayoutImageGallery
+      }
       ... on LayoutSteps {
         ...LayoutSteps
       }
@@ -22008,6 +22261,7 @@ export const PostFragmentDoc = gql`
   ${LayoutContentFragmentDoc}
   ${LayoutCardFragmentDoc}
   ${LayoutImageFragmentDoc}
+  ${LayoutImageGalleryFragmentDoc}
   ${LayoutStepsFragmentDoc}
 `;
 export const PageFragmentDoc = gql`
@@ -22125,6 +22379,9 @@ export const PageFragmentDoc = gql`
       ... on LayoutImage {
         ...LayoutImage
       }
+      ... on LayoutImageGallery {
+        ...LayoutImageGallery
+      }
       ... on LayoutSteps {
         ...LayoutSteps
       }
@@ -22148,6 +22405,7 @@ export const PageFragmentDoc = gql`
   ${LayoutContentFragmentDoc}
   ${LayoutCardFragmentDoc}
   ${LayoutImageFragmentDoc}
+  ${LayoutImageGalleryFragmentDoc}
   ${LayoutStepsFragmentDoc}
 `;
 export const MenuPageFieldsFragmentDoc = gql`

@@ -248,6 +248,19 @@ fragment LayoutImage on LayoutImage {
   __typename
 }
 
+fragment LayoutImageGallery on LayoutImageGallery {
+  gallery {
+    caption
+    description
+    large
+    medium
+    thumbnail
+    title
+    medium_large
+  }
+  __typename
+}
+
 fragment LayoutSteps on LayoutSteps {
   color
   description
