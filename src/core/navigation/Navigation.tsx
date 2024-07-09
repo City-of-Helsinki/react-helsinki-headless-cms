@@ -101,7 +101,7 @@ export function Navigation({
   const {
     siteName,
     currentLanguageCode,
-    copy: { menuToggleAriaLabel, skipToContentLabel },
+    copy: { menuButtonLabel, menuToggleAriaLabel, skipToContentLabel },
     components: { A },
     mainContentId,
     utils: { getRoutedInternalHref },
@@ -187,6 +187,7 @@ export function Navigation({
       <Header.ActionBar
         titleHref="#"
         logoHref="#"
+        menuButtonLabel={menuButtonLabel}
         menuButtonAriaLabel={menuToggleAriaLabel}
         title={siteName}
         onTitleClick={onTitleClick}

@@ -30,6 +30,7 @@ export const defaultConfig: Config = {
   copy: {
     breadcrumbNavigationLabel: 'Breadcrumb navigation',
     breadcrumbListLabel: 'breadcrumbs',
+    menuButtonLabel: 'Menu',
     menuToggleAriaLabel: 'toggle menu',
     skipToContentLabel: 'skip to content',
     openInExternalDomainAriaLabel: 'Opens a different website.',

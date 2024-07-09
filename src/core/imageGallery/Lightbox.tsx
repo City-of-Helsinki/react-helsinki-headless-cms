@@ -116,7 +116,7 @@ export function Lightbox({ images, lightboxUid }: LightboxProps) {
           >
             {imagePhotogrpher}
           </figcaption>
-          <Lightbox.Actions images={images} />
+          {images.length > 1 && <Lightbox.Actions images={images} />}
           <Lightbox.CloseButton lightboxUid={lightboxUid} />
         </div>
       </div>
