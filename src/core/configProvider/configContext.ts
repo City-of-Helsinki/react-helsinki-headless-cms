@@ -27,6 +27,7 @@ export type Config = {
   copy: {
     breadcrumbNavigationLabel: string;
     breadcrumbListLabel: string;
+    menuButtonLabel: string;
     menuToggleAriaLabel: string;
     skipToContentLabel: string;
     openInExternalDomainAriaLabel: string;
