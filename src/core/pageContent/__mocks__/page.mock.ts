@@ -70,7 +70,7 @@ export const sidebarArticleList: LayoutArticle = {
         node: {
           altText: 'image description',
           mediaItemUrl:
-            'https://kultus.app-staging.hkih.hion.dev/uploads/2022/01/ae0d30ec-w_c3391_l_web.jpeg',
+            'https://kultus.app-staging.hkih.hion.dev/app/uploads/2022/01/ae0d30ec-w_c3391_l_web.jpeg',
         },
       },
       __typename: 'Post',

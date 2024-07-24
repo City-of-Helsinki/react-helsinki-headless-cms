@@ -15,7 +15,7 @@ export const cmsTestPage: Record<keyof typeof CmsEndpoint, string> = {
 };
 
 export const cmsMenuName: Record<keyof typeof CmsEndpoint, string> = {
-  kultus: 'Palvelutarjotin-UI Header',
+  kultus: 'Palvelutarjotin all UIs Header (FI)',
   kukkuu: 'Main Navigation FI',
   events: 'Events Helsinki Header FI',
   hobbies: 'Hobbies Helsinki Header FI',
