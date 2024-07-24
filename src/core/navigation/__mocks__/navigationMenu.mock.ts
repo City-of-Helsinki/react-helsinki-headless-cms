@@ -31,7 +31,7 @@ const navigationMenu = {
         path: '/fi/pages/kohderyhmat/lapset-ja-perheet/',
         target: null,
         title: null,
-        url: 'https://liikunta.hkih.stage.geniem.io/fi/pages/kohderyhmat/lapset-ja-perheet/',
+        url: 'https://liikunta.app-staging.hkih.hion.dev/fi/pages/kohderyhmat/lapset-ja-perheet/',
         label: 'Lapset ja perheet',
       },
       {
@@ -41,7 +41,7 @@ const navigationMenu = {
         path: '/fi/pages/kohderyhmat/aikuiset/',
         target: null,
         title: null,
-        url: 'https://liikunta.hkih.stage.geniem.io/fi/pages/kohderyhmat/aikuiset/',
+        url: 'https://liikunta.app-staging.hkih.hion.dev/fi/pages/kohderyhmat/aikuiset/',
         label: 'Aikuiset',
       },
       {
@@ -61,7 +61,7 @@ const navigationMenu = {
         path: '/fi/pages/kohderyhmat/kumppanit/tilojen-varaaminen/',
         target: null,
         title: null,
-        url: 'https://liikunta.hkih.stage.geniem.io/fi/pages/kohderyhmat/kumppanit/tilojen-varaaminen/',
+        url: 'https://liikunta.app-staging.hkih.hion.dev/fi/pages/kohderyhmat/kumppanit/tilojen-varaaminen/',
         label: 'Liikuntatilojen varaaminen',
       },
       {
@@ -71,7 +71,7 @@ const navigationMenu = {
         path: '/fi/pages/liikuntapalvelut/maksut-ja-hinnasto/',
         target: null,
         title: null,
-        url: 'https://liikunta.hkih.stage.geniem.io/fi/pages/liikuntapalvelut/maksut-ja-hinnasto/',
+        url: 'https://liikunta.app-staging.hkih.hion.dev/fi/pages/liikuntapalvelut/maksut-ja-hinnasto/',
         label: 'Maksut ja hinnasto',
       },
       {
@@ -81,7 +81,7 @@ const navigationMenu = {
         path: '/fi/pages/kohderyhmat/kumppanit/tilojen-varaaminen/ohjeet-vuorojen-hakemiseen/',
         target: null,
         title: null,
-        url: 'https://liikunta.hkih.stage.geniem.io/fi/pages/kohderyhmat/kumppanit/tilojen-varaaminen/ohjeet-vuorojen-hakemiseen/',
+        url: 'https://liikunta.app-staging.hkih.hion.dev/fi/pages/kohderyhmat/kumppanit/tilojen-varaaminen/ohjeet-vuorojen-hakemiseen/',
         label: 'Ohjeet vuorojen hakemiseen',
       },
       {
@@ -91,7 +91,7 @@ const navigationMenu = {
         path: '/fi/pages/kohderyhmat/kumppanit/tilojen-varaaminen/ohjeet-vuorojen-hakemiseen/%ef%bf%bc/',
         target: null,
         title: null,
-        url: 'https://liikunta.hkih.stage.geniem.io/fi/pages/kohderyhmat/kumppanit/tilojen-varaaminen/ohjeet-vuorojen-hakemiseen/%ef%bf%bc/',
+        url: 'https://liikunta.app-staging.hkih.hion.dev/fi/pages/kohderyhmat/kumppanit/tilojen-varaaminen/ohjeet-vuorojen-hakemiseen/%ef%bf%bc/',
         label: 'Ohjeet vaalitilaisuuden tilavaraukseen',
       },
       {
@@ -101,7 +101,7 @@ const navigationMenu = {
         path: '/fi/pages/kohderyhmat/kumppanit/tilojen-varaaminen/vuorojenjakokriteerit/',
         target: null,
         title: null,
-        url: 'https://liikunta.hkih.stage.geniem.io/fi/pages/kohderyhmat/kumppanit/tilojen-varaaminen/vuorojenjakokriteerit/',
+        url: 'https://liikunta.app-staging.hkih.hion.dev/fi/pages/kohderyhmat/kumppanit/tilojen-varaaminen/vuorojenjakokriteerit/',
         label: 'Vuorojenjakokriteerit',
       },
       {
@@ -111,7 +111,7 @@ const navigationMenu = {
         path: '/fi/pages/kohderyhmat/kumppanit/tilojen-varaaminen/liikuntapalvelun-hallinnoimat-koulutilat/',
         target: null,
         title: null,
-        url: 'https://liikunta.hkih.stage.geniem.io/fi/pages/kohderyhmat/kumppanit/tilojen-varaaminen/liikuntapalvelun-hallinnoimat-koulutilat/',
+        url: 'https://liikunta.app-staging.hkih.hion.dev/fi/pages/kohderyhmat/kumppanit/tilojen-varaaminen/liikuntapalvelun-hallinnoimat-koulutilat/',
         label: 'Liikuntapalvelun hallinnoimat koulutilat',
       },
       {
@@ -121,7 +121,7 @@ const navigationMenu = {
         path: '/fi/pages/kohderyhmat/kumppanit/tilojen-varaaminen/liikuntapalvelun-hallinnoimat-koulutilat/helsingin-kaupungin-koulujen-liikuntasalien-vapaa-ajan-kaytto/',
         target: null,
         title: null,
-        url: 'https://liikunta.hkih.stage.geniem.io/fi/pages/kohderyhmat/kumppanit/tilojen-varaaminen/liikuntapalvelun-hallinnoimat-koulutilat/helsingin-kaupungin-koulujen-liikuntasalien-vapaa-ajan-kaytto/',
+        url: 'https://liikunta.app-staging.hkih.hion.dev/fi/pages/kohderyhmat/kumppanit/tilojen-varaaminen/liikuntapalvelun-hallinnoimat-koulutilat/helsingin-kaupungin-koulujen-liikuntasalien-vapaa-ajan-kaytto/',
         label: 'Helsingin kaupungin koulujen liikuntasalien vapaa-ajan käyttö',
       },
       {
@@ -131,7 +131,7 @@ const navigationMenu = {
         path: '/fi/pages/kohderyhmat/kumppanit/tilojen-varaaminen/liikuntapalvelun-hallinnoimat-koulutilat/koulujen-liikuntasalien-itsenainen-kaytto/',
         target: null,
         title: null,
-        url: 'https://liikunta.hkih.stage.geniem.io/fi/pages/kohderyhmat/kumppanit/tilojen-varaaminen/liikuntapalvelun-hallinnoimat-koulutilat/koulujen-liikuntasalien-itsenainen-kaytto/',
+        url: 'https://liikunta.app-staging.hkih.hion.dev/fi/pages/kohderyhmat/kumppanit/tilojen-varaaminen/liikuntapalvelun-hallinnoimat-koulutilat/koulujen-liikuntasalien-itsenainen-kaytto/',
         label: 'Koulujen liikuntasalien itsenäinen käyttö',
       },
     ],

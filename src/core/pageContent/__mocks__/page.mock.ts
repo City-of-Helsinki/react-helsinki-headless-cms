@@ -35,7 +35,7 @@ export const sidebarCardsList: LayoutCards = {
       link: {
         target: '',
         title: 'Read more',
-        url: 'https://liikunta.hkih.stage.geniem.io/en/regulations-and-instructions/hygiene-in-pool-premises/',
+        url: 'https://liikunta.app-staging.hkih.hion.dev/en/regulations-and-instructions/hygiene-in-pool-premises/',
       },
     },
   ],
@@ -70,7 +70,7 @@ export const sidebarArticleList: LayoutArticle = {
         node: {
           altText: 'image description',
           mediaItemUrl:
-            'https://kultus.hkih.stage.geniem.io/uploads/2022/01/ae0d30ec-w_c3391_l_web.jpeg',
+            'https://kultus.app-staging.hkih.hion.dev/uploads/2022/01/ae0d30ec-w_c3391_l_web.jpeg',
         },
       },
       __typename: 'Post',

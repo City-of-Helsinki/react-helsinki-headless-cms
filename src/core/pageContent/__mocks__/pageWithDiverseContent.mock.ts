@@ -16,7 +16,7 @@ const pageWithDiverseContent: PageQuery['page'] = {
     <dd>Description</dd>
   </dl>
   <figure>
-    <img src="https://kultus.hkih.stage.geniem.io/uploads/2022/01/ae0d30ec-w_c3391_l_web.jpeg" alt="Alt text" />
+    <img src="https://kultus.app-staging.hkih.hion.dev/uploads/2022/01/ae0d30ec-w_c3391_l_web.jpeg" alt="Alt text" />
     <figcaption>Fig.1 - Figure caption</figcaption>
   </figure>
   <hr />

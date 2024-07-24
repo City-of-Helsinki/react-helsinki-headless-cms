@@ -1,5 +1,6 @@
 export const CMS_GRAPHQL_ENDPOINT =
-  process.env.CMS_GRAPHQL_ENDPOINT ?? 'https://hkih.stage.geniem.io/graphql';
+  process.env.CMS_GRAPHQL_ENDPOINT ??
+  'https://app-staging.hkih.hion.dev/graphql';
 export const EVENTS_PROXY_ENDPOINT =
   process.env.EVENTS_GRAPHQL_ENDPOINT ??
   'https://tapahtumat-proxy.test.kuva.hel.ninja/proxy/graphql';
