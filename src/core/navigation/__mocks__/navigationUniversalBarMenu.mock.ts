@@ -11,7 +11,7 @@ const navigationUniversalBarMenu = {
         path: '/fi/pages/tietoa-palvelusta/',
         target: null,
         title: null,
-        url: 'https://liikunta.hkih.stage.geniem.io/fi/pages/tietoa-palvelusta/',
+        url: 'https://liikunta.app-staging.hkih.hion.dev/fi/pages/tietoa-palvelusta/',
         label: 'Tietoa palvelusta',
       },
       {
@@ -21,7 +21,7 @@ const navigationUniversalBarMenu = {
         path: '/fi/pages/liikuntapalvelut/maaraykset-ja-ohjeet/',
         target: null,
         title: null,
-        url: 'https://liikunta.hkih.stage.geniem.io/fi/pages/liikuntapalvelut/maaraykset-ja-ohjeet/',
+        url: 'https://liikunta.app-staging.hkih.hion.dev/fi/pages/liikuntapalvelut/maaraykset-ja-ohjeet/',
         label: 'Määräykset ja ohjeet',
       },
     ],

@@ -2,7 +2,7 @@
   "languages": [
     {
       "code": "FI",
-      "homeUrl": "https://harrastus.hkih.stage.geniem.io/fi/",
+      "homeUrl": "https://harrastus.app-staging.hkih.hion.dev/fi/",
       "id": "TGFuZ3VhZ2U6Zmk=",
       "locale": "fi",
       "name": "Suomi",
@@ -11,7 +11,7 @@
     },
     {
       "code": "EN",
-      "homeUrl": "https://harrastus.hkih.stage.geniem.io/en/",
+      "homeUrl": "https://harrastus.app-staging.hkih.hion.dev/en/",
       "id": "TGFuZ3VhZ2U6ZW4=",
       "locale": "en_US",
       "name": "English",
@@ -20,7 +20,7 @@
     },
     {
       "code": "SV",
-      "homeUrl": "https://harrastus.hkih.stage.geniem.io/sv/",
+      "homeUrl": "https://harrastus.app-staging.hkih.hion.dev/sv/",
       "id": "TGFuZ3VhZ2U6c3Y=",
       "locale": "sv_SE",
       "name": "Svenska",

@@ -1,9 +1,9 @@
 export enum CmsEndpoint {
-  kultus = 'https://kultus.hkih.stage.geniem.io/graphql',
-  kukkuu = 'https://kukkuu.hkih.stage.geniem.io/graphql',
-  events = 'https://tapahtumat.hkih.stage.geniem.io/graphql',
-  hobbies = 'https://harrastus.hkih.stage.geniem.io/graphql',
-  sports = 'https://liikunta.hkih.stage.geniem.io/graphql',
+  kultus = 'https://kultus.app-staging.hkih.hion.dev/graphql',
+  kukkuu = 'https://kukkuu.app-staging.hkih.hion.dev/graphql',
+  events = 'https://tapahtumat.app-staging.hkih.hion.dev/graphql',
+  hobbies = 'https://harrastus.app-staging.hkih.hion.dev/graphql',
+  sports = 'https://liikunta.app-staging.hkih.hion.dev/graphql',
 }
 
 export const cmsTestPage: Record<keyof typeof CmsEndpoint, string> = {

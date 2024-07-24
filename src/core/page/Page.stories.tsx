@@ -39,7 +39,8 @@ export default {
 
 const domain = window.location.origin ?? 'http://localhost:6006';
 const cmsDomain = new URL(
-  process.env.CMS_GRAPHQL_ENDPOINT ?? 'https://hkih.stage.geniem.io/graphql',
+  process.env.CMS_GRAPHQL_ENDPOINT ??
+    'https://app-staging.hkih.hion.dev/graphql',
 ).origin;
 const Template: StoryFn<typeof Page> = (args) => (
   <HelmetProvider>
