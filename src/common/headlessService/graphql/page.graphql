@@ -121,6 +121,9 @@ fragment Page on Page {
     ... on LayoutSteps {
       ...LayoutSteps
     }
+    ... on LayoutSocialMediaFeed {
+      ...LayoutSocialMediaFeed
+    }
   }
 }
 

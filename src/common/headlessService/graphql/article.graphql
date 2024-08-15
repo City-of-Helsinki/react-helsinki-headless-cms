@@ -134,6 +134,9 @@ fragment Post on Post {
     ... on LayoutSteps {
       ...LayoutSteps
     }
+    ... on LayoutSocialMediaFeed {
+      ...LayoutSocialMediaFeed
+    }
   }
 }
 

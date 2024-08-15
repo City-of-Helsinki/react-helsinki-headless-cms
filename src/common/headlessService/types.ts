@@ -39,6 +39,7 @@ export type {
   LayoutImageFragment as LayoutImage,
   LayoutImageGalleryFragment as LayoutImageGallery,
   LayoutStepsFragment as LayoutSteps,
+  LayoutSocialMediaFeedFragment as LayoutSocialMediaFeed,
   EventSearchFragment as EventSearch,
   EventSelectedFragment as EventSelected,
   EventSearchCarouselFragment as EventSearchCarousel,
