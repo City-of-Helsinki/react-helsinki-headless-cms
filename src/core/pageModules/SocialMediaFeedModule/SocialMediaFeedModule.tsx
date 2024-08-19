@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useRef } from 'react';
-import Text from '../../../common/components/text/Text';
 
+import Text from '../../../common/components/text/Text';
 import styles from '../pageModules.module.scss';
 
 export interface SocialMediaFeedModuleProps {
@@ -14,7 +14,6 @@ export function SocialMediaFeedModule({
   title,
   script,
 }: SocialMediaFeedModuleProps) {
-  if (!script) return null;
   const scriptWrapperRef = useRef<HTMLDivElement>();
 
   useLayoutEffect(() => {
@@ -26,6 +25,8 @@ export function SocialMediaFeedModule({
     scriptWrapperRef.current.append(documentFragment);
   }, [script]);
 
+  if (!script) return null;
+
   return (
     <div id={anchor} className={styles.pageModuleWrapper}>
       {title && (
@@ -35,8 +36,9 @@ export function SocialMediaFeedModule({
       )}
       <div
         ref={scriptWrapperRef}
+        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: script }}
-      ></div>
+      />
     </div>
   );
 }
