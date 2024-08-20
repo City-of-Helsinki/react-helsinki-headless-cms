@@ -28,6 +28,7 @@ import {
   isLayoutContent,
   isLayoutImage,
   isLayoutImageGallery,
+  isLayoutSocialMediaFeed,
   isLayoutSteps,
   isLocationsSelectionCollection,
   isPageType,
@@ -41,6 +42,7 @@ import createHashKey from '../utils/createHashKey';
 import { MAIN_CONTENT_ID } from '../../common/constants';
 import { PageContentBreadcrumb } from './PageContentBreadcrumb';
 import { CardAlignment } from '../card/Card';
+import { SocialMediaFeedModule } from '../pageModules/SocialMediaFeedModule/SocialMediaFeedModule';
 
 // Modules: Content, Image, Cards, Steps (possibly other in future)
 export const defaultContentModules = (
@@ -116,6 +118,15 @@ export const defaultContentModules = (
           helpText={module.description}
           color={module.color}
           type={module.type}
+        />,
+      );
+    } else if (isLayoutSocialMediaFeed(module)) {
+      contentModules.push(
+        <SocialMediaFeedModule
+          key={uniqueKey}
+          anchor={module.anchor}
+          title={module.title}
+          script={module.script}
         />,
       );
     }

@@ -17,6 +17,7 @@ import {
   LayoutImage,
   LayoutImageGallery,
   LayoutSteps,
+  LayoutSocialMediaFeed,
   LayoutLinkList,
   LayoutPage,
   LayoutPageCarousel,
@@ -87,6 +88,15 @@ export function isLayoutSteps(
   return (
     // eslint-disable-next-line no-underscore-dangle
     module.__typename === 'LayoutSteps'
+  );
+}
+
+export function isLayoutSocialMediaFeed(
+  module: PageModule | PageSidebarModule,
+): module is LayoutSocialMediaFeed {
+  return (
+    // eslint-disable-next-line no-underscore-dangle
+    module.__typename === 'LayoutSocialMediaFeed'
   );
 }
 
