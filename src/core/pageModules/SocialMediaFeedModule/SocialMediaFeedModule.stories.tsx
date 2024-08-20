@@ -4,6 +4,8 @@ import React from 'react';
 import { StoryFn, Meta } from '@storybook/react';
 
 import { SocialMediaFeedModule } from './SocialMediaFeedModule';
+import { ConfigProvider } from '../../configProvider/ConfigProvider';
+import { defaultConfig } from '../../configProvider/defaultConfig';
 
 export default {
   title: 'Core components/Social Media Feed module',
@@ -18,9 +20,20 @@ export default {
 } as Meta<typeof SocialMediaFeedModule>;
 
 const Template: StoryFn<typeof SocialMediaFeedModule> = (args) => (
-  <div style={{ margin: 24 }}>
-    <SocialMediaFeedModule {...args} />
-  </div>
+  <ConfigProvider
+    config={{
+      ...defaultConfig,
+      htmlSanitizer: {
+        allowedUnsafeTags: [],
+        trustedOrigins: [],
+        allowUnsafeSocialMediaScript: true,
+      },
+    }}
+  >
+    <div style={{ margin: 24 }}>
+      <SocialMediaFeedModule {...args} />
+    </div>
+  </ConfigProvider>
 );
 
 export const ImageGalleryModuleDefault = {
