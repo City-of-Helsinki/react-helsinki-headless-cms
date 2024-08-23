@@ -98,6 +98,6 @@ export const defaultConfig: Config = {
   htmlSanitizer: {
     allowedUnsafeTags: [],
     trustedOrigins: [],
-    allowUnsafeSocialMediaScript: false,
+    trustedScriptsOrigins: [],
   },
 };

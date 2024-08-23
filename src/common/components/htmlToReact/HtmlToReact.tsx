@@ -11,12 +11,13 @@ import parse, {
 import classNames from 'classnames';
 
 import styles from './htmlToReact.module.scss';
-import { isTrustedOrigin, validateTrustedOriginsFormat } from './utils';
 import {
   DefaultH2,
   DefaultP,
   IframeForEmbeddedMedia,
 } from './replaceComponents';
+import validateTrustedOriginsFormat from '../../../core/utils/validateTrustedOriginsFormat';
+import isTrustedOrigin from '../../../core/utils/isTrustedOrigin';
 
 const hasClassName = (domNode: Element, className: string) =>
   domNode.attribs.class?.split(/\s+/)?.includes(className) ?? false;
