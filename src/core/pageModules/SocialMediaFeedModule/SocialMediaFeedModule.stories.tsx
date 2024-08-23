@@ -25,8 +25,7 @@ const Template: StoryFn<typeof SocialMediaFeedModule> = (args) => (
       ...defaultConfig,
       htmlSanitizer: {
         allowedUnsafeTags: [],
-        trustedOrigins: [],
-        trustedScriptsOrigins: ['https://plugins.flockler.com'],
+        trustedOrigins: ['https://plugins.flockler.com'],
       },
     }}
   >

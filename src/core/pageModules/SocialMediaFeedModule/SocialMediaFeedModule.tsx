@@ -19,7 +19,7 @@ export function SocialMediaFeedModule({
   script,
 }: SocialMediaFeedModuleProps) {
   const {
-    htmlSanitizer: { trustedScriptsOrigins },
+    htmlSanitizer: { trustedOrigins },
   } = useConfig();
 
   const scriptWrapperRef = useRef<HTMLDivElement>();
@@ -36,7 +36,7 @@ export function SocialMediaFeedModule({
     }
   }, [scriptWrapperRef.current?.innerHTML]);
 
-  const sanitizeScripts = (domNode: DOMNode, trustedOrigins: string[]) => {
+  const sanitizeScripts = (domNode: DOMNode) => {
     if ('attribs' in domNode) {
       if (
         domNode.name === 'script' &&
@@ -63,7 +63,7 @@ export function SocialMediaFeedModule({
   );
 
   const htmlReactParserOptions = {
-    replace: (domNode) => sanitizeScripts(domNode, trustedScriptsOrigins),
+    replace: (domNode) => sanitizeScripts(domNode),
   };
 
   return (
