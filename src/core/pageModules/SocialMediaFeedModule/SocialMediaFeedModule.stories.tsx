@@ -25,8 +25,7 @@ const Template: StoryFn<typeof SocialMediaFeedModule> = (args) => (
       ...defaultConfig,
       htmlSanitizer: {
         allowedUnsafeTags: [],
-        trustedOrigins: [],
-        allowUnsafeSocialMediaScript: true,
+        trustedOrigins: ['https://plugins.flockler.com'],
       },
     }}
   >
@@ -36,6 +35,6 @@ const Template: StoryFn<typeof SocialMediaFeedModule> = (args) => (
   </ConfigProvider>
 );
 
-export const ImageGalleryModuleDefault = {
+export const SocialMediaFeedModuleDefault = {
   render: Template,
 };

@@ -87,7 +87,6 @@ export type Config = {
   htmlSanitizer: {
     allowedUnsafeTags: HtmlToReactProps['allowedUnsafeTags'];
     trustedOrigins: HtmlToReactProps['trustedOrigins'];
-    allowUnsafeSocialMediaScript: boolean;
   };
 };
 
