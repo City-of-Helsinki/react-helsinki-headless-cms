@@ -162,11 +162,11 @@
     &.fixed-vertical,
     &.responsive {
       & > :first-child {
-        flex: initial;
+        flex: 1;
       }
 
       & > :last-child {
-        flex: initial;
+        flex: 1;
       }
     }
 
