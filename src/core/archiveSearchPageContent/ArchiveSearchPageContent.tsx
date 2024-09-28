@@ -116,8 +116,8 @@ export function SearchTags({
 export interface SearchPageContentProps {
   page?: PageType | ArticleType;
   breadcrumbs?:
-  | BreadcrumbUnionType
-  | ((page?: PageType | ArticleType) => BreadcrumbUnionType);
+    | BreadcrumbUnionType
+    | ((page?: PageType | ArticleType) => BreadcrumbUnionType);
   customContent?: string | JSX.Element;
   items?: CollectionItemType[];
   isLoading?: boolean;

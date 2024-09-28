@@ -48,10 +48,10 @@ export type Config = {
       clearAll: string;
     };
   } & OptionalTranslationsWithFallbacks;
-  customCopy? : {
+  customCopy?: {
     loadMoreButtonVariant?: Exclude<ButtonVariant, 'supplementary'>;
     loadMoreButtonTheme?: ButtonTheme;
-  }
+  };
   components: {
     A: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => JSX.Element;
     Img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => JSX.Element;
