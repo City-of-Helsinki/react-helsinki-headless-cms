@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import {
   Button,
+  ButtonVariant,
   IconCrossCircleFill,
   IconSearch,
   LoadingSpinner,
@@ -308,8 +309,10 @@ export function SearchPageContent(props: SearchPageContentProps) {
                   {!isLoading && hasMore && (
                     <div className={styles.loadMoreButton}>
                       <Button
-                        variant="secondary"
-                        theme="black"
+                        variant={
+                          archiveSearch?.loadMoreButtonVariant || 'secondary'
+                        }
+                        theme={archiveSearch?.loadMoreButtonTheme || 'black'}
                         type="button"
                         onClick={onLoadMore}
                       >

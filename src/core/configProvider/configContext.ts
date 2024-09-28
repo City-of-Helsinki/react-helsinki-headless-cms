@@ -1,5 +1,6 @@
 import React, { createContext } from 'react';
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
+import { ButtonTheme, ButtonVariant } from 'hds-react';
 
 import {
   ArticleType,
@@ -42,6 +43,8 @@ export type Config = {
       searchTextPlaceholder: string;
       searchButtonLabelText: string;
       loadMoreButtonLabelText: string;
+      loadMoreButtonVariant?: Exclude<ButtonVariant, 'supplementary'>;
+      loadMoreButtonTheme?: ButtonTheme;
       noResultsTitle: string;
       noResultsText: string;
       clearAll: string;
