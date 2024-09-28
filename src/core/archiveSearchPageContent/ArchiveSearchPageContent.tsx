@@ -117,8 +117,8 @@ export function SearchTags({
 export interface SearchPageContentProps {
   page?: PageType | ArticleType;
   breadcrumbs?:
-    | BreadcrumbUnionType
-    | ((page?: PageType | ArticleType) => BreadcrumbUnionType);
+  | BreadcrumbUnionType
+  | ((page?: PageType | ArticleType) => BreadcrumbUnionType);
   customContent?: string | JSX.Element;
   items?: CollectionItemType[];
   isLoading?: boolean;
@@ -189,6 +189,7 @@ export function SearchPageContent(props: SearchPageContentProps) {
   const {
     components: { Head },
     copy: { archiveSearch },
+    customCopy,
     mainContentId,
   } = useConfig();
 
@@ -310,9 +311,9 @@ export function SearchPageContent(props: SearchPageContentProps) {
                     <div className={styles.loadMoreButton}>
                       <Button
                         variant={
-                          archiveSearch?.loadMoreButtonVariant || 'secondary'
+                          customCopy?.loadMoreButtonVariant || 'secondary'
                         }
-                        theme={archiveSearch?.loadMoreButtonTheme || 'black'}
+                        theme={customCopy?.loadMoreButtonTheme || 'black'}
                         type="button"
                         onClick={onLoadMore}
                       >

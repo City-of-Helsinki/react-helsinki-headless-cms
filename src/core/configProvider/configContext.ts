@@ -43,13 +43,15 @@ export type Config = {
       searchTextPlaceholder: string;
       searchButtonLabelText: string;
       loadMoreButtonLabelText: string;
-      loadMoreButtonVariant?: Exclude<ButtonVariant, 'supplementary'>;
-      loadMoreButtonTheme?: ButtonTheme;
       noResultsTitle: string;
       noResultsText: string;
       clearAll: string;
     };
   } & OptionalTranslationsWithFallbacks;
+  customCopy? : {
+    loadMoreButtonVariant?: Exclude<ButtonVariant, 'supplementary'>;
+    loadMoreButtonTheme?: ButtonTheme;
+  }
   components: {
     A: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => JSX.Element;
     Img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => JSX.Element;
