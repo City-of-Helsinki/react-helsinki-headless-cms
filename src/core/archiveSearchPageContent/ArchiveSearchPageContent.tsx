@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import {
   Button,
-  ButtonVariant,
   IconCrossCircleFill,
   IconSearch,
   LoadingSpinner,
