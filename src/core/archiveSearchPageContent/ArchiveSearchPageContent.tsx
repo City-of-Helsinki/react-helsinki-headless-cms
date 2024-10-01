@@ -188,6 +188,7 @@ export function SearchPageContent(props: SearchPageContentProps) {
   const {
     components: { Head },
     copy: { archiveSearch },
+    customCopy,
     mainContentId,
   } = useConfig();
 
@@ -308,8 +309,10 @@ export function SearchPageContent(props: SearchPageContentProps) {
                   {!isLoading && hasMore && (
                     <div className={styles.loadMoreButton}>
                       <Button
-                        variant="secondary"
-                        theme="black"
+                        variant={
+                          customCopy?.loadMoreButtonVariant || 'secondary'
+                        }
+                        theme={customCopy?.loadMoreButtonTheme || 'black'}
                         type="button"
                         onClick={onLoadMore}
                       >

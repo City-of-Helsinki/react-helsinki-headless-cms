@@ -1,5 +1,6 @@
 import React, { createContext } from 'react';
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
+import { ButtonTheme, ButtonVariant } from 'hds-react';
 
 import {
   ArticleType,
@@ -47,6 +48,10 @@ export type Config = {
       clearAll: string;
     };
   } & OptionalTranslationsWithFallbacks;
+  customCopy?: {
+    loadMoreButtonVariant?: Exclude<ButtonVariant, 'supplementary'>;
+    loadMoreButtonTheme?: ButtonTheme;
+  };
   components: {
     A: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => JSX.Element;
     Img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => JSX.Element;
