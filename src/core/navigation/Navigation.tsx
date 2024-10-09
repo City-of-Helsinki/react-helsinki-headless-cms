@@ -107,11 +107,6 @@ export function Navigation({
     utils: { getRoutedInternalHref },
   } = config;
 
-  // Language selection is required
-  if (!languages || !languages.length) {
-    return null;
-  }
-
   const currentLanguage = findLanguage(languages, currentLanguageCode);
   const t = (field: FallbackTranslationKey) =>
     getTranslationWithFallback(config, field, currentLanguageCode);
