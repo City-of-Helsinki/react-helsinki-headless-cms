@@ -107,27 +107,23 @@ export function Navigation({
     utils: { getRoutedInternalHref },
   } = config;
 
-  const currentLanguage = findLanguage(languages, currentLanguageCode);
+  const langs = languages || []
+
+
+  const currentLanguage = findLanguage(langs, currentLanguageCode);
   const t = (field: FallbackTranslationKey) =>
     getTranslationWithFallback(config, field, currentLanguageCode);
 
-  // Error out if language props are inconsistent
-  if (languages && !currentLanguage) {
-    throw Error(
-      'Could not find a language from languages with currentLanguageCode',
-    );
-  }
-
-  const languageOptions: LanguageOption[] = languages
+  const languageOptions: LanguageOption[] = langs
     .filter(isNonEmptyLanguage)
     .sort(languageSorter)
     .map(toPrimaryLanguageOption);
 
   const onDidChangeLanguage = (newLanguageCode: string) => {
-    const newLanguage = findLanguage(languages, newLanguageCode);
+    const newLanguage = findLanguage(langs, newLanguageCode);
     const url =
       newLanguage && currentLanguage
-        ? getPathnameForLanguage(newLanguage, currentLanguage, languages)
+        ? getPathnameForLanguage(newLanguage, currentLanguage, langs)
         : undefined;
     if (url && window) {
       window.location.href = url;
