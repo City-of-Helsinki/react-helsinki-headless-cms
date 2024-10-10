@@ -107,8 +107,7 @@ export function Navigation({
     utils: { getRoutedInternalHref },
   } = config;
 
-  const langs = languages || []
-
+  const langs = languages || [];
 
   const currentLanguage = findLanguage(langs, currentLanguageCode);
   const t = (field: FallbackTranslationKey) =>
