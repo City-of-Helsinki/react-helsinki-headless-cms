@@ -107,32 +107,22 @@ export function Navigation({
     utils: { getRoutedInternalHref },
   } = config;
 
-  // Language selection is required
-  if (!languages || !languages.length) {
-    return null;
-  }
+  const languagesData = languages || [];
 
-  const currentLanguage = findLanguage(languages, currentLanguageCode);
+  const currentLanguage = findLanguage(languagesData, currentLanguageCode);
   const t = (field: FallbackTranslationKey) =>
     getTranslationWithFallback(config, field, currentLanguageCode);
 
-  // Error out if language props are inconsistent
-  if (languages && !currentLanguage) {
-    throw Error(
-      'Could not find a language from languages with currentLanguageCode',
-    );
-  }
-
-  const languageOptions: LanguageOption[] = languages
+  const languageOptions: LanguageOption[] = languagesData
     .filter(isNonEmptyLanguage)
     .sort(languageSorter)
     .map(toPrimaryLanguageOption);
 
   const onDidChangeLanguage = (newLanguageCode: string) => {
-    const newLanguage = findLanguage(languages, newLanguageCode);
+    const newLanguage = findLanguage(languagesData, newLanguageCode);
     const url =
       newLanguage && currentLanguage
-        ? getPathnameForLanguage(newLanguage, currentLanguage, languages)
+        ? getPathnameForLanguage(newLanguage, currentLanguage, languagesData)
         : undefined;
     if (url && window) {
       window.location.href = url;
@@ -157,8 +147,13 @@ export function Navigation({
     '--header-max-width': 'var(--breakpoint-xl)', // Would be 1440px if not overridden
   };
 
+  /** adding key property allows to update the Header context with dynamic data (rerender the component) so the languages appear when data loaded
+   * The fix is usggested by HDS team, they have a ticket about that issue
+   * https://helsinkisolutionoffice.atlassian.net/browse/HDS-2174
+   */
   return (
     <Header
+      key={currentLanguage?.code}
       onDidChangeLanguage={onDidChangeLanguage}
       defaultLanguage={currentLanguage?.code?.toLowerCase()}
       languages={languageOptions}
