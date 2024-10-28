@@ -1,11 +1,11 @@
 const { injectAxe, checkA11y } = require('axe-playwright');
 module.exports = {
-  preRender: async (page) => {
+    preVisit: async (page) => {
     // before the story has been rendered inject AXE
     await injectAxe(page);
   },
-  postRender: async (page) => {
-    // after the story has been rendered rn AXE checksonly on root not the whole page
+  postVisit: async (page) => {
+    // after the story has been rendered run AXE checks only on #storybook-root, not the whole page
     await checkA11y(page, '#storybook-root', {
       detailedReport: true,
       detailedReportOptions: { html: true },

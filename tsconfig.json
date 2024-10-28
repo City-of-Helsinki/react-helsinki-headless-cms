@@ -16,6 +16,14 @@
     "alwaysStrict": true
   },
   "include": ["src", "jest-setup.ts"],
+  "exclude": [
+    "dist",
+    "**/__mocks__/*",
+    "**/node_modules/*",
+    "build",
+    "src/**/*.test.ts",
+    "src/**/*.test.tsx"
+  ],
   "compileOnSave": false,
   "buildOnSave": false
 }

@@ -101,7 +101,7 @@ export function LargeCard({
           {content}
         </LinkBox>
       ) : (
-        { content }
+        <>{content}</>
       )}
     </>
   );
