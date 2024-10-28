@@ -46,56 +46,62 @@ export function LargeCard({
   const [isHovered, setIsHovered] = useState(false);
   const handleToggleActive = () => setIsHovered((val) => !val);
 
-  const content = <div
-    className={classNames(
-      styles[`${imagePosition}`],
-      styles.cardWrapper,
-      withBorder && styles.withBorder,
-      isHovered && styles.isHovered,
-    )}
-  >
-    <BackgroundImage
-      id={id}
-      url={imageUrl}
-      labelTag={imageLabel}
-      className={styles.imageWrapper}
-    />
-    <div className={styles.textWrapper}>
-      {title && <div className={styles.title}>{title}</div>}
-      {subTitle && <div className={styles.subTitle}>{subTitle}</div>}
-      <div className={classNames(styles.text, clampText && styles.clamp)}>
-        {text}
-      </div>
-      {customContent && (
-        <div className={styles.customContent}>{customContent}</div>
+  const content = (
+    <div
+      className={classNames(
+        styles[`${imagePosition}`],
+        styles.cardWrapper,
+        withBorder && styles.withBorder,
+        isHovered && styles.isHovered,
       )}
-      {url && hasLink && (
-        <div className={styles.buttonWrapper}>
-          <Link
-            tabIndex={-1}
-            href={url}
-            openInNewTab={openInNewTab}
-            iconLeft={<IconArrowRight aria-hidden="true" />}
-            showExternalIcon={false}
-          />
+    >
+      <BackgroundImage
+        id={id}
+        url={imageUrl}
+        labelTag={imageLabel}
+        className={styles.imageWrapper}
+      />
+      <div className={styles.textWrapper}>
+        {title && <div className={styles.title}>{title}</div>}
+        {subTitle && <div className={styles.subTitle}>{subTitle}</div>}
+        <div className={classNames(styles.text, clampText && styles.clamp)}>
+          {text}
         </div>
-      )}
+        {customContent && (
+          <div className={styles.customContent}>{customContent}</div>
+        )}
+        {url && hasLink && (
+          <div className={styles.buttonWrapper}>
+            <Link
+              tabIndex={-1}
+              href={url}
+              openInNewTab={openInNewTab}
+              iconLeft={<IconArrowRight aria-hidden="true" />}
+              showExternalIcon={false}
+            />
+          </div>
+        )}
+      </div>
     </div>
-  </div>
+  );
 
   return (
-    <>{hasLink ?
-      <LinkBox
-        id={id}
-        href={url}
-        className={classNames(styles.cardLink, className)}
-        aria-label={ariaLabel || ''}
-        openInNewTab={openInNewTab}
-        onMouseEnter={handleToggleActive}
-        onMouseLeave={handleToggleActive}
-      >
-        {content}
-      </LinkBox> : <>{content}</>}
+    <>
+      {hasLink ? (
+        <LinkBox
+          id={id}
+          href={url}
+          className={classNames(styles.cardLink, className)}
+          aria-label={ariaLabel || ''}
+          openInNewTab={openInNewTab}
+          onMouseEnter={handleToggleActive}
+          onMouseLeave={handleToggleActive}
+        >
+          {content}
+        </LinkBox>
+      ) : (
+        <>{content}</>
+      )}
     </>
   );
 }

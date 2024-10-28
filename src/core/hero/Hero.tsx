@@ -64,9 +64,9 @@ export default function Hero({
       className={classNames(
         styles.textContents,
         backgroundColor &&
-        !imageUrl &&
-        isWhiteText(backgroundColor) &&
-        colorStyles.whiteText,
+          !imageUrl &&
+          isWhiteText(backgroundColor) &&
+          colorStyles.whiteText,
         title && backgroundColor && korosType && styles.withKoros,
       )}
     >
@@ -81,9 +81,9 @@ export default function Hero({
           className={classNames(
             !imageUrl && styles.button,
             backgroundColor &&
-            !imageUrl &&
-            isWhiteText(backgroundColor) &&
-            colorStyles.whiteButton,
+              !imageUrl &&
+              isWhiteText(backgroundColor) &&
+              colorStyles.whiteButton,
           )}
         >
           <Button
@@ -106,12 +106,12 @@ export default function Hero({
           styles.hero,
           className,
           backgroundColor &&
-          colorStyles[`background${getColor(backgroundColor)}`],
+            colorStyles[`background${getColor(backgroundColor)}`],
           title &&
-          backgroundColor &&
-          korosType &&
-          !imageUrl &&
-          styles.withKoros,
+            backgroundColor &&
+            korosType &&
+            !imageUrl &&
+            styles.withKoros,
           korosType && styles[korosType],
         )}
       >
@@ -137,7 +137,7 @@ export default function Hero({
                   <Link
                     href={backUrl}
                     openInNewTab={false}
-                    aria-label='Back'
+                    aria-label="Back"
                     iconLeft={<IconArrowLeft aria-hidden="true" />}
                   />
                 </div>
@@ -161,9 +161,9 @@ export default function Hero({
                 imageUrl
                   ? 'color-white'
                   : backgroundColor
-                    ? `color-${backgroundColor}`
-                    : 'hcrc-color-hero-bg, --color-fog-light'
-                })`,
+                  ? `color-${backgroundColor}`
+                  : 'hcrc-color-hero-bg, --color-fog-light'
+              })`,
             }}
           />
         )}

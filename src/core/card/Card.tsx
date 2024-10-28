@@ -124,8 +124,8 @@ export function Card({
 
         backgroundColor && styles.horizontalBorder,
         backgroundColor &&
-        isWhiteText(backgroundColor) &&
-        colorStyles.whiteText,
+          isWhiteText(backgroundColor) &&
+          colorStyles.whiteText,
         isDelimited && styles.isDelimited,
         isCentered && styles.isCentered,
       )}
@@ -161,8 +161,8 @@ export function Card({
               ? colorStyles[`background${getColor(backgroundColor)}`]
               : colorStyles.backgroundDefault,
             backgroundColor &&
-            isWhiteText(backgroundColor) &&
-            colorStyles.whiteText,
+              isWhiteText(backgroundColor) &&
+              colorStyles.whiteText,
             isDelimited && styles.isDelimited,
             isCentered && styles.isCentered,
           )}
@@ -184,8 +184,8 @@ export function Card({
                 className={classNames(
                   styles.subTitle,
                   backgroundColor &&
-                  isWhiteText(backgroundColor) &&
-                  colorStyles.whiteText,
+                    isWhiteText(backgroundColor) &&
+                    colorStyles.whiteText,
                 )}
               >
                 {subTitle}
@@ -215,8 +215,8 @@ export function Card({
                 ? colorStyles[`background${getColor(backgroundColor)}`]
                 : colorStyles.backgroundDefault,
               backgroundColor &&
-              isWhiteText(backgroundColor) &&
-              colorStyles.whiteLink,
+                isWhiteText(backgroundColor) &&
+                colorStyles.whiteLink,
             )}
           >
             <Link
