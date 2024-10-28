@@ -78,11 +78,13 @@ exports[`PageContent renders page with expected content 1`] = `
     <li>
       List item 1
     </li>
-    <ul>
-      <li>
-        Nested list item 1
-      </li>
-    </ul>
+    <li>
+      <ul>
+        <li>
+          Nested list item 1
+        </li>
+      </ul>
+    </li>
   </ul>
   
   
