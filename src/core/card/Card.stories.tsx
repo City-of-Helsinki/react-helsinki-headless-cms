@@ -34,7 +34,6 @@ const Template: StoryFn<typeof Card> = (args) => (
         withBorder
         hasLink
         openLinkInNewTab
-        imageLabel="Article"
         {...args}
       />
     </StoryContainer>

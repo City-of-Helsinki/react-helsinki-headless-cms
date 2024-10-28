@@ -41,7 +41,7 @@ const pageWithDiverseContent: PageQuery['page'] = {
       </thead>
       <tbody>
         <tr>
-          <td>Row 1 Cell 1 with <a href="https://hel.fi">Link</a></td>
+          <td>Row 1 Cell 1 with <a aria-label="link" href="https://hel.fi">Link</a></td>
           <td>Row 1 Cell 2</td>
         </tr>
         <tr>
@@ -62,7 +62,7 @@ const pageWithDiverseContent: PageQuery['page'] = {
       </thead>
       <tbody>
         <tr>
-          <td>Row 1 Cell 1 with <a href="https://hel.fi">Link</a></td>
+          <td>Row 1 Cell 1 with <a aria-label="link" href="https://hel.fi">Link</a></td>
           <td>Row 1 Cell 2</td>
         </tr>
         <tr>
@@ -72,7 +72,7 @@ const pageWithDiverseContent: PageQuery['page'] = {
       </tbody>
     </table>
   </figure>
-  <p><a href="https://hel.fi">Link</a></p>
+  <p><a aria-label="link" href="https://hel.fi">Link</a></p>
   <p><abbr title="City of Helsinki">CoH</abbr></p>
   <p><b>Bold</b></p>
   <p><bdi>إيان</bdi>: 90 points</p>
