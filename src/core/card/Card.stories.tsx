@@ -30,13 +30,7 @@ const Template: StoryFn<typeof Card> = (args) => (
     }}
   >
     <StoryContainer maxWidth={640}>
-      <Card
-        withBorder
-        hasLink
-        openLinkInNewTab
-        imageLabel="Article"
-        {...args}
-      />
+      <Card withBorder hasLink openLinkInNewTab {...args} />
     </StoryContainer>
   </ConfigProvider>
 );

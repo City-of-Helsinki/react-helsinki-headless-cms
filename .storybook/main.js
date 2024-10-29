@@ -9,6 +9,7 @@ module.exports = {
   },
 
   addons: [
+    '@storybook/addon-a11y',
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
@@ -32,12 +33,12 @@ module.exports = {
 
   framework: {
     name: '@storybook/react-webpack5',
-    options: {}
+    options: {},
   },
 
   staticDirs: ['../static', '../public'],
 
   docs: {
-    autodocs: true
-  }
+    autodocs: true,
+  },
 };

@@ -16,7 +16,7 @@ const Template: StoryFn<typeof Grid> = (args) => {
   const getCellContent = (i: number) => (
     <div
       style={{
-        backgroundColor: 'salmon',
+        backgroundColor: '#333',
         padding: 4,
         color: 'white',
         textAlign: 'center',

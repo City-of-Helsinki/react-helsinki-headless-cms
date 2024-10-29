@@ -137,6 +137,7 @@ export default function Hero({
                   <Link
                     href={backUrl}
                     openInNewTab={false}
+                    aria-label="Back"
                     iconLeft={<IconArrowLeft aria-hidden="true" />}
                   />
                 </div>

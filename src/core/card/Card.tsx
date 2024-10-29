@@ -225,6 +225,7 @@ export function Card({
               openInNewTab={openLinkInNewTab}
               iconLeft={<IconArrowRight aria-hidden="true" />}
               showExternalIcon={false}
+              aria-label={ariaLabel}
             >
               {linkArrowLabel && (
                 <span className={styles.linkArrowLabel}>{linkArrowLabel}</span>

@@ -6,6 +6,7 @@ import { PageContent as PageContentWithoutData } from '../../core/pageContent/Pa
 import type { PageContentProps as PageContentPropsWithoutData } from '../../core/pageContent/types';
 import styles from './pageContent.module.scss';
 import useApolloPageContext from '../page/useApolloPageContext';
+import { MAIN_CONTENT_ID } from '../../common/constants';
 
 export type PageProps = Omit<PageContentPropsWithoutData, 'page'> & {
   notFoundPageContent?: JSX.Element;
@@ -32,7 +33,7 @@ export function PageContent({
 
   if (pageQuery.loading) {
     return (
-      <div className={styles.loadingSpinnerContainer}>
+      <div id={MAIN_CONTENT_ID} className={styles.loadingSpinnerContainer}>
         <LoadingSpinner multicolor />
       </div>
     );
