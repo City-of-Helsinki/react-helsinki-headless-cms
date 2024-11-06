@@ -26,3 +26,4 @@ mswInitialize();
 
 // Provide the MSW addon decorator globally
 export const decorators = [mswDecorator];
+export const tags = ['autodocs', 'autodocs'];

@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
 
   webpackFinal: async (config) => {
     config.resolve.fallback.crypto = require.resolve('crypto-browserify');
@@ -29,6 +29,8 @@ module.exports = {
         },
       },
     },
+    '@storybook/addon-webpack5-compiler-babel',
+    '@chromatic-com/storybook'
   ],
 
   framework: {
@@ -38,7 +40,9 @@ module.exports = {
 
   staticDirs: ['../static', '../public'],
 
-  docs: {
-    autodocs: true,
-  },
+  docs: {},
+
+  typescript: {
+    reactDocgen: 'react-docgen-typescript'
+  }
 };
