@@ -9,6 +9,9 @@ import useApolloPageContext from '../page/useApolloPageContext';
 import { MAIN_CONTENT_ID } from '../../common/constants';
 
 export type PageProps = Omit<PageContentPropsWithoutData, 'page'> & {
+  /**
+   * Page content if data not found or missing from cms.
+   */
   notFoundPageContent?: JSX.Element;
   // All other props
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

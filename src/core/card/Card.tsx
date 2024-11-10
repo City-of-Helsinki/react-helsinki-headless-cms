@@ -28,28 +28,97 @@ export type CardAlignment =
   | 'delimited-right';
 
 export type CardProps = {
+  /**
+   * Card id.
+   */
   id?: string;
+  /**
+   * Card container aria-label.
+   */
   ariaLabel?: string;
+  /**
+   * Additional classname for the card.
+   */
   className?: string;
+  /**
+   * Card image url.
+   */
   imageUrl?: string | null;
+  /**
+   * Card image label.
+   */
   imageLabel?: string;
+  /**
+   * Card title.
+   */
   title?: string;
+  /**
+   *  Boolean indicating whether the styling applied for the title with icon layout.
+   */
   withTitleIcon?: boolean;
+  /**
+   * Card title icon.
+   */
   titleIcon?: React.ReactNode | string;
+  /**
+   * Card subtitle.
+   */
   subTitle?: string;
+  /**
+   * Card main text contents.
+   */
   text?: string;
+  /**
+   * Card custom content (component) below the main text.
+   */
   customContent?: React.ReactNode | string;
+  /**
+   *  Boolean indicating whether the link arrow icon is shown.
+   */
   hasLink?: boolean;
+  /**
+   * If true, show link arrow icon label.
+   */
   linkArrowLabel?: string;
+  /**
+   * Card link url.
+   */
   url?: string;
+  /**
+   *  Boolean indicating whether the border styles should be applied to the Card.
+   */
   withBorder?: boolean;
+  /**
+   *   Boolean indicating whether the shadow styles should be applied to the Card.
+   */
   withShadow?: boolean;
+  /**
+   *  Boolean which defines the Card content direction.
+   */
   direction?: CardDirection;
+  /**
+   *  Defines the Card text and custon content alignement inside the Card.
+   */
   alignment?: CardAlignment;
+  /**
+   *  Boolean indicating whether the text content is clamped in the Card.
+   */
   clampText?: boolean;
+  /**
+   *  Boolean indicating whether the Card link opens in new tab.
+   */
   openLinkInNewTab?: boolean;
+  /**
+   * Custom css properties for the Card container
+   */
   style?: React.CSSProperties;
+  /**
+   * Backgroud color of the Card
+   */
   backgroundColor?: string;
+  /**
+   * Defines the width ratio for the text and image element in the card. Primary is wider.
+   */
   primaryContent?: 'image' | 'text';
 };
 

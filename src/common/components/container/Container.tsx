@@ -1,7 +1,13 @@
 import * as React from 'react';
 
 type ContainerProps = {
+  /**
+   * Additional children to render inside the container.
+   */
   children: JSX.Element | string;
+  /**
+   * Optional wrapper element for the container.
+   */
   wrapper?: JSX.Element;
 };
 

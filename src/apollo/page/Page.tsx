@@ -6,7 +6,13 @@ import { Page as PageWithoutData } from '../../core/page/Page';
 import ApolloPageContextProvider from './ApolloPageContextProvider';
 
 export type PageProps = PagePropsWithoutData & {
+  /**
+   * Uri of the page.
+   */
   uri?: string;
+  /**
+   * Page template value.
+   */
   pageTemplate?: TemplateEnum;
 };
 

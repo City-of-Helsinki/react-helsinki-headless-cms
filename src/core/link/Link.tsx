@@ -13,15 +13,45 @@ export type LinkProps = Omit<
   React.ComponentPropsWithoutRef<'a'>,
   'target' | 'href' | 'onPointerEnterCapture' | 'onPointerLeaveCapture'
 > & {
+  /**
+   * Link href.
+   */
   href?: string;
+  /**
+   * Link left icon component.
+   */
   iconLeft?: React.ReactNode;
+  /**
+   * Link right icon component.
+   */
   iconRight?: React.ReactNode;
+  /**
+   * Boolean indicating whether the external icon is shown.
+   */
   showExternalIcon?: boolean;
+  /**
+   * Boolean indicating whether the link should be opened in a new tab.
+   */
   openInNewTab?: boolean;
+  /**
+   * Link text font size.
+   */
   size?: 'S' | 'M' | 'L';
+  /**
+   * Link variant.
+   */
   variant?: 'default' | 'arrowRight';
+  /**
+   * Additional children to render inside the Link.
+   */
   children?: React.ReactNode;
+  /**
+   * Additinal classname applied to the Link.
+   */
   className?: string;
+  /**
+   * Boolean indicating whether the icons should be displayed with inline styling.
+   */
   inlineIcons?: boolean;
 };
 

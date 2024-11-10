@@ -10,7 +10,13 @@ export type NavigationProps = Omit<
   NavigationPropsWithoutData,
   'menu' | 'languages' | 'getPathnameForLanguage'
 > & {
+  /**
+   * The name of the menu in Wordpress headless CMS.
+   */
   menuName: string;
+  /**
+   * Gets language specific path for navigation item.
+   */
   getPathnameForLanguage: NavigationPropsWithoutData['getPathnameForLanguage'];
 };
 

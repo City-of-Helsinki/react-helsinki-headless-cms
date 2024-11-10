@@ -54,6 +54,9 @@ const notificationTypeMap: Record<CmsNotificationLevel, HDSNotificationLevel> =
   };
 
 export type NotificationProps = {
+  /**
+   * Notification object.
+   */
   notification?: NotificationType | null;
 };
 

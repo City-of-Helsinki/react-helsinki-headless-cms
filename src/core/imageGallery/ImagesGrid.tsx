@@ -6,10 +6,25 @@ import { ImageItem } from './ImageItem';
 import type { ImageItem as ImageItemType } from './types';
 
 interface ImagesGridProps {
+  /**
+   * Array of Image items.
+   */
   images: ImageItemType[];
+  /**
+   * Number of columns in Image grid.
+   */
   columns: number;
+  /**
+   * Image lightbox uid.
+   */
   lightboxUid: string;
+  /**
+   *  Boolean indicating whether the border styles should be applied to the Image.
+   */
   withBorder: boolean;
+  /**
+   *  Boolean indicating whether the lightbox feature is enabled.
+   */
   withLightbox: boolean;
 }
 

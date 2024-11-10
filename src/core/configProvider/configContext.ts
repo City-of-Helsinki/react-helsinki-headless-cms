@@ -19,13 +19,37 @@ import type {
 } from '../translation/types';
 
 export type Config = {
+  /**
+   * Site or App name.
+   */
   siteName: string;
+  /**
+   * Id of the html element where SkipTo link will point.
+   */
   mainContentId?: string;
+  /**
+   * Internal origins for generating correct urls for app routing.
+   */
   internalHrefOrigins: string[];
+  /**
+   * List of organizations for additional UI highlights (f.e. check icon after title if its Helsinki specific item).
+   */
   organisationPrefixes: string[];
+  /**
+   * Current language code of the app.
+   */
   currentLanguageCode: LanguageCodeEnum;
+  /**
+   * Fallback image urls. Used if image is not defined, but imaage is still required in the component.
+   */
   fallbackImageUrls: string[];
+  /**
+   * Fallback translations.
+   */
   fallbackTranslations: FallbackTranslations;
+  /**
+   * Translated texts which are needed to render components properly.
+   */
   copy: {
     breadcrumbNavigationLabel: string;
     breadcrumbListLabel: string;
@@ -49,10 +73,17 @@ export type Config = {
       clearAll: string;
     };
   } & OptionalTranslationsWithFallbacks;
+  /**
+   * Custom translated texts which are needed to render components properly.
+   * Used when for technical reasons the use of the copy property is not possible.
+   */
   customCopy?: {
     loadMoreButtonVariant?: Exclude<ButtonVariant, 'supplementary'>;
     loadMoreButtonTheme?: ButtonTheme;
   };
+  /**
+   * React component replacements for defined html elements.
+   */
   components: {
     A: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => JSX.Element;
     Img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => JSX.Element;
@@ -65,9 +96,21 @@ export type Config = {
     ArticleCardContent?: React.FC<Record<string, unknown>>;
     HelsinkiCityOwnedIcon?: React.FC<Record<string, unknown>>;
   };
+  /**
+   * Apollo client to make gql calls to headless cms.
+   */
   apolloClient?: ApolloClient<NormalizedCacheObject>;
+  /**
+   * Apollo client to make gql calls to linked events.
+   */
   eventsApolloClient?: ApolloClient<NormalizedCacheObject> | 'disabled';
+  /**
+   * Apollo client to make gql calls to venues search.
+   */
   venuesApolloClient?: ApolloClient<NormalizedCacheObject> | 'disabled';
+  /**
+   * Utilities custom implementation provided by apps (app specific).
+   */
   utils: {
     getArticlePageCardProps: (item: ArticleType | PageType) => CardProps;
     getEventCardProps: (
@@ -84,12 +127,18 @@ export type Config = {
     redirectToUrl: (url: string) => void;
     redirectToArticlesSearch?: (tag: string) => void;
   };
+  /**
+   * Meta data for the Head components.
+   */
   meta?: {
     appleTouchIconUrl?: string;
     favIconUrl?: string;
     favIconSvgUrl?: string;
     manifestUrl?: string;
   };
+  /**
+   * App specific html sanitising configs for html editors.
+   */
   htmlSanitizer: {
     allowedUnsafeTags: HtmlToReactProps['allowedUnsafeTags'];
     trustedOrigins: HtmlToReactProps['trustedOrigins'];

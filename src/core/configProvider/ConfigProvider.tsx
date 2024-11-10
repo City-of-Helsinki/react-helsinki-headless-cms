@@ -5,7 +5,13 @@ import { configContext } from './configContext';
 import { defaultConfig } from './defaultConfig';
 
 export type ConfigProviderProps = {
+  /**
+   * Global library configuration.
+   */
   config: Config;
+  /**
+   * Additional children to render inside the Config Provider.
+   */
   children: React.ReactNode;
 };
 

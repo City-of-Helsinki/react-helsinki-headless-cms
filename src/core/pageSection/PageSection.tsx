@@ -7,12 +7,33 @@ import styles from './pageSection.module.scss';
 import { BackgroundImage } from '../image/BackgroundImage';
 
 export type PageSectionProps = {
+  /**
+   * Additional children to render inside the Page section.
+   */
   children: React.ReactNode;
+  /**
+   * Additional classname for the Page section.
+   */
   className?: string;
+  /**
+   * Boolean indicating whether the koros top shouyld be displayed.
+   */
   korosTop?: boolean;
+  /**
+   * Custom top koros classname.
+   */
   korosTopClassName?: string;
+  /**
+   * Boolean indicating whether the koros bottom shouyld be displayed.
+   */
   korosBottom?: boolean;
+  /**
+   * Custom bottom koros classname.
+   */
   korosBottomClassName?: string;
+  /**
+   * Backgroud image url.
+   */
   backgroundImageUrl?: string;
 };
 
