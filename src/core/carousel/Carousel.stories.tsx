@@ -21,7 +21,7 @@ export default {
     loading: { control: { type: 'boolean' } },
     onLoadMore: { control: { type: 'null' } },
   },
-} as Meta<typeof Carousel>;
+} as unknown as Meta<typeof Carousel>;
 
 const Template: StoryFn<typeof Carousel> = (args) => (
   <ConfigProvider
