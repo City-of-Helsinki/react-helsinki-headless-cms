@@ -36,6 +36,6 @@ export const useResolveImageUrl = ({
   const randomIndex = Math.abs(hash(id ?? '')) % fallbackImageUrls.length;
 
   return !url || showFallbackImage
-    ? customFallbackUrl ?? fallbackImageUrls[randomIndex]
+    ? (customFallbackUrl ?? fallbackImageUrls[randomIndex])
     : url;
 };

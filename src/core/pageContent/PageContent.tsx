@@ -271,18 +271,18 @@ export function PageContent(props: PageContentProps) {
         content={
           typeof content === 'function'
             ? content(page)
-            : content ?? defaultContent(page, onArticlesSearch)
+            : (content ?? defaultContent(page, onArticlesSearch))
         }
         shareLinks={shareLinks}
         collections={
           typeof collections === 'function'
             ? collections(page)
-            : collections ??
+            : (collections ??
               defaultCollections({
                 page,
                 isEventModulesEnabled,
                 isVenueModulesEnabled,
-              })
+              }))
         }
         sidebarContent={
           <SidebarContent

@@ -161,8 +161,8 @@ export default function Hero({
                 imageUrl
                   ? 'color-white'
                   : backgroundColor
-                  ? `color-${backgroundColor}`
-                  : 'hcrc-color-hero-bg, --color-fog-light'
+                    ? `color-${backgroundColor}`
+                    : 'hcrc-color-hero-bg, --color-fog-light'
               })`,
             }}
           />
