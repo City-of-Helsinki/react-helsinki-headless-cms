@@ -45,20 +45,20 @@ The general requirements for new Component development:
 ### Available scripts
 
 
-| Name                  | Purpose                                                                                                                    | Useful Options                |
-| --------------------- | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
-| `yarn dev`            | Starts storybook environment that can be used for developing components.                                                   |                               |
-| `yarn typecheck`            | Runs the ts type check in the project components.                                                   |                               |
-| `yarn lint`           | Lints the application to be according to quality standards (eslint) and formatting standards (prettier).                   | `--fix`: fix fixable problems |
-| `yarn test`           | Runs tests with jest.                                                                                                      | `--watch`: enable watch mode  |
-| `yarn test-storybook`           | Runs storybook accessibility tests jest.                                                                                                      |                |
-| `yarn build`          | Builds application with rollup.                                                                                            |                               |
-| `yarn docker:dev`          | Runs the application with docker with Development target environment.                                                                                           |                               |
-| `yarn docker:prod`          | Runs the application with docker with Production target environment.                                                                                           |                               |
-| `yarn docker:down`          | Shuts down the docker environment.                                                                                           |                               |
-| `yarn publish-canary` | Publishes a canary tagged version of the application. CD is configured to run this script on additions to the main branch. |                               |
-| `yarn publish-stable` | Publishes a stable tagged version of the application. CD is configured to run this script on additions to the main branch. |                               |
-| `yarn generate:graphql` | Generates / updates GraphQL schema for the project. |                               |
+| Name                    | Purpose                                                                                                                    | Useful Options                |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
+| `yarn dev`              | Starts storybook environment that can be used for developing components.                                                   |                               |
+| `yarn typecheck`        | Runs the ts type check in the project components.                                                                          |                               |
+| `yarn lint`             | Lints the application to be according to quality standards (eslint) and formatting standards (prettier).                   | `--fix`: fix fixable problems |
+| `yarn test`             | Runs tests with jest.                                                                                                      | `--watch`: enable watch mode  |
+| `yarn test-storybook`   | Runs storybook accessibility tests jest.                                                                                   |                               |
+| `yarn build`            | Builds application with rollup.                                                                                            |                               |
+| `yarn docker:dev`       | Runs the application with docker with Development target environment.                                                      |                               |
+| `yarn docker:prod`      | Runs the application with docker with Production target environment.                                                       |                               |
+| `yarn docker:down`      | Shuts down the docker environment.                                                                                         |                               |
+| `yarn publish-canary`   | Publishes a canary tagged version of the application. CD is configured to run this script on additions to the main branch. |                               |
+| `yarn publish-stable`   | Publishes a stable tagged version of the application. CD is configured to run this script on additions to the main branch. |                               |
+| `yarn generate:graphql` | Generates / updates GraphQL schema for the project.                                                                        |                               |
 
 **NOTE: To manually publish a new version to the NPM, you will need the credentials that can be found from the City of Helsinki Culture and Leisure's Vault-service.**
 
@@ -207,7 +207,28 @@ function App() {
     </ConfigProvider>
   );
 }
+
+
 ```
+
+## Publishing new versions
+
+There are 2 scripts for publishing of new verions of npm pagage:
+
+
+To publish a stable version use
+
+```bash
+yarn publish-stable
+```
+
+To publish a canary version use
+
+```bash
+yarn publish-canary
+```
+
+**Note:** There is an a known issue with publishing using Windows environment. If you have a Windows machine use Docker container to publish the package.An Apollo client linked to a graphql endpoint with a supported schema (headless CMS) must be provided in the `apolloClient` field of the `config` object.
 
 ## Known issues
 
