@@ -1,3 +1,4 @@
+@use "sass:map";
 @import '~hds-design-tokens/lib/breakpoint/all';
 
 $breakpoints: (
@@ -10,9 +11,9 @@ $breakpoints: (
 
 @mixin respond-above($breakpoint) {
   // If the breakpoint exists in the map.
-  @if map-has-key($breakpoints, $breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
     // Get the breakpoint value.
-    $breakpoint-value: map-get($breakpoints, $breakpoint);
+    $breakpoint-value: map.get($breakpoints, $breakpoint);
 
     // Write the media query.
     @media (min-width: $breakpoint-value) {
@@ -30,7 +31,7 @@ $breakpoints: (
   // If the breakpoint exists in the map.
   @if map-has-key($breakpoints, $breakpoint) {
     // Get the breakpoint value.
-    $breakpoint-value: map-get($breakpoints, $breakpoint);
+    $breakpoint-value: map.get($breakpoints, $breakpoint);
 
     // Write the media query.
     @media (max-width: ($breakpoint-value - 1)) {
