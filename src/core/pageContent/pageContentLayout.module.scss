@@ -1,9 +1,9 @@
-@use 'breakpoints';
-@import 'spacing';
-@import 'typography';
+@use 'breakpoints' as breakpoints;
+@use 'spacing' as spacing;
+@use 'typography' as typography;
 
 .contentLayout {
-  --padding: #{$spacing-layout-2-xs};
+  --padding: #{spacing.$spacing-layout-2-xs};
   --max-width: calc(#{breakpoints.$container-width-xl} + (2 * var(--padding)));
   overflow: hidden;
   display: flex;
@@ -11,11 +11,11 @@
   height: 100%;
 
   & > *:not(:last-child) {
-    margin-bottom: $spacing-layout-2-xs;
+    margin-bottom: spacing.$spacing-layout-2-xs;
   }
 
   @media screen and (min-width: breakpoints.$breakpoint-m) {
-    --padding: #{$spacing-layout-xs};
+    --padding: #{spacing.$spacing-layout-xs};
   }
 }
 
@@ -70,18 +70,18 @@
   }
 
   a {
-    font-size: $fontsize-body-l;
+    font-size: typography.$fontsize-body-l;
   }
 
   li {
-    font-size: $fontsize-body-l;
-    line-height: $lineheight-l;
+    font-size: typography.$fontsize-body-l;
+    line-height: typography.$lineheight-l;
   }
 }
 
 .collectionsWrapper {
   background-color: var(--color-black-5);
-  padding-bottom: $spacing-layout-xl;
+  padding-bottom: spacing.$spacing-layout-xl;
 }
 
 .collectionKorosTop {
@@ -90,7 +90,7 @@
 
 .collectionsContainer {
   position: relative;
-  margin-top: $spacing-2-xl;
+  margin-top: spacing.$spacing-2-xl;
   box-sizing: border-box;
   .innerCollectionsWrapper {
     background-color: var(--color-black-5);

@@ -1,7 +1,7 @@
-@import 'breakpoints';
-@import 'typography';
-@import 'spacing';
-@import 'color';
+@use 'breakpoints' as breakpoints;
+@use 'typography' as typography;
+@use 'spacing' as spacing;
+@use 'color' as color;
 
 .imageContainer {
   & img {
@@ -39,54 +39,54 @@
   }
 
   h1 {
-    margin: $spacing-m 0;
-    font-size: $fontsize-heading-m;
-    line-height: $lineheight-m;
+    margin: spacing.$spacing-m 0;
+    font-size: typography.$fontsize-heading-m;
+    line-height: typography.$lineheight-m;
     font-weight: 400;
-    @include respond-above(s) {
-      margin: $spacing-l 0;
+    @include breakpoints.respond-above(s) {
+      margin: spacing.$spacing-l 0;
     }
   }
 
   h2 {
-    margin: $spacing-2-xl 0 $spacing-m 0;
-    font-size: $fontsize-heading-l;
+    margin: spacing.$spacing-2-xl 0 spacing.$spacing-m 0;
+    font-size: typography.$fontsize-heading-l;
     font-weight: 400;
     letter-spacing: -0.4px;
   }
 
   h3 {
-    margin: $spacing-xl 0 $spacing-m 0;
-    font-size: $fontsize-heading-m;
+    margin: spacing.$spacing-xl 0 spacing.$spacing-m 0;
+    font-size: typography.$fontsize-heading-m;
     font-weight: 400;
   }
 
   h4 {
-    margin: $spacing-m 0;
-    font-size: $fontsize-heading-s;
+    margin: spacing.$spacing-m 0;
+    font-size: typography.$fontsize-heading-s;
     font-weight: 400;
     letter-spacing: 0.2px;
   }
 
   h5 {
-    margin: $spacing-m 0;
-    font-size: $fontsize-heading-xs;
+    margin: spacing.$spacing-m 0;
+    font-size: typography.$fontsize-heading-xs;
     font-weight: 500;
   }
 
   ul,
   ol {
-    margin: $spacing-m 0 $spacing-l 0;
+    margin: spacing.$spacing-m 0 spacing.$spacing-l 0;
     li {
-      margin-bottom: $spacing-s;
+      margin-bottom: spacing.$spacing-s;
     }
   }
 
   figure {
-    margin: $spacing-m 0 $spacing-l 0;
+    margin: spacing.$spacing-m 0 spacing.$spacing-l 0;
     figcaption {
-      margin: $spacing-s 0;
-      font-size: $fontsize-body-m;
+      margin: spacing.$spacing-s 0;
+      font-size: typography.$fontsize-body-m;
     }
   }
 }
@@ -103,7 +103,7 @@ blockquote {
   flex-wrap: wrap;
   margin-bottom: var(--spacing-s);
 
-  @include respond_above(m) {
+  @include breakpoints.respond_above(m) {
     margin-bottom: var(--spacing-xl);
   }
 

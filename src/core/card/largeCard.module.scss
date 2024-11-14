@@ -1,8 +1,8 @@
-@import 'breakpoints';
+@use 'breakpoints' as breakpoints;
 
 .cardLink {
   margin-bottom: var(--spacing-s);
-  @include respond_above(s) {
+  @include breakpoints.respond_above(s) {
     margin-bottom: var(--spacing-m);
   }
 }
@@ -21,7 +21,7 @@
   width: 100%;
   text-decoration: none;
 
-  @include respond_above(s) {
+  @include breakpoints.respond_above(s) {
     word-break: unset;
   }
 
@@ -39,7 +39,7 @@
     border: none;
   }
 
-  @include respond_above(s) {
+  @include breakpoints.respond_above(s) {
     flex-direction: row;
     &.image-left {
       flex-direction: row-reverse;
@@ -55,7 +55,7 @@
     text-decoration: none;
     padding-bottom: 62.5%;
 
-    @include respond_above(s) {
+    @include breakpoints.respond_above(s) {
       padding-bottom: 0;
       min-height: var(--height-image-desktop);
       flex: 1.5 1;
@@ -77,14 +77,14 @@
     justify-content: center;
     padding: var(--spacing-s);
 
-    @include respond_above(s) {
+    @include breakpoints.respond_above(s) {
       min-height: 40.5rem;
       min-width: 12.75rem;
       flex: 1 1;
       padding: var(--spacing-m);
     }
 
-    @include respond_above(l) {
+    @include breakpoints.respond_above(l) {
       min-height: 40.5rem;
       min-width: 31.25rem;
       flex: 1 1;
@@ -97,7 +97,7 @@
       line-height: var(--lineheight-m);
       margin-bottom: var(--spacing-2-xs);
 
-      @include respond_above(s) {
+      @include breakpoints.respond_above(s) {
         hyphens: auto;
         font-size: var(--fontsize-heading-l);
         margin-bottom: var(--spacing-s);
@@ -109,7 +109,7 @@
       font-size: var(--fontsize-body-s);
       margin-bottom: var(--spacing-2-xs);
       color: var(--color-black-60);
-      @include respond_above(s) {
+      @include breakpoints.respond_above(s) {
         font-size: var(--fontsize-body-l);
         line-height: 2.25rem;
       }
@@ -125,7 +125,7 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
 
-      @include respond_above(s) {
+      @include breakpoints.respond_above(s) {
         font-size: var(--fontsize-body-l);
         line-height: var(--lineheight-l);
         -webkit-line-clamp: initial;

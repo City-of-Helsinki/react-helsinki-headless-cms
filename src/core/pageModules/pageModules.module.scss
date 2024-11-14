@@ -1,8 +1,8 @@
-@import 'breakpoints';
+@use 'breakpoints' as breakpoints;
 
 .pageModuleWrapper {
   margin: var(--spacing-layout-2-xs) 0;
-  @include respond_above(s) {
+  @include breakpoints.respond_above(s) {
     margin: var(--spacing-layout-s) 0;
   }
   &.withPadding {
@@ -36,7 +36,7 @@
 
   /* for 2 or 3 items flex is used only above xl, otherwise cards are too narrow*/
   &.flexWrapper {
-    @include respond_above(xl) {
+    @include breakpoints.respond_above(xl) {
       display: flex;
       gap: var(--spacing-layout-xs);
       & > div {
@@ -47,7 +47,7 @@
   }
 
   /* for mobile view - always flex column vertical layout */
-  @include respond_below(m) {
+  @include breakpoints.respond_below(m) {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-layout-2-xs);
@@ -67,7 +67,7 @@
     flex-direction: row;
     justify-content: flex-start;
 
-    @include respond_below(s) {
+    @include breakpoints.respond_below(s) {
       flex-direction: column;
     }
   }
@@ -103,7 +103,7 @@
     width: 100%;
 
     button {
-      @include respond_below(s) {
+      @include breakpoints.respond_below(s) {
         width: 100%;
       }
       div {
@@ -121,7 +121,7 @@
   margin-bottom: 16px;
 
   &.horisontal {
-    @include respond_above(s) {
+    @include breakpoints.respond_above(s) {
       justify-content: flex-start;
       align-items: flex-start;
       margin-right: 30px;

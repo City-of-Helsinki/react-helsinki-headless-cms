@@ -1,5 +1,5 @@
-@use 'breakpoints';
-@import 'spacing';
+@use 'breakpoints' as breakpoints;
+@use 'spacing' as spacing;
 
 .hero {
   --hero-image-max-height: 600px;
@@ -7,16 +7,16 @@
   position: relative;
 
   &.withKoros {
-    margin-bottom: $spacing-s;
+    margin-bottom: spacing.$spacing-s;
 
     &.pulse,
     &.wave {
-      margin-bottom: $spacing-l;
+      margin-bottom: spacing.$spacing-l;
     }
 
     &.beat,
     &.vibration {
-      margin-bottom: $spacing-4-xl;
+      margin-bottom: spacing.$spacing-4-xl;
     }
   }
 
@@ -171,12 +171,12 @@
 
   p {
     font-size: var(--fontsize-body-l);
-    margin-bottom: $spacing-l;
+    margin-bottom: spacing.$spacing-l;
     line-height: var(--lineheight-l);
   }
 
   .button {
-    margin-bottom: $spacing-xl;
+    margin-bottom: spacing.$spacing-xl;
     & button:hover {
       background-color: var(--color-white);
     }

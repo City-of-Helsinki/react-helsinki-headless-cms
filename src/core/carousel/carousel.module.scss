@@ -1,5 +1,5 @@
-@use 'breakpoints';
-@import 'color';
+@use 'breakpoints' as breakpoints;
+@use 'color' as color;
 
 .container {
   margin: 100px -60px 0;
@@ -24,7 +24,7 @@
       height: 44px;
       padding: 5px;
       border-radius: 50%;
-      background: $color-white;
+      background: color.$color-white;
       top: 50%;
       z-index: 5;
       border: none;

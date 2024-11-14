@@ -1,5 +1,5 @@
-@use 'breakpoints';
-@import 'spacing';
+@use 'breakpoints' as breakpoints;
+@use 'spacing' as spacing;
 
 .grid {
   margin-top: var(--spacing-m);
@@ -18,7 +18,7 @@
 }
 
 .contentLayout {
-  --padding: #{$spacing-layout-2-xs};
+  --padding: #{spacing.$spacing-layout-2-xs};
   --max-width: calc(#{breakpoints.$container-width-xl} + (2 * var(--padding)));
 
   display: flex;
@@ -26,11 +26,11 @@
   height: 100%;
 
   & > *:not(:last-child) {
-    margin-bottom: $spacing-layout-2-xs;
+    margin-bottom: spacing.$spacing-layout-2-xs;
   }
 
   @media screen and (min-width: breakpoints.$breakpoint-m) {
-    --padding: #{$spacing-layout-xs};
+    --padding: #{spacing.$spacing-layout-xs};
   }
 
   .mainLayout {
@@ -48,7 +48,7 @@
       display: flex;
       flex-direction: column;
       background-color: var(--hcrc-color-archive-search-bg, --color-black-5);
-      padding-top: $spacing-layout-xs;
+      padding-top: spacing.$spacing-layout-xs;
       position: relative;
 
       .koros {
@@ -107,7 +107,7 @@
           @media screen and (min-width: breakpoints.$breakpoint-l) {
             display: grid;
             align-items: center;
-            column-gap: $spacing-xs;
+            column-gap: spacing.$spacing-xs;
             grid-template-columns: 5fr 1fr;
 
             & > :last-child {
@@ -124,20 +124,20 @@
     .searchForm {
       display: flex;
       flex-direction: column;
-      padding: $spacing-layout-2-xs 0;
+      padding: spacing.$spacing-layout-2-xs 0;
 
       & > *:not(:last-child) {
-        margin-bottom: $spacing-m;
+        margin-bottom: spacing.$spacing-m;
       }
 
       @media screen and (min-width: breakpoints.$breakpoint-m) {
-        padding-top: $spacing-layout-2-xs;
+        padding-top: spacing.$spacing-layout-2-xs;
       }
 
       @media screen and (min-width: breakpoints.$breakpoint-l) {
         display: grid;
-        column-gap: $spacing-xs;
-        row-gap: $spacing-xs;
+        column-gap: spacing.$spacing-xs;
+        row-gap: spacing.$spacing-xs;
         grid-template-columns: 5fr 1fr;
 
         & > *:not(:last-child) {
@@ -149,13 +149,13 @@
     .inputWithIcon {
       position: relative;
       & > div > input {
-        padding-left: calc((2 * #{$spacing-s}) + 1.5rem) !important;
+        padding-left: calc((2 * #{spacing.$spacing-s}) + 1.5rem) !important;
       }
 
       & > div > svg {
         position: absolute;
-        left: $spacing-layout-2-xs;
-        bottom: $spacing-layout-2-xs;
+        left: spacing.$spacing-layout-2-xs;
+        bottom: spacing.$spacing-layout-2-xs;
 
         & * {
           color: var(--color-black-90);
@@ -206,7 +206,7 @@
 
           h1 {
             font-weight: 400;
-            margin: $spacing-xs;
+            margin: spacing.$spacing-xs;
           }
 
           p {
@@ -226,7 +226,7 @@
           flex-direction: column;
           .loadMoreButton,
           .loadingSpinner {
-            margin: $spacing-layout-2-xs;
+            margin: spacing.$spacing-layout-2-xs;
           }
         }
       }

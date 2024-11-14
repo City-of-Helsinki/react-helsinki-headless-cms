@@ -1,5 +1,5 @@
-@import 'breakpoints';
-@import 'spacing';
+@use 'sass:map';
+@use 'breakpoints' as breakpoints;
 
 .container {
   align-items: center;
@@ -8,11 +8,11 @@
   width: 100%;
   position: relative;
 
-  @include respond_above(m) {
+  @media screen and (min-width: breakpoints.$breakpoint-m) {
     padding: 0 var(--spacing-m);
   }
 
-  @include respond_above(xl) {
+  @media screen and (min-width: breakpoints.$breakpoint-m) {
     margin: 0 auto;
     max-width: var(--breakpoint-xl);
   }

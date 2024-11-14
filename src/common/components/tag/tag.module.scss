@@ -1,4 +1,4 @@
-@import 'breakpoints';
+@use 'breakpoints' as breakpoints;
 
 .tag {
   padding: 0 var(--spacing-2-xs);

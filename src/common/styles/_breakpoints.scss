@@ -1,12 +1,13 @@
-@use "sass:map";
-@import '~hds-design-tokens/lib/breakpoint/all';
+@use 'sass:map';
+@use '~hds-design-tokens/lib/breakpoint/all' as designTokensBreakpoints;
+@forward '~hds-design-tokens/lib/breakpoint/all';
 
 $breakpoints: (
-  xs: $breakpoint-xs,
-  s: $breakpoint-s,
-  m: $breakpoint-m,
-  l: $breakpoint-l,
-  xl: $breakpoint-xl,
+  xs: designTokensBreakpoints.$breakpoint-xs,
+  s: designTokensBreakpoints.$breakpoint-s,
+  m: designTokensBreakpoints.$breakpoint-m,
+  l: designTokensBreakpoints.$breakpoint-l,
+  xl: designTokensBreakpoints.$breakpoint-xl,
 );
 
 @mixin respond-above($breakpoint) {
@@ -29,7 +30,7 @@ $breakpoints: (
 
 @mixin respond-below($breakpoint) {
   // If the breakpoint exists in the map.
-  @if map-has-key($breakpoints, $breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
     // Get the breakpoint value.
     $breakpoint-value: map.get($breakpoints, $breakpoint);
 
