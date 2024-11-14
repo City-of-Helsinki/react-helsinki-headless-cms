@@ -5,7 +5,7 @@
 import classNames from 'classnames';
 import React from 'react';
 
-import { ImageItem as ImageItemType } from './types';
+import type { ImageItem as ImageItemType } from './types';
 import styles from './imageGallery.module.scss';
 import useImageGalleryContext from './useImageGalleryContext';
 

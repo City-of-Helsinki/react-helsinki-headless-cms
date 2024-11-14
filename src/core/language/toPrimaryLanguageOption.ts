@@ -1,6 +1,6 @@
-import { LanguageOption } from 'hds-react';
+import type { LanguageOption } from 'hds-react';
 
-import { NonEmptyLanguage } from './types';
+import type { NonEmptyLanguage } from './types';
 
 /** Map a NonEmptyLanguage to a primary LanguageOption. */
 const toPrimaryLanguageOption = (

@@ -1,5 +1,5 @@
-import { PageQuery } from '../../../common/headlessService/page';
-import {
+import type { PageQuery } from '../../../common/headlessService/page';
+import type {
   EventSearch,
   EventSearchCarousel,
   EventSelected,

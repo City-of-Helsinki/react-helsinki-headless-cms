@@ -1,7 +1,7 @@
 /* eslint-disable react/function-component-definition */
 
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Koros } from 'hds-react';
 
 import { ConfigProvider } from '../configProvider/ConfigProvider';
@@ -18,8 +18,8 @@ import {
   getCollectionUIType,
 } from './utils';
 import { PageMainContent } from './PageMainContent';
-import { ArticleType, PageType } from '../../common/headlessService/types';
-import { GeneralCollectionType } from '../collection/types';
+import type { ArticleType, PageType } from '../../common/headlessService/types';
+import type { GeneralCollectionType } from '../collection/types';
 
 export default {
   title: 'Core components/PageContent',

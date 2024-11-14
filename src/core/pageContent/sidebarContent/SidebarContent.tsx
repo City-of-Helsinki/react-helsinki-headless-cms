@@ -2,7 +2,7 @@ import React from 'react';
 
 import List from '../../../common/components/list/List';
 import { ModuleItemTypeEnum } from '../../../common/headlessService/constants';
-import { SidebarContent as SidebarContentType } from '../../../common/headlessService/types';
+import type { SidebarContent as SidebarContentType } from '../../../common/headlessService/types';
 import {
   isLayoutArticle,
   isLayoutCards,

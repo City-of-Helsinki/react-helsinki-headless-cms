@@ -1,5 +1,5 @@
-import { NonEmptyLanguage } from './types';
-import { Language } from '../../common/headlessService/types';
+import type { NonEmptyLanguage } from './types';
+import type { Language } from '../../common/headlessService/types';
 
 export const isNonEmptyLanguage = (
   language?: Language | null,

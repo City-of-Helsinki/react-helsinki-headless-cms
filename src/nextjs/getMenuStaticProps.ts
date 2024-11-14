@@ -1,11 +1,11 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
+import type { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 
-import {
+import type {
   MenuQuery,
   MenuQueryVariables,
-  MenuDocument,
 } from '../common/headlessService/menu';
+import { MenuDocument } from '../common/headlessService/menu';
 
 type Variables = {
   menuName: string;

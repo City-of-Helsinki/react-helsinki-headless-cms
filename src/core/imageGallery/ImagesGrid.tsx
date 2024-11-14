@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import useImageGalleryContext from './useImageGalleryContext';
 import Grid from '../../common/components/grid/Grid';
 import { ImageItem } from './ImageItem';
-import { ImageItem as ImageItemType } from './types';
+import type { ImageItem as ImageItemType } from './types';
 
 interface ImagesGridProps {
   images: ImageItemType[];

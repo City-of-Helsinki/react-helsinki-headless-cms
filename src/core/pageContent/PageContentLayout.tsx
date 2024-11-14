@@ -6,7 +6,7 @@ import styles from './pageContentLayout.module.scss';
 import Hero from '../hero/Hero';
 import { ContentContainer } from '../contentContainer/ContentContainer';
 import { PageSection } from '../pageSection/PageSection';
-import { HeroProps } from './types';
+import type { HeroProps } from './types';
 
 export type PageContentLayoutProps = {
   id: string;

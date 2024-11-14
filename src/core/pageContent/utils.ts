@@ -1,8 +1,8 @@
 import { uniqBy } from 'lodash-es';
-import { BreadcrumbListItem, BreadcrumbProps, KorosType } from 'hds-react';
+import type { BreadcrumbListItem, BreadcrumbProps, KorosType } from 'hds-react';
 
-import { EventType } from '../../common/eventsService/types';
-import {
+import type { EventType } from '../../common/eventsService/types';
+import type {
   ArticleType,
   PageModule,
   PageType,
@@ -24,18 +24,18 @@ import {
   isPageType,
   isVenueType,
 } from '../../common/headlessService/utils';
-import { VenueType } from '../../common/venuesService/types';
+import type { VenueType } from '../../common/venuesService/types';
 import { DEFAULT_LOCALE } from '../../constants';
-import { CardProps } from '../card/Card';
+import type { CardProps } from '../card/Card';
 import { type CollectionProps } from '../collection/Collection';
-import {
+import type {
   CollectionType,
   EventSearchCollectionType,
   EventSelectionCollectionType,
   GeneralCollectionType,
   LocationsSelectionCollectionType,
 } from '../collection/types';
-import { Breadcrumb as CmsBreadcrumb } from '../../common/headlessService/__generated__';
+import type { Breadcrumb as CmsBreadcrumb } from '../../common/headlessService/__generated__';
 import type { BreadcrumbUnionType, HeroProps } from './types';
 
 export function getCollections(

@@ -1,12 +1,12 @@
 import React, { useMemo } from 'react';
-import DOMPurify, { Config } from 'isomorphic-dompurify';
-import parse, {
+import type { Config } from 'isomorphic-dompurify';
+import DOMPurify from 'isomorphic-dompurify';
+import type {
   DOMNode,
-  domToReact,
   HTMLReactParserOptions,
-  attributesToProps,
   Element,
 } from 'html-react-parser';
+import parse, { domToReact, attributesToProps } from 'html-react-parser';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
 
@@ -109,11 +109,11 @@ type Components = {
   p?: React.ComponentType<{ children: React.ReactNode }>;
   h2?: React.ComponentType<{ children: React.ReactNode }>;
   a?:
-  | React.ComponentType<React.AnchorHTMLAttributes<HTMLAnchorElement>>
-  | string;
+    | React.ComponentType<React.AnchorHTMLAttributes<HTMLAnchorElement>>
+    | string;
   table?:
-  | React.ComponentType<React.TableHTMLAttributes<HTMLTableElement>>
-  | string;
+    | React.ComponentType<React.TableHTMLAttributes<HTMLTableElement>>
+    | string;
   tableVariants?: TableVariant[];
   img?: React.ComponentType<React.ImgHTMLAttributes<HTMLImageElement>> | string;
   iframe?: React.ComponentType<React.IframeHTMLAttributes<HTMLIFrameElement>>;

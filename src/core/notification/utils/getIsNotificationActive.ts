@@ -2,7 +2,7 @@ import isFuture from 'date-fns/isFuture';
 import isPast from 'date-fns/isPast';
 import isSameDay from 'date-fns/isSameDay';
 
-import { NotificationType } from '../../../common/headlessService/types';
+import type { NotificationType } from '../../../common/headlessService/types';
 
 export default function isNotificationActive(
   notification?: NotificationType | null,

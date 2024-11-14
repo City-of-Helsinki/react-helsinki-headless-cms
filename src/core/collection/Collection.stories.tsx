@@ -1,7 +1,7 @@
 /* eslint-disable react/function-component-definition */
 
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 
 import { Collection } from './Collection';
 import page from '../pageContent/__mocks__/page.mock';
@@ -10,7 +10,7 @@ import { defaultConfig } from '../configProvider/defaultConfig';
 import { ConfigProvider } from '../configProvider/ConfigProvider';
 import { Card } from '../card/Card';
 import cardMock from '../card/__mocks__/card.mock';
-import { GeneralCollectionType } from './types';
+import type { GeneralCollectionType } from './types';
 import { StoryContainer } from '../storyContainer/StoryContainer';
 
 export default {

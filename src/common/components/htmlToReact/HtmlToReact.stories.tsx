@@ -1,10 +1,11 @@
 /* eslint-disable react/function-component-definition */
 
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 
 import kukkuuTestPage from '../../../mocks/responses/cms/page/kukkuu-page-demosivu.json';
-import { HtmlToReact, HtmlToReactProps, TABLE_VARIANTS } from './HtmlToReact';
+import type { HtmlToReactProps } from './HtmlToReact';
+import { HtmlToReact, TABLE_VARIANTS } from './HtmlToReact';
 import { StoryContainer } from '../../../core/storyContainer/StoryContainer';
 
 // Real embedded video content  from the Wordpress headless CMS.

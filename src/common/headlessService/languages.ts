@@ -1,9 +1,6 @@
 import makeQueryWithApolloClientFromConfig from './makeQueryWithApolloClientFromConfig';
-import {
-  useLanguagesQuery as useLanguagesQueryWithoutClient,
-  LanguagesQuery,
-  LanguagesQueryVariables,
-} from './__generated__';
+import type { LanguagesQuery, LanguagesQueryVariables } from './__generated__';
+import { useLanguagesQuery as useLanguagesQueryWithoutClient } from './__generated__';
 
 export const useLanguagesQuery = makeQueryWithApolloClientFromConfig<
   LanguagesQuery,

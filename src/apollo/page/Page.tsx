@@ -1,10 +1,8 @@
 import React from 'react';
 
 import { TemplateEnum } from '../../core';
-import {
-  Page as PageWithoutData,
-  PageProps as PagePropsWithoutData,
-} from '../../core/page/Page';
+import type { PageProps as PagePropsWithoutData } from '../../core/page/Page';
+import { Page as PageWithoutData } from '../../core/page/Page';
 import ApolloPageContextProvider from './ApolloPageContextProvider';
 
 export type PageProps = PagePropsWithoutData & {

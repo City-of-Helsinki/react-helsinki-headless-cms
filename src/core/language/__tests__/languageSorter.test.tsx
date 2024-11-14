@@ -1,4 +1,5 @@
-import { languageSorter, NonEmptyLanguage } from '..';
+import type { NonEmptyLanguage } from '..';
+import { languageSorter } from '..';
 import { LanguageCodeEnum } from '../../../common/headlessService/__generated__';
 
 type TestLanguage = 'fi' | 'sv' | 'en';

@@ -4,7 +4,7 @@ import parse from 'html-react-parser';
 
 import { HtmlToReact } from '../../../common/components/htmlToReact/HtmlToReact';
 import List from '../../../common/components/list/List';
-import { LayoutLinkList } from '../../../common/headlessService/types';
+import type { LayoutLinkList } from '../../../common/headlessService/types';
 import { useConfig } from '../../configProvider/useConfig';
 import { Link } from '../../link/Link';
 import styles from './sidebarContentLinkList.module.scss';

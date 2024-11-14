@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { LayoutCards } from '../../../common/headlessService/types';
+import type { LayoutCards } from '../../../common/headlessService/types';
 import { SimpleCard } from '../../pageModules/CardsModule/SimpleCard';
 import styles from './sidebarCardsList.module.scss';
 import { useConfig } from '../../configProvider/useConfig';

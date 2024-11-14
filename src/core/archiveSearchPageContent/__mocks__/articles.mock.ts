@@ -1,4 +1,4 @@
-import { PostsQuery } from '../../../common/headlessService/articles';
+import type { PostsQuery } from '../../../common/headlessService/articles';
 
 const mockArticles: PostsQuery['posts'] = {
   pageInfo: {

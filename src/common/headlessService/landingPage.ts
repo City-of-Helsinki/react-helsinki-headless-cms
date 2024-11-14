@@ -1,9 +1,9 @@
 import makeQueryWithApolloClientFromConfig from './makeQueryWithApolloClientFromConfig';
-import {
-  useLandingPageQuery as useLandingPageQueryWithoutClient,
+import type {
   LandingPageQuery,
   LandingPageQueryVariables,
 } from './__generated__';
+import { useLandingPageQuery as useLandingPageQueryWithoutClient } from './__generated__';
 
 export const useLandingPageQuery = makeQueryWithApolloClientFromConfig<
   LandingPageQuery,

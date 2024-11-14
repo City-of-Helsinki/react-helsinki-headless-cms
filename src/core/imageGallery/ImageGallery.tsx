@@ -3,7 +3,7 @@ import React from 'react';
 import { ImageGalleryProvider } from './ImageGalleryProvider';
 import { ImagesGrid } from './ImagesGrid';
 import { Lightbox } from './Lightbox';
-import { ImageItem as ImageItemType } from './types';
+import type { ImageItem as ImageItemType } from './types';
 
 export type ImageGalleryProps = {
   images: ImageItemType[];

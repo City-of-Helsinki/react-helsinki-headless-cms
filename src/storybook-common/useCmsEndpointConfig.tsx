@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
 import { EVENTS_PROXY_ENDPOINT, LINKED_EVENTS_ENDPOINT } from '../constants';
-import { Config } from '../core/configProvider/configContext';
+import type { Config } from '../core/configProvider/configContext';
 import { CmsEndpoint } from './constants';
 
 export const useCmsEndpointConfig = (

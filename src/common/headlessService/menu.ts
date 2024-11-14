@@ -1,9 +1,6 @@
 import makeQueryWithApolloClientFromConfig from './makeQueryWithApolloClientFromConfig';
-import {
-  useMenuQuery as useMenuQueryWithoutClient,
-  MenuQuery,
-  MenuQueryVariables,
-} from './__generated__';
+import type { MenuQuery, MenuQueryVariables } from './__generated__';
+import { useMenuQuery as useMenuQueryWithoutClient } from './__generated__';
 
 export const useMenuQuery = makeQueryWithApolloClientFromConfig<
   MenuQuery,

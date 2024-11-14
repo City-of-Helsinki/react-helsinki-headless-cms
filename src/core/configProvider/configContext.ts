@@ -1,18 +1,19 @@
-import React, { createContext } from 'react';
-import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
-import { ButtonTheme, ButtonVariant } from 'hds-react';
+import type React from 'react';
+import { createContext } from 'react';
+import type { ApolloClient, NormalizedCacheObject } from '@apollo/client';
+import type { ButtonTheme, ButtonVariant } from 'hds-react';
 
-import {
+import type {
   ArticleType,
   LanguageCodeEnum,
   PageType,
 } from '../../common/headlessService/types';
-import { ModuleItemTypeEnum } from '../../common/headlessService/constants';
-import { EventType } from '../../common/eventsService/types';
-import { VenueType } from '../../common/venuesService/types';
+import type { ModuleItemTypeEnum } from '../../common/headlessService/constants';
+import type { EventType } from '../../common/eventsService/types';
+import type { VenueType } from '../../common/venuesService/types';
 import type { CardProps } from '../card/Card';
-import { HtmlToReactProps } from '../../common/components/htmlToReact/HtmlToReact';
-import {
+import type { HtmlToReactProps } from '../../common/components/htmlToReact/HtmlToReact';
+import type {
   FallbackTranslations,
   OptionalTranslationsWithFallbacks,
 } from '../translation/types';

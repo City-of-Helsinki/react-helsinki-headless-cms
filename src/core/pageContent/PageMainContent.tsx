@@ -2,7 +2,7 @@ import React from 'react';
 
 import { HtmlToReact } from '../../common/components/htmlToReact/HtmlToReact';
 import Text from '../../common/components/text/Text';
-import { ArticleType } from '../../common/headlessService/types';
+import type { ArticleType } from '../../common/headlessService/types';
 import styles from './pageMainContent.module.scss';
 import { formatDateFromString } from '../../common/utils/dates';
 import { Tag } from '../../common/components/tag/Tag';

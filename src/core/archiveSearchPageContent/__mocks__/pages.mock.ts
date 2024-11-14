@@ -1,4 +1,4 @@
-import { PagesQuery } from '../../../common/headlessService/pages';
+import type { PagesQuery } from '../../../common/headlessService/pages';
 
 const mockPages: PagesQuery['pages'] = {
   pageInfo: {

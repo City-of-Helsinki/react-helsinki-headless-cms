@@ -1,6 +1,6 @@
-import { LanguageCodeEnum } from '../../common/headlessService/__generated__';
-import { Config } from '../configProvider/configContext';
-import { FallbackTranslationKey } from './types';
+import type { LanguageCodeEnum } from '../../common/headlessService/__generated__';
+import type { Config } from '../configProvider/configContext';
+import type { FallbackTranslationKey } from './types';
 
 export const getTranslationWithFallback = (
   config: Config,

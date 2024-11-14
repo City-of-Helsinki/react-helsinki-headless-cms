@@ -6,7 +6,7 @@ import { useConfig } from '../configProvider/useConfig';
 import SidebarContent from './sidebarContent/SidebarContent';
 import { PageContentLayout } from './PageContentLayout';
 import { PageMainContent } from './PageMainContent';
-import { PageContentProps } from './types';
+import type { PageContentProps } from './types';
 import { PageMeta } from './meta/PageMeta';
 import {
   PageArticleCollection,
@@ -14,7 +14,7 @@ import {
   EventSelectionCollection,
   LocationsSelectionCollection,
 } from '../collection/Collection';
-import {
+import type {
   ArticleType,
   LanguageCodeEnum,
   PageType,
@@ -41,7 +41,7 @@ import { StepsModule } from '../pageModules/StepsModule/StepsModule';
 import createHashKey from '../utils/createHashKey';
 import { MAIN_CONTENT_ID } from '../../common/constants';
 import { PageContentBreadcrumb } from './PageContentBreadcrumb';
-import { CardAlignment } from '../card/Card';
+import type { CardAlignment } from '../card/Card';
 import { SocialMediaFeedModule } from '../pageModules/SocialMediaFeedModule/SocialMediaFeedModule';
 
 // Modules: Content, Image, Cards, Steps (possibly other in future)

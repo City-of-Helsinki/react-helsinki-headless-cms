@@ -15,10 +15,10 @@ import { Card } from '../card/Card';
 import Grid from '../../common/components/grid/Grid';
 import { LargeCard } from '../card/LargeCard';
 import { useConfig } from '../configProvider/useConfig';
-import { Config } from '../configProvider/configContext';
-import { CollectionItemType } from '../collection/types';
+import type { Config } from '../configProvider/configContext';
+import type { CollectionItemType } from '../collection/types';
 import { PageSection } from '../pageSection/PageSection';
-import {
+import type {
   ArticleType,
   PageType,
   SearchTag,

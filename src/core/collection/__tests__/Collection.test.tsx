@@ -1,7 +1,7 @@
 import React from 'react';
 import { addDays, addYears, subDays, subYears } from 'date-fns';
 
-import {
+import type {
   EventSearchCollectionType,
   EventSelectionCollectionType,
 } from '../types';

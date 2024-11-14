@@ -4,30 +4,33 @@ import classNames from 'classnames';
 import { Button, LoadingSpinner } from 'hds-react';
 
 import styles from './collection.module.scss';
-import { Carousel, CarouselProps } from '../carousel/Carousel';
-import { Card, CardProps } from '../card/Card';
-import Grid, { GridProps } from '../../common/components/grid/Grid';
+import type { CarouselProps } from '../carousel/Carousel';
+import { Carousel } from '../carousel/Carousel';
+import type { CardProps } from '../card/Card';
+import { Card } from '../card/Card';
+import type { GridProps } from '../../common/components/grid/Grid';
+import Grid from '../../common/components/grid/Grid';
 import {
   EventTypeId,
   useEventListQuery,
   useEventsByIdsQuery,
 } from '../../common/eventsService/__generated__';
-import {
+import type {
   EventSearchCollectionType,
   EventSelectionCollectionType,
   GeneralCollectionType,
   LocationsSelectionCollectionType,
 } from './types';
-import { EventType } from '../../common/eventsService/types';
+import type { EventType } from '../../common/eventsService/types';
 import { useConfig } from '../configProvider/useConfig';
 import useEventsApolloClientFromConfig from '../configProvider/useEventsApolloClientFromConfig';
 import useVenuesApolloClientFromConfig from '../configProvider/useVenuesApolloClientFromConfig';
-import { Config } from '../configProvider/configContext';
+import type { Config } from '../configProvider/configContext';
 import { ModuleItemTypeEnum } from '../../common/headlessService/constants';
 import { Link } from '../link/Link';
 import { useVenuesByIdsQuery } from '../../common/venuesService/__generated__';
-import { VenueType } from '../../common/venuesService/types';
-import { LanguageCodeEnum } from '../../common/headlessService/types';
+import type { VenueType } from '../../common/venuesService/types';
+import type { LanguageCodeEnum } from '../../common/headlessService/types';
 import {
   convertDateStringInPastToNow,
   getVenueIds,

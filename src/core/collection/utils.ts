@@ -1,6 +1,6 @@
 import isPast from 'date-fns/isPast';
 
-import { EventType } from '../../common/eventsService/types';
+import type { EventType } from '../../common/eventsService/types';
 import normalizeKeys from '../../linkedEvents/utils/normalizeKeys';
 import { LINKEDEVENTS_DATE_NOW } from './constants';
 

@@ -1,4 +1,4 @@
-import { Language } from '../../common/headlessService/types';
+import type { Language } from '../../common/headlessService/types';
 
 /**
  * Find language from language list by language code.

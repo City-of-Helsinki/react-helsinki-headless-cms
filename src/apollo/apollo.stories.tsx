@@ -1,7 +1,7 @@
 /* eslint-disable react/function-component-definition */
 
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 import { ConfigProvider } from '../core/configProvider/ConfigProvider';
@@ -11,13 +11,11 @@ import { Navigation } from './navigation/Navigation';
 import { Notification } from './notification/Notification';
 import { Page } from './page/Page';
 import { PageContentLayout } from '../core/pageContent/PageContentLayout';
-import { LanguageCodeEnum, PageType, getBreadcrumbsFromPage } from '../core';
+import type { PageType } from '../core';
+import { LanguageCodeEnum, getBreadcrumbsFromPage } from '../core';
 import { useCmsEndpointConfig } from '../storybook-common/useCmsEndpointConfig';
-import {
-  CmsEndpoint,
-  cmsMenuName,
-  cmsTestPage,
-} from '../storybook-common/constants';
+import type { CmsEndpoint } from '../storybook-common/constants';
+import { cmsMenuName, cmsTestPage } from '../storybook-common/constants';
 
 const ExampleNavigation = ({
   menuName,
