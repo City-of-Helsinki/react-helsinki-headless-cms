@@ -19,9 +19,8 @@ export default {
     loadMoreButtonLabelText: { control: { type: 'text' } },
     hasMore: { control: { type: 'boolean' } },
     loading: { control: { type: 'boolean' } },
-    onLoadMore: { control: { type: 'null' } },
   },
-} as unknown as Meta<typeof Carousel>;
+} as Meta<typeof Carousel>;
 
 const Template: StoryFn<typeof Carousel> = (args) => (
   <ConfigProvider
