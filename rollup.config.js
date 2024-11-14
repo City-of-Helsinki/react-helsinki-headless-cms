@@ -61,7 +61,6 @@ export default [
               // https://github.com/egoist/rollup-plugin-postcss/issues/463
               silenceDeprecations: ['legacy-js-api'],
               includePaths: [path.join(__dirname, 'src/common/styles')],
-              
             },
           ],
         ],
