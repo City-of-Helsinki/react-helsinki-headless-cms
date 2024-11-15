@@ -1,9 +1,6 @@
 import makeQueryWithApolloClientFromConfig from './makeQueryWithApolloClientFromConfig';
-import {
-  useTagQuery as useTagQueryWithoutClient,
-  TagQuery,
-  TagQueryVariables,
-} from './__generated__';
+import type { TagQuery, TagQueryVariables } from './__generated__';
+import { useTagQuery as useTagQueryWithoutClient } from './__generated__';
 
 export const useTagQuery = makeQueryWithApolloClientFromConfig<
   TagQuery,

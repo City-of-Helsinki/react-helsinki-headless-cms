@@ -1,65 +1,65 @@
-@use 'breakpoints';
-@import 'typography';
-@import 'spacing';
-@import 'color';
+@use 'breakpoints' as breakpoints;
+@use 'typography' as typography;
+@use 'spacing' as spacing;
+@use 'color' as color;
 
 .text {
-  color: $color-black-90;
+  color: color.$color-black-90;
 }
 
 .h1 {
-  margin: $spacing-s 0;
-  font-size: $fontsize-heading-m;
-  line-height: $lineheight-m;
+  margin: spacing.$spacing-s 0;
+  font-size: typography.$fontsize-heading-m;
+  line-height: typography.$lineheight-m;
   font-weight: 500;
   @include breakpoints.respond-above(s) {
-    margin: $spacing-l 0;
+    margin: spacing.$spacing-l 0;
   }
 }
 
 .h2 {
-  margin: 0 0 $spacing-s 0;
-  font-size: $fontsize-heading-m;
+  margin: 0 0 spacing.$spacing-s 0;
+  font-size: typography.$fontsize-heading-m;
   font-weight: 500;
 }
 
 .h3 {
-  margin: 0 0 $spacing-s 0;
-  font-size: $fontsize-heading-m;
+  margin: 0 0 spacing.$spacing-s 0;
+  font-size: typography.$fontsize-heading-m;
   font-weight: 500;
 }
 
 .h4 {
-  margin: 0 0 $spacing-s 0;
-  font-size: $fontsize-heading-s;
+  margin: 0 0 spacing.$spacing-s 0;
+  font-size: typography.$fontsize-heading-s;
   font-weight: 500;
 }
 
 .h5 {
-  margin: 0 0 $spacing-s 0;
-  font-size: $fontsize-heading-xs;
+  margin: 0 0 spacing.$spacing-s 0;
+  font-size: typography.$fontsize-heading-xs;
   font-weight: 500;
 }
 
 .body-l {
-  margin: 0 0 $spacing-m 0;
-  font-size: $fontsize-body-l;
-  line-height: $lineheight-l;
+  margin: 0 0 spacing.$spacing-m 0;
+  font-size: typography.$fontsize-body-l;
+  line-height: typography.$lineheight-l;
   white-space: pre-wrap;
 
   strong {
     letter-spacing: 0.2px;
-    font-size: $fontsize-body-l;
+    font-size: typography.$fontsize-body-l;
     font-weight: 500;
   }
 }
 
 .body {
-  font-size: $fontsize-body-m;
+  font-size: typography.$fontsize-body-m;
   white-space: pre-wrap;
 }
 
 .body-xl {
-  font-size: $fontsize-body-xl;
+  font-size: typography.$fontsize-body-xl;
   white-space: pre-wrap;
 }

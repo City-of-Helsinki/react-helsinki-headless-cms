@@ -1,4 +1,4 @@
-import * as Apollo from '@apollo/client';
+import type * as Apollo from '@apollo/client';
 
 import useEventsApolloClientFromConfig from '../../core/configProvider/useEventsApolloClientFromConfig';
 

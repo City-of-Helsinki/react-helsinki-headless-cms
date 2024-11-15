@@ -1,75 +1,69 @@
 # ===============================================
-FROM helsinkitest/node:20-slim as appbase
+FROM registry.access.redhat.com/ubi9/nodejs-20 AS appbase
 # ===============================================
 
-# Offical image has npm log verbosity as info. More info - https://github.com/nodejs/docker-node#verbosity
-ENV NPM_CONFIG_LOGLEVEL warn
-
-# Global npm deps in a non-root user directory
-ENV NPM_CONFIG_PREFIX=/app/.npm-global
-ENV PATH=$PATH:/app/.npm-global/bin
-
-# Set env
-ARG PORT
+# Set environment
+ARG PORT=3000
 ENV PORT $PORT
 
-# Yarn
-ENV YARN_VERSION 1.19.1
-RUN yarn policies set-version $YARN_VERSION
+WORKDIR /app
 
-# Use non-root user
-USER appuser
-
-# Copy package.json and package-lock.json/yarn.lock files
-COPY --chown=appuser:appuser package*.json *yarn* ./
-
-# Make scripts in dependencies available through path
-ENV PATH /app/node_modules/.bin:$PATH
-
+# Install yarn
 USER root
+RUN curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo && \
+    yum -y install yarn
 
-# Build scripts for production stage rely on devDependencies. When
-# NODE_ENV is production, some of these dependencies would not be
-# installed. For this purpose, we are setting NODE_ENV to "develop" for
-# the durationo this RUN command to ensure that all dependencies are
-# installed.
-RUN export NODE_ENV=develop && \
-    apt-install.sh \
-    build-essential && \
-    su appuser -c "yarn && yarn cache clean --force" && \
-    apt-cleanup.sh build-essential
+# Yarn version
+ENV YARN_VERSION 4.0.0
+RUN yarn policies set-version ${YARN_VERSION}
 
-USER appuser
 
-# =============================
-FROM appbase as development
-# =============================
+# Set npm log verbosity level
+ENV NPM_CONFIG_LOGLEVEL warn
+
+# Global npm dependencies in a non-root user directory
+ENV NPM_CONFIG_PREFIX=/app/.npm-global
+ENV PATH=$PATH:/app/.npm-global/bin
 
 # Set NODE_ENV to development in the development container
 ARG NODE_ENV=development
 ENV NODE_ENV $NODE_ENV
 
-# Copy all files
-COPY --chown=appuser:appuser . .
+# Copy package.json and yarn.lock files
+COPY --chown=default:root package*.json *yarn* ./
 
-# Bake package.json start command into the image
-CMD ["yarn", "dev"]
+# Make scripts in dependencies available through path
+ENV PATH /app/node_modules/.bin:$PATH
+
+# Install dependencies including storybook addons
+RUN yarn && yarn cache clean
 
 # =============================
-FROM appbase as staticbuilder
+FROM appbase AS development
+# =============================
+
+# Copy all files
+COPY --chown=default:root . .
+
+# Start command for development
+CMD ["yarn", "dev:no-open"]
+
+# =============================
+FROM appbase AS staticbuilder
 # =============================
 
 # Set NODE_ENV to production for build
 ARG NODE_ENV=production
 ENV NODE_ENV $NODE_ENV
 
-# Copy all files
-COPY --chown=appuser:appuser . .
+# Copy all files, including .mdx stories
+COPY --chown=default:root . .
 
+# Build Storybook
 RUN yarn build-storybook --loglevel error
 
 # =============================
-FROM appbase as production
+FROM appbase AS production
 # =============================
 
 # Set NODE_ENV to production in the production container
@@ -77,10 +71,10 @@ ARG NODE_ENV=production
 ENV NODE_ENV $NODE_ENV
 
 # Copy build folder
-COPY --from=staticbuilder --chown=appuser:appuser /app/storybook-static/ /app/storybook-static/
+COPY --from=staticbuilder --chown=default:root /app/storybook-static/ /app/storybook-static/
 
 # Copy server folder
-COPY --from=staticbuilder --chown=appuser:appuser /app/storybook-server/ /app/storybook-server/
+COPY --from=staticbuilder --chown=default:root /app/storybook-server/ /app/storybook-server/
 
 # Start server
-CMD ["yarn", "node", "./storybook-server/index.js"]
+CMD ["node", "./storybook-server/index.js"]

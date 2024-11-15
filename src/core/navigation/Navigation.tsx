@@ -1,16 +1,17 @@
 import React from 'react';
 import { groupBy } from 'lodash-es';
-import { Header, LanguageOption, Logo } from 'hds-react';
+import type { LanguageOption } from 'hds-react';
+import { Header, Logo } from 'hds-react';
 
-import { Config } from '../configProvider/configContext';
-import { Language, Menu } from '../../common/headlessService/types';
+import type { Config } from '../configProvider/configContext';
+import type { Language, Menu } from '../../common/headlessService/types';
 import { useConfig } from '../configProvider/useConfig';
 import {
   MAIN_CONTENT_ID,
   TOP_LEVEL_MENU_ITEM_PARENT_ID,
 } from '../../common/constants';
 import { getTranslationWithFallback } from '../translation/getTranslationWithFallback';
-import { FallbackTranslationKey } from '../translation/types';
+import type { FallbackTranslationKey } from '../translation/types';
 import {
   findLanguage,
   isNonEmptyLanguage,

@@ -2,11 +2,9 @@ import React from 'react';
 
 import { useLanguagesQuery } from '../../common/headlessService/languages';
 import { useMenuQuery } from '../../common/headlessService/menu';
-import {
-  Navigation as NavigationWithoutData,
-  NavigationProps as NavigationPropsWithoutData,
-} from '../../core/navigation/Navigation';
-import { LanguageFragment } from '../../common/headlessService/__generated__';
+import type { NavigationProps as NavigationPropsWithoutData } from '../../core/navigation/Navigation';
+import { Navigation as NavigationWithoutData } from '../../core/navigation/Navigation';
+import type { LanguageFragment } from '../../common/headlessService/__generated__';
 
 export type NavigationProps = Omit<
   NavigationPropsWithoutData,

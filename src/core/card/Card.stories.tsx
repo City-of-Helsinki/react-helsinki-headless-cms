@@ -1,7 +1,8 @@
 /* eslint-disable react/function-component-definition */
 
-import React, { CSSProperties } from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import type { CSSProperties } from 'react';
+import React from 'react';
+import type { StoryFn, Meta } from '@storybook/react';
 
 import { ConfigProvider } from '../configProvider/ConfigProvider';
 import { defaultConfig } from '../configProvider/defaultConfig';

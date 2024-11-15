@@ -1,5 +1,5 @@
 import hash from '../../../common/utils/hash';
-import { NotificationType } from '../../../common/headlessService/types';
+import type { NotificationType } from '../../../common/headlessService/types';
 
 // The notification is a singleton in the CMS. Instead of there being multiple
 // notifications, there ever only is one which is edited according to current

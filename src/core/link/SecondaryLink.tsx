@@ -3,7 +3,8 @@ import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
 
-import { Link, LinkProps } from './Link';
+import type { LinkProps } from './Link';
+import { Link } from './Link';
 import styles from './Link.module.scss';
 
 export function SecondaryLink({

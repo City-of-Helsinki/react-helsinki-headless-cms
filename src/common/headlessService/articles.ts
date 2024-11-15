@@ -1,9 +1,6 @@
 import makeQueryWithApolloClientFromConfig from './makeQueryWithApolloClientFromConfig';
-import {
-  usePostsQuery as usePostsQueryWithoutClient,
-  PostsQuery,
-  PostsQueryVariables,
-} from './__generated__';
+import type { PostsQuery, PostsQueryVariables } from './__generated__';
+import { usePostsQuery as usePostsQueryWithoutClient } from './__generated__';
 
 export const usePostsQuery = makeQueryWithApolloClientFromConfig<
   PostsQuery,

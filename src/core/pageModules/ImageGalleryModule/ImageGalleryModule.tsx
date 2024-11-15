@@ -1,9 +1,7 @@
 import React from 'react';
 
-import {
-  ImageGallery,
-  ImageGalleryProps,
-} from '../../imageGallery/ImageGallery';
+import type { ImageGalleryProps } from '../../imageGallery/ImageGallery';
+import { ImageGallery } from '../../imageGallery/ImageGallery';
 import styles from '../pageModules.module.scss';
 
 export function ImageGalleryModule(props: ImageGalleryProps) {

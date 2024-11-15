@@ -4,10 +4,10 @@ import { render, screen } from '../../../common/utils/testingLibrary';
 import pageMock, { sidebarLinkList } from '../__mocks__/page.mock';
 import { PageContent } from '../PageContent';
 import kukkuuPageDemosivu from '../../../mocks/responses/cms/page/kukkuu-page-demosivu.json';
-import { PageType } from '../../../common/headlessService/types';
+import type { PageType } from '../../../common/headlessService/types';
 import { ConfigProvider } from '../../configProvider/ConfigProvider';
-import { Config } from '../../configProvider/configContext';
-import { HtmlToReactProps } from '../../../common/components/htmlToReact/HtmlToReact';
+import type { Config } from '../../configProvider/configContext';
+import type { HtmlToReactProps } from '../../../common/components/htmlToReact/HtmlToReact';
 
 describe('PageContent', () => {
   test('renders page with expected content', () => {

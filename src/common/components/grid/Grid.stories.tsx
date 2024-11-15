@@ -2,7 +2,7 @@
 /* eslint-disable react/function-component-definition */
 
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 
 import Grid from './Grid';
 import { StoryContainer } from '../../../core/storyContainer/StoryContainer';

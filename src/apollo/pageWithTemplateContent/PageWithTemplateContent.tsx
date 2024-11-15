@@ -6,7 +6,7 @@ import { PageContent as PageContentWithoutData } from '../../core/pageContent/Pa
 import type { PageContentProps as PageContentPropsWithoutData } from '../../core/pageContent/types';
 import styles from './pageWithTemplateContent.module.scss';
 import useApolloPageContext from '../page/useApolloPageContext';
-import { LanguageCodeEnum } from '../../core';
+import type { LanguageCodeEnum } from '../../core';
 
 export type PageProps = Omit<PageContentPropsWithoutData, 'page'> & {
   language: LanguageCodeEnum;

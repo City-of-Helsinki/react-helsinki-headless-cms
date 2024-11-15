@@ -1,6 +1,6 @@
 const { injectAxe, checkA11y } = require('axe-playwright');
 module.exports = {
-    preVisit: async (page) => {
+  preVisit: async (page) => {
     // before the story has been rendered inject AXE
     await injectAxe(page);
   },

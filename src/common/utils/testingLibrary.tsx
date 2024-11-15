@@ -1,7 +1,10 @@
-import React, { ReactElement } from 'react';
-import { render, RenderOptions } from '@testing-library/react';
+import type { ReactElement } from 'react';
+import React from 'react';
+import type { RenderOptions } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
-import { ConfigProvider, defaultConfig, Config } from '../../core';
+import type { Config } from '../../core';
+import { ConfigProvider, defaultConfig } from '../../core';
 
 const customRender = (
   ui: ReactElement,

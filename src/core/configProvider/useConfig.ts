@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 
-import { Config, configContext } from './configContext';
+import type { Config } from './configContext';
+import { configContext } from './configContext';
 
 const validateContext = (config?: Config) => {
   if (config === undefined) {

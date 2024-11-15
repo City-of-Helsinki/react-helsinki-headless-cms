@@ -1,4 +1,4 @@
-import { PageQuery } from '../../../common/headlessService/page';
+import type { PageQuery } from '../../../common/headlessService/page';
 
 const pageWithDiverseContent: PageQuery['page'] = {
   id: 'abc',

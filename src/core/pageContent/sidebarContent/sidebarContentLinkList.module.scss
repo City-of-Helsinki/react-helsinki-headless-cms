@@ -1,32 +1,32 @@
-@import 'spacing';
-@import 'color';
-@import 'breakpoints';
+@use 'spacing' as spacing;
+@use 'color' as color;
+@use 'breakpoints' as breakpoints;
 
 .listContainer {
   margin-top: var(--spacing-s);
 
-  @include respond_above(m) {
+  @include breakpoints.respond_above(m) {
     margin-top: var(--spacing-xl);
   }
 }
 
 .descriptionContainer {
-  margin-bottom: $spacing-m;
+  margin-bottom: spacing.$spacing-m;
 }
 
 .link {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: $spacing-m;
+  padding: spacing.$spacing-m;
 
-  color: $color-black-90;
+  color: color.$color-black-90;
   text-decoration: none;
   font-weight: 500;
 
-  background: $color-black-5;
+  background: color.$color-black-5;
 
   svg {
-    margin: 0 $spacing-2-xs;
+    margin: 0 spacing.$spacing-2-xs;
   }
 }

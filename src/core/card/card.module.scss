@@ -1,4 +1,4 @@
-@import 'breakpoints';
+@use 'breakpoints' as breakpoints;
 
 .cardWrapper {
   position: relative;
@@ -12,7 +12,7 @@
   --link-arrow-color: black;
   --link-arrow-label-color: var(--link-arrow-color);
 
-  @include respond_above(s) {
+  @include breakpoints.respond_above(s) {
     word-break: unset;
     &.isCentered,
     &.isDelimited {
@@ -83,7 +83,12 @@
 
   &.isCentered,
   &.isDelimited {
-    @include respond_above(s) {
+    // background-color: var(--color-white);
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+
+    @include breakpoints.respond_above(s) {
       & > :first-child {
         flex: none;
       }
@@ -94,11 +99,6 @@
     }
   }
 
-  // background-color: var(--color-white);
-  height: 100%;
-  width: 100%;
-  text-decoration: none;
-
   &.withBorder {
     border: 1px solid var(--color-black-30);
   }
@@ -107,7 +107,7 @@
     box-shadow: 0 1px 12px 1px rgb(45 62 80 / 12%);
   }
 
-  @include respond_above(s) {
+  @include breakpoints.respond_above(s) {
     flex-direction: column;
     margin-bottom: 0;
     &.responsive {
@@ -176,7 +176,7 @@
       &.horizontalBorder {
         // overriding withborder param
         border: 1px solid var(--color-black-30);
-        @include respond_below(s) {
+        @include breakpoints.respond_below(s) {
           border: none;
         }
       }
@@ -187,7 +187,7 @@
         // overriding withborder param
         border: none;
 
-        @include respond_below(s) {
+        @include breakpoints.respond_below(s) {
           border: 1px solid var(--color-black-30);
         }
       }
@@ -208,27 +208,27 @@
     &.responsive,
     &.responsive-reverse {
       padding-bottom: 62.5%;
-      @include respond_above(s) {
+      @include breakpoints.respond_above(s) {
         min-height: var(--height-image-desktop);
       }
     }
 
     &.responsive-reverse {
-      @include respond_above(s) {
+      @include breakpoints.respond_above(s) {
         padding-bottom: unset;
       }
     }
 
     &.isCentered,
     &.isDelimited {
-      @include respond_above(s) {
+      @include breakpoints.respond_above(s) {
         position: absolute;
         width: 100%;
       }
     }
 
     &.isDelimited {
-      @include respond_above(s) {
+      @include breakpoints.respond_above(s) {
         width: 62.5%;
         &.right {
           margin-right: 37.5%;
@@ -236,7 +236,7 @@
         &.left {
           margin-left: 37.5%;
         }
-        @include respond_above(l) {
+        @include breakpoints.respond_above(l) {
           width: 80%;
           &.right {
             margin-right: 20%;
@@ -248,7 +248,7 @@
       }
     }
 
-    @include respond_above(s) {
+    @include breakpoints.respond_above(s) {
       min-height: var(--height-image-desktop);
     }
 
@@ -270,11 +270,11 @@
     align-self: stretch;
     flex: 1;
 
-    @include respond_below(s) {
+    @include breakpoints.respond_below(s) {
       background-color: var(--color-white) !important;
     }
 
-    @include respond_above(s) {
+    @include breakpoints.respond_above(s) {
       &.isCentered,
       &.isDelimited {
         margin: 24px;
@@ -291,7 +291,7 @@
 
   .content {
     flex: 1;
-    @include respond_above(s) {
+    @include breakpoints.respond_above(s) {
       // min-height: var(--height-image-desktop);
       // height: 100%;
     }
@@ -302,7 +302,7 @@
     flex-direction: column;
     padding: var(--spacing-s) var(--spacing-m);
 
-    @include respond_below(s) {
+    @include breakpoints.respond_below(s) {
       // background-color: var(--color-white);
     }
 
@@ -317,7 +317,7 @@
         font-size: var(--fontsize-heading-m);
       }
 
-      @include respond_above(s) {
+      @include breakpoints.respond_above(s) {
         margin-top: var(--spacing-2-xs);
         font-size: var(--fontsize-heading-m);
         word-wrap: initial;
@@ -328,7 +328,7 @@
       font-size: var(--fontsize-body-s);
       color: var(--color-black-60);
       margin: var(--spacing-2-xs) 0;
-      @include respond_above(s) {
+      @include breakpoints.respond_above(s) {
         font-size: var(--fontsize-body-m);
       }
     }
@@ -344,7 +344,7 @@
         overflow: hidden;
       }
 
-      @include respond_above(s) {
+      @include breakpoints.respond_above(s) {
         font-size: var(--fontsize-body-l);
         line-height: var(--lineheight-l);
         -webkit-line-clamp: initial;
@@ -382,12 +382,12 @@
     padding: 0 var(--spacing-s);
     padding-bottom: var(--spacing-2-xs);
     color: var(--link-arrow-color);
+    order: 5;
 
-    @include respond_above(s) {
+    @include breakpoints.respond_above(s) {
       padding-bottom: var(--spacing-s);
     }
 
-    order: 5;
     a {
       display: flex;
       flex: 1 !important;

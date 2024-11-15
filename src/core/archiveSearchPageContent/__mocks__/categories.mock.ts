@@ -1,7 +1,5 @@
-import {
-  CategoriesQuery,
-  LanguageCodeEnum,
-} from '../../../common/headlessService/__generated__';
+import type { CategoriesQuery } from '../../../common/headlessService/__generated__';
+import { LanguageCodeEnum } from '../../../common/headlessService/__generated__';
 
 const mockCategories: CategoriesQuery['categories'] = {
   nodes: [

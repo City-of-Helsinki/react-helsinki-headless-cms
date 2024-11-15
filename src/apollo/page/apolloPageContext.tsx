@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-import { TemplateEnum } from '../../core';
+import type { TemplateEnum } from '../../core';
 
 type ApolloPageContext = {
   uri?: string;

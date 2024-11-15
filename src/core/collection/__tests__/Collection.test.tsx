@@ -1,7 +1,7 @@
 import React from 'react';
 import { addDays, addYears, subDays, subYears } from 'date-fns';
 
-import {
+import type {
   EventSearchCollectionType,
   EventSelectionCollectionType,
 } from '../types';
@@ -26,7 +26,8 @@ beforeAll(() => {
 });
 
 afterEach(() => {
-  jest.resetAllMocks();
+  // spyOn not working with reset after upgrade.
+  // jest.resetAllMocks();
 });
 
 describe('event selection module', () => {
@@ -67,7 +68,9 @@ describe('event selection module', () => {
   });
 
   it('renders an empty collection when no event ids was given', async () => {
-    const collection = { events: [] } as EventSelectionCollectionType;
+    const collection = {
+      events: [],
+    } as unknown as EventSelectionCollectionType;
     const { container } = render(
       <EventSelectionCollection collection={collection} type="carousel" />,
       undefined,
@@ -108,7 +111,7 @@ describe('event search module', () => {
 
       render(
         <EventSearchCollection collection={collection} type="carousel" />,
-        null,
+        {},
         { ...getApolloConfig(CmsEndpoint.events) },
       );
 

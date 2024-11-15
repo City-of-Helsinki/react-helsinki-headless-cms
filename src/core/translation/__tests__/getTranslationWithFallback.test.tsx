@@ -2,7 +2,7 @@ import { FALLBACK_TRANSLATION_KEYS, FALLBACK_TRANSLATIONS } from '../constants';
 import { getTranslationWithFallback } from '../getTranslationWithFallback';
 import { defaultConfig } from '../../configProvider/defaultConfig';
 import { LanguageCodeEnum } from '../../../common/headlessService/__generated__';
-import { Config } from '../../configProvider/configContext';
+import type { Config } from '../../configProvider/configContext';
 
 describe('getTranslationWithFallback', () => {
   it.each(FALLBACK_TRANSLATION_KEYS)(

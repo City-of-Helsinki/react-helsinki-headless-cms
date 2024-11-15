@@ -1,4 +1,4 @@
-import { PageChildrenSearchQuery } from '../../../common/headlessService/__generated__';
+import type { PageChildrenSearchQuery } from '../../../common/headlessService/__generated__';
 
 const mockPageWithChildren: PageChildrenSearchQuery['page']['children'] = {
   pageInfo: {

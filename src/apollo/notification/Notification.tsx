@@ -3,10 +3,8 @@ import React from 'react';
 import { LanguageCodeEnum } from '../../common/headlessService/types';
 import { useNotificationQuery } from '../../common/headlessService/notification';
 import { useConfig } from '../../core/configProvider/useConfig';
-import {
-  Notification as NotificationWithoutData,
-  NotificationProps,
-} from '../../core/notification/Notification';
+import type { NotificationProps } from '../../core/notification/Notification';
+import { Notification as NotificationWithoutData } from '../../core/notification/Notification';
 
 const languageCodeEnumToNotificationLanguageMap = {
   [LanguageCodeEnum.Fi]: 'fi',

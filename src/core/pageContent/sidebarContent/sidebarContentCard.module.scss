@@ -1,9 +1,9 @@
-@import 'spacing';
-@import 'color';
+@use 'spacing' as spacing;
+@use 'color' as color;
 
 .content {
-  padding: 0 $spacing-m;
-  color: var($color-black-90);
+  padding: 0 spacing.$spacing-m;
+  color: var(color.$color-black-90);
 }
 
 .link {
@@ -32,6 +32,6 @@ figure {
 }
 
 .publishingDate {
-  margin: $spacing-2-xs 0;
-  color: var($color-black-60);
+  margin: spacing.$spacing-2-xs 0;
+  color: var(color.$color-black-60);
 }

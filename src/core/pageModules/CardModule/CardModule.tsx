@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Card, CardProps } from '../../card/Card';
+import type { CardProps } from '../../card/Card';
+import { Card } from '../../card/Card';
 import styles from '../pageModules.module.scss';
 
 // todo: implement module

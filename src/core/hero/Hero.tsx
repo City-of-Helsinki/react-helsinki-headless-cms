@@ -10,7 +10,7 @@ import { Link } from '../link/Link';
 import { ContentContainer } from '../contentContainer/ContentContainer';
 import { Image } from '../image/Image';
 import Text from '../../common/components/text/Text';
-import { HeroProps } from '../pageContent/types';
+import type { HeroProps } from '../pageContent/types';
 import { getColor, isWhiteText } from '../utils/string';
 import { useConfig } from '../configProvider/useConfig';
 
@@ -161,8 +161,8 @@ export default function Hero({
                 imageUrl
                   ? 'color-white'
                   : backgroundColor
-                  ? `color-${backgroundColor}`
-                  : 'hcrc-color-hero-bg, --color-fog-light'
+                    ? `color-${backgroundColor}`
+                    : 'hcrc-color-hero-bg, --color-fog-light'
               })`,
             }}
           />

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ModuleItemTypeEnum } from '../../common/headlessService/constants';
+import type { ModuleItemTypeEnum } from '../../common/headlessService/constants';
 import { LanguageCodeEnum } from '../../common/headlessService/types';
 import getIsValidHttpUrl from '../../common/utils/getIsValidHttpUrl';
 import {
@@ -8,7 +8,7 @@ import {
   getEventCardProps,
   getLocationCardProps,
 } from '../pageContent/utils';
-import { Config } from './configContext';
+import type { Config } from './configContext';
 import { FALLBACK_TRANSLATIONS } from '../translation/constants';
 
 export const defaultConfig: Config = {

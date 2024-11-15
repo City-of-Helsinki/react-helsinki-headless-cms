@@ -1,9 +1,9 @@
 import makeQueryWithApolloClientFromConfig from './makeQueryWithApolloClientFromConfig';
-import {
-  useNotificationQuery as useNotificationQueryWithoutClient,
+import type {
   NotificationQuery,
   NotificationQueryVariables,
 } from './__generated__';
+import { useNotificationQuery as useNotificationQueryWithoutClient } from './__generated__';
 
 export const useNotificationQuery = makeQueryWithApolloClientFromConfig<
   NotificationQuery,

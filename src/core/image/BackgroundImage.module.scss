@@ -1,4 +1,4 @@
-@import 'breakpoints';
+@use 'breakpoints' as breakpoints;
 
 .imageWrapper {
   min-width: var(--width-image);
@@ -11,12 +11,12 @@
 
   &.fixed-vertical {
     min-height: var(--height-image);
-    @include respond_above(s) {
+    @include breakpoints.respond_above(s) {
       min-height: var(--height-image-desktop);
     }
   }
 
-  @include respond_above(s) {
+  @include breakpoints.respond_above(s) {
     min-height: var(--height-image-desktop);
   }
 

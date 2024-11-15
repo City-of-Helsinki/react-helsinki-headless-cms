@@ -1,5 +1,5 @@
-@import 'spacing';
-@import 'breakpoints';
+@use 'spacing' as spacing;
+@use 'breakpoints' as breakpoints;
 
 .list {
   --spacing: 0;
@@ -17,62 +17,62 @@
   }
 }
 .spacing-4-xs {
-  --spacing: #{$spacing-4-xs};
+  --spacing: #{spacing.$spacing-4-xs};
 }
 .spacing-3-xs {
-  --spacing: #{$spacing-3-xs};
+  --spacing: #{spacing.$spacing-3-xs};
 }
 .spacing-2-xs {
-  --spacing: #{$spacing-2-xs};
+  --spacing: #{spacing.$spacing-2-xs};
 }
 .spacing-xs {
-  --spacing: #{$spacing-xs};
+  --spacing: #{spacing.$spacing-xs};
 }
 .spacing-s {
-  --spacing: #{$spacing-s};
+  --spacing: #{spacing.$spacing-s};
 }
 .spacing-m {
-  --spacing: #{$spacing-m};
+  --spacing: #{spacing.$spacing-m};
 }
 .spacing-l {
-  --spacing: #{$spacing-l};
+  --spacing: #{spacing.$spacing-l};
 }
 .spacing-xl {
-  --spacing: #{$spacing-xl};
+  --spacing: #{spacing.$spacing-xl};
 }
 .spacing-2-xl {
-  --spacing: #{$spacing-2-xl};
+  --spacing: #{spacing.$spacing-2-xl};
 }
 .spacing-3-xl {
-  --spacing: #{$spacing-xl};
-  @include respond_above(m) {
-    --spacing: #{$spacing-3-xl};
+  --spacing: #{spacing.$spacing-xl};
+  @include breakpoints.respond_above(m) {
+    --spacing: #{spacing.$spacing-3-xl};
   }
 }
 .spacing-4-xl {
-  --spacing: #{$spacing-4-xl};
+  --spacing: #{spacing.$spacing-4-xl};
 }
 .spacing-5-xl {
-  --spacing: #{$spacing-4-xl};
+  --spacing: #{spacing.$spacing-4-xl};
 }
 .spacing-layout-2-xs {
-  --spacing: #{$spacing-layout-2-xs};
+  --spacing: #{spacing.$spacing-layout-2-xs};
 }
 .spacing-layout-xs {
-  --spacing: #{$spacing-layout-xs};
+  --spacing: #{spacing.$spacing-layout-xs};
 }
 .spacing-layout-s {
-  --spacing: #{$spacing-layout-s};
+  --spacing: #{spacing.$spacing-layout-s};
 }
 .spacing-layout-m {
-  --spacing: #{$spacing-layout-m};
+  --spacing: #{spacing.$spacing-layout-m};
 }
 .spacing-layout-l {
-  --spacing: #{$spacing-layout-l};
+  --spacing: #{spacing.$spacing-layout-l};
 }
 .spacing-layout-xl {
-  --spacing: #{$spacing-layout-xl};
+  --spacing: #{spacing.$spacing-layout-xl};
 }
 .spacing-layout-2-xl {
-  --spacing: #{$spacing-layout-2-xl};
+  --spacing: #{spacing.$spacing-layout-2-xl};
 }

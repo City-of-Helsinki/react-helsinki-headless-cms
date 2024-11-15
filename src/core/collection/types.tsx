@@ -1,7 +1,10 @@
-import { ArticleType, PageType } from '../../common/headlessService/types';
-import { EventType } from '../../common/eventsService/types';
-import { EventDetails, Meta } from '../../common/eventsService/__generated__';
-import { VenueType } from '../../common/venuesService/types';
+import type { ArticleType, PageType } from '../../common/headlessService/types';
+import type { EventType } from '../../common/eventsService/types';
+import type {
+  EventDetails,
+  Meta,
+} from '../../common/eventsService/__generated__';
+import type { VenueType } from '../../common/venuesService/types';
 
 // TODO: HCRC-13 - Support also the event selection and the event search modules
 export type CollectionItemType = ArticleType | PageType | EventType | VenueType;

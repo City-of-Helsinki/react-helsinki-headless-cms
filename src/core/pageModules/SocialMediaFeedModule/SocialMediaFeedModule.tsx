@@ -1,6 +1,7 @@
 import React, { useLayoutEffect, useMemo, useRef } from 'react';
 import DOMPurify from 'isomorphic-dompurify';
-import parse, { DOMNode } from 'html-react-parser';
+import type { DOMNode } from 'html-react-parser';
+import parse from 'html-react-parser';
 
 import Text from '../../../common/components/text/Text';
 import { useConfig } from '../../configProvider/useConfig';

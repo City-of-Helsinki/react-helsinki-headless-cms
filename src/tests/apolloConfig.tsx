@@ -1,6 +1,6 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
-import { Config } from '../core/configProvider/configContext';
+import type { Config } from '../core/configProvider/configContext';
 
 export const getApolloConfig = (
   uri: string,

@@ -1,5 +1,5 @@
-@import 'spacing';
-@import 'color';
+@use 'spacing' as spacing;
+@use 'color' as color;
 
 .container nav {
   margin: 0;

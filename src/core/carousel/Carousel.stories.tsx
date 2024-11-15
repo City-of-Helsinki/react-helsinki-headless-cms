@@ -1,7 +1,7 @@
 /* eslint-disable react/function-component-definition */
 
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 
 import { Carousel } from './Carousel';
 import { Card } from '../card/Card';
@@ -19,7 +19,6 @@ export default {
     loadMoreButtonLabelText: { control: { type: 'text' } },
     hasMore: { control: { type: 'boolean' } },
     loading: { control: { type: 'boolean' } },
-    onLoadMore: { control: { type: 'null' } },
   },
 } as Meta<typeof Carousel>;
 

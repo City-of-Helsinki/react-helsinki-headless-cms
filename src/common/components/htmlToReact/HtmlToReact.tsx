@@ -1,12 +1,12 @@
 import React, { useMemo } from 'react';
-import DOMPurify, { Config } from 'isomorphic-dompurify';
-import parse, {
+import type { Config } from 'isomorphic-dompurify';
+import DOMPurify from 'isomorphic-dompurify';
+import type {
   DOMNode,
-  domToReact,
   HTMLReactParserOptions,
-  attributesToProps,
   Element,
 } from 'html-react-parser';
+import parse, { domToReact, attributesToProps } from 'html-react-parser';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
 
@@ -140,7 +140,7 @@ function mapTableHeaderChild(
         {...attributesToProps(domNode.attribs)}
         className={addClassNames(domNode, styles['hds-table__header-row'])}
       >
-        {domToReact(domNode.children, options)}
+        {domToReact(domNode.children as DOMNode[], options)}
       </tr>
     );
   }
@@ -173,21 +173,21 @@ function replaceDomNodeWithReactComponent(
       case 'p':
         return (
           <P {...attributesToProps(domNode.attribs)}>
-            {domToReact(domNode.children, options)}
+            {domToReact(domNode.children as DOMNode[], options)}
           </P>
         );
 
       case 'h2':
         return (
           <H2 {...attributesToProps(domNode.attribs)}>
-            {domToReact(domNode.children, options)}
+            {domToReact(domNode.children as DOMNode[], options)}
           </H2>
         );
 
       case 'a':
         return (
           <A {...attributesToProps(domNode.attribs)}>
-            {domToReact(domNode.children, options)}
+            {domToReact(domNode.children as DOMNode[], options)}
           </A>
         );
 
@@ -205,7 +205,7 @@ function replaceDomNodeWithReactComponent(
               ),
             })}
           >
-            {domToReact(domNode.children, options)}
+            {domToReact(domNode.children as DOMNode[], options)}
           </figure>
         );
 
@@ -226,7 +226,7 @@ function replaceDomNodeWithReactComponent(
                 ),
               )}
             >
-              {domToReact(domNode.children, options)}
+              {domToReact(domNode.children as DOMNode[], options)}
             </Table>
           </div>
         );
@@ -237,14 +237,14 @@ function replaceDomNodeWithReactComponent(
             {...attributesToProps(domNode.attribs)}
             className={addClassNames(domNode, styles['hds-table__caption'])}
           >
-            {domToReact(domNode.children, options)}
+            {domToReact(domNode.children as DOMNode[], options)}
           </caption>
         );
 
       case 'thead':
         return (
           <thead {...attributesToProps(domNode.attribs)}>
-            {domNode.children.map((child) =>
+            {(domNode.children as DOMNode[]).map((child) =>
               mapTableHeaderChild(child, options),
             )}
           </thead>
@@ -256,7 +256,7 @@ function replaceDomNodeWithReactComponent(
             {...attributesToProps(domNode.attribs)}
             className={addClassNames(domNode, styles['hds-table__content'])}
           >
-            {domToReact(domNode.children, options)}
+            {domToReact(domNode.children as DOMNode[], options)}
           </tbody>
         );
 

@@ -4,7 +4,7 @@ import React from 'react';
 import { useConfig } from '../configProvider/useConfig';
 import { getBreadcrumbListItems } from './utils';
 import styles from './pageContentBreadcrumb.module.scss';
-import { BreadcrumbUnionType } from './types';
+import type { BreadcrumbUnionType } from './types';
 
 export function PageContentBreadcrumb({
   breadcrumbs,

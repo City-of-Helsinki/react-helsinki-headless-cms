@@ -1,11 +1,11 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
+import type { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 
-import {
+import type {
   PageQuery,
   PageQueryVariables,
-  PageDocument,
 } from '../common/headlessService/page';
+import { PageDocument } from '../common/headlessService/page';
 
 type Variables = {
   uri: string;

@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 import React, { useCallback, useEffect, useRef } from 'react';
 import { Button, IconAngleLeft, IconAngleRight } from 'hds-react';
 
-import { ImageItem } from './types';
+import type { ImageItem } from './types';
 import styles from './imageGallery.module.scss';
 import { useConfig } from '../configProvider/useConfig';
 import useImageGalleryContext from './useImageGalleryContext';

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { ModuleItemTypeEnum } from '../../../common/headlessService/constants';
-import {
+import type { ModuleItemTypeEnum } from '../../../common/headlessService/constants';
+import type {
   LayoutArticle,
   LayoutPage,
 } from '../../../common/headlessService/types';

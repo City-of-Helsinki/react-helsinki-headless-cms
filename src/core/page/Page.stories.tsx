@@ -1,7 +1,7 @@
 /* eslint-disable react/function-component-definition */
 
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 import { LanguageCodeEnum } from '../../common/headlessService/types';
@@ -23,7 +23,7 @@ import {
   getCollectionUIType,
 } from '../pageContent/utils';
 import { Card } from '../card/Card';
-import { GeneralCollectionType } from '../collection/types';
+import type { GeneralCollectionType } from '../collection/types';
 
 export default {
   title: 'Core components/Page',

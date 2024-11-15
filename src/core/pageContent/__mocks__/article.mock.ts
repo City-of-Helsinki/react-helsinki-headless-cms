@@ -1,4 +1,4 @@
-import { ArticleQuery } from '../../../common/headlessService/article';
+import type { ArticleQuery } from '../../../common/headlessService/article';
 
 export const sidebarLinkList = {
   anchor: '#interesting-links',

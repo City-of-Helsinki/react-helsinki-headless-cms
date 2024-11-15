@@ -1,14 +1,14 @@
 import DOMPurify from 'isomorphic-dompurify';
 import parse from 'html-react-parser';
 
-import {
+import type {
   CollectionItemType,
   CollectionType,
   EventSearchCollectionType,
   EventSelectionCollectionType,
   LocationsSelectionCollectionType,
 } from '../../core/collection/types';
-import {
+import type {
   ArticleType,
   LayoutArticle,
   LayoutContent,
@@ -33,9 +33,9 @@ import {
   LocationsSelectedCarousel,
   Language,
 } from './types';
-import { EventType } from '../eventsService/types';
-import { VenueType } from '../venuesService/types';
-import { LinkItem } from '../../core/pageContent/types';
+import type { EventType } from '../eventsService/types';
+import type { VenueType } from '../venuesService/types';
+import type { LinkItem } from '../../core/pageContent/types';
 
 export function isLayoutContent(
   module: PageModule | PageSidebarModule,

@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { configContext, Config } from './configContext';
+import type { Config } from './configContext';
+import { configContext } from './configContext';
 import { defaultConfig } from './defaultConfig';
 
 export type ConfigProviderProps = {

@@ -1,6 +1,9 @@
 import React from 'react';
 
-import { ArticleType, PageType } from '../../../common/headlessService/types';
+import type {
+  ArticleType,
+  PageType,
+} from '../../../common/headlessService/types';
 import { useConfig } from '../../configProvider/useConfig';
 
 export type PageMetaProps = {

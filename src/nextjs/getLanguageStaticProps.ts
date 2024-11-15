@@ -1,11 +1,11 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
+import type { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 
-import {
+import type {
   LanguagesQuery,
   LanguagesQueryVariables,
-  LanguagesDocument,
 } from '../common/headlessService/languages';
+import { LanguagesDocument } from '../common/headlessService/languages';
 
 export default async function getLanguageStaticProps(
   apolloClient: ApolloClient<NormalizedCacheObject>,

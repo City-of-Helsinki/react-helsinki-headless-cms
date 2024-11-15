@@ -1,14 +1,11 @@
 /* eslint-disable react/function-component-definition */
 
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
-import {
-  ArticleType,
-  LanguageCodeEnum,
-  PageType,
-} from '../../common/headlessService/types';
+import type { ArticleType, PageType } from '../../common/headlessService/types';
+import { LanguageCodeEnum } from '../../common/headlessService/types';
 import { ConfigProvider } from '../configProvider/ConfigProvider';
 import { defaultConfig } from '../configProvider/defaultConfig';
 import { SearchPageContent as ArchiveSearchPageContent } from '../archiveSearchPageContent/ArchiveSearchPageContent';
@@ -20,12 +17,14 @@ import { ArchivePage as ArchiveSearchPage } from './ArchiveSearchPage';
 import articles from '../archiveSearchPageContent/__mocks__/articles.mock';
 import pages from '../archiveSearchPageContent/__mocks__/pages.mock';
 import pageWithChildren from '../archiveSearchPageContent/__mocks__/pageChildrenSearch.mock';
-import { LargeCard, LargeCardProps } from '../card/LargeCard';
-import { Card, CardProps } from '../card/Card';
+import type { LargeCardProps } from '../card/LargeCard';
+import { LargeCard } from '../card/LargeCard';
+import type { CardProps } from '../card/Card';
+import { Card } from '../card/Card';
 import { filterPagesAndArticles } from '../../common/headlessService/utils';
 import { HtmlToReact } from '../../common/components/htmlToReact/HtmlToReact';
 import { formatDateTimeFromString } from '../../common/utils/dates';
-import { CollectionItemType } from '../collection/types';
+import type { CollectionItemType } from '../collection/types';
 import mockPage from '../pageContent/__mocks__/page.mock';
 import { PageMainContent } from '../pageContent/PageMainContent';
 import categories from '../archiveSearchPageContent/__mocks__/categories.mock';

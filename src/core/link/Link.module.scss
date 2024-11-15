@@ -1,4 +1,4 @@
-@import 'typography';
+@use 'typography' as typography;
 
 .link {
   &,
@@ -14,7 +14,7 @@
 .secondaryLink {
   text-decoration: none;
   font-weight: bold;
-  font-size: $fontsize-body-l;
+  font-size: typography.$fontsize-body-l;
   &,
   &:visited {
     color: var(--color-coat-of-arms-dark);

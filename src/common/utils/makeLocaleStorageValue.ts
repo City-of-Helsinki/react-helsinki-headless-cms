@@ -18,7 +18,8 @@ export default function makeLocaleStorageValue<T>(
     const readValueInLocalStorage = () => {
       try {
         return deserialize(localStorage.getItem(key));
-      } catch (e) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      } catch (_) {
         // eslint-disable-next-line no-console
         console.error('Failed to parse value in localStorage');
       }
@@ -39,7 +40,8 @@ export default function makeLocaleStorageValue<T>(
           setStateValue(undefined);
           localStorage.removeItem(key);
         }
-      } catch (e) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      } catch (_) {
         // eslint-disable-next-line no-console
         console.error('Failed to save value into localStorage');
       }

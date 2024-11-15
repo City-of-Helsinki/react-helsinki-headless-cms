@@ -1,9 +1,6 @@
 import makeQueryWithApolloClientFromConfig from './makeQueryWithApolloClientFromConfig';
-import {
-  useCategoryQuery as useCategoryQueryWithoutClient,
-  CategoryQuery,
-  CategoryQueryVariables,
-} from './__generated__';
+import type { CategoryQuery, CategoryQueryVariables } from './__generated__';
+import { useCategoryQuery as useCategoryQueryWithoutClient } from './__generated__';
 
 export const useCategoryQuery = makeQueryWithApolloClientFromConfig<
   CategoryQuery,

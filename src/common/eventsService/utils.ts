@@ -1,4 +1,4 @@
-import { Meta } from './__generated__';
+import type { Meta } from './__generated__';
 
 const PAGE_PARAM = 'page';
 

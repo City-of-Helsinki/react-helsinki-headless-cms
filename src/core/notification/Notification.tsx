@@ -1,11 +1,9 @@
 import React from 'react';
-import {
-  Notification as HDSNotification,
-  NotificationType as HDSNotificationLevel,
-} from 'hds-react';
+import type { NotificationType as HDSNotificationLevel } from 'hds-react';
+import { Notification as HDSNotification } from 'hds-react';
 
 import makeLocaleStorageValue from '../../common/utils/makeLocaleStorageValue';
-import { NotificationType } from '../../common/headlessService/types';
+import type { NotificationType } from '../../common/headlessService/types';
 import { HtmlToReact } from '../../common/components/htmlToReact/HtmlToReact';
 import { useConfig } from '../configProvider/useConfig';
 import { Link } from '../link/Link';

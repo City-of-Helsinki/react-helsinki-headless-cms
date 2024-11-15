@@ -1,4 +1,4 @@
-@import 'breakpoints';
+@use 'breakpoints' as breakpoints;
 
 .grid {
   display: flex;
@@ -6,7 +6,7 @@
   margin-bottom: 0;
   gap: 1.5rem;
 
-  @include respond_above(m) {
+  @include breakpoints.respond_above(m) {
     display: grid;
     grid-gap: 1.5rem;
   }

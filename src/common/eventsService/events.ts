@@ -1,9 +1,9 @@
 import makeQueryWithEventsApolloClientFromConfig from './makeQueryWithEventsApolloClientFromConfig';
-import {
-  useEventsByIdsQuery as useEventsByIdsQueryWithoutClient,
+import type {
   EventsByIdsQuery,
   EventsByIdsQueryVariables,
 } from './__generated__';
+import { useEventsByIdsQuery as useEventsByIdsQueryWithoutClient } from './__generated__';
 
 export const useEventsByIdsQuery = makeQueryWithEventsApolloClientFromConfig<
   EventsByIdsQuery,
