@@ -41,17 +41,47 @@ import { DEFAULT_LOCALE } from '../../constants';
 import { isPageType, isArticleType } from '../../common/headlessService/utils';
 
 export type CollectionProps = {
+  /**
+   * Collection title.
+   */
   title?: string;
+  /**
+   * Collection description.
+   */
   description?: string;
+  /**
+   * Collection cards data.
+   */
   cards: React.ReactElement<typeof Card>[];
+  /**
+   * Additinal classname applied to the Collection container.
+   */
   className?: string;
+  /**
+   * Collection additional props.
+   */
   collectionContainerProps?:
     | Partial<CarouselProps<typeof Card>>
     | Partial<GridProps>;
+  /**
+   * Collection type.
+   */
   type: 'carousel' | 'grid';
+  /**
+   * Boolean indicating whether the collection data is loading.
+   */
   loading?: boolean;
+  /**
+   * Boolean indicating whether the collection data has next page.
+   */
   hasNext?: boolean;
+  /**
+   * Show all link url.
+   */
   showAllUrl?: string;
+  /**
+   * onLoadMore event handler.
+   */
   onLoadMore?: () => void;
 };
 

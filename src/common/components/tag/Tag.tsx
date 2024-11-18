@@ -8,11 +8,29 @@ import styles from './tag.module.scss';
 import { theme1, theme2 } from './tagThemes';
 
 type Props = {
+  /**
+   * Additional children to render inside the tag.
+   */
   children: React.ReactNode;
+  /**
+   * Additional classname for the tag.
+   */
   className?: string;
+  /**
+   *  Boolean indicating whether the tag has a featured style variant.
+   */
   featured?: boolean;
+  /**
+   *  Boolean indicating whether the tag has a white-only style variant.
+   */
   whiteOnly?: boolean;
+  /**
+   * Boolean indicating whether the tag has a selected style variant.
+   */
   selected?: boolean;
+  /**
+   * onClick handler.
+   */
   onClick?: () => void;
 } & Pick<HDSTagProps, 'id' | 'role' | 'size'>;
 

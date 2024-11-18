@@ -9,7 +9,13 @@ import useApolloPageContext from '../page/useApolloPageContext';
 import type { LanguageCodeEnum } from '../../core';
 
 export type PageProps = Omit<PageContentPropsWithoutData, 'page'> & {
+  /**
+   * The language of the page.
+   */
   language: LanguageCodeEnum;
+  /**
+   * Page content if data not found or missing from cms.
+   */
   notFoundPageContent?: JSX.Element;
   // All other props
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

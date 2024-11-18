@@ -15,12 +15,33 @@ import { getColor, isWhiteText } from '../utils/string';
 import { useConfig } from '../configProvider/useConfig';
 
 export type HeroComponentProps = {
+  /**
+   * Hero container id.
+   */
   id: string;
+  /**
+   * Additinal classname applied to the Content container.
+   */
   className?: string;
+  /**
+   * Hero back button url.
+   */
   backUrl?: string;
+  /**
+   * Hero iamge url.
+   */
   imageUrl?: string;
+  /**
+   * Hero alt image text.
+   */
   imageAlt?: string;
+  /**
+   * Hero iamge label.
+   */
   imageLabel?: string;
+  /**
+   * Hero container wrapper component.
+   */
   container?: JSX.Element;
 } & HeroProps;
 

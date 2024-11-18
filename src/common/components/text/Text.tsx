@@ -14,10 +14,25 @@ type TextVariant =
   | 'body-xl';
 
 type TextVariantProps = {
+  /**
+   * The render html element type for the text.
+   */
   as?: string | React.ComponentType<HTMLAttributes<HTMLElement>>;
+  /**
+   * Text variant option.
+   */
   variant?: TextVariant;
+  /**
+   * Additional classname for the text.
+   */
   children: ReactNode;
+  /**
+   * Additional classname for the text.
+   */
   className?: string;
+  /**
+   * Deprecated
+   */
   role?: string;
 };
 

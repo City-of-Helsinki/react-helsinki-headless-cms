@@ -4,6 +4,9 @@ import React, { useCallback, useState } from 'react';
 import { ImageGalleryContext } from './ImageGalleryContext';
 
 interface ImageGalleryProviderProps {
+  /**
+   * Additional children to render inside the Image Gallery.
+   */
   children: ReactNode;
 }
 

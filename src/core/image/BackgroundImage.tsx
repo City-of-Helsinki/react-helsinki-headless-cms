@@ -5,9 +5,21 @@ import { Tag } from '../../common/components/tag/Tag';
 import { useResolveImageUrl } from '../hooks/useResolveImageUrl';
 
 export type BackgroundImageProps = {
+  /**
+   * Background image id.
+   */
   id: string;
+  /**
+   * Background image url.
+   */
   url?: string | null;
+  /**
+   * Background fallback image url.
+   */
   customFallbackUrl?: string;
+  /**
+   * Background image label tag.
+   */
   labelTag?: string;
 } & React.HTMLAttributes<HTMLDivElement>;
 

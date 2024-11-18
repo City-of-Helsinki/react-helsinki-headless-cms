@@ -6,10 +6,25 @@ import { Lightbox } from './Lightbox';
 import type { ImageItem as ImageItemType } from './types';
 
 export type ImageGalleryProps = {
+  /**
+   * Image gallery items.
+   */
   images: ImageItemType[];
+  /**
+   * Image gallery lightbox component uid.
+   */
   lightboxUid: string;
+  /**
+   *  Boolean indicating whether the border styles should be applied to the Image.
+   */
   withBorder?: boolean;
+  /**
+   *  Boolean indicating whether the lightbox feature is enabled.
+   */
   withLightbox?: boolean;
+  /**
+   * Number of columns in Image gallery.
+   */
   columns?: number;
 };
 

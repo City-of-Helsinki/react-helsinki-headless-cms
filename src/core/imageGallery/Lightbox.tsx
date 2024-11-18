@@ -13,7 +13,13 @@ import { useConfig } from '../configProvider/useConfig';
 import useImageGalleryContext from './useImageGalleryContext';
 
 interface LightboxProps {
+  /**
+   * Image items.
+   */
   images: ImageItem[];
+  /**
+   * Image lightbox uid.
+   */
   lightboxUid: string;
 }
 

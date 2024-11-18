@@ -114,23 +114,71 @@ export function SearchTags({
 }
 
 export interface SearchPageContentProps {
+  /**
+   * Page object from wordpress headless cms.
+   */
   page?: PageType | ArticleType;
+  /**
+   * Breadcrumbs object from wordpress headless cms.
+   */
   breadcrumbs?:
     | BreadcrumbUnionType
     | ((page?: PageType | ArticleType) => BreadcrumbUnionType);
+  /**
+   * Custom content react components to be dispayed on the page.
+   */
   customContent?: string | JSX.Element;
+  /**
+   * Archive collection items..
+   */
   items?: CollectionItemType[];
+  /**
+   *  Boolean indicating whether the page is loading.
+   */
   isLoading?: boolean;
+  /**
+   *  Boolean indicating whether the collection has more items.
+   */
   hasMore?: boolean;
+  /**
+   *  Boolean indicating whether no results found for the collection items.
+   */
   noResults?: boolean;
+  /**
+   * Additional classname for the SearchPageContent.
+   */
   className?: string;
+  /**
+   * All tags collection for the page content.
+   */
   tags?: SearchTag[];
+  /**
+   * Applied search  tags collection for the page content.
+   */
   currentTags?: SearchTag[];
+  /**
+   *  Boolean indicating whether the tag should update on change.
+   */
   withQuery?: boolean;
+  /**
+   * If true then current search text is updated on change.
+   */
   currentText?: string;
+  /**
+   *  Boolean indicating whether the first search item should be rendered as a large card.
+   */
   largeFirstItem?: boolean;
+  /**
+   * Search button click handler.
+   */
   onSearch?: (freeSearch: string, tags: SearchTag[]) => void;
+  /**
+   * Load more button click handler.
+   */
   onLoadMore?: () => void;
+  /**
+   * Custom renderer for the large card.
+   */
   createLargeCard?: (
     item: CollectionItemType,
   ) => React.ReactElement<typeof LargeCard>;

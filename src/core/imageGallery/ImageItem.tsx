@@ -10,10 +10,25 @@ import styles from './imageGallery.module.scss';
 import useImageGalleryContext from './useImageGalleryContext';
 
 interface ImageItemProps {
+  /**
+   * Image object.
+   */
   image: ImageItemType;
+  /**
+   * Image id.
+   */
   imageId: number;
+  /**
+   * Image lightbox uid.
+   */
   lightboxUid: string;
+  /**
+   *  Boolean indicating whether the border styles should be applied to the Image.
+   */
   withBorder: boolean;
+  /**
+   *  Boolean indicating whether the lightbox feature is enabled.
+   */
   withLightbox: boolean;
 }
 

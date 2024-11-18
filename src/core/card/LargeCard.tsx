@@ -9,20 +9,65 @@ import { Link } from '../link/Link';
 import { BackgroundImage } from '../image/BackgroundImage';
 
 export type LargeCardProps = {
+  /**
+   * Card id.
+   */
   id?: string;
+  /**
+   * Card container aria-label.
+   */
   ariaLabel?: string;
+  /**
+   * Card image label.
+   */
   imageLabel?: string;
+  /**
+   * Card image url.
+   */
   imageUrl?: string | null;
+  /**
+   * Card image image position.
+   */
   imagePosition?: 'image-right' | 'image-left';
+  /**
+   * Card subtitle.
+   */
   subTitle?: string;
+  /**
+   * Card main text contents.
+   */
   text?: string;
+  /**
+   * Card title.
+   */
   title?: string;
+  /**
+   * Card link url.
+   */
   url?: string;
+  /**
+   * Additional classname for the card.
+   */
   className?: string;
+  /**
+   * Card custom content (component) below the main text.
+   */
   customContent?: React.ReactNode;
+  /**
+   *  Boolean indicating whether the link arrow icon is shown.
+   */
   hasLink?: boolean;
+  /**
+   *  Boolean indicating whether the text content is clamped in the Card.
+   */
   clampText?: boolean;
+  /**
+   *  Boolean indicating whether the Card link opens in new tab.
+   */
   openInNewTab?: boolean;
+  /**
+   *  Boolean indicating whether the border styles should be applied to the Card.
+   */
   withBorder?: boolean;
 };
 

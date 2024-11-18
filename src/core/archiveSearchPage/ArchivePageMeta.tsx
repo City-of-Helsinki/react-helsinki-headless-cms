@@ -3,7 +3,13 @@ import React from 'react';
 import { useConfig } from '../configProvider/useConfig';
 
 type BasicMetaProps = {
+  /**
+   * Archive page meta title tag contents.
+   */
   title?: string;
+  /**
+   * Archive page meta description tag contents.
+   */
   description?: string;
 };
 

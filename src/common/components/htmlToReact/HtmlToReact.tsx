@@ -120,9 +120,21 @@ type Components = {
 };
 
 export type HtmlToReactProps = {
+  /**
+   * Additional children to render inside the grid.
+   */
   children: string;
+  /**
+   * React components for custom html elements transformation.
+   */
   components?: Components;
+  /**
+   * Option to allow unsafe tags, otherwise cleared and not rendered.
+   */
   allowedUnsafeTags?: Config['ALLOWED_TAGS'];
+  /**
+   * Trusted origins for url properties and attributes, for elements such as iframes and scripts.
+   */
   trustedOrigins?: string[];
 };
 

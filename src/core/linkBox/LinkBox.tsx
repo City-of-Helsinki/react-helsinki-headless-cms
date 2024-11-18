@@ -6,8 +6,17 @@ import { Link } from '../link/Link';
 import styles from './LinkBox.module.scss';
 
 export type LinkProps = Omit<React.ComponentPropsWithoutRef<'a'>, 'target'> & {
+  /**
+   * Link left icon component.
+   */
   iconLeft?: React.ReactNode;
+  /**
+   * Link right icon component.
+   */
   iconRight?: React.ReactNode;
+  /**
+   * Boolean indicating whether the link should be opened in a new tab.
+   */
   openInNewTab?: boolean;
 };
 

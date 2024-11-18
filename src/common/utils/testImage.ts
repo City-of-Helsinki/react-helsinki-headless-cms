@@ -1,6 +1,11 @@
 /**
  * Test that loading image is successful
  */
+
+/**
+ * @param {url} url - url of the image to test.
+ * @return {boolean} - Returns promise.
+ */
 const testImage = (url?: string): Promise<unknown> => {
   if (!url) {
     return Promise.reject(new Error('No image URL given'));

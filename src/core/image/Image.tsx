@@ -3,10 +3,25 @@ import React from 'react';
 import { useResolveImageUrl } from '../hooks/useResolveImageUrl';
 
 export type ImageProps = {
+  /**
+   * Image id.
+   */
   id: string;
+  /**
+   * Image src attribute value.
+   */
   src: string;
+  /**
+   * Alt image text.
+   */
   alt: string;
+  /**
+   * Image fallback url.
+   */
   customFallbackSrc?: string;
+  /**
+   * Image caption.
+   */
   caption?: string;
 } & Omit<React.HTMLAttributes<HTMLImageElement>, 'src' | 'alt'>;
 

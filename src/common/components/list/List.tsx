@@ -9,7 +9,13 @@ function getKey(...elements: JSX.Element[]): string {
 }
 
 type ListProps = {
+  /**
+   * List item elements.
+   */
   items?: (JSX.Element | JSX.Element[] | null | false)[];
+  /**
+   * List item variant options.
+   */
   variant?:
     | 'spacing-4-xs'
     | 'spacing-3-xs'
