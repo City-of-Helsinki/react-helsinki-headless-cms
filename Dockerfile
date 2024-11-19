@@ -14,7 +14,7 @@ RUN curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum
     yum -y install yarn
 
 # Yarn version
-ENV YARN_VERSION 4.0.0
+ENV YARN_VERSION 1.22.22
 RUN yarn policies set-version ${YARN_VERSION}
 
 
