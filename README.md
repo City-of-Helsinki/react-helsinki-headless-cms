@@ -62,6 +62,19 @@ The general requirements for new Component development:
 
 **NOTE: To manually publish a new version to the NPM, you will need the credentials that can be found from the City of Helsinki Culture and Leisure's Vault-service.**
 
+
+### Development environments
+
+You can use docker local environment for development:
+
+`docker compose up --build` when using Docker
+
+`podman compose up --build` when using Podman
+
+Alternatevly, the local environment can be used:
+
+`yarn dev`
+
 ### Module structure
 
 This library consists of three modules.
@@ -214,7 +227,6 @@ function App() {
 ## Publishing new versions
 
 There are 2 scripts for publishing of new verions of npm pagage:
-
 
 To publish a stable version use
 
