@@ -71,6 +71,8 @@ export const sidebarArticleList: LayoutArticle = {
           altText: 'image description',
           mediaItemUrl:
             'https://kultus.app-staging.hkih.hion.dev/app/uploads/2022/01/ae0d30ec-w_c3391_l_web.jpeg',
+          medium_large:
+            'https://kultus.app-staging.hkih.hion.dev/app/uploads/2022/01/ae0d30ec-w_c3391_l_web.jpeg',
         },
       },
       __typename: 'Post',
@@ -258,6 +260,8 @@ const mockPage: PageQuery['page'] = {
   featuredImage: {
     node: {
       mediaItemUrl:
+        'https://api.hel.fi/linkedevents-test/media/images/a-sip_netin_tapahtumakuva.1080x648_T3brYn4.jpg',
+      medium_large:
         'https://api.hel.fi/linkedevents-test/media/images/a-sip_netin_tapahtumakuva.1080x648_T3brYn4.jpg',
       altText: 'Picture with content',
       title: 'Picture with content title',
