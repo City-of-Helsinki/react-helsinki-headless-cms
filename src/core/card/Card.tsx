@@ -120,6 +120,10 @@ export type CardProps = {
    * Defines the width ratio for the text and image element in the card. Primary is wider.
    */
   primaryContent?: 'image' | 'text';
+  /**
+   * Boolean indicating whether flex attribute should be added to the container of the link.
+   */
+  flex?: boolean;
 };
 
 export function Card({
@@ -146,6 +150,7 @@ export function Card({
   style,
   backgroundColor,
   primaryContent = 'text',
+  flex,
 }: CardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const handleToggleActive = () => setIsHovered((val) => !val);
@@ -316,6 +321,7 @@ export function Card({
         openInNewTab={openLinkInNewTab}
         onMouseEnter={handleToggleActive}
         onMouseLeave={handleToggleActive}
+        flex={flex}
       >
         {content}
       </LinkBox>

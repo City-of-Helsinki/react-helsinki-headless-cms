@@ -3,6 +3,11 @@
   position: relative;
   height: 100%;
   width: 100%;
+
+  &.flex {
+    display: flex;
+  }
+
   a:focus {
     border: 2px solid var(--color-black-90);
     outline: none;

@@ -69,6 +69,10 @@ export type LargeCardProps = {
    *  Boolean indicating whether the border styles should be applied to the Card.
    */
   withBorder?: boolean;
+  /**
+   * Boolean indicating whether flex attribute should be added to the container of the link.
+   */
+  flex?: boolean;
 };
 
 export function LargeCard({
@@ -87,6 +91,7 @@ export function LargeCard({
   clampText,
   openInNewTab,
   withBorder,
+  flex,
 }: LargeCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const handleToggleActive = () => setIsHovered((val) => !val);
@@ -142,6 +147,7 @@ export function LargeCard({
           openInNewTab={openInNewTab}
           onMouseEnter={handleToggleActive}
           onMouseLeave={handleToggleActive}
+          flex={flex}
         >
           {content}
         </LinkBox>
