@@ -18,18 +18,22 @@ export type LinkProps = Omit<React.ComponentPropsWithoutRef<'a'>, 'target'> & {
    * Boolean indicating whether the link should be opened in a new tab.
    */
   openInNewTab?: boolean;
+  /**
+   * Boolean indicating whether flex attribute should be added to the container of the link.
+   */
+  flex?: boolean;
 };
 
 // TODO: this component should be replaced with hds one, when all layouts and directions are supported
 // issue is created to hds: https://github.com/City-of-Helsinki/helsinki-design-system/issues/809
 
-export function LinkBox({ children, ...delegatedProps }: LinkProps) {
+export function LinkBox({ children, flex, ...delegatedProps }: LinkProps) {
   return (
-    <div className={styles.linkBoxWrapper}>
+    <div className={classNames(styles.linkBoxWrapper, flex && styles.flex)}>
       {children}
       <Link
         {...delegatedProps}
-        className={classNames(styles.linkBox)}
+        className={styles.linkBox}
         showExternalIcon={false}
       />
     </div>
