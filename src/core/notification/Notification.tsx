@@ -63,6 +63,7 @@ export type NotificationProps = {
 export function Notification({ notification }: NotificationProps) {
   const {
     copy: { closeButtonLabelText },
+    utils: { getRoutedInternalHref },
   } = useConfig();
   const [notificationState, setNotificationState] =
     useLocaleStorageNotification();
@@ -97,7 +98,7 @@ export function Notification({ notification }: NotificationProps) {
         {linkUrl && (
           <Link
             openInNewTab
-            href={linkUrl}
+            href={getRoutedInternalHref(linkUrl)}
             style={{ marginTop: '0.75rem', display: 'block' }}
           >
             {linkText}
