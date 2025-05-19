@@ -1519,9 +1519,26 @@ export function useEventListLazyQuery(
     options,
   );
 }
+export function useEventListSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<EventListQuery, EventListQueryVariables>,
+) {
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<EventListQuery, EventListQueryVariables>(
+    EventListDocument,
+    options,
+  );
+}
 export type EventListQueryHookResult = ReturnType<typeof useEventListQuery>;
 export type EventListLazyQueryHookResult = ReturnType<
   typeof useEventListLazyQuery
+>;
+export type EventListSuspenseQueryHookResult = ReturnType<
+  typeof useEventListSuspenseQuery
 >;
 export type EventListQueryResult = Apollo.QueryResult<
   EventListQuery,
@@ -1588,7 +1605,11 @@ export function useEventsByIdsQuery(
   baseOptions: Apollo.QueryHookOptions<
     EventsByIdsQuery,
     EventsByIdsQueryVariables
-  >,
+  > &
+    (
+      | { variables: EventsByIdsQueryVariables; skip?: boolean }
+      | { skip: boolean }
+    ),
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<EventsByIdsQuery, EventsByIdsQueryVariables>(
@@ -1608,9 +1629,29 @@ export function useEventsByIdsLazyQuery(
     options,
   );
 }
+export function useEventsByIdsSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        EventsByIdsQuery,
+        EventsByIdsQueryVariables
+      >,
+) {
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<EventsByIdsQuery, EventsByIdsQueryVariables>(
+    EventsByIdsDocument,
+    options,
+  );
+}
 export type EventsByIdsQueryHookResult = ReturnType<typeof useEventsByIdsQuery>;
 export type EventsByIdsLazyQueryHookResult = ReturnType<
   typeof useEventsByIdsLazyQuery
+>;
+export type EventsByIdsSuspenseQueryHookResult = ReturnType<
+  typeof useEventsByIdsSuspenseQuery
 >;
 export type EventsByIdsQueryResult = Apollo.QueryResult<
   EventsByIdsQuery,

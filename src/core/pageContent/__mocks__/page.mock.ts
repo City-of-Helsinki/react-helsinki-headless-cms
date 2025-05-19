@@ -263,6 +263,8 @@ const mockPage: PageQuery['page'] = {
         'https://api.hel.fi/linkedevents-test/media/images/a-sip_netin_tapahtumakuva.1080x648_T3brYn4.jpg',
       medium_large:
         'https://api.hel.fi/linkedevents-test/media/images/a-sip_netin_tapahtumakuva.1080x648_T3brYn4.jpg',
+      large:
+        'https://api.hel.fi/linkedevents-test/media/images/a-sip_netin_tapahtumakuva.1080x648_T3brYn4.jpg',
       altText: 'Picture with content',
       title: 'Picture with content title',
     },
