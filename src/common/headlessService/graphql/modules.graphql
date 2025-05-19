@@ -24,6 +24,7 @@ fragment LayoutArticles on LayoutArticles {
       node {
         altText
         mediaItemUrl
+        large: sourceUrl(size: LARGE)
         medium_large: sourceUrl(size: MEDIUM_LARGE)
         medium: sourceUrl(size: MEDIUM)
         thumbnail: sourceUrl(size: THUMBNAIL)
@@ -53,6 +54,7 @@ fragment LayoutArticlesCarousel on LayoutArticlesCarousel {
       node {
         altText
         mediaItemUrl
+        large: sourceUrl(size: LARGE)
         medium_large: sourceUrl(size: MEDIUM_LARGE)
         medium: sourceUrl(size: MEDIUM)
         thumbnail: sourceUrl(size: THUMBNAIL)
@@ -84,6 +86,7 @@ fragment LayoutPages on LayoutPages {
       node {
         altText
         mediaItemUrl
+        large: sourceUrl(size: LARGE)
         medium_large: sourceUrl(size: MEDIUM_LARGE)
         medium: sourceUrl(size: MEDIUM)
         thumbnail: sourceUrl(size: THUMBNAIL)
@@ -109,6 +112,7 @@ fragment LayoutPagesCarousel on LayoutPagesCarousel {
       node {
         altText
         mediaItemUrl
+        large: sourceUrl(size: LARGE)
         medium_large: sourceUrl(size: MEDIUM_LARGE)
         medium: sourceUrl(size: MEDIUM)
         thumbnail: sourceUrl(size: THUMBNAIL)
@@ -239,6 +243,7 @@ fragment LayoutImage on LayoutImage {
     caption
     description
     large
+    medium_large
     medium
     thumbnail
     title
@@ -253,6 +258,7 @@ fragment LayoutImageGallery on LayoutImageGallery {
     caption
     description
     large
+    medium_large
     medium
     thumbnail
     title

@@ -264,7 +264,7 @@ export function PageContent(props: PageContentProps) {
         }
         heroContainer={heroContainer}
         id={page?.id ?? 'page'}
-        imageSrc={page?.featuredImage?.node?.medium_large}
+        imageSrc={page?.featuredImage?.node?.large}
         imageAlt={page?.featuredImage?.node?.altText}
         imageLabel={page?.featuredImage?.node?.photographerName}
         backUrl={backUrl}

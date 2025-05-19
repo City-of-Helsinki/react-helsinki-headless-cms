@@ -84,7 +84,7 @@ const getCardProps = (
   subTitle: 'date' in item && formatDateTimeFromString(item.date || ''),
   customContent: <HtmlToReact>{(item.lead || item.content) ?? ''}</HtmlToReact>,
   url: item.slug || '',
-  imageUrl: item.featuredImage?.node.mediaItemUrl || '',
+  imageUrl: item.featuredImage?.node.medium_large || '',
 });
 
 const createLargeCard = (item: CollectionItemType & ArticleType) => (

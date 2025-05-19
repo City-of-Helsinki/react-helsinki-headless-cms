@@ -603,7 +603,7 @@ export type Collection = ContentNode &
   Previewable &
   UniformResourceIdentifiable & {
     __typename?: 'Collection';
-    /** Taustaväri */
+    /** Background Color */
     backgroundColor?: Maybe<Scalars['String']['output']>;
     /**
      * The id field matches the WP_Post-&gt;ID field.
@@ -620,7 +620,7 @@ export type Collection = ContentNode &
     date?: Maybe<Scalars['String']['output']>;
     /** The publishing date set in GMT. */
     dateGmt?: Maybe<Scalars['String']['output']>;
-    /** Kuvaus */
+    /** Description */
     description?: Maybe<Scalars['String']['output']>;
     /** The desired slug of the post */
     desiredSlug?: Maybe<Scalars['String']['output']>;
@@ -638,7 +638,7 @@ export type Collection = ContentNode &
     guid?: Maybe<Scalars['String']['output']>;
     /** The globally unique identifier of the collection-cpt object. */
     id: Scalars['ID']['output'];
-    /** Kuva */
+    /** Image */
     image?: Maybe<Scalars['String']['output']>;
     /** Whether the node is a Comment */
     isComment: Scalars['Boolean']['output'];
@@ -666,7 +666,7 @@ export type Collection = ContentNode &
     modified?: Maybe<Scalars['String']['output']>;
     /** The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT. */
     modifiedGmt?: Maybe<Scalars['String']['output']>;
-    /** Moduulilistaus */
+    /** List of modules */
     modules?: Maybe<Array<Maybe<CollectionModulesUnionType>>>;
     /** Connection between the Collection type and the collection type */
     preview?: Maybe<CollectionToPreviewConnectionEdge>;
@@ -680,7 +680,7 @@ export type Collection = ContentNode &
     revisions?: Maybe<CollectionToRevisionConnection>;
     /** The SEO Framework data of the collection */
     seo?: Maybe<Seo>;
-    /** Näytä etusivulla */
+    /** Show on front page */
     showOnFrontPage?: Maybe<Scalars['Boolean']['output']>;
     /** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
     slug?: Maybe<Scalars['String']['output']>;
@@ -1324,7 +1324,7 @@ export type Contact = ContentNode &
     date?: Maybe<Scalars['String']['output']>;
     /** The publishing date set in GMT. */
     dateGmt?: Maybe<Scalars['String']['output']>;
-    /** Kuvaus */
+    /** Description */
     description?: Maybe<Scalars['String']['output']>;
     /** The desired slug of the post */
     desiredSlug?: Maybe<Scalars['String']['output']>;
@@ -1342,7 +1342,7 @@ export type Contact = ContentNode &
     featuredImageDatabaseId?: Maybe<Scalars['Int']['output']>;
     /** Globally unique ID of the featured image assigned to the node */
     featuredImageId?: Maybe<Scalars['ID']['output']>;
-    /** Etunimi */
+    /** First name */
     firstName?: Maybe<Scalars['String']['output']>;
     /** The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table. */
     guid?: Maybe<Scalars['String']['output']>;
@@ -1370,7 +1370,7 @@ export type Contact = ContentNode &
     language?: Maybe<Language>;
     /** The user that most recently edited the node */
     lastEditedBy?: Maybe<ContentNodeToEditLastConnectionEdge>;
-    /** Sukunimi */
+    /** Last name */
     lastName?: Maybe<Scalars['String']['output']>;
     /** The permalink of the post */
     link?: Maybe<Scalars['String']['output']>;
@@ -3038,14 +3038,14 @@ export type EnqueuedStylesheetConnectionPageInfo = {
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
-/** Kokoelmamoduuli: EventSearch */
+/** Collection Module: EventSearch */
 export type EventSearch = {
   __typename?: 'EventSearch';
-  /** Listattujen tapahtumien määrä “Näytä lisää” -painiketta */
+  /** Amount of events listed before &quot;show more -button&quot; */
   initAmountOfEvents?: Maybe<Scalars['Int']['output']>;
-  /** Moduulin tyyppi */
+  /** Module type */
   module?: Maybe<Scalars['String']['output']>;
-  /** Moduulilistaus */
+  /** List of modules */
   modules?: Maybe<Array<Maybe<CollectionModulesUnionType>>>;
   /**
    * Show all -link, final link is combination of Tapahtuma- ja kurssikarusellin
@@ -3054,26 +3054,26 @@ export type EventSearch = {
    *
    */
   showAllLink?: Maybe<Scalars['String']['output']>;
-  /** Näytä kaikki -linkki */
+  /** Show all -link */
   showAllLinkCustom?: Maybe<Scalars['String']['output']>;
-  /** Moduulin otsikko */
+  /** Module title */
   title?: Maybe<Scalars['String']['output']>;
-  /** Hakukysely */
+  /** Search query */
   url?: Maybe<Scalars['String']['output']>;
 };
 
-/** Kokoelmamoduuli: EventSearchCarousel */
+/** Collection Module: EventSearchCarousel */
 export type EventSearchCarousel = {
   __typename?: 'EventSearchCarousel';
-  /** Korttien määrä karusellissa */
+  /** Amount of cards in carousel */
   amountOfCards?: Maybe<Scalars['Int']['output']>;
-  /** Tapahtumat lähellä */
+  /** Events nearby */
   eventsNearby?: Maybe<Scalars['Boolean']['output']>;
-  /** Moduulin tyyppi */
+  /** Module type */
   module?: Maybe<Scalars['String']['output']>;
-  /** Moduulilistaus */
+  /** List of modules */
   modules?: Maybe<Array<Maybe<CollectionModulesUnionType>>>;
-  /** Tapahtumien järjestys */
+  /** Events order */
   orderNewestFirst?: Maybe<Scalars['Boolean']['output']>;
   /**
    * Show all -link, final link is combination of Tapahtuma- ja kurssikarusellin
@@ -3082,53 +3082,51 @@ export type EventSearchCarousel = {
    *
    */
   showAllLink?: Maybe<Scalars['String']['output']>;
-  /** Näytä kaikki -linkki */
+  /** Show all -link */
   showAllLinkCustom?: Maybe<Scalars['String']['output']>;
-  /** Moduulin otsikko */
+  /** Module title */
   title?: Maybe<Scalars['String']['output']>;
-  /** Hakukysely */
+  /** Search query */
   url?: Maybe<Scalars['String']['output']>;
 };
 
-/** Kokoelmamoduuli: EventSelected */
+/** Collection Module: EventSelected */
 export type EventSelected = {
   __typename?: 'EventSelected';
-  /** Lista tapahtumien ID-tiedoista */
+  /** List of event IDs */
   events?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  /** Listattujen tapahtumien määrä “Näytä lisää” -painiketta */
+  /** Amount of events listed before &quot;show more -button&quot; */
   initAmountOfEvents?: Maybe<Scalars['Int']['output']>;
-  /** Moduulin tyyppi */
+  /** Module type */
   module?: Maybe<Scalars['String']['output']>;
-  /** Moduulilistaus */
+  /** List of modules */
   modules?: Maybe<Array<Maybe<CollectionModulesUnionType>>>;
-  /** Näytä kaikki -linkki */
+  /** Show all -link */
   showAllLink?: Maybe<Scalars['String']['output']>;
-  /** Moduulin otsikko */
+  /** Module title */
   title?: Maybe<Scalars['String']['output']>;
 };
 
-/** Kokoelmamoduuli: EventSelectedCarousel */
+/** Collection Module: EventSelectedCarousel */
 export type EventSelectedCarousel = {
   __typename?: 'EventSelectedCarousel';
-  /** Korttien määrä karusellissa */
+  /** Amount of cards in carousel */
   amountOfCards?: Maybe<Scalars['Int']['output']>;
-  /** Korttien määrä riviä kohden */
+  /** Amount of cards per row */
   amountOfCardsPerRow?: Maybe<Scalars['Int']['output']>;
-  /** Lista tapahtumien ID-tiedoista */
+  /** List of event IDs */
   events?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  /** Tapahtumat lähellä */
+  /** Events nearby */
   eventsNearby?: Maybe<Scalars['Boolean']['output']>;
-  /** Moduulin tyyppi */
+  /** Module type */
   module?: Maybe<Scalars['String']['output']>;
-  /** Moduulilistaus */
+  /** List of modules */
   modules?: Maybe<Array<Maybe<CollectionModulesUnionType>>>;
-  /** Näytä kaikki -linkki */
+  /** Show all -link */
   showAllLink?: Maybe<Scalars['String']['output']>;
-  /** Moduulin otsikko */
+  /** Module title */
   title?: Maybe<Scalars['String']['output']>;
 };
-
-export type FooterBlocksUnion = LayoutEditor | LayoutImage | LayoutMenu;
 
 /** Galleriakuva */
 export type GalleryImage = {
@@ -3169,11 +3167,6 @@ export type GeneralSettings = {
   /** Site URL. */
   url?: Maybe<Scalars['String']['output']>;
 };
-
-export type GlobalSidebarBlocksUnion =
-  | LayoutArticleHighlights
-  | LayoutArticles
-  | LayoutEditor;
 
 /** Hero kenttä */
 export type Hero = {
@@ -3573,7 +3566,7 @@ export type LandingPage = ContentNode &
   Previewable &
   UniformResourceIdentifiable & {
     __typename?: 'LandingPage';
-    /** Taustaväri */
+    /** Background Color */
     backgroundColor?: Maybe<Scalars['String']['output']>;
     /** Box Color */
     boxColor?: Maybe<Scalars['String']['output']>;
@@ -3587,7 +3580,7 @@ export type LandingPage = ContentNode &
     date?: Maybe<Scalars['String']['output']>;
     /** The publishing date set in GMT. */
     dateGmt?: Maybe<Scalars['String']['output']>;
-    /** Kuvaus */
+    /** Description */
     description?: Maybe<Scalars['String']['output']>;
     /** The desired slug of the post */
     desiredSlug?: Maybe<Scalars['String']['output']>;
@@ -3642,7 +3635,7 @@ export type LandingPage = ContentNode &
     modified?: Maybe<Scalars['String']['output']>;
     /** The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT. */
     modifiedGmt?: Maybe<Scalars['String']['output']>;
-    /** Moduulilistaus */
+    /** List of modules */
     modules?: Maybe<Array<Maybe<CollectionModulesUnionType>>>;
     /** Connection between the LandingPage type and the landingPage type */
     preview?: Maybe<LandingPageToPreviewConnectionEdge>;
@@ -4133,65 +4126,65 @@ export enum LanguageCodeFilterEnum {
 /** Layout: LayoutArticleHighlights */
 export type LayoutArticleHighlights = {
   __typename?: 'LayoutArticleHighlights';
-  /** Ankkuri */
+  /** Anchor */
   anchor?: Maybe<Scalars['String']['output']>;
-  /** Artikkelit */
+  /** Articles */
   articles?: Maybe<Array<Maybe<Post>>>;
-  /** Taustaväri */
+  /** Background Color */
   backgroundColor?: Maybe<Scalars['String']['output']>;
-  /** Kategoria */
+  /** Category */
   category?: Maybe<Scalars['Int']['output']>;
-  /** Valitse montako artikkelia näytetään */
+  /** Amount of articles to list */
   limit?: Maybe<Scalars['Int']['output']>;
-  /** Näytä lisää linkki */
+  /** Show more link */
   showMore?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  /** Tagi */
+  /** Tag */
   tag?: Maybe<Scalars['Int']['output']>;
-  /** Sivuston otsikko */
+  /** Title */
   title?: Maybe<Scalars['String']['output']>;
 };
 
 /** Layout: LayoutArticles */
 export type LayoutArticles = {
   __typename?: 'LayoutArticles';
-  /** Ankkuri */
+  /** Anchor */
   anchor?: Maybe<Scalars['String']['output']>;
-  /** Artikkelit */
+  /** Articles */
   articles?: Maybe<Array<Maybe<Post>>>;
-  /** Taustaväri */
+  /** Background Color */
   backgroundColor?: Maybe<Scalars['String']['output']>;
-  /** Kategoria */
+  /** Category */
   category?: Maybe<Scalars['Int']['output']>;
-  /** Tagi */
+  /** Tag */
   limit?: Maybe<Scalars['Int']['output']>;
-  /** Näytä lisää linkki */
+  /** Show all -link */
   showAllLink?: Maybe<Scalars['String']['output']>;
-  /** Tagi */
+  /** Tag */
   tag?: Maybe<Scalars['Int']['output']>;
-  /** Sivuston otsikko */
+  /** Title */
   title?: Maybe<Scalars['String']['output']>;
 };
 
 /** Layout: LayoutArticlesCarousel */
 export type LayoutArticlesCarousel = {
   __typename?: 'LayoutArticlesCarousel';
-  /** Ankkuri */
+  /** Anchor */
   anchor?: Maybe<Scalars['String']['output']>;
-  /** Artikkelit */
+  /** Articles */
   articles?: Maybe<Array<Maybe<Post>>>;
-  /** Taustaväri */
+  /** Background Color */
   backgroundColor?: Maybe<Scalars['String']['output']>;
-  /** Kategoria */
+  /** Category */
   category?: Maybe<Scalars['Int']['output']>;
-  /** Valitse montako artikkelia näytetään */
+  /** Amount of articles to list */
   limit?: Maybe<Scalars['Int']['output']>;
-  /** Näytä lisää linkki */
+  /** Show all -link */
   showAllLink?: Maybe<Scalars['String']['output']>;
-  /** Näytä lisää linkki */
+  /** Show more link */
   showMore?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  /** Tagi */
+  /** Tag */
   tag?: Maybe<Scalars['Int']['output']>;
-  /** Sivuston otsikko */
+  /** Title */
   title?: Maybe<Scalars['String']['output']>;
 };
 
@@ -4248,13 +4241,6 @@ export type LayoutContent = {
   title?: Maybe<Scalars['String']['output']>;
 };
 
-/** Layout: LayoutEditor */
-export type LayoutEditor = {
-  __typename?: 'LayoutEditor';
-  /** Editor */
-  editor?: Maybe<Scalars['String']['output']>;
-};
-
 /** Layout: LayoutImage */
 export type LayoutImage = {
   __typename?: 'LayoutImage';
@@ -4290,53 +4276,46 @@ export type LayoutLinkList = {
   title?: Maybe<Scalars['String']['output']>;
 };
 
-/** Layout: LayoutMenu */
-export type LayoutMenu = {
-  __typename?: 'LayoutMenu';
-  /** Menu */
-  menu?: Maybe<Scalars['String']['output']>;
-};
-
 /** Layout: LayoutPages */
 export type LayoutPages = {
   __typename?: 'LayoutPages';
-  /** Ankkuri */
+  /** Anchor */
   anchor?: Maybe<Scalars['String']['output']>;
-  /** Taustaväri */
+  /** Background Color */
   backgroundColor?: Maybe<Scalars['String']['output']>;
-  /** Kuvaus */
+  /** Description */
   description?: Maybe<Scalars['String']['output']>;
-  /** Sivut */
+  /** Pages */
   pages?: Maybe<Array<Maybe<Page>>>;
-  /** Näytä lisää linkki */
+  /** Show all -link */
   showAllLink?: Maybe<Scalars['String']['output']>;
-  /** Sivuston otsikko */
+  /** Title */
   title?: Maybe<Scalars['String']['output']>;
 };
 
 /** Layout: LayoutPagesCarousel */
 export type LayoutPagesCarousel = {
   __typename?: 'LayoutPagesCarousel';
-  /** Ankkuri */
+  /** Anchor */
   anchor?: Maybe<Scalars['String']['output']>;
-  /** Taustaväri */
+  /** Background Color */
   backgroundColor?: Maybe<Scalars['String']['output']>;
-  /** Kuvaus */
+  /** Description */
   description?: Maybe<Scalars['String']['output']>;
-  /** Sivut */
+  /** Pages */
   pages?: Maybe<Array<Maybe<Page>>>;
-  /** Sivuston otsikko */
+  /** Title */
   title?: Maybe<Scalars['String']['output']>;
 };
 
 /** Layout: LayoutSocialMediaFeed */
 export type LayoutSocialMediaFeed = {
   __typename?: 'LayoutSocialMediaFeed';
-  /** Ankkuri */
+  /** Anchor */
   anchor?: Maybe<Scalars['String']['output']>;
-  /** Scripti */
+  /** Script */
   script?: Maybe<Scalars['String']['output']>;
-  /** Sivuston otsikko */
+  /** Title */
   title?: Maybe<Scalars['String']['output']>;
 };
 
@@ -4366,27 +4345,27 @@ export type Link = {
   url?: Maybe<Scalars['String']['output']>;
 };
 
-/** Kokoelmamoduuli: LocationsSelected */
+/** Collection Module: LocationsSelected */
 export type LocationsSelected = {
   __typename?: 'LocationsSelected';
   /** List of location IDs */
   locations?: Maybe<Array<Maybe<Scalars['Int']['output']>>>;
   /** Module type */
   module?: Maybe<Scalars['String']['output']>;
-  /** Moduulilistaus */
+  /** List of modules */
   modules?: Maybe<Array<Maybe<CollectionModulesUnionType>>>;
   /** Module title */
   title?: Maybe<Scalars['String']['output']>;
 };
 
-/** Kokoelmamoduuli: LocationsSelectedCarousel */
+/** Collection Module: LocationsSelectedCarousel */
 export type LocationsSelectedCarousel = {
   __typename?: 'LocationsSelectedCarousel';
   /** List of location IDs */
   locations?: Maybe<Array<Maybe<Scalars['Int']['output']>>>;
   /** Module type */
   module?: Maybe<Scalars['String']['output']>;
-  /** Moduulilistaus */
+  /** List of modules */
   modules?: Maybe<Array<Maybe<CollectionModulesUnionType>>>;
   /** Module title */
   title?: Maybe<Scalars['String']['output']>;
@@ -5152,6 +5131,8 @@ export enum MimeTypeEnum {
   AudioOgg = 'AUDIO_OGG',
   /** audio/wav mime type. */
   AudioWav = 'AUDIO_WAV',
+  /** image/avif mime type. */
+  ImageAvif = 'IMAGE_AVIF',
   /** image/gif mime type. */
   ImageGif = 'IMAGE_GIF',
   /** image/jpeg mime type. */
@@ -6482,12 +6463,18 @@ export enum PostStatusEnum {
   DpRewriteRepublish = 'DP_REWRITE_REPUBLISH',
   /** Objects with the draft status */
   Draft = 'DRAFT',
+  /** Objects with the draft-revision status */
+  DraftRevision = 'DRAFT_REVISION',
   /** Objects with the future status */
   Future = 'FUTURE',
+  /** Objects with the future-revision status */
+  FutureRevision = 'FUTURE_REVISION',
   /** Objects with the inherit status */
   Inherit = 'INHERIT',
   /** Objects with the pending status */
   Pending = 'PENDING',
+  /** Objects with the pending-revision status */
+  PendingRevision = 'PENDING_REVISION',
   /** Objects with the private status */
   Private = 'PRIVATE',
   /** Objects with the publish status */
@@ -7779,7 +7766,7 @@ export type RootQuery = {
   categories?: Maybe<RootQueryToCategoryConnection>;
   /** A 0bject */
   category?: Maybe<Category>;
-  /** An object of the collection Type. Kokoelmat */
+  /** An object of the collection Type. Collections */
   collection?: Maybe<Collection>;
   /**
    * A collection object
@@ -7792,7 +7779,7 @@ export type RootQuery = {
   comment?: Maybe<Comment>;
   /** Connection between the RootQuery type and the Comment type */
   comments?: Maybe<RootQueryToCommentConnection>;
-  /** An object of the contact Type. Yhteystiedot */
+  /** An object of the contact Type. Contacts */
   contact?: Maybe<Contact>;
   /**
    * A contact object
@@ -7815,13 +7802,9 @@ export type RootQuery = {
   defaultLanguage?: Maybe<Language>;
   /** Fields of the &#039;DiscussionSettings&#039; settings group */
   discussionSettings?: Maybe<DiscussionSettings>;
-  /** Footer blocks */
-  footerBlocks?: Maybe<Array<Maybe<FooterBlocksUnion>>>;
   /** Fields of the &#039;GeneralSettings&#039; settings group */
   generalSettings?: Maybe<GeneralSettings>;
-  /** Global Sidebar blocks */
-  globalSidebarBlocks?: Maybe<Array<Maybe<GlobalSidebarBlocksUnion>>>;
-  /** An object of the landingPage Type. Laskeutumissivut */
+  /** An object of the landingPage Type. Landing Pages */
   landingPage?: Maybe<LandingPage>;
   /**
    * A landingPage object
@@ -7888,7 +7871,7 @@ export type RootQuery = {
   registeredScripts?: Maybe<RootQueryToEnqueuedScriptConnection>;
   /** Connection between the RootQuery type and the EnqueuedStylesheet type */
   registeredStylesheets?: Maybe<RootQueryToEnqueuedStylesheetConnection>;
-  /** An object of the release Type. Tiedotteet */
+  /** An object of the release Type. Releases */
   release?: Maybe<Release>;
   /**
    * A release object
@@ -7921,7 +7904,7 @@ export type RootQuery = {
   themes?: Maybe<RootQueryToThemeConnection>;
   /** Translate string using pll_translate_string() (Polylang) */
   translateString?: Maybe<Scalars['String']['output']>;
-  /** An object of the translation Type. Käännökset */
+  /** An object of the translation Type. Translations */
   translation?: Maybe<Translation>;
   /**
    * A translation object
@@ -8055,16 +8038,6 @@ export type RootQueryContentTypesArgs = {
 
 /** The root entry point into the Graph */
 export type RootQueryDefaultImagesArgs = {
-  language: Scalars['String']['input'];
-};
-
-/** The root entry point into the Graph */
-export type RootQueryFooterBlocksArgs = {
-  language: Scalars['String']['input'];
-};
-
-/** The root entry point into the Graph */
-export type RootQueryGlobalSidebarBlocksArgs = {
   language: Scalars['String']['input'];
 };
 
@@ -11124,7 +11097,7 @@ export type Translation = ContentNode &
      * @deprecated Deprecated in favor of the databaseId field
      */
     translationId: Scalars['Int']['output'];
-    /** Käännökset */
+    /** Translations */
     translations?: Maybe<Array<Maybe<TranslationResponse>>>;
     /** The unique resource identifier path */
     uri?: Maybe<Scalars['String']['output']>;
@@ -11202,23 +11175,23 @@ export enum TranslationIdType {
   Uri = 'URI',
 }
 
-/** Käännöksen kieli/arvo-parit */
+/** Translation with language/value pairs */
 export type TranslationItems = {
   __typename?: 'TranslationItems';
-  /** Käännöksen merkkijono */
+  /** Translation string */
   en?: Maybe<Scalars['String']['output']>;
-  /** Käännöksen merkkijono */
+  /** Translation string */
   fi?: Maybe<Scalars['String']['output']>;
-  /** Käännöksen merkkijono */
+  /** Translation string */
   sv?: Maybe<Scalars['String']['output']>;
 };
 
-/** Käännösvastaus sisältää käännösavaimen ja käännökset */
+/** Translation response contains translation key and translations */
 export type TranslationResponse = {
   __typename?: 'TranslationResponse';
-  /** Käyttöliittymän käännösavain */
+  /** Translation key for frontend */
   key?: Maybe<Scalars['String']['output']>;
-  /** Käännökset käyttöliittymälle */
+  /** Translations for frontend */
   translations?: Maybe<TranslationItems>;
 };
 
@@ -12118,6 +12091,8 @@ export enum UserRoleEnum {
   /** User role with specific capabilities */
   HeadlessCmsViewer = 'HEADLESS_CMS_VIEWER',
   /** User role with specific capabilities */
+  Revisor = 'REVISOR',
+  /** User role with specific capabilities */
   Subscriber = 'SUBSCRIBER',
 }
 
@@ -12831,6 +12806,7 @@ export type PostFragment = {
       title?: string | null;
       uri?: string | null;
       photographerName?: string | null;
+      large?: string | null;
       medium_large?: string | null;
       medium?: string | null;
       thumbnail?: string | null;
@@ -12861,6 +12837,7 @@ export type PostFragment = {
               __typename?: 'MediaItem';
               altText?: string | null;
               mediaItemUrl?: string | null;
+              large?: string | null;
               medium_large?: string | null;
               medium?: string | null;
               thumbnail?: string | null;
@@ -12920,6 +12897,7 @@ export type PostFragment = {
               __typename?: 'MediaItem';
               altText?: string | null;
               mediaItemUrl?: string | null;
+              large?: string | null;
               medium_large?: string | null;
               medium?: string | null;
               thumbnail?: string | null;
@@ -12983,6 +12961,7 @@ export type PostFragment = {
               __typename?: 'MediaItem';
               altText?: string | null;
               mediaItemUrl?: string | null;
+              large?: string | null;
               medium_large?: string | null;
               medium?: string | null;
               thumbnail?: string | null;
@@ -13014,6 +12993,7 @@ export type PostFragment = {
               __typename?: 'MediaItem';
               altText?: string | null;
               mediaItemUrl?: string | null;
+              large?: string | null;
               medium_large?: string | null;
               medium?: string | null;
               thumbnail?: string | null;
@@ -13088,10 +13068,10 @@ export type PostFragment = {
           caption?: string | null;
           description?: string | null;
           large?: string | null;
+          medium_large?: string | null;
           medium?: string | null;
           thumbnail?: string | null;
           title?: string | null;
-          medium_large?: string | null;
         } | null;
       }
     | {
@@ -13101,10 +13081,10 @@ export type PostFragment = {
           caption?: string | null;
           description?: string | null;
           large?: string | null;
+          medium_large?: string | null;
           medium?: string | null;
           thumbnail?: string | null;
           title?: string | null;
-          medium_large?: string | null;
         } | null> | null;
       }
     | {
@@ -13127,6 +13107,7 @@ export type PostFragment = {
               __typename?: 'MediaItem';
               altText?: string | null;
               mediaItemUrl?: string | null;
+              large?: string | null;
               medium_large?: string | null;
               medium?: string | null;
               thumbnail?: string | null;
@@ -13153,6 +13134,7 @@ export type PostFragment = {
               __typename?: 'MediaItem';
               altText?: string | null;
               mediaItemUrl?: string | null;
+              large?: string | null;
               medium_large?: string | null;
               medium?: string | null;
               thumbnail?: string | null;
@@ -13279,6 +13261,7 @@ export type ArticleQuery = {
         title?: string | null;
         uri?: string | null;
         photographerName?: string | null;
+        large?: string | null;
         medium_large?: string | null;
         medium?: string | null;
         thumbnail?: string | null;
@@ -13309,6 +13292,7 @@ export type ArticleQuery = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                large?: string | null;
                 medium_large?: string | null;
                 medium?: string | null;
                 thumbnail?: string | null;
@@ -13368,6 +13352,7 @@ export type ArticleQuery = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                large?: string | null;
                 medium_large?: string | null;
                 medium?: string | null;
                 thumbnail?: string | null;
@@ -13431,6 +13416,7 @@ export type ArticleQuery = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                large?: string | null;
                 medium_large?: string | null;
                 medium?: string | null;
                 thumbnail?: string | null;
@@ -13462,6 +13448,7 @@ export type ArticleQuery = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                large?: string | null;
                 medium_large?: string | null;
                 medium?: string | null;
                 thumbnail?: string | null;
@@ -13536,10 +13523,10 @@ export type ArticleQuery = {
             caption?: string | null;
             description?: string | null;
             large?: string | null;
+            medium_large?: string | null;
             medium?: string | null;
             thumbnail?: string | null;
             title?: string | null;
-            medium_large?: string | null;
           } | null;
         }
       | {
@@ -13549,10 +13536,10 @@ export type ArticleQuery = {
             caption?: string | null;
             description?: string | null;
             large?: string | null;
+            medium_large?: string | null;
             medium?: string | null;
             thumbnail?: string | null;
             title?: string | null;
-            medium_large?: string | null;
           } | null> | null;
         }
       | {
@@ -13575,6 +13562,7 @@ export type ArticleQuery = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                large?: string | null;
                 medium_large?: string | null;
                 medium?: string | null;
                 thumbnail?: string | null;
@@ -13601,6 +13589,7 @@ export type ArticleQuery = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                large?: string | null;
                 medium_large?: string | null;
                 medium?: string | null;
                 thumbnail?: string | null;
@@ -13751,6 +13740,7 @@ export type PostsQuery = {
             title?: string | null;
             uri?: string | null;
             photographerName?: string | null;
+            large?: string | null;
             medium_large?: string | null;
             medium?: string | null;
             thumbnail?: string | null;
@@ -13781,6 +13771,7 @@ export type PostsQuery = {
                     __typename?: 'MediaItem';
                     altText?: string | null;
                     mediaItemUrl?: string | null;
+                    large?: string | null;
                     medium_large?: string | null;
                     medium?: string | null;
                     thumbnail?: string | null;
@@ -13843,6 +13834,7 @@ export type PostsQuery = {
                     __typename?: 'MediaItem';
                     altText?: string | null;
                     mediaItemUrl?: string | null;
+                    large?: string | null;
                     medium_large?: string | null;
                     medium?: string | null;
                     thumbnail?: string | null;
@@ -13906,6 +13898,7 @@ export type PostsQuery = {
                     __typename?: 'MediaItem';
                     altText?: string | null;
                     mediaItemUrl?: string | null;
+                    large?: string | null;
                     medium_large?: string | null;
                     medium?: string | null;
                     thumbnail?: string | null;
@@ -13940,6 +13933,7 @@ export type PostsQuery = {
                     __typename?: 'MediaItem';
                     altText?: string | null;
                     mediaItemUrl?: string | null;
+                    large?: string | null;
                     medium_large?: string | null;
                     medium?: string | null;
                     thumbnail?: string | null;
@@ -14017,10 +14011,10 @@ export type PostsQuery = {
                 caption?: string | null;
                 description?: string | null;
                 large?: string | null;
+                medium_large?: string | null;
                 medium?: string | null;
                 thumbnail?: string | null;
                 title?: string | null;
-                medium_large?: string | null;
               } | null;
             }
           | {
@@ -14030,10 +14024,10 @@ export type PostsQuery = {
                 caption?: string | null;
                 description?: string | null;
                 large?: string | null;
+                medium_large?: string | null;
                 medium?: string | null;
                 thumbnail?: string | null;
                 title?: string | null;
-                medium_large?: string | null;
               } | null> | null;
             }
           | {
@@ -14056,6 +14050,7 @@ export type PostsQuery = {
                     __typename?: 'MediaItem';
                     altText?: string | null;
                     mediaItemUrl?: string | null;
+                    large?: string | null;
                     medium_large?: string | null;
                     medium?: string | null;
                     thumbnail?: string | null;
@@ -14082,6 +14077,7 @@ export type PostsQuery = {
                     __typename?: 'MediaItem';
                     altText?: string | null;
                     mediaItemUrl?: string | null;
+                    large?: string | null;
                     medium_large?: string | null;
                     medium?: string | null;
                     thumbnail?: string | null;
@@ -14366,6 +14362,7 @@ export type MenuItemFragment = {
                         title?: string | null;
                         uri?: string | null;
                         photographerName?: string | null;
+                        large?: string | null;
                         medium_large?: string | null;
                         medium?: string | null;
                         thumbnail?: string | null;
@@ -14396,6 +14393,7 @@ export type MenuItemFragment = {
                                 __typename?: 'MediaItem';
                                 altText?: string | null;
                                 mediaItemUrl?: string | null;
+                                large?: string | null;
                                 medium_large?: string | null;
                                 medium?: string | null;
                                 thumbnail?: string | null;
@@ -14458,6 +14456,7 @@ export type MenuItemFragment = {
                                 __typename?: 'MediaItem';
                                 altText?: string | null;
                                 mediaItemUrl?: string | null;
+                                large?: string | null;
                                 medium_large?: string | null;
                                 medium?: string | null;
                                 thumbnail?: string | null;
@@ -14521,6 +14520,7 @@ export type MenuItemFragment = {
                                 __typename?: 'MediaItem';
                                 altText?: string | null;
                                 mediaItemUrl?: string | null;
+                                large?: string | null;
                                 medium_large?: string | null;
                                 medium?: string | null;
                                 thumbnail?: string | null;
@@ -14555,6 +14555,7 @@ export type MenuItemFragment = {
                                 __typename?: 'MediaItem';
                                 altText?: string | null;
                                 mediaItemUrl?: string | null;
+                                large?: string | null;
                                 medium_large?: string | null;
                                 medium?: string | null;
                                 thumbnail?: string | null;
@@ -14632,10 +14633,10 @@ export type MenuItemFragment = {
                             caption?: string | null;
                             description?: string | null;
                             large?: string | null;
+                            medium_large?: string | null;
                             medium?: string | null;
                             thumbnail?: string | null;
                             title?: string | null;
-                            medium_large?: string | null;
                           } | null;
                         }
                       | {
@@ -14645,10 +14646,10 @@ export type MenuItemFragment = {
                             caption?: string | null;
                             description?: string | null;
                             large?: string | null;
+                            medium_large?: string | null;
                             medium?: string | null;
                             thumbnail?: string | null;
                             title?: string | null;
-                            medium_large?: string | null;
                           } | null> | null;
                         }
                       | {
@@ -14671,6 +14672,7 @@ export type MenuItemFragment = {
                                 __typename?: 'MediaItem';
                                 altText?: string | null;
                                 mediaItemUrl?: string | null;
+                                large?: string | null;
                                 medium_large?: string | null;
                                 medium?: string | null;
                                 thumbnail?: string | null;
@@ -14697,6 +14699,7 @@ export type MenuItemFragment = {
                                 __typename?: 'MediaItem';
                                 altText?: string | null;
                                 mediaItemUrl?: string | null;
+                                large?: string | null;
                                 medium_large?: string | null;
                                 medium?: string | null;
                                 thumbnail?: string | null;
@@ -14785,6 +14788,7 @@ export type MenuItemFragment = {
                       title?: string | null;
                       uri?: string | null;
                       photographerName?: string | null;
+                      large?: string | null;
                       medium_large?: string | null;
                       medium?: string | null;
                       thumbnail?: string | null;
@@ -14815,6 +14819,7 @@ export type MenuItemFragment = {
                               __typename?: 'MediaItem';
                               altText?: string | null;
                               mediaItemUrl?: string | null;
+                              large?: string | null;
                               medium_large?: string | null;
                               medium?: string | null;
                               thumbnail?: string | null;
@@ -14877,6 +14882,7 @@ export type MenuItemFragment = {
                               __typename?: 'MediaItem';
                               altText?: string | null;
                               mediaItemUrl?: string | null;
+                              large?: string | null;
                               medium_large?: string | null;
                               medium?: string | null;
                               thumbnail?: string | null;
@@ -14940,6 +14946,7 @@ export type MenuItemFragment = {
                               __typename?: 'MediaItem';
                               altText?: string | null;
                               mediaItemUrl?: string | null;
+                              large?: string | null;
                               medium_large?: string | null;
                               medium?: string | null;
                               thumbnail?: string | null;
@@ -14974,6 +14981,7 @@ export type MenuItemFragment = {
                               __typename?: 'MediaItem';
                               altText?: string | null;
                               mediaItemUrl?: string | null;
+                              large?: string | null;
                               medium_large?: string | null;
                               medium?: string | null;
                               thumbnail?: string | null;
@@ -15051,10 +15059,10 @@ export type MenuItemFragment = {
                           caption?: string | null;
                           description?: string | null;
                           large?: string | null;
+                          medium_large?: string | null;
                           medium?: string | null;
                           thumbnail?: string | null;
                           title?: string | null;
-                          medium_large?: string | null;
                         } | null;
                       }
                     | {
@@ -15064,10 +15072,10 @@ export type MenuItemFragment = {
                           caption?: string | null;
                           description?: string | null;
                           large?: string | null;
+                          medium_large?: string | null;
                           medium?: string | null;
                           thumbnail?: string | null;
                           title?: string | null;
-                          medium_large?: string | null;
                         } | null> | null;
                       }
                     | {
@@ -15090,6 +15098,7 @@ export type MenuItemFragment = {
                               __typename?: 'MediaItem';
                               altText?: string | null;
                               mediaItemUrl?: string | null;
+                              large?: string | null;
                               medium_large?: string | null;
                               medium?: string | null;
                               thumbnail?: string | null;
@@ -15116,6 +15125,7 @@ export type MenuItemFragment = {
                               __typename?: 'MediaItem';
                               altText?: string | null;
                               mediaItemUrl?: string | null;
+                              large?: string | null;
                               medium_large?: string | null;
                               medium?: string | null;
                               thumbnail?: string | null;
@@ -15247,6 +15257,7 @@ export type MenuItemFragment = {
                 title?: string | null;
                 uri?: string | null;
                 photographerName?: string | null;
+                large?: string | null;
                 medium_large?: string | null;
                 medium?: string | null;
                 thumbnail?: string | null;
@@ -15277,6 +15288,7 @@ export type MenuItemFragment = {
                         __typename?: 'MediaItem';
                         altText?: string | null;
                         mediaItemUrl?: string | null;
+                        large?: string | null;
                         medium_large?: string | null;
                         medium?: string | null;
                         thumbnail?: string | null;
@@ -15339,6 +15351,7 @@ export type MenuItemFragment = {
                         __typename?: 'MediaItem';
                         altText?: string | null;
                         mediaItemUrl?: string | null;
+                        large?: string | null;
                         medium_large?: string | null;
                         medium?: string | null;
                         thumbnail?: string | null;
@@ -15402,6 +15415,7 @@ export type MenuItemFragment = {
                         __typename?: 'MediaItem';
                         altText?: string | null;
                         mediaItemUrl?: string | null;
+                        large?: string | null;
                         medium_large?: string | null;
                         medium?: string | null;
                         thumbnail?: string | null;
@@ -15436,6 +15450,7 @@ export type MenuItemFragment = {
                         __typename?: 'MediaItem';
                         altText?: string | null;
                         mediaItemUrl?: string | null;
+                        large?: string | null;
                         medium_large?: string | null;
                         medium?: string | null;
                         thumbnail?: string | null;
@@ -15513,10 +15528,10 @@ export type MenuItemFragment = {
                     caption?: string | null;
                     description?: string | null;
                     large?: string | null;
+                    medium_large?: string | null;
                     medium?: string | null;
                     thumbnail?: string | null;
                     title?: string | null;
-                    medium_large?: string | null;
                   } | null;
                 }
               | {
@@ -15526,10 +15541,10 @@ export type MenuItemFragment = {
                     caption?: string | null;
                     description?: string | null;
                     large?: string | null;
+                    medium_large?: string | null;
                     medium?: string | null;
                     thumbnail?: string | null;
                     title?: string | null;
-                    medium_large?: string | null;
                   } | null> | null;
                 }
               | {
@@ -15552,6 +15567,7 @@ export type MenuItemFragment = {
                         __typename?: 'MediaItem';
                         altText?: string | null;
                         mediaItemUrl?: string | null;
+                        large?: string | null;
                         medium_large?: string | null;
                         medium?: string | null;
                         thumbnail?: string | null;
@@ -15578,6 +15594,7 @@ export type MenuItemFragment = {
                         __typename?: 'MediaItem';
                         altText?: string | null;
                         mediaItemUrl?: string | null;
+                        large?: string | null;
                         medium_large?: string | null;
                         medium?: string | null;
                         thumbnail?: string | null;
@@ -15666,6 +15683,7 @@ export type MenuItemFragment = {
               title?: string | null;
               uri?: string | null;
               photographerName?: string | null;
+              large?: string | null;
               medium_large?: string | null;
               medium?: string | null;
               thumbnail?: string | null;
@@ -15696,6 +15714,7 @@ export type MenuItemFragment = {
                       __typename?: 'MediaItem';
                       altText?: string | null;
                       mediaItemUrl?: string | null;
+                      large?: string | null;
                       medium_large?: string | null;
                       medium?: string | null;
                       thumbnail?: string | null;
@@ -15758,6 +15777,7 @@ export type MenuItemFragment = {
                       __typename?: 'MediaItem';
                       altText?: string | null;
                       mediaItemUrl?: string | null;
+                      large?: string | null;
                       medium_large?: string | null;
                       medium?: string | null;
                       thumbnail?: string | null;
@@ -15821,6 +15841,7 @@ export type MenuItemFragment = {
                       __typename?: 'MediaItem';
                       altText?: string | null;
                       mediaItemUrl?: string | null;
+                      large?: string | null;
                       medium_large?: string | null;
                       medium?: string | null;
                       thumbnail?: string | null;
@@ -15855,6 +15876,7 @@ export type MenuItemFragment = {
                       __typename?: 'MediaItem';
                       altText?: string | null;
                       mediaItemUrl?: string | null;
+                      large?: string | null;
                       medium_large?: string | null;
                       medium?: string | null;
                       thumbnail?: string | null;
@@ -15932,10 +15954,10 @@ export type MenuItemFragment = {
                   caption?: string | null;
                   description?: string | null;
                   large?: string | null;
+                  medium_large?: string | null;
                   medium?: string | null;
                   thumbnail?: string | null;
                   title?: string | null;
-                  medium_large?: string | null;
                 } | null;
               }
             | {
@@ -15945,10 +15967,10 @@ export type MenuItemFragment = {
                   caption?: string | null;
                   description?: string | null;
                   large?: string | null;
+                  medium_large?: string | null;
                   medium?: string | null;
                   thumbnail?: string | null;
                   title?: string | null;
-                  medium_large?: string | null;
                 } | null> | null;
               }
             | {
@@ -15971,6 +15993,7 @@ export type MenuItemFragment = {
                       __typename?: 'MediaItem';
                       altText?: string | null;
                       mediaItemUrl?: string | null;
+                      large?: string | null;
                       medium_large?: string | null;
                       medium?: string | null;
                       thumbnail?: string | null;
@@ -15997,6 +16020,7 @@ export type MenuItemFragment = {
                       __typename?: 'MediaItem';
                       altText?: string | null;
                       mediaItemUrl?: string | null;
+                      large?: string | null;
                       medium_large?: string | null;
                       medium?: string | null;
                       thumbnail?: string | null;
@@ -16162,6 +16186,7 @@ export type MenuPageFieldsFragment = {
         title?: string | null;
         uri?: string | null;
         photographerName?: string | null;
+        large?: string | null;
         medium_large?: string | null;
         medium?: string | null;
         thumbnail?: string | null;
@@ -16192,6 +16217,7 @@ export type MenuPageFieldsFragment = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                large?: string | null;
                 medium_large?: string | null;
                 medium?: string | null;
                 thumbnail?: string | null;
@@ -16251,6 +16277,7 @@ export type MenuPageFieldsFragment = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                large?: string | null;
                 medium_large?: string | null;
                 medium?: string | null;
                 thumbnail?: string | null;
@@ -16314,6 +16341,7 @@ export type MenuPageFieldsFragment = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                large?: string | null;
                 medium_large?: string | null;
                 medium?: string | null;
                 thumbnail?: string | null;
@@ -16345,6 +16373,7 @@ export type MenuPageFieldsFragment = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                large?: string | null;
                 medium_large?: string | null;
                 medium?: string | null;
                 thumbnail?: string | null;
@@ -16419,10 +16448,10 @@ export type MenuPageFieldsFragment = {
             caption?: string | null;
             description?: string | null;
             large?: string | null;
+            medium_large?: string | null;
             medium?: string | null;
             thumbnail?: string | null;
             title?: string | null;
-            medium_large?: string | null;
           } | null;
         }
       | {
@@ -16432,10 +16461,10 @@ export type MenuPageFieldsFragment = {
             caption?: string | null;
             description?: string | null;
             large?: string | null;
+            medium_large?: string | null;
             medium?: string | null;
             thumbnail?: string | null;
             title?: string | null;
-            medium_large?: string | null;
           } | null> | null;
         }
       | {
@@ -16458,6 +16487,7 @@ export type MenuPageFieldsFragment = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                large?: string | null;
                 medium_large?: string | null;
                 medium?: string | null;
                 thumbnail?: string | null;
@@ -16484,6 +16514,7 @@ export type MenuPageFieldsFragment = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                large?: string | null;
                 medium_large?: string | null;
                 medium?: string | null;
                 thumbnail?: string | null;
@@ -16572,6 +16603,7 @@ export type MenuPageFieldsFragment = {
       title?: string | null;
       uri?: string | null;
       photographerName?: string | null;
+      large?: string | null;
       medium_large?: string | null;
       medium?: string | null;
       thumbnail?: string | null;
@@ -16602,6 +16634,7 @@ export type MenuPageFieldsFragment = {
               __typename?: 'MediaItem';
               altText?: string | null;
               mediaItemUrl?: string | null;
+              large?: string | null;
               medium_large?: string | null;
               medium?: string | null;
               thumbnail?: string | null;
@@ -16661,6 +16694,7 @@ export type MenuPageFieldsFragment = {
               __typename?: 'MediaItem';
               altText?: string | null;
               mediaItemUrl?: string | null;
+              large?: string | null;
               medium_large?: string | null;
               medium?: string | null;
               thumbnail?: string | null;
@@ -16724,6 +16758,7 @@ export type MenuPageFieldsFragment = {
               __typename?: 'MediaItem';
               altText?: string | null;
               mediaItemUrl?: string | null;
+              large?: string | null;
               medium_large?: string | null;
               medium?: string | null;
               thumbnail?: string | null;
@@ -16755,6 +16790,7 @@ export type MenuPageFieldsFragment = {
               __typename?: 'MediaItem';
               altText?: string | null;
               mediaItemUrl?: string | null;
+              large?: string | null;
               medium_large?: string | null;
               medium?: string | null;
               thumbnail?: string | null;
@@ -16829,10 +16865,10 @@ export type MenuPageFieldsFragment = {
           caption?: string | null;
           description?: string | null;
           large?: string | null;
+          medium_large?: string | null;
           medium?: string | null;
           thumbnail?: string | null;
           title?: string | null;
-          medium_large?: string | null;
         } | null;
       }
     | {
@@ -16842,10 +16878,10 @@ export type MenuPageFieldsFragment = {
           caption?: string | null;
           description?: string | null;
           large?: string | null;
+          medium_large?: string | null;
           medium?: string | null;
           thumbnail?: string | null;
           title?: string | null;
-          medium_large?: string | null;
         } | null> | null;
       }
     | {
@@ -16868,6 +16904,7 @@ export type MenuPageFieldsFragment = {
               __typename?: 'MediaItem';
               altText?: string | null;
               mediaItemUrl?: string | null;
+              large?: string | null;
               medium_large?: string | null;
               medium?: string | null;
               thumbnail?: string | null;
@@ -16894,6 +16931,7 @@ export type MenuPageFieldsFragment = {
               __typename?: 'MediaItem';
               altText?: string | null;
               mediaItemUrl?: string | null;
+              large?: string | null;
               medium_large?: string | null;
               medium?: string | null;
               thumbnail?: string | null;
@@ -17073,6 +17111,7 @@ export type MenuQuery = {
                               title?: string | null;
                               uri?: string | null;
                               photographerName?: string | null;
+                              large?: string | null;
                               medium_large?: string | null;
                               medium?: string | null;
                               thumbnail?: string | null;
@@ -17103,6 +17142,7 @@ export type MenuQuery = {
                                       __typename?: 'MediaItem';
                                       altText?: string | null;
                                       mediaItemUrl?: string | null;
+                                      large?: string | null;
                                       medium_large?: string | null;
                                       medium?: string | null;
                                       thumbnail?: string | null;
@@ -17165,6 +17205,7 @@ export type MenuQuery = {
                                       __typename?: 'MediaItem';
                                       altText?: string | null;
                                       mediaItemUrl?: string | null;
+                                      large?: string | null;
                                       medium_large?: string | null;
                                       medium?: string | null;
                                       thumbnail?: string | null;
@@ -17228,6 +17269,7 @@ export type MenuQuery = {
                                       __typename?: 'MediaItem';
                                       altText?: string | null;
                                       mediaItemUrl?: string | null;
+                                      large?: string | null;
                                       medium_large?: string | null;
                                       medium?: string | null;
                                       thumbnail?: string | null;
@@ -17262,6 +17304,7 @@ export type MenuQuery = {
                                       __typename?: 'MediaItem';
                                       altText?: string | null;
                                       mediaItemUrl?: string | null;
+                                      large?: string | null;
                                       medium_large?: string | null;
                                       medium?: string | null;
                                       thumbnail?: string | null;
@@ -17339,10 +17382,10 @@ export type MenuQuery = {
                                   caption?: string | null;
                                   description?: string | null;
                                   large?: string | null;
+                                  medium_large?: string | null;
                                   medium?: string | null;
                                   thumbnail?: string | null;
                                   title?: string | null;
-                                  medium_large?: string | null;
                                 } | null;
                               }
                             | {
@@ -17352,10 +17395,10 @@ export type MenuQuery = {
                                   caption?: string | null;
                                   description?: string | null;
                                   large?: string | null;
+                                  medium_large?: string | null;
                                   medium?: string | null;
                                   thumbnail?: string | null;
                                   title?: string | null;
-                                  medium_large?: string | null;
                                 } | null> | null;
                               }
                             | {
@@ -17378,6 +17421,7 @@ export type MenuQuery = {
                                       __typename?: 'MediaItem';
                                       altText?: string | null;
                                       mediaItemUrl?: string | null;
+                                      large?: string | null;
                                       medium_large?: string | null;
                                       medium?: string | null;
                                       thumbnail?: string | null;
@@ -17404,6 +17448,7 @@ export type MenuQuery = {
                                       __typename?: 'MediaItem';
                                       altText?: string | null;
                                       mediaItemUrl?: string | null;
+                                      large?: string | null;
                                       medium_large?: string | null;
                                       medium?: string | null;
                                       thumbnail?: string | null;
@@ -17492,6 +17537,7 @@ export type MenuQuery = {
                             title?: string | null;
                             uri?: string | null;
                             photographerName?: string | null;
+                            large?: string | null;
                             medium_large?: string | null;
                             medium?: string | null;
                             thumbnail?: string | null;
@@ -17522,6 +17568,7 @@ export type MenuQuery = {
                                     __typename?: 'MediaItem';
                                     altText?: string | null;
                                     mediaItemUrl?: string | null;
+                                    large?: string | null;
                                     medium_large?: string | null;
                                     medium?: string | null;
                                     thumbnail?: string | null;
@@ -17584,6 +17631,7 @@ export type MenuQuery = {
                                     __typename?: 'MediaItem';
                                     altText?: string | null;
                                     mediaItemUrl?: string | null;
+                                    large?: string | null;
                                     medium_large?: string | null;
                                     medium?: string | null;
                                     thumbnail?: string | null;
@@ -17647,6 +17695,7 @@ export type MenuQuery = {
                                     __typename?: 'MediaItem';
                                     altText?: string | null;
                                     mediaItemUrl?: string | null;
+                                    large?: string | null;
                                     medium_large?: string | null;
                                     medium?: string | null;
                                     thumbnail?: string | null;
@@ -17681,6 +17730,7 @@ export type MenuQuery = {
                                     __typename?: 'MediaItem';
                                     altText?: string | null;
                                     mediaItemUrl?: string | null;
+                                    large?: string | null;
                                     medium_large?: string | null;
                                     medium?: string | null;
                                     thumbnail?: string | null;
@@ -17758,10 +17808,10 @@ export type MenuQuery = {
                                 caption?: string | null;
                                 description?: string | null;
                                 large?: string | null;
+                                medium_large?: string | null;
                                 medium?: string | null;
                                 thumbnail?: string | null;
                                 title?: string | null;
-                                medium_large?: string | null;
                               } | null;
                             }
                           | {
@@ -17771,10 +17821,10 @@ export type MenuQuery = {
                                 caption?: string | null;
                                 description?: string | null;
                                 large?: string | null;
+                                medium_large?: string | null;
                                 medium?: string | null;
                                 thumbnail?: string | null;
                                 title?: string | null;
-                                medium_large?: string | null;
                               } | null> | null;
                             }
                           | {
@@ -17797,6 +17847,7 @@ export type MenuQuery = {
                                     __typename?: 'MediaItem';
                                     altText?: string | null;
                                     mediaItemUrl?: string | null;
+                                    large?: string | null;
                                     medium_large?: string | null;
                                     medium?: string | null;
                                     thumbnail?: string | null;
@@ -17823,6 +17874,7 @@ export type MenuQuery = {
                                     __typename?: 'MediaItem';
                                     altText?: string | null;
                                     mediaItemUrl?: string | null;
+                                    large?: string | null;
                                     medium_large?: string | null;
                                     medium?: string | null;
                                     thumbnail?: string | null;
@@ -17954,6 +18006,7 @@ export type MenuQuery = {
                       title?: string | null;
                       uri?: string | null;
                       photographerName?: string | null;
+                      large?: string | null;
                       medium_large?: string | null;
                       medium?: string | null;
                       thumbnail?: string | null;
@@ -17984,6 +18037,7 @@ export type MenuQuery = {
                               __typename?: 'MediaItem';
                               altText?: string | null;
                               mediaItemUrl?: string | null;
+                              large?: string | null;
                               medium_large?: string | null;
                               medium?: string | null;
                               thumbnail?: string | null;
@@ -18046,6 +18100,7 @@ export type MenuQuery = {
                               __typename?: 'MediaItem';
                               altText?: string | null;
                               mediaItemUrl?: string | null;
+                              large?: string | null;
                               medium_large?: string | null;
                               medium?: string | null;
                               thumbnail?: string | null;
@@ -18109,6 +18164,7 @@ export type MenuQuery = {
                               __typename?: 'MediaItem';
                               altText?: string | null;
                               mediaItemUrl?: string | null;
+                              large?: string | null;
                               medium_large?: string | null;
                               medium?: string | null;
                               thumbnail?: string | null;
@@ -18143,6 +18199,7 @@ export type MenuQuery = {
                               __typename?: 'MediaItem';
                               altText?: string | null;
                               mediaItemUrl?: string | null;
+                              large?: string | null;
                               medium_large?: string | null;
                               medium?: string | null;
                               thumbnail?: string | null;
@@ -18220,10 +18277,10 @@ export type MenuQuery = {
                           caption?: string | null;
                           description?: string | null;
                           large?: string | null;
+                          medium_large?: string | null;
                           medium?: string | null;
                           thumbnail?: string | null;
                           title?: string | null;
-                          medium_large?: string | null;
                         } | null;
                       }
                     | {
@@ -18233,10 +18290,10 @@ export type MenuQuery = {
                           caption?: string | null;
                           description?: string | null;
                           large?: string | null;
+                          medium_large?: string | null;
                           medium?: string | null;
                           thumbnail?: string | null;
                           title?: string | null;
-                          medium_large?: string | null;
                         } | null> | null;
                       }
                     | {
@@ -18259,6 +18316,7 @@ export type MenuQuery = {
                               __typename?: 'MediaItem';
                               altText?: string | null;
                               mediaItemUrl?: string | null;
+                              large?: string | null;
                               medium_large?: string | null;
                               medium?: string | null;
                               thumbnail?: string | null;
@@ -18285,6 +18343,7 @@ export type MenuQuery = {
                               __typename?: 'MediaItem';
                               altText?: string | null;
                               mediaItemUrl?: string | null;
+                              large?: string | null;
                               medium_large?: string | null;
                               medium?: string | null;
                               thumbnail?: string | null;
@@ -18373,6 +18432,7 @@ export type MenuQuery = {
                     title?: string | null;
                     uri?: string | null;
                     photographerName?: string | null;
+                    large?: string | null;
                     medium_large?: string | null;
                     medium?: string | null;
                     thumbnail?: string | null;
@@ -18403,6 +18463,7 @@ export type MenuQuery = {
                             __typename?: 'MediaItem';
                             altText?: string | null;
                             mediaItemUrl?: string | null;
+                            large?: string | null;
                             medium_large?: string | null;
                             medium?: string | null;
                             thumbnail?: string | null;
@@ -18465,6 +18526,7 @@ export type MenuQuery = {
                             __typename?: 'MediaItem';
                             altText?: string | null;
                             mediaItemUrl?: string | null;
+                            large?: string | null;
                             medium_large?: string | null;
                             medium?: string | null;
                             thumbnail?: string | null;
@@ -18528,6 +18590,7 @@ export type MenuQuery = {
                             __typename?: 'MediaItem';
                             altText?: string | null;
                             mediaItemUrl?: string | null;
+                            large?: string | null;
                             medium_large?: string | null;
                             medium?: string | null;
                             thumbnail?: string | null;
@@ -18562,6 +18625,7 @@ export type MenuQuery = {
                             __typename?: 'MediaItem';
                             altText?: string | null;
                             mediaItemUrl?: string | null;
+                            large?: string | null;
                             medium_large?: string | null;
                             medium?: string | null;
                             thumbnail?: string | null;
@@ -18639,10 +18703,10 @@ export type MenuQuery = {
                         caption?: string | null;
                         description?: string | null;
                         large?: string | null;
+                        medium_large?: string | null;
                         medium?: string | null;
                         thumbnail?: string | null;
                         title?: string | null;
-                        medium_large?: string | null;
                       } | null;
                     }
                   | {
@@ -18652,10 +18716,10 @@ export type MenuQuery = {
                         caption?: string | null;
                         description?: string | null;
                         large?: string | null;
+                        medium_large?: string | null;
                         medium?: string | null;
                         thumbnail?: string | null;
                         title?: string | null;
-                        medium_large?: string | null;
                       } | null> | null;
                     }
                   | {
@@ -18678,6 +18742,7 @@ export type MenuQuery = {
                             __typename?: 'MediaItem';
                             altText?: string | null;
                             mediaItemUrl?: string | null;
+                            large?: string | null;
                             medium_large?: string | null;
                             medium?: string | null;
                             thumbnail?: string | null;
@@ -18704,6 +18769,7 @@ export type MenuQuery = {
                             __typename?: 'MediaItem';
                             altText?: string | null;
                             mediaItemUrl?: string | null;
+                            large?: string | null;
                             medium_large?: string | null;
                             medium?: string | null;
                             thumbnail?: string | null;
@@ -18784,6 +18850,7 @@ export type LayoutArticlesFragment = {
         __typename?: 'MediaItem';
         altText?: string | null;
         mediaItemUrl?: string | null;
+        large?: string | null;
         medium_large?: string | null;
         medium?: string | null;
         thumbnail?: string | null;
@@ -18816,6 +18883,7 @@ export type LayoutArticlesCarouselFragment = {
         __typename?: 'MediaItem';
         altText?: string | null;
         mediaItemUrl?: string | null;
+        large?: string | null;
         medium_large?: string | null;
         medium?: string | null;
         thumbnail?: string | null;
@@ -18848,6 +18916,7 @@ export type LayoutPagesFragment = {
         __typename?: 'MediaItem';
         altText?: string | null;
         mediaItemUrl?: string | null;
+        large?: string | null;
         medium_large?: string | null;
         medium?: string | null;
         thumbnail?: string | null;
@@ -18875,6 +18944,7 @@ export type LayoutPagesCarouselFragment = {
         __typename?: 'MediaItem';
         altText?: string | null;
         mediaItemUrl?: string | null;
+        large?: string | null;
         medium_large?: string | null;
         medium?: string | null;
         thumbnail?: string | null;
@@ -19003,10 +19073,10 @@ export type LayoutImageFragment = {
     caption?: string | null;
     description?: string | null;
     large?: string | null;
+    medium_large?: string | null;
     medium?: string | null;
     thumbnail?: string | null;
     title?: string | null;
-    medium_large?: string | null;
   } | null;
 };
 
@@ -19017,10 +19087,10 @@ export type LayoutImageGalleryFragment = {
     caption?: string | null;
     description?: string | null;
     large?: string | null;
+    medium_large?: string | null;
     medium?: string | null;
     thumbnail?: string | null;
     title?: string | null;
-    medium_large?: string | null;
   } | null> | null;
 };
 
@@ -19147,6 +19217,7 @@ export type PageFragment = {
       title?: string | null;
       uri?: string | null;
       photographerName?: string | null;
+      large?: string | null;
       medium_large?: string | null;
       medium?: string | null;
       thumbnail?: string | null;
@@ -19177,6 +19248,7 @@ export type PageFragment = {
               __typename?: 'MediaItem';
               altText?: string | null;
               mediaItemUrl?: string | null;
+              large?: string | null;
               medium_large?: string | null;
               medium?: string | null;
               thumbnail?: string | null;
@@ -19236,6 +19308,7 @@ export type PageFragment = {
               __typename?: 'MediaItem';
               altText?: string | null;
               mediaItemUrl?: string | null;
+              large?: string | null;
               medium_large?: string | null;
               medium?: string | null;
               thumbnail?: string | null;
@@ -19299,6 +19372,7 @@ export type PageFragment = {
               __typename?: 'MediaItem';
               altText?: string | null;
               mediaItemUrl?: string | null;
+              large?: string | null;
               medium_large?: string | null;
               medium?: string | null;
               thumbnail?: string | null;
@@ -19330,6 +19404,7 @@ export type PageFragment = {
               __typename?: 'MediaItem';
               altText?: string | null;
               mediaItemUrl?: string | null;
+              large?: string | null;
               medium_large?: string | null;
               medium?: string | null;
               thumbnail?: string | null;
@@ -19404,10 +19479,10 @@ export type PageFragment = {
           caption?: string | null;
           description?: string | null;
           large?: string | null;
+          medium_large?: string | null;
           medium?: string | null;
           thumbnail?: string | null;
           title?: string | null;
-          medium_large?: string | null;
         } | null;
       }
     | {
@@ -19417,10 +19492,10 @@ export type PageFragment = {
           caption?: string | null;
           description?: string | null;
           large?: string | null;
+          medium_large?: string | null;
           medium?: string | null;
           thumbnail?: string | null;
           title?: string | null;
-          medium_large?: string | null;
         } | null> | null;
       }
     | {
@@ -19443,6 +19518,7 @@ export type PageFragment = {
               __typename?: 'MediaItem';
               altText?: string | null;
               mediaItemUrl?: string | null;
+              large?: string | null;
               medium_large?: string | null;
               medium?: string | null;
               thumbnail?: string | null;
@@ -19469,6 +19545,7 @@ export type PageFragment = {
               __typename?: 'MediaItem';
               altText?: string | null;
               mediaItemUrl?: string | null;
+              large?: string | null;
               medium_large?: string | null;
               medium?: string | null;
               thumbnail?: string | null;
@@ -19601,6 +19678,7 @@ export type PageQuery = {
         title?: string | null;
         uri?: string | null;
         photographerName?: string | null;
+        large?: string | null;
         medium_large?: string | null;
         medium?: string | null;
         thumbnail?: string | null;
@@ -19631,6 +19709,7 @@ export type PageQuery = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                large?: string | null;
                 medium_large?: string | null;
                 medium?: string | null;
                 thumbnail?: string | null;
@@ -19690,6 +19769,7 @@ export type PageQuery = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                large?: string | null;
                 medium_large?: string | null;
                 medium?: string | null;
                 thumbnail?: string | null;
@@ -19753,6 +19833,7 @@ export type PageQuery = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                large?: string | null;
                 medium_large?: string | null;
                 medium?: string | null;
                 thumbnail?: string | null;
@@ -19784,6 +19865,7 @@ export type PageQuery = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                large?: string | null;
                 medium_large?: string | null;
                 medium?: string | null;
                 thumbnail?: string | null;
@@ -19858,10 +19940,10 @@ export type PageQuery = {
             caption?: string | null;
             description?: string | null;
             large?: string | null;
+            medium_large?: string | null;
             medium?: string | null;
             thumbnail?: string | null;
             title?: string | null;
-            medium_large?: string | null;
           } | null;
         }
       | {
@@ -19871,10 +19953,10 @@ export type PageQuery = {
             caption?: string | null;
             description?: string | null;
             large?: string | null;
+            medium_large?: string | null;
             medium?: string | null;
             thumbnail?: string | null;
             title?: string | null;
-            medium_large?: string | null;
           } | null> | null;
         }
       | {
@@ -19897,6 +19979,7 @@ export type PageQuery = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                large?: string | null;
                 medium_large?: string | null;
                 medium?: string | null;
                 thumbnail?: string | null;
@@ -19923,6 +20006,7 @@ export type PageQuery = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                large?: string | null;
                 medium_large?: string | null;
                 medium?: string | null;
                 thumbnail?: string | null;
@@ -20057,6 +20141,7 @@ export type PageByTemplateQuery = {
         title?: string | null;
         uri?: string | null;
         photographerName?: string | null;
+        large?: string | null;
         medium_large?: string | null;
         medium?: string | null;
         thumbnail?: string | null;
@@ -20087,6 +20172,7 @@ export type PageByTemplateQuery = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                large?: string | null;
                 medium_large?: string | null;
                 medium?: string | null;
                 thumbnail?: string | null;
@@ -20146,6 +20232,7 @@ export type PageByTemplateQuery = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                large?: string | null;
                 medium_large?: string | null;
                 medium?: string | null;
                 thumbnail?: string | null;
@@ -20209,6 +20296,7 @@ export type PageByTemplateQuery = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                large?: string | null;
                 medium_large?: string | null;
                 medium?: string | null;
                 thumbnail?: string | null;
@@ -20240,6 +20328,7 @@ export type PageByTemplateQuery = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                large?: string | null;
                 medium_large?: string | null;
                 medium?: string | null;
                 thumbnail?: string | null;
@@ -20314,10 +20403,10 @@ export type PageByTemplateQuery = {
             caption?: string | null;
             description?: string | null;
             large?: string | null;
+            medium_large?: string | null;
             medium?: string | null;
             thumbnail?: string | null;
             title?: string | null;
-            medium_large?: string | null;
           } | null;
         }
       | {
@@ -20327,10 +20416,10 @@ export type PageByTemplateQuery = {
             caption?: string | null;
             description?: string | null;
             large?: string | null;
+            medium_large?: string | null;
             medium?: string | null;
             thumbnail?: string | null;
             title?: string | null;
-            medium_large?: string | null;
           } | null> | null;
         }
       | {
@@ -20353,6 +20442,7 @@ export type PageByTemplateQuery = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                large?: string | null;
                 medium_large?: string | null;
                 medium?: string | null;
                 thumbnail?: string | null;
@@ -20379,6 +20469,7 @@ export type PageByTemplateQuery = {
                 __typename?: 'MediaItem';
                 altText?: string | null;
                 mediaItemUrl?: string | null;
+                large?: string | null;
                 medium_large?: string | null;
                 medium?: string | null;
                 thumbnail?: string | null;
@@ -20543,6 +20634,7 @@ export type PageChildrenSearchQuery = {
                     title?: string | null;
                     uri?: string | null;
                     photographerName?: string | null;
+                    large?: string | null;
                     medium_large?: string | null;
                     medium?: string | null;
                     thumbnail?: string | null;
@@ -20573,6 +20665,7 @@ export type PageChildrenSearchQuery = {
                             __typename?: 'MediaItem';
                             altText?: string | null;
                             mediaItemUrl?: string | null;
+                            large?: string | null;
                             medium_large?: string | null;
                             medium?: string | null;
                             thumbnail?: string | null;
@@ -20635,6 +20728,7 @@ export type PageChildrenSearchQuery = {
                             __typename?: 'MediaItem';
                             altText?: string | null;
                             mediaItemUrl?: string | null;
+                            large?: string | null;
                             medium_large?: string | null;
                             medium?: string | null;
                             thumbnail?: string | null;
@@ -20698,6 +20792,7 @@ export type PageChildrenSearchQuery = {
                             __typename?: 'MediaItem';
                             altText?: string | null;
                             mediaItemUrl?: string | null;
+                            large?: string | null;
                             medium_large?: string | null;
                             medium?: string | null;
                             thumbnail?: string | null;
@@ -20732,6 +20827,7 @@ export type PageChildrenSearchQuery = {
                             __typename?: 'MediaItem';
                             altText?: string | null;
                             mediaItemUrl?: string | null;
+                            large?: string | null;
                             medium_large?: string | null;
                             medium?: string | null;
                             thumbnail?: string | null;
@@ -20809,10 +20905,10 @@ export type PageChildrenSearchQuery = {
                         caption?: string | null;
                         description?: string | null;
                         large?: string | null;
+                        medium_large?: string | null;
                         medium?: string | null;
                         thumbnail?: string | null;
                         title?: string | null;
-                        medium_large?: string | null;
                       } | null;
                     }
                   | {
@@ -20822,10 +20918,10 @@ export type PageChildrenSearchQuery = {
                         caption?: string | null;
                         description?: string | null;
                         large?: string | null;
+                        medium_large?: string | null;
                         medium?: string | null;
                         thumbnail?: string | null;
                         title?: string | null;
-                        medium_large?: string | null;
                       } | null> | null;
                     }
                   | {
@@ -20848,6 +20944,7 @@ export type PageChildrenSearchQuery = {
                             __typename?: 'MediaItem';
                             altText?: string | null;
                             mediaItemUrl?: string | null;
+                            large?: string | null;
                             medium_large?: string | null;
                             medium?: string | null;
                             thumbnail?: string | null;
@@ -20874,6 +20971,7 @@ export type PageChildrenSearchQuery = {
                             __typename?: 'MediaItem';
                             altText?: string | null;
                             mediaItemUrl?: string | null;
+                            large?: string | null;
                             medium_large?: string | null;
                             medium?: string | null;
                             thumbnail?: string | null;
@@ -20962,6 +21060,7 @@ export type PageChildrenSearchQuery = {
                   title?: string | null;
                   uri?: string | null;
                   photographerName?: string | null;
+                  large?: string | null;
                   medium_large?: string | null;
                   medium?: string | null;
                   thumbnail?: string | null;
@@ -20992,6 +21091,7 @@ export type PageChildrenSearchQuery = {
                           __typename?: 'MediaItem';
                           altText?: string | null;
                           mediaItemUrl?: string | null;
+                          large?: string | null;
                           medium_large?: string | null;
                           medium?: string | null;
                           thumbnail?: string | null;
@@ -21054,6 +21154,7 @@ export type PageChildrenSearchQuery = {
                           __typename?: 'MediaItem';
                           altText?: string | null;
                           mediaItemUrl?: string | null;
+                          large?: string | null;
                           medium_large?: string | null;
                           medium?: string | null;
                           thumbnail?: string | null;
@@ -21117,6 +21218,7 @@ export type PageChildrenSearchQuery = {
                           __typename?: 'MediaItem';
                           altText?: string | null;
                           mediaItemUrl?: string | null;
+                          large?: string | null;
                           medium_large?: string | null;
                           medium?: string | null;
                           thumbnail?: string | null;
@@ -21151,6 +21253,7 @@ export type PageChildrenSearchQuery = {
                           __typename?: 'MediaItem';
                           altText?: string | null;
                           mediaItemUrl?: string | null;
+                          large?: string | null;
                           medium_large?: string | null;
                           medium?: string | null;
                           thumbnail?: string | null;
@@ -21228,10 +21331,10 @@ export type PageChildrenSearchQuery = {
                       caption?: string | null;
                       description?: string | null;
                       large?: string | null;
+                      medium_large?: string | null;
                       medium?: string | null;
                       thumbnail?: string | null;
                       title?: string | null;
-                      medium_large?: string | null;
                     } | null;
                   }
                 | {
@@ -21241,10 +21344,10 @@ export type PageChildrenSearchQuery = {
                       caption?: string | null;
                       description?: string | null;
                       large?: string | null;
+                      medium_large?: string | null;
                       medium?: string | null;
                       thumbnail?: string | null;
                       title?: string | null;
-                      medium_large?: string | null;
                     } | null> | null;
                   }
                 | {
@@ -21267,6 +21370,7 @@ export type PageChildrenSearchQuery = {
                           __typename?: 'MediaItem';
                           altText?: string | null;
                           mediaItemUrl?: string | null;
+                          large?: string | null;
                           medium_large?: string | null;
                           medium?: string | null;
                           thumbnail?: string | null;
@@ -21293,6 +21397,7 @@ export type PageChildrenSearchQuery = {
                           __typename?: 'MediaItem';
                           altText?: string | null;
                           mediaItemUrl?: string | null;
+                          large?: string | null;
                           medium_large?: string | null;
                           medium?: string | null;
                           thumbnail?: string | null;
@@ -21447,6 +21552,7 @@ export type PagesQuery = {
             title?: string | null;
             uri?: string | null;
             photographerName?: string | null;
+            large?: string | null;
             medium_large?: string | null;
             medium?: string | null;
             thumbnail?: string | null;
@@ -21477,6 +21583,7 @@ export type PagesQuery = {
                     __typename?: 'MediaItem';
                     altText?: string | null;
                     mediaItemUrl?: string | null;
+                    large?: string | null;
                     medium_large?: string | null;
                     medium?: string | null;
                     thumbnail?: string | null;
@@ -21539,6 +21646,7 @@ export type PagesQuery = {
                     __typename?: 'MediaItem';
                     altText?: string | null;
                     mediaItemUrl?: string | null;
+                    large?: string | null;
                     medium_large?: string | null;
                     medium?: string | null;
                     thumbnail?: string | null;
@@ -21602,6 +21710,7 @@ export type PagesQuery = {
                     __typename?: 'MediaItem';
                     altText?: string | null;
                     mediaItemUrl?: string | null;
+                    large?: string | null;
                     medium_large?: string | null;
                     medium?: string | null;
                     thumbnail?: string | null;
@@ -21636,6 +21745,7 @@ export type PagesQuery = {
                     __typename?: 'MediaItem';
                     altText?: string | null;
                     mediaItemUrl?: string | null;
+                    large?: string | null;
                     medium_large?: string | null;
                     medium?: string | null;
                     thumbnail?: string | null;
@@ -21713,10 +21823,10 @@ export type PagesQuery = {
                 caption?: string | null;
                 description?: string | null;
                 large?: string | null;
+                medium_large?: string | null;
                 medium?: string | null;
                 thumbnail?: string | null;
                 title?: string | null;
-                medium_large?: string | null;
               } | null;
             }
           | {
@@ -21726,10 +21836,10 @@ export type PagesQuery = {
                 caption?: string | null;
                 description?: string | null;
                 large?: string | null;
+                medium_large?: string | null;
                 medium?: string | null;
                 thumbnail?: string | null;
                 title?: string | null;
-                medium_large?: string | null;
               } | null> | null;
             }
           | {
@@ -21752,6 +21862,7 @@ export type PagesQuery = {
                     __typename?: 'MediaItem';
                     altText?: string | null;
                     mediaItemUrl?: string | null;
+                    large?: string | null;
                     medium_large?: string | null;
                     medium?: string | null;
                     thumbnail?: string | null;
@@ -21778,6 +21889,7 @@ export type PagesQuery = {
                     __typename?: 'MediaItem';
                     altText?: string | null;
                     mediaItemUrl?: string | null;
+                    large?: string | null;
                     medium_large?: string | null;
                     medium?: string | null;
                     thumbnail?: string | null;
@@ -21964,6 +22076,7 @@ export const LayoutArticlesFragmentDoc = gql`
         node {
           altText
           mediaItemUrl
+          large: sourceUrl(size: LARGE)
           medium_large: sourceUrl(size: MEDIUM_LARGE)
           medium: sourceUrl(size: MEDIUM)
           thumbnail: sourceUrl(size: THUMBNAIL)
@@ -21995,6 +22108,7 @@ export const LayoutPagesFragmentDoc = gql`
         node {
           altText
           mediaItemUrl
+          large: sourceUrl(size: LARGE)
           medium_large: sourceUrl(size: MEDIUM_LARGE)
           medium: sourceUrl(size: MEDIUM)
           thumbnail: sourceUrl(size: THUMBNAIL)
@@ -22036,6 +22150,7 @@ export const LayoutArticlesCarouselFragmentDoc = gql`
         node {
           altText
           mediaItemUrl
+          large: sourceUrl(size: LARGE)
           medium_large: sourceUrl(size: MEDIUM_LARGE)
           medium: sourceUrl(size: MEDIUM)
           thumbnail: sourceUrl(size: THUMBNAIL)
@@ -22068,6 +22183,7 @@ export const LayoutPagesCarouselFragmentDoc = gql`
         node {
           altText
           mediaItemUrl
+          large: sourceUrl(size: LARGE)
           medium_large: sourceUrl(size: MEDIUM_LARGE)
           medium: sourceUrl(size: MEDIUM)
           thumbnail: sourceUrl(size: THUMBNAIL)
@@ -22181,6 +22297,7 @@ export const LayoutImageFragmentDoc = gql`
       caption
       description
       large
+      medium_large
       medium
       thumbnail
       title
@@ -22196,6 +22313,7 @@ export const LayoutImageGalleryFragmentDoc = gql`
       caption
       description
       large
+      medium_large
       medium
       thumbnail
       title
@@ -22263,6 +22381,7 @@ export const PostFragmentDoc = gql`
         title
         uri
         photographerName
+        large: sourceUrl(size: LARGE)
         medium_large: sourceUrl(size: MEDIUM_LARGE)
         medium: sourceUrl(size: MEDIUM)
         thumbnail: sourceUrl(size: THUMBNAIL)
@@ -22424,6 +22543,7 @@ export const PageFragmentDoc = gql`
         title
         uri
         photographerName
+        large: sourceUrl(size: LARGE)
         medium_large: sourceUrl(size: MEDIUM_LARGE)
         medium: sourceUrl(size: MEDIUM)
         thumbnail: sourceUrl(size: THUMBNAIL)
@@ -22616,7 +22736,8 @@ export const ArticleDocument = gql`
  * });
  */
 export function useArticleQuery(
-  baseOptions: Apollo.QueryHookOptions<ArticleQuery, ArticleQueryVariables>,
+  baseOptions: Apollo.QueryHookOptions<ArticleQuery, ArticleQueryVariables> &
+    ({ variables: ArticleQueryVariables; skip?: boolean } | { skip: boolean }),
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<ArticleQuery, ArticleQueryVariables>(
@@ -22636,8 +22757,25 @@ export function useArticleLazyQuery(
     options,
   );
 }
+export function useArticleSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<ArticleQuery, ArticleQueryVariables>,
+) {
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<ArticleQuery, ArticleQueryVariables>(
+    ArticleDocument,
+    options,
+  );
+}
 export type ArticleQueryHookResult = ReturnType<typeof useArticleQuery>;
 export type ArticleLazyQueryHookResult = ReturnType<typeof useArticleLazyQuery>;
+export type ArticleSuspenseQueryHookResult = ReturnType<
+  typeof useArticleSuspenseQuery
+>;
 export type ArticleQueryResult = Apollo.QueryResult<
   ArticleQuery,
   ArticleQueryVariables
@@ -22717,8 +22855,25 @@ export function usePostsLazyQuery(
     options,
   );
 }
+export function usePostsSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<PostsQuery, PostsQueryVariables>,
+) {
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<PostsQuery, PostsQueryVariables>(
+    PostsDocument,
+    options,
+  );
+}
 export type PostsQueryHookResult = ReturnType<typeof usePostsQuery>;
 export type PostsLazyQueryHookResult = ReturnType<typeof usePostsLazyQuery>;
+export type PostsSuspenseQueryHookResult = ReturnType<
+  typeof usePostsSuspenseQuery
+>;
 export type PostsQueryResult = Apollo.QueryResult<
   PostsQuery,
   PostsQueryVariables
@@ -22799,9 +22954,29 @@ export function useCategoriesLazyQuery(
     options,
   );
 }
+export function useCategoriesSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        CategoriesQuery,
+        CategoriesQueryVariables
+      >,
+) {
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<CategoriesQuery, CategoriesQueryVariables>(
+    CategoriesDocument,
+    options,
+  );
+}
 export type CategoriesQueryHookResult = ReturnType<typeof useCategoriesQuery>;
 export type CategoriesLazyQueryHookResult = ReturnType<
   typeof useCategoriesLazyQuery
+>;
+export type CategoriesSuspenseQueryHookResult = ReturnType<
+  typeof useCategoriesSuspenseQuery
 >;
 export type CategoriesQueryResult = Apollo.QueryResult<
   CategoriesQuery,
@@ -22845,7 +23020,8 @@ export const CategoryDocument = gql`
  * });
  */
 export function useCategoryQuery(
-  baseOptions: Apollo.QueryHookOptions<CategoryQuery, CategoryQueryVariables>,
+  baseOptions: Apollo.QueryHookOptions<CategoryQuery, CategoryQueryVariables> &
+    ({ variables: CategoryQueryVariables; skip?: boolean } | { skip: boolean }),
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<CategoryQuery, CategoryQueryVariables>(
@@ -22865,9 +23041,26 @@ export function useCategoryLazyQuery(
     options,
   );
 }
+export function useCategorySuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<CategoryQuery, CategoryQueryVariables>,
+) {
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<CategoryQuery, CategoryQueryVariables>(
+    CategoryDocument,
+    options,
+  );
+}
 export type CategoryQueryHookResult = ReturnType<typeof useCategoryQuery>;
 export type CategoryLazyQueryHookResult = ReturnType<
   typeof useCategoryLazyQuery
+>;
+export type CategorySuspenseQueryHookResult = ReturnType<
+  typeof useCategorySuspenseQuery
 >;
 export type CategoryQueryResult = Apollo.QueryResult<
   CategoryQuery,
@@ -22914,7 +23107,11 @@ export function useLandingPageQuery(
   baseOptions: Apollo.QueryHookOptions<
     LandingPageQuery,
     LandingPageQueryVariables
-  >,
+  > &
+    (
+      | { variables: LandingPageQueryVariables; skip?: boolean }
+      | { skip: boolean }
+    ),
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<LandingPageQuery, LandingPageQueryVariables>(
@@ -22934,9 +23131,29 @@ export function useLandingPageLazyQuery(
     options,
   );
 }
+export function useLandingPageSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        LandingPageQuery,
+        LandingPageQueryVariables
+      >,
+) {
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<LandingPageQuery, LandingPageQueryVariables>(
+    LandingPageDocument,
+    options,
+  );
+}
 export type LandingPageQueryHookResult = ReturnType<typeof useLandingPageQuery>;
 export type LandingPageLazyQueryHookResult = ReturnType<
   typeof useLandingPageLazyQuery
+>;
+export type LandingPageSuspenseQueryHookResult = ReturnType<
+  typeof useLandingPageSuspenseQuery
 >;
 export type LandingPageQueryResult = Apollo.QueryResult<
   LandingPageQuery,
@@ -22990,9 +23207,26 @@ export function useLanguagesLazyQuery(
     options,
   );
 }
+export function useLanguagesSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<LanguagesQuery, LanguagesQueryVariables>,
+) {
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<LanguagesQuery, LanguagesQueryVariables>(
+    LanguagesDocument,
+    options,
+  );
+}
 export type LanguagesQueryHookResult = ReturnType<typeof useLanguagesQuery>;
 export type LanguagesLazyQueryHookResult = ReturnType<
   typeof useLanguagesLazyQuery
+>;
+export type LanguagesSuspenseQueryHookResult = ReturnType<
+  typeof useLanguagesSuspenseQuery
 >;
 export type LanguagesQueryResult = Apollo.QueryResult<
   LanguagesQuery,
@@ -23030,7 +23264,8 @@ export const MenuDocument = gql`
  * });
  */
 export function useMenuQuery(
-  baseOptions: Apollo.QueryHookOptions<MenuQuery, MenuQueryVariables>,
+  baseOptions: Apollo.QueryHookOptions<MenuQuery, MenuQueryVariables> &
+    ({ variables: MenuQueryVariables; skip?: boolean } | { skip: boolean }),
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<MenuQuery, MenuQueryVariables>(MenuDocument, options);
@@ -23044,8 +23279,25 @@ export function useMenuLazyQuery(
     options,
   );
 }
+export function useMenuSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<MenuQuery, MenuQueryVariables>,
+) {
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<MenuQuery, MenuQueryVariables>(
+    MenuDocument,
+    options,
+  );
+}
 export type MenuQueryHookResult = ReturnType<typeof useMenuQuery>;
 export type MenuLazyQueryHookResult = ReturnType<typeof useMenuLazyQuery>;
+export type MenuSuspenseQueryHookResult = ReturnType<
+  typeof useMenuSuspenseQuery
+>;
 export type MenuQueryResult = Apollo.QueryResult<MenuQuery, MenuQueryVariables>;
 export const NotificationDocument = gql`
   query notification($language: String! = "fi") {
@@ -23101,11 +23353,31 @@ export function useNotificationLazyQuery(
     options,
   );
 }
+export function useNotificationSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        NotificationQuery,
+        NotificationQueryVariables
+      >,
+) {
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<NotificationQuery, NotificationQueryVariables>(
+    NotificationDocument,
+    options,
+  );
+}
 export type NotificationQueryHookResult = ReturnType<
   typeof useNotificationQuery
 >;
 export type NotificationLazyQueryHookResult = ReturnType<
   typeof useNotificationLazyQuery
+>;
+export type NotificationSuspenseQueryHookResult = ReturnType<
+  typeof useNotificationSuspenseQuery
 >;
 export type NotificationQueryResult = Apollo.QueryResult<
   NotificationQuery,
@@ -23137,7 +23409,8 @@ export const PageDocument = gql`
  * });
  */
 export function usePageQuery(
-  baseOptions: Apollo.QueryHookOptions<PageQuery, PageQueryVariables>,
+  baseOptions: Apollo.QueryHookOptions<PageQuery, PageQueryVariables> &
+    ({ variables: PageQueryVariables; skip?: boolean } | { skip: boolean }),
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<PageQuery, PageQueryVariables>(PageDocument, options);
@@ -23151,8 +23424,25 @@ export function usePageLazyQuery(
     options,
   );
 }
+export function usePageSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<PageQuery, PageQueryVariables>,
+) {
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<PageQuery, PageQueryVariables>(
+    PageDocument,
+    options,
+  );
+}
 export type PageQueryHookResult = ReturnType<typeof usePageQuery>;
 export type PageLazyQueryHookResult = ReturnType<typeof usePageLazyQuery>;
+export type PageSuspenseQueryHookResult = ReturnType<
+  typeof usePageSuspenseQuery
+>;
 export type PageQueryResult = Apollo.QueryResult<PageQuery, PageQueryVariables>;
 export const PageByTemplateDocument = gql`
   query pageByTemplate($template: TemplateEnum, $language: String) {
@@ -23204,11 +23494,31 @@ export function usePageByTemplateLazyQuery(
     options,
   );
 }
+export function usePageByTemplateSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        PageByTemplateQuery,
+        PageByTemplateQueryVariables
+      >,
+) {
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    PageByTemplateQuery,
+    PageByTemplateQueryVariables
+  >(PageByTemplateDocument, options);
+}
 export type PageByTemplateQueryHookResult = ReturnType<
   typeof usePageByTemplateQuery
 >;
 export type PageByTemplateLazyQueryHookResult = ReturnType<
   typeof usePageByTemplateLazyQuery
+>;
+export type PageByTemplateSuspenseQueryHookResult = ReturnType<
+  typeof usePageByTemplateSuspenseQuery
 >;
 export type PageByTemplateQueryResult = Apollo.QueryResult<
   PageByTemplateQuery,
@@ -23270,7 +23580,11 @@ export function usePageChildrenSearchQuery(
   baseOptions: Apollo.QueryHookOptions<
     PageChildrenSearchQuery,
     PageChildrenSearchQueryVariables
-  >,
+  > &
+    (
+      | { variables: PageChildrenSearchQueryVariables; skip?: boolean }
+      | { skip: boolean }
+    ),
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -23290,11 +23604,31 @@ export function usePageChildrenSearchLazyQuery(
     PageChildrenSearchQueryVariables
   >(PageChildrenSearchDocument, options);
 }
+export function usePageChildrenSearchSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        PageChildrenSearchQuery,
+        PageChildrenSearchQueryVariables
+      >,
+) {
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    PageChildrenSearchQuery,
+    PageChildrenSearchQueryVariables
+  >(PageChildrenSearchDocument, options);
+}
 export type PageChildrenSearchQueryHookResult = ReturnType<
   typeof usePageChildrenSearchQuery
 >;
 export type PageChildrenSearchLazyQueryHookResult = ReturnType<
   typeof usePageChildrenSearchLazyQuery
+>;
+export type PageChildrenSearchSuspenseQueryHookResult = ReturnType<
+  typeof usePageChildrenSearchSuspenseQuery
 >;
 export type PageChildrenSearchQueryResult = Apollo.QueryResult<
   PageChildrenSearchQuery,
@@ -23366,8 +23700,25 @@ export function usePagesLazyQuery(
     options,
   );
 }
+export function usePagesSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<PagesQuery, PagesQueryVariables>,
+) {
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<PagesQuery, PagesQueryVariables>(
+    PagesDocument,
+    options,
+  );
+}
 export type PagesQueryHookResult = ReturnType<typeof usePagesQuery>;
 export type PagesLazyQueryHookResult = ReturnType<typeof usePagesLazyQuery>;
+export type PagesSuspenseQueryHookResult = ReturnType<
+  typeof usePagesSuspenseQuery
+>;
 export type PagesQueryResult = Apollo.QueryResult<
   PagesQuery,
   PagesQueryVariables
@@ -23410,7 +23761,8 @@ export const TagDocument = gql`
  * });
  */
 export function useTagQuery(
-  baseOptions: Apollo.QueryHookOptions<TagQuery, TagQueryVariables>,
+  baseOptions: Apollo.QueryHookOptions<TagQuery, TagQueryVariables> &
+    ({ variables: TagQueryVariables; skip?: boolean } | { skip: boolean }),
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<TagQuery, TagQueryVariables>(TagDocument, options);
@@ -23421,8 +23773,23 @@ export function useTagLazyQuery(
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<TagQuery, TagQueryVariables>(TagDocument, options);
 }
+export function useTagSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<TagQuery, TagQueryVariables>,
+) {
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<TagQuery, TagQueryVariables>(
+    TagDocument,
+    options,
+  );
+}
 export type TagQueryHookResult = ReturnType<typeof useTagQuery>;
 export type TagLazyQueryHookResult = ReturnType<typeof useTagLazyQuery>;
+export type TagSuspenseQueryHookResult = ReturnType<typeof useTagSuspenseQuery>;
 export type TagQueryResult = Apollo.QueryResult<TagQuery, TagQueryVariables>;
 export const TagsDocument = gql`
   query tags(
@@ -23490,6 +23857,23 @@ export function useTagsLazyQuery(
     options,
   );
 }
+export function useTagsSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<TagsQuery, TagsQueryVariables>,
+) {
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<TagsQuery, TagsQueryVariables>(
+    TagsDocument,
+    options,
+  );
+}
 export type TagsQueryHookResult = ReturnType<typeof useTagsQuery>;
 export type TagsLazyQueryHookResult = ReturnType<typeof useTagsLazyQuery>;
+export type TagsSuspenseQueryHookResult = ReturnType<
+  typeof useTagsSuspenseQuery
+>;
 export type TagsQueryResult = Apollo.QueryResult<TagsQuery, TagsQueryVariables>;

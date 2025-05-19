@@ -256,7 +256,11 @@ export function useVenuesByIdsQuery(
   baseOptions: Apollo.QueryHookOptions<
     VenuesByIdsQuery,
     VenuesByIdsQueryVariables
-  >,
+  > &
+    (
+      | { variables: VenuesByIdsQueryVariables; skip?: boolean }
+      | { skip: boolean }
+    ),
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<VenuesByIdsQuery, VenuesByIdsQueryVariables>(
@@ -276,9 +280,29 @@ export function useVenuesByIdsLazyQuery(
     options,
   );
 }
+export function useVenuesByIdsSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        VenuesByIdsQuery,
+        VenuesByIdsQueryVariables
+      >,
+) {
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<VenuesByIdsQuery, VenuesByIdsQueryVariables>(
+    VenuesByIdsDocument,
+    options,
+  );
+}
 export type VenuesByIdsQueryHookResult = ReturnType<typeof useVenuesByIdsQuery>;
 export type VenuesByIdsLazyQueryHookResult = ReturnType<
   typeof useVenuesByIdsLazyQuery
+>;
+export type VenuesByIdsSuspenseQueryHookResult = ReturnType<
+  typeof useVenuesByIdsSuspenseQuery
 >;
 export type VenuesByIdsQueryResult = Apollo.QueryResult<
   VenuesByIdsQuery,

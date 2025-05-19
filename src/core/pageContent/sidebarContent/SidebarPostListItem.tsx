@@ -34,7 +34,7 @@ export default function PostListItem({
       title={title}
       publishingDate={date}
       url={url}
-      imageUrl={featuredImage?.node?.mediaItemUrl || undefined}
+      imageUrl={featuredImage?.node?.medium || undefined}
       imageAlt={featuredImage?.node?.altText || undefined}
     />
   );
