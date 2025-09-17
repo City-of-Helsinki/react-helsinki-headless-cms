@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
-import { IconLinkExternal } from 'hds-react';
+import { IconLinkExternal, IconSize } from 'hds-react';
 import React, { Children, isValidElement, useMemo } from 'react';
 import type { ReactElement, ReactNode } from 'react';
 
@@ -65,11 +65,11 @@ export type LinkProps = Omit<
   inlineIcons?: boolean;
 };
 
-type LinkToIconSizeMappingType = {
-  L: 'l';
-  M: 's';
-  S: 'xs';
-};
+const mapLinkSizeToExternalIconSize: Record<LinkProps['size'], IconSize> = {
+  L: IconSize.Large,
+  M: IconSize.Small,
+  S: IconSize.ExtraSmall,
+} as const;
 
 const hasChildren = (
   element: ReactNode,
@@ -178,12 +178,6 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
     );
 
     const externalIcon = useMemo(() => {
-      const mapLinkSizeToExternalIconSize: LinkToIconSizeMappingType = {
-        L: 'l',
-        M: 's',
-        S: 'xs',
-      };
-
       return (
         (showExternalIcon && external && (
           <span className={styles.externalWrapper}>
