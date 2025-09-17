@@ -21,7 +21,8 @@
     "jsx": "react",
     "resolveJsonModule": true,
     "alwaysStrict": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "strict": false
   },
   "include": [
     "src",
