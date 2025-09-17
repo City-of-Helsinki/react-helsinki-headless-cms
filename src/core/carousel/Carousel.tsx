@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
-import { Button, IconAngleLeft, IconAngleRight } from 'hds-react';
+import { IconAngleLeft, IconAngleRight } from 'hds-react';
 
 import styles from './carousel.module.scss';
 import {
@@ -12,6 +12,7 @@ import {
   getLoadMoreKey,
 } from './utils/utils';
 import { useConfig } from '../configProvider/useConfig';
+import { LoadingButton } from '../button/LoadingButton';
 
 export type CarouselProps<T> = {
   /**
@@ -213,13 +214,9 @@ export function Carousel({
                   {hasMore && !!onLoadMore && (
                     <li key={getLoadMoreKey()}>
                       <div className={styles.onLoadMoreContainer}>
-                        <Button
-                          isLoading={loading}
-                          onClick={onLoadMore}
-                          variant="primary"
-                        >
+                        <LoadingButton isLoading={loading} onClick={onLoadMore}>
                           {loadMoreButtonLabelText}
-                        </Button>
+                        </LoadingButton>
                       </div>
                     </li>
                   )}
