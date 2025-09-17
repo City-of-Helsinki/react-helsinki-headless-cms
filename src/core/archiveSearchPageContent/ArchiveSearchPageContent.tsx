@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import {
   Button,
+  ButtonPresetTheme,
+  ButtonVariant,
   IconCrossCircleFill,
   IconSearch,
   LoadingSpinner,
@@ -55,9 +57,9 @@ export function SearchForm({
         <IconSearch aria-hidden="true" />
       </TextInput>
       <Button
-        theme="coat"
+        theme={ButtonPresetTheme.Coat}
         type="submit"
-        iconLeft={<IconSearch aria-hidden="true" />}
+        iconStart={<IconSearch aria-hidden="true" />}
         className={styles.hdsButtonOverrides}
       >
         {archiveSearch?.searchButtonLabelText || ''}
@@ -358,9 +360,13 @@ export function SearchPageContent(props: SearchPageContentProps) {
                     <div className={styles.loadMoreButton}>
                       <Button
                         variant={
-                          customCopy?.loadMoreButtonVariant || 'secondary'
+                          customCopy?.loadMoreButtonVariant ||
+                          ButtonVariant.Secondary
                         }
-                        theme={customCopy?.loadMoreButtonTheme || 'black'}
+                        theme={
+                          customCopy?.loadMoreButtonTheme ||
+                          ButtonPresetTheme.Black
+                        }
                         type="button"
                         onClick={onLoadMore}
                       >
