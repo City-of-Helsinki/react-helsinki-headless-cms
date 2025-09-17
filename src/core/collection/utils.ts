@@ -1,4 +1,4 @@
-import isPast from 'date-fns/isPast';
+import { isPast } from 'date-fns';
 
 import type { EventType } from '../../common/eventsService/types';
 import normalizeKeys from '../../linkedEvents/utils/normalizeKeys';
