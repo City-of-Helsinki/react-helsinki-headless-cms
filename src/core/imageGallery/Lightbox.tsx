@@ -5,7 +5,13 @@
 import classNames from 'classnames';
 import ReactDOM from 'react-dom';
 import React, { useCallback, useEffect, useRef } from 'react';
-import { Button, IconAngleLeft, IconAngleRight } from 'hds-react';
+import {
+  Button,
+  ButtonPresetTheme,
+  ButtonVariant,
+  IconAngleLeft,
+  IconAngleRight,
+} from 'hds-react';
 
 import type { ImageItem } from './types';
 import styles from './imageGallery.module.scss';
@@ -31,7 +37,10 @@ interface ActionsProps {
   images: ImageItem[];
 }
 
-export function Lightbox({ images, lightboxUid }: LightboxProps) {
+export function Lightbox({
+  images,
+  lightboxUid,
+}: LightboxProps): JSX.Element | null {
   const lightboxRef = useRef(null);
   const barrierRef = useRef(null);
 
@@ -150,20 +159,22 @@ function Actions({ images }: ActionsProps) {
   return (
     <div className={styles.actionsWrapper}>
       <Button
-        iconLeft={<IconAngleLeft />}
+        iconStart={<IconAngleLeft />}
         onClick={handlePreviousClick}
-        theme="black"
-        variant="secondary"
+        theme={ButtonPresetTheme.Black}
+        variant={ButtonVariant.Secondary}
+        aria-label={previous}
       >
-        <span className={styles.screenReaderText}>{previous}</span>
+        {previous}
       </Button>
       <Button
-        iconLeft={<IconAngleRight />}
+        iconStart={<IconAngleRight />}
         onClick={handleNextClick}
-        theme="black"
-        variant="secondary"
+        theme={ButtonPresetTheme.Black}
+        variant={ButtonVariant.Secondary}
+        aria-label={next}
       >
-        <span className={styles.screenReaderText}>{next}</span>
+        {next}
       </Button>
     </div>
   );
