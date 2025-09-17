@@ -1,7 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
-import { Button, LoadingSpinner } from 'hds-react';
+import { LoadingSpinner } from 'hds-react';
 
 import styles from './collection.module.scss';
 import type { CarouselProps } from '../carousel/Carousel';
@@ -39,6 +39,7 @@ import {
 } from './utils';
 import { DEFAULT_LOCALE } from '../../constants';
 import { isPageType, isArticleType } from '../../common/headlessService/utils';
+import { LoadingButton } from '../button/LoadingButton';
 
 export type CollectionProps = {
   /**
@@ -165,13 +166,13 @@ export function Collection({
       <>
         <CollectionGrid cards={cards} {...collectionContainerProps} />
         {hasNext && (
-          <Button
+          <LoadingButton
             className={styles.loadMoreButton}
             onClick={onLoadMore}
             isLoading={loading}
           >
             {loadMoreButtonLabelText}
-          </Button>
+          </LoadingButton>
         )}
       </>
     ),
