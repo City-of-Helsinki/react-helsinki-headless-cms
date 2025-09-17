@@ -20,25 +20,27 @@ export default function SidebarCardsList({ cards }: CardsListItemProps) {
 
   return (
     <div className={styles.cardsContainer}>
-      {cards.map((card) => {
-        const uri = getUri(
-          card.link.url,
-          internalHrefOrigins,
-          getIsHrefExternal,
-        );
-        return (
-          <SimpleCard
-            title={card.title}
-            icon={card.icon}
-            description={card.description}
-            backgroundColor={card.backgroundColor}
-            linkUrl={getRoutedInternalHref(uri)}
-            linkTitle={card.link.title}
-            linkTarget={card.link.target}
-            direction="vertical"
-          />
-        );
-      })}
+      {cards
+        ?.filter((card) => !!card)
+        .map((card) => {
+          const uri = getUri(
+            card.link?.url ?? '#',
+            internalHrefOrigins,
+            getIsHrefExternal,
+          );
+          return (
+            <SimpleCard
+              title={card.title ?? undefined}
+              icon={card.icon ?? undefined}
+              description={card.description ?? undefined}
+              backgroundColor={card.backgroundColor ?? undefined}
+              linkUrl={getRoutedInternalHref(uri)}
+              linkTitle={card.link?.title ?? undefined}
+              linkTarget={card.link?.target ?? undefined}
+              direction="vertical"
+            />
+          );
+        })}
     </div>
   );
 }

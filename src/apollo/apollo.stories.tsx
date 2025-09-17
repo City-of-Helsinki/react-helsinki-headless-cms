@@ -2,7 +2,7 @@
 
 import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { HelmetProvider } from 'react-helmet-async';
 
 import { ConfigProvider } from '../core/configProvider/ConfigProvider';
 import { defaultConfig } from '../core/configProvider/defaultConfig';
@@ -16,6 +16,7 @@ import { LanguageCodeEnum, getBreadcrumbsFromPage } from '../core';
 import { useCmsEndpointConfig } from '../storybook-common/useCmsEndpointConfig';
 import type { CmsEndpoint } from '../storybook-common/constants';
 import { cmsMenuName, cmsTestPage } from '../storybook-common/constants';
+import { HelmetWrapper } from '../storybook-common/HelmetWrapper';
 
 const ExampleNavigation = ({
   menuName,
@@ -38,8 +39,11 @@ const ExampleNavigation = ({
 const getTemplate =
   (datasource: keyof typeof CmsEndpoint): StoryFn<typeof Page> =>
   (args) => {
-    const { apolloClient, eventsApolloClient, internalHrefOrigins } =
-      useCmsEndpointConfig(datasource);
+    const {
+      apolloClient,
+      eventsApolloClient,
+      internalHrefOrigins = [],
+    } = useCmsEndpointConfig(datasource);
     return (
       <HelmetProvider>
         <ConfigProvider
@@ -53,16 +57,14 @@ const getTemplate =
             venuesApolloClient: 'disabled',
             components: {
               ...defaultConfig.components,
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-ignore
-              Head: Helmet,
+              Head: HelmetWrapper,
             },
             utils: {
               ...defaultConfig.utils,
               getRoutedInternalHref: (link) => {
                 let uri = '';
                 internalHrefOrigins.forEach((d) => {
-                  uri = link.replace(d, '');
+                  uri = link?.replace(d, '') ?? '';
                 });
                 return uri;
               },

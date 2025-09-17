@@ -1,6 +1,4 @@
-import isFuture from 'date-fns/isFuture';
-import isPast from 'date-fns/isPast';
-import isSameDay from 'date-fns/isSameDay';
+import { isFuture, isPast, isSameDay } from 'date-fns';
 
 import type { NotificationType } from '../../../common/headlessService/types';
 

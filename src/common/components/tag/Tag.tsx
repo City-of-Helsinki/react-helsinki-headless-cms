@@ -9,14 +9,6 @@ import { theme1, theme2 } from './tagThemes';
 
 type Props = {
   /**
-   * Additional children to render inside the tag.
-   */
-  children: React.ReactNode;
-  /**
-   * Additional classname for the tag.
-   */
-  className?: string;
-  /**
    *  Boolean indicating whether the tag has a featured style variant.
    */
   featured?: boolean;
@@ -32,7 +24,7 @@ type Props = {
    * onClick handler.
    */
   onClick?: () => void;
-} & Pick<HDSTagProps, 'id' | 'role' | 'size'>;
+} & Pick<HDSTagProps, 'children' | 'className' | 'id' | 'role' | 'size'>;
 
 export function Tag({
   className,
@@ -70,6 +62,7 @@ export function Tag({
         !onClick && styles.noOutline,
         className,
       )}
+      placeholder={undefined}
       {...hdsTagProps}
       // TODO: don't use the generatedId and allow an undefined id.
       id={id ?? `tag${generatedId}`}

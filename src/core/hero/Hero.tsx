@@ -1,7 +1,14 @@
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
-import { Button, IconAngleRight, IconArrowLeft, Koros } from 'hds-react';
+import {
+  Button,
+  ButtonPresetTheme,
+  ButtonVariant,
+  IconAngleRight,
+  IconArrowLeft,
+  Koros,
+} from 'hds-react';
 
 import Container from '../../common/components/container/Container';
 import styles from './hero.module.scss';
@@ -108,10 +115,10 @@ export default function Hero({
           )}
         >
           <Button
-            variant="secondary"
-            theme="black"
+            variant={ButtonVariant.Secondary}
+            theme={ButtonPresetTheme.Black}
             onClick={handleClick}
-            iconRight={<IconAngleRight />}
+            iconEnd={<IconAngleRight />}
           >
             {actionText}
           </Button>
@@ -145,7 +152,7 @@ export default function Hero({
                     id={id}
                     className={styles.imageContainer}
                     src={imageUrl}
-                    alt={imageAlt}
+                    alt={imageAlt ?? ''}
                   />
                   {imageLabel && (
                     <div className={styles.label}>{imageLabel}</div>

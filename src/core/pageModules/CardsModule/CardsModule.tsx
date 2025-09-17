@@ -43,9 +43,9 @@ export function CardsModule({ items }: CardsModuleProps) {
             key={uniqueKey}
             title={card.title}
             description={card.description}
-            linkTarget={card.link.target}
-            linkTitle={card.link.title}
-            linkUrl={card.link.url}
+            linkTarget={card.link?.target}
+            linkTitle={card.link?.title}
+            linkUrl={card.link?.url}
             backgroundColor={card.backgroundColor}
             direction={items.length === 1 ? 'horisontal' : 'vertical'}
             icon={card.icon}

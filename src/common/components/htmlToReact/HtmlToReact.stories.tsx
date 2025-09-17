@@ -4,7 +4,7 @@ import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
 
 import kukkuuTestPage from '../../../mocks/responses/cms/page/kukkuu-page-demosivu.json';
-import type { HtmlToReactProps } from './HtmlToReact';
+import type { HtmlToReactProps, TableVariant } from './HtmlToReact';
 import { HtmlToReact, TABLE_VARIANTS } from './HtmlToReact';
 import { StoryContainer } from '../../../core/storyContainer/StoryContainer';
 
@@ -80,7 +80,7 @@ const Template: StoryFn<typeof HtmlToReact> = ({
   trustedOrigins,
   tableVariants,
 }: HtmlToReactProps & {
-  tableVariants: HtmlToReactProps['components']['tableVariants'];
+  tableVariants?: TableVariant[];
 }) => (
   <StoryContainer>
     <HtmlToReact
