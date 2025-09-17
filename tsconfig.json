@@ -22,7 +22,7 @@
     "resolveJsonModule": true,
     "alwaysStrict": true,
     "skipLibCheck": true,
-    "strict": false
+    "strict": true
   },
   "include": [
     "src",
