@@ -1,7 +1,7 @@
 import React from 'react';
 import { groupBy } from 'lodash-es';
 import type { LanguageOption } from 'hds-react';
-import { Header, Logo } from 'hds-react';
+import { Header, Logo, LogoSize } from 'hds-react';
 
 import type { Config } from '../configProvider/configContext';
 import type { Language, Menu } from '../../common/headlessService/types';
@@ -188,7 +188,7 @@ export function Navigation({
         frontPageLabel={siteName}
         logo={
           <Logo
-            size="large"
+            size={LogoSize.Large}
             src={t('headerActionBarLogoSrc')}
             alt={t('headerActionBarLogoAlt')}
           />

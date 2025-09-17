@@ -1,14 +1,16 @@
-import makeQueryWithEventsApolloClientFromConfig from './makeQueryWithEventsApolloClientFromConfig';
-import type {
-  EventsByIdsQuery,
-  EventsByIdsQueryVariables,
-} from './__generated__';
+import useEventsApolloClientFromConfig from '../../core/configProvider/useEventsApolloClientFromConfig';
 import { useEventsByIdsQuery as useEventsByIdsQueryWithoutClient } from './__generated__';
 
-export const useEventsByIdsQuery = makeQueryWithEventsApolloClientFromConfig<
-  EventsByIdsQuery,
-  EventsByIdsQueryVariables
->(useEventsByIdsQueryWithoutClient);
+export function useEventsByIdsQuery(
+  baseOptions: Parameters<typeof useEventsByIdsQueryWithoutClient>[0],
+) {
+  const client = useEventsApolloClientFromConfig();
+  const options = {
+    ...baseOptions,
+    client: client === 'disabled' ? undefined : client,
+  };
+  return useEventsByIdsQueryWithoutClient(options);
+}
 
 export {
   EventsByIdsQuery,

@@ -52,17 +52,15 @@ function getElement(variant: TextVariant) {
 }
 
 function Text({
-  as,
+  as: elementType,
   variant = 'body-l',
   children,
   className,
   ...rest
 }: TextVariantProps) {
   return React.createElement(
-    as || getElement(variant),
+    elementType || getElement(variant),
     {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore: For some reason TS considers text to be undefined
       className: [styles.text, styles[variant], className].join(' '),
       ...rest,
     },

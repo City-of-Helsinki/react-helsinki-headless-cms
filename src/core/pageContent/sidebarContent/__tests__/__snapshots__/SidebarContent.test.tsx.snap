@@ -63,7 +63,7 @@ exports[`SidebarContent containing link lists renders a link list when a valid i
             <svg
               aria-hidden="true"
               aria-label="link-external"
-              class="Icon-module_icon__1Jtzj icon_hds-icon__1YqNC icon verticalAlignSmallOrMediumIcon"
+              class="Icon-module_icon__1Jtzj icon_hds-icon__1YqNC Icon-module_small__gTGkU icon_hds-icon--size-s__2Lkik icon verticalAlignSmallOrMediumIcon"
               role="img"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"

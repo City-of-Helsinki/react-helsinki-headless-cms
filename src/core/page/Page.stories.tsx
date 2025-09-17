@@ -2,7 +2,7 @@
 
 import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { HelmetProvider } from 'react-helmet-async';
 import { Footer } from 'hds-react';
 
 import { LanguageCodeEnum } from '../../common/headlessService/types';
@@ -24,25 +24,26 @@ import {
   getCollectionUIType,
 } from '../pageContent/utils';
 import { Card } from '../card/Card';
-import type { GeneralCollectionType } from '../collection/types';
+import { HelmetWrapper } from '../../storybook-common/HelmetWrapper';
 
 export default {
   title: 'Core components/Page',
   component: Page,
   subcomponents: { PageContent, Navigation, Notification, Collection },
   argTypes: {
-    navigation: { control: { type: null } },
-    notification: { control: { type: null } },
-    content: { control: { type: null } },
-    footer: { control: { type: null } },
+    navigation: { control: false },
+    notification: { control: false },
+    content: { control: false },
+    footer: { control: false },
   },
-} as Meta<typeof Page>;
+} satisfies Meta<typeof Page>;
 
 const domain = window.location.origin ?? 'http://localhost:6006';
 const cmsDomain = new URL(
   process.env.CMS_GRAPHQL_ENDPOINT ??
     'https://app-staging.hkih.hion.dev/graphql',
 ).origin;
+
 const Template: StoryFn<typeof Page> = (args) => (
   <HelmetProvider>
     <ConfigProvider
@@ -52,16 +53,14 @@ const Template: StoryFn<typeof Page> = (args) => (
         internalHrefOrigins: [domain],
         components: {
           ...defaultConfig.components,
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          Head: Helmet,
+          Head: HelmetWrapper,
         },
         utils: {
           ...defaultConfig.utils,
           getRoutedInternalHref: (link) => {
             let uri = '';
             [domain, cmsDomain].forEach((d) => {
-              uri = link.replace(d, '');
+              uri = link?.replace(d, '') ?? '';
             });
             return uri;
           },
@@ -101,7 +100,7 @@ export const PageDefault = {
           return new URL(
             currentRatherComplexUrl.pathname.replace(
               `/${currentLanguage.slug}`,
-              slug,
+              slug ?? '',
             ),
             domain,
           ).href;
@@ -123,7 +122,7 @@ export const PageDefault = {
             title={collection.title}
             collectionContainerProps={{ withDots: false }}
             type={getCollectionUIType(collection)}
-            cards={getCollectionCards(collection as GeneralCollectionType, [
+            cards={getCollectionCards(collection, [
               ...defaultConfig.organisationPrefixes,
             ]).map((cardProps) => (
               <Card

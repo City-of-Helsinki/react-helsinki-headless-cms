@@ -11,7 +11,7 @@ import {
 import type { Config } from './configContext';
 import { FALLBACK_TRANSLATIONS } from '../translation/constants';
 
-export const defaultConfig: Config = {
+export const defaultConfig = {
   siteName: 'Test site',
   // get internal URL origins from environment variables in the client app
   internalHrefOrigins: [],
@@ -80,8 +80,11 @@ export const defaultConfig: Config = {
       return false;
     },
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    getRoutedInternalHref: (link: string, _type: ModuleItemTypeEnum): string =>
-      link ?? '#',
+    getRoutedInternalHref: (
+      link?: string | null,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      _type?: ModuleItemTypeEnum,
+    ): string => link ?? '#',
     redirectToUrl: (url: string) => {
       if (url && window) {
         window.location.href = url;
@@ -99,4 +102,4 @@ export const defaultConfig: Config = {
     allowedUnsafeTags: [],
     trustedOrigins: [],
   },
-};
+} as const satisfies Config;

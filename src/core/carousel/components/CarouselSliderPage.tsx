@@ -6,19 +6,30 @@ import { getItemSetItemKey, getItemSetKey } from '../utils/utils';
 import { MOBILE_WIDTH } from '../constants';
 import { useCarouselContext } from '../context/CarouselContext';
 
-export function CarouselSliderPage({ itemSet, itemSetIndex }) {
+export function CarouselSliderPage({
+  itemSet,
+  itemSetIndex,
+}: {
+  itemSet: React.ReactElement[];
+  itemSetIndex: number;
+}) {
   const { currentSlide, width, itemsShownOnDesktop, itemsShownOnMobile } =
     useCarouselContext();
-  const styleWidth = `${
-    100 / (width > MOBILE_WIDTH ? itemsShownOnDesktop : itemsShownOnMobile)
-  }%`;
+  const itemsPerSlide =
+    (width > MOBILE_WIDTH ? itemsShownOnDesktop : itemsShownOnMobile) ?? 1;
+  const styleWidth = `${100 / itemsPerSlide}%`;
   return (
     <li
       ref={(node) =>
         node && node.toggleAttribute('inert', itemSetIndex !== currentSlide)
       }
       aria-hidden={itemSetIndex !== currentSlide}
-      key={getItemSetKey(itemSet, itemSetIndex)}
+      key={getItemSetKey(
+        itemSetIndex,
+        'id' in itemSet && typeof itemSet.id === 'string'
+          ? itemSet.id
+          : undefined,
+      )}
       className={classNames(
         styles.slide,
         itemSetIndex === currentSlide && styles.slideSelected,
@@ -27,7 +38,13 @@ export function CarouselSliderPage({ itemSet, itemSetIndex }) {
       <div className={styles.slideItems}>
         {itemSet.map((item, itemIndex) => (
           <div
-            key={getItemSetItemKey(item, itemSetIndex, itemIndex)}
+            key={getItemSetItemKey(
+              itemIndex,
+              'id' in itemSet && typeof itemSet.id === 'string'
+                ? itemSet.id
+                : undefined,
+              String(itemSetIndex),
+            )}
             className={styles.slideItem}
             style={{
               width: styleWidth,

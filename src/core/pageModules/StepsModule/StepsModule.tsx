@@ -13,7 +13,7 @@ export type Step = {
   title: string;
 };
 
-type StepsModuleProps = {
+export type StepsModuleProps = {
   steps?: Step[];
   title?: string;
   helpText?: string;
@@ -50,8 +50,8 @@ export function StepsModule({
           styles.stepsContainer,
           className,
         )}
-        helpText={getTextFromHtml(helpText)}
-        steps={stepsContents}
+        helpText={getTextFromHtml(helpText ?? '')}
+        steps={stepsContents ?? []}
         title={title}
       />
     </div>

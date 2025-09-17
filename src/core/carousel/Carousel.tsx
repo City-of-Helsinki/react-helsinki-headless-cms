@@ -59,7 +59,7 @@ function CarouselWithContext({
   useEffect(() => {
     setItemsPerSlide(
       Math.ceil(
-        width > MOBILE_WIDTH ? itemsShownOnDesktop : itemsShownOnMobile,
+        (width > MOBILE_WIDTH ? itemsShownOnDesktop : itemsShownOnMobile) ?? 1,
       ),
     );
     setCurrentSlide(0);

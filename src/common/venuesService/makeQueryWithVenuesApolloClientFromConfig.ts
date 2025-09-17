@@ -4,7 +4,7 @@ import useVenuesApolloClientFromConfig from '../../core/configProvider/useVenues
 
 type Modify<T, R> = Omit<T, keyof R> & R;
 
-type UseQuery<Q, V> = (
+type UseQuery<Q, V extends Apollo.OperationVariables> = (
   baseOptions?: Modify<
     Apollo.QueryHookOptions<Q, V>,
     {
@@ -13,9 +13,10 @@ type UseQuery<Q, V> = (
   >,
 ) => Apollo.QueryResult<Q, V>;
 
-export default function makeQueryWithVenuesApolloClientFromConfig<Q, V>(
-  useQuery: UseQuery<Q, V>,
-) {
+export default function makeQueryWithVenuesApolloClientFromConfig<
+  Q,
+  V extends Apollo.OperationVariables,
+>(useQuery: UseQuery<Q, V>) {
   return (baseOptions: Apollo.QueryHookOptions<Q, V> = {}) => {
     const venuesApolloClientFromConfig = useVenuesApolloClientFromConfig();
 

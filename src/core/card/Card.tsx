@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { IconArrowRight } from 'hds-react';
+import type { MouseEventHandler } from 'react';
 import React, { useState } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
@@ -153,7 +154,8 @@ export function Card({
   flex,
 }: CardProps) {
   const [isHovered, setIsHovered] = useState(false);
-  const handleToggleActive = () => setIsHovered((val) => !val);
+  const handleToggleActive: MouseEventHandler | undefined = () =>
+    setIsHovered((val) => !val);
   const isDelimited = alignment?.startsWith('delimited');
   const isCentered = alignment?.startsWith('center');
 
@@ -204,11 +206,11 @@ export function Card({
         isCentered && styles.isCentered,
       )}
       style={style}
-      onMouseEnter={url && handleToggleActive}
-      onMouseLeave={url && handleToggleActive}
+      onMouseEnter={url ? handleToggleActive : undefined}
+      onMouseLeave={url ? handleToggleActive : undefined}
     >
       <BackgroundImage
-        id={id}
+        id={`${id}-image`}
         url={imageUrl}
         labelTag={imageLabel}
         className={classNames(

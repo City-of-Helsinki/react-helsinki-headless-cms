@@ -27,8 +27,8 @@ const useLocaleStorageNotification = makeLocaleStorageValue<{
 }>('rhhc/notification');
 
 function getNotificationStatus(
-  notification: NotificationType,
-  notificationState: NotificationState,
+  notification?: NotificationType | null,
+  notificationState?: NotificationState,
 ) {
   if (!notification) {
     return NotificationStatus.missing;
@@ -46,12 +46,16 @@ function getNotificationStatus(
 }
 
 type CmsNotificationLevel = 'info' | 'high' | 'low';
-const notificationTypeMap: Record<CmsNotificationLevel, HDSNotificationLevel> =
-  {
-    info: 'alert',
-    high: 'error',
-    low: 'info',
-  };
+const notificationTypeMap = {
+  info: 'alert',
+  high: 'error',
+  low: 'info',
+} as const satisfies Record<CmsNotificationLevel, HDSNotificationLevel>;
+
+const isCmsNotificationLevel = (
+  value: unknown,
+): value is CmsNotificationLevel =>
+  typeof value === 'string' && value in notificationTypeMap;
 
 export type NotificationProps = {
   /**
@@ -87,14 +91,16 @@ export function Notification({ notification }: NotificationProps) {
   return (
     notificationStatus === NotificationStatus.visible && (
       <HDSNotification
-        type={notificationTypeMap[(level as CmsNotificationLevel) ?? 'info']}
+        type={
+          notificationTypeMap[isCmsNotificationLevel(level) ? level : 'info']
+        }
         label={title ?? undefined}
         dismissible
         closeButtonLabelText={closeButtonLabelText}
         onClose={handleClose}
         className={styles.notification}
       >
-        <HtmlToReact>{content}</HtmlToReact>
+        <HtmlToReact>{String(content)}</HtmlToReact>
         {linkUrl && (
           <Link
             openInNewTab

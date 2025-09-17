@@ -311,7 +311,7 @@ export function HtmlToReact({
     [dirty, allowedUnsafeTags],
   );
   const htmlReactParserOptions = {
-    replace: (domNode) =>
+    replace: (domNode: DOMNode) =>
       replaceDomNodeWithReactComponent(
         domNode,
         htmlReactParserOptions,

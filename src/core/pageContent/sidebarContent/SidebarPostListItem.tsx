@@ -9,8 +9,8 @@ import { useHeadlessCmsLink } from '../../configProvider/useHeadlessCmsLink';
 import SidebarContentCard from './SidebarContentCard';
 
 type PostListItemProps = (
-  | LayoutArticle['articles'][number]
-  | LayoutPage['pages'][number]
+  | NonNullable<LayoutArticle['articles']>[number]
+  | NonNullable<LayoutPage['pages']>[number]
 ) & { moduleItemType: ModuleItemTypeEnum };
 
 export default function PostListItem({
@@ -21,7 +21,7 @@ export default function PostListItem({
   featuredImage,
   date,
 }: PostListItemProps) {
-  const url = useHeadlessCmsLink(link, moduleItemType);
+  const url = useHeadlessCmsLink(link ?? '#', moduleItemType);
 
   if (!title || !url) {
     return null;
@@ -32,7 +32,7 @@ export default function PostListItem({
       key={id}
       id={id}
       title={title}
-      publishingDate={date}
+      publishingDate={date ?? undefined}
       url={url}
       imageUrl={featuredImage?.node?.medium || undefined}
       imageAlt={featuredImage?.node?.altText || undefined}

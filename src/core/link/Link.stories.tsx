@@ -15,10 +15,10 @@ export default {
   component: Link,
   subcomponents: { SecondaryLink },
   argTypes: {
-    iconRight: { control: { type: null } },
-    iconLeft: { control: { type: null } },
+    iconRight: { control: false },
+    iconLeft: { control: false },
   },
-} as Meta<typeof Link>;
+} satisfies Meta<typeof Link>;
 
 const TemplateAll: StoryFn<typeof Link> = (args) => (
   <ConfigProvider
