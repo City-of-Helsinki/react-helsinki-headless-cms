@@ -1,7 +1,12 @@
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
-import { Button, IconAngleRight } from 'hds-react';
+import {
+  Button,
+  ButtonPresetTheme,
+  ButtonVariant,
+  IconAngleRight,
+} from 'hds-react';
 
 import styles from '../pageModules.module.scss';
 import colorStyles from '../../styles/background.module.scss';
@@ -94,10 +99,10 @@ export function SimpleCard({
           >
             <Button
               style={direction === 'vertical' ? { width: '100%' } : {}}
-              variant="secondary"
-              theme="black"
+              variant={ButtonVariant.Secondary}
+              theme={ButtonPresetTheme.Black}
               onClick={handleClick}
-              iconRight={<IconAngleRight />}
+              iconStart={<IconAngleRight />}
             >
               {linkTitle}
             </Button>
