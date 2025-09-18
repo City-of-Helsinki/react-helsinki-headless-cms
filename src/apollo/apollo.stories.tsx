@@ -38,8 +38,11 @@ const ExampleNavigation = ({
 const getTemplate =
   (datasource: keyof typeof CmsEndpoint): StoryFn<typeof Page> =>
   (args) => {
-    const { apolloClient, eventsApolloClient, internalHrefOrigins } =
-      useCmsEndpointConfig(datasource);
+    const {
+      apolloClient,
+      eventsApolloClient,
+      internalHrefOrigins = [],
+    } = useCmsEndpointConfig(datasource);
     return (
       <HelmetProvider>
         <ConfigProvider
@@ -62,7 +65,7 @@ const getTemplate =
               getRoutedInternalHref: (link) => {
                 let uri = '';
                 internalHrefOrigins.forEach((d) => {
-                  uri = link.replace(d, '');
+                  uri = link?.replace(d, '') ?? '';
                 });
                 return uri;
               },
