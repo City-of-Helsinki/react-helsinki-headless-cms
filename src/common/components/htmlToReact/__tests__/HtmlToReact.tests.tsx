@@ -59,7 +59,7 @@ describe('HtmlToReact', () => {
           expect(iframes.length).toBe(expectedIframesCount);
           // Each iframe src.attribute is listed in the trusted origins
           iframes.forEach((iframe) => {
-            expect(trustedOrigins.includes(new URL(iframe.src).origin));
+            expect((trustedOrigins || []).includes(new URL(iframe.src).origin));
           });
         },
       );
