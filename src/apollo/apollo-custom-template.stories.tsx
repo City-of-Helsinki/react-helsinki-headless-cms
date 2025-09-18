@@ -61,8 +61,11 @@ const CustomPageContentLayout: typeof PageContentLayout = ({
 const getTemplate =
   (dataSource: keyof typeof CmsEndpoint): StoryFn<typeof Page> =>
   (args) => {
-    const { apolloClient, eventsApolloClient, internalHrefOrigins } =
-      useCmsEndpointConfig(dataSource);
+    const {
+      apolloClient,
+      eventsApolloClient,
+      internalHrefOrigins = [],
+    } = useCmsEndpointConfig(dataSource);
     return (
       <HelmetProvider>
         <ConfigProvider
@@ -85,7 +88,7 @@ const getTemplate =
               getRoutedInternalHref: (link) => {
                 let uri = '';
                 internalHrefOrigins.forEach((d) => {
-                  uri = link.replace(d, '');
+                  uri = link?.replace(d, '') ?? '';
                 });
                 return uri;
               },
