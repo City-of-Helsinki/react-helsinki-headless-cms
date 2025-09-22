@@ -19,7 +19,6 @@ import {
 } from './utils';
 import { PageMainContent } from './PageMainContent';
 import type { ArticleType, PageType } from '../../common/headlessService/types';
-import type { GeneralCollectionType } from '../collection/types';
 
 export default {
   title: 'Core components/PageContent',
@@ -33,7 +32,7 @@ export default {
     sidebarContentProps: { control: { type: null } },
     content: { control: { type: null } },
   },
-} as Meta<typeof PageContent>;
+} as unknown as Meta<typeof PageContent>;
 
 const Template: StoryFn<typeof PageContent> = (args) => (
   <ConfigProvider
@@ -88,32 +87,30 @@ export const PageContentWithFunctions = {
     content: (page: PageType | ArticleType) => (
       <PageMainContent
         title={`${page?.title} (created with a custom function)`}
-        content={page?.content}
+        content={page?.content ?? ''}
       />
     ),
     collections: (page: PageType | ArticleType) =>
-      getCollections(page.modules, false)?.map(
-        (collection: GeneralCollectionType) => (
-          <Collection
-            key={`collection-${Math.random()}`}
-            title={`${collection.title} (created with a custom function)`}
-            cards={getCollectionCards(collection, [
-              ...defaultConfig.organisationPrefixes,
-            ]).map((cardProps) => (
-              <Card
-                key={cardProps.id}
-                {...cardProps}
-                imageUrl={
-                  cardProps.imageUrl ||
-                  pageMock.featuredImage?.node?.mediaItemUrl
-                }
-              />
-            ))}
-            type={getCollectionUIType(collection)}
-            collectionContainerProps={{ withDots: false }}
-          />
-        ),
-      ),
+      getCollections(page?.modules ?? [], false)?.map((collection) => (
+        <Collection
+          key={`collection-${Math.random()}`}
+          title={`${collection.title} (created with a custom function)`}
+          // @ts-expect-error ts(2345) evet selection does not have items, but events (property)
+          cards={getCollectionCards(collection, [
+            ...defaultConfig.organisationPrefixes,
+          ]).map((cardProps) => (
+            <Card
+              key={cardProps.id}
+              {...cardProps}
+              imageUrl={
+                cardProps.imageUrl || pageMock.featuredImage?.node?.mediaItemUrl
+              }
+            />
+          ))}
+          type={getCollectionUIType(collection)}
+          collectionContainerProps={{ withDots: false }}
+        />
+      )),
   },
 };
 
