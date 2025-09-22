@@ -27,8 +27,8 @@ const useLocaleStorageNotification = makeLocaleStorageValue<{
 }>('rhhc/notification');
 
 function getNotificationStatus(
-  notification: NotificationType,
-  notificationState: NotificationState,
+  notification?: NotificationType | null,
+  notificationState?: NotificationState,
 ) {
   if (!notification) {
     return NotificationStatus.missing;
@@ -94,7 +94,7 @@ export function Notification({ notification }: NotificationProps) {
         onClose={handleClose}
         className={styles.notification}
       >
-        <HtmlToReact>{content}</HtmlToReact>
+        <HtmlToReact>{String(content)}</HtmlToReact>
         {linkUrl && (
           <Link
             openInNewTab
