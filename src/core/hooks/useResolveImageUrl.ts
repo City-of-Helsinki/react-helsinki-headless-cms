@@ -21,7 +21,7 @@ export const useResolveImageUrl = ({
   React.useEffect(() => {
     const testThatImageExist = async () => {
       try {
-        await testImage(url);
+        await testImage(url ?? undefined);
       } catch {
         setShowFallbackImage(true);
       }
