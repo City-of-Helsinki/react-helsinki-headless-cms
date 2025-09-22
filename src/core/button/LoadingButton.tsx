@@ -1,4 +1,5 @@
-import { Button, ButtonProps, ButtonVariant, LoadingSpinner } from 'hds-react';
+import type { ButtonProps } from 'hds-react';
+import { Button, ButtonVariant, LoadingSpinner } from 'hds-react';
 import React from 'react';
 
 type LoadingButtonProps = Omit<ButtonProps, 'iconStart' | 'variant'> & {
@@ -20,11 +21,11 @@ export function LoadingButton({
     <Button
       {...rest}
       variant={variant}
-      disabled={disabled}
+      disabled={disabled || isLoading}
       iconStart={iconStart}
       style={{ cursor: isLoading ? 'wait' : '' }}
     >
-      {isLoading ? loadingText : children}
+      {isLoading ? String(loadingText) : String(children)}
     </Button>
   );
 }
