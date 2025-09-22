@@ -29,6 +29,9 @@ import { PageMeta } from '../pageContent/meta/PageMeta';
 import { MAIN_CONTENT_ID } from '../../common/constants';
 import type { BreadcrumbUnionType } from '../pageContent/types';
 import { PageContentBreadcrumb } from '../pageContent/PageContentBreadcrumb';
+import { isEventType } from '../../common/headlessService/utils';
+import { DEFAULT_LOCALE } from '../../constants';
+import { defaultConfig } from '../configProvider/defaultConfig';
 
 export function SearchForm({
   archiveSearch,
@@ -90,11 +93,11 @@ export function SearchTags({
           {tags.map((tag) => (
             <Tag
               whiteOnly
-              key={`tag-${tag.slug}`}
+              key={`tag-${tag?.slug}`}
               selected={currentTags.includes(tag)}
               onClick={handleTagClick(tag)}
             >
-              {tag.name}
+              {String(tag?.name)}
             </Tag>
           ))}
         </div>
@@ -188,10 +191,24 @@ export interface SearchPageContentProps {
 }
 
 export const defaultLargeCard = (item: CollectionItemType) => (
-  <LargeCard {...item} />
+  <LargeCard
+    {...item}
+    title={
+      (isEventType(item)
+        ? item.name[DEFAULT_LOCALE]
+        : (item as ArticleType | PageType)?.title) || undefined
+    }
+  />
 );
 export const defaultCreateCard = (item: CollectionItemType) => (
-  <Card {...item} />
+  <Card
+    {...item}
+    title={
+      (isEventType(item)
+        ? item.name[DEFAULT_LOCALE]
+        : (item as ArticleType | PageType)?.title) || undefined
+    }
+  />
 );
 
 export function ArchiveCollection({
@@ -228,8 +245,8 @@ export function SearchPageContent(props: SearchPageContentProps) {
     isLoading,
     noResults,
     tags,
-    currentTags,
-    currentText,
+    currentTags = [],
+    currentText = '',
     withQuery,
     onSearch,
     onLoadMore,
@@ -256,7 +273,9 @@ export function SearchPageContent(props: SearchPageContentProps) {
 
   const handleSearch = (e: React.FormEvent): void => {
     e.preventDefault();
-    onSearch(searchText, searchTags);
+    if (onSearch) {
+      onSearch(searchText, searchTags);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -275,14 +294,18 @@ export function SearchPageContent(props: SearchPageContentProps) {
       }
 
       setSearchTags([...selectedTags]);
-      onSearch(searchText, selectedTags);
+      if (onSearch) {
+        onSearch(searchText, selectedTags);
+      }
     }
   };
 
   const clearTags = (): void => {
     setSearchTags([]);
     setSearchText('');
-    onSearch('', []);
+    if (onSearch) {
+      onSearch('', []);
+    }
   };
 
   return (
@@ -307,7 +330,7 @@ export function SearchPageContent(props: SearchPageContentProps) {
           korosBottomClassName={styles.koros}
         >
           <div className={styles.searchFormContainerInner}>
-            <h1>{page?.title || archiveSearch.title || ''}</h1>
+            <h1>{page?.title || archiveSearch?.title || ''}</h1>
             <div>
               <SearchForm
                 archiveSearch={archiveSearch}
@@ -320,7 +343,10 @@ export function SearchPageContent(props: SearchPageContentProps) {
               <SearchTags
                 tags={tags}
                 hasClearSearch={Boolean(searchText) || currentTags?.length > 0}
-                clearAllText={archiveSearch?.clearAll}
+                clearAllText={
+                  archiveSearch?.clearAll ??
+                  defaultConfig.copy.archiveSearch.clearAll
+                }
                 currentTags={searchTags}
                 handleTagClick={handleTagClick}
                 handleClearSearch={clearTags}
@@ -344,8 +370,14 @@ export function SearchPageContent(props: SearchPageContentProps) {
                 {noResults ? (
                   <div className={styles.noResultsContainer}>
                     <IconSearch />
-                    <h1>{archiveSearch.noResultsTitle || ''}</h1>
-                    <p>{archiveSearch.noResultsText || ''}</p>
+                    <h1>
+                      {archiveSearch?.noResultsTitle ??
+                        defaultConfig.copy.archiveSearch.noResultsTitle}
+                    </h1>
+                    <p>
+                      {archiveSearch?.noResultsText ??
+                        defaultConfig.copy.archiveSearch.noResultsText}
+                    </p>
                   </div>
                 ) : (
                   <ArchiveCollection {...props} />
@@ -370,7 +402,9 @@ export function SearchPageContent(props: SearchPageContentProps) {
                         type="button"
                         onClick={onLoadMore}
                       >
-                        {archiveSearch?.loadMoreButtonLabelText || ''}
+                        {archiveSearch?.loadMoreButtonLabelText ||
+                          defaultConfig.copy.archiveSearch
+                            .loadMoreButtonLabelText}
                       </Button>
                     </div>
                   )}
