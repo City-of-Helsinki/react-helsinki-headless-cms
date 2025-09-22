@@ -42,9 +42,12 @@ export function PageMeta({ page, headComponent: Head }: PageMetaProps) {
 
   return (
     <Head>
-      <title>{unescapeDash(title)}</title>
+      <title>{unescapeDash(title ?? undefined)}</title>
       {description && <meta name="description" content={description} />}
-      <meta property="og:title" content={openGraphTitle} />
+      <meta
+        property="og:title"
+        content={openGraphTitle ?? unescapeDash(title ?? undefined)}
+      />
       {openGraphDescription && (
         <meta property="og:description" content={openGraphDescription} />
       )}
