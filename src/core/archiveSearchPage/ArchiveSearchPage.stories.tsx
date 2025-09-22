@@ -38,7 +38,7 @@ export default {
     content: { control: { type: null } },
     footer: { control: { type: null } },
   },
-} as Meta<typeof ArchiveSearchPage>;
+} as unknown as Meta<typeof ArchiveSearchPage>;
 
 const domain = window.location.origin ?? 'http://localhost:6006';
 
@@ -67,7 +67,7 @@ const navigation = (
       return new URL(
         currentRatherComplexUrl.pathname.replace(
           `/${currentLanguage.slug}`,
-          slug,
+          slug ?? '',
         ),
         domain,
       ).pathname;
@@ -77,15 +77,22 @@ const navigation = (
 
 const getCardProps = (
   item: CollectionItemType & ArticleType,
-): CardProps | LargeCardProps => ({
-  id: item.id,
-  ariaLabel: item.title || '',
-  title: item.title || '',
-  subTitle: 'date' in item && formatDateTimeFromString(item.date || ''),
-  customContent: <HtmlToReact>{(item.lead || item.content) ?? ''}</HtmlToReact>,
-  url: item.slug || '',
-  imageUrl: item.featuredImage?.node.medium_large || '',
-});
+): CardProps | LargeCardProps =>
+  item
+    ? {
+        id: item.id,
+        ariaLabel: item.title || '',
+        title: item.title || '',
+        subTitle:
+          ('date' in item && formatDateTimeFromString(item.date || '')) ||
+          undefined,
+        customContent: (
+          <HtmlToReact>{(item.lead || item.content) ?? ''}</HtmlToReact>
+        ),
+        url: item.slug || '',
+        imageUrl: item.featuredImage?.node.medium_large || '',
+      }
+    : {};
 
 const createLargeCard = (item: CollectionItemType & ArticleType) => (
   <LargeCard {...getCardProps(item)} />
@@ -125,8 +132,8 @@ export const ArchiveSearchPageWithArticles = {
           { title: 'Root', path: '/' },
           { title: 'Article archive', path: null },
         ]}
-        items={articles.edges.map((edge) => edge.node)}
-        tags={categories.nodes}
+        items={articles?.edges.map((edge) => edge.node)}
+        tags={categories?.nodes}
         onSearch={(freeSearch, tags) => {
           // eslint-disable-next-line no-console
           console.log('search params:', freeSearch, tags);
@@ -135,8 +142,8 @@ export const ArchiveSearchPageWithArticles = {
           // eslint-disable-next-line no-console
           console.log('load more items');
         }}
-        createLargeCard={createLargeCard}
-        createCard={createCard}
+        createLargeCard={(item) => createLargeCard(item as ArticleType)}
+        createCard={(item) => createCard(item as ArticleType)}
       />
     ),
     footer: <>TODO: Implement footer</>,
@@ -154,7 +161,7 @@ export const ArchiveSearchPageWithPages = {
           { title: 'Root', path: '/' },
           { title: 'Article archive', path: null },
         ]}
-        items={pages.edges.map((edge) => edge.node)}
+        items={pages?.edges.map((edge) => edge.node)}
         onSearch={(freeSearch, tags) => {
           // eslint-disable-next-line no-console
           console.log('search params:', freeSearch, tags);
@@ -163,8 +170,8 @@ export const ArchiveSearchPageWithPages = {
           // eslint-disable-next-line no-console
           console.log('load more items');
         }}
-        createLargeCard={createLargeCard}
-        createCard={createCard}
+        createLargeCard={(item) => createLargeCard(item as ArticleType)}
+        createCard={(item) => createCard(item as ArticleType)}
       />
     ),
     footer: <>TODO: Implement footer</>,
@@ -183,10 +190,13 @@ export const ArchiveSearchPageWithPageSubPages = {
           { title: 'Article archive', path: null },
         ]}
         customContent={
-          <PageMainContent title={mockPage.title} content={mockPage.content} />
+          <PageMainContent
+            title={mockPage?.title ?? ''}
+            content={mockPage?.content ?? ''}
+          />
         }
         items={filterPagesAndArticles(
-          pageWithChildren.edges.map((edge) => edge.node as PageType),
+          pageWithChildren?.edges.map((edge) => edge.node as PageType) ?? [],
         )}
         onSearch={(freeSearch, tags) => {
           // eslint-disable-next-line no-console
@@ -196,7 +206,7 @@ export const ArchiveSearchPageWithPageSubPages = {
           // eslint-disable-next-line no-console
           console.log('load more items');
         }}
-        createCard={createCard}
+        createCard={(item) => createCard(item as ArticleType)}
         largeFirstItem={false}
         hasMore
       />
