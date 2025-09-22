@@ -35,7 +35,7 @@ export default {
     content: { control: { type: null } },
     footer: { control: { type: null } },
   },
-} as Meta<typeof Page>;
+} as unknown as Meta<typeof Page>;
 
 const domain = window.location.origin ?? 'http://localhost:6006';
 const cmsDomain = new URL(
@@ -60,7 +60,7 @@ const Template: StoryFn<typeof Page> = (args) => (
           getRoutedInternalHref: (link) => {
             let uri = '';
             [domain, cmsDomain].forEach((d) => {
-              uri = link.replace(d, '');
+              uri = link?.replace(d, '') ?? '';
             });
             return uri;
           },
@@ -100,7 +100,7 @@ export const PageDefault = {
           return new URL(
             currentRatherComplexUrl.pathname.replace(
               `/${currentLanguage.slug}`,
-              slug,
+              slug ?? '',
             ),
             domain,
           ).href;
