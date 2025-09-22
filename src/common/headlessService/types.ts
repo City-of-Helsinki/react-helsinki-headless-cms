@@ -14,12 +14,18 @@ import type {
 export type Menu = MenuQuery['menu'];
 export type PageType = PageQuery['page'];
 export type ArticleType = ArticleQuery['post'];
-export type SidebarContent = PageQuery['page']['sidebar'];
-export type PageModule = PageQuery['page']['modules'][number];
-export type PageSidebarModule = PageQuery['page']['sidebar'][number];
+export type SidebarContent = NonNullable<PageQuery['page']>['sidebar'];
+export type PageModule = NonNullable<
+  NonNullable<PageQuery['page']>['modules']
+>[number];
+export type PageSidebarModule = NonNullable<
+  NonNullable<PageQuery['page']>['sidebar']
+>[number];
 export type Articles = PostsQuery['posts'];
 export type Pages = PagesQuery['pages'];
-export type PageChildren = PageChildrenSearchQuery['page']['children'];
+export type PageChildren = NonNullable<
+  PageChildrenSearchQuery['page']
+>['children'];
 export type Category = CategoryQuery['category'];
 export type Categories = CategoriesQuery['categories'];
 export type Tag = TagQuery['tag'];
