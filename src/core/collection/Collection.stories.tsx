@@ -24,7 +24,7 @@ export default {
     // collectionContainerProps: { control: { type: null } },
     type: { control: { type: null } },
   },
-} as Meta<typeof Collection>;
+} as unknown as Meta<typeof Collection>;
 
 const Template: StoryFn<typeof Collection> = (args) => (
   <StoryContainer>
