@@ -42,7 +42,7 @@ export function isLayoutContent(
 ): module is LayoutContent {
   return (
     // eslint-disable-next-line no-underscore-dangle
-    module.__typename === 'LayoutContent'
+    module?.__typename === 'LayoutContent'
   );
 }
 
@@ -51,7 +51,7 @@ export function isLayoutCard(
 ): module is LayoutCard {
   return (
     // eslint-disable-next-line no-underscore-dangle
-    module.__typename === 'LayoutCard'
+    module?.__typename === 'LayoutCard'
   );
 }
 
@@ -60,7 +60,7 @@ export function isLayoutCards(
 ): module is LayoutCards {
   return (
     // eslint-disable-next-line no-underscore-dangle
-    module.__typename === 'LayoutCards'
+    module?.__typename === 'LayoutCards'
   );
 }
 
@@ -69,7 +69,7 @@ export function isLayoutImage(
 ): module is LayoutImage {
   return (
     // eslint-disable-next-line no-underscore-dangle
-    module.__typename === 'LayoutImage'
+    module?.__typename === 'LayoutImage'
   );
 }
 
@@ -78,7 +78,7 @@ export function isLayoutImageGallery(
 ): module is LayoutImageGallery {
   return (
     // eslint-disable-next-line no-underscore-dangle
-    module.__typename === 'LayoutImageGallery'
+    module?.__typename === 'LayoutImageGallery'
   );
 }
 
@@ -87,7 +87,7 @@ export function isLayoutSteps(
 ): module is LayoutSteps {
   return (
     // eslint-disable-next-line no-underscore-dangle
-    module.__typename === 'LayoutSteps'
+    module?.__typename === 'LayoutSteps'
   );
 }
 
@@ -96,7 +96,7 @@ export function isLayoutSocialMediaFeed(
 ): module is LayoutSocialMediaFeed {
   return (
     // eslint-disable-next-line no-underscore-dangle
-    module.__typename === 'LayoutSocialMediaFeed'
+    module?.__typename === 'LayoutSocialMediaFeed'
   );
 }
 
@@ -106,7 +106,7 @@ export function isLayoutArticle(
   return (
     (<LayoutArticle>module).articles !== undefined &&
     // eslint-disable-next-line no-underscore-dangle
-    module.__typename === 'LayoutArticles'
+    module?.__typename === 'LayoutArticles'
   );
 }
 
@@ -116,7 +116,7 @@ export function isLayoutPage(
   return (
     (<LayoutPage>module).pages !== undefined &&
     // eslint-disable-next-line no-underscore-dangle
-    module.__typename === 'LayoutPages'
+    module?.__typename === 'LayoutPages'
   );
 }
 
@@ -126,7 +126,7 @@ export function isLayoutArticleCarousel(
   return (
     (<LayoutArticleCarousel>module).articles !== undefined &&
     // eslint-disable-next-line no-underscore-dangle
-    module.__typename === 'LayoutArticlesCarousel'
+    module?.__typename === 'LayoutArticlesCarousel'
   );
 }
 
@@ -136,7 +136,7 @@ export function isLayoutPageCarousel(
   return (
     (<LayoutPageCarousel>module).pages !== undefined &&
     // eslint-disable-next-line no-underscore-dangle
-    module.__typename === 'LayoutPagesCarousel'
+    module?.__typename === 'LayoutPagesCarousel'
   );
 }
 
@@ -146,7 +146,7 @@ export function isEventSearch(
   return (
     (<EventSearch>module).url !== undefined &&
     // eslint-disable-next-line no-underscore-dangle
-    module.__typename === 'EventSearch'
+    module?.__typename === 'EventSearch'
   );
 }
 
@@ -156,7 +156,7 @@ export function isEventSearchCarousel(
   return (
     (<EventSearchCarousel>module).url !== undefined &&
     // eslint-disable-next-line no-underscore-dangle
-    module.__typename === 'EventSearchCarousel'
+    module?.__typename === 'EventSearchCarousel'
   );
 }
 
@@ -166,7 +166,7 @@ export function isEventSelected(
   return (
     (<EventSelected>module).events !== undefined &&
     // eslint-disable-next-line no-underscore-dangle
-    module.__typename === 'EventSelected'
+    module?.__typename === 'EventSelected'
   );
 }
 
@@ -176,7 +176,7 @@ export function isEventSelectedCarousel(
   return (
     (<EventSelectedCarousel>module).events !== undefined &&
     // eslint-disable-next-line no-underscore-dangle
-    module.__typename === 'EventSelectedCarousel'
+    module?.__typename === 'EventSelectedCarousel'
   );
 }
 
@@ -186,7 +186,7 @@ export function isLocationsSelected(
   return (
     (<LocationsSelected>module).locations !== undefined &&
     // eslint-disable-next-line no-underscore-dangle
-    module.__typename === 'LocationsSelected'
+    module?.__typename === 'LocationsSelected'
   );
 }
 
@@ -196,7 +196,7 @@ export function isLocationsSelectedCarousel(
   return (
     (<LocationsSelectedCarousel>module).locations !== undefined &&
     // eslint-disable-next-line no-underscore-dangle
-    module.__typename === 'LocationsSelectedCarousel'
+    module?.__typename === 'LocationsSelectedCarousel'
   );
 }
 
