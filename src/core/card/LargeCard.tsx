@@ -106,7 +106,7 @@ export function LargeCard({
       )}
     >
       <BackgroundImage
-        id={id}
+        id={`${id}-image`}
         url={imageUrl}
         labelTag={imageLabel}
         className={styles.imageWrapper}
