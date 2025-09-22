@@ -65,7 +65,10 @@ export type LinkProps = Omit<
   inlineIcons?: boolean;
 };
 
-const mapLinkSizeToExternalIconSize: Record<LinkProps['size'], IconSize> = {
+const mapLinkSizeToExternalIconSize: Record<
+  NonNullable<LinkProps['size']>,
+  IconSize
+> = {
   L: IconSize.Large,
   M: IconSize.Small,
   S: IconSize.ExtraSmall,
@@ -177,8 +180,8 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
       [iconLeft, inlineIcons],
     );
 
-    const externalIcon = useMemo(() => {
-      return (
+    const externalIcon = useMemo(
+      () =>
         (showExternalIcon && external && (
           <span className={styles.externalWrapper}>
             {inlineIcons && ZERO_WIDTH_NO_BREAK_SPACE}
@@ -194,9 +197,9 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
             />
           </span>
         )) ||
-        null
-      );
-    }, [showExternalIcon, external, inlineIcons, size]);
+        null,
+      [showExternalIcon, external, inlineIcons, size],
+    );
 
     const rightIcon = useMemo(
       () =>

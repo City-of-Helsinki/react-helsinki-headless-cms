@@ -98,7 +98,6 @@
     "@typescript-eslint/parser": "^8.14.0",
     "axe-playwright": "^2.0.3",
     "babel-loader": "^9.2.1",
-    "classnames": "^2.5.1",
     "cross-env": "^7.0.3",
     "crypto-browserify": "^3.12.1",
     "css-loader": "^6.7.1",
@@ -148,7 +147,8 @@
     "html-react-parser": "^4.2.9",
     "isomorphic-dompurify": "^2.16.0",
     "jest-environment-jsdom": "^29.7.0",
-    "lodash-es": "^4.17.21"
+    "lodash-es": "^4.17.21",
+    "classnames": "^2.5.1"
   },
   "msw": {
     "workerDirectory": "public"
