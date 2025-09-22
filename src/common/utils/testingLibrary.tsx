@@ -11,7 +11,7 @@ const customRender = (
   options?: Omit<RenderOptions, 'wrapper'>,
   config?: Partial<Config>,
 ) => {
-  function AllTheProviders({ children }) {
+  function AllTheProviders({ children }: { children: React.ReactNode }) {
     return (
       <ConfigProvider config={{ ...defaultConfig, ...config }}>
         {children}
