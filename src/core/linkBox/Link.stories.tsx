@@ -14,7 +14,7 @@ export default {
     iconRight: { control: { type: null } },
     iconLeft: { control: { type: null } },
   },
-} as Meta<typeof LinkBox>;
+} as unknown as Meta<typeof LinkBox>;
 
 const Template: StoryFn<typeof LinkBox> = (args) => (
   <ConfigProvider
