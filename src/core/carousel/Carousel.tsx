@@ -13,8 +13,9 @@ import {
 } from './utils/utils';
 import { useConfig } from '../configProvider/useConfig';
 import { LoadingButton } from '../button/LoadingButton';
+import type { Card } from '../card/Card';
 
-export type CarouselProps<T> = {
+export type CarouselProps<T = typeof Card> = {
   /**
    * Additional children to render inside the Carousel.
    */
@@ -69,7 +70,7 @@ export function Carousel({
   loading,
   loadMoreButtonLabelText,
   title,
-}) {
+}: CarouselProps) {
   const MOBILE_WIDTH = 840;
   const [isReady] = useState<boolean>(true);
   const [transformValue, setTransformValue] = useState('0px');
@@ -181,19 +182,26 @@ export function Carousel({
                         node.setAttribute('inert', '')
                       }
                       aria-hidden={itemSetIndex !== currentSlide}
-                      key={getItemSetKey(itemSet, itemSetIndex)}
+                      key={getItemSetKey(
+                        itemSetIndex,
+                        'id' in itemSet && typeof itemSet.id === 'string'
+                          ? itemSet.id
+                          : undefined,
+                      )}
                       className={classNames(
                         styles.slide,
                         itemSetIndex === currentSlide && styles.slideSelected,
                       )}
                     >
                       <div className={styles.slideItems}>
-                        {itemSet.map((item, itemIndex) => (
+                        {itemSet.map((item, itemIndex: number) => (
                           <div
                             key={getItemSetItemKey(
-                              item,
-                              itemSetIndex,
                               itemIndex,
+                              'id' in itemSet && typeof itemSet.id === 'string'
+                                ? itemSet.id
+                                : undefined,
+                              String(itemSetIndex),
                             )}
                             className={styles.slideItem}
                             style={{
@@ -214,8 +222,11 @@ export function Carousel({
                   {hasMore && !!onLoadMore && (
                     <li key={getLoadMoreKey()}>
                       <div className={styles.onLoadMoreContainer}>
-                        <LoadingButton isLoading={loading} onClick={onLoadMore}>
-                          {loadMoreButtonLabelText}
+                        <LoadingButton
+                          isLoading={Boolean(loading)}
+                          onClick={onLoadMore}
+                        >
+                          {String(loadMoreButtonLabelText)}
                         </LoadingButton>
                       </div>
                     </li>
