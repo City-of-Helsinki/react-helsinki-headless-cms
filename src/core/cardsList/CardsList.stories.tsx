@@ -17,7 +17,7 @@ export default {
   argTypes: {
     children: { control: { type: null } },
   },
-} as Meta<typeof CardsList>;
+} as unknown as Meta<typeof CardsList>;
 
 const Template: StoryFn<typeof CardsList> = (args) => (
   <StoryContainer>
