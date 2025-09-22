@@ -41,14 +41,14 @@ export function Lightbox({
   images,
   lightboxUid,
 }: LightboxProps): JSX.Element | null {
-  const lightboxRef = useRef(null);
-  const barrierRef = useRef(null);
+  const lightboxRef = useRef<HTMLDivElement | null>(null);
+  const barrierRef = useRef<HTMLHeadingElement | null>(null);
 
   const { isLightboxVisible, imageIndex, toggleLightbox } =
     useImageGalleryContext();
 
   const handleEscapeKeyPress = useCallback(
-    (event: React.KeyboardEvent) => {
+    (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         toggleLightbox();
       }
@@ -60,7 +60,7 @@ export function Lightbox({
     const lightbox = lightboxRef.current;
     if (!lightbox) return undefined;
 
-    const focusableElements = lightbox.querySelectorAll(
+    const focusableElements = lightbox.querySelectorAll<HTMLElement>(
       'button, [tabindex]:not([tabindex="-1"])',
     );
     const firstElement = focusableElements ? focusableElements[0] : null;
@@ -68,11 +68,11 @@ export function Lightbox({
       ? focusableElements[focusableElements.length - 1]
       : null;
 
-    const handleTabKeyPress = (event: React.KeyboardEvent) => {
+    const handleTabKeyPress = (event: KeyboardEvent) => {
       if (focusableElements && event.key === 'Tab') {
         if (event.shiftKey && document.activeElement === firstElement) {
           event.preventDefault();
-          lastElement.focus();
+          lastElement?.focus();
         } else if (!event.shiftKey && document.activeElement === lastElement) {
           event.preventDefault();
           focusableElements[0].focus();
@@ -112,7 +112,6 @@ export function Lightbox({
           e.stopPropagation();
         }}
         className={styles.lightboxContent}
-        onKeyDown={handleEscapeKeyPress}
       >
         <div className={styles.inner}>
           <h2
