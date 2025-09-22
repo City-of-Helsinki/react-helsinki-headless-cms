@@ -152,7 +152,7 @@ export default function Hero({
                     id={id}
                     className={styles.imageContainer}
                     src={imageUrl}
-                    alt={imageAlt}
+                    alt={imageAlt ?? ''}
                   />
                   {imageLabel && (
                     <div className={styles.label}>{imageLabel}</div>
