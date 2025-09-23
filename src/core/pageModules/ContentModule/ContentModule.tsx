@@ -45,7 +45,7 @@ export function ContentModule({
           allowedUnsafeTags={allowedUnsafeTags}
           trustedOrigins={trustedOrigins}
         >
-          {content}
+          {content || ''}
         </HtmlToReact>
       </div>
     </div>
