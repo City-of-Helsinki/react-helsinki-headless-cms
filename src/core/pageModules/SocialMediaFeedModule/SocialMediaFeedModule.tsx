@@ -23,7 +23,7 @@ export function SocialMediaFeedModule({
     htmlSanitizer: { trustedOrigins },
   } = useConfig();
 
-  const scriptWrapperRef = useRef<HTMLDivElement>();
+  const scriptWrapperRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     if (scriptWrapperRef.current?.innerHTML) {
@@ -41,7 +41,7 @@ export function SocialMediaFeedModule({
     if ('attribs' in domNode) {
       if (
         domNode.name === 'script' &&
-        !isTrustedOrigin(domNode.attribs.src, trustedOrigins)
+        !isTrustedOrigin(domNode.attribs.src, trustedOrigins ?? [])
       ) {
         // eslint-disable-next-line no-console
         console.warn(
@@ -56,7 +56,7 @@ export function SocialMediaFeedModule({
 
   const clean = useMemo(
     () =>
-      DOMPurify.sanitize(script, {
+      DOMPurify.sanitize(script ?? '', {
         FORCE_BODY: true,
         ADD_TAGS: ['script', 'div'],
       }),
@@ -64,7 +64,7 @@ export function SocialMediaFeedModule({
   );
 
   const htmlReactParserOptions = {
-    replace: (domNode) => sanitizeScripts(domNode),
+    replace: (domNode: DOMNode) => sanitizeScripts(domNode),
   };
 
   return (
