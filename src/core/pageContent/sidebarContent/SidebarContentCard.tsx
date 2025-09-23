@@ -29,7 +29,7 @@ export default function SidebarContentCard({
       <Image
         id={id}
         className={styles.image}
-        src={imageUrl}
+        src={imageUrl ?? ''}
         alt={imageAlt ?? ''}
       />
       <div className={styles.content}>
