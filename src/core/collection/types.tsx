@@ -15,7 +15,7 @@ export type GeneralCollectionType = {
   description?: string;
   items: CollectionItemType[];
   showAllUrl?: string;
-  __typename: string;
+  __typename?: string;
 };
 
 export type EventSelectionCollectionType = Omit<
