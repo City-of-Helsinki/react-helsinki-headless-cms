@@ -29,6 +29,7 @@ import { DEFAULT_LOCALE } from '../../constants';
 import type { CardProps } from '../card/Card';
 import { type CollectionProps } from '../collection/Collection';
 import type {
+  CollectionItemType,
   CollectionType,
   EventSearchCollectionType,
   EventSelectionCollectionType,
@@ -42,28 +43,52 @@ export function getCollections(
   pageModules: PageModule[],
   isEventSearchCollectionsEnables = false,
 ): CollectionType[] {
-  return pageModules?.reduce((collections, module, index) => {
-    const commonFields: CollectionType = {
+  return pageModules?.reduce((collections: CollectionType[], module, index) => {
+    const commonFields: GeneralCollectionType = {
       id: index.toString(),
-      title: 'title' in module ? module.title : null,
-      description: 'description' in module ? module.description : null,
+      title:
+        module && 'title' in module ? (module.title ?? undefined) : undefined,
+      description:
+        module && 'description' in module
+          ? (module.description ?? undefined)
+          : undefined,
       items: [],
       // eslint-disable-next-line no-underscore-dangle
-      __typename: module.__typename,
+      __typename: module?.__typename,
     };
 
     if (isLayoutArticle(module) || isLayoutArticleCarousel(module)) {
+      const articles: CollectionItemType[] =
+        module.articles
+          ?.filter((item) => !!item)
+          .map((article) => ({
+            ...article,
+            categories: article.categories
+              ? {
+                  // eslint-disable-next-line no-underscore-dangle
+                  __typename: article.categories.__typename,
+                  edges: article.categories.nodes.map((node) => ({
+                    __typename: 'PostToCategoryConnectionEdge',
+                    node: { ...node, id: node.name || '' },
+                  })),
+                }
+              : null,
+          })) ?? [];
       collections.push({
         ...commonFields,
-        items: module.articles,
-        showAllUrl: module.showAllLink,
+        items: articles,
+        showAllUrl: module.showAllLink ?? undefined,
       });
     }
     if (isLayoutPage(module) || isLayoutPageCarousel(module)) {
+      const pages: CollectionItemType[] =
+        module.pages?.filter((item) => !!item) ?? [];
       collections.push({
         ...commonFields,
-        items: module.pages,
-        showAllUrl: isLayoutPage(module) ? module.showAllLink : '',
+        items: pages,
+        showAllUrl: isLayoutPage(module)
+          ? (module.showAllLink ?? undefined)
+          : undefined,
       });
     }
     if (isEventSearchCollectionsEnables) {
@@ -95,17 +120,17 @@ export function getArticlePageCardProps(
   item: ArticleType | PageType,
 ): CardProps {
   return {
-    id: item.id,
-    title: item.title,
-    url: item.link,
-    imageUrl: item.featuredImage?.node?.medium,
-    ariaLabel: item.title,
-    text: getElementTextContent((item.lead || item.content) ?? ''),
+    id: item?.id,
+    title: item?.title ?? undefined,
+    url: item?.link ?? '#',
+    imageUrl: item?.featuredImage?.node?.medium,
+    ariaLabel: item?.title ?? '',
+    text: getElementTextContent(item?.lead || item?.content || '' || ''),
     hasLink: true,
     withBorder: true,
     withShadow: false,
     clampText: true,
-    direction: 'responsive' as CardProps['direction'],
+    direction: 'responsive',
     openLinkInNewTab: false,
   };
 }
@@ -116,18 +141,21 @@ export function getEventCardProps(
   locale: string = DEFAULT_LOCALE,
 ): CardProps {
   const image = item.images.length > 0 ? item.images[0] : null;
-  const name = item.name[locale.toLowerCase()] ?? item.name[DEFAULT_LOCALE];
+  const name =
+    item.name[locale.toLowerCase() as keyof typeof item.name] ??
+    item.name[DEFAULT_LOCALE] ??
+    undefined;
   return {
     id: item.id,
     title: name,
-    url: item.internalId,
+    url: item.internalId ?? undefined,
     imageUrl: image?.url,
     ariaLabel: name,
     hasLink: true,
     withBorder: true,
     withShadow: false,
     clampText: true,
-    direction: 'responsive' as CardProps['direction'],
+    direction: 'responsive',
     openLinkInNewTab: false,
     withTitleIcon: organisationPrefixes.includes(
       item?.publisher?.split(':')[0] ?? '',
@@ -138,15 +166,15 @@ export function getEventCardProps(
 export function getLocationCardProps(item: VenueType): CardProps {
   return {
     id: item.id,
-    title: item.name,
+    title: item.name ?? '',
     url: item.id.split(':')[1],
     imageUrl: item.image,
-    ariaLabel: item.name,
+    ariaLabel: item?.name ?? '',
     hasLink: true,
     withBorder: true,
     withShadow: false,
     clampText: true,
-    direction: 'responsive' as CardProps['direction'],
+    direction: 'responsive',
     openLinkInNewTab: false,
     withTitleIcon:
       item.providerType === 'SELF_PRODUCED' &&
@@ -173,7 +201,7 @@ export function getCollectionUIType(
   collection: CollectionType,
 ): CollectionProps['type'] {
   // eslint-disable-next-line no-underscore-dangle
-  return collection.__typename.includes('Carousel') ? 'carousel' : 'grid';
+  return collection.__typename?.includes('Carousel') ? 'carousel' : 'grid';
 }
 
 /**
@@ -186,9 +214,9 @@ export const getBreadcrumbsFromPage = (
   page: PageType | ArticleType,
 ): BreadcrumbListItem[] =>
   uniqBy(
-    page.breadcrumbs.map((breadcrumb) => ({
-      title: breadcrumb.title,
-      path: breadcrumb.uri,
+    page?.breadcrumbs?.map((breadcrumb) => ({
+      title: breadcrumb?.title ?? '',
+      path: breadcrumb?.uri ?? '',
     })),
     'path',
   );
@@ -229,14 +257,14 @@ export function isCmsBreadcrumb(item: unknown): item is CmsBreadcrumb {
 
 export function getHeroProps(page: PageType | ArticleType) {
   const heroProps: HeroProps = {};
-  if (isPageType(page)) {
+  if (page && isPageType(page)) {
     heroProps.title = page.hero?.title || '';
-    heroProps.description = page.hero?.description;
-    heroProps.backgroundColor = page.hero?.background_color;
+    heroProps.description = page.hero?.description ?? '';
+    heroProps.backgroundColor = page.hero?.background_color ?? undefined;
     heroProps.korosType = (page.hero?.wave_motif as KorosType) || 'basic';
-    heroProps.actionUrl = page.hero?.link.url;
-    heroProps.actionUrlTarget = page.hero?.link.target;
-    heroProps.actionText = page.hero?.link?.title;
+    heroProps.actionUrl = page.hero?.link?.url ?? undefined;
+    heroProps.actionUrlTarget = page.hero?.link?.target ?? undefined;
+    heroProps.actionText = page.hero?.link?.title ?? undefined;
     heroProps.isPageType = true;
   }
   return heroProps;
@@ -244,7 +272,7 @@ export function getHeroProps(page: PageType | ArticleType) {
 
 export function disableBreadcrumbsLastLink(breadcrumbs: BreadcrumbListItem[]) {
   const lastItem = breadcrumbs.pop();
-  breadcrumbs.push({ ...lastItem, path: null });
+  breadcrumbs.push({ ...lastItem, title: lastItem?.title ?? '', path: null });
   return breadcrumbs;
 }
 
@@ -254,11 +282,21 @@ export function getBreadcrumbListItems(
 ): BreadcrumbListItem[] {
   const getListItems = () => {
     if (isHdsBreadcrumb(breadcrumbs)) {
-      return breadcrumbs.list;
+      return [
+        ...breadcrumbs.list.map((item) => ({
+          ...item,
+          title: item.title ?? '',
+        })),
+      ];
     }
     return breadcrumbs.map((breadcrumb: BreadcrumbListItem | CmsBreadcrumb) => {
-      if (isHdsBreadcrumbListItem(breadcrumb)) return breadcrumb;
-      return { title: breadcrumb.title, path: breadcrumb.uri };
+      if (isHdsBreadcrumbListItem(breadcrumb))
+        return { ...breadcrumb, title: breadcrumb.title ?? '' };
+      return {
+        ...breadcrumb,
+        title: breadcrumb.title ?? '',
+        path: breadcrumb.uri ?? '',
+      };
     });
   };
   return forceLastItemWithoutLink
