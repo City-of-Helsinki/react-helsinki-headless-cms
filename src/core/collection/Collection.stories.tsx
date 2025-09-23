@@ -20,11 +20,11 @@ export default {
     Card,
   },
   argTypes: {
-    cards: { control: { type: null } },
-    // collectionContainerProps: { control: { type: null } },
-    type: { control: { type: null } },
+    cards: { control: false },
+    collectionContainerProps: { control: false },
+    type: { control: false },
   },
-} as unknown as Meta<typeof Collection>;
+} satisfies Meta<typeof Collection>;
 
 const Template: StoryFn<typeof Collection> = (args) => (
   <StoryContainer>

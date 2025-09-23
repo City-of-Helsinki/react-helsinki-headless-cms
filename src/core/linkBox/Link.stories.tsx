@@ -11,10 +11,10 @@ export default {
   title: 'Core components/LinkBox',
   component: LinkBox,
   argTypes: {
-    iconRight: { control: { type: null } },
-    iconLeft: { control: { type: null } },
+    iconRight: { control: false },
+    iconLeft: { control: false },
   },
-} as unknown as Meta<typeof LinkBox>;
+} satisfies Meta<typeof LinkBox>;
 
 const Template: StoryFn<typeof LinkBox> = (args) => (
   <ConfigProvider
