@@ -44,7 +44,7 @@ export function PageContentLayout({
           id={id}
           container={heroContainer}
           imageAlt={imageAlt}
-          imageUrl={imageSrc}
+          imageUrl={imageSrc ?? undefined}
           imageLabel={imageLabel}
           backUrl={backUrl}
           {...heroProps}

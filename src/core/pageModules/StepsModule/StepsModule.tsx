@@ -13,7 +13,7 @@ export type Step = {
   title: string;
 };
 
-type StepsModuleProps = {
+export type StepsModuleProps = {
   steps?: Step[];
   title?: string;
   helpText?: string;
