@@ -42,7 +42,10 @@ export const isEventClosed = (event: EventType): boolean =>
  * @return {object} - Returns normalized values.
  */
 export const normalizeParamsValues = (params: Record<string, string>) => {
-  const normalizedParams = { ...normalizeKeys(params) };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const normalizedParams: Record<string, any> = {
+    ...normalizeKeys(params),
+  };
 
   // Fix for course event type lower case
   if (normalizedParams.eventType) {
