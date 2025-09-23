@@ -9,5 +9,5 @@ export const queryMenu = () =>
     if (req.variables.id === data.menu.name) {
       return res(ctx.data(data));
     }
-    return null;
+    return res(ctx.data({ menu: null }));
   });
