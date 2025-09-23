@@ -15,9 +15,9 @@ export default {
   component: CardsList,
   subcomponents: { Card },
   argTypes: {
-    children: { control: { type: null } },
+    children: { control: false },
   },
-} as unknown as Meta<typeof CardsList>;
+} satisfies Meta<typeof CardsList>;
 
 const Template: StoryFn<typeof CardsList> = (args) => (
   <StoryContainer>

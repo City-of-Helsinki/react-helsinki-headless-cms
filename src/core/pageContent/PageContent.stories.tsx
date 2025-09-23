@@ -25,14 +25,14 @@ export default {
   component: PageContent,
   subcomponents: { Collection, Card },
   argTypes: {
-    heroContainer: { control: { type: null } },
-    breadcrumbs: { control: { type: null } },
-    shareLinks: { control: { type: null } },
-    collections: { control: { type: null } },
-    sidebarContentProps: { control: { type: null } },
-    content: { control: { type: null } },
+    heroContainer: { control: false },
+    breadcrumbs: { control: false },
+    shareLinks: { control: false },
+    collections: { control: false },
+    sidebarContentProps: { control: false },
+    content: { control: false },
   },
-} as unknown as Meta<typeof PageContent>;
+} satisfies Meta<typeof PageContent>;
 
 const Template: StoryFn<typeof PageContent> = (args) => (
   <ConfigProvider

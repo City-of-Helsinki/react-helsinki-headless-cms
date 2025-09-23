@@ -30,12 +30,12 @@ export default {
   component: Page,
   subcomponents: { PageContent, Navigation, Notification, Collection },
   argTypes: {
-    navigation: { control: { type: null } },
-    notification: { control: { type: null } },
-    content: { control: { type: null } },
-    footer: { control: { type: null } },
+    navigation: { control: false },
+    notification: { control: false },
+    content: { control: false },
+    footer: { control: false },
   },
-} as unknown as Meta<typeof Page>;
+} satisfies Meta<typeof Page>;
 
 const domain = window.location.origin ?? 'http://localhost:6006';
 const cmsDomain = new URL(

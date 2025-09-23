@@ -34,11 +34,11 @@ export default {
   component: ArchiveSearchPage,
   subcomponents: { ArchiveSearchPageContent, Navigation, Card },
   argTypes: {
-    navigation: { control: { type: null } },
-    content: { control: { type: null } },
-    footer: { control: { type: null } },
+    navigation: { control: false },
+    content: { control: false },
+    footer: { control: false },
   },
-} as unknown as Meta<typeof ArchiveSearchPage>;
+} satisfies Meta<typeof ArchiveSearchPage>;
 
 const domain = window.location.origin ?? 'http://localhost:6006';
 
