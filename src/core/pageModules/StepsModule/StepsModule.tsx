@@ -50,8 +50,8 @@ export function StepsModule({
           styles.stepsContainer,
           className,
         )}
-        helpText={getTextFromHtml(helpText)}
-        steps={stepsContents}
+        helpText={getTextFromHtml(helpText ?? '')}
+        steps={stepsContents ?? []}
         title={title}
       />
     </div>
