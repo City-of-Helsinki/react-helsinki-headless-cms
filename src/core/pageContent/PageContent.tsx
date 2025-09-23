@@ -35,14 +35,17 @@ import {
 } from '../../common/headlessService/utils';
 import { ContentModule } from '../pageModules/ContentModule/ContentModule';
 import { CardModule } from '../pageModules/CardModule/CardModule';
+import type { CardsModuleProps } from '../pageModules/CardsModule/CardsModule';
 import { CardsModule } from '../pageModules/CardsModule/CardsModule';
 import { ImageGalleryModule } from '../pageModules/ImageGalleryModule/ImageGalleryModule';
+import type { StepsModuleProps } from '../pageModules/StepsModule/StepsModule';
 import { StepsModule } from '../pageModules/StepsModule/StepsModule';
 import createHashKey from '../utils/createHashKey';
 import { MAIN_CONTENT_ID } from '../../common/constants';
 import { PageContentBreadcrumb } from './PageContentBreadcrumb';
 import type { CardAlignment } from '../card/Card';
 import { SocialMediaFeedModule } from '../pageModules/SocialMediaFeedModule/SocialMediaFeedModule';
+import type { ImageItem } from '../imageGallery/types';
 
 // Modules: Content, Image, Cards, Steps (possibly other in future)
 export const defaultContentModules = (
@@ -55,51 +58,70 @@ export const defaultContentModules = (
       contentModules.push(
         <ContentModule
           key={uniqueKey}
-          content={module.content}
-          backgroundColor={module.backgroundColor}
+          content={module.content ?? undefined}
+          backgroundColor={module.backgroundColor ?? undefined}
         />,
       );
     } else if (isLayoutCard(module)) {
       contentModules.push(
         <CardModule
           key={uniqueKey}
-          title={module.title}
-          text={module.description}
-          backgroundColor={module.backgroundColor}
+          title={module.title ?? undefined}
+          text={module.description ?? undefined}
+          backgroundColor={module.backgroundColor ?? undefined}
           hasLink
-          url={module.link.url}
-          imageUrl={module.image.medium_large}
+          url={module.link?.url ?? undefined}
+          imageUrl={module.image?.medium_large}
           alignment={module.alignment as CardAlignment}
         />,
       );
     } else if (isLayoutCards(module)) {
-      contentModules.push(<CardsModule key={uniqueKey} items={module.cards} />);
+      const items: CardsModuleProps['items'] =
+        module.cards
+          ?.filter((card) => card !== null)
+          .map((card) => ({
+            ...card,
+            backgroundColor: card.backgroundColor ?? undefined,
+            title: card.description ?? undefined,
+            description: card.description ?? undefined,
+            icon: card.icon ?? undefined,
+            link: {
+              ...card.link,
+              title: card.link?.title ?? undefined,
+              target: card.link?.target ?? undefined,
+              url: card.link?.url ?? undefined,
+            },
+          })) ?? [];
+      contentModules.push(<CardsModule key={uniqueKey} items={items} />);
     } else if (isLayoutImage(module)) {
+      const image: ImageItem = {
+        url: module.image?.medium_large ?? '',
+        previewUrl: module.image?.medium ?? '',
+        photographer: module.photographer_name ?? '',
+      };
       contentModules.push(
         <ImageGalleryModule
-          images={[
-            {
-              url: module.image?.medium_large,
-              previewUrl: module.image?.medium,
-              photographer: module.photographer_name,
-            },
-          ]}
+          images={[image]}
           key={uniqueKey}
-          withBorder={module.border}
-          withLightbox={module.show_on_lightbox}
+          withBorder={module.border ?? undefined}
+          withLightbox={module.show_on_lightbox ?? undefined}
           lightboxUid={`lightbox-${index}`}
           columns={1}
         />,
       );
     } else if (isLayoutImageGallery(module)) {
+      const images: ImageItem[] =
+        module.gallery
+          ?.filter((image) => !!image)
+          .map((image) => ({
+            url: image?.medium_large ?? '',
+            previewUrl: image?.medium ?? '',
+            photographer: image?.caption ?? '',
+            title: image?.title ?? '',
+          })) ?? [];
       contentModules.push(
         <ImageGalleryModule
-          images={module.gallery?.map((image) => ({
-            url: image.medium_large,
-            previewUrl: image.medium,
-            photographer: image.caption,
-            title: image.title,
-          }))}
+          images={images}
           key={uniqueKey}
           withLightbox
           lightboxUid={`lightbox-${index}`}
@@ -107,26 +129,30 @@ export const defaultContentModules = (
         />,
       );
     } else if (isLayoutSteps(module)) {
+      const steps: StepsModuleProps['steps'] =
+        module.steps
+          ?.filter((step) => !!step)
+          .map((step) => ({
+            title: step.title ?? '',
+            content: step.content ?? '',
+          })) ?? [];
       contentModules.push(
         <StepsModule
           key={uniqueKey}
-          title={module.title}
-          steps={module.steps.map((step) => ({
-            title: step.title,
-            content: step.content,
-          }))}
-          helpText={module.description}
-          color={module.color}
-          type={module.type}
+          title={module.title ?? undefined}
+          steps={steps}
+          helpText={module.description ?? undefined}
+          color={module.color ?? undefined}
+          type={module.type ?? undefined}
         />,
       );
     } else if (isLayoutSocialMediaFeed(module)) {
       contentModules.push(
         <SocialMediaFeedModule
           key={uniqueKey}
-          anchor={module.anchor}
-          title={module.title}
-          script={module.script}
+          anchor={module.anchor ?? ''}
+          title={module.title ?? undefined}
+          script={module.script ?? undefined}
         />,
       );
     }
@@ -146,9 +172,9 @@ export const defaultContent = (
 
   return (
     <PageMainContent
-      title={!hideTitle && page.title}
-      content={page?.content}
-      date={(page as ArticleType)?.date}
+      title={!hideTitle ? (page?.title ?? '') : ''}
+      content={page?.content ?? ''}
+      date={(page as ArticleType)?.date ?? undefined}
       categories={(page as ArticleType)?.categories}
       contentModules={defaultContentModules(page)}
       onArticlesSearch={onArticlesSearch}
@@ -165,8 +191,8 @@ export const defaultCollections = ({
   isEventModulesEnabled: boolean;
   isVenueModulesEnabled: boolean;
 }) =>
-  getCollections(page?.modules, true)?.reduce(
-    (collectionElements, collection) => {
+  getCollections(page?.modules ?? [], true)?.reduce(
+    (collectionElements: React.JSX.Element[], collection) => {
       const commonCollectionProps = {
         key: `collection-${Math.random()}`,
         title: collection.title,
@@ -199,7 +225,7 @@ export const defaultCollections = ({
             <LocationsSelectionCollection
               {...commonCollectionProps}
               collection={collection}
-              locale={page.language.locale as LanguageCodeEnum}
+              locale={page?.language?.locale as LanguageCodeEnum}
             />,
           );
         }
@@ -265,8 +291,8 @@ export function PageContent(props: PageContentProps) {
         heroContainer={heroContainer}
         id={page?.id ?? 'page'}
         imageSrc={page?.featuredImage?.node?.large}
-        imageAlt={page?.featuredImage?.node?.altText}
-        imageLabel={page?.featuredImage?.node?.photographerName}
+        imageAlt={page?.featuredImage?.node?.altText ?? undefined}
+        imageLabel={page?.featuredImage?.node?.photographerName ?? undefined}
         backUrl={backUrl}
         content={
           typeof content === 'function'
