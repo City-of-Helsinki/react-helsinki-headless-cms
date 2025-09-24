@@ -1,4 +1,4 @@
-import { TagTheme } from 'hds-react';
+import type { TagTheme } from 'hds-react';
 
 export const theme1: TagTheme = {
   '--background-color': 'var(--color-black-10)',
