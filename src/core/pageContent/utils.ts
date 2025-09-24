@@ -125,7 +125,7 @@ export function getArticlePageCardProps(
     url: item?.link ?? '#',
     imageUrl: item?.featuredImage?.node?.medium,
     ariaLabel: item?.title ?? '',
-    text: getElementTextContent(item?.lead || item?.content || '' || ''),
+    text: getElementTextContent(item?.lead || item?.content || ''),
     hasLink: true,
     withBorder: true,
     withShadow: false,
