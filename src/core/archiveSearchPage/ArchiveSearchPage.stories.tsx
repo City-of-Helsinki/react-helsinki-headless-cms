@@ -2,7 +2,7 @@
 
 import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { HelmetProvider } from 'react-helmet-async';
 
 import type { ArticleType, PageType } from '../../common/headlessService/types';
 import { LanguageCodeEnum } from '../../common/headlessService/types';
@@ -28,6 +28,7 @@ import type { CollectionItemType } from '../collection/types';
 import mockPage from '../pageContent/__mocks__/page.mock';
 import { PageMainContent } from '../pageContent/PageMainContent';
 import categories from '../archiveSearchPageContent/__mocks__/categories.mock';
+import { HelmetWrapper } from '../../storybook-common/HelmetWrapper';
 
 export default {
   title: 'Core components/ArchiveSearchPage',
@@ -110,9 +111,7 @@ const Template: StoryFn<typeof ArchiveSearchPage> = (args) => (
         internalHrefOrigins: [domain],
         components: {
           ...defaultConfig.components,
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          Head: Helmet,
+          Head: HelmetWrapper,
         },
       }}
     >

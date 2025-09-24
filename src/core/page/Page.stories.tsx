@@ -2,7 +2,7 @@
 
 import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { HelmetProvider } from 'react-helmet-async';
 
 import { LanguageCodeEnum } from '../../common/headlessService/types';
 import { ConfigProvider } from '../configProvider/ConfigProvider';
@@ -24,6 +24,7 @@ import {
 } from '../pageContent/utils';
 import { Card } from '../card/Card';
 import type { GeneralCollectionType } from '../collection/types';
+import { HelmetWrapper } from '../../storybook-common/HelmetWrapper';
 
 export default {
   title: 'Core components/Page',
@@ -42,6 +43,7 @@ const cmsDomain = new URL(
   process.env.CMS_GRAPHQL_ENDPOINT ??
     'https://app-staging.hkih.hion.dev/graphql',
 ).origin;
+
 const Template: StoryFn<typeof Page> = (args) => (
   <HelmetProvider>
     <ConfigProvider
@@ -51,9 +53,7 @@ const Template: StoryFn<typeof Page> = (args) => (
         internalHrefOrigins: [domain],
         components: {
           ...defaultConfig.components,
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          Head: Helmet,
+          Head: HelmetWrapper,
         },
         utils: {
           ...defaultConfig.utils,
