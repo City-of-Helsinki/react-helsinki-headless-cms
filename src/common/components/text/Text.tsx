@@ -61,8 +61,6 @@ function Text({
   return React.createElement(
     as || getElement(variant),
     {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore: For some reason TS considers text to be undefined
       className: [styles.text, styles[variant], className].join(' '),
       ...rest,
     },
