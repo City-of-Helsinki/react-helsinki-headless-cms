@@ -1,15 +1,16 @@
-import makeQueryWithEventsApolloClientFromConfig from './makeQueryWithEventsApolloClientFromConfig';
-import type {
-  EventsByIdsQuery,
-  EventsByIdsQueryVariables,
-} from './__generated__';
+import useEventsApolloClientFromConfig from '../../core/configProvider/useEventsApolloClientFromConfig';
 import { useEventsByIdsQuery as useEventsByIdsQueryWithoutClient } from './__generated__';
 
-export const useEventsByIdsQuery = makeQueryWithEventsApolloClientFromConfig<
-  EventsByIdsQuery,
-  EventsByIdsQueryVariables
-  // @ts-expect-error: The Apollo Client's QueryHookOptions client property is typed as optional, but makeQueryWithEventsApolloClientFromConfig expects it to be potentially 'disabled'.
->(useEventsByIdsQueryWithoutClient);
+export function useEventsByIdsQuery(
+  baseOptions: Parameters<typeof useEventsByIdsQueryWithoutClient>[0],
+) {
+  const client = useEventsApolloClientFromConfig();
+  const options = {
+    ...baseOptions,
+    client: client === 'disabled' ? undefined : client,
+  };
+  return useEventsByIdsQueryWithoutClient(options);
+}
 
 export {
   EventsByIdsQuery,
