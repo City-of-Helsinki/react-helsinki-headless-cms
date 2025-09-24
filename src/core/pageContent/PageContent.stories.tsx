@@ -95,7 +95,6 @@ export const PageContentWithFunctions = {
         <Collection
           key={`collection-${Math.random()}`}
           title={`${collection.title} (created with a custom function)`}
-          // @ts-expect-error ts(2345) evet selection does not have items, but events (property)
           cards={getCollectionCards(collection, [
             ...defaultConfig.organisationPrefixes,
           ]).map((cardProps) => (

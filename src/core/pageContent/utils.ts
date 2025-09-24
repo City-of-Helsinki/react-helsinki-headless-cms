@@ -183,10 +183,13 @@ export function getLocationCardProps(item: VenueType): CardProps {
 }
 
 export function getCollectionCards(
-  collection: GeneralCollectionType,
+  collection: CollectionType,
   organisationPrefixes: string[],
   locale: string = DEFAULT_LOCALE,
 ): CardProps[] {
+  if (!('items' in collection)) {
+    return [];
+  }
   return collection.items.reduce((result: CardProps[], item) => {
     if (isPageType(item) || isArticleType(item))
       result.push(getArticlePageCardProps(item));
