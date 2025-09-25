@@ -23,7 +23,6 @@ import {
   getCollectionUIType,
 } from '../pageContent/utils';
 import { Card } from '../card/Card';
-import type { GeneralCollectionType } from '../collection/types';
 import { HelmetWrapper } from '../../storybook-common/HelmetWrapper';
 
 export default {
@@ -122,7 +121,7 @@ export const PageDefault = {
             title={collection.title}
             collectionContainerProps={{ withDots: false }}
             type={getCollectionUIType(collection)}
-            cards={getCollectionCards(collection as GeneralCollectionType, [
+            cards={getCollectionCards(collection, [
               ...defaultConfig.organisationPrefixes,
             ]).map((cardProps) => (
               <Card
