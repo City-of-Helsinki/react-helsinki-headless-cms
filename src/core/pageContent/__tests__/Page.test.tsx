@@ -6,8 +6,8 @@ import { PageContent } from '../PageContent';
 import kukkuuPageDemosivu from '../../../mocks/responses/cms/page/kukkuu-page-demosivu.json';
 import type { PageType } from '../../../common/headlessService/types';
 import { ConfigProvider } from '../../configProvider/ConfigProvider';
-import type { Config } from '../../configProvider/configContext';
 import type { HtmlToReactProps } from '../../../common/components/htmlToReact/HtmlToReact';
+import { defaultConfig } from '../../configProvider/defaultConfig';
 
 describe('PageContent', () => {
   test('renders page with expected content', () => {
@@ -78,14 +78,13 @@ describe('PageContent', () => {
         (expectedIframesCount, allowedUnsafeTags, trustedOrigins) => {
           const { container } = render(
             <ConfigProvider
-              config={
-                {
-                  htmlSanitizer: {
-                    allowedUnsafeTags,
-                    trustedOrigins,
-                  },
-                } as Config
-              }
+              config={{
+                ...defaultConfig,
+                htmlSanitizer: {
+                  allowedUnsafeTags,
+                  trustedOrigins,
+                },
+              }}
             >
               <PageContent page={kukkuuPageDemosivu.page as PageType} />
             </ConfigProvider>,
