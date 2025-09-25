@@ -1,10 +1,6 @@
 import React from 'react';
 import { addDays, addYears, subDays, subYears } from 'date-fns';
 
-import type {
-  EventSearchCollectionType,
-  EventSelectionCollectionType,
-} from '../types';
 import { render, screen, waitFor } from '../../../common/utils/testingLibrary';
 import { server } from '../../../mocks/server';
 import { EventSearchCollection, EventSelectionCollection } from '../Collection';
@@ -32,7 +28,7 @@ afterEach(() => {
 
 describe('event selection module', () => {
   it('excludes the events that have already ended', async () => {
-    const collection = { events: eventIds } as EventSelectionCollectionType;
+    const collection = { events: eventIds };
 
     render(
       <EventSelectionCollection collection={collection} type="carousel" />,
@@ -70,7 +66,7 @@ describe('event selection module', () => {
   it('renders an empty collection when no event ids was given', async () => {
     const collection = {
       events: [],
-    } as unknown as EventSelectionCollectionType;
+    };
     const { container } = render(
       <EventSelectionCollection collection={collection} type="carousel" />,
       undefined,
@@ -107,7 +103,7 @@ describe('event search module', () => {
         start: dateInPast,
       };
       const eventSearchUrl = new URLSearchParams(variables).toString();
-      const collection = { url: eventSearchUrl } as EventSearchCollectionType;
+      const collection = { url: eventSearchUrl };
 
       render(
         <EventSearchCollection collection={collection} type="carousel" />,
@@ -155,7 +151,7 @@ describe('event search module', () => {
         start: dateInFuture,
       };
       const eventSearchUrl = new URLSearchParams(variables).toString();
-      const collection = { url: eventSearchUrl } as EventSearchCollectionType;
+      const collection = { url: eventSearchUrl };
 
       render(
         <EventSearchCollection collection={collection} type="carousel" />,
