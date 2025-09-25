@@ -33,7 +33,7 @@ export function Navigation({
   });
   const languages =
     (languagesQuery.data?.languages?.filter(
-      (l) => !!l,
+      (language) => !!language,
     ) as LanguageFragment[]) ?? undefined;
   return (
     <NavigationWithoutData
