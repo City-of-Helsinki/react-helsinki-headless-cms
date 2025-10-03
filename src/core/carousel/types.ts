@@ -22,6 +22,7 @@ export type CarouselContextStateType = {
   width: number;
   setWidth: (value: number) => void;
   handleUpdateSlideProps: (value: number) => void;
+  numberOfItems: number;
 };
 
 export type CarouselContextType = CarouselContextStateType &

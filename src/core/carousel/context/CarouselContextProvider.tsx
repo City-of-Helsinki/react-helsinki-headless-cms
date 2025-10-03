@@ -9,9 +9,13 @@ import { initialCarouselContextValues } from '../constants';
 
 export type CarouselContextProviderProps = {
   children: React.ReactNode;
+  numberOfItems: number;
 } & CarouselContextBackwardCompatibilityProps;
 
-function useCarouselContextState(): CarouselContextStateType {
+function useCarouselContextState(): Omit<
+  CarouselContextStateType,
+  'numberOfItems'
+> {
   const [isReady] = React.useState<boolean>(
     initialCarouselContextValues.isReady,
   );
@@ -58,16 +62,18 @@ function useCarouselContextState(): CarouselContextStateType {
 
 export function CarouselContextProvider({
   children,
+  numberOfItems,
   ...backwardCompatibleProps
 }: CarouselContextProviderProps): React.ReactElement {
   const carouselContext = useCarouselContextState();
 
   const value = React.useMemo(
     () => ({
+      numberOfItems,
       ...carouselContext,
       ...backwardCompatibleProps,
     }),
-    [carouselContext, backwardCompatibleProps],
+    [numberOfItems, carouselContext, backwardCompatibleProps],
   );
   return (
     <CarouselContext.Provider value={value}>
