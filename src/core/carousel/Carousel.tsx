@@ -162,6 +162,7 @@ export function Carousel({
     <CarouselContextProvider
       itemsShownOnDesktop={itemsShownOnDesktop}
       itemsShownOnMobile={itemsShownOnMobile}
+      numberOfItems={items.length}
       {...restOfBackwardCompatibleProps}
     >
       <CarouselWithContext className={className}>{items}</CarouselWithContext>

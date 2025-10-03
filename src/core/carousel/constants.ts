@@ -28,6 +28,7 @@ export const initialCarouselContextValues = {
   itemsPerSlide: 0,
   currentSlide: 0,
   width: 0,
+  numberOfItems: 0,
   handleUpdateSlideProps: () => {},
   ...initialBackwardCompatibilityProps,
 } as const satisfies Omit<
