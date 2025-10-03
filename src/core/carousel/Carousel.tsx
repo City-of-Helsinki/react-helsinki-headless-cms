@@ -57,9 +57,9 @@ export type CarouselProps<T> = {
 };
 
 export function Carousel({
-  children,
-  itemsDesktop = 3,
-  itemsMobile = 1,
+  children: items,
+  itemsDesktop: itemsShownOnDesktop = 3,
+  itemsMobile: itemsShownOnMobile = 1,
   className = '',
   withDots = true,
   // TODO: onShowAll,
@@ -91,19 +91,21 @@ export function Carousel({
 
   useEffect(() => {
     setItemsPerSlide(
-      Math.ceil(width > MOBILE_WIDTH ? itemsDesktop : itemsMobile),
+      Math.ceil(
+        width > MOBILE_WIDTH ? itemsShownOnDesktop : itemsShownOnMobile,
+      ),
     );
     setCurrentSlide(0);
     setTransformValue('0px');
-  }, [width, itemsDesktop, itemsMobile]);
+  }, [width, itemsShownOnDesktop, itemsShownOnMobile]);
 
   useEffect(() => {
     if (itemsPerSlide > 0) {
       const itemsCount =
-        hasMore && !!onLoadMore ? children.length + 1 : children.length;
+        hasMore && !!onLoadMore ? items.length + 1 : items.length;
       setNumberOfSlides(Math.ceil(itemsCount / itemsPerSlide));
     }
-  }, [itemsPerSlide, hasMore, onLoadMore, children.length]);
+  }, [itemsPerSlide, hasMore, onLoadMore, items.length]);
 
   const handleUpdateSlideProps = (value: number): void => {
     if (value === 0) {
@@ -126,10 +128,8 @@ export function Carousel({
 
   const itemSets = React.useMemo(
     () =>
-      itemsPerSlide > 0
-        ? splitArrayIntoChunksOfLen(children, itemsPerSlide)
-        : [],
-    [children, itemsPerSlide],
+      itemsPerSlide > 0 ? splitArrayIntoChunksOfLen(items, itemsPerSlide) : [],
+    [items, itemsPerSlide],
   );
 
   return (
@@ -199,8 +199,8 @@ export function Carousel({
                               width: `${
                                 100 /
                                 (width > MOBILE_WIDTH
-                                  ? itemsDesktop
-                                  : itemsMobile)
+                                  ? itemsShownOnDesktop
+                                  : itemsShownOnMobile)
                               }%`,
                             }}
                           >
