@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
+import React, { useEffect } from 'react';
 import classNames from 'classnames';
-import { Button, IconAngleLeft, IconAngleRight } from 'hds-react';
 
 import styles from './carousel.module.scss';
+import { MOBILE_WIDTH } from './constants';
+import { useCarouselContext } from './CarouselContext';
+import { CarouselContextProvider } from './CarouselContextProvider';
+import { CarouselSlider } from './components/CarouselSlider';
 import {
-  splitArrayIntoChunksOfLen,
-  getItemSetItemKey,
-  getItemSetKey,
-  getSlideDotKey,
-  getLoadMoreKey,
-} from './utils/utils';
-import { useConfig } from '../configProvider/useConfig';
+  CarouselNextSlideButton,
+  CarouselPreviousSlideButton,
+} from './components/CarouselSlideButton';
+import { CarouselSlideDots } from './components/CarouselSliderDot';
 
 export type CarouselProps<T> = {
   /**
@@ -56,38 +55,42 @@ export type CarouselProps<T> = {
   title?: string;
 };
 
-export function Carousel({
-  children: items,
-  itemsDesktop: itemsShownOnDesktop = 3,
-  itemsMobile: itemsShownOnMobile = 1,
-  className = '',
-  withDots = true,
-  // TODO: onShowAll,
-  onLoadMore,
-  hasMore,
-  loading,
-  loadMoreButtonLabelText,
-  title,
-}) {
-  const MOBILE_WIDTH = 840;
-  const [isReady] = useState<boolean>(true);
-  const [transformValue, setTransformValue] = useState('0px');
-  const [numberOfSlides, setNumberOfSlides] = useState<number>(0);
-  const [itemsPerSlide, setItemsPerSlide] = useState<number>(0);
-  const [currentSlide, setCurrentSlide] = useState<number>(0);
-  const [width, setWidth] = useState<number>(0);
-
-  const {
-    copy: { next, previous },
-  } = useConfig();
-
+function useCarouselDimensions() {
+  const { setWidth } = useCarouselContext();
   const updateDimensions = () => setWidth(window.innerWidth);
 
   useEffect(() => {
     updateDimensions();
     window.addEventListener('resize', updateDimensions);
     return () => window.removeEventListener('resize', updateDimensions);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+}
+
+function CarouselWithContext({
+  children: items,
+  className = '',
+}: Pick<CarouselProps<unknown>, 'className' | 'children'>) {
+  const {
+    isReady,
+    setTransformValue,
+    numberOfSlides,
+    setNumberOfSlides,
+    itemsPerSlide,
+    setItemsPerSlide,
+    setCurrentSlide,
+    width,
+    itemsShownOnDesktop,
+    itemsShownOnMobile,
+    withDots,
+    onLoadMore,
+    hasMore,
+    loading,
+    loadMoreButtonLabelText,
+    title,
+  } = useCarouselContext();
+
+  useCarouselDimensions();
 
   useEffect(() => {
     setItemsPerSlide(
@@ -97,7 +100,14 @@ export function Carousel({
     );
     setCurrentSlide(0);
     setTransformValue('0px');
-  }, [width, itemsShownOnDesktop, itemsShownOnMobile]);
+  }, [
+    width,
+    itemsShownOnDesktop,
+    itemsShownOnMobile,
+    setItemsPerSlide,
+    setCurrentSlide,
+    setTransformValue,
+  ]);
 
   useEffect(() => {
     if (itemsPerSlide > 0) {
@@ -105,56 +115,15 @@ export function Carousel({
         hasMore && !!onLoadMore ? items.length + 1 : items.length;
       setNumberOfSlides(Math.ceil(itemsCount / itemsPerSlide));
     }
-  }, [itemsPerSlide, hasMore, onLoadMore, items.length]);
-
-  const handleUpdateSlideProps = (value: number): void => {
-    if (value === 0) {
-      setTransformValue('0px');
-    } else {
-      setTransformValue(`${value > currentSlide ? '-' : ''}${value}00%`);
-    }
-    setCurrentSlide(Math.abs(value));
-  };
-
-  const handleNextClick = (): void =>
-    handleUpdateSlideProps(
-      currentSlide + 1 === numberOfSlides ? 0 : currentSlide + 1,
-    );
-
-  const handlePrevClick = (): void =>
-    handleUpdateSlideProps(
-      -(currentSlide === 0 ? numberOfSlides - 1 : currentSlide - 1),
-    );
-
-  const itemSets = React.useMemo(
-    () =>
-      itemsPerSlide > 0 ? splitArrayIntoChunksOfLen(items, itemsPerSlide) : [],
-    [items, itemsPerSlide],
-  );
+  }, [itemsPerSlide, hasMore, onLoadMore, items.length, setNumberOfSlides]);
 
   return (
     <div className={classNames(styles.container, className)}>
       <div role="group" className={styles.carouselWrapper}>
         {numberOfSlides > 1 && (
           <>
-            <button
-              type="button"
-              aria-label={`${previous}${title ? ` - ${title}` : ''}`}
-              className={classNames(styles.btn, styles.btnPrev)}
-              onClick={handlePrevClick}
-              disabled={!isReady}
-            >
-              <IconAngleLeft />
-            </button>
-            <button
-              type="button"
-              aria-label={`${next}${title ? ` - ${title}` : ''}`}
-              className={classNames(styles.btn, styles.btnNext)}
-              onClick={handleNextClick}
-              disabled={!isReady}
-            >
-              <IconAngleRight />
-            </button>
+            <CarouselPreviousSlideButton title={title} />
+            <CarouselNextSlideButton title={title} />
           </>
         )}
         {isReady && (
@@ -165,83 +134,37 @@ export function Carousel({
                 numberOfSlides === 1 && styles.noDots,
               )}
             >
-              <div className={styles.sliderWrapper}>
-                <ul
-                  className={styles.sliderAnimated}
-                  style={{
-                    transform: `translateX(${transformValue})`,
-                  }}
-                >
-                  {itemSets.map((itemSet, itemSetIndex) => (
-                    <li
-                      ref={(node) =>
-                        node &&
-                        itemSetIndex !== currentSlide &&
-                        node.setAttribute('inert', '')
-                      }
-                      aria-hidden={itemSetIndex !== currentSlide}
-                      key={getItemSetKey(itemSet, itemSetIndex)}
-                      className={classNames(
-                        styles.slide,
-                        itemSetIndex === currentSlide && styles.slideSelected,
-                      )}
-                    >
-                      <div className={styles.slideItems}>
-                        {itemSet.map((item, itemIndex) => (
-                          <div
-                            key={getItemSetItemKey(
-                              item,
-                              itemSetIndex,
-                              itemIndex,
-                            )}
-                            className={styles.slideItem}
-                            style={{
-                              width: `${
-                                100 /
-                                (width > MOBILE_WIDTH
-                                  ? itemsShownOnDesktop
-                                  : itemsShownOnMobile)
-                              }%`,
-                            }}
-                          >
-                            {item}
-                          </div>
-                        ))}
-                      </div>
-                    </li>
-                  ))}
-                  {hasMore && !!onLoadMore && (
-                    <li key={getLoadMoreKey()}>
-                      <div className={styles.onLoadMoreContainer}>
-                        <Button
-                          isLoading={loading}
-                          onClick={onLoadMore}
-                          variant="primary"
-                        >
-                          {loadMoreButtonLabelText}
-                        </Button>
-                      </div>
-                    </li>
-                  )}
-                </ul>
-              </div>
+              <CarouselSlider
+                loading={loading}
+                onLoadMore={onLoadMore}
+                hasMore={hasMore}
+                loadMoreButtonLabelText={loadMoreButtonLabelText}
+              >
+                {items}
+              </CarouselSlider>
             </div>
-            {withDots && numberOfSlides > 1 && (
-              <div className={styles.dotsContainer}>
-                {[...Array(numberOfSlides)].map((e, i) => (
-                  <div
-                    key={getSlideDotKey(e, i)}
-                    className={classNames(
-                      styles.dot,
-                      i === currentSlide && styles.selected,
-                    )}
-                  />
-                ))}
-              </div>
-            )}
+            {withDots && numberOfSlides > 1 && <CarouselSlideDots />}
           </div>
         )}
       </div>
     </div>
+  );
+}
+
+export function Carousel({
+  children: items,
+  className = '',
+  itemsDesktop: itemsShownOnDesktop = 3,
+  itemsMobile: itemsShownOnMobile = 1,
+  ...restOfBackwardCompatibleProps
+}: CarouselProps<unknown>) {
+  return (
+    <CarouselContextProvider
+      itemsShownOnDesktop={itemsShownOnDesktop}
+      itemsShownOnMobile={itemsShownOnMobile}
+      {...restOfBackwardCompatibleProps}
+    >
+      <CarouselWithContext className={className}>{items}</CarouselWithContext>
+    </CarouselContextProvider>
   );
 }
