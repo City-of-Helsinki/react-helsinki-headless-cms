@@ -4,8 +4,8 @@ import { CarouselContext } from './CarouselContext';
 import type {
   CarouselContextBackwardCompatibilityProps,
   CarouselContextStateType,
-} from './types';
-import { initialCarouselContextValues } from './constants';
+} from '../types';
+import { initialCarouselContextValues } from '../constants';
 
 export type CarouselContextProviderProps = {
   children: React.ReactNode;

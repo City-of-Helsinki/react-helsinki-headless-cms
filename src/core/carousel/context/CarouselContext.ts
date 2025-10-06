@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { initialCarouselContextValues } from './constants';
-import type { CarouselContextType } from './types';
+import { initialCarouselContextValues } from '../constants';
+import type { CarouselContextType } from '../types';
 
 const throwFieldImplError = (fieldName: string) => {
   throw new Error(

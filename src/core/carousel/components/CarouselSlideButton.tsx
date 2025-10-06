@@ -4,7 +4,7 @@ import { IconAngleLeft, IconAngleRight } from 'hds-react';
 
 import styles from '../carousel.module.scss';
 import { useConfig } from '../../configProvider/useConfig';
-import { useCarouselContext } from '../CarouselContext';
+import { useCarouselContext } from '../context/CarouselContext';
 import type { CarouselProps } from '../Carousel';
 
 export function CarouselPreviousSlideButton({

@@ -3,8 +3,8 @@ import classNames from 'classnames';
 
 import styles from './carousel.module.scss';
 import { MOBILE_WIDTH } from './constants';
-import { useCarouselContext } from './CarouselContext';
-import { CarouselContextProvider } from './CarouselContextProvider';
+import { useCarouselContext } from './context/CarouselContext';
+import { CarouselContextProvider } from './context/CarouselContextProvider';
 import { CarouselSlider } from './components/CarouselSlider';
 import {
   CarouselNextSlideButton,

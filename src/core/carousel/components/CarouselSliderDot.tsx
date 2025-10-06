@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import styles from '../carousel.module.scss';
 import { getSlideDotKey } from '../utils/utils';
-import { useCarouselContext } from '../CarouselContext';
+import { useCarouselContext } from '../context/CarouselContext';
 
 export function CarouselSlideDots() {
   const { numberOfSlides, currentSlide } = useCarouselContext();
