@@ -87,7 +87,6 @@ function CarouselWithContext({
     hasMore,
     loading,
     loadMoreButtonLabelText,
-    title,
   } = useCarouselContext();
 
   useCarouselDimensions();
@@ -122,8 +121,8 @@ function CarouselWithContext({
       <div role="group" className={styles.carouselWrapper}>
         {numberOfSlides > 1 && (
           <>
-            <CarouselPreviousSlideButton title={title} />
-            <CarouselNextSlideButton title={title} />
+            <CarouselPreviousSlideButton />
+            <CarouselNextSlideButton />
           </>
         )}
         {isReady && (

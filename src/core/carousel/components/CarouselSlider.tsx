@@ -31,7 +31,7 @@ export function CarouselSlider({
     [items, itemsPerSlide],
   );
   return (
-    <div className={styles.sliderWrapper}>
+    <div className={styles.sliderWrapper} role="region">
       <ul
         className={styles.sliderAnimated}
         style={{
