@@ -12,6 +12,7 @@ import {
 } from './components/CarouselSlideButton';
 import { CarouselSlideDots } from './components/CarouselSliderDot';
 import type { CarouselProps } from './types';
+import { useTranslationWithFallback } from '../translation/useTranslationWithFallback';
 
 function useCarouselDimensions() {
   const { setWidth } = useCarouselContext();
@@ -23,6 +24,12 @@ function useCarouselDimensions() {
     return () => window.removeEventListener('resize', updateDimensions);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+}
+
+function useCarouselRegionAriaLabel() {
+  const { title } = useCarouselContext();
+  const { t } = useTranslationWithFallback();
+  return t('carouselRegionLabelText').replace('{title}', title ?? '');
 }
 
 function CarouselWithContext({
@@ -46,6 +53,8 @@ function CarouselWithContext({
     loading,
     loadMoreButtonLabelText,
   } = useCarouselContext();
+
+  const carouselAriaLabel = useCarouselRegionAriaLabel();
 
   useCarouselDimensions();
 
@@ -75,7 +84,11 @@ function CarouselWithContext({
   }, [itemsPerSlide, hasMore, onLoadMore, items.length, setNumberOfSlides]);
 
   return (
-    <div className={classNames(styles.container, className)}>
+    <div
+      className={classNames(styles.container, className)}
+      role="region"
+      aria-label={carouselAriaLabel}
+    >
       <div role="group" className={styles.carouselWrapper}>
         {numberOfSlides > 1 && (
           <>

@@ -6,6 +6,17 @@ import { splitArrayIntoChunksOfLen, getLoadMoreKey } from '../utils/utils';
 import { useCarouselContext } from '../context/CarouselContext';
 import { CarouselSliderPage } from './CarouselSliderPage';
 import type { CarouselProps } from '../types';
+import { useTranslationWithFallback } from '../../translation/useTranslationWithFallback';
+
+function useCarouselSliderRegionAriaLabel() {
+  const { itemsPerSlide, currentSlide, numberOfItems } = useCarouselContext();
+  const { t } = useTranslationWithFallback();
+
+  return t('carouselSliderRegionLabelText')
+    .replace('{itemsPerSlide}', String(itemsPerSlide))
+    .replace('{numberOfItems}', String(numberOfItems))
+    .replace('{currentSlide}', String(currentSlide + 1));
+}
 
 export function CarouselSlider({
   children: items,
@@ -30,13 +41,18 @@ export function CarouselSlider({
       itemsPerSlide > 0 ? splitArrayIntoChunksOfLen(items, itemsPerSlide) : [],
     [items, itemsPerSlide],
   );
+
+  const ariaLabel = useCarouselSliderRegionAriaLabel();
+
   return (
-    <div className={styles.sliderWrapper} role="region">
+    <div className={styles.sliderWrapper}>
       <ul
         className={styles.sliderAnimated}
         style={{
           transform: `translateX(${transformValue})`,
         }}
+        aria-label={ariaLabel}
+        role="presentation"
       >
         {itemSets.map((itemSet, itemSetIndex) => (
           <CarouselSliderPage itemSet={itemSet} itemSetIndex={itemSetIndex} />
