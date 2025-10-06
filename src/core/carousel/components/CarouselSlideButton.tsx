@@ -5,16 +5,18 @@ import { IconAngleLeft, IconAngleRight } from 'hds-react';
 import styles from '../carousel.module.scss';
 import { useConfig } from '../../configProvider/useConfig';
 import { useCarouselContext } from '../context/CarouselContext';
-import type { CarouselProps } from '../Carousel';
 
-export function CarouselPreviousSlideButton({
-  title,
-}: Pick<CarouselProps<unknown>, 'title'>) {
+export function CarouselPreviousSlideButton() {
   const {
     copy: { previous },
   } = useConfig();
-  const { isReady, numberOfSlides, currentSlide, handleUpdateSlideProps } =
-    useCarouselContext();
+  const {
+    isReady,
+    numberOfSlides,
+    currentSlide,
+    title,
+    handleUpdateSlideProps,
+  } = useCarouselContext();
 
   const handlePrevClick = (): void =>
     handleUpdateSlideProps(
@@ -34,14 +36,17 @@ export function CarouselPreviousSlideButton({
   );
 }
 
-export function CarouselNextSlideButton({
-  title,
-}: Pick<CarouselProps<unknown>, 'title'>) {
+export function CarouselNextSlideButton() {
   const {
     copy: { next },
   } = useConfig();
-  const { isReady, numberOfSlides, currentSlide, handleUpdateSlideProps } =
-    useCarouselContext();
+  const {
+    isReady,
+    numberOfSlides,
+    currentSlide,
+    title,
+    handleUpdateSlideProps,
+  } = useCarouselContext();
 
   const handleNextClick = (): void =>
     handleUpdateSlideProps(
