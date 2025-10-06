@@ -3,7 +3,7 @@ import { Button } from 'hds-react';
 
 import styles from '../carousel.module.scss';
 import { splitArrayIntoChunksOfLen, getLoadMoreKey } from '../utils/utils';
-import { useCarouselContext } from '../CarouselContext';
+import { useCarouselContext } from '../context/CarouselContext';
 import type { CarouselProps } from '../Carousel';
 import { CarouselSliderPage } from './CarouselSliderPage';
 

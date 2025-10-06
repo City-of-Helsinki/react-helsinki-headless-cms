@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import styles from '../carousel.module.scss';
 import { getItemSetItemKey, getItemSetKey } from '../utils/utils';
 import { MOBILE_WIDTH } from '../constants';
-import { useCarouselContext } from '../CarouselContext';
+import { useCarouselContext } from '../context/CarouselContext';
 
 export function CarouselSliderPage({ itemSet, itemSetIndex }) {
   const { currentSlide, width, itemsShownOnDesktop, itemsShownOnMobile } =
