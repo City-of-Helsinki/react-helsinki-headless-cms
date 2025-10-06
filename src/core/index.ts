@@ -115,17 +115,16 @@ export {
 } from './collection/types';
 
 export { getVenueIds, isEventClosed } from './collection/utils';
-
-export { Carousel, CarouselProps } from './carousel/Carousel';
-
-export { Card, CardProps } from './card/Card';
-
-export { LargeCard, LargeCardProps } from './card/LargeCard';
-
+export { Carousel } from './carousel/Carousel';
+export type { CarouselProps } from './carousel/types';
+export { Card, type CardProps } from './card/Card';
+export { LargeCard, type LargeCardProps } from './card/LargeCard';
 export { ArchivePage } from './archiveSearchPage/ArchiveSearchPage';
 export { SearchPageContent } from './archiveSearchPageContent/ArchiveSearchPageContent';
-
-export { BackgroundImage, BackgroundImageProps } from './image/BackgroundImage';
-export { Image, ImageProps } from './image/Image';
+export {
+  BackgroundImage,
+  type BackgroundImageProps,
+} from './image/BackgroundImage';
+export { Image, type ImageProps } from './image/Image';
 export { useResolveImageUrl } from './hooks/useResolveImageUrl';
 export * from './language';

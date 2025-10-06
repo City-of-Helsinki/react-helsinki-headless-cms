@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import classNames from 'classnames';
 
 import styles from './carousel.module.scss';
-import { MOBILE_WIDTH } from './constants';
+import { initialCarouselContextValues, MOBILE_WIDTH } from './constants';
 import { useCarouselContext } from './context/CarouselContext';
 import { CarouselContextProvider } from './context/CarouselContextProvider';
 import { CarouselSlider } from './components/CarouselSlider';
@@ -11,49 +11,7 @@ import {
   CarouselPreviousSlideButton,
 } from './components/CarouselSlideButton';
 import { CarouselSlideDots } from './components/CarouselSliderDot';
-
-export type CarouselProps<T> = {
-  /**
-   * Additional children to render inside the Carousel.
-   */
-  children: React.ReactElement<T>[];
-  /**
-   * Number of items to show per one slide on desktop device.
-   */
-  itemsDesktop?: 1 | 2 | 3 | 4 | 5;
-  /**
-   * Number of items to show per one slide on mobile device.
-   */
-  itemsMobile?: 1 | 2;
-  /**
-   * Additional classname for the card list.
-   */
-  className?: string;
-  /**
-   * Boolean indicating whether the Carousel is shown with dots (number of sliders).
-   */
-  withDots?: boolean;
-  /**
-   * onLoadMore event handler.
-   */
-  onLoadMore?: () => void;
-  /**
-   * Boolean indicating whether the data collection has more items.
-   */
-  hasMore?: boolean;
-  /**
-   * Boolean indicating whether the Carousel data is loading.
-   */
-  loading?: boolean;
-  /**
-   * Text of load more button.
-   */
-  loadMoreButtonLabelText?: string;
-  /**
-   * Title of the carousel component.
-   */
-  title?: string;
-};
+import type { CarouselProps } from './types';
 
 function useCarouselDimensions() {
   const { setWidth } = useCarouselContext();
@@ -153,14 +111,14 @@ function CarouselWithContext({
 export function Carousel({
   children: items,
   className = '',
-  itemsDesktop: itemsShownOnDesktop = 3,
-  itemsMobile: itemsShownOnMobile = 1,
+  itemsDesktop = initialCarouselContextValues.itemsShownOnDesktop,
+  itemsMobile = initialCarouselContextValues.itemsShownOnMobile,
   ...restOfBackwardCompatibleProps
 }: CarouselProps<unknown>) {
   return (
     <CarouselContextProvider
-      itemsShownOnDesktop={itemsShownOnDesktop}
-      itemsShownOnMobile={itemsShownOnMobile}
+      itemsShownOnDesktop={itemsDesktop}
+      itemsShownOnMobile={itemsMobile}
       numberOfItems={items.length}
       {...restOfBackwardCompatibleProps}
     >
