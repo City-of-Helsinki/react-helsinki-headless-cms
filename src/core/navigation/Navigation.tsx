@@ -10,14 +10,13 @@ import {
   MAIN_CONTENT_ID,
   TOP_LEVEL_MENU_ITEM_PARENT_ID,
 } from '../../common/constants';
-import { getTranslationWithFallback } from '../translation/getTranslationWithFallback';
-import type { FallbackTranslationKey } from '../translation/types';
 import {
   findLanguage,
   isNonEmptyLanguage,
   languageSorter,
   toPrimaryLanguageOption,
 } from '../language';
+import { useTranslationWithFallback } from '../translation/useTranslationWithFallback';
 
 type MenuItem = Omit<
   NonNullable<NonNullable<Menu>['menuItems']>['nodes'][0],
@@ -98,7 +97,6 @@ export function Navigation({
   getPathnameForLanguage,
   getIsItemActive,
 }: NavigationProps) {
-  const config = useConfig();
   const {
     siteName,
     currentLanguageCode,
@@ -106,13 +104,12 @@ export function Navigation({
     components: { A },
     mainContentId,
     utils: { getRoutedInternalHref },
-  } = config;
+  } = useConfig();
 
   const languagesData = languages || [];
 
   const currentLanguage = findLanguage(languagesData, currentLanguageCode);
-  const t = (field: FallbackTranslationKey) =>
-    getTranslationWithFallback(config, field, currentLanguageCode);
+  const { t } = useTranslationWithFallback();
 
   const languageOptions: LanguageOption[] = languagesData
     .filter(isNonEmptyLanguage)
