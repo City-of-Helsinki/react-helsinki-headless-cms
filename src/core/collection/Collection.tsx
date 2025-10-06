@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { Button, LoadingSpinner } from 'hds-react';
 
 import styles from './collection.module.scss';
-import type { CarouselProps } from '../carousel/Carousel';
+import type { CarouselProps } from '../carousel/types';
 import { Carousel } from '../carousel/Carousel';
 import type { CardProps } from '../card/Card';
 import { Card } from '../card/Card';
