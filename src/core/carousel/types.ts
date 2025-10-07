@@ -20,6 +20,10 @@ export type CarouselProps<T> = {
    */
   withDots?: boolean;
   /**
+   * Can the dots be used for navigation
+   */
+  navigateWithDots?: boolean;
+  /**
    * onLoadMore event handler.
    */
   onLoadMore?: () => void;
@@ -44,6 +48,7 @@ export type CarouselProps<T> = {
 export type CarouselContextBackwardCompatibilityProps = Pick<
   CarouselProps<unknown>,
   | 'withDots'
+  | 'navigateWithDots'
   | 'onLoadMore'
   | 'hasMore'
   | 'loading'
