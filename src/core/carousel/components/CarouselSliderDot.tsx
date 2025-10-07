@@ -4,19 +4,57 @@ import classNames from 'classnames';
 import styles from '../carousel.module.scss';
 import { getSlideDotKey } from '../utils/utils';
 import { useCarouselContext } from '../context/CarouselContext';
+import { useTranslationWithFallback } from '../../translation/useTranslationWithFallback';
 
-export function CarouselSlideDots() {
-  const { numberOfSlides, currentSlide } = useCarouselContext();
+function CarouselSlideDot({ slideIndex }: { slideIndex: number }) {
+  const { currentSlide, handleUpdateSlideProps, navigateWithDots } =
+    useCarouselContext();
+
+  const { t } = useTranslationWithFallback();
+
+  const onClickHandler = (slideNumber: number): void => {
+    if (slideNumber === currentSlide) {
+      return;
+    }
+    if (slideNumber > currentSlide) {
+      handleUpdateSlideProps(slideNumber);
+    } else {
+      handleUpdateSlideProps(-slideNumber);
+    }
+  };
+  const dotButtonAriaLabel = t('carouselSliderDotNavLabelText').replace(
+    '{slideNumber}',
+    String(slideIndex + 1),
+  );
 
   return (
-    <div className={styles.dotsContainer}>
-      {[...Array(numberOfSlides)].map((e, i) => (
-        <div
-          key={getSlideDotKey(e, i)}
-          className={classNames(
-            styles.dot,
-            i === currentSlide && styles.selected,
-          )}
+    <button
+      className={classNames(styles.dot, {
+        [styles.selected]: slideIndex === currentSlide,
+        [styles.button]: navigateWithDots,
+      })}
+      onClick={() => onClickHandler(slideIndex)}
+      tabIndex={0}
+      type="button"
+      aria-label={dotButtonAriaLabel}
+      disabled={!navigateWithDots}
+    />
+  );
+}
+
+export function CarouselSlideDots() {
+  const { numberOfSlides, navigateWithDots } = useCarouselContext();
+
+  return (
+    <div
+      className={styles.dotsContainer}
+      role="navigation"
+      aria-hidden={!navigateWithDots}
+    >
+      {[...Array(numberOfSlides)].map((entry, slideIndex) => (
+        <CarouselSlideDot
+          key={getSlideDotKey(entry, slideIndex)}
+          slideIndex={slideIndex}
         />
       ))}
     </div>
