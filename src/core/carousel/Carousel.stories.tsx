@@ -19,6 +19,7 @@ export default {
     loadMoreButtonLabelText: { control: { type: 'text' } },
     hasMore: { control: { type: 'boolean' } },
     loading: { control: { type: 'boolean' } },
+    navigateWithDots: { control: { type: 'boolean' } },
   },
 } as Meta<typeof Carousel>;
 

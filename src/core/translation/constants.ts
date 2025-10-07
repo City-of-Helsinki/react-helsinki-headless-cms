@@ -12,6 +12,7 @@ export const FALLBACK_TRANSLATION_KEYS = [
   'headerUniversalBarPrimaryLinkText',
   'carouselRegionLabelText',
   'carouselSliderRegionLabelText',
+  'carouselSliderDotNavLabelText',
 ] as const;
 
 export const CITY_OF_HELSINKI_TRANSLATIONS: TranslationDictionary = {
@@ -39,15 +40,21 @@ export const LOCALIZED_HELSINKI_WEBSITE_URL: TranslationDictionary = {
 };
 
 export const CAROUSEL_REGION_LABEL_TEXT: TranslationDictionary = {
-  EN: 'A carousel {title}.',
+  EN: 'Carousel {title}.',
   FI: 'Karusellikomponentti {title}.',
-  SV: 'En karusell {title}.',
+  SV: 'Karusell {title}.',
 };
 
 export const CAROUSEL_SLIDER_REGION_LABEL_TEXT: TranslationDictionary = {
   EN: 'In carousel slide {currentSlide}. Listing 1 - {itemsPerSlide} items per slide out of {numberOfItems} items.',
   FI: 'Karusellin sivulla {currentSlide}. Listataan 1 - {itemsPerSlide} korttia kaikkiaan {numberOfItems} kortista.',
   SV: 'I karusellsidan {currentSlide}. Listar 1 - {itemsPerSlide} objekt per sidan av {numberOfItems} objekt.',
+};
+
+export const CAROUSEL_SLIDER_DOT_NAV_LABEL_TEXT: TranslationDictionary = {
+  EN: 'Jump to slide {slideNumber}.',
+  FI: 'Siirry sivulle {slideNumber}.',
+  SV: 'Gå till sida {slideNumber}.',
 };
 
 export const FALLBACK_TRANSLATIONS: Record<
@@ -61,4 +68,5 @@ export const FALLBACK_TRANSLATIONS: Record<
   headerUniversalBarPrimaryLinkText: CITY_OF_HELSINKI_TRANSLATIONS,
   carouselRegionLabelText: CAROUSEL_REGION_LABEL_TEXT,
   carouselSliderRegionLabelText: CAROUSEL_SLIDER_REGION_LABEL_TEXT,
+  carouselSliderDotNavLabelText: CAROUSEL_SLIDER_DOT_NAV_LABEL_TEXT,
 };

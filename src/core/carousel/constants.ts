@@ -14,6 +14,7 @@ const initialBackwardCompatibilityProps: CarouselContextBackwardCompatibilityPro
     itemsShownOnDesktop: 3,
     itemsShownOnMobile: 1,
     withDots: false,
+    navigateWithDots: true,
     onLoadMore: () => {},
     hasMore: false,
     loading: false,
