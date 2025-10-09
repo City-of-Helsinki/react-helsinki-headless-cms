@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import classNames from 'classnames';
 
 import styles from './carousel.module.scss';
-import { initialCarouselContextValues, MOBILE_WIDTH } from './constants';
+import { initialCarouselContextStateValues, MOBILE_WIDTH } from './constants';
 import { useCarouselContext } from './context/CarouselContext';
 import { CarouselContextProvider } from './context/CarouselContextProvider';
 import { CarouselSlider } from './components/CarouselSlider';
@@ -115,8 +115,8 @@ function CarouselWithContext({
 export function Carousel({
   children: items,
   className = '',
-  itemsDesktop = initialCarouselContextValues.itemsShownOnDesktop,
-  itemsMobile = initialCarouselContextValues.itemsShownOnMobile,
+  itemsDesktop = initialCarouselContextStateValues.itemsShownOnDesktop,
+  itemsMobile = initialCarouselContextStateValues.itemsShownOnMobile,
   ...restOfBackwardCompatibleProps
 }: CarouselProps<unknown>) {
   return (

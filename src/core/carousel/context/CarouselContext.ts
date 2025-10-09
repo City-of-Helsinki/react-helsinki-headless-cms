@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { initialCarouselContextValues } from '../constants';
+import { initialCarouselContextStateValues } from '../constants';
 import type { CarouselContextType } from '../types';
 
 const throwFieldImplError = (fieldName: string) => {
@@ -10,7 +10,7 @@ const throwFieldImplError = (fieldName: string) => {
 };
 
 export const CarouselContext = React.createContext<CarouselContextType>({
-  ...initialCarouselContextValues,
+  ...initialCarouselContextStateValues,
   setTransformValue() {
     throwFieldImplError('setTransformValue');
   },

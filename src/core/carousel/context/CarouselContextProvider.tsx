@@ -2,37 +2,37 @@ import React from 'react';
 
 import { CarouselContext } from './CarouselContext';
 import type {
-  CarouselContextBackwardCompatibilityProps,
+  CarouselContextComponentPropsType,
   CarouselContextStateType,
 } from '../types';
-import { initialCarouselContextValues } from '../constants';
+import { initialCarouselContextStateValues } from '../constants';
 
 export type CarouselContextProviderProps = {
   children: React.ReactNode;
   numberOfItems: number;
-} & CarouselContextBackwardCompatibilityProps;
+} & CarouselContextComponentPropsType;
 
 function useCarouselContextState(): Omit<
   CarouselContextStateType,
   'numberOfItems'
 > {
   const [isReady] = React.useState<CarouselContextStateType['isReady']>(
-    initialCarouselContextValues.isReady,
+    initialCarouselContextStateValues.isReady,
   );
   const [transformValue, setTransformValue] = React.useState<
     CarouselContextStateType['transformValue']
-  >(initialCarouselContextValues.transformValue);
+  >(initialCarouselContextStateValues.transformValue);
   const [numberOfSlides, setNumberOfSlides] = React.useState<
     CarouselContextStateType['numberOfSlides']
-  >(initialCarouselContextValues.numberOfSlides);
+  >(initialCarouselContextStateValues.numberOfSlides);
   const [itemsPerSlide, setItemsPerSlide] = React.useState<
     CarouselContextStateType['itemsPerSlide']
-  >(initialCarouselContextValues.itemsPerSlide);
+  >(initialCarouselContextStateValues.itemsPerSlide);
   const [currentSlide, setCurrentSlide] = React.useState<
     CarouselContextStateType['currentSlide']
-  >(initialCarouselContextValues.currentSlide);
+  >(initialCarouselContextStateValues.currentSlide);
   const [width, setWidth] = React.useState<CarouselContextStateType['width']>(
-    initialCarouselContextValues.width,
+    initialCarouselContextStateValues.width,
   );
 
   const handleUpdateSlideProps: CarouselContextStateType['handleUpdateSlideProps'] =
