@@ -84,7 +84,7 @@ describe('CarouselSlideDots', () => {
     });
 
     fireEvent.click(screen.getByLabelText('Jump to slide 2'));
-    expect(mockHandleUpdateSlideProps).toHaveBeenCalledWith(-1);
+    expect(mockHandleUpdateSlideProps).toHaveBeenCalledWith(1); // NOTE: 0-index
   });
 
   it('does not call handler when clicking the active dot', () => {

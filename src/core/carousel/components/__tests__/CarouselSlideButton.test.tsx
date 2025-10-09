@@ -72,7 +72,7 @@ describe('CarouselSlideButton', () => {
       expect(screen.getByTestId('icon-angle-left')).toBeInTheDocument();
 
       fireEvent.click(button);
-      expect(mockHandleUpdateSlideProps).toHaveBeenCalledWith(-0);
+      expect(mockHandleUpdateSlideProps).toHaveBeenCalledWith(0);
     });
 
     it('wraps around to the last slide when on the first slide', () => {
@@ -83,7 +83,7 @@ describe('CarouselSlideButton', () => {
       });
 
       fireEvent.click(screen.getByRole('button', { name: 'Previous' }));
-      expect(mockHandleUpdateSlideProps).toHaveBeenCalledWith(-4);
+      expect(mockHandleUpdateSlideProps).toHaveBeenCalledWith(4); // NOTE: 0-index
     });
 
     it('is disabled when not ready', () => {

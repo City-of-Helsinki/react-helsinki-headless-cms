@@ -53,10 +53,11 @@ export const CarouselDefault = {
   },
 };
 
-export const CarouselNoDots = {
+export const CarouselWithDots = {
   render: Template,
   args: {
-    withDots: false,
+    withDots: true,
+    navigateWithDots: true,
   },
 };
 
