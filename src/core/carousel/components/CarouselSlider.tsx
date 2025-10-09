@@ -18,23 +18,37 @@ function useCarouselSliderRegionAriaLabel() {
     .replace('{currentSlide}', String(currentSlide + 1));
 }
 
+function CarouselLoadMoreButton() {
+  const { onLoadMore, loading, loadMoreButtonLabelText } = useCarouselContext();
+  return (
+    <div className={styles.onLoadMoreContainer}>
+      <Button
+        isLoading={loading}
+        onClick={onLoadMore}
+        variant="primary"
+        role="button"
+      >
+        {loadMoreButtonLabelText}
+      </Button>
+    </div>
+  );
+}
+
 export function CarouselSlider({
-  children: items,
-  loading,
-  onLoadMore,
-  hasMore,
-  loadMoreButtonLabelText,
-}: Pick<
-  CarouselProps<unknown>,
-  | 'children'
-  | 'itemsDesktop'
-  | 'itemsMobile'
-  | 'loading'
-  | 'onLoadMore'
-  | 'hasMore'
-  | 'loadMoreButtonLabelText'
->) {
-  const { transformValue, itemsPerSlide } = useCarouselContext();
+  children,
+}: Pick<CarouselProps<unknown>, 'children'>) {
+  const { transformValue, itemsPerSlide, onLoadMore, hasMore } =
+    useCarouselContext();
+
+  const shouldShowLoadMoreButton = hasMore && !!onLoadMore;
+
+  const items = React.useMemo(
+    () =>
+      shouldShowLoadMoreButton
+        ? [...children, <CarouselLoadMoreButton key={getLoadMoreKey()} />]
+        : children,
+    [children, shouldShowLoadMoreButton],
+  );
 
   const itemSets = React.useMemo(
     () =>
@@ -45,7 +59,7 @@ export function CarouselSlider({
   const ariaLabel = useCarouselSliderRegionAriaLabel();
 
   return (
-    <div className={styles.sliderWrapper}>
+    <div className={styles.sliderWrapper} data-testid="carousel-slider">
       <ul
         className={styles.sliderAnimated}
         style={{
@@ -57,19 +71,6 @@ export function CarouselSlider({
         {itemSets.map((itemSet, itemSetIndex) => (
           <CarouselSliderPage itemSet={itemSet} itemSetIndex={itemSetIndex} />
         ))}
-        {hasMore && !!onLoadMore && (
-          <li key={getLoadMoreKey()}>
-            <div className={styles.onLoadMoreContainer}>
-              <Button
-                isLoading={loading}
-                onClick={onLoadMore}
-                variant="primary"
-              >
-                {loadMoreButtonLabelText}
-              </Button>
-            </div>
-          </li>
-        )}
       </ul>
     </div>
   );
