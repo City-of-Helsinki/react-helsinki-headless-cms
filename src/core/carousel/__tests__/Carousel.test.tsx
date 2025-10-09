@@ -1,26 +1,24 @@
 import React from 'react';
-import { render, screen, act } from '@testing-library/react';
+import {
+  render,
+  screen,
+  act,
+  fireEvent,
+  isInaccessible,
+} from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 import { Carousel } from '../Carousel';
 import { MOBILE_WIDTH } from '../constants';
+import type { CarouselProps } from '../types';
 
-// Mock child components to isolate the Carousel's own logic
-jest.mock('../components/CarouselSlider', () => ({
-  CarouselSlider: ({
-    children,
-  }: {
-    children: React.ReactElement<unknown>[];
-  }) => <div data-testid="carousel-slider">{children}</div>,
-}));
-
-jest.mock('../components/CarouselSlideButton', () => ({
-  CarouselPreviousSlideButton: () => <button type="button">Previous</button>,
-  CarouselNextSlideButton: () => <button type="button">Next</button>,
-}));
-
-jest.mock('../components/CarouselSliderDot', () => ({
-  CarouselSlideDots: () => <div data-testid="carousel-dots" />,
+jest.mock('../../configProvider/useConfig', () => ({
+  useConfig: () => ({
+    copy: {
+      previous: 'Previous',
+      next: 'Next',
+    },
+  }),
 }));
 
 // Mock translation hook
@@ -58,15 +56,21 @@ describe('Carousel', () => {
     window.innerWidth = originalInnerWidth;
   });
 
-  it('renders children and the slider', () => {
-    render(<Carousel>{mockItems}</Carousel>);
-    expect(screen.getByTestId('carousel-slider')).toBeInTheDocument();
-    expect(screen.getByText('Item 1')).toBeInTheDocument();
-    expect(screen.getByText('Item 2')).toBeInTheDocument();
-    expect(screen.getByText('Item 3')).toBeInTheDocument();
-    expect(screen.getByText('Item 4')).toBeInTheDocument();
-    expect(screen.getByText('Item 5')).toBeInTheDocument();
-  });
+  it.each<NonNullable<CarouselProps<unknown>['itemsDesktop']>>([1, 2, 3, 4, 5])(
+    'renders children and the slider when %s items per slide',
+    (itemsShown) => {
+      render(<Carousel itemsDesktop={itemsShown}>{mockItems}</Carousel>);
+      expect(screen.getByTestId('carousel-slider')).toBeInTheDocument();
+      expect(screen.getByText('Item 1')).toBeInTheDocument();
+
+      // Testing with isInaccessible because of an issue in *ByText.
+      // See: https://github.com/testing-library/dom-testing-library/issues/929.
+      expect(isInaccessible(screen.getByText('Item 2'))).toBe(itemsShown < 2);
+      expect(isInaccessible(screen.getByText('Item 3'))).toBe(itemsShown < 3);
+      expect(isInaccessible(screen.getByText('Item 4'))).toBe(itemsShown < 4);
+      expect(isInaccessible(screen.getByText('Item 5'))).toBe(itemsShown < 5);
+    },
+  );
 
   it('renders with a correct ARIA region label', () => {
     const title = 'My Test Carousel';
@@ -178,13 +182,29 @@ describe('Carousel', () => {
     });
 
     it('calculates number of slides correctly with hasMore prop', () => {
-      // 5 items + 1 "load more" slot = 6 items. 3 per slide = 2 slides.
+      const mockOnLoadMore = jest.fn();
+      const loadMoreButtonLabelText = 'Load more';
       render(
-        <Carousel itemsDesktop={3} hasMore onLoadMore={() => {}}>
+        <Carousel
+          itemsDesktop={5}
+          hasMore
+          onLoadMore={mockOnLoadMore}
+          loadMoreButtonLabelText={loadMoreButtonLabelText}
+        >
           {mockItems}
         </Carousel>,
       );
-      expect(screen.getByRole('button', { name: 'Next' })).toBeInTheDocument();
+
+      act(() => {
+        fireEvent.click(screen.getByRole('button', { name: 'Next' }));
+      });
+
+      fireEvent.click(
+        screen.getByRole('button', {
+          name: loadMoreButtonLabelText,
+        }),
+      );
+      expect(mockOnLoadMore).toHaveBeenCalledTimes(1);
     });
   });
 });

@@ -7,24 +7,6 @@ import { CarouselContext } from '../../context/CarouselContext';
 import type { CarouselContextType } from '../../types';
 import { initialCarouselContextValues } from '../../constants';
 
-// Mock child components and hooks to isolate CarouselSlider
-jest.mock('../CarouselSliderPage', () => ({
-  CarouselSliderPage: ({
-    itemSet,
-    itemSetIndex,
-  }: {
-    itemSet: React.ReactElement[];
-    itemSetIndex: number;
-  }) => (
-    <div data-testid="carousel-slider-page" data-index={itemSetIndex}>
-      {itemSet.map((item, i) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <div key={i}>{item.props.children}</div>
-      ))}
-    </div>
-  ),
-}));
-
 jest.mock('../../../translation/useTranslationWithFallback', () => ({
   useTranslationWithFallback: () => ({
     t: (key: string) => {
@@ -72,8 +54,7 @@ describe('CarouselSlider', () => {
     renderWithContext(<CarouselSlider>{mockItems}</CarouselSlider>, {
       itemsPerSlide: 2,
     });
-
-    const pages = screen.getAllByTestId('carousel-slider-page');
+    const pages = screen.getAllByRole('listitem', { hidden: true });
     expect(pages).toHaveLength(3); // 5 items, 2 per slide = 3 pages
     expect(pages[0]).toHaveTextContent('Item 1');
     expect(pages[0]).toHaveTextContent('Item 2');
@@ -111,14 +92,13 @@ describe('CarouselSlider', () => {
 
     it('renders the load more button when hasMore is true', () => {
       renderWithContext(
-        <CarouselSlider
-          hasMore
-          onLoadMore={mockOnLoadMore}
-          loadMoreButtonLabelText="Load More"
-        >
-          {mockItems}
-        </CarouselSlider>,
-        { itemsPerSlide: 5 },
+        <CarouselSlider>{[...mockItems].splice(4, 1)}</CarouselSlider>,
+        {
+          itemsPerSlide: 5,
+          hasMore: true,
+          onLoadMore: mockOnLoadMore,
+          loadMoreButtonLabelText: 'Load More',
+        },
       );
 
       expect(
@@ -127,12 +107,12 @@ describe('CarouselSlider', () => {
     });
 
     it('does not render the load more button when hasMore is false', () => {
-      renderWithContext(
-        <CarouselSlider hasMore={false} onLoadMore={mockOnLoadMore}>
-          {mockItems}
-        </CarouselSlider>,
-        { itemsPerSlide: 5 },
-      );
+      renderWithContext(<CarouselSlider>{mockItems}</CarouselSlider>, {
+        itemsPerSlide: 5,
+        hasMore: false,
+        onLoadMore: mockOnLoadMore,
+        loadMoreButtonLabelText: 'Load More',
+      });
 
       expect(
         screen.queryByRole('button', { name: 'Load More' }),
@@ -141,10 +121,13 @@ describe('CarouselSlider', () => {
 
     it('calls onLoadMore when the button is clicked', () => {
       renderWithContext(
-        <CarouselSlider hasMore onLoadMore={mockOnLoadMore}>
-          {mockItems}
-        </CarouselSlider>,
-        { itemsPerSlide: 5 },
+        <CarouselSlider>{[...mockItems].splice(4, 1)}</CarouselSlider>,
+        {
+          itemsPerSlide: 5,
+          hasMore: true,
+          onLoadMore: mockOnLoadMore,
+          loadMoreButtonLabelText: 'Load More',
+        },
       );
 
       fireEvent.click(screen.getByRole('button'));

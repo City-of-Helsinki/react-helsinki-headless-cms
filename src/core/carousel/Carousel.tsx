@@ -50,8 +50,6 @@ function CarouselWithContext({
     withDots,
     onLoadMore,
     hasMore,
-    loading,
-    loadMoreButtonLabelText,
   } = useCarouselContext();
 
   const carouselAriaLabel = useCarouselRegionAriaLabel();
@@ -104,14 +102,7 @@ function CarouselWithContext({
                 numberOfSlides === 1 && styles.noDots,
               )}
             >
-              <CarouselSlider
-                loading={loading}
-                onLoadMore={onLoadMore}
-                hasMore={hasMore}
-                loadMoreButtonLabelText={loadMoreButtonLabelText}
-              >
-                {items}
-              </CarouselSlider>
+              <CarouselSlider>{items}</CarouselSlider>
             </div>
             {withDots && numberOfSlides > 1 && <CarouselSlideDots />}
           </div>

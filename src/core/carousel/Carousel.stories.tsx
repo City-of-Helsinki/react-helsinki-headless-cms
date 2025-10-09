@@ -49,13 +49,19 @@ export const CarouselDefault = {
   render: Template,
   args: {
     itemsDesktop: 4,
-    itemsMobile: 2,
+    itemsMobile: 1,
+    onLoadMore: () => {
+      // eslint-disable-next-line no-console
+      console.log('onLoadMore triggered');
+    },
+    loadMoreButtonLabelText: 'Load more',
   },
 };
 
 export const CarouselWithDots = {
   render: Template,
   args: {
+    ...CarouselDefault.args,
     withDots: true,
     navigateWithDots: true,
   },
@@ -64,6 +70,7 @@ export const CarouselWithDots = {
 export const CarouselWithAriaLabelTitle = {
   render: Template,
   args: {
+    ...CarouselDefault.args,
     title: 'Carousel custom title',
   },
 };
