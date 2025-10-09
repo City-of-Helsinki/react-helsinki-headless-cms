@@ -18,10 +18,12 @@ export function CarouselPreviousSlideButton() {
     handleUpdateSlideProps,
   } = useCarouselContext();
 
-  const handlePrevClick = (): void =>
-    handleUpdateSlideProps(
-      -(currentSlide === 0 ? numberOfSlides - 1 : currentSlide - 1),
-    );
+  const handlePrevClick = (): void => {
+    // Loop to the last slide if we are on the first, otherwise go to the previous.
+    const targetSlide =
+      currentSlide === 0 ? numberOfSlides - 1 : currentSlide - 1;
+    handleUpdateSlideProps(targetSlide);
+  };
 
   return (
     <button
@@ -48,10 +50,12 @@ export function CarouselNextSlideButton() {
     handleUpdateSlideProps,
   } = useCarouselContext();
 
-  const handleNextClick = (): void =>
+  const handleNextClick = (): void => {
+    // Loop to the first slide if we are on the last, otherwise go to the next.
     handleUpdateSlideProps(
       currentSlide + 1 === numberOfSlides ? 0 : currentSlide + 1,
     );
+  };
 
   return (
     <button
