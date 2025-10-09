@@ -12,15 +12,11 @@ function CarouselSlideDot({ slideIndex }: { slideIndex: number }) {
 
   const { t } = useTranslationWithFallback();
 
-  const onClickHandler = (slideNumber: number): void => {
-    if (slideNumber === currentSlide) {
+  const onClickHandler = (targetSlide: number): void => {
+    if (targetSlide === currentSlide) {
       return;
     }
-    if (slideNumber > currentSlide) {
-      handleUpdateSlideProps(slideNumber);
-    } else {
-      handleUpdateSlideProps(-slideNumber);
-    }
+    handleUpdateSlideProps(targetSlide);
   };
   const dotButtonAriaLabel = t('carouselSliderDotNavLabelText').replace(
     '{slideNumber}',

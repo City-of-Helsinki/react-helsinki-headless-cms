@@ -16,33 +16,35 @@ function useCarouselContextState(): Omit<
   CarouselContextStateType,
   'numberOfItems'
 > {
-  const [isReady] = React.useState<boolean>(
+  const [isReady] = React.useState<CarouselContextStateType['isReady']>(
     initialCarouselContextValues.isReady,
   );
-  const [transformValue, setTransformValue] = React.useState<string>(
-    initialCarouselContextValues.transformValue,
-  );
-  const [numberOfSlides, setNumberOfSlides] = React.useState<number>(
-    initialCarouselContextValues.numberOfSlides,
-  );
-  const [itemsPerSlide, setItemsPerSlide] = React.useState<number>(
-    initialCarouselContextValues.itemsPerSlide,
-  );
-  const [currentSlide, setCurrentSlide] = React.useState<number>(
-    initialCarouselContextValues.currentSlide,
-  );
-  const [width, setWidth] = React.useState<number>(
+  const [transformValue, setTransformValue] = React.useState<
+    CarouselContextStateType['transformValue']
+  >(initialCarouselContextValues.transformValue);
+  const [numberOfSlides, setNumberOfSlides] = React.useState<
+    CarouselContextStateType['numberOfSlides']
+  >(initialCarouselContextValues.numberOfSlides);
+  const [itemsPerSlide, setItemsPerSlide] = React.useState<
+    CarouselContextStateType['itemsPerSlide']
+  >(initialCarouselContextValues.itemsPerSlide);
+  const [currentSlide, setCurrentSlide] = React.useState<
+    CarouselContextStateType['currentSlide']
+  >(initialCarouselContextValues.currentSlide);
+  const [width, setWidth] = React.useState<CarouselContextStateType['width']>(
     initialCarouselContextValues.width,
   );
 
-  const handleUpdateSlideProps = (value: number) => {
-    if (value === 0) {
-      setTransformValue('0px');
-    } else {
-      setTransformValue(`${value > currentSlide ? '-' : ''}${value}00%`);
-    }
-    setCurrentSlide(Math.abs(value));
-  };
+  const handleUpdateSlideProps: CarouselContextStateType['handleUpdateSlideProps'] =
+    (targetSlide: number): void => {
+      if (targetSlide === 0) {
+        setTransformValue('0px');
+      } else {
+        // The transform is ALWAYS negative, based purely on the target index.
+        setTransformValue(`-${targetSlide}00%`);
+      }
+      setCurrentSlide(targetSlide);
+    };
 
   return {
     isReady,
