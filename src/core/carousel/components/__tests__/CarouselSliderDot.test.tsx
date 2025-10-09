@@ -5,7 +5,7 @@ import '@testing-library/jest-dom';
 import { CarouselSlideDots } from '../CarouselSliderDot';
 import { CarouselContext } from '../../context/CarouselContext';
 import type { CarouselContextType } from '../../types';
-import { initialCarouselContextValues } from '../../constants';
+import { initialCarouselContextStateValues } from '../../constants';
 
 jest.mock('../../../translation/useTranslationWithFallback', () => ({
   useTranslationWithFallback: () => ({
@@ -26,7 +26,7 @@ const renderWithContext = (
   render(
     <CarouselContext.Provider
       value={{
-        ...initialCarouselContextValues,
+        ...initialCarouselContextStateValues,
         // Dummy functions for context fields that require them
         setTransformValue: jest.fn(),
         setNumberOfSlides: jest.fn(),

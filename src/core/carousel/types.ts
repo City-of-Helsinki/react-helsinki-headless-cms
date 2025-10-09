@@ -45,7 +45,7 @@ export type CarouselProps<T> = {
   title?: string;
 };
 
-export type CarouselContextBackwardCompatibilityProps = Pick<
+export type CarouselContextComponentPropsType = Pick<
   CarouselProps<unknown>,
   | 'withDots'
   | 'navigateWithDots'
@@ -157,4 +157,4 @@ export type CarouselContextStateType = {
 };
 
 export type CarouselContextType = CarouselContextStateType &
-  CarouselContextBackwardCompatibilityProps;
+  CarouselContextComponentPropsType;

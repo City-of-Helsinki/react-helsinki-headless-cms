@@ -8,7 +8,7 @@ import {
 } from '../CarouselSlideButton';
 import { CarouselContext } from '../../context/CarouselContext';
 import type { CarouselContextType } from '../../types';
-import { initialCarouselContextValues } from '../../constants';
+import { initialCarouselContextStateValues } from '../../constants';
 
 // Mock the Icon components from hds-react to isolate our button components
 jest.mock('hds-react', () => ({
@@ -38,7 +38,7 @@ describe('CarouselSlideButton', () => {
     render(
       <CarouselContext.Provider
         value={{
-          ...initialCarouselContextValues,
+          ...initialCarouselContextStateValues,
           // Dummy functions for context fields that require them
           setTransformValue: jest.fn(),
           setNumberOfSlides: jest.fn(),

@@ -5,7 +5,10 @@ import '@testing-library/jest-dom';
 import { CarouselSliderPage } from '../CarouselSliderPage';
 import { CarouselContext } from '../../context/CarouselContext';
 import type { CarouselContextType } from '../../types';
-import { initialCarouselContextValues, MOBILE_WIDTH } from '../../constants';
+import {
+  initialCarouselContextStateValues,
+  MOBILE_WIDTH,
+} from '../../constants';
 
 // A helper function to render components with a mock context
 const renderWithContext = (
@@ -15,7 +18,7 @@ const renderWithContext = (
   render(
     <CarouselContext.Provider
       value={{
-        ...initialCarouselContextValues,
+        ...initialCarouselContextStateValues,
         // Dummy functions for context fields that require them
         setTransformValue: jest.fn(),
         setNumberOfSlides: jest.fn(),

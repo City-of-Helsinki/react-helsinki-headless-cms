@@ -1,5 +1,5 @@
 import type {
-  CarouselContextBackwardCompatibilityProps,
+  CarouselContextComponentPropsType,
   CarouselContextType,
 } from './types';
 
@@ -9,20 +9,19 @@ export const MOBILE_WIDTH = 840;
 // For some reason VSCode is always showing them as defined,
 // when the context is being used,
 // eventhough they would be explicitly set to undefined.
-const initialBackwardCompatibilityProps: CarouselContextBackwardCompatibilityProps =
-  {
-    itemsShownOnDesktop: 3,
-    itemsShownOnMobile: 1,
-    withDots: false,
-    navigateWithDots: true,
-    onLoadMore: () => {},
-    hasMore: false,
-    loading: false,
-    loadMoreButtonLabelText: '',
-    title: '',
-  };
+const initialCarouselContextProps: CarouselContextComponentPropsType = {
+  itemsShownOnDesktop: 3,
+  itemsShownOnMobile: 1,
+  withDots: false,
+  navigateWithDots: true,
+  onLoadMore: () => {},
+  hasMore: false,
+  loading: false,
+  loadMoreButtonLabelText: '',
+  title: '',
+};
 
-export const initialCarouselContextValues = {
+export const initialCarouselContextStateValues = {
   isReady: true,
   transformValue: '0px',
   numberOfSlides: 0,
@@ -31,7 +30,7 @@ export const initialCarouselContextValues = {
   width: 0,
   numberOfItems: 0,
   handleUpdateSlideProps: () => {},
-  ...initialBackwardCompatibilityProps,
+  ...initialCarouselContextProps,
 } as const satisfies Omit<
   CarouselContextType,
   | 'setTransformValue'
