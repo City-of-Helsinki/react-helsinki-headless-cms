@@ -28,6 +28,7 @@ export default function SidebarCardsList({ cards }: CardsListItemProps) {
             internalHrefOrigins,
             getIsHrefExternal,
           );
+          const key = btoa(`sidebar-card-${card.title}-${uri}`);
           return (
             <SimpleCard
               title={card.title ?? undefined}

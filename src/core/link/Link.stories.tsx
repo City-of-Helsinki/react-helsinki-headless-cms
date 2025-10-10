@@ -49,7 +49,7 @@ const TemplateAll: StoryFn<typeof Link> = (args) => (
           External link with an image
           <span>
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/b/b2/City_Branding_of_Helsinki.svg"
+              src="https://upload.wikimedia.org/wikipedia/commons/0/09/Helsinki_logo.svg"
               alt="City of Helsinki logo"
               width="200px"
             />
@@ -84,7 +84,7 @@ const TemplateAll: StoryFn<typeof Link> = (args) => (
         >
           External secondary link with an image
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/b/b2/City_Branding_of_Helsinki.svg"
+            src="https://upload.wikimedia.org/wikipedia/commons/0/09/Helsinki_logo.svg"
             alt="City of Helsinki logo"
             width="200px"
           />

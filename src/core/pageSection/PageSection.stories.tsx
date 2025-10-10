@@ -13,14 +13,14 @@ export default {
 
 const Template: StoryFn<typeof PageSection> = () => (
   <div>
-    <PageSection className={styles.pageSectionGrey}>
-      <h1>Default section color cyan</h1>
+    <PageSection>
+      <h1>Default section color white</h1>
     </PageSection>
     <PageSection korosTop korosBottom>
       <h1>Section koros top and bottom</h1>
     </PageSection>
     <PageSection className={styles.pageSectionGrey}>
-      <h1>Default section color cyan</h1>
+      <h1>Default section color overridden to grey</h1>
     </PageSection>
   </div>
 );
