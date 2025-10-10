@@ -142,10 +142,10 @@
           border: 2px solid var(--color-black-40);
           border-radius: 50%;
           width: 12px;
-          height: 12px;
+          height: 16px;
           margin: 0 2px;
 
-          &.button {
+          &.button:hover:not([disabled]) {
             cursor: pointer;
           }
 
