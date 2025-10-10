@@ -21,6 +21,10 @@ type Props = {
    */
   selected?: boolean;
   /**
+   * White-space wrapping (Enabled by default in HDS v4, but disabled in this lib).
+   */
+  noTextWrap?: boolean;
+  /**
    * onClick handler.
    */
   onClick?: () => void;
@@ -32,6 +36,7 @@ export function Tag({
   featured,
   selected,
   whiteOnly,
+  noTextWrap = false,
   onClick,
   id,
   ...hdsTagProps
@@ -42,15 +47,9 @@ export function Tag({
    * */
   const generatedId = React.useId();
 
-  const handleClick = (): void => {
-    if (onClick) {
-      onClick();
-    }
-  };
-
   return (
     <HDSTag
-      onClick={handleClick}
+      onClick={onClick}
       {...(!onClick && { tabIndex: -1 })}
       theme={featured ? theme2 : theme1}
       className={classNames(
@@ -58,11 +57,11 @@ export function Tag({
         featured && styles.featured,
         selected && styles.selected,
         whiteOnly && styles.whiteOnly,
+        noTextWrap && styles.noTextWrap,
         onClick && !featured && styles.withHover,
         !onClick && styles.noOutline,
         className,
       )}
-      placeholder={undefined}
       {...hdsTagProps}
       // TODO: don't use the generatedId and allow an undefined id.
       id={id ?? `tag${generatedId}`}

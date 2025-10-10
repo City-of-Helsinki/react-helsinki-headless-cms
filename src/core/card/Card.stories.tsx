@@ -51,6 +51,11 @@ export const CardWithCustomTagsContent = {
       <>
         <Tag featured>Free</Tag>
         <Tag>Youth</Tag>
+        <Tag>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec
+          viverra urna.
+        </Tag>
+        <Tag>Sport</Tag>
       </>
     ),
   },

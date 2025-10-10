@@ -10,12 +10,12 @@ import type { HtmlToReactProps } from '../../../common/components/htmlToReact/Ht
 import { defaultConfig } from '../../configProvider/defaultConfig';
 
 describe('PageContent', () => {
-  test('renders page with expected content', () => {
+  test('renders page with expected content', async () => {
     render(<PageContent page={pageMock} />);
 
     // Title of page is presented correctly
     expect(
-      screen.getByRole('heading', { name: pageMock.title, level: 1 }),
+      await screen.findByRole('heading', { name: pageMock.title, level: 1 }),
     ).toBeInTheDocument();
     // Featured image is included on the page
     expect(

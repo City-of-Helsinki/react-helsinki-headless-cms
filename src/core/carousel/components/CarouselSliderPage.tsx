@@ -43,7 +43,7 @@ export function CarouselSliderPage({
               'id' in itemSet && typeof itemSet.id === 'string'
                 ? itemSet.id
                 : undefined,
-              String(itemSetIndex),
+              `itemSet-${itemSetIndex}-item`,
             )}
             className={styles.slideItem}
             style={{

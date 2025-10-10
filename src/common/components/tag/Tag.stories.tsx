@@ -16,16 +16,25 @@ const Template: StoryFn<typeof Tag> = (args) => (
     <Tag {...args}>Tag content 1</Tag>
     <Tag {...args}>Tag content 2</Tag>
     <Tag {...args}>Tag content 3</Tag>
+    <Tag {...args}>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec viverra
+      urna. Nunc tellus metus, finibus vitae luctus et, feugiat id nunc. Sed sit
+      amet diam sed dui posuere rutrum sit amet et est.
+    </Tag>
   </StoryContainer>
 );
 
 export const TagDefault = {
   render: Template,
+  args: {
+    onClick: undefined,
+  },
 };
 
 export const TagFeatured = {
   render: Template,
   args: {
+    ...TagDefault.args,
     featured: true,
   },
 };
@@ -33,6 +42,7 @@ export const TagFeatured = {
 export const TagSelected = {
   render: Template,
   args: {
+    ...TagDefault.args,
     selected: true,
   },
 };
@@ -40,6 +50,26 @@ export const TagSelected = {
 export const TagWhiteOnly = {
   render: Template,
   args: {
+    ...TagDefault.args,
     whiteOnly: true,
+  },
+};
+
+export const TagNoTextWrap = {
+  render: Template,
+  args: {
+    ...TagDefault.args,
+    noTextWrap: true,
+  },
+};
+
+export const TagWithOnclickHandler = {
+  render: Template,
+  args: {
+    ...TagDefault.args,
+    onClick: () => {
+      // eslint-disable-next-line no-console
+      console.log('onClick handler called');
+    },
   },
 };

@@ -1,7 +1,7 @@
 import type React from 'react';
 import { createContext } from 'react';
 import type { ApolloClient, NormalizedCacheObject } from '@apollo/client';
-import type { ButtonTheme, ButtonVariant } from 'hds-react';
+import type { ButtonPresetTheme, ButtonTheme, ButtonVariant } from 'hds-react';
 
 import type {
   ArticleType,
@@ -80,7 +80,7 @@ export type Config = {
    */
   customCopy?: {
     loadMoreButtonVariant?: Exclude<ButtonVariant, 'supplementary'>;
-    loadMoreButtonTheme?: ButtonTheme;
+    loadMoreButtonTheme?: ButtonTheme | ButtonPresetTheme;
   };
   /**
    * React component replacements for defined html elements.

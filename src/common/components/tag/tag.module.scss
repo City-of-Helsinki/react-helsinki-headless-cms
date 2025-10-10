@@ -1,31 +1,43 @@
 @use 'breakpoints' as breakpoints;
 
 .tag {
-  padding: 0 var(--spacing-2-xs);
+  padding: var(--spacing-2-xs);
   margin-right: var(--spacing-2-xs);
   margin-bottom: var(--spacing-3-xs);
   margin-top: var(--spacing-3-xs);
   --tag-focus-outline-color: var(--color-black-70);
 
   &.featured {
-    --tag-background: var(--color-tram-light);
+    --background-color: var(--color-tram-light);
   }
 
   &.whiteOnly {
-    --tag-background: var(--color-white) !important;
+    --background-color: var(--color-white) !important;
   }
 
   &.selected {
-    --tag-background: var(--color-black-70) !important;
+    --background-color: var(--color-black-70) !important;
     color: var(--color-white);
   }
 
+  &.noTextWrap {
+    span {
+      /* "nowrap" is default for "white-space" in HDS v4*/
+      white-space: nowrap;
+    }
+  }
+  &:not(.noTextWrap) {
+    span {
+      white-space: normal !important;
+    }
+  }
+
   &.withHover:hover {
-    --tag-background: var(--color-black-5) !important;
+    --background-color: var(--color-black-5) !important;
   }
 
   &.selected:hover {
-    --tag-background: var(--color-black-70) !important;
+    --background-color: var(--color-black-70) !important;
   }
 
   &.noOutline {
