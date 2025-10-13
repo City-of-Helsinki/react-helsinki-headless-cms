@@ -6,6 +6,7 @@
   flex-direction: column;
   word-break: break-word;
   min-width: fit-content;
+  height: 100%;
   --height-image: 8rem;
   --height-image-desktop: 14.5rem;
   --width-image: 8rem;
@@ -162,7 +163,7 @@
     &.fixed-vertical,
     &.responsive {
       & > :first-child {
-        flex: auto;
+        flex: 0;
       }
 
       & > :last-child {
