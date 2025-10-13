@@ -142,8 +142,9 @@
           border: 2px solid var(--color-black-40);
           border-radius: 50%;
           width: 12px;
-          height: 16px;
+          height: 12px;
           margin: 0 2px;
+          padding: 4px;
 
           &.button:hover:not([disabled]) {
             cursor: pointer;
