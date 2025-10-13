@@ -172,7 +172,7 @@ export const defaultCollections = ({
         title: collection.title,
         description: collection.description,
         type: getCollectionUIType(collection),
-        collectionContainerProps: { withDots: false },
+        collectionContainerProps: {},
       };
 
       if (isEventSearchCollection(collection)) {

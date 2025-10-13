@@ -125,6 +125,8 @@ export function CollectionCarousel({
         hasMore={hasMore}
         loading={loading}
         loadMoreButtonLabelText={loadMoreButtonLabelText}
+        withDots
+        navigateWithDots
         {...rest}
       >
         {cards}
