@@ -33,10 +33,21 @@ const Template: StoryFn<typeof Carousel> = (args) => (
   >
     <StoryContainer>
       <Carousel {...args}>
-        <Card {...card} title="1" direction="fixed-vertical" />
-        <Card {...card} title="2" direction="fixed-vertical" />
+        <Card
+          {...card}
+          title="1"
+          direction="fixed-vertical"
+          clampText
+          text="Not the longest text in first card: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        />
+        <Card
+          {...card}
+          title="2"
+          direction="fixed-vertical"
+          text="Short text"
+        />
         <Card {...card} title="3" direction="fixed-vertical" />
-        <Card {...card} title="4" direction="fixed-vertical" />
+        <Card {...card} title="4" direction="fixed-vertical" clampText />
         <Card {...card} title="5" direction="fixed-vertical" />
         <Card {...card} title="6" direction="fixed-vertical" />
         <Card {...card} title="7" direction="fixed-vertical" />
