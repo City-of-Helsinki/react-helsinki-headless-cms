@@ -382,6 +382,8 @@ export type QueryEventListArgs = {
   superEventType?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   text?: InputMaybe<Scalars['String']['input']>;
   translation?: InputMaybe<Scalars['String']['input']>;
+  xFullText?: InputMaybe<Scalars['String']['input']>;
+  xOngoing?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type QueryEventsByIdsArgs = {
@@ -587,7 +589,6 @@ export type EventCmsEventFieldsFragment = {
   publisher?: string | null;
   enrolmentStartTime?: string | null;
   enrolmentEndTime?: string | null;
-  remainingAttendeeCapacity?: number | null;
   externalLinks: Array<{
     __typename?: 'ExternalLink';
     name?: string | null;
@@ -851,7 +852,6 @@ export type EventListQuery = {
       publisher?: string | null;
       enrolmentStartTime?: string | null;
       enrolmentEndTime?: string | null;
-      remainingAttendeeCapacity?: number | null;
       externalLinks: Array<{
         __typename?: 'ExternalLink';
         name?: string | null;
@@ -1051,7 +1051,6 @@ export type EventsByIdsQuery = {
       publisher?: string | null;
       enrolmentStartTime?: string | null;
       enrolmentEndTime?: string | null;
-      remainingAttendeeCapacity?: number | null;
       externalLinks: Array<{
         __typename?: 'ExternalLink';
         name?: string | null;
@@ -1359,7 +1358,6 @@ export const EventCmsEventFieldsFragmentDoc = gql`
     }
     enrolmentStartTime
     enrolmentEndTime
-    remainingAttendeeCapacity
   }
   ${LocalizedCmsEventFieldsFragmentDoc}
   ${KeywordCmsEventFieldsFragmentDoc}

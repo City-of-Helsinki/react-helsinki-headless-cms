@@ -124,7 +124,6 @@ fragment eventCmsEventFields on EventDetails {
   }
   enrolmentStartTime
   enrolmentEndTime
-  remainingAttendeeCapacity
 }
 
 query EventList(
