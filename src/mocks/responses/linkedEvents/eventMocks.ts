@@ -195,7 +195,6 @@ export const futureEvents = [
     locationExtraInfo: null,
     enrolmentStartTime: '2022-08-15T08:00:00+03:00',
     enrolmentEndTime: '2023-01-01T22:00:00+02:00',
-    remainingAttendeeCapacity: 1,
     __typename: 'EventDetails',
   },
 ];
@@ -384,7 +383,6 @@ export const ongoingEvents = [
     locationExtraInfo: null,
     enrolmentStartTime: '2022-08-15T08:00:00+03:00',
     enrolmentEndTime: '2022-08-28T22:00:00+03:00',
-    remainingAttendeeCapacity: 1,
     __typename: 'EventDetails',
   },
 ];
@@ -576,7 +574,6 @@ export const pastEventsWithoutEndingTime = [
     locationExtraInfo: null,
     enrolmentStartTime: '2022-08-15T08:00:00+03:00',
     enrolmentEndTime: '2023-01-31T22:00:00+02:00',
-    remainingAttendeeCapacity: 1,
     __typename: 'EventDetails',
   },
 ];
@@ -767,7 +764,6 @@ export const pastEvents = [
     locationExtraInfo: null,
     enrolmentStartTime: '2022-08-15T08:00:00+03:00',
     enrolmentEndTime: '2022-08-28T22:00:00+03:00',
-    remainingAttendeeCapacity: 1,
     __typename: 'EventDetails',
   },
   {
@@ -1022,7 +1018,6 @@ export const pastEvents = [
     },
     enrolmentStartTime: null,
     enrolmentEndTime: null,
-    remainingAttendeeCapacity: null,
     __typename: 'EventDetails',
   },
 ];

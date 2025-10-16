@@ -156,7 +156,6 @@ export const frontPageCarouselVariables = new URLSearchParams({
         }
         enrolmentStartTime
         enrolmentEndTime
-        remainingAttendeeCapacity
         __typename
     }
 

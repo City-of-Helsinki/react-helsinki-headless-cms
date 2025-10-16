@@ -122,7 +122,6 @@ import {
             }
             enrolmentStartTime
             enrolmentEndTime
-            remainingAttendeeCapacity
             __typename
         }
 
