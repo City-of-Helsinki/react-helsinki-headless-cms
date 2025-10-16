@@ -105,7 +105,7 @@ export type EventDetails = {
   provider?: Maybe<LocalizedObject>;
   providerContactInfo?: Maybe<LocalizedObject>;
   publisher?: Maybe<Scalars['ID']['output']>;
-  remainingAttendeeCapacity?: Maybe<Scalars['Int']['output']>;
+  registration?: Maybe<Registration>;
   shortDescription?: Maybe<LocalizedObject>;
   startTime?: Maybe<Scalars['String']['output']>;
   subEvents: Array<InternalIdObject>;
@@ -430,6 +430,26 @@ export type QueryPlaceListArgs = {
   text?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type Registration = {
+  __typename?: 'Registration';
+  audienceMaxAge?: Maybe<Scalars['String']['output']>;
+  audienceMinAge?: Maybe<Scalars['String']['output']>;
+  currentAttendeeCount?: Maybe<Scalars['Int']['output']>;
+  currentWaitingListCount?: Maybe<Scalars['Int']['output']>;
+  enrolmentEndTime?: Maybe<Scalars['String']['output']>;
+  enrolmentStartTime?: Maybe<Scalars['String']['output']>;
+  internalContext?: Maybe<Scalars['String']['output']>;
+  internalId?: Maybe<Scalars['String']['output']>;
+  internalType?: Maybe<Scalars['String']['output']>;
+  maximumAttendeeCapacity?: Maybe<Scalars['Int']['output']>;
+  maximumGroupSize?: Maybe<Scalars['Int']['output']>;
+  minimumAttendeeCapacity?: Maybe<Scalars['Int']['output']>;
+  remainingAttendeeCapacity?: Maybe<Scalars['Int']['output']>;
+  remainingWaitingListCapacity?: Maybe<Scalars['Int']['output']>;
+  signupUrl?: Maybe<LocalizedObject>;
+  waitingListCapacity?: Maybe<Scalars['Int']['output']>;
+};
+
 export type StaticPage = {
   __typename?: 'StaticPage';
   contentSection?: Maybe<LocalizedObject>;
@@ -574,6 +594,15 @@ export type OfferCmsEventFieldsFragment = {
     fi?: string | null;
     sv?: string | null;
   } | null;
+};
+
+export type RegistrationFieldsFragment = {
+  __typename?: 'Registration';
+  enrolmentStartTime?: string | null;
+  enrolmentEndTime?: string | null;
+  remainingAttendeeCapacity?: number | null;
+  audienceMinAge?: string | null;
+  audienceMaxAge?: string | null;
 };
 
 export type EventCmsEventFieldsFragment = {
@@ -745,6 +774,14 @@ export type EventCmsEventFieldsFragment = {
       sv?: string | null;
     } | null;
   }>;
+  registration?: {
+    __typename?: 'Registration';
+    enrolmentStartTime?: string | null;
+    enrolmentEndTime?: string | null;
+    remainingAttendeeCapacity?: number | null;
+    audienceMinAge?: string | null;
+    audienceMaxAge?: string | null;
+  } | null;
   locationExtraInfo?: {
     __typename?: 'LocalizedObject';
     en?: string | null;
@@ -1008,6 +1045,14 @@ export type EventListQuery = {
           sv?: string | null;
         } | null;
       }>;
+      registration?: {
+        __typename?: 'Registration';
+        enrolmentStartTime?: string | null;
+        enrolmentEndTime?: string | null;
+        remainingAttendeeCapacity?: number | null;
+        audienceMinAge?: string | null;
+        audienceMaxAge?: string | null;
+      } | null;
       locationExtraInfo?: {
         __typename?: 'LocalizedObject';
         en?: string | null;
@@ -1207,6 +1252,14 @@ export type EventsByIdsQuery = {
           sv?: string | null;
         } | null;
       }>;
+      registration?: {
+        __typename?: 'Registration';
+        enrolmentStartTime?: string | null;
+        enrolmentEndTime?: string | null;
+        remainingAttendeeCapacity?: number | null;
+        audienceMinAge?: string | null;
+        audienceMaxAge?: string | null;
+      } | null;
       locationExtraInfo?: {
         __typename?: 'LocalizedObject';
         en?: string | null;
@@ -1291,6 +1344,15 @@ export const OfferCmsEventFieldsFragmentDoc = gql`
   }
   ${LocalizedCmsEventFieldsFragmentDoc}
 `;
+export const RegistrationFieldsFragmentDoc = gql`
+  fragment registrationFields on Registration {
+    enrolmentStartTime
+    enrolmentEndTime
+    remainingAttendeeCapacity
+    audienceMinAge
+    audienceMaxAge
+  }
+`;
 export const EventCmsEventFieldsFragmentDoc = gql`
   fragment eventCmsEventFields on EventDetails {
     id
@@ -1353,6 +1415,9 @@ export const EventCmsEventFieldsFragmentDoc = gql`
         ...localizedCmsEventFields
       }
     }
+    registration {
+      ...registrationFields
+    }
     locationExtraInfo {
       ...localizedCmsEventFields
     }
@@ -1363,6 +1428,7 @@ export const EventCmsEventFieldsFragmentDoc = gql`
   ${KeywordCmsEventFieldsFragmentDoc}
   ${PlaceCmsEventFieldsFragmentDoc}
   ${OfferCmsEventFieldsFragmentDoc}
+  ${RegistrationFieldsFragmentDoc}
 `;
 export const EventListDocument = gql`
   query EventList(
