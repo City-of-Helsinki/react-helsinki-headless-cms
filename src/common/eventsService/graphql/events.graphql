@@ -58,6 +58,14 @@ fragment offerCmsEventFields on Offer {
   }
 }
 
+fragment registrationFields on Registration {
+  enrolmentStartTime
+  enrolmentEndTime
+  remainingAttendeeCapacity
+  audienceMinAge
+  audienceMaxAge
+}
+
 fragment eventCmsEventFields on EventDetails {
   id
   internalId
@@ -118,6 +126,9 @@ fragment eventCmsEventFields on EventDetails {
     name {
       ...localizedCmsEventFields
     }
+  }
+  registration {
+    ...registrationFields
   }
   locationExtraInfo {
     ...localizedCmsEventFields
