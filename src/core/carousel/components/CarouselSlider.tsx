@@ -69,7 +69,12 @@ export function CarouselSlider({
         role="presentation"
       >
         {itemSets.map((itemSet, itemSetIndex) => (
-          <CarouselSliderPage itemSet={itemSet} itemSetIndex={itemSetIndex} />
+          <CarouselSliderPage
+            // eslint-disable-next-line react/no-array-index-key
+            key={`itemSet-${itemSetIndex}`}
+            itemSet={itemSet}
+            itemSetIndex={itemSetIndex}
+          />
         ))}
       </ul>
     </div>
