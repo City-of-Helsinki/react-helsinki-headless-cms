@@ -15,7 +15,7 @@ export function CarouselSliderPage({ itemSet, itemSetIndex }) {
   return (
     <li
       ref={(node) =>
-        node && itemSetIndex !== currentSlide && node.setAttribute('inert', '')
+        node && node.toggleAttribute('inert', itemSetIndex !== currentSlide)
       }
       aria-hidden={itemSetIndex !== currentSlide}
       key={getItemSetKey(itemSet, itemSetIndex)}
