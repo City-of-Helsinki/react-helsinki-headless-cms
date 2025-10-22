@@ -9,7 +9,7 @@ export const findAllElementsOfType = (
   children: React.ReactNode,
   types: string[],
 ) => {
-  const elementsOfType = [];
+  const elementsOfType: React.ReactNode[] = [];
   recursiveMap(children, (child) => {
     elementsOfType.push(getChildrenByType(child, types));
     return child;

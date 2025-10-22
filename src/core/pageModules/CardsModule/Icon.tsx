@@ -13,7 +13,7 @@ export function Icon({ name }: IconProps) {
     () =>
       React.lazy(() =>
         import('../../../common/components/icons').then((module) => ({
-          default: module[name] || fallback,
+          default: module[name as keyof typeof module] || fallback,
         })),
       ),
     [name],

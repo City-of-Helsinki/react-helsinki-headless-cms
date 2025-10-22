@@ -50,10 +50,11 @@ export default function SidebarContent({
               <SidebarPostListComponent
                 key="pages"
                 variant="spacing-3-xl"
-                items={item?.pages?.map((page) => (
+                items={item?.pages?.map((page, index) => (
                   <SideBarPostListItemComponent
-                    key={page?.id}
                     {...page}
+                    key={page?.id ?? `sidebar-post-list-page-${index}`}
+                    id={page?.id ?? `sidebar-post-list-page-${index}`}
                     moduleItemType={ModuleItemTypeEnum.Page}
                   />
                 ))}
@@ -66,9 +67,10 @@ export default function SidebarContent({
               <SidebarPostListComponent
                 key="articles"
                 variant="spacing-3-xl"
-                items={item?.articles?.map((article) => (
+                items={item?.articles?.map((article, index) => (
                   <SideBarPostListItemComponent
-                    key={article?.id}
+                    key={article?.id ?? `sidebar-post-list-article-${index}`}
+                    id={article?.id ?? `sidebar-post-list-article-${index}`}
                     {...article}
                     moduleItemType={ModuleItemTypeEnum.Article}
                   />

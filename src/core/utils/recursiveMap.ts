@@ -16,7 +16,7 @@ import React from 'react';
 export const recursiveMap = (
   children: React.ReactNode,
   fn: (children: React.ReactNode) => React.ReactNode,
-) =>
+): React.ReactNode =>
   React.Children.map(children, (child) => {
     if (!React.isValidElement(child)) {
       // Strings inside HTML elements, etc.

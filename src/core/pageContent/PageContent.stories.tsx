@@ -19,21 +19,20 @@ import {
 } from './utils';
 import { PageMainContent } from './PageMainContent';
 import type { ArticleType, PageType } from '../../common/headlessService/types';
-import type { GeneralCollectionType } from '../collection/types';
 
 export default {
   title: 'Core components/PageContent',
   component: PageContent,
   subcomponents: { Collection, Card },
   argTypes: {
-    heroContainer: { control: { type: null } },
-    breadcrumbs: { control: { type: null } },
-    shareLinks: { control: { type: null } },
-    collections: { control: { type: null } },
-    sidebarContentProps: { control: { type: null } },
-    content: { control: { type: null } },
+    heroContainer: { control: false },
+    breadcrumbs: { control: false },
+    shareLinks: { control: false },
+    collections: { control: false },
+    sidebarContentProps: { control: false },
+    content: { control: false },
   },
-} as Meta<typeof PageContent>;
+} satisfies Meta<typeof PageContent>;
 
 const Template: StoryFn<typeof PageContent> = (args) => (
   <ConfigProvider
@@ -88,32 +87,29 @@ export const PageContentWithFunctions = {
     content: (page: PageType | ArticleType) => (
       <PageMainContent
         title={`${page?.title} (created with a custom function)`}
-        content={page?.content}
+        content={page?.content ?? ''}
       />
     ),
     collections: (page: PageType | ArticleType) =>
-      getCollections(page.modules, false)?.map(
-        (collection: GeneralCollectionType) => (
-          <Collection
-            key={`collection-${Math.random()}`}
-            title={`${collection.title} (created with a custom function)`}
-            cards={getCollectionCards(collection, [
-              ...defaultConfig.organisationPrefixes,
-            ]).map((cardProps) => (
-              <Card
-                key={cardProps.id}
-                {...cardProps}
-                imageUrl={
-                  cardProps.imageUrl ||
-                  pageMock.featuredImage?.node?.mediaItemUrl
-                }
-              />
-            ))}
-            type={getCollectionUIType(collection)}
-            collectionContainerProps={{ withDots: false }}
-          />
-        ),
-      ),
+      getCollections(page?.modules ?? [], false)?.map((collection) => (
+        <Collection
+          key={`collection-${Math.random()}`}
+          title={`${collection.title} (created with a custom function)`}
+          cards={getCollectionCards(collection, [
+            ...defaultConfig.organisationPrefixes,
+          ]).map((cardProps) => (
+            <Card
+              key={cardProps.id}
+              {...cardProps}
+              imageUrl={
+                cardProps.imageUrl || pageMock.featuredImage?.node?.mediaItemUrl
+              }
+            />
+          ))}
+          type={getCollectionUIType(collection)}
+          collectionContainerProps={{ withDots: false }}
+        />
+      )),
   },
 };
 

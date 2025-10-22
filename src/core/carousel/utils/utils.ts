@@ -1,9 +1,13 @@
 /**
- * @param {arr} arr - any array.
- * @param {len} len - the array length.
- * @return {Array} - Returns the chunks array of initial array (grouped elements).
+ * @param arr - any array.
+ * @param len - the array length.
+ * @return chunks array of initial array (grouped elements).
  */
-export function splitArrayIntoChunksOfLen(arr, len) {
+export function splitArrayIntoChunksOfLen(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  arr: Array<React.ReactElement<any>>,
+  len: number,
+) {
   const chunks = [];
   let i = 0;
   const n = arr.length;
@@ -14,32 +18,30 @@ export function splitArrayIntoChunksOfLen(arr, len) {
 }
 
 /**
- * @param {item} item - item set (element of the array).
- * @param {index} index - item set index.
- * @return {string} - Returns the unique key based on input data.
+ * @param index - item set index.
+ * @param itemSetId - item set (element of the array).
+ * @return an unique key based on input data.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const getItemSetKey = (item: any, index: number) =>
-  `itemSet-${item.id ?? Math.random()}-${index}`;
+export const getItemSetKey = (index: number, itemSetId?: string) =>
+  `itemSet-${itemSetId ?? Math.random()}-${index}`;
 
 /**
- * @param {item} item - item (element of the array).
- * @param {itemSetPrefix} itemSetPrefix - item prefix (element of the array).
- * @param {index} index - item index.
- * @return {string} - Returns the unique key based on input data.
+ * Create an unique key for item set.
+ * @param index - item index.
+ * @param itemId - item (element of the array). Default 'itemSet-item'
+ * @param itemSetPrefix - item prefix (element of the array).
+ * @return an unique key based on input data.
  */
 export const getItemSetItemKey = (
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  item: any,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  itemSetPrefix: any,
   index: number,
-) => `itemSet-item-${item.id ?? Math.random()}-${index}`;
+  itemId?: string,
+  itemSetPrefix = 'itemSet-item',
+) => `${itemSetPrefix}-${itemId ?? Math.random()}-${index}`;
 
 /**
- * @param {item} item - item (element of the array).
- * @param {index} index - item index.
- * @return {string} - Returns the unique key for the dot (slide counter) based on input data.
+ * @param item - item (element of the array).
+ * @param index - item index.
+ * @return an unique key for the dot (slide counter) based on input data.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getSlideDotKey = (item: any, index: number) =>

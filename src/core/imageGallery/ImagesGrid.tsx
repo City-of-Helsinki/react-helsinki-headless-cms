@@ -37,16 +37,16 @@ export function ImagesGrid({
 }: ImagesGridProps) {
   const { isLightboxVisible, selectedImageIndex } = useImageGalleryContext();
 
-  const gridContainerRef = useRef(null);
+  const gridContainerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!isLightboxVisible && selectedImageIndex !== -1) {
       const gridContainer = gridContainerRef.current;
-      const selectedCard = gridContainer?.querySelector(
+      const selectedCard = gridContainer?.querySelector<HTMLElement>(
         `[id="${lightboxUid}-card-${selectedImageIndex}"]`,
       );
       if (selectedCard) {
-        selectedCard?.focus();
+        selectedCard.focus();
       }
     }
   }, [isLightboxVisible, selectedImageIndex, lightboxUid]);

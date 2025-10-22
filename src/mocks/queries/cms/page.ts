@@ -8,5 +8,5 @@ export const queryPage = () =>
     if (req.variables.id === kukkuuPageDemosivu.page.id) {
       return res(ctx.data(kukkuuPageDemosivu));
     }
-    return null;
+    return res(ctx.data({ page: null }));
   });

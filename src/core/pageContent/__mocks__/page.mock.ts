@@ -59,7 +59,7 @@ export const sidebarLinkList: LayoutLinkList = {
   ],
   __typename: 'LayoutLinkList',
 };
-export const sidebarArticleList: LayoutArticle = {
+export const sidebarArticleList = {
   title: 'Cherry Picked Articles',
   articles: [
     {
@@ -85,7 +85,8 @@ export const sidebarArticleList: LayoutArticle = {
     },
   ],
   __typename: 'LayoutArticles',
-};
+} as const satisfies LayoutArticle;
+
 export const articleList: LayoutArticle = {
   title: 'Cherry Picked Articles',
   articles: [
@@ -111,7 +112,7 @@ export const articleList: LayoutArticle = {
   ],
   __typename: 'LayoutArticles',
 };
-export const sidebarPageList: LayoutPage = {
+export const sidebarPageList = {
   title: 'Collected pages',
   pages: [
     {
@@ -122,7 +123,7 @@ export const sidebarPageList: LayoutPage = {
     },
   ],
   __typename: 'LayoutPages',
-};
+} as const satisfies LayoutPage;
 export const pageList: LayoutPage = {
   title: 'Collected pages',
   pages: [
@@ -244,7 +245,7 @@ const modules = [
   pageLocationsSelectedCarousel,
 ];
 
-const mockPage: PageQuery['page'] = {
+const mockPage = {
   id: 'abc',
   content: `
   <p><strong>Taiteen ja kulttuurin Helsinki</strong></p>
@@ -271,6 +272,6 @@ const mockPage: PageQuery['page'] = {
   },
   sidebar,
   modules,
-};
+} as const satisfies PageQuery['page'];
 
 export default mockPage;

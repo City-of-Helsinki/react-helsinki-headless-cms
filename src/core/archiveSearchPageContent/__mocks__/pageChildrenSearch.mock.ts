@@ -1,6 +1,8 @@
 import type { PageChildrenSearchQuery } from '../../../common/headlessService/__generated__';
 
-const mockPageWithChildren: PageChildrenSearchQuery['page']['children'] = {
+const mockPageWithChildren: NonNullable<
+  PageChildrenSearchQuery['page']
+>['children'] = {
   pageInfo: {
     endCursor: null,
     hasNextPage: false,
