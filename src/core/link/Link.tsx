@@ -1,8 +1,6 @@
-/* eslint-disable react/jsx-no-useless-fragment */
 import React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
-import { IconEnvelope, IconPhone } from 'hds-react';
+import { IconEnvelope, IconPhone, IconSize } from 'hds-react';
 
 import LinkBase from './LinkBase';
 import { useConfig } from '../configProvider/useConfig';
@@ -59,7 +57,7 @@ export type LinkProps = Omit<
 // issue is created to hds: https://github.com/City-of-Helsinki/helsinki-design-system/issues/808
 
 export function Link({
-  href,
+  href = '#',
   children,
   showExternalIcon: forceShowExternalIcon,
   openInNewTab: forceOpenInNewTab,
@@ -78,7 +76,7 @@ export function Link({
   const isEmail = href?.startsWith('mailto:') || undefined;
   const isPhone = href?.startsWith('tel:') || undefined;
   const isExternal = getIsHrefExternal(href) && !isEmail && !isPhone;
-  const iconSize = size === 'S' ? 'xs' : 's';
+  const iconSize = size === 'S' ? IconSize.ExtraSmall : IconSize.Small;
   const hasImageInLink = findAllElementsOfType(children, ['img']).length > 0;
   // The external links should always open in a new tab.
   const openInNewTab = forceOpenInNewTab ?? isExternal;
@@ -112,6 +110,8 @@ export function Link({
   );
 
   return isExternal || typeof RoutedLink === 'undefined' ? (
+    // ts(2786) - Type 'Element | { linkComponent: Element; }' is not assignable to type 'ReactNode'.
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     <>{linkComponent}</>
   ) : (
     <RoutedLink href={href}>{linkComponent}</RoutedLink>

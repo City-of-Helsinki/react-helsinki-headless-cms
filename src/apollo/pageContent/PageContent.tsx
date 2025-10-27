@@ -30,8 +30,9 @@ export function PageContent({
   const { uri } = useApolloPageContext();
   const pageQuery = usePageQuery({
     variables: {
-      id: uri,
+      id: uri ?? '',
     },
+    skip: !uri,
   });
 
   if (pageQuery.loading) {

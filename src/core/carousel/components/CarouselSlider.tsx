@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'hds-react';
+import { Button, ButtonVariant, LoadingSpinner } from 'hds-react';
 
 import styles from '../carousel.module.scss';
 import { splitArrayIntoChunksOfLen, getLoadMoreKey } from '../utils/utils';
@@ -20,15 +20,16 @@ function useCarouselSliderRegionAriaLabel() {
 
 function CarouselLoadMoreButton() {
   const { onLoadMore, loading, loadMoreButtonLabelText } = useCarouselContext();
+  const iconStart = loading ? <LoadingSpinner small /> : null;
   return (
     <div className={styles.onLoadMoreContainer}>
       <Button
-        isLoading={loading}
+        iconStart={iconStart}
         onClick={onLoadMore}
-        variant="primary"
+        variant={ButtonVariant.Primary}
         role="button"
       >
-        {loadMoreButtonLabelText}
+        {String(loadMoreButtonLabelText)}
       </Button>
     </div>
   );

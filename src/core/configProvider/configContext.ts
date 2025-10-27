@@ -17,6 +17,7 @@ import type {
   FallbackTranslations,
   OptionalTranslationsWithFallbacks,
 } from '../translation/types';
+import { defaultConfig } from './defaultConfig';
 
 export type Config = {
   /**
@@ -145,4 +146,4 @@ export type Config = {
   };
 };
 
-export const configContext = createContext<Config>({} as Config);
+export const configContext = createContext<Config>(defaultConfig);

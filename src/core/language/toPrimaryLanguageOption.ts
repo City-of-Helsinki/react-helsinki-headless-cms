@@ -6,8 +6,8 @@ import type { NonEmptyLanguage } from './types';
 const toPrimaryLanguageOption = (
   language: NonEmptyLanguage,
 ): LanguageOption => ({
-  label: language.name,
-  value: language.code.toLowerCase(),
+  label: language.name ?? '',
+  value: language.code?.toLowerCase() ?? '',
   isPrimary: true,
 });
 

@@ -1,7 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
-import { Button, LoadingSpinner } from 'hds-react';
+import { LoadingSpinner } from 'hds-react';
 
 import styles from './collection.module.scss';
 import type { CarouselProps } from '../carousel/types';
@@ -39,6 +39,7 @@ import {
 } from './utils';
 import { DEFAULT_LOCALE } from '../../constants';
 import { isPageType, isArticleType } from '../../common/headlessService/utils';
+import { LoadingButton } from '../button/LoadingButton';
 
 export type CollectionProps = {
   /**
@@ -167,13 +168,13 @@ export function Collection({
       <>
         <CollectionGrid cards={cards} {...collectionContainerProps} />
         {hasNext && (
-          <Button
+          <LoadingButton
             className={styles.loadMoreButton}
             onClick={onLoadMore}
             isLoading={loading}
           >
             {loadMoreButtonLabelText}
-          </Button>
+          </LoadingButton>
         )}
       </>
     ),
@@ -225,15 +226,15 @@ export function getEventCollectionCards({
   items: EventType[];
   getRoutedInternalHref: Config['utils']['getRoutedInternalHref'];
   getEventCardProps: Config['utils']['getEventCardProps'];
-  EventCardContent: React.FC<Record<string, unknown>>;
-  HelsinkiCityOwnedIcon: React.FC<Record<string, unknown>>;
+  EventCardContent?: React.FC<Record<string, unknown>>;
+  HelsinkiCityOwnedIcon?: React.FC<Record<string, unknown>>;
   organisationPrefixes: string[];
   locale?: string;
 }) {
   const cards = items
     .map((item) => getEventCardProps(item, organisationPrefixes, locale))
     .map((cardProps, i) => {
-      const url = getRoutedInternalHref(cardProps.url, null);
+      const url = getRoutedInternalHref(cardProps.url, undefined);
       return (
         <Card
           key={cardProps.id}
@@ -296,7 +297,7 @@ export function EventSearchCollection({
   };
 
   const { data, loading } = useEventListQuery({
-    client: eventsApolloClient !== 'disabled' && eventsApolloClient,
+    client: eventsApolloClient !== 'disabled' ? eventsApolloClient : undefined,
     ssr: false,
     notifyOnNetworkStatusChange: true,
     variables,
@@ -345,7 +346,7 @@ export function EventSelectionCollection({
   const pageSize = collection.events.length; // collection.initAmountOfEvents
 
   const { data, loading } = useEventsByIdsQuery({
-    client: eventsApolloClient !== 'disabled' && eventsApolloClient,
+    client: eventsApolloClient !== 'disabled' ? eventsApolloClient : undefined,
     ssr: false,
     notifyOnNetworkStatusChange: true,
     skip: collection.events.length === 0,
@@ -358,11 +359,10 @@ export function EventSelectionCollection({
   });
 
   // Reduce past events that are no longer available and therefore do not need to be displayed
-  const eventsListFiltered = data?.eventsByIds.data.filter(
-    (event) => !isEventClosed(event),
-  );
+  const eventsListFiltered =
+    data?.eventsByIds.data.filter((event) => !isEventClosed(event)) ?? [];
 
-  const eventsListSorted = [];
+  const eventsListSorted: EventType[] = [];
 
   // sorting events in the same order it was defined in cms
   if (eventsListFiltered?.length > 0) {
@@ -385,7 +385,7 @@ export function EventSelectionCollection({
   }
 
   const cards = getEventCollectionCards({
-    items: eventsListSorted ?? [],
+    items: eventsListSorted,
     getRoutedInternalHref: (link, type) =>
       getRoutedInternalHref(link, type ?? ModuleItemTypeEnum.Event),
     getEventCardProps,
@@ -408,8 +408,8 @@ export function getLocationsCollectionCards({
   items: VenueType[];
   getRoutedInternalHref: Config['utils']['getRoutedInternalHref'];
   getLocationCardProps: Config['utils']['getLocationCardProps'];
-  VenueCardContent: React.FC<Record<string, unknown>>;
-  HelsinkiCityOwnedIcon: React.FC<Record<string, unknown>>;
+  VenueCardContent?: React.FC<Record<string, unknown>>;
+  HelsinkiCityOwnedIcon?: React.FC<Record<string, unknown>>;
 }) {
   const cards = items
     .map((item) => getLocationCardProps(item))
@@ -457,7 +457,7 @@ export function LocationsSelectionCollection({
   } = useConfig();
 
   const { data, loading } = useVenuesByIdsQuery({
-    client: venuesApolloClient !== 'disabled' && venuesApolloClient,
+    client: venuesApolloClient !== 'disabled' ? venuesApolloClient : undefined,
     ssr: false,
     notifyOnNetworkStatusChange: true,
     variables: {
@@ -511,7 +511,7 @@ export function PageArticleCollection({
       return result;
     }, [])
     .map((cardProps) => {
-      const url = getRoutedInternalHref(cardProps.url, null);
+      const url = getRoutedInternalHref(cardProps.url, undefined);
       return (
         <Card
           key={cardProps.id}

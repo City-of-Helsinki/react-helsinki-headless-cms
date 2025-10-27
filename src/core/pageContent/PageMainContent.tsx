@@ -13,7 +13,7 @@ export type PageMainContentProps = {
   title: string;
   content: string;
   date?: string;
-  categories?: ArticleType['categories'];
+  categories?: NonNullable<ArticleType>['categories'];
   contentModules?: React.ReactNode[];
   onArticlesSearch?: (tag: string) => void;
 };
@@ -53,10 +53,10 @@ export function PageMainContent({
                   ? () => {
                       onArticlesSearch(category.node?.id);
                     }
-                  : null
+                  : undefined
               }
             >
-              {category.node?.name}
+              {String(category.node?.name)}
             </Tag>
           ))}
         </div>
@@ -70,7 +70,7 @@ export function PageMainContent({
       >
         {content}
       </HtmlToReact>
-      {contentModules?.length > 0 && contentModules}
+      {(contentModules ?? [])?.length > 0 && contentModules}
     </article>
   );
 }

@@ -17,7 +17,7 @@ export function PageContentBreadcrumb({
   const listItems = getBreadcrumbListItems(breadcrumbs);
   return (
     <div className={styles.container}>
-      <HdsBreadcrumb ariaLabel={breadcrumbNavigationLabel} list={listItems} />
+      <HdsBreadcrumb aria-label={breadcrumbNavigationLabel} list={listItems} />
     </div>
   );
 }

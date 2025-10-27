@@ -17,7 +17,8 @@ export default function makeLocaleStorageValue<T>(
   return function useLocaleStorageValue(): [T | null, (value?: T) => void] {
     const readValueInLocalStorage = () => {
       try {
-        return deserialize(localStorage.getItem(key));
+        const storedValue = localStorage.getItem(key);
+        return storedValue ? deserialize(storedValue) : null;
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (_) {
         // eslint-disable-next-line no-console
@@ -37,7 +38,7 @@ export default function makeLocaleStorageValue<T>(
           setStateValue(value);
           localStorage.setItem(key, serialize(value));
         } else {
-          setStateValue(undefined);
+          setStateValue(null);
           localStorage.removeItem(key);
         }
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
