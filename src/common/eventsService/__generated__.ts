@@ -596,7 +596,7 @@ export type OfferCmsEventFieldsFragment = {
   } | null;
 };
 
-export type RegistrationFieldsFragment = {
+export type RegistrationCmsEventFieldsFragment = {
   __typename?: 'Registration';
   enrolmentStartTime?: string | null;
   enrolmentEndTime?: string | null;
@@ -1344,8 +1344,8 @@ export const OfferCmsEventFieldsFragmentDoc = gql`
   }
   ${LocalizedCmsEventFieldsFragmentDoc}
 `;
-export const RegistrationFieldsFragmentDoc = gql`
-  fragment registrationFields on Registration {
+export const RegistrationCmsEventFieldsFragmentDoc = gql`
+  fragment registrationCmsEventFields on Registration {
     enrolmentStartTime
     enrolmentEndTime
     remainingAttendeeCapacity
@@ -1416,7 +1416,7 @@ export const EventCmsEventFieldsFragmentDoc = gql`
       }
     }
     registration {
-      ...registrationFields
+      ...registrationCmsEventFields
     }
     locationExtraInfo {
       ...localizedCmsEventFields
@@ -1428,7 +1428,7 @@ export const EventCmsEventFieldsFragmentDoc = gql`
   ${KeywordCmsEventFieldsFragmentDoc}
   ${PlaceCmsEventFieldsFragmentDoc}
   ${OfferCmsEventFieldsFragmentDoc}
-  ${RegistrationFieldsFragmentDoc}
+  ${RegistrationCmsEventFieldsFragmentDoc}
 `;
 export const EventListDocument = gql`
   query EventList(

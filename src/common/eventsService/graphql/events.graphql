@@ -58,7 +58,7 @@ fragment offerCmsEventFields on Offer {
   }
 }
 
-fragment registrationFields on Registration {
+fragment registrationCmsEventFields on Registration {
   enrolmentStartTime
   enrolmentEndTime
   remainingAttendeeCapacity
@@ -128,7 +128,7 @@ fragment eventCmsEventFields on EventDetails {
     }
   }
   registration {
-    ...registrationFields
+    ...registrationCmsEventFields
   }
   locationExtraInfo {
     ...localizedCmsEventFields
