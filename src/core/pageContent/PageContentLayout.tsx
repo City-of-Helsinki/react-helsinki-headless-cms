@@ -57,11 +57,11 @@ export function PageContentLayout({
         >
           <ContentContainer>
             <div className={styles.content}>
-              <div>
-                {content}
+              <div className={styles.mainContent}>{content}</div>
+              <aside>{sidebarContent}</aside>
+              <div className={styles.shareLinks}>
                 {shareLinks && shareLinks}
               </div>
-              <aside>{sidebarContent}</aside>
             </div>
           </ContentContainer>
         </PageSection>
