@@ -43,29 +43,59 @@
 }
 
 .content {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   width: 100%;
-
-  @media screen and (min-width: breakpoints.$breakpoint-m) {
-    flex-direction: row;
-  }
 
   & > *:nth-child(1) {
     @media screen and (min-width: breakpoints.$breakpoint-m) {
-      flex: calc((100% / 3) * 2) 0 1;
-      max-width: calc((100% / 3) * 2);
-      // TODO: Replace with flex-gap when browsers support it
       margin-right: 22px;
     }
   }
 
   & aside {
     @media screen and (min-width: breakpoints.$breakpoint-m) {
-      flex: calc(100% / 3) 0 1;
-      // TODO: Replace with flex-gap when browsers support it
       margin-left: 22px;
       margin-top: 2rem;
+    }
+  }
+
+  /* 
+    When using bigger than mobile sized screen, the content order would be: 
+    1. page main (text) content
+    2. share buttons, 
+    3. sidebar
+    4. modules, footer, etc...
+    */
+  @include breakpoints.respond-below(m) {
+    & aside {
+      padding-top: var(--spacing-xl);
+    }
+  }
+
+  /* 
+    When using mobile sized screen, switch the sidebar with 
+    secondary data (share buttons, etc.) in main content,
+    so in mobile the order would be: 
+    1. page main (text) content
+    2. sidebar
+    3. share buttons, 
+    4. modules, footer, etc...
+    */
+  @include breakpoints.respond-above(m) {
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto 1fr;
+
+    .mainContent  {
+      grid-column: 1;
+    }
+
+    & aside {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+    }
+
+    .shareLinks {
+      grid-column: 1;
     }
   }
 

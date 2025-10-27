@@ -3,6 +3,7 @@
 import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { Footer } from 'hds-react';
 
 import { LanguageCodeEnum } from '../../common/headlessService/types';
 import { ConfigProvider } from '../configProvider/ConfigProvider';
@@ -138,8 +139,13 @@ export const PageDefault = {
             ))}
           />
         ))}
+        shareLinks={
+          <div style={{ height: '100px', width: '100%', background: 'red' }}>
+            TODO: Implement share links
+          </div>
+        }
       />
     ),
-    footer: <>TODO: Implement footer</>,
+    footer: <Footer>TODO: Implement footer</Footer>,
   },
 };
