@@ -128,3 +128,4 @@ export {
 export { Image, type ImageProps } from './image/Image';
 export { useResolveImageUrl } from './hooks/useResolveImageUrl';
 export * from './language';
+export { getTextFromHtml } from './utils/string';
