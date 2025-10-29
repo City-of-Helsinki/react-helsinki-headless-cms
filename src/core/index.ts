@@ -92,6 +92,10 @@ export { HtmlToReact } from '../common/components/htmlToReact/HtmlToReact';
 
 export type { PageContentProps } from './pageContent/types';
 
+export { PageContext } from './pageContextProvider/PageContext';
+export { PageContextProvider } from './pageContextProvider/PageContextProvider';
+export { usePageContext } from './pageContextProvider/usePageContext';
+
 export {
   Collection,
   CollectionProps,
