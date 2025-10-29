@@ -43,6 +43,7 @@ import { MAIN_CONTENT_ID } from '../../common/constants';
 import { PageContentBreadcrumb } from './PageContentBreadcrumb';
 import type { CardAlignment } from '../card/Card';
 import { SocialMediaFeedModule } from '../pageModules/SocialMediaFeedModule/SocialMediaFeedModule';
+import { PageContextProvider } from '../pageContextProvider/PageContextProvider';
 
 // Modules: Content, Image, Cards, Steps (possibly other in future)
 export const defaultContentModules = (
@@ -250,47 +251,49 @@ export function PageContent(props: PageContentProps) {
       className={classNames('page-main-content', className)}
     >
       {Head && <PageMeta headComponent={Head} page={page} />}
-      <PageContentLayoutComponent
-        {...props}
-        {...pageContentLayoutProps}
-        {...getHeroProps(page)}
-        breadcrumbs={
-          breadcrumbs &&
-          (typeof breadcrumbs === 'function' ? (
-            <PageContentBreadcrumb breadcrumbs={breadcrumbs(page)} />
-          ) : (
-            <PageContentBreadcrumb breadcrumbs={breadcrumbs} />
-          ))
-        }
-        heroContainer={heroContainer}
-        id={page?.id ?? 'page'}
-        imageSrc={page?.featuredImage?.node?.large}
-        imageAlt={page?.featuredImage?.node?.altText}
-        imageLabel={page?.featuredImage?.node?.photographerName}
-        backUrl={backUrl}
-        content={
-          typeof content === 'function'
-            ? content(page)
-            : (content ?? defaultContent(page, onArticlesSearch))
-        }
-        shareLinks={shareLinks}
-        collections={
-          typeof collections === 'function'
-            ? collections(page)
-            : (collections ??
-              defaultCollections({
-                page,
-                isEventModulesEnabled,
-                isVenueModulesEnabled,
-              }))
-        }
-        sidebarContent={
-          <SidebarContent
-            content={(page as PageType)?.sidebar}
-            {...sidebarContentProps}
-          />
-        }
-      />
+      <PageContextProvider page={page}>
+        <PageContentLayoutComponent
+          {...props}
+          {...pageContentLayoutProps}
+          {...getHeroProps(page)}
+          breadcrumbs={
+            breadcrumbs &&
+            (typeof breadcrumbs === 'function' ? (
+              <PageContentBreadcrumb breadcrumbs={breadcrumbs(page)} />
+            ) : (
+              <PageContentBreadcrumb breadcrumbs={breadcrumbs} />
+            ))
+          }
+          heroContainer={heroContainer}
+          id={page?.id ?? 'page'}
+          imageSrc={page?.featuredImage?.node?.large}
+          imageAlt={page?.featuredImage?.node?.altText}
+          imageLabel={page?.featuredImage?.node?.photographerName}
+          backUrl={backUrl}
+          content={
+            typeof content === 'function'
+              ? content(page)
+              : (content ?? defaultContent(page, onArticlesSearch))
+          }
+          shareLinks={shareLinks}
+          collections={
+            typeof collections === 'function'
+              ? collections(page)
+              : (collections ??
+                defaultCollections({
+                  page,
+                  isEventModulesEnabled,
+                  isVenueModulesEnabled,
+                }))
+          }
+          sidebarContent={
+            <SidebarContent
+              content={(page as PageType)?.sidebar}
+              {...sidebarContentProps}
+            />
+          }
+        />
+      </PageContextProvider>
     </main>
   );
 }
