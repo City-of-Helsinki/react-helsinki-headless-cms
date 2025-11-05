@@ -1,5 +1,4 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { graphql } from 'msw';
+import { graphql, HttpResponse } from 'msw';
 
 import {
   activeEvents,
@@ -230,15 +229,15 @@ import {
     ```
 */
 export const queryEventsByIds = () =>
-  graphql.query('EventsByIds', (req, res, ctx) => {
-    const eventIdsFilter = req.variables.ids;
+  graphql.query('EventsByIds', ({ variables }) => {
+    const eventIdsFilter = variables.ids;
     const events = [...activeEvents, ...pastEvents];
     // const data = eventIdsFilter?.length
     //   ? events.filter((event) => eventIdsFilter.includes(event.id))
     //   : events;
     const data = events.filter((event) => eventIdsFilter.includes(event.id));
-    return res(
-      ctx.data({
+    return HttpResponse.json({
+      data: {
         eventsByIds: {
           data,
           meta: {
@@ -249,6 +248,6 @@ export const queryEventsByIds = () =>
           },
           __typename: 'EventListResponse',
         },
-      }),
-    );
+      },
+    });
   });

@@ -12,16 +12,23 @@ module.exports = {
     // return a mock css module
     '\\.(css|less|scss|sss|styl)$': 'identity-obj-proxy',
     '^lodash-es$': 'lodash',
+    // This forces Jest to use the correct CommonJS version of uuid
+    // instead of the ESM one hds-react is trying to import.
+    '^uuid$': require.resolve('uuid'),
   },
 
   setupFilesAfterEnv: ['<rootDir>/jest-setup.ts'],
 
-  // The test environment that will be used for testing
-  // We have react-script as a dependency for our storybook build. This
-  // package forces our jsdom version into an older one, regardless of
-  // jest being at version 26. To circumvent, we are telling jest to
-  // use jsdom sixteen here.
-  testEnvironment: 'jest-environment-jsdom',
+  // Fix the issue "Request/Response/TextEncoder is not defined (Jest)". See more: https://mswjs.io/docs/migrations/1.x-to-2.x#frequent-issues.
+  testEnvironment: 'jest-fixed-jsdom',
+
+  transform: {
+    '^.+\\.(t|j)sx?$': 'babel-jest',
+  },
+  transformIgnorePatterns: [
+    '/node_modules/(?!(hds-react|uuid|until-async)/)',
+    '\\.pnp\\.[^\\/]+$',
+  ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   testPathIgnorePatterns: ['<rootDir>/(build|dist|temp)/'],

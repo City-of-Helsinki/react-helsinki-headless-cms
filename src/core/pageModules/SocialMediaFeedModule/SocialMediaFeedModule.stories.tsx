@@ -1,7 +1,7 @@
 /* eslint-disable react/function-component-definition */
 
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-webpack5';
 
 import { SocialMediaFeedModule } from './SocialMediaFeedModule';
 import { ConfigProvider } from '../../configProvider/ConfigProvider';

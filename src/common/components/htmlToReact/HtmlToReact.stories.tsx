@@ -1,7 +1,7 @@
 /* eslint-disable react/function-component-definition */
 
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-webpack5';
 
 import kukkuuTestPage from '../../../mocks/responses/cms/page/kukkuu-page-demosivu.json';
 import type { HtmlToReactProps, TableVariant } from './HtmlToReact';

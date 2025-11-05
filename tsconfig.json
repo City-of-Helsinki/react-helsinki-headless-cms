@@ -1,17 +1,10 @@
 {
   "compilerOptions": {
     "module": "ES2020",
-    "types": [
-      "node",
-      "jest",
-      "@testing-library/jest-dom"
-    ],
-    "moduleResolution": "Node",
+    "types": ["node", "jest", "@testing-library/jest-dom"],
+    "moduleResolution": "bundler",
     "target": "es2021",
-    "lib": [
-      "dom",
-      "es2020"
-    ],
+    "lib": ["dom", "es2020"],
     "outDir": "lib",
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
@@ -24,18 +17,8 @@
     "skipLibCheck": true,
     "strict": true
   },
-  "include": [
-    "src",
-    "jest-setup.ts"
-  ],
-  "exclude": [
-    "dist",
-    "**/__mocks__/*",
-    "**/node_modules/*",
-    "build",
-    "src/**/*.test.ts",
-    "src/**/*.test.tsx"
-  ],
+  "include": ["src", "jest-setup.ts"],
+  "exclude": ["dist", "**/__mocks__/*", "**/node_modules/*", "build"],
   "compileOnSave": false,
   "buildOnSave": false
 }

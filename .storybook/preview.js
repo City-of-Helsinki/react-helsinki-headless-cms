@@ -1,6 +1,6 @@
 // Enable hds-design-tokens in storybook
 import 'hds-design-tokens/lib/all.min.css';
-import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+import { INITIAL_VIEWPORTS } from 'storybook/viewport';
 import { initialize as mswInitialize, mswDecorator } from 'msw-storybook-addon';
 
 // Enable HelsinkiGrotesk font in storybook
@@ -16,8 +16,7 @@ export const parameters = {
     },
   },
   viewport: {
-    defaultViewport: 'extraSmall',
-    viewports: INITIAL_VIEWPORTS,
+    options: INITIAL_VIEWPORTS,
   },
 };
 
@@ -27,3 +26,10 @@ mswInitialize();
 // Provide the MSW addon decorator globally
 export const decorators = [mswDecorator];
 export const tags = ['autodocs', 'autodocs'];
+
+export const initialGlobals = {
+  viewport: {
+    value: 'extraSmall',
+    isRotated: false,
+  },
+};

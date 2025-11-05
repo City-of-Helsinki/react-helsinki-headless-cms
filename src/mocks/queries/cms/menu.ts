@@ -1,13 +1,33 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { graphql } from 'msw';
+import { graphql, HttpResponse } from 'msw';
 
 import data from '../../responses/cms/menus/hobbies-menu-fi.json';
-import { MenuDocument } from '../../../apollo';
+import {
+  MenuDocument,
+  type MenuQuery,
+  type MenuQueryVariables,
+} from '../../../apollo';
 
 export const queryMenu = () =>
-  graphql.query(MenuDocument, (req, res, ctx) => {
-    if (req.variables.id === data.menu.name) {
-      return res(ctx.data(data));
-    }
-    return res(ctx.data({ menu: null }));
-  });
+  graphql.query<MenuQuery, MenuQueryVariables>(
+    MenuDocument,
+    ({ variables }) => {
+      if (variables.id === data.menu.name) {
+        return HttpResponse.json({
+          data: {
+            ...data,
+            menu: {
+              ...data.menu,
+              menuItems: {
+                ...data.menu.menuItems,
+                nodes: data.menu.menuItems.nodes.map((item) => ({
+                  ...item,
+                  __typename: 'MenuItem',
+                })),
+              },
+            },
+          },
+        });
+      }
+      return HttpResponse.json({ data: { menu: null } });
+    },
+  );

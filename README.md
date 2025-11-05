@@ -44,7 +44,6 @@ The general requirements for new Component development:
 
 ### Available scripts
 
-
 | Name                    | Purpose                                                                                                                    | Useful Options                |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
 | `yarn dev`              | Starts storybook environment that can be used for developing components.                                                   |                               |
@@ -61,7 +60,6 @@ The general requirements for new Component development:
 | `yarn generate:graphql` | Generates / updates GraphQL schema for the project.                                                                        |                               |
 
 **NOTE: To manually publish a new version to the NPM, you will need the credentials that can be found from the City of Helsinki Culture and Leisure's Vault-service.**
-
 
 ### Development environments
 

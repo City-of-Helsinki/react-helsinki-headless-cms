@@ -14,6 +14,7 @@
         "audienceMaxAge": null,
         "eventStatus": "EventRescheduled",
         "externalLinks": [],
+        "registration": null,
         "images": [
           {
             "id": "92851",
@@ -282,6 +283,7 @@
         "audienceMaxAge": null,
         "eventStatus": "EventRescheduled",
         "externalLinks": [],
+        "registration": null,
         "images": [
           {
             "id": "96968",
@@ -496,6 +498,7 @@
         "audienceMaxAge": null,
         "eventStatus": "EventRescheduled",
         "externalLinks": [],
+        "registration": null,
         "images": [
           {
             "id": "91109",
@@ -751,6 +754,7 @@
         "audienceMaxAge": null,
         "eventStatus": "EventScheduled",
         "externalLinks": [],
+        "registration": null,
         "images": [
           {
             "id": "77040",
@@ -980,6 +984,7 @@
         "audienceMaxAge": null,
         "eventStatus": "EventRescheduled",
         "externalLinks": [],
+        "registration": null,
         "images": [
           {
             "id": "97932",
@@ -1259,6 +1264,7 @@
         "audienceMaxAge": null,
         "eventStatus": "EventRescheduled",
         "externalLinks": [],
+        "registration": null,
         "images": [
           {
             "id": "93919",
@@ -1525,6 +1531,7 @@
         "audienceMaxAge": null,
         "eventStatus": "EventScheduled",
         "externalLinks": [],
+        "registration": null,
         "images": [
           {
             "id": "77040",
@@ -1754,6 +1761,7 @@
         "audienceMaxAge": null,
         "eventStatus": "EventRescheduled",
         "externalLinks": [],
+        "registration": null,
         "images": [
           {
             "id": "93920",
@@ -1994,6 +2002,7 @@
         "audienceMaxAge": null,
         "eventStatus": "EventRescheduled",
         "externalLinks": [],
+        "registration": null,
         "images": [
           {
             "id": "96971",

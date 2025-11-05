@@ -7,4 +7,5 @@ export const usePageQuery = makeQueryWithApolloClientFromConfig<
   PageQueryVariables
 >(usePageQueryWithoutClient);
 
-export { PageQuery, PageQueryVariables, PageDocument } from './__generated__';
+export type { PageQuery, PageQueryVariables } from './__generated__';
+export { PageDocument } from './__generated__';

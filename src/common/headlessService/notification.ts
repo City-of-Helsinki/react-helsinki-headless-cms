@@ -10,7 +10,7 @@ export const useNotificationQuery = makeQueryWithApolloClientFromConfig<
   NotificationQueryVariables
 >(useNotificationQueryWithoutClient);
 
-export {
+export type {
   NotificationQuery,
   NotificationQueryVariables,
   NotificationDocument,

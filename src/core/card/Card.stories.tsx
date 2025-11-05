@@ -2,7 +2,7 @@
 
 import type { CSSProperties } from 'react';
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-webpack5';
 
 import { ConfigProvider } from '../configProvider/ConfigProvider';
 import { defaultConfig } from '../configProvider/defaultConfig';

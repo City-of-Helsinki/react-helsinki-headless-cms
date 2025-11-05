@@ -1,9 +1,11 @@
 {
   "menu": {
+    "id": "dGVybToxNw==",
     "name": "Hobbies Helsinki Header FI",
     "menuItems": {
       "nodes": [
         {
+          "__typename": "MenuItem",
           "parentId": null,
           "id": "cG9zdDo5MA==",
           "target": null,
@@ -14,6 +16,7 @@
           "connectedNode": null
         },
         {
+          "__typename": "MenuItem",
           "parentId": null,
           "id": "cG9zdDoyMTA=",
           "target": null,

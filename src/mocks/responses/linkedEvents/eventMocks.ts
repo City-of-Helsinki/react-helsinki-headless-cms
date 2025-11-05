@@ -19,6 +19,7 @@ export const futureEvents = [
     audienceMinAge: '9',
     audienceMaxAge: '11',
     eventStatus: 'EventRescheduled',
+    registration: null,
     externalLinks: [
       {
         name: 'registration',
@@ -207,6 +208,7 @@ export const ongoingEvents = [
     audienceMinAge: '9',
     audienceMaxAge: '11',
     eventStatus: 'EventRescheduled',
+    registration: null,
     externalLinks: [
       {
         name: 'registration',
@@ -398,6 +400,7 @@ export const pastEventsWithoutEndingTime = [
     audienceMinAge: '9',
     audienceMaxAge: '11',
     eventStatus: 'EventRescheduled',
+    registration: null,
     externalLinks: [
       {
         name: 'registration',
@@ -588,6 +591,7 @@ export const pastEvents = [
     audienceMinAge: '10',
     audienceMaxAge: '12',
     eventStatus: 'EventRescheduled',
+    registration: null,
     externalLinks: [
       {
         name: 'registration',
@@ -772,6 +776,7 @@ export const pastEvents = [
     audienceMinAge: null,
     audienceMaxAge: null,
     eventStatus: 'EventScheduled',
+    registration: null,
     externalLinks: [],
     images: [
       {

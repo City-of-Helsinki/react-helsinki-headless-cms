@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { graphql } from 'msw';
+import { graphql, HttpResponse } from 'msw';
 
 import tapahtumatEventListFrontPageCarousel from '../../responses/linkedEvents/eventList/tapahtumat-eventlist-frontpage.json';
 
@@ -257,6 +257,6 @@ export const frontPageCarouselVariables = new URLSearchParams({
     ```
 */
 export const queryEventList = () =>
-  graphql.query('EventList', (req, res, ctx) =>
-    res(ctx.data(tapahtumatEventListFrontPageCarousel)),
+  graphql.query('EventList', () =>
+    HttpResponse.json({ data: tapahtumatEventListFrontPageCarousel }),
   );

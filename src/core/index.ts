@@ -4,12 +4,11 @@ export { defaultConfig } from './configProvider/defaultConfig';
 export { useConfig } from './configProvider/useConfig';
 export { useHeadlessCmsLink } from './configProvider/useHeadlessCmsLink';
 
-export {
+export type {
   Menu,
   PageType,
   ArticleType,
   SidebarContent,
-  PageIdType,
   PageModule,
   PageSidebarModule,
   Articles,
@@ -29,30 +28,38 @@ export {
   LocationsSelected,
   LocationsSelectedCarousel,
   NotificationType,
-  LanguageCodeEnum,
-  LanguageCodeFilterEnum,
-  MenuNodeIdTypeEnum,
-  TemplateEnum,
   Categories,
   Category,
   Tag,
   Tags,
   SearchTag,
 } from '../common/headlessService/types';
+
+export {
+  PageIdType,
+  LanguageCodeEnum,
+  LanguageCodeFilterEnum,
+  MenuNodeIdTypeEnum,
+  TemplateEnum,
+} from '../common/headlessService/types';
+
 export * from '../common/headlessService/utils';
 export { ModuleItemTypeEnum } from '../common/headlessService/constants';
 
-export { Link, LinkProps } from './link/Link';
+export { Link, type LinkProps } from './link/Link';
 
 export { SecondaryLink } from './link/SecondaryLink';
 
 export { LinkBox } from './linkBox/LinkBox';
 
-export { Navigation, NavigationProps } from './navigation/Navigation';
+export { Navigation, type NavigationProps } from './navigation/Navigation';
 
-export { Notification, NotificationProps } from './notification/Notification';
+export {
+  Notification,
+  type NotificationProps,
+} from './notification/Notification';
 
-export { Page, PageProps } from './page/Page';
+export { Page, type PageProps } from './page/Page';
 
 export { PageContent } from './pageContent/PageContent';
 export { PageContentBreadcrumb } from './pageContent/PageContentBreadcrumb';
@@ -61,16 +68,16 @@ export { ContentContainer } from './contentContainer/ContentContainer';
 
 export {
   PageContentLayout,
-  PageContentLayoutProps,
+  type PageContentLayoutProps,
 } from './pageContent/PageContentLayout';
 
-export { PageMeta, PageMetaProps } from './pageContent/meta/PageMeta';
+export { PageMeta, type PageMetaProps } from './pageContent/meta/PageMeta';
 
 export { PageSection } from './pageSection/PageSection';
 
 export {
   PageMainContent,
-  PageMainContentProps,
+  type PageMainContentProps,
 } from './pageContent/PageMainContent';
 
 export {
@@ -98,18 +105,18 @@ export { usePageContext } from './pageContextProvider/usePageContext';
 
 export {
   Collection,
-  CollectionProps,
+  type CollectionProps,
   EventSelectionCollection,
-  EventSelectionCollectionProps,
+  type EventSelectionCollectionProps,
   EventSearchCollection,
-  EventSearchCollectionProps,
+  type EventSearchCollectionProps,
   getEventCollectionCards,
   LocationsSelectionCollection,
-  LocationsSelectionCollectionProps,
+  type LocationsSelectionCollectionProps,
   getLocationsCollectionCards,
 } from './collection/Collection';
 
-export {
+export type {
   CollectionItemType,
   GeneralCollectionType,
   EventSelectionCollectionType,

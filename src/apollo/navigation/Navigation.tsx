@@ -4,7 +4,6 @@ import { useLanguagesQuery } from '../../common/headlessService/languages';
 import { useMenuQuery } from '../../common/headlessService/menu';
 import type { NavigationProps as NavigationPropsWithoutData } from '../../core/navigation/Navigation';
 import { Navigation as NavigationWithoutData } from '../../core/navigation/Navigation';
-import type { LanguageFragment } from '../../common/headlessService/__generated__';
 
 export type NavigationProps = Omit<
   NavigationPropsWithoutData,
@@ -32,14 +31,14 @@ export function Navigation({
     },
   });
   const languages =
-    (languagesQuery.data?.languages?.filter(
-      (language) => !!language,
-    ) as LanguageFragment[]) ?? undefined;
+    languagesQuery.data?.languages?.filter((language) => !!language) ??
+    undefined;
+  const menu = menuQuery.data?.menu;
   return (
     <NavigationWithoutData
       {...delegatedProps}
       languages={languages}
-      menu={menuQuery.data?.menu}
+      menu={menu}
       getPathnameForLanguage={getPathnameForLanguage}
     />
   );

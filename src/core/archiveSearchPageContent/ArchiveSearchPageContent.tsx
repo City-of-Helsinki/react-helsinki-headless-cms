@@ -203,6 +203,7 @@ export const defaultLargeCard = (item: CollectionItemType) => (
 export const defaultCreateCard = (item: CollectionItemType) => (
   <Card
     {...item}
+    key={item?.id}
     title={
       (isEventType(item)
         ? item.name[DEFAULT_LOCALE]

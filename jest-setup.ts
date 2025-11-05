@@ -1,9 +1,5 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import '@testing-library/jest-dom';
-
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { toHaveNoViolations } from 'jest-axe';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import fetchMock from 'jest-fetch-mock';
 import { loadErrorMessages, loadDevMessages } from '@apollo/client/dev';
 import { hideConsoleMessages } from './src/tests/hideConsoleMessages';
