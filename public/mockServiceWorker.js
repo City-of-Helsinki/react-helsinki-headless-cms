@@ -2,10 +2,9 @@
 /* tslint:disable */
 
 /**
- * Mock Service Worker (1.3.5).
+ * Mock Service Worker.
  * @see https://github.com/mswjs/msw
  * - Please do NOT modify this file.
- * - Please do NOT serve this file on production.
  */
 
 const PACKAGE_VERSION = '2.11.6';
@@ -72,11 +71,6 @@ addEventListener('message', async function (event) {
       break;
     }
 
-    case 'MOCK_DEACTIVATE': {
-      activeClientIds.delete(clientId)
-      break
-    }
-
     case 'CLIENT_CLOSED': {
       activeClientIds.delete(clientId);
 
@@ -97,11 +91,6 @@ addEventListener('message', async function (event) {
 addEventListener('fetch', function (event) {
   const requestInterceptedAt = Date.now();
 
-  // Bypass server-sent events.
-  if (accept.includes('text/event-stream')) {
-    return
-  }
-
   // Bypass navigation requests.
   if (event.request.mode === 'navigate') {
     return;
@@ -118,7 +107,7 @@ addEventListener('fetch', function (event) {
 
   // Bypass all requests when there are no active clients.
   // Prevents the self-unregistered worked from handling requests
-  // after it's been deleted (still remains active until the next reload).
+  // after it's been terminated (still remains active until the next reload).
   if (activeClientIds.size === 0) {
     return;
   }
@@ -156,15 +145,18 @@ async function handleRequest(event, requestId, requestInterceptedAt) {
       {
         type: 'RESPONSE',
         payload: {
-          requestId,
-          type: clonedResponse.type,
-          ok: clonedResponse.ok,
-          status: clonedResponse.status,
-          statusText: clonedResponse.statusText,
-          body:
-            clonedResponse.body === null ? null : await clonedResponse.text(),
-          headers: Object.fromEntries(clonedResponse.headers.entries()),
-          redirected: clonedResponse.redirected,
+          isMockedResponse: IS_MOCKED_RESPONSE in response,
+          request: {
+            id: requestId,
+            ...serializedRequest,
+          },
+          response: {
+            type: responseClone.type,
+            status: responseClone.status,
+            statusText: responseClone.statusText,
+            headers: Object.fromEntries(responseClone.headers.entries()),
+            body: responseClone.body,
+          },
         },
       },
       responseClone.body ? [serializedRequest.body, responseClone.body] : [],
@@ -174,10 +166,14 @@ async function handleRequest(event, requestId, requestInterceptedAt) {
   return response;
 }
 
-// Resolve the main client for the given event.
-// Client that issues a request doesn't necessarily equal the client
-// that registered the worker. It's with the latter the worker should
-// communicate with during the response resolving phase.
+/**
+ * Resolve the main client for the given event.
+ * Client that issues a request doesn't necessarily equal the client
+ * that registered the worker. It's with the latter the worker should
+ * communicate with during the response resolving phase.
+ * @param {FetchEvent} event
+ * @returns {Promise<Client | undefined>}
+ */
 async function resolveMainClient(event) {
   const client = await self.clients.get(event.clientId);
 
@@ -255,12 +251,6 @@ async function getResponse(event, client, requestId, requestInterceptedAt) {
     return passthrough();
   }
 
-  // Bypass requests with the explicit bypass header.
-  // Such requests can be issued by "ctx.fetch()".
-  if (request.headers.get('x-msw-bypass') === 'true') {
-    return passthrough()
-  }
-
   // Notify the client that a request has been intercepted.
   const serializedRequest = await serializeRequest(event.request);
   const clientMessage = await sendToClient(
@@ -284,21 +274,18 @@ async function getResponse(event, client, requestId, requestInterceptedAt) {
     case 'PASSTHROUGH': {
       return passthrough();
     }
-
-    case 'NETWORK_ERROR': {
-      const { name, message } = clientMessage.data
-      const networkError = new Error(message)
-      networkError.name = name
-
-      // Rejecting a "respondWith" promise emulates a network error.
-      throw networkError
-    }
   }
 
   return passthrough();
 }
 
-function sendToClient(client, message) {
+/**
+ * @param {Client} client
+ * @param {any} message
+ * @param {Array<Transferable>} transferrables
+ * @returns {Promise<any>}
+ */
+function sendToClient(client, message, transferrables = []) {
   return new Promise((resolve, reject) => {
     const channel = new MessageChannel();
 

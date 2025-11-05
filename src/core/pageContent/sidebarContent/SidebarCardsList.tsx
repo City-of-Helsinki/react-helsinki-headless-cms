@@ -31,6 +31,7 @@ export default function SidebarCardsList({ cards }: CardsListItemProps) {
           const key = btoa(`sidebar-card-${card.title}-${uri}`);
           return (
             <SimpleCard
+              key={key}
               title={card.title ?? undefined}
               icon={card.icon ?? undefined}
               description={card.description ?? undefined}

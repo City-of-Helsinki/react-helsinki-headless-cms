@@ -11,7 +11,7 @@ export const useCategoriesQuery = makeQueryWithApolloClientFromConfig<
 >(useCategoriesQueryWithoutClient);
 
 export {
-  CategoriesQuery,
-  CategoriesQueryVariables,
+  type CategoriesQuery,
+  type CategoriesQueryVariables,
   CategoriesDocument,
 } from './__generated__';

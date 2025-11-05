@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { IconAngleRight } from 'hds-react';
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-webpack5';
 
 import { Link } from './Link';
 import { SecondaryLink } from './SecondaryLink';

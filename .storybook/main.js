@@ -11,9 +11,6 @@ module.exports = {
   addons: [
     '@storybook/addon-a11y',
     '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-    '@storybook/addon-viewport',
     {
       name: '@storybook/preset-scss',
       options: {
@@ -30,6 +27,7 @@ module.exports = {
       },
     },
     '@storybook/addon-webpack5-compiler-babel',
+    '@storybook/addon-docs',
   ],
 
   framework: {

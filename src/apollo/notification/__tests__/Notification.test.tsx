@@ -17,7 +17,7 @@ afterEach(() => {
 
 describe('apollo Notification component', () => {
   it('renders notification with gql data', async () => {
-    render(<Notification />, null, {
+    render(<Notification />, undefined, {
       ...getApolloConfig(CmsEndpoint.hobbies),
     });
 

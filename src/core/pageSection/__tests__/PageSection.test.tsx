@@ -57,6 +57,6 @@ test('Doesnt render fallback image when no backgroundImageUrl set', async () => 
   const {
     container: { firstElementChild: image },
   } = render(<PageSection>Hello</PageSection>);
-  const styleProps = Object.values(window.getComputedStyle(image));
+  const styleProps = Object.values(window.getComputedStyle(image!));
   expect(styleProps).not.toContain('background-image');
 });

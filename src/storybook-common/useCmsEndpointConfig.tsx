@@ -1,4 +1,4 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
 
 import { EVENTS_PROXY_ENDPOINT, LINKED_EVENTS_ENDPOINT } from '../constants';
 import type { Config } from '../core/configProvider/configContext';
@@ -8,11 +8,11 @@ export const useCmsEndpointConfig = (
   cms: keyof typeof CmsEndpoint,
 ): Partial<Config> => {
   const apolloClient = new ApolloClient({
-    uri: CmsEndpoint[cms],
+    link: new HttpLink({ uri: CmsEndpoint[cms] }),
     cache: new InMemoryCache(),
   });
   const eventsApolloClient = new ApolloClient({
-    uri: EVENTS_PROXY_ENDPOINT,
+    link: new HttpLink({ uri: EVENTS_PROXY_ENDPOINT }),
     cache: new InMemoryCache(),
   });
   const internalHrefOrigins = [

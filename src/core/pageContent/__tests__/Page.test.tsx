@@ -28,19 +28,24 @@ describe('PageContent', () => {
 
     // Sidebar contains expected links
     expect(
-      screen.getByRole('heading', { name: sidebarLinkList.title, level: 2 }),
+      screen.getByRole('heading', { name: sidebarLinkList.title!, level: 2 }),
     ).toBeInTheDocument();
-    expect(screen.getByText(sidebarLinkList.description)).toBeInTheDocument();
-    expect(document.getElementById(sidebarLinkList.anchor)).toBeInTheDocument();
-    sidebarLinkList.links.forEach((link) => {
+    expect(screen.getByText(sidebarLinkList.description!)).toBeInTheDocument();
+    expect(
+      document.getElementById(sidebarLinkList.anchor!),
+    ).toBeInTheDocument();
+
+    expect(sidebarLinkList.links?.length).toBeGreaterThan(0);
+
+    sidebarLinkList.links?.forEach((link) => {
       const linkElement = screen.getByRole('link', {
-        name: new RegExp(link.title),
+        name: new RegExp(link!.title!),
       });
 
       expect(linkElement).toBeInTheDocument();
-      expect(linkElement).toHaveAttribute('href', link.url);
+      expect(linkElement).toHaveAttribute('href', link?.url);
 
-      if (link.target === '_blank') {
+      if (link!.target === '_blank') {
         expect(linkElement).toHaveAttribute('target', '_blank');
         expect(linkElement).toHaveAttribute('rel', 'noopener noreferrer');
         expect(linkElement).toHaveAttribute(

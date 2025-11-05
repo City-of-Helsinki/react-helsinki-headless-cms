@@ -7,9 +7,5 @@ export const useLanguagesQuery = makeQueryWithApolloClientFromConfig<
   LanguagesQueryVariables
 >(useLanguagesQueryWithoutClient);
 
-export {
-  LanguagesQuery,
-  LanguagesQueryVariables,
-  LanguagesDocument,
-  LanguageCodeEnum,
-} from './__generated__';
+export type { LanguagesQuery, LanguagesQueryVariables } from './__generated__';
+export { LanguagesDocument, LanguageCodeEnum } from './__generated__';

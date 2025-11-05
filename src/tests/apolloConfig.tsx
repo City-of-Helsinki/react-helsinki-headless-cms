@@ -1,4 +1,4 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
 
 import type { Config } from '../core/configProvider/configContext';
 
@@ -9,7 +9,7 @@ export const getApolloConfig = (
   'apolloClient' | 'eventsApolloClient' | 'venuesApolloClient'
 > => {
   const apolloClient = new ApolloClient({
-    uri,
+    link: new HttpLink({ uri }),
     cache: new InMemoryCache(),
   });
   return {

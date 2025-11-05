@@ -7,4 +7,8 @@ export const useTagQuery = makeQueryWithApolloClientFromConfig<
   TagQueryVariables
 >(useTagQueryWithoutClient);
 
-export { TagQuery, TagQueryVariables, TagDocument } from './__generated__';
+export {
+  type TagQuery,
+  type TagQueryVariables,
+  TagDocument,
+} from './__generated__';

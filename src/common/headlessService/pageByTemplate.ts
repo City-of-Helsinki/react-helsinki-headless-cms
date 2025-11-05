@@ -11,7 +11,7 @@ export const usePageByTemplateQuery = makeQueryWithApolloClientFromConfig<
 >(usePageByTemplateQueryWithoutClient);
 
 export {
-  PageByTemplateQuery,
-  PageByTemplateQueryVariables,
+  type PageByTemplateQuery,
+  type PageByTemplateQueryVariables,
   PageByTemplateDocument,
 } from './__generated__';

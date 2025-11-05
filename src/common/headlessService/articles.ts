@@ -8,7 +8,7 @@ export const usePostsQuery = makeQueryWithApolloClientFromConfig<
 >(usePostsQueryWithoutClient);
 
 export {
-  PostsQuery,
-  PostsQueryVariables,
+  type PostsQuery,
+  type PostsQueryVariables,
   PostsDocument,
 } from './__generated__';

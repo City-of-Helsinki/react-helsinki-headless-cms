@@ -33,7 +33,7 @@ test('renders internal link which opens in a new tab', () => {
 test('renders external link with external icon by default', () => {
   render(<Link href="https://www.google.com/">Search from google</Link>);
   const link = screen.getByRole('link');
-  expect(link.lastChild.nodeName).toEqual('SPAN');
+  expect(link.lastChild?.nodeName).toEqual('SPAN');
 });
 
 test('renders external link without external icon', () => {
@@ -42,15 +42,15 @@ test('renders external link without external icon', () => {
       Search from google
     </Link>,
   );
-  expect(screen.getByRole('link').lastChild.nodeName).not.toEqual('svg');
+  expect(screen.getByRole('link').lastChild?.nodeName).not.toEqual('svg');
 });
 
 test('renders email link with envelope icon', () => {
   render(<Link href="mailto:test@example.org">test@example.org</Link>);
   const linkLastChild = screen.getByRole('link').lastChild;
-  expect(linkLastChild.nodeName).toEqual('SPAN');
+  expect(linkLastChild?.nodeName).toEqual('SPAN');
   const span = linkLastChild as HTMLSpanElement;
-  expect(span.lastChild.nodeName).toEqual('svg');
+  expect(span.lastChild?.nodeName).toEqual('svg');
   const svg = span.lastChild as SVGSVGElement;
   expect(svg).toHaveAttribute('aria-label', 'envelope');
 });
@@ -58,9 +58,9 @@ test('renders email link with envelope icon', () => {
 test('renders phone link with phone icon', () => {
   render(<Link href="tel:+358 12 345 789">+358 12 345 789</Link>);
   const linkLastChild = screen.getByRole('link').lastChild;
-  expect(linkLastChild.nodeName).toEqual('SPAN');
+  expect(linkLastChild?.nodeName).toEqual('SPAN');
   const span = linkLastChild as HTMLSpanElement;
-  expect(span.lastChild.nodeName).toEqual('svg');
+  expect(span.lastChild?.nodeName).toEqual('svg');
   const svg = span.lastChild as SVGSVGElement;
   expect(svg).toHaveAttribute('aria-label', 'phone');
 });
@@ -107,6 +107,6 @@ test('the link with image should not show an external icon by default', () => {
     </Link>,
   );
   expect(container.childElementCount).toBe(1);
-  expect(container.lastChild.nodeName).not.toEqual('svg');
+  expect(container.lastChild?.nodeName).not.toEqual('svg');
   expect(container).toMatchSnapshot();
 });

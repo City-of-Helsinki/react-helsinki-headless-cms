@@ -51,19 +51,21 @@ describe('recursiveMap', () => {
       ul: 0,
       ol: 0,
     };
-    const fn = (child: React.ReactElement) => {
-      switch (typeOfComponent(child)) {
-        case 'li':
-          elementCounter.li += 1;
-          break;
-        case 'ul':
-          elementCounter.ul += 1;
-          break;
-        case 'ol':
-          elementCounter.ol += 1;
-          break;
-        default:
-          break;
+    const fn = (child: React.ReactNode) => {
+      if (React.isValidElement(child)) {
+        switch (typeOfComponent(child)) {
+          case 'li':
+            elementCounter.li += 1;
+            break;
+          case 'ul':
+            elementCounter.ul += 1;
+            break;
+          case 'ol':
+            elementCounter.ol += 1;
+            break;
+          default:
+            break;
+        }
       }
       return child;
     };
@@ -92,9 +94,11 @@ describe('recursiveMap', () => {
     'can be used with return values to collect content #',
     (component, type, elementCount) => {
       const { children } = component.props;
-      const result = [];
-      const fn = (child: React.ReactElement) => {
-        if (typeOfComponent(child) === type) result.push(child);
+      const result: React.ReactElement[] = [];
+      const fn = (child: React.ReactNode) => {
+        if (React.isValidElement(child) && typeOfComponent(child) === type) {
+          result.push(child);
+        }
         return child;
       };
       recursiveMap(children, fn);
@@ -119,8 +123,14 @@ describe('recursiveMap', () => {
         </div>
       </>
     );
-    const fn = (child: React.ReactElement) =>
-      React.cloneElement(child, { className: 'newTestClassInEveryElement' });
+    const fn = (child: React.ReactNode) => {
+      if (React.isValidElement(child)) {
+        return React.cloneElement(child, {
+          className: 'newTestClassInEveryElement',
+        });
+      }
+      return child;
+    };
     const result = recursiveMap(children, fn);
     expect(result).toMatchSnapshot();
   });

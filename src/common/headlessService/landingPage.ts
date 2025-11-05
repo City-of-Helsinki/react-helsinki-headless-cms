@@ -11,7 +11,7 @@ export const useLandingPageQuery = makeQueryWithApolloClientFromConfig<
 >(useLandingPageQueryWithoutClient);
 
 export {
-  LandingPageQuery,
-  LandingPageQueryVariables,
+  type LandingPageQuery,
+  type LandingPageQueryVariables,
   LandingPageDocument,
 } from './__generated__';
