@@ -194,8 +194,8 @@ export const defaultCollections = ({
 }) =>
   getCollections(page?.modules ?? [], true)?.reduce(
     (collectionElements: React.JSX.Element[], collection) => {
+      const key = `collection-${btoa(`${collection?.id ?? ''}-${collection?.title ?? ''}-${collection?.description ?? ''}`)}`;
       const commonCollectionProps = {
-        key: `collection-${Math.random()}`,
         title: collection.title,
         description: collection.description,
         type: getCollectionUIType(collection),
@@ -207,6 +207,7 @@ export const defaultCollections = ({
           collectionElements.push(
             <EventSearchCollection
               {...commonCollectionProps}
+              key={key}
               collection={collection}
             />,
           );
@@ -216,6 +217,7 @@ export const defaultCollections = ({
           collectionElements.push(
             <EventSelectionCollection
               {...commonCollectionProps}
+              key={key}
               collection={collection}
             />,
           );
@@ -225,6 +227,7 @@ export const defaultCollections = ({
           collectionElements.push(
             <LocationsSelectionCollection
               {...commonCollectionProps}
+              key={key}
               collection={collection}
               locale={page?.language?.locale as LanguageCodeEnum}
             />,
@@ -234,6 +237,7 @@ export const defaultCollections = ({
         collectionElements.push(
           <PageArticleCollection
             {...commonCollectionProps}
+            key={key}
             collection={collection}
           />,
         );

@@ -23,7 +23,7 @@ export function splitArrayIntoChunksOfLen(
  * @return an unique key based on input data.
  */
 export const getItemSetKey = (index: number, itemSetId?: string) =>
-  `itemSet-${itemSetId ?? Math.random()}-${index}`;
+  `itemSet-${itemSetId ?? ''}-${index}`;
 
 /**
  * Create an unique key for item set.
@@ -36,7 +36,7 @@ export const getItemSetItemKey = (
   index: number,
   itemId?: string,
   itemSetPrefix = 'itemSet-item',
-) => `${itemSetPrefix}-${itemId ?? Math.random()}-${index}`;
+) => `${itemSetPrefix}-${itemId ?? ''}-${index}`;
 
 /**
  * @param item - item (element of the array).
@@ -45,6 +45,6 @@ export const getItemSetItemKey = (
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getSlideDotKey = (item: any, index: number) =>
-  `slide-dot-${item?.id ?? Math.random()}-${index}`;
+  `slide-dot-${item?.id ?? ''}-${index}`;
 
-export const getLoadMoreKey = () => `carousel-loadmore-${Math.random()}`;
+export const getLoadMoreKey = () => 'carousel-loadmore';

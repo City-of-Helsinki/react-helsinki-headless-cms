@@ -186,13 +186,18 @@ export interface SearchPageContentProps {
    */
   createLargeCard?: (
     item: CollectionItemType,
+    index?: number,
   ) => React.ReactElement<typeof LargeCard>;
-  createCard?: (item: CollectionItemType) => React.ReactElement<typeof Card>;
+  createCard?: (
+    item: CollectionItemType,
+    index?: number,
+  ) => React.ReactElement<typeof Card>;
 }
 
-export const defaultLargeCard = (item: CollectionItemType) => (
+export const defaultLargeCard = (item: CollectionItemType, index?: number) => (
   <LargeCard
     {...item}
+    key={item?.id ?? `card-${index}`}
     title={
       (isEventType(item)
         ? item.name[DEFAULT_LOCALE]
@@ -200,10 +205,10 @@ export const defaultLargeCard = (item: CollectionItemType) => (
     }
   />
 );
-export const defaultCreateCard = (item: CollectionItemType) => (
+export const defaultCreateCard = (item: CollectionItemType, index?: number) => (
   <Card
     {...item}
-    key={item?.id}
+    key={item?.id ?? `card-${index}`}
     title={
       (isEventType(item)
         ? item.name[DEFAULT_LOCALE]
@@ -231,7 +236,7 @@ export function ArchiveCollection({
         {largeFirstItem && createLargeCard(firstItem)}
       </div>
       <Grid className={styles.grid}>
-        {gridItems.map((item) => createCard(item))}
+        {gridItems.map((item, index) => createCard(item, index))}
       </Grid>
     </>
   );
