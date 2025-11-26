@@ -5,6 +5,9 @@ type Options<T> = {
   deserializer?: (value: string) => T;
 };
 
+// Utility function to check if we are in a browser environment
+const isBrowser = () => typeof window !== 'undefined';
+
 export default function makeLocaleStorageValue<T>(
   key: string,
   options?: Partial<Options<T>>,
@@ -16,13 +19,16 @@ export default function makeLocaleStorageValue<T>(
 
   return function useLocaleStorageValue(): [T | null, (value?: T) => void] {
     const readValueInLocalStorage = () => {
+      if (!isBrowser()) {
+        return null;
+      }
       try {
         const storedValue = localStorage.getItem(key);
         return storedValue ? deserialize(storedValue) : null;
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (_) {
         // eslint-disable-next-line no-console
-        console.error('Failed to parse value in localStorage');
+        console.error('Failed to parse value in localStorage', { key });
       }
 
       return null;
@@ -33,6 +39,9 @@ export default function makeLocaleStorageValue<T>(
     );
 
     const storeValue = useCallback((value?: T) => {
+      if (!isBrowser()) {
+        return;
+      }
       try {
         if (value) {
           setStateValue(value);
@@ -44,7 +53,7 @@ export default function makeLocaleStorageValue<T>(
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (_) {
         // eslint-disable-next-line no-console
-        console.error('Failed to save value into localStorage');
+        console.error('Failed to save value into localStorage', { key });
       }
     }, []);
 
