@@ -7422,7 +7422,7 @@ hds-design-tokens@^4.8.0:
   resolved "https://registry.yarnpkg.com/hds-design-tokens/-/hds-design-tokens-4.8.1.tgz#f0179bb52d68d50d6cbf5c81bc11735d5e31fbce"
   integrity sha512-d1aAAH7vHuxHtJxmIL5zE/FPIh/sKo7TizeaKdL5FIWeHM3RfHp4QYFotyWA2Ogsc/KxY3wV8BwEGoCH1TC+ig==
 
-hds-react@^4.8.0:
+hds-react@4.8.0:
   version "4.8.0"
   resolved "https://registry.yarnpkg.com/hds-react/-/hds-react-4.8.0.tgz#8b159561634e37eecbbc6e636cfb2fc9c6b812ff"
   integrity sha512-zYFlOCpKYMF+jOQz39Fl4iwTaRi6yVh1OKh605OnFcfdv3jzYPF7MBgoO9Joiv6mJeVFkrheX02fzcQZgyG/fQ==
