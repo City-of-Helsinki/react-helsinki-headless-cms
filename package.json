@@ -13,6 +13,7 @@
     "lint-fix": "yarn eslint \"src/**/*.{ts,tsx}\" --fix && yarn prettier ./src -w",
     "test": "jest",
     "test-storybook": "test-storybook",
+    "test:coverage": "jest --coverage",
     "build": "rollup -c --bundleConfigAsCjs",
     "docker:dev": "cross-env DOCKER_TARGET=development docker compose up",
     "docker:prod": "cross-env DOCKER_TARGET=production docker compose up",
