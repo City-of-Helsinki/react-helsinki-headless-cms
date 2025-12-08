@@ -1,5 +1,39 @@
 # React Helsinki Headless CMS
 
+React UI component library to visualize [Headless CMS](https://github.com/City-of-Helsinki/headless-cms)
+data using [Helsinki Design System](https://github.com/City-of-Helsinki/helsinki-design-system).
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Introduction](#introduction)
+  - [The known clients that are using this library](#the-known-clients-that-are-using-this-library)
+- [Installation](#installation)
+- [Development](#development)
+  - [When to develop](#when-to-develop)
+  - [Available scripts](#available-scripts)
+  - [Development environments](#development-environments)
+  - [Module structure](#module-structure)
+  - [Husky Git Hooks](#husky-git-hooks)
+    - [Pre-commit Hook](#pre-commit-hook)
+    - [Commit-msg Hook](#commit-msg-hook)
+  - [CI](#ci)
+  - [CD](#cd)
+  - [Storybook](#storybook)
+  - [Apollo](#apollo)
+  - [NextJS](#nextjs)
+  - [Use as a application dependency](#use-as-a-application-dependency)
+  - [Build](#build)
+  - [Releasing new versions](#releasing-new-versions)
+- [Testing](#testing)
+  - [Testing in IDE terminal](#testing-in-ide-terminal)
+- [Usage](#usage)
+- [Publishing new versions](#publishing-new-versions)
+- [Known issues](#known-issues)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Introduction
 
 React Helsinki Headless CMS - is a highly customized component library based on [HDS](https://github.com/City-of-Helsinki/helsinki-design-system). It is designed for Helsinki City Web applications which are using preconfigured Wordpress Headless CMS environments (compatible with the library). This library is a set of unified visual components for Pages, Artciles, Artcicle Archives which provide:
@@ -80,6 +114,36 @@ This library consists of three modules.
 - Core module that includes data naive components.
 - Apollo module that wraps core module components with logic that is able to fetch data with the help of an `ApolloClient` instance.
 - Nextjs module that provides utilities when working with `Nextjs` and `Apollo`.
+
+### Husky Git Hooks
+
+This project uses [Husky](https://typicode.github.io/husky/#/) to manage Git hooks. Husky is configured to run specific scripts before committing changes to ensure code quality and consistency.
+
+#### Pre-commit Hook
+
+The pre-commit hook is configured to run the following commands:
+
+```sh
+yarn doctoc .
+yarn lint-staged --relative
+```
+
+- `yarn doctoc .`: This command updates the table of contents in your markdown files.
+- `yarn lint-staged --relative`: This command runs linting on staged files to ensure they meet the project's coding standards. The lint-staged configuration can be found from [package.json](./package.json).
+  - Using `--relative` flag to reduce command line length,
+    as the combined length of all the absolute paths for a large commit can get quite long
+
+> NOTE: `doctoc` and `husky` does not work seamlessly together, since the `doctoc` does update the TOCs of the markdown files, but does not reject the pre-commit hook execution, and only leaves the refactored files as unstaged in Git.
+
+#### Commit-msg Hook
+
+The commit-msg hook is configured to run the following command:
+
+```sh
+npx --no-install commitlint --edit "$1"
+```
+
+- `npx --no-install commitlint --edit "$1"`: This command uses [Commitlint](https://commitlint.js.org/#/) to lint commit messages based on the project's commit message conventions. This repo follows the [Conventional Commits](#conventional-commits).
 
 ### CI
 
