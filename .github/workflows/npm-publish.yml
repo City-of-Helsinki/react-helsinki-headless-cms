@@ -1,21 +1,16 @@
-name: publish
+name: npm publish
 
 on:
-  release:
-    types: [created]
+  push:
+    tags:
+      - 'v*.*.*'  # Trigger on version tags
 
 jobs:
-  publish-npm-stable:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 20
-          registry-url: https://registry.npmjs.org/
-      - run: yarn
-      - run: yarn test
-      - run: yarn build
-      - run: yarn publish-stable
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+  publish:
+    uses: City-of-Helsinki/.github/.github/workflows/ci-npm-publish.yml@main
+    with:
+      node-version: '22'
+      package-manager: 'yarn'
+      install-command: 'yarn --frozen-lockfile'
+      test-command: 'yarn test'
+      build-command: 'yarn build'
