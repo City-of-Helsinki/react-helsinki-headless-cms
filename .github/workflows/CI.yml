@@ -1,22 +1,15 @@
-name: Continuous integration
+name: CI
 
 on:
-  pull_request:
   push:
-    branches:
-      - main
-    tags:
-      - 'release-*'
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
-  check:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 22
-      - run: yarn
-      - run: yarn lint
-      - run: yarn test
-      - run: yarn build
+  common:
+    uses: City-of-Helsinki/.github/.github/workflows/ci-node.yml@main
+    secrets: inherit
+    with:
+      node-version: 22
