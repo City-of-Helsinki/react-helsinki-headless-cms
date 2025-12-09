@@ -1,0 +1,38 @@
+# .github/workflows/release-please.yml
+name: release-please
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '1 0 * * *'
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+    steps:
+      - uses: google-github-actions/release-please-action@v4
+        id: release
+  build:
+    needs: release-please
+    if: ${{ needs.release-please.outputs.release_created }}
+    uses: City-of-Helsinki/.github/.github/workflows/ci-node.yml@main
+    secrets: inherit
+    with:
+      node-version: '22'
+      upload_artifacts: true
+      skip_sonar: true
+  publish:
+    needs: build
+    secrets: inherit
+    uses: City-of-Helsinki/.github/.github/workflows/ci-npm-publish.yml@main
+    with:
+      node-version: '22'
+      use-ci-build: true
