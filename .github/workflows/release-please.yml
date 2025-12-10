@@ -1,4 +1,3 @@
-# .github/workflows/release-please.yml
 name: release-please
 on:
   push:
@@ -13,6 +12,8 @@ permissions:
   id-token: write
 
 jobs:
+  # 1. THE CORE RELEASE-PLEASE JOB
+  # This job runs on push (to finalize release) and on schedule (to create/update PR).
   release-please:
     runs-on: ubuntu-latest
     outputs:
@@ -20,7 +21,10 @@ jobs:
     steps:
       - uses: googleapis/release-please-action@v4
         id: release
-  build:
+
+  # 2. STABLE RELEASE FLOW (Runs ONLY when a new tag is created by release-please)
+  # This only runs when `release_created` is true (after a release PR is merged).
+  build-stable:
     needs: release-please
     if: ${{ needs.release-please.outputs.release_created }}
     uses: City-of-Helsinki/.github/.github/workflows/ci-node.yml@main
@@ -29,10 +33,35 @@ jobs:
       node-version: '22'
       upload_artifacts: true
       skip_sonar: true
+  
   publish:
-    needs: build
+    needs: build-stable
     secrets: inherit
     uses: City-of-Helsinki/.github/.github/workflows/ci-npm-publish.yml@main
     with:
       node-version: '22'
       use-ci-build: true
+
+  # 3. CANARY RELEASE FLOW (Runs on every push to main, EXCLUDING schedule)
+  # The event name is 'push' when a commit is pushed to main.
+  # (FYI: The event name is 'schedule' when the cron runs.)
+  build-canary:
+    # This conditional ensures it runs ONLY when the workflow was triggered by a commit push.
+    if: github.event_name == 'push'
+    uses: City-of-Helsinki/.github/.github/workflows/ci-node.yml@main
+    secrets: inherit
+    with:
+      node-version: '22'
+      upload_artifacts: true
+      skip_sonar: true
+
+  publish-npm-canary:
+    # This conditional is redundant but good practice; it will only run if its dependency runs.
+    if: github.event_name == 'push'
+    needs: build-canary
+    secrets: inherit
+    uses: City-of-Helsinki/.github/.github/workflows/ci-npm-publish.yml@main
+    with:
+      node-version: '22'
+      use-ci-build: true
+      canary: true
