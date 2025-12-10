@@ -1,32 +1,44 @@
 /**
- * Test that loading image is successful
+ * Tests if an image at a given URL loads successfully,
+ * using AbortController for clean event listener management.
+ *
+ * @param {string} [url] - The URL of the image to test.
+ * @return {Promise<void>} - A promise that resolves if the image loads, and rejects otherwise.
  */
-
-/**
- * @param {url} url - url of the image to test.
- * @return {boolean} - Returns promise.
- */
-const testImage = (url?: string): Promise<unknown> => {
+const testImage = (url?: string): Promise<void> => {
   if (!url) {
     return Promise.reject(new Error('No image URL given'));
   }
 
-  // Define the promise
-  const imgPromise = new Promise<void>((resolve, reject) => {
-    // Create the image
-    const imgElement = new Image();
+  const imgElement = new Image();
+  // Create the controller instance
+  const controller = new AbortController();
+  const { signal } = controller;
 
-    // When image is loaded, resolve the promise
-    imgElement.addEventListener('load', () => resolve());
+  return new Promise<void>((resolve, reject) => {
+    // The { signal } option ensures these listeners are grouped for cleanup
+    imgElement.addEventListener(
+      'load',
+      () => {
+        controller.abort(); // Triggers removal of ALL listeners attached to this signal
+        resolve();
+      },
+      { signal },
+    );
 
-    // When there's an error during load, reject the promise
-    imgElement.addEventListener('error', () => reject());
+    imgElement.addEventListener(
+      'error',
+      () => {
+        controller.abort(); // Triggers removal of ALL listeners attached to this signal
+        // Reject with a standard Error object
+        reject(new Error(`Failed to load image from URL: ${url}`));
+      },
+      { signal },
+    );
 
-    // Assign URL
     imgElement.src = url;
   });
-
-  return imgPromise;
+  // Note: The controller is self-contained and cleaned up when the promise resolves/rejects
 };
 
 export default testImage;
