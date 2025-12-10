@@ -3,7 +3,6 @@
 import { IconArrowRight } from 'hds-react';
 import type { MouseEventHandler } from 'react';
 import React, { useState } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
 
 import styles from './card.module.scss';
@@ -127,11 +126,139 @@ export type CardProps = {
   flex?: boolean;
 };
 
-export function Card({
-  id,
-  alignment,
+const warnOnSSR = () => {
+  // eslint-disable-next-line no-console
+  console.warn('Attempted to navigate in a non-browser environment.');
+};
+
+function CardTitle({
+  children,
+  direction,
+  withTitleIcon,
+  titleIcon,
+}: {
+  children: React.ReactNode;
+  direction?: CardProps['direction'];
+  withTitleIcon: CardProps['withTitleIcon'];
+  titleIcon: CardProps['titleIcon'];
+}) {
+  if (!children) {
+    return null;
+  }
+
+  return (
+    <div className={classNames(styles.title, direction && styles[direction])}>
+      {children}
+      {withTitleIcon && titleIcon}
+    </div>
+  );
+}
+
+function CardSubTitle({
+  children,
+  backgroundColor,
+}: {
+  children: React.ReactNode;
+  backgroundColor?: CardProps['backgroundColor'];
+}): React.ReactElement | null {
+  if (!children) {
+    return null;
+  }
+
+  return (
+    <div
+      className={classNames(
+        styles.subTitle,
+        backgroundColor &&
+          isWhiteText(backgroundColor) &&
+          colorStyles.whiteText,
+      )}
+    >
+      {children}
+    </div>
+  );
+}
+
+function CardText({
+  children,
+  clampText,
+  direction,
+}: Pick<CardProps, 'clampText' | 'direction'> & {
+  children: React.ReactNode;
+}): React.ReactElement | null {
+  if (!children) {
+    return null;
+  }
+
+  return (
+    <div
+      className={classNames(
+        styles.text,
+        clampText && styles.clamp,
+        direction && styles[direction],
+      )}
+    >
+      {children}
+    </div>
+  );
+}
+
+function CardLink({
+  url,
+  backgroundColor,
+  openLinkInNewTab,
   ariaLabel,
-  className,
+  linkArrowLabel,
+}: Pick<
+  CardProps,
+  | 'url'
+  | 'backgroundColor'
+  | 'openLinkInNewTab'
+  | 'ariaLabel'
+  | 'linkArrowLabel'
+>) {
+  if (!url) {
+    return null;
+  }
+
+  return (
+    <div
+      className={classNames(
+        styles.buttonWrapper,
+        backgroundColor
+          ? colorStyles[`background${getColor(backgroundColor)}`]
+          : colorStyles.backgroundDefault,
+        backgroundColor &&
+          isWhiteText(backgroundColor) &&
+          colorStyles.whiteLink,
+      )}
+    >
+      <Link
+        tabIndex={-1}
+        href={url}
+        openInNewTab={openLinkInNewTab}
+        iconLeft={<IconArrowRight aria-hidden="true" />}
+        showExternalIcon={false}
+        aria-label={ariaLabel}
+      >
+        {linkArrowLabel && (
+          <span className={styles.linkArrowLabel}>{linkArrowLabel}</span>
+        )}
+      </Link>
+    </div>
+  );
+}
+
+const getImagePosition = (alignment: CardProps['alignment']) => {
+  if (alignment === undefined) {
+    return 'image-left';
+  }
+  return alignment.indexOf('left') === -1 ? 'image-right' : 'image-left';
+};
+
+function CardInnerContent({
+  id,
+  ariaLabel,
   imageUrl,
   imageLabel,
   title,
@@ -151,60 +278,42 @@ export function Card({
   style,
   backgroundColor,
   primaryContent = 'text',
-  flex,
-}: CardProps) {
-  const [isHovered, setIsHovered] = useState(false);
-  const handleToggleActive: MouseEventHandler | undefined = () =>
-    setIsHovered((val) => !val);
-  const isDelimited = alignment?.startsWith('delimited');
-  const isCentered = alignment?.startsWith('center');
+  isHovered,
+  handleToggleActive,
+  isDelimited,
+  isCentered,
+  imagePosition,
+  handleClick,
+}: Omit<CardProps, 'className' | 'flex'> & {
+  isHovered: boolean;
+  handleToggleActive: MouseEventHandler;
+  isDelimited: boolean;
+  isCentered: boolean;
+  imagePosition: 'image-left' | 'image-right';
+  handleClick: () => void;
+}) {
+  const dynamicBackgroundClass = backgroundColor
+    ? colorStyles[`background${getColor(backgroundColor)}`]
+    : colorStyles.backgroundDefault;
 
-  const getImagePosition = () => {
-    if (alignment === undefined) {
-      return 'image-left';
-    }
-    return alignment.indexOf('left') === -1 ? 'image-right' : 'image-left';
-  };
-
-  const imagePosition = getImagePosition();
-
-  const {
-    utils: { redirectToUrl, getIsHrefExternal },
-  } = useConfig();
-
-  const openInNewTab = (): void => {
-    const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
-    if (newWindow) newWindow.opener = null;
-  };
-
-  const handleClick = () => {
-    if (url) {
-      if (getIsHrefExternal(url)) {
-        openInNewTab();
-      } else {
-        redirectToUrl(url);
-      }
-    }
-  };
-
-  const content = (
+  return (
     <div
-      className={classNames(
-        styles.cardWrapper,
-        withBorder && styles.withBorder,
-        withShadow && styles.withShadow,
-        direction && styles[direction],
-        primaryContent === 'image' && styles['primary-image'],
-        imagePosition && styles[imagePosition],
-        isHovered && styles.isHovered,
-
-        backgroundColor && styles.horizontalBorder,
-        backgroundColor &&
-          isWhiteText(backgroundColor) &&
-          colorStyles.whiteText,
-        isDelimited && styles.isDelimited,
-        isCentered && styles.isCentered,
-      )}
+      className={classNames(styles.cardWrapper, {
+        // Layout/Directional classes
+        [styles[direction]]: direction,
+        [styles['primary-image']]: primaryContent === 'image',
+        [styles[imagePosition]]: imagePosition,
+        [styles.isDelimited]: isDelimited,
+        [styles.isCentered]: isCentered,
+        // Style/State classes
+        [styles.withBorder]: withBorder,
+        [styles.withShadow]: withShadow,
+        [styles.isHovered]: isHovered,
+        // Color-related classes
+        [styles.horizontalBorder]: backgroundColor,
+        [colorStyles.whiteText]:
+          backgroundColor && isWhiteText(backgroundColor),
+      })}
       style={style}
       onMouseEnter={url ? handleToggleActive : undefined}
       onMouseLeave={url ? handleToggleActive : undefined}
@@ -231,86 +340,96 @@ export function Card({
         onClick={handleClick}
       >
         <div
-          className={classNames(
-            styles.content,
-            backgroundColor
-              ? colorStyles[`background${getColor(backgroundColor)}`]
-              : colorStyles.backgroundDefault,
-            backgroundColor &&
-              isWhiteText(backgroundColor) &&
-              colorStyles.whiteText,
-            isDelimited && styles.isDelimited,
-            isCentered && styles.isCentered,
-          )}
+          className={classNames(styles.content, dynamicBackgroundClass, {
+            // Conditional classes using the object format
+            [colorStyles.whiteText]:
+              backgroundColor && isWhiteText(backgroundColor),
+            [styles.isDelimited]: isDelimited,
+            [styles.isCentered]: isCentered,
+          })}
         >
           <div className={styles.textWrapper}>
             {title && (
-              <div
-                className={classNames(
-                  styles.title,
-                  direction && styles[direction],
-                )}
+              <CardTitle
+                direction={direction}
+                withTitleIcon={withTitleIcon}
+                titleIcon={titleIcon}
               >
                 {title}
-                {withTitleIcon && titleIcon}
-              </div>
+              </CardTitle>
             )}
-            {subTitle && (
-              <div
-                className={classNames(
-                  styles.subTitle,
-                  backgroundColor &&
-                    isWhiteText(backgroundColor) &&
-                    colorStyles.whiteText,
-                )}
-              >
-                {subTitle}
-              </div>
-            )}
+            <CardSubTitle backgroundColor={backgroundColor}>
+              {subTitle}
+            </CardSubTitle>
             {text && (
-              <div
-                className={classNames(
-                  styles.text,
-                  clampText && styles.clamp,
-                  direction && styles[direction],
-                )}
-              >
+              <CardText clampText={clampText} direction={direction}>
                 {getTextFromHtml(text)}
-              </div>
+              </CardText>
             )}
             {customContent && (
               <div className={styles.customContent}>{customContent}</div>
             )}
           </div>
         </div>
-        {url && hasLink && (
-          <div
-            className={classNames(
-              styles.buttonWrapper,
-              backgroundColor
-                ? colorStyles[`background${getColor(backgroundColor)}`]
-                : colorStyles.backgroundDefault,
-              backgroundColor &&
-                isWhiteText(backgroundColor) &&
-                colorStyles.whiteLink,
-            )}
-          >
-            <Link
-              tabIndex={-1}
-              href={url}
-              openInNewTab={openLinkInNewTab}
-              iconLeft={<IconArrowRight aria-hidden="true" />}
-              showExternalIcon={false}
-              aria-label={ariaLabel}
-            >
-              {linkArrowLabel && (
-                <span className={styles.linkArrowLabel}>{linkArrowLabel}</span>
-              )}
-            </Link>
-          </div>
+        {hasLink && (
+          <CardLink
+            url={url}
+            backgroundColor={backgroundColor}
+            openLinkInNewTab={openLinkInNewTab}
+            ariaLabel={ariaLabel}
+            linkArrowLabel={linkArrowLabel}
+          />
         )}
       </div>
     </div>
+  );
+}
+
+export function Card(props: CardProps) {
+  const { id, ariaLabel, className, url, openLinkInNewTab, flex, alignment } =
+    props;
+  const [isHovered, setIsHovered] = useState(false);
+  const handleToggleActive: MouseEventHandler | undefined = () =>
+    setIsHovered((val) => !val);
+
+  const isDelimited = alignment?.startsWith('delimited') ?? false;
+  const isCentered = alignment?.startsWith('center') ?? false;
+  const imagePosition = getImagePosition(alignment);
+
+  const {
+    utils: { redirectToUrl, getIsHrefExternal },
+  } = useConfig();
+
+  const handleClick = () => {
+    if (!url) return;
+
+    // Ensure we are in a client-side (browser) environment
+    if (typeof window === 'undefined') {
+      warnOnSSR();
+      return;
+    }
+
+    // Determine if we should open a new tab: either it's explicitly set, or it's an external URL.
+    const shouldOpenNewTab = openLinkInNewTab || getIsHrefExternal(url);
+
+    if (shouldOpenNewTab) {
+      const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+      if (newWindow) newWindow.opener = null;
+    } else {
+      redirectToUrl(url);
+    }
+  };
+
+  const content = (
+    <CardInnerContent
+      {...props}
+      isHovered={isHovered}
+      handleToggleActive={handleToggleActive}
+      isDelimited={isDelimited}
+      isCentered={isCentered}
+      imagePosition={imagePosition}
+      handleClick={handleClick}
+    />
   );
 
   if (url) {
