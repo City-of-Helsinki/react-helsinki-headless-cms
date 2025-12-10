@@ -56,6 +56,8 @@ export function ImagesGrid({
       <Grid colsCount={images.length === 1 ? 1 : columns}>
         {images.map((image, i) => (
           <ImageItem
+            // eslint-disable-next-line react/no-array-index-key
+            key={`grid-image-${i}`}
             imageId={i}
             image={image}
             lightboxUid={lightboxUid}
