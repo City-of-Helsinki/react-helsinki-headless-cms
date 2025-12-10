@@ -91,9 +91,10 @@ export const PageContentWithFunctions = {
       />
     ),
     collections: (page: PageType | ArticleType) =>
-      getCollections(page?.modules ?? [], false)?.map((collection) => (
+      getCollections(page?.modules ?? [], false)?.map((collection, index) => (
         <Collection
-          key={`collection-${Math.random()}`}
+          // eslint-disable-next-line react/no-array-index-key
+          key={`collection-${index}`}
           title={`${collection.title} (created with a custom function)`}
           cards={getCollectionCards(collection, [
             ...defaultConfig.organisationPrefixes,
