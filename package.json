@@ -60,6 +60,17 @@
       "optional": true
     }
   },
+  "//": {
+    "Why are packages in resolutions?": {
+      "hds-react/cookie": [
+        "To fix https://github.com/City-of-Helsinki/react-helsinki-headless-cms/security/dependabot/28",
+        "NOTE: This can be removed if hds-react starts to depend on >=v1 cookie"
+      ]
+    }
+  },
+  "resolutions": {
+    "hds-react/cookie": "^0.7.2"
+  },
   "devDependencies": {
     "@apollo/client": "^3.14.0",
     "@babel/core": "^7.28.5",
