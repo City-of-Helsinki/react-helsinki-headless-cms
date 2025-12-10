@@ -25,10 +25,12 @@ export function CarouselPreviousSlideButton() {
     handleUpdateSlideProps(targetSlide);
   };
 
+  const ariaLabelTitle = title ? ` - ${title}` : '';
+
   return (
     <button
       type="button"
-      aria-label={`${previous}${title ? ` - ${title}` : ''}`}
+      aria-label={`${previous}${ariaLabelTitle}`}
       className={classNames(styles.btn, styles.btnPrev)}
       onClick={handlePrevClick}
       disabled={!isReady}
@@ -57,10 +59,12 @@ export function CarouselNextSlideButton() {
     );
   };
 
+  const ariaLabelTitle = title ? ` - ${title}` : '';
+
   return (
     <button
       type="button"
-      aria-label={`${next}${title ? ` - ${title}` : ''}`}
+      aria-label={`${next}${ariaLabelTitle}`}
       className={classNames(styles.btn, styles.btnNext)}
       onClick={handleNextClick}
       disabled={!isReady}

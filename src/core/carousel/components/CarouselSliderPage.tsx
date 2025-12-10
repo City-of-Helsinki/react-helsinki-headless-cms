@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import styles from '../carousel.module.scss';
-import { getItemSetItemKey, getItemSetKey } from '../utils/utils';
+import { getItemSetItemKey } from '../utils/utils';
 import { MOBILE_WIDTH } from '../constants';
 import { useCarouselContext } from '../context/CarouselContext';
 
@@ -24,12 +24,6 @@ export function CarouselSliderPage({
         node && node.toggleAttribute('inert', itemSetIndex !== currentSlide)
       }
       aria-hidden={itemSetIndex !== currentSlide}
-      key={getItemSetKey(
-        itemSetIndex,
-        'id' in itemSet && typeof itemSet.id === 'string'
-          ? itemSet.id
-          : undefined,
-      )}
       className={classNames(
         styles.slide,
         itemSetIndex === currentSlide && styles.slideSelected,
@@ -40,9 +34,7 @@ export function CarouselSliderPage({
           <div
             key={getItemSetItemKey(
               itemIndex,
-              'id' in itemSet && typeof itemSet.id === 'string'
-                ? itemSet.id
-                : undefined,
+              undefined,
               `itemSet-${itemSetIndex}-item`,
             )}
             className={styles.slideItem}
