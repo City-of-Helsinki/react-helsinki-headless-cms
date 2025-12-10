@@ -196,7 +196,7 @@ export function Navigation({
         logoAriaLabel={t('headerActionBarLogoAriaLabel')}
       >
         <Header.LanguageSelector />
-        {userNavigation && userNavigation}
+        {userNavigation}
       </Header.ActionBar>
       <Header.NavigationMenu>
         {menuItemChildren[TOP_LEVEL_MENU_ITEM_PARENT_ID]?.map(
