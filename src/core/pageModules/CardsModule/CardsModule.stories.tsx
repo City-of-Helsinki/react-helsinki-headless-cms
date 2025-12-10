@@ -22,6 +22,7 @@ const getItems = () => {
       description:
         'Haluatko järjestää liikuntatapahtuman tai etsitkö harjoitusvuoroa seurallesi? Helsingissä on runsaasti erilaisia ja erikokoisia liikuntatiloja, joita voi varata maksutta.',
       link: { target: '_blank', title: 'link title', url: 'https://hel.fi' },
+      // // SonarCloud S2245: Math.random() is safe here as this is a non-security related Storybook demo file.
       backgroundColor:
         SELECT_COLORS[Math.floor(Math.random() * SELECT_COLORS.length)],
       icon: 'alert-circle',

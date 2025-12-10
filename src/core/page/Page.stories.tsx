@@ -116,28 +116,31 @@ export const PageDefault = {
           { title: 'Root', uri: '/' },
           { title: 'Nested', uri: '/nested' },
         ])}
-        collections={getCollections(pageMock.modules)?.map((collection) => (
-          <Collection
-            key={`collection-${Math.random()}`}
-            title={collection.title}
-            collectionContainerProps={{ withDots: false }}
-            type={getCollectionUIType(collection)}
-            cards={getCollectionCards(collection, [
-              ...defaultConfig.organisationPrefixes,
-            ]).map((cardProps) => (
-              <Card
-                key={cardProps.id}
-                {...cardProps}
-                imageUrl={
-                  cardProps.imageUrl ||
-                  pageMock.featuredImage?.node?.mediaItemUrl
-                }
-                direction="fixed-vertical"
-                clampText
-              />
-            ))}
-          />
-        ))}
+        collections={getCollections(pageMock.modules)?.map(
+          (collection, index) => (
+            <Collection
+              // eslint-disable-next-line react/no-array-index-key
+              key={`collection-${index}`}
+              title={collection.title}
+              collectionContainerProps={{ withDots: false }}
+              type={getCollectionUIType(collection)}
+              cards={getCollectionCards(collection, [
+                ...defaultConfig.organisationPrefixes,
+              ]).map((cardProps) => (
+                <Card
+                  key={cardProps.id}
+                  {...cardProps}
+                  imageUrl={
+                    cardProps.imageUrl ||
+                    pageMock.featuredImage?.node?.mediaItemUrl
+                  }
+                  direction="fixed-vertical"
+                  clampText
+                />
+              ))}
+            />
+          ),
+        )}
         shareLinks={
           <div style={{ height: '100px', width: '100%', background: 'red' }}>
             TODO: Implement share links
