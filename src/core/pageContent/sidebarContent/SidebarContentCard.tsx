@@ -33,7 +33,7 @@ export default function SidebarContentCard({
         alt={imageAlt ?? ''}
       />
       <div className={styles.content}>
-        <p className={styles.description}>{description && description}</p>
+        {description && <p className={styles.description}>{description}</p>}
         <Link className={styles.link} href={url}>
           {title}
         </Link>
