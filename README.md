@@ -169,9 +169,9 @@ On a new release, a new version is released to npm.
 
 Storybook is a frontend workshop for building UI components and pages in isolation https://storybook.js.org/. The Storybook can be used to develop and to test the components, but also to document the components and their features.
 
-The project is using the Storybook 8.
+The project is using the Storybook 10.
 
-**NOTE: Storybook version 8 may require the `playwright-chromium` installation.**
+**NOTE: Storybook version 10 may require the `playwright-chromium` installation.**
 
 The `yarn dev` command will start `storybook` in port `6006`. When you make changes in `src`, they'll be automatically updated to `storybook`.
 
@@ -378,5 +378,4 @@ yarn publish-canary
 ## Known issues
 
 - Jest has difficulties loading this library. When this library is required in a test file, it's possible that some imports are cjs and some are esm. These two variants do not share a react context which can result in `useConfig` calls that return an empty config object even though `<ConfigProvider>` is declared correctly. I.e. `<ConfigProvider>` sets values for `context1` and `useConfig` reads `context2`.
-- `yarn generate:graphql` does not work with Node.js v16 or greater
 - Some of the built packages created with `yarn build` does some issues with some types. This leads to a situation where the application that uses the library cannot read all the exported types. Especially the exported enums inside a built package might be handled incorrectly (https://github.com/rollup/rollup/issues/4291), but there are other type related issues also, but not on every built package.
