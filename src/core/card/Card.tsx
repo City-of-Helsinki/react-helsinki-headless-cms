@@ -137,10 +137,10 @@ function CardTitle({
   withTitleIcon,
   titleIcon,
 }: {
-  children: React.ReactNode;
-  direction?: CardProps['direction'];
-  withTitleIcon: CardProps['withTitleIcon'];
-  titleIcon: CardProps['titleIcon'];
+  readonly children: React.ReactNode;
+  readonly direction?: CardProps['direction'];
+  readonly withTitleIcon: CardProps['withTitleIcon'];
+  readonly titleIcon: CardProps['titleIcon'];
 }) {
   if (!children) {
     return null;
@@ -158,8 +158,8 @@ function CardSubTitle({
   children,
   backgroundColor,
 }: {
-  children: React.ReactNode;
-  backgroundColor?: CardProps['backgroundColor'];
+  readonly children: React.ReactNode;
+  readonly backgroundColor?: CardProps['backgroundColor'];
 }): React.ReactElement | null {
   if (!children) {
     return null;
