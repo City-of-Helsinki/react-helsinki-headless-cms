@@ -1,5 +1,4 @@
 import React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
 
 import { useConfig } from '../configProvider/useConfig';

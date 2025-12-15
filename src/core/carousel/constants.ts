@@ -14,6 +14,7 @@ const initialCarouselContextProps: CarouselContextComponentPropsType = {
   itemsShownOnMobile: 1,
   withDots: false,
   navigateWithDots: true,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   onLoadMore: () => {},
   hasMore: false,
   loading: false,
@@ -29,6 +30,7 @@ export const initialCarouselContextStateValues = {
   currentSlide: 0,
   width: 0,
   numberOfItems: 0,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   handleUpdateSlideProps: () => {},
   ...initialCarouselContextProps,
 } as const satisfies Omit<

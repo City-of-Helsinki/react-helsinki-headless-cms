@@ -7,7 +7,6 @@ import type {
   Element,
 } from 'html-react-parser';
 import parse, { domToReact, attributesToProps } from 'html-react-parser';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
 
 import styles from './htmlToReact.module.scss';
