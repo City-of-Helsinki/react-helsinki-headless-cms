@@ -59,9 +59,10 @@ const CustomPageContentLayout: typeof PageContentLayout = ({
   </div>
 );
 
-const getTemplate =
-  (dataSource: keyof typeof CmsEndpoint): StoryFn<typeof Page> =>
-  (args) => {
+function getTemplate(
+  dataSource: keyof typeof CmsEndpoint,
+): StoryFn<typeof Page> {
+  return function ApolloCustomTemplate(args) {
     const {
       apolloClient,
       eventsApolloClient,
@@ -99,6 +100,7 @@ const getTemplate =
       </HelmetProvider>
     );
   };
+}
 
 export default {
   title: 'Apollo examples/Custom template',
