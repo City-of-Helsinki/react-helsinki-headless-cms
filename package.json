@@ -30,27 +30,20 @@
     "node": ">=22.11.0"
   },
   "files": [
-    "cjs/",
-    "index.js",
-    "apollo.js",
-    "nextjs.js",
-    "*.d.ts",
-    "src/**/*.d.ts",
-    "defaultConfig-*.js",
-    "archiveSearchPageContent.module-*.js"
+    "dist/"
   ],
   "exports": {
     ".": {
-      "import": "./index.js",
-      "default": "./cjs/index.js"
+      "import": "./dist/index.js",
+      "default": "./dist/cjs/index.js"
     },
     "./apollo": {
-      "import": "./apollo.js",
-      "default": "./cjs/apollo.js"
+      "import": "./dist/apollo.js",
+      "default": "./dist/cjs/apollo.js"
     },
     "./nextjs": {
-      "import": "./nextjs.js",
-      "default": "./cjs/nextjs.js"
+      "import": "./dist/nextjs.js",
+      "default": "./dist/cjs/nextjs.js"
     }
   },
   "repository": "https://github.com/City-of-Helsinki/react-helsinki-headless-cms.git",

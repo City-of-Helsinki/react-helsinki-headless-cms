@@ -1,9 +1,14 @@
-# EXCLUDE SOURCE CODE AND BUILD ARTIFACTS
+# EXCLUDE SOURCE CODE AND DEVELOPMENT FOLDERS
 src/
-dist/
 lib/
 scripts/
 package/
+coverage/
+
+# EXCLUDE SOURCE CODE THAT YOUR BUILD PUTS INTO DIST/
+# Your build output analysis showed a nested src/ folder inside dist/. 
+# We must block this source code from getting published.
+dist/src/ 
 
 # EXCLUDE DEVELOPMENT AND CONFIGURATION FILES
 .github/
