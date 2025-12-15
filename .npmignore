@@ -1,5 +1,14 @@
-*
-!/lib/**/*
-!/lib-esm/**/*
+# EXCLUDE SOURCE CODE AND BUILD ARTIFACTS
+src/
+dist/
+lib/
+scripts/
+package/
+
+# EXCLUDE DEVELOPMENT AND CONFIGURATION FILES
+.github/
+.vscode/
+
+# EXCLUDE SPECIFIC ARTIFACTS
 **/*.stories.d.ts
 **/*.test.d.ts
