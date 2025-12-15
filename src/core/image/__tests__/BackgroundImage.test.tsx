@@ -1,7 +1,8 @@
 import React from 'react';
 import { axe } from 'jest-axe';
+import { waitFor } from '@testing-library/react';
 
-import { render, waitFor } from '../../../common/utils/testingLibrary';
+import { customRender as render } from '../../../common/utils/customRender';
 import { BackgroundImage } from '../BackgroundImage';
 
 const mockImage = {

@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import React from 'react';
+import { screen, waitFor } from '@testing-library/react';
 
-import { render, screen, waitFor } from '../../../common/utils/testingLibrary';
+import { customRender as render } from '../../../common/utils/customRender';
 import { server } from '../../../mocks/server';
 import { CmsEndpoint } from '../../../storybook-common/constants';
 import { getApolloConfig } from '../../../tests/apolloConfig';

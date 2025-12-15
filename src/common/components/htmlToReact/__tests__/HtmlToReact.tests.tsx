@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from '../../../utils/testingLibrary';
+import { customRender as render } from '../../../utils/customRender';
 import type { HtmlToReactProps } from '../HtmlToReact';
 import { HtmlToReact } from '../HtmlToReact';
 import kukkuuPageDemosivu from '../../../../mocks/responses/cms/page/kukkuu-page-demosivu.json';

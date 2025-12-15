@@ -1,7 +1,8 @@
 import React from 'react';
 import { axe } from 'jest-axe';
+import { screen, waitFor } from '@testing-library/react';
 
-import { render, screen, waitFor } from '../../../common/utils/testingLibrary';
+import { customRender as render } from '../../../common/utils/customRender';
 import { Image } from '../Image';
 
 const mockImage = {
