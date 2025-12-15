@@ -27,14 +27,14 @@ describe('findAllElementsOfType', () => {
     [nestedListItems, ['li'], 3], // 3 x <li>
     [nestedListItems, ['ul', 'ol', 'li'], 5], // <ul>, <ol>, 3 x <li>
     [
-      <div>
+      <div key={1}>
         <div>{nestedListItems}</div>
       </div>,
       ['li'],
       3, // 3 x <li>
     ],
     [
-      <div>
+      <div key={2}>
         <div>{nestedListItems}</div>
         <div>
           <span>
