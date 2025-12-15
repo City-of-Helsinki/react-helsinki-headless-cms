@@ -1,7 +1,7 @@
 import React from 'react';
 
 import SidebarContentLinkList from '../SidebarContentLinkList';
-import { render } from '../../../../common/utils/testingLibrary';
+import { customRender as render } from '../../../../common/utils/customRender';
 
 describe('SidebarContent containing link lists', () => {
   const baseLinkItem = {

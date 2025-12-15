@@ -1,11 +1,8 @@
 import React from 'react';
+import { screen, waitFor } from '@testing-library/react';
+import { userEvent } from '@testing-library/user-event';
 
-import {
-  render,
-  screen,
-  userEvent,
-  waitFor,
-} from '../../../common/utils/testingLibrary';
+import { customRender as render } from '../../../common/utils/customRender';
 import { Notification } from '../Notification';
 import notificationMock from '../__mocks__/notification.mock';
 

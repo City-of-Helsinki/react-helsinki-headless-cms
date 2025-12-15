@@ -87,8 +87,8 @@ export default [
         'error',
         {
           devDependencies: [
+            'src/common/utils/customRender.tsx', // Used by tests only
             '**/*.test.ts*',
-            '**/test*.ts*',
             '**/__mocks__/*.ts*',
             '**/mocks/**/*.ts*',
             '**/*.stories.ts*',

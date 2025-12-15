@@ -1,7 +1,8 @@
 import React from 'react';
 import { axe } from 'jest-axe';
+import { screen } from '@testing-library/react';
 
-import { render, screen } from '../../../common/utils/testingLibrary';
+import { customRender as render } from '../../../common/utils/customRender';
 import { Link } from '../Link';
 
 test('for accessibility violations', async () => {

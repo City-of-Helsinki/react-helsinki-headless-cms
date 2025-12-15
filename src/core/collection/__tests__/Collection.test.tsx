@@ -1,7 +1,8 @@
 import React from 'react';
 import { addDays, addYears, subDays, subYears } from 'date-fns';
+import { screen, waitFor } from '@testing-library/react';
 
-import { render, screen, waitFor } from '../../../common/utils/testingLibrary';
+import { customRender as render } from '../../../common/utils/customRender';
 import { server } from '../../../mocks/server';
 import { EventSearchCollection, EventSelectionCollection } from '../Collection';
 import {

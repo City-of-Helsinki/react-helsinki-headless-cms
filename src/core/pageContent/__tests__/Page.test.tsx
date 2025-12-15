@@ -1,6 +1,7 @@
 import React from 'react';
+import { screen } from '@testing-library/react';
 
-import { render, screen } from '../../../common/utils/testingLibrary';
+import { customRender as render } from '../../../common/utils/customRender';
 import pageMock, { sidebarLinkList } from '../__mocks__/page.mock';
 import { PageContent } from '../PageContent';
 import kukkuuPageDemosivu from '../../../mocks/responses/cms/page/kukkuu-page-demosivu.json';
