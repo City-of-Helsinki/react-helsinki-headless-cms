@@ -27,7 +27,7 @@ describe('recursiveMap', () => {
     [flattenedListItems, jest.fn(), 2], // 2 x <li>
     [nestedListItems, jest.fn(), 1 + 1 + 3], // <ul>, <ol> and 3 x <li>
     [
-      <div>
+      <div key={1}>
         <div>{nestedListItems}</div>
       </div>,
       jest.fn(),
@@ -76,7 +76,7 @@ describe('recursiveMap', () => {
   it.each([
     [nestedListItems, 'li', 3],
     [
-      <div>
+      <div key={2}>
         <p>1/3</p>
         <div>
           <p>2/3</p>
