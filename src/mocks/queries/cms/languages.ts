@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { graphql, HttpResponse } from 'msw';
 
 import languages from '../../responses/cms/languages/hobbies-languages.json';

@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-// eslint-disable-next-line import/no-extraneous-dependencies
+
 import classNames from 'classnames';
 import ReactDOM from 'react-dom';
 import React, { useCallback, useEffect, useRef } from 'react';

@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { graphql, HttpResponse } from 'msw';
 
 import tapahtumatEventListFrontPageCarousel from '../../responses/linkedEvents/eventList/tapahtumat-eventlist-frontpage.json';

@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import type { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 
 import type {

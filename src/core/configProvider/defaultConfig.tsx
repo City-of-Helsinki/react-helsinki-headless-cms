@@ -79,7 +79,6 @@ export const defaultConfig = {
 
       return false;
     },
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     getRoutedInternalHref: (
       link?: string | null,
       // eslint-disable-next-line @typescript-eslint/no-unused-vars

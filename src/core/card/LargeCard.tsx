@@ -1,6 +1,5 @@
 import { IconArrowRight } from 'hds-react';
 import React, { useState } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
 
 import styles from './largeCard.module.scss';

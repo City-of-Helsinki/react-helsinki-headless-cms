@@ -14,7 +14,6 @@ export type ConsoleLevel = (typeof consoleLevels)[number];
 export const hideConsoleMessages = (
   consoleMessagesToHide: Partial<Record<ConsoleLevel, (RegExp | string)[]>>,
 ) => {
-  // eslint-disable-next-line no-restricted-syntax
   for (const consoleLevel of consoleLevels) {
     const hidablePatterns = consoleMessagesToHide[consoleLevel];
     if (hidablePatterns && hidablePatterns.length > 0) {

@@ -291,7 +291,7 @@ export function getUri(
   return uri;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const getNodeText = (node: any): string => {
   if (['string', 'number'].includes(typeof node)) return node;
   if (node instanceof Array) return node.map(getNodeText).join('');

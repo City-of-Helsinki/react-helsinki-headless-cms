@@ -1,6 +1,5 @@
 import React from 'react';
 import { StepByStep } from 'hds-react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
 
 import styles from '../pageModules.module.scss';

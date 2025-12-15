@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
 import { IconLinkExternal, IconSize } from 'hds-react';
 import React, { Children, isValidElement, useMemo } from 'react';
@@ -222,7 +221,6 @@ export default React.forwardRef<HTMLAnchorElement, LinkProps>(
     );
 
     return (
-      // eslint-disable-next-line react/jsx-no-target-blank
       <a
         className={classNames(
           styles.link,
