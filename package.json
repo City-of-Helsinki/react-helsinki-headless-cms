@@ -22,8 +22,6 @@
     "docker:down": "docker compose down --remove-orphans",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "publish-canary": "yarn build && node ./scripts/publish-canary.js",
-    "publish-stable": "yarn build && node ./scripts/publish-stable.js",
     "generate:graphql": "cross-env DOTENV_CONFIG_PATH=./.env graphql-codegen -r dotenv/config --config codegen.yml"
   },
   "engines": {
