@@ -36,9 +36,10 @@ const ExampleNavigation = ({
   />
 );
 
-const getTemplate =
-  (datasource: keyof typeof CmsEndpoint): StoryFn<typeof Page> =>
-  (args) => {
+function getTemplate(
+  datasource: keyof typeof CmsEndpoint,
+): StoryFn<typeof Page> {
+  return function ApolloTemplate(args) {
     const {
       apolloClient,
       eventsApolloClient,
@@ -76,6 +77,7 @@ const getTemplate =
       </HelmetProvider>
     );
   };
+}
 
 export default {
   title: 'Apollo examples/Basic',

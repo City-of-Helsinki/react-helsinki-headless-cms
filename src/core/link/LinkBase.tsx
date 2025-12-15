@@ -118,139 +118,136 @@ export const getTextFromReactChildren = (children: ReactNode): string => {
   ) as string;
 };
 
-export default React.forwardRef<HTMLAnchorElement, LinkProps>(
-  (
-    {
-      children,
-      className,
-      disableVisitedStyles = true,
-      external = false,
-      showExternalIcon = true,
-      href,
-      iconLeft,
-      iconRight,
-      openInNewTab = false,
-      openInExternalDomainAriaLabel,
-      openInNewTabAriaLabel,
-      style = {},
-      size = 'M',
-      inlineIcons = false,
-      ...rest
-    }: LinkProps,
-    ref: React.Ref<HTMLAnchorElement>,
-  ) => {
-    const composeAriaLabel = () => {
-      let childrenText = getTextFromReactChildren(children);
-      const newTabText = openInNewTab
-        ? openInNewTabAriaLabel || 'Avautuu uudessa välilehdessä.'
-        : '';
-      const externalText = external
-        ? openInExternalDomainAriaLabel || 'Siirtyy toiseen sivustoon.'
-        : '';
+function LinkBase(
+  {
+    children,
+    className,
+    disableVisitedStyles = true,
+    external = false,
+    showExternalIcon = true,
+    href,
+    iconLeft,
+    iconRight,
+    openInNewTab = false,
+    openInExternalDomainAriaLabel,
+    openInNewTabAriaLabel,
+    style = {},
+    size = 'M',
+    inlineIcons = false,
+    ...rest
+  }: LinkProps,
+  ref: React.Ref<HTMLAnchorElement>,
+) {
+  const composeAriaLabel = () => {
+    let childrenText = getTextFromReactChildren(children);
+    const newTabText = openInNewTab
+      ? openInNewTabAriaLabel || 'Avautuu uudessa välilehdessä.'
+      : '';
+    const externalText = external
+      ? openInExternalDomainAriaLabel || 'Siirtyy toiseen sivustoon.'
+      : '';
 
-      if (
-        childrenText &&
-        childrenText.slice(-1) !== '.' &&
-        (newTabText || externalText)
-      ) {
-        childrenText = `${childrenText}.`;
-      }
+    if (
+      childrenText &&
+      childrenText.slice(-1) !== '.' &&
+      (newTabText || externalText)
+    ) {
+      childrenText = `${childrenText}.`;
+    }
 
-      const label = [childrenText, newTabText, externalText]
-        .filter((text) => text)
-        .join(' ');
-      if (!label.trim()) {
-        return undefined;
-      }
-      return label;
-    };
+    const label = [childrenText, newTabText, externalText]
+      .filter((text) => text)
+      .join(' ');
+    if (!label.trim()) {
+      return undefined;
+    }
+    return label;
+  };
 
-    const ZERO_WIDTH_NO_BREAK_SPACE = '\uFEFF';
+  const ZERO_WIDTH_NO_BREAK_SPACE = '\uFEFF';
 
-    const leftIcon = useMemo(
-      () =>
-        (iconLeft && (
-          <span className={styles.iconLeft} aria-hidden="true">
-            {inlineIcons && ZERO_WIDTH_NO_BREAK_SPACE}
-            {iconLeft}
-          </span>
-        )) ||
-        null,
-      [iconLeft, inlineIcons],
-    );
+  const leftIcon = useMemo(
+    () =>
+      (iconLeft && (
+        <span className={styles.iconLeft} aria-hidden="true">
+          {inlineIcons && ZERO_WIDTH_NO_BREAK_SPACE}
+          {iconLeft}
+        </span>
+      )) ||
+      null,
+    [iconLeft, inlineIcons],
+  );
 
-    const externalIcon = useMemo(
-      () =>
-        (showExternalIcon && external && (
-          <span className={styles.externalWrapper}>
-            {inlineIcons && ZERO_WIDTH_NO_BREAK_SPACE}
-            <IconLinkExternal
-              size={mapLinkSizeToExternalIconSize[size]}
-              className={classNames(
-                styles.icon,
-                size === 'L'
-                  ? styles.verticalAlignBigIcon
-                  : styles.verticalAlignSmallOrMediumIcon,
-              )}
-              aria-hidden
-            />
-          </span>
-        )) ||
-        null,
-      [showExternalIcon, external, inlineIcons, size],
-    );
-
-    const rightIcon = useMemo(
-      () =>
-        (iconRight && (
-          <span
+  const externalIcon = useMemo(
+    () =>
+      (showExternalIcon && external && (
+        <span className={styles.externalWrapper}>
+          {inlineIcons && ZERO_WIDTH_NO_BREAK_SPACE}
+          <IconLinkExternal
+            size={mapLinkSizeToExternalIconSize[size]}
             className={classNames(
-              styles.iconRight,
+              styles.icon,
               size === 'L'
                 ? styles.verticalAlignBigIcon
                 : styles.verticalAlignSmallOrMediumIcon,
             )}
-            aria-hidden="true"
-          >
-            {inlineIcons && ZERO_WIDTH_NO_BREAK_SPACE}
-            {iconRight}
-          </span>
-        )) ||
-        null,
-      [iconRight, inlineIcons, size],
-    );
+            aria-hidden
+          />
+        </span>
+      )) ||
+      null,
+    [showExternalIcon, external, inlineIcons, size],
+  );
 
-    return (
-      <a
-        className={classNames(
-          styles.link,
-          styles[`link${size}`],
-          disableVisitedStyles ? styles.disableVisitedStyles : '',
-          className,
-        )}
-        href={href}
-        style={style}
-        ref={ref}
-        target={openInNewTab ? '_blank' : undefined}
-        rel={openInNewTab ? 'noopener noreferrer' : undefined}
-        aria-label={composeAriaLabel()}
-        {...rest}
-      >
-        {!inlineIcons && leftIcon}
+  const rightIcon = useMemo(
+    () =>
+      (iconRight && (
         <span
           className={classNames(
-            styles.content,
-            iconLeft && styles.withLeftIcon,
+            styles.iconRight,
+            size === 'L'
+              ? styles.verticalAlignBigIcon
+              : styles.verticalAlignSmallOrMediumIcon,
           )}
+          aria-hidden="true"
         >
-          {inlineIcons && leftIcon}
-          {children}
-          {inlineIcons && externalIcon}
-          {inlineIcons && rightIcon}
+          {inlineIcons && ZERO_WIDTH_NO_BREAK_SPACE}
+          {iconRight}
         </span>
-        {!inlineIcons && externalIcon}
-        {!inlineIcons && rightIcon}
-      </a>
-    );
-  },
-);
+      )) ||
+      null,
+    [iconRight, inlineIcons, size],
+  );
+
+  return (
+    <a
+      className={classNames(
+        styles.link,
+        styles[`link${size}`],
+        disableVisitedStyles ? styles.disableVisitedStyles : '',
+        className,
+      )}
+      href={href}
+      style={style}
+      ref={ref}
+      target={openInNewTab ? '_blank' : undefined}
+      rel={openInNewTab ? 'noopener noreferrer' : undefined}
+      aria-label={composeAriaLabel()}
+      {...rest}
+    >
+      {!inlineIcons && leftIcon}
+      <span
+        className={classNames(styles.content, iconLeft && styles.withLeftIcon)}
+      >
+        {inlineIcons && leftIcon}
+        {children}
+        {inlineIcons && externalIcon}
+        {inlineIcons && rightIcon}
+      </span>
+      {!inlineIcons && externalIcon}
+      {!inlineIcons && rightIcon}
+    </a>
+  );
+}
+
+export default React.forwardRef<HTMLAnchorElement, LinkProps>(LinkBase);
