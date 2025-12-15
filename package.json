@@ -29,6 +29,16 @@
   "engines": {
     "node": ">=22.11.0"
   },
+  "files": [
+    "cjs/",
+    "index.js",
+    "apollo.js",
+    "nextjs.js",
+    "*.d.ts",
+    "src/**/*.d.ts",
+    "defaultConfig-*.js",
+    "archiveSearchPageContent.module-*.js"
+  ],
   "exports": {
     ".": {
       "import": "./index.js",
