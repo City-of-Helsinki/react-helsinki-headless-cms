@@ -34,7 +34,7 @@ data using [Helsinki Design System](https://github.com/City-of-Helsinki/helsinki
   - [Troubleshoting release-please](#troubleshoting-release-please)
     - [Fix merge conflicts by running release-please -action manually](#fix-merge-conflicts-by-running-release-please--action-manually)
   - [Deployments](#deployments)
-  - [(Old) manually runnable publish scripts: Publishing new versions manually without release-please](#old-manually-runnable-publish-scripts-publishing-new-versions-manually-without-release-please)
+    - [Publishing new versions manually without release-please](#publishing-new-versions-manually-without-release-please)
 - [Known issues](#known-issues)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -83,20 +83,18 @@ The general requirements for new Component development:
 
 ### Available scripts
 
-| Name                    | Purpose                                                                                                                    | Useful Options                |
-| ----------------------- | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
-| `yarn dev`              | Starts storybook environment that can be used for developing components.                                                   |                               |
-| `yarn typecheck`        | Runs the ts type check in the project components.                                                                          |                               |
-| `yarn lint`             | Lints the application to be according to quality standards (eslint) and formatting standards (prettier).                   | `--fix`: fix fixable problems |
-| `yarn test`             | Runs tests with jest.                                                                                                      | `--watch`: enable watch mode  |
-| `yarn test-storybook`   | Runs storybook accessibility tests jest.                                                                                   |                               |
-| `yarn build`            | Builds application with rollup.                                                                                            |                               |
-| `yarn docker:dev`       | Runs the application with docker with Development target environment.                                                      |                               |
-| `yarn docker:prod`      | Runs the application with docker with Production target environment.                                                       |                               |
-| `yarn docker:down`      | Shuts down the docker environment.                                                                                         |                               |
-| `yarn publish-canary`   | Publishes a canary tagged version of the application. CD is configured to run this script on additions to the main branch. |                               |
-| `yarn publish-stable`   | Publishes a stable tagged version of the application. CD is configured to run this script on additions to the main branch. |                               |
-| `yarn generate:graphql` | Generates / updates GraphQL schema for the project.                                                                        |                               |
+| Name                    | Purpose                                                                                                  | Useful Options                |
+| ----------------------- | -------------------------------------------------------------------------------------------------------- | ----------------------------- |
+| `yarn dev`              | Starts storybook environment that can be used for developing components.                                 |                               |
+| `yarn typecheck`        | Runs the ts type check in the project components.                                                        |                               |
+| `yarn lint`             | Lints the application to be according to quality standards (eslint) and formatting standards (prettier). | `--fix`: fix fixable problems |
+| `yarn test`             | Runs tests with jest.                                                                                    | `--watch`: enable watch mode  |
+| `yarn test-storybook`   | Runs storybook accessibility tests jest.                                                                 |                               |
+| `yarn build`            | Builds application with rollup.                                                                          |                               |
+| `yarn docker:dev`       | Runs the application with docker with Development target environment.                                    |                               |
+| `yarn docker:prod`      | Runs the application with docker with Production target environment.                                     |                               |
+| `yarn docker:down`      | Shuts down the docker environment.                                                                       |                               |
+| `yarn generate:graphql` | Generates / updates GraphQL schema for the project.                                                      |                               |
 
 **NOTE: To manually publish a new version to the NPM, you will need the credentials that can be found from the City of Helsinki Culture and Leisure's Vault-service.**
 
@@ -355,23 +353,14 @@ When a Release-Please pull request is merged and a version tag is created (or a 
 
 The tag name is defined in the [azure-pipelines-release.yml](./azure-pipelines-release.yml).
 
-### (Old) manually runnable publish scripts: Publishing new versions manually without release-please
+#### Publishing new versions manually without release-please
 
-> NOTE: This is an old way of publishing this project. Using the release-please process is highly recommended.
+For canary release the naming convention is `x.y.z-canary-[gitcommithash]`. Running `yarn publish` should ask for version number too, but a `version` property in `package.json` sets the version number.
 
-There are 2 scripts for publishing of new verions of npm pagage:
+1. Build package with `yarn build`
+2. Publish package `yarn publish`
 
-To publish a stable version use
-
-```bash
-yarn publish-stable
-```
-
-To publish a canary version use
-
-```bash
-yarn publish-canary
-```
+**Note:** A local tarball of built package can be created with `yarn pack`. Just remember to build first.
 
 **Note:** There is an a known issue with publishing using Windows environment. If you have a Windows machine use Docker container to publish the package.An Apollo client linked to a graphql endpoint with a supported schema (headless CMS) must be provided in the `apolloClient` field of the `config` object.
 
