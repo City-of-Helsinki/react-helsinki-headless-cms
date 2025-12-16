@@ -22,8 +22,11 @@ data using [Helsinki Design System](https://github.com/City-of-Helsinki/helsinki
   - [Storybook](#storybook)
   - [Apollo](#apollo)
   - [NextJS](#nextjs)
-  - [Use as a application dependency](#use-as-a-application-dependency)
   - [Build](#build)
+  - [Use as a application dependency](#use-as-a-application-dependency)
+    - [Folder-based links](#folder-based-links)
+    - [Tarball-based links](#tarball-based-links)
+    - [Use portals (with monorepos and Yarn)](#use-portals-with-monorepos-and-yarn)
 - [Testing](#testing)
   - [Testing in IDE terminal](#testing-in-ide-terminal)
 - [Usage](#usage)
@@ -207,9 +210,22 @@ import { Navigation } from 'react-helsinki-headless-cms/apollo';
 
 We provide utilities for fetching headless data for NextJs in `react-helsinki-headless-cms/nextjs`. These can be used when generating static pages.
 
+### Build
+
+This project uses `rollup` for its final bundle.
+
+**NOTE: Check the [known issues](#known-issues)!!**
+
 ### Use as a application dependency
 
-The easiest way to test the React Helsinki Headless CMS -library is to install it as a dependency of an application by using a local relative path: https://docs.npmjs.com/cli/v9/configuring-npm/package-json#local-paths.
+**NOTE: After any changes done to the React Helsinki Headless CMS -library, remember to build again!**
+
+#### Folder-based links
+
+The easiest way to test the React Helsinki Headless CMS -library is to install it as a dependency of an application by using a local relative path:
+
+- https://docs.npmjs.com/cli/v9/configuring-npm/package-json#local-paths
+- https://yarnpkg.com/protocol/file
 
 The steps to use the local relative path as a dependency:
 
@@ -224,13 +240,47 @@ The steps to use the local relative path as a dependency:
 }
 ```
 
-**NOTE: After any changes done to the React Helsinki Headless CMS -library, remember to build again!**
+#### Tarball-based links
 
-### Build
+When file: points to a .tgz file, Yarn will transparently let you require files from within the archive. For the node_modules linker, it means that the archive will be unpacked into the generated node_modules folder.
 
-This project uses `rollup` for its final bundle.
+You can create a tarball by first building the package and then calling `pack`
 
-**NOTE: Check the [known issues](#known-issues)!!**
+1. `yarn build`
+2. `yarn pack`
+
+The steps to use the local tarball as a dependency:
+
+```
+{
+  "dependencies": {
+    "react-helsinki-headless-cms": "file:../react-helsinki-headless-cms-v2.1.0.tgz"
+  }
+}
+```
+
+#### Use portals (with monorepos and Yarn)
+
+> See more: https://yarnpkg.com/protocol/portal
+
+The `portal:` protocol is similar to the `link:` protocol (it must be a relative path to a folder which will be made available without copies), but the target is assumed to be a package instead.
+
+The `portal:` protocol is specifically designed for linking local directories (often containing extracted tarballs) into the dependency graph while maintaining correct resolution and deduplication logic.
+
+**Portals vs links**: Links have to operate under the assumption that their target folder may not exist until the install is finished; this prevents them from reading the content of the folder, including any package.json files, and in turn preventing them from listing dependencies. Portals, on the other hand, must exist at resolution time or an error is thrown. This lets them read the content of the package.json file and be treated like any other package in the dependency tree - except that its content will be made directly available to the user, rather than copied like file: would do.
+
+**How to Use portal: for a Tarball**
+
+1. Extract the Tarball: The portal: protocol requires a folder. You must first extract your `.tgz` archive (e.g., `react-helsinki-headless-cms-v2.1.0.tgz`) into a temporary staging folder (e.g., `./.hcrc-dev`).
+2. Update `package.json`: In the consuming app's `package.json`, reference the extracted folder using the portal: protocol:
+
+```JSON
+"dependencies": {
+  "react-helsinki-headless-cms": "portal:../../.hcrc-dev/package"
+}
+```
+
+3. Clean and Install: Delete the conflicting file: dependency from the root package.json and run yarn install from the monorepo root.
 
 ## Testing
 
