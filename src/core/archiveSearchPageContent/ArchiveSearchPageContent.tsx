@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames';
 import {
   Button,
@@ -264,17 +264,12 @@ export function SearchPageContent(props: SearchPageContentProps) {
     mainContentId,
   } = useConfig();
 
-  const [searchText, setSearchText] = useState<string>('');
-  const [searchTags, setSearchTags] = useState<SearchTag[]>([]);
-
-  useEffect(() => {
-    if (withQuery) {
-      if (currentTags?.length > 0) {
-        setSearchTags(currentTags);
-      }
-      setSearchText(currentText);
-    }
-  }, [currentTags, currentText, withQuery]);
+  const [searchText, setSearchText] = useState<string>(
+    withQuery ? currentText : '',
+  );
+  const [searchTags, setSearchTags] = useState<SearchTag[]>(
+    withQuery ? currentTags : [],
+  );
 
   const handleSearch = (e: React.FormEvent): void => {
     e.preventDefault();
