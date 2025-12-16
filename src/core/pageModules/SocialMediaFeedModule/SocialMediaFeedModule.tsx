@@ -25,6 +25,15 @@ export function SocialMediaFeedModule({
 
   const scriptWrapperRef = useRef<HTMLDivElement>(null);
 
+  const clean = useMemo(
+    () =>
+      DOMPurify.sanitize(script ?? '', {
+        FORCE_BODY: true,
+        ADD_TAGS: ['script', 'div'],
+      }),
+    [script],
+  );
+
   useLayoutEffect(() => {
     if (scriptWrapperRef.current?.innerHTML) {
       const range = document.createRange();
@@ -35,7 +44,7 @@ export function SocialMediaFeedModule({
       scriptWrapperRef.current.innerHTML = '';
       scriptWrapperRef.current.append(documentFragment);
     }
-  }, [scriptWrapperRef.current?.innerHTML]);
+  }, [clean, trustedOrigins]);
 
   const sanitizeScripts = (domNode: DOMNode) => {
     if ('attribs' in domNode) {
@@ -53,15 +62,6 @@ export function SocialMediaFeedModule({
 
     return domNode;
   };
-
-  const clean = useMemo(
-    () =>
-      DOMPurify.sanitize(script ?? '', {
-        FORCE_BODY: true,
-        ADD_TAGS: ['script', 'div'],
-      }),
-    [script],
-  );
 
   const htmlReactParserOptions = {
     replace: (domNode: DOMNode) => sanitizeScripts(domNode),
