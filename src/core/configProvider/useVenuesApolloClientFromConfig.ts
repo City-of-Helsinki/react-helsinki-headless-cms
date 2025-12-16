@@ -5,7 +5,7 @@ export default function useQueryWithVenuesApolloClientFromConfig() {
 
   if (!venuesApolloClient) {
     throw Error(
-      'When using components from the apollo sub module, you must include a compatible Venues apollo client in the apolloClient field of the config object you provide with ConfigProvider',
+      'Error: useQueryWithVenuesApolloClientFromConfig - When using components from the apollo sub module, you must include a compatible Venues apollo client in the apolloClient field of the config object you provide with ConfigProvider',
     );
   }
 
