@@ -103,7 +103,7 @@ export function Navigation({
     copy: { menuButtonLabel, menuToggleAriaLabel, skipToContentLabel },
     components: { A },
     mainContentId,
-    utils: { getRoutedInternalHref },
+    utils: { getRoutedInternalHref, redirectToUrl },
   } = useConfig();
 
   const languagesData = languages || [];
@@ -122,8 +122,8 @@ export function Navigation({
       newLanguage && currentLanguage
         ? getPathnameForLanguage(newLanguage, currentLanguage, languagesData)
         : undefined;
-    if (url && window) {
-      window.location.href = url;
+    if (url) {
+      redirectToUrl(url);
     }
   };
 
