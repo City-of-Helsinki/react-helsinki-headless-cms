@@ -34,7 +34,7 @@ data using [Helsinki Design System](https://github.com/City-of-Helsinki/helsinki
   - [Conventional Commits](#conventional-commits)
   - [Releasable units](#releasable-units)
   - [Configuration](#configuration)
-  - [Troubleshoting release-please](#troubleshoting-release-please)
+  - [Troubleshooting release-please](#troubleshooting-release-please)
     - [Fix merge conflicts by running release-please -action manually](#fix-merge-conflicts-by-running-release-please--action-manually)
   - [Deployments](#deployments)
     - [Publishing new versions manually without release-please](#publishing-new-versions-manually-without-release-please)
@@ -44,7 +44,12 @@ data using [Helsinki Design System](https://github.com/City-of-Helsinki/helsinki
 
 ## Introduction
 
-React Helsinki Headless CMS - is a highly customized component library based on [HDS](https://github.com/City-of-Helsinki/helsinki-design-system). It is designed for Helsinki City Web applications which are using preconfigured Wordpress Headless CMS environments (compatible with the library). This library is a set of unified visual components for Pages, Artciles, Artcicle Archives which provide:
+React Helsinki Headless CMS is a highly customized component library based on [HDS](https://github.com/City-of-Helsinki/helsinki-design-system). It is designed for City of Helsinki web applications using preconfigured WordPress Headless CMS environments. This library provides a set of unified visual components for Pages, Articles, and Article Archives.
+
+[![NPM Version](https://img.shields.io/npm/v/react-helsinki-headless-cms.svg)](https://www.npmjs.com/package/react-helsinki-headless-cms)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
+It provides:
 
 1. Unified designs for pages, layouts, and custom components across multiple applications.
 2. Ability to pass app-specific configurations, such as translations and themes.
@@ -52,9 +57,9 @@ React Helsinki Headless CMS - is a highly customized component library based on 
 4. A set of utilities, type and constants required for components implementation.
 5. Support for required Apollo providers, such as linked events and venue search.
 
-**Note:** This library does not inject the Helsinki Grotesk font for you--you must add it yourself.
+**Note:** This library does not inject the Helsinki Grotesk font for you; you must add it yourself.
 
-**Note:** This library uses HDS design tokens through the SCSS interface so that mitch matching design token versions does not lead to unexpected results.
+**Note:** This library uses HDS design tokens through the SCSS interface so that mismatched design token versions do not lead to unexpected results.
 
 ### The known clients that are using this library
 
@@ -82,7 +87,7 @@ The general requirements for new Component development:
 2. The Wordpress Headless CMS environment has new Component compatible architecture, features and data structure (component library is heavily dependent on the GraphQL schemas).
 3. The new Component is not presented in [HDS](https://github.com/City-of-Helsinki/helsinki-design-system) or HDS cannot fully fulfill the specifications.
 4. The new Component exists in HDS backlog, however, still it is not released by HDS team. In that case, HCRC new Component can be implemented and later must be replaced with HDS component when one is available.
-5. New Component can be reused accross multiple applications.
+5. New Component can be reused across multiple applications.
 
 ### Available scripts
 
@@ -109,7 +114,7 @@ You can use docker local environment for development:
 
 `podman compose up --build` when using Podman
 
-Alternatevly, the local environment can be used:
+Alternatively, the local environment can be used:
 
 `yarn dev`
 
@@ -271,8 +276,10 @@ The `portal:` protocol is specifically designed for linking local directories (o
 
 **How to Use portal: for a Tarball**
 
-1. Extract the Tarball: The portal: protocol requires a folder. You must first extract your `.tgz` archive (e.g., `react-helsinki-headless-cms-v2.1.0.tgz`) into a temporary staging folder (e.g., `./.hcrc-dev`).
+1. Extract the Tarball: The portal: protocol requires a folder. You must first extract your `.tgz` archive (e.g., `react-helsinki-headless-cms-v2.1.0.tgz`) into a temporary staging folder (e.g., `./.hcrc-dev`). The temporary staging folder should be in same directory as the consuming app's `package.json` file, since the `portal:` protocol is relative to the `package.json` file.
 2. Update `package.json`: In the consuming app's `package.json`, reference the extracted folder using the portal: protocol:
+
+**⚠️ Security Tip:** Don't forget to add /.hcrc-dev to your .gitignore so you don't accidentally commit the extracted library code to your repository.
 
 ```JSON
 "dependencies": {
@@ -280,7 +287,7 @@ The `portal:` protocol is specifically designed for linking local directories (o
 }
 ```
 
-3. Clean and Install: Delete the conflicting file: dependency from the root package.json and run yarn install from the monorepo root.
+3. Clean and Install: *If you have a conflicting dependency* in the root `package.json`, delete it and run yarn install from the monorepo root.
 
 ## Testing
 
@@ -372,7 +379,7 @@ The manifest file is located in the [release-please-manifest.json](./.release-pl
 
 When adding a new app, add it to both the [release-please-config.json](./release-please-config.json) and [release-please-manifest.json](./.release-please-manifest.json) file with the current version of the app. After this, release-please will keep track of versions with [release-please-manifest.json](./.release-please-manifest.json).
 
-### Troubleshoting release-please
+### Troubleshooting release-please
 
 If you were expecting a new release PR to be created or old one to be updated, but nothing happened, there's probably one of the older release PR's in pending state or action didn't run.
 
