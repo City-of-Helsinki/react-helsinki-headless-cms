@@ -39,6 +39,9 @@ data using [Helsinki Design System](https://github.com/City-of-Helsinki/helsinki
   - [Deployments](#deployments)
     - [Publishing new versions manually without release-please](#publishing-new-versions-manually-without-release-please)
 - [Known issues](#known-issues)
+- [Contributing](#contributing)
+- [Issues](#issues)
+- [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -425,3 +428,15 @@ For canary release the naming convention is `x.y.z-canary-[gitcommithash]`. Runn
 
 - Jest has difficulties loading this library. When this library is required in a test file, it's possible that some imports are cjs and some are esm. These two variants do not share a react context which can result in `useConfig` calls that return an empty config object even though `<ConfigProvider>` is declared correctly. I.e. `<ConfigProvider>` sets values for `context1` and `useConfig` reads `context2`.
 - Some of the built packages created with `yarn build` does some issues with some types. This leads to a situation where the application that uses the library cannot read all the exported types. Especially the exported enums inside a built package might be handled incorrectly (https://github.com/rollup/rollup/issues/4291), but there are other type related issues also, but not on every built package.
+
+## Contributing
+
+Read the [contributing guide](./CONTRIBUTING.md) to learn about our development process, how to propose bugfixes and improvements, and how to build and test your changes.
+
+## Issues
+
+If you notice a bug or want to request a feature, please [submit an issue](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/issues) to our GitHub repository.
+
+## License
+
+[MIT](./LICENSE)
