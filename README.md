@@ -49,7 +49,7 @@ data using [Helsinki Design System](https://github.com/City-of-Helsinki/helsinki
 
 React Helsinki Headless CMS is a highly customized component library based on [HDS](https://github.com/City-of-Helsinki/helsinki-design-system). It is designed for City of Helsinki web applications using preconfigured WordPress Headless CMS environments. This library provides a set of unified visual components for Pages, Articles, and Article Archives.
 
-[![NPM Version](https://img.shields.io/npm/v/react-helsinki-headless-cms.svg)](https://www.npmjs.com/package/react-helsinki-headless-cms)
+[![NPM Version](https://img.shields.io/npm/v/@city-of-helsinki/react-helsinki-headless-cms.svg)](https://www.npmjs.com/package/@city-of-helsinki/react-helsinki-headless-cms)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 It provides:
@@ -75,7 +75,7 @@ It provides:
 ## Installation
 
 ```bash
-yarn add react-helsinki-headless-cms
+yarn add @city-of-helsinki/react-helsinki-headless-cms
 ```
 
 ## Development
@@ -188,15 +188,15 @@ The `yarn dev` command will start `storybook` in port `6006`. When you make chan
 
 This can handle data queries for you if you are using a supported library to fetch your data.
 
-By importing data dependent components from `react-helsinki-headless-cms/apollo`, this library will request the data for you.
+By importing data dependent components from `@city-of-helsinki/react-helsinki-headless-cms/apollo`, this library will request the data for you.
 
 **Note:** An Apollo client linked to a graphql endpoint with a supported schema (headless CMS) must be provided in the `apolloClient` field of the `config` object.
 
 **Simplified example**
 
 ```tsx
-import { Page } from 'react-helsinki-headless-cms/apollo';
-import { Navigation } from 'react-helsinki-headless-cms/apollo';
+import { Page } from '@city-of-helsinki/react-helsinki-headless-cms/apollo';
+import { Navigation } from '@city-of-helsinki/react-helsinki-headless-cms/apollo';
 
 <ConfigProvider
   config={{
@@ -216,7 +216,7 @@ import { Navigation } from 'react-helsinki-headless-cms/apollo';
 
 ### NextJS
 
-We provide utilities for fetching headless data for NextJs in `react-helsinki-headless-cms/nextjs`. These can be used when generating static pages.
+We provide utilities for fetching headless data for NextJs in `@city-of-helsinki/react-helsinki-headless-cms/nextjs`. These can be used when generating static pages.
 
 ### Build
 
@@ -243,7 +243,7 @@ The steps to use the local relative path as a dependency:
 ```
 {
   "dependencies": {
-    "react-helsinki-headless-cms": "file:../react-helsinki-headless-cms/dist"
+    "@city-of-helsinki/react-helsinki-headless-cms": "file:../react-helsinki-headless-cms/dist"
   }
 }
 ```
@@ -262,7 +262,7 @@ The steps to use the local tarball as a dependency:
 ```
 {
   "dependencies": {
-    "react-helsinki-headless-cms": "file:../react-helsinki-headless-cms-v2.1.0.tgz"
+    "@city-of-helsinki/react-helsinki-headless-cms": "file:../react-helsinki-headless-cms-v2.1.0.tgz"
   }
 }
 ```
@@ -279,14 +279,14 @@ The `portal:` protocol is specifically designed for linking local directories (o
 
 **How to Use portal: for a Tarball**
 
-1. Extract the Tarball: The portal: protocol requires a folder. You must first extract your `.tgz` archive (e.g., `react-helsinki-headless-cms-v2.1.0.tgz`) into a temporary staging folder (e.g., `./.hcrc-dev`). The temporary staging folder should be in same directory as the consuming app's `package.json` file, since the `portal:` protocol is relative to the `package.json` file.
+1. Extract the Tarball: The portal: protocol requires a folder. You must first extract your `.tgz` archive (e.g., `city-of-helsinki-react-helsinki-headless-cms-v2.1.0.tgz`) into a temporary staging folder (e.g., `./.hcrc-dev`). The temporary staging folder should be in same directory as the consuming app's `package.json` file, since the `portal:` protocol is relative to the `package.json` file.
 2. Update `package.json`: In the consuming app's `package.json`, reference the extracted folder using the portal: protocol:
 
 **⚠️ Security Tip:** Don't forget to add /.hcrc-dev to your .gitignore so you don't accidentally commit the extracted library code to your repository.
 
 ```JSON
 "dependencies": {
-  "react-helsinki-headless-cms": "portal:../../.hcrc-dev/package"
+  "@city-of-helsinki/react-helsinki-headless-cms": "portal:../../.hcrc-dev/package"
 }
 ```
 
@@ -318,7 +318,7 @@ import {
   PageContent,
   ConfigProvider,
   defaultConfig,
-} from "react-helsinki-headless-cms";
+} from "@city-of-helsinki/react-helsinki-headless-cms";
 
 function App() {
   const page = ...;
