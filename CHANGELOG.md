@@ -4,6 +4,36 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [3.0.0](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/compare/react-helsinki-headless-cms-v2.1.0...react-helsinki-headless-cms-v3.0.0) (2025-12-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* add package to city-of-helsinki organisation scope
+
+### Features
+
+* Add package to city-of-helsinki organisation scope ([14a2227](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/14a2227e375615004ab8dd03ea6713840b8545f3))
+* Include sourcemaps in package ([185abfe](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/185abfefdfc41e9d51e648433be080ff503fa6b6))
+* **linting:** Upgrade to eslint v9 & flat config format ([a8c4936](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/a8c49364d2ff210583d734c58d869fba444c3df7))
+
+
+### Bug Fixes
+
+* Disentangle customRender & testing-library imports from each other ([a1b6b4a](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/a1b6b4a3d0948732843631bdf34640286bda789a))
+* **linting:** Add display names for React components that lack them ([b16d26e](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/b16d26e978a29fa60558ec896e9fcb74fb79e3e9))
+* **linting:** Add key props to &lt;div&gt; tags to silence react/jsx-key rule ([c617d1b](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/c617d1b3f4a6c36632bb8165aba010b4f450c6cc))
+* **linting:** Don't use ref in dependency array in SocialMediaFeedModule ([f88e66a](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/f88e66a74ea9496bc6e8d92eb29e5c30c92b5abf))
+* **linting:** Simplify state handling in SearchPageContent component ([13e9409](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/13e94097a40434bbf23913dd79b54fbaa2cf015a))
+* **navigation:** Add client app router support to language changing ([209dd09](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/209dd095b6b1d18dbd1dd025cb6faf2bf65df365))
+
+
+### Documentation
+
+* Add contributing and license to readme ([57f2d7d](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/57f2d7d7c76ae972b3d95cfbcf0b5a53e483d3f5))
+* How to use tarballs, file- and portal protocol in local dev ([a10d49e](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/a10d49ec53d486892214e54724a71fbd87d09f00))
+* Misc improvements to readme ([e9288d7](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/e9288d74d49256895b8582461bb098c890f11e24))
+
 ## [2.1.0](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/compare/react-helsinki-headless-cms-v2.0.2...react-helsinki-headless-cms-v2.1.0) (2025-12-12)
 
 
