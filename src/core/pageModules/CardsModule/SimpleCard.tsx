@@ -5,6 +5,7 @@ import {
   ButtonPresetTheme,
   ButtonVariant,
   IconAngleRight,
+  IconSize,
 } from 'hds-react';
 
 import styles from '../pageModules.module.scss';
@@ -101,7 +102,9 @@ export function SimpleCard({
               variant={ButtonVariant.Secondary}
               theme={ButtonPresetTheme.Black}
               onClick={handleClick}
-              iconStart={<IconAngleRight />}
+              iconStart={
+                <IconAngleRight aria-hidden="true" size={IconSize.Small} />
+              }
             >
               {linkTitle}
             </Button>
