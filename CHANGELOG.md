@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [3.0.1](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/compare/react-helsinki-headless-cms-v3.0.0...react-helsinki-headless-cms-v3.0.1) (2026-01-13)
+
+
+### Bug Fixes
+
+* Page table figure should be displayd as grid ([c951ac2](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/c951ac22826ea420f3639f0ad61c5b999b1b1903))
+* Sidebar simple card link button icon size ([c9e88cb](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/c9e88cb4af0a13d55b2f17388f5c4599b694d998))
+
 ## [3.0.0](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/compare/react-helsinki-headless-cms-v2.1.0...react-helsinki-headless-cms-v3.0.0) (2025-12-30)
 
 
