@@ -159,7 +159,7 @@
   "dependencies": {
     "classnames": "^2.5.1",
     "date-fns": "^4.1.0",
-    "doctoc": "^2.2.1",
+    "doctoc": "^2.3.0",
     "hds-design-tokens": "^4.8.1",
     "html-entities": "^2.6.0",
     "html-react-parser": "^5.2.5",
