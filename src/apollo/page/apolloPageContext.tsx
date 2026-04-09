@@ -2,7 +2,7 @@ import { createContext } from 'react';
 
 import type { TemplateEnum } from '../../core';
 
-type ApolloPageContext = {
+type ApolloPageContextType = {
   /**
    * Uri of the page.
    */
@@ -13,6 +13,6 @@ type ApolloPageContext = {
   template?: TemplateEnum;
 };
 
-const apolloPageContext = createContext<ApolloPageContext>({});
+const ApolloPageContext = createContext<ApolloPageContextType>({});
 
-export default apolloPageContext;
+export default ApolloPageContext;

@@ -2,7 +2,7 @@ import React from 'react';
 import type { NotificationType as HDSNotificationLevel } from 'hds-react';
 import { Notification as HDSNotification } from 'hds-react';
 
-import makeLocaleStorageValue from '../../common/utils/makeLocaleStorageValue';
+import useLocalStorageValue from '../../common/hooks/useLocalStorageValue';
 import type { NotificationType } from '../../common/headlessService/types';
 import { HtmlToReact } from '../../common/components/htmlToReact/HtmlToReact';
 import { useConfig } from '../configProvider/useConfig';
@@ -21,10 +21,6 @@ enum NotificationStatus {
 type NotificationState = {
   dismissed: boolean;
 };
-
-const useLocaleStorageNotification = makeLocaleStorageValue<{
-  [notificationHash: string]: NotificationState;
-}>('rhhc/notification');
 
 function getNotificationStatus(
   notification?: NotificationType | null,
@@ -69,8 +65,9 @@ export function Notification({ notification }: NotificationProps) {
     copy: { closeButtonLabelText },
     utils: { getRoutedInternalHref },
   } = useConfig();
-  const [notificationState, setNotificationState] =
-    useLocaleStorageNotification();
+  const [notificationState, setNotificationState] = useLocalStorageValue<{
+    [notificationHash: string]: NotificationState;
+  }>('rhhc/notification');
 
   const notificationHash = getNotificationHash(notification);
   const notificationStatus = getNotificationStatus(

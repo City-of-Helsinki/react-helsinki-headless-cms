@@ -16,26 +16,16 @@ export const useResolveImageUrl = ({
   customFallbackUrl,
 }: ResolveImageProps): string => {
   const { fallbackImageUrls } = useConfig();
-  const [showFallbackImage, setShowFallbackImage] = React.useState(false);
+  const [failedUrl, setFailedUrl] = React.useState<string | null>(null);
 
   React.useEffect(() => {
-    const testThatImageExist = async () => {
-      try {
-        await testImage(url ?? undefined);
-      } catch {
-        setShowFallbackImage(true);
-      }
-    };
-    if (url) {
-      testThatImageExist();
-    } else {
-      setShowFallbackImage(true);
-    }
+    if (!url) return;
+    testImage(url).catch(() => setFailedUrl(url));
   }, [url]);
 
   const randomIndex = Math.abs(hash(id ?? '')) % fallbackImageUrls.length;
 
-  return !url || showFallbackImage
+  return !url || failedUrl === url
     ? (customFallbackUrl ?? fallbackImageUrls[randomIndex])
     : url;
 };

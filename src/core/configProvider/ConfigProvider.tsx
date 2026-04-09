@@ -1,7 +1,7 @@
 import React from 'react';
 
 import type { Config } from './configContext';
-import { configContext } from './configContext';
+import { ConfigContext } from './configContext';
 import { defaultConfig } from './defaultConfig';
 
 export type ConfigProviderProps = {
@@ -28,6 +28,6 @@ export function ConfigProvider({
   );
 
   return (
-    <configContext.Provider value={config}>{children}</configContext.Provider>
+    <ConfigContext.Provider value={config}>{children}</ConfigContext.Provider>
   );
 }

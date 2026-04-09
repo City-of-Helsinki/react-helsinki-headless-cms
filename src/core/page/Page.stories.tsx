@@ -1,5 +1,3 @@
-/* eslint-disable react/function-component-definition */
-
 import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react-webpack5';
 import { HelmetProvider } from 'react-helmet-async';
@@ -119,7 +117,7 @@ export const PageDefault = {
         collections={getCollections(pageMock.modules)?.map(
           (collection, index) => (
             <Collection
-              // eslint-disable-next-line react/no-array-index-key
+              // eslint-disable-next-line @eslint-react/no-array-index-key
               key={`collection-${index}`}
               title={collection.title}
               collectionContainerProps={{ withDots: false }}

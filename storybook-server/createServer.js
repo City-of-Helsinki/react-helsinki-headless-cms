@@ -1,5 +1,5 @@
 /* eslint-disable consistent-return */
-/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import-x/no-extraneous-dependencies */
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { resolve } = require('path');
 

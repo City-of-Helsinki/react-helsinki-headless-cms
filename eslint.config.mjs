@@ -2,11 +2,12 @@ import js from '@eslint/js';
 import stylisticPlugin from '@stylistic/eslint-plugin';
 import tseslint from 'typescript-eslint';
 import tsParser from '@typescript-eslint/parser';
-import importPlugin from 'eslint-plugin-import';
+import importPlugin from 'eslint-plugin-import-x';
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 import prettierPlugin from 'eslint-plugin-prettier';
-import reactPlugin from 'eslint-plugin-react';
+import reactPlugin from '@eslint-react/eslint-plugin';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
+import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 import globals from 'globals';
 
 const files = [
@@ -35,19 +36,20 @@ export default [
   // react config
   {
     files,
-    plugins: { react: reactPlugin },
+    plugins: { '@eslint-react': reactPlugin },
     rules: {
       ...reactPlugin.configs.recommended.rules,
-      'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
-      'react/jsx-props-no-spreading': 'off',
-      'react/prop-types': 'off',
-      'react/require-default-props': 'off',
-      'react/react-in-jsx-scope': 'off',
+      '@eslint-react/jsx-props-no-spreading': 'off',
+      '@eslint-react/prop-types': 'off',
+      '@eslint-react/require-default-props': 'off',
+      '@eslint-react/react-in-jsx-scope': 'off',
       // Extra
-      'react/jsx-no-target-blank': 'warn',
-      'react/jsx-no-useless-fragment': 'warn',
-      'react/function-component-definition': ['error'],
-      'react/no-array-index-key': 'error',
+      '@eslint-react/jsx-no-useless-fragment': 'warn',
+      '@eslint-react/no-array-index-key': 'error',
+      '@eslint-react/exhaustive-deps': 0,
+      '@eslint-react/no-children-map': 0,
+      '@eslint-react/no-clone-element': 0,
+      '@eslint-react/no-children-to-array': 0
     },
   },
 
@@ -78,12 +80,12 @@ export default [
   // import config
   {
     files,
-    plugins: { import: importPlugin },
+    plugins: { 'import-x': importPlugin },
     rules: {
       ...importPlugin.flatConfigs.errors.rules,
       ...importPlugin.flatConfigs.warnings.rules,
       ...importPlugin.flatConfigs.typescript.rules,
-      'import/no-extraneous-dependencies': [
+      'import-x/no-extraneous-dependencies': [
         'error',
         {
           devDependencies: [
@@ -96,8 +98,8 @@ export default [
           ],
         },
       ],
-      'import/extensions': 'off',
-      'import/order': [
+      'import-x/extensions': 'off',
+      'import-x/order': [
         'error',
         {
           groups: [
@@ -109,7 +111,7 @@ export default [
           'newlines-between': 'always',
         },
       ],
-      'import/prefer-default-export': 'off',
+      'import-x/prefer-default-export': 'off',
     },
   },
 
@@ -156,12 +158,11 @@ export default [
     },
     settings: {
       react: { version: 'detect' },
-      'import/resolver': {
-        node: {
+      'import-x/resolver-next': [
+        createTypeScriptImportResolver({
           extensions: ['.js', '.jsx', '.ts', '.tsx'],
-          paths: ['src'],
-        },
-      },
+        }),
+      ],
     },
     linterOptions: {
       reportUnusedDisableDirectives: true,

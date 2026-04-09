@@ -8,6 +8,7 @@ import type { CarouselContextType } from '../../types';
 import { initialCarouselContextStateValues } from '../../constants';
 
 jest.mock('../../../translation/useTranslationWithFallback', () => ({
+  // eslint-disable-next-line @eslint-react/no-unnecessary-use-prefix
   useTranslationWithFallback: () => ({
     t: (key: string) => {
       if (key === 'carouselSliderDotNavLabelText') {

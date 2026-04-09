@@ -10,6 +10,7 @@ export function Icon({ name }: IconProps) {
   const fallback = () => <div />;
   const IconComponent = React.useMemo(
     () =>
+      // eslint-disable-next-line @eslint-react/no-nested-lazy-component-declarations
       React.lazy(() =>
         import('../../../common/components/icons').then((module) => ({
           default: module[name as keyof typeof module] || fallback,

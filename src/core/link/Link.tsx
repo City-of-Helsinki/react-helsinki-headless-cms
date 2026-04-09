@@ -111,7 +111,6 @@ export function Link({
 
   return isExternal || typeof RoutedLink === 'undefined' ? (
     // ts(2786) - Type 'Element | { linkComponent: Element; }' is not assignable to type 'ReactNode'.
-    // eslint-disable-next-line react/jsx-no-useless-fragment
     <>{linkComponent}</>
   ) : (
     <RoutedLink href={href}>{linkComponent}</RoutedLink>

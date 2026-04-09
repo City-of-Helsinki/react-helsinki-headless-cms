@@ -13,6 +13,7 @@ import { MOBILE_WIDTH } from '../constants';
 import type { CarouselProps } from '../types';
 
 jest.mock('../../configProvider/useConfig', () => ({
+  // eslint-disable-next-line @eslint-react/no-unnecessary-use-prefix
   useConfig: () => ({
     copy: {
       previous: 'Previous',
@@ -23,6 +24,7 @@ jest.mock('../../configProvider/useConfig', () => ({
 
 // Mock translation hook
 jest.mock('../../translation/useTranslationWithFallback', () => ({
+  // eslint-disable-next-line @eslint-react/no-unnecessary-use-prefix
   useTranslationWithFallback: () => ({
     t: (key: string) => {
       if (key === 'carouselRegionLabelText') {

@@ -16,7 +16,6 @@ describe('Tag', () => {
   it('should have settable id-property', () => {
     const ids = Array.from('abcdefghijklmnopqrstuvwxyz');
     const listOfTags = ids.map((c) =>
-      // eslint-disable-next-line react/no-children-prop
       React.createElement(Tag, { id: c, children: c }),
     );
     // Tag id is defined every time

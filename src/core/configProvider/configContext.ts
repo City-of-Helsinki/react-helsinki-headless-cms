@@ -146,4 +146,4 @@ export type Config = {
   };
 };
 
-export const configContext = createContext<Config>(defaultConfig);
+export const ConfigContext = createContext<Config>(defaultConfig);

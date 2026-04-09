@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 
 import type { Config } from './configContext';
-import { configContext } from './configContext';
+import { ConfigContext } from './configContext';
 
 const validateContext = (config?: Config) => {
   if (config === undefined) {
@@ -13,7 +13,7 @@ const validateContext = (config?: Config) => {
 };
 
 export function useConfig() {
-  const config = useContext(configContext);
+  const config = useContext(ConfigContext);
   validateContext(config);
 
   return config;

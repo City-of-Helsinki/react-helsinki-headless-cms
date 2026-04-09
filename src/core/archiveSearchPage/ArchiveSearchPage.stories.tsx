@@ -1,5 +1,3 @@
-/* eslint-disable react/function-component-definition */
-
 import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react-webpack5';
 import { HelmetProvider } from 'react-helmet-async';

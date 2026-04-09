@@ -19,6 +19,7 @@ jest.mock('hds-react', () => ({
 
 // Mock useConfig to provide translations
 jest.mock('../../../configProvider/useConfig', () => ({
+  // eslint-disable-next-line @eslint-react/no-unnecessary-use-prefix
   useConfig: () => ({
     copy: {
       previous: 'Previous',

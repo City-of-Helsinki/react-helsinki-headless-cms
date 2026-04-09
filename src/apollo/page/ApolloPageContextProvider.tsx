@@ -1,3 +1,3 @@
-import apolloPageContext from './apolloPageContext';
+import ApolloPageContext from './apolloPageContext';
 
-export default apolloPageContext.Provider;
+export default ApolloPageContext.Provider;

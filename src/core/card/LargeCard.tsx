@@ -135,7 +135,6 @@ export function LargeCard({
   );
 
   return (
-    // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
       {hasLink ? (
         <LinkBox
@@ -151,7 +150,6 @@ export function LargeCard({
           {content}
         </LinkBox>
       ) : (
-        // eslint-disable-next-line react/jsx-no-useless-fragment
         <>{content}</>
       )}
     </>

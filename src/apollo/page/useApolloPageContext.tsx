@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 
-import apolloPageContext from './apolloPageContext';
+import ApolloPageContext from './apolloPageContext';
 
 export default function useApolloPageContext() {
-  return useContext(apolloPageContext);
+  return useContext(ApolloPageContext);
 }
