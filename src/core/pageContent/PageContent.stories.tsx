@@ -1,5 +1,3 @@
-/* eslint-disable react/function-component-definition */
-
 import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react-webpack5';
 import { Koros } from 'hds-react';
@@ -93,7 +91,7 @@ export const PageContentWithFunctions = {
     collections: (page: PageType | ArticleType) =>
       getCollections(page?.modules ?? [], false)?.map((collection, index) => (
         <Collection
-          // eslint-disable-next-line react/no-array-index-key
+          // eslint-disable-next-line @eslint-react/no-array-index-key
           key={`collection-${index}`}
           title={`${collection.title} (created with a custom function)`}
           cards={getCollectionCards(collection, [

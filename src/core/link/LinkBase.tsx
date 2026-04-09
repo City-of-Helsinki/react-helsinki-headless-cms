@@ -102,6 +102,7 @@ export const getTextFromReactChildren = (children: ReactNode): string => {
 
   return Children.toArray(children).reduce(
     (text: string, child: ReactNode): string => {
+      // eslint-disable-next-line no-useless-assignment
       let newText = '';
 
       if (isValidElement(child) && hasChildren(child)) {

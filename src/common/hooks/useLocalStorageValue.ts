@@ -8,37 +8,37 @@ type Options<T> = {
 // Utility function to check if we are in a browser environment
 const isBrowser = () => typeof window !== 'undefined';
 
-export default function makeLocaleStorageValue<T>(
+export default function useLocalStorageValue<T>(
   key: string,
   options?: Partial<Options<T>>,
-) {
+): [T | null, (value?: T) => void] {
   const {
     serializer: serialize = JSON.stringify,
     deserializer: deserialize = JSON.parse,
   } = options ?? {};
 
-  return function useLocaleStorageValue(): [T | null, (value?: T) => void] {
-    const readValueInLocalStorage = () => {
-      if (!isBrowser()) {
-        return null;
-      }
-      try {
-        const storedValue = localStorage.getItem(key);
-        return storedValue ? deserialize(storedValue) : null;
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      } catch (_) {
-        // eslint-disable-next-line no-console
-        console.error('Failed to parse value in localStorage', { key });
-      }
-
+  const readValueInLocalStorage = () => {
+    if (!isBrowser()) {
       return null;
-    };
+    }
+    try {
+      const storedValue = localStorage.getItem(key);
+      return storedValue ? deserialize(storedValue) : null;
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (_) {
+      // eslint-disable-next-line no-console
+      console.error('Failed to parse value in localStorage', { key });
+    }
 
-    const [stateValue, setStateValue] = useState<T | null>(() =>
-      readValueInLocalStorage(),
-    );
+    return null;
+  };
 
-    const storeValue = useCallback((value?: T) => {
+  const [stateValue, setStateValue] = useState<T | null>(() =>
+    readValueInLocalStorage(),
+  );
+
+  const storeValue = useCallback(
+    (value?: T) => {
       if (!isBrowser()) {
         return;
       }
@@ -55,8 +55,10 @@ export default function makeLocaleStorageValue<T>(
         // eslint-disable-next-line no-console
         console.error('Failed to save value into localStorage', { key });
       }
-    }, []);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [key],
+  );
 
-    return [stateValue, storeValue];
-  };
+  return [stateValue, storeValue];
 }

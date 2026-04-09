@@ -1,5 +1,3 @@
-/* eslint-disable react/function-component-definition */
-
 import React from 'react';
 import { IconAngleRight } from 'hds-react';
 import type { StoryFn, Meta } from '@storybook/react-webpack5';

@@ -4,7 +4,7 @@ import { EVENTS_PROXY_ENDPOINT, LINKED_EVENTS_ENDPOINT } from '../constants';
 import type { Config } from '../core/configProvider/configContext';
 import { CmsEndpoint } from './constants';
 
-export const useCmsEndpointConfig = (
+export const getCmsEndpointConfig = (
   cms: keyof typeof CmsEndpoint,
 ): Partial<Config> => {
   const apolloClient = new ApolloClient({

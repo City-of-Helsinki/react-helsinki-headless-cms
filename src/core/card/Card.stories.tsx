@@ -1,5 +1,3 @@
-/* eslint-disable react/function-component-definition */
-
 import type { CSSProperties } from 'react';
 import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react-webpack5';

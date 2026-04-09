@@ -12,6 +12,7 @@ export default function IframeForEmbeddedMedia(
     <iframe
       {...props}
       loading="lazy"
+      // eslint-disable-next-line @eslint-react/dom-no-unsafe-iframe-sandbox
       sandbox="allow-scripts allow-same-origin allow-popups allow-presentation"
     />
   );

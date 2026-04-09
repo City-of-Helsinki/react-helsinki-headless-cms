@@ -1,5 +1,3 @@
-/* eslint-disable react/function-component-definition */
-
 import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react-webpack5';
 import { HelmetProvider } from 'react-helmet-async';
@@ -12,7 +10,7 @@ import { Notification } from './notification/Notification';
 import { Page } from './page/Page';
 import { PageContentLayout } from '../core/pageContent/PageContentLayout';
 import { LanguageCodeEnum } from '../core';
-import { useCmsEndpointConfig } from '../storybook-common/useCmsEndpointConfig';
+import { getCmsEndpointConfig } from '../storybook-common/getCmsEndpointConfig';
 import type { CmsEndpoint } from '../storybook-common/constants';
 import { cmsMenuName, cmsTestPage } from '../storybook-common/constants';
 import { HelmetWrapper } from '../storybook-common/HelmetWrapper';
@@ -62,12 +60,13 @@ const CustomPageContentLayout: typeof PageContentLayout = ({
 function getTemplate(
   dataSource: keyof typeof CmsEndpoint,
 ): StoryFn<typeof Page> {
+  // eslint-disable-next-line @eslint-react/component-hook-factories
   return function ApolloCustomTemplate(args) {
     const {
       apolloClient,
       eventsApolloClient,
       internalHrefOrigins = [],
-    } = useCmsEndpointConfig(dataSource);
+    } = getCmsEndpointConfig(dataSource);
     return (
       <HelmetProvider>
         <ConfigProvider

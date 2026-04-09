@@ -71,7 +71,7 @@ export function CarouselSlider({
       >
         {itemSets.map((itemSet, itemSetIndex) => (
           <CarouselSliderPage
-            // eslint-disable-next-line react/no-array-index-key
+            // eslint-disable-next-line @eslint-react/no-array-index-key
             key={`itemSet-${itemSetIndex}`}
             itemSet={itemSet}
             itemSetIndex={itemSetIndex}
