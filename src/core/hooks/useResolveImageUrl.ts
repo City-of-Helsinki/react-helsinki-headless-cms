@@ -19,8 +19,19 @@ export const useResolveImageUrl = ({
   const [failedUrl, setFailedUrl] = React.useState<string | null>(null);
 
   React.useEffect(() => {
-    if (!url) return;
-    testImage(url).catch(() => setFailedUrl(url));
+    let cancelled = false;
+    if (url) {
+      testImage(url)
+        .then(() => {
+          if (!cancelled) setFailedUrl(null);
+        })
+        .catch(() => {
+          if (!cancelled) setFailedUrl(url);
+        });
+    }
+    return () => {
+      cancelled = true;
+    };
   }, [url]);
 
   const randomIndex = Math.abs(hash(id ?? '')) % fallbackImageUrls.length;
