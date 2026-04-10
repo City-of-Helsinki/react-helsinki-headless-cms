@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
+import { vi } from 'vitest';
 
 import { CarouselSliderPage } from '../CarouselSliderPage';
 import { CarouselContext } from '../../context/CarouselContext';
@@ -20,12 +20,12 @@ const renderWithContext = (
       value={{
         ...initialCarouselContextStateValues,
         // Dummy functions for context fields that require them
-        setTransformValue: jest.fn(),
-        setNumberOfSlides: jest.fn(),
-        setItemsPerSlide: jest.fn(),
-        setCurrentSlide: jest.fn(),
-        setWidth: jest.fn(),
-        handleUpdateSlideProps: jest.fn(),
+        setTransformValue: vi.fn(),
+        setNumberOfSlides: vi.fn(),
+        setItemsPerSlide: vi.fn(),
+        setCurrentSlide: vi.fn(),
+        setWidth: vi.fn(),
+        handleUpdateSlideProps: vi.fn(),
         ...providerProps,
       }}
     >

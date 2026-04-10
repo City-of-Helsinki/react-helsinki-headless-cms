@@ -1,14 +1,12 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom';
 
 import { CarouselSlider } from '../CarouselSlider';
 import { CarouselContext } from '../../context/CarouselContext';
 import type { CarouselContextType } from '../../types';
 import { initialCarouselContextStateValues } from '../../constants';
 
-jest.mock('../../../translation/useTranslationWithFallback', () => ({
-  // eslint-disable-next-line @eslint-react/no-unnecessary-use-prefix
+vi.mock('../../../translation/useTranslationWithFallback', () => ({
   useTranslationWithFallback: () => ({
     t: (key: string) => {
       if (key === 'carouselSliderRegionLabelText') {
@@ -29,12 +27,12 @@ const renderWithContext = (
       value={{
         ...initialCarouselContextStateValues,
         // Dummy functions for context fields that require them
-        setTransformValue: jest.fn(),
-        setNumberOfSlides: jest.fn(),
-        setItemsPerSlide: jest.fn(),
-        setCurrentSlide: jest.fn(),
-        setWidth: jest.fn(),
-        handleUpdateSlideProps: jest.fn(),
+        setTransformValue: vi.fn(),
+        setNumberOfSlides: vi.fn(),
+        setItemsPerSlide: vi.fn(),
+        setCurrentSlide: vi.fn(),
+        setWidth: vi.fn(),
+        handleUpdateSlideProps: vi.fn(),
         ...providerProps,
       }}
     >
@@ -85,7 +83,7 @@ describe('CarouselSlider', () => {
   });
 
   describe('Load More Button', () => {
-    const mockOnLoadMore = jest.fn();
+    const mockOnLoadMore = vi.fn();
 
     beforeEach(() => {
       mockOnLoadMore.mockClear();

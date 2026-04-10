@@ -1,10 +1,17 @@
 {
   "compilerOptions": {
     "module": "ES2020",
-    "types": ["node", "jest", "@testing-library/jest-dom"],
+    "types": [
+      "node",
+      "vitest/globals",
+      "@testing-library/jest-dom"
+    ],
     "moduleResolution": "bundler",
     "target": "es2021",
-    "lib": ["dom", "es2020"],
+    "lib": [
+      "dom",
+      "es2020"
+    ],
     "outDir": "lib",
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
@@ -17,8 +24,16 @@
     "skipLibCheck": true,
     "strict": true
   },
-  "include": ["src", "jest-setup.ts"],
-  "exclude": ["dist", "**/__mocks__/*", "**/node_modules/*", "build"],
+  "include": [
+    "src",
+    "vitest-setup.ts"
+  ],
+  "exclude": [
+    "dist",
+    "**/__mocks__/*",
+    "**/node_modules/*",
+    "build"
+  ],
   "compileOnSave": false,
   "buildOnSave": false
 }

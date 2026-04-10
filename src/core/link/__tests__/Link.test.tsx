@@ -1,5 +1,5 @@
 import React from 'react';
-import { axe } from 'jest-axe';
+import { axe } from 'vitest-axe';
 import { screen } from '@testing-library/react';
 
 import { customRender as render } from '../../../common/utils/customRender';

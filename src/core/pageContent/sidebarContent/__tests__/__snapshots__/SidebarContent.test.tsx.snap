@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SidebarContent containing link lists renders a link list when a valid item is included in the links 1`] = `
+exports[`SidebarContent containing link lists > renders a link list when a valid item is included in the links 1`] = `
 <div>
   <div
     class="listContainer"

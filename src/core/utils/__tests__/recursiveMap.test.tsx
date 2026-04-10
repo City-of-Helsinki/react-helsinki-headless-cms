@@ -1,4 +1,5 @@
 import React from 'react';
+import { vi } from 'vitest';
 
 import { recursiveMap } from '../recursiveMap';
 import { typeOfComponent } from '../getChildrenByType';
@@ -24,13 +25,13 @@ describe('recursiveMap', () => {
   );
 
   it.each([
-    [flattenedListItems, jest.fn(), 2], // 2 x <li>
-    [nestedListItems, jest.fn(), 1 + 1 + 3], // <ul>, <ol> and 3 x <li>
+    [flattenedListItems, vi.fn(), 2], // 2 x <li>
+    [nestedListItems, vi.fn(), 1 + 1 + 3], // <ul>, <ol> and 3 x <li>
     [
       <div key={1}>
         <div>{nestedListItems}</div>
       </div>,
-      jest.fn(),
+      vi.fn(),
       1 + 1 + 1 + 1 + 3, // <div>, sub <div>, <ul>, <ol> and 3 x <li>
     ],
   ])('recursively calls the defined function', (component, fn, callCount) => {

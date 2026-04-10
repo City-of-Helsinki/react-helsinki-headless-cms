@@ -1,7 +1,14 @@
-import '@testing-library/jest-dom';
-import { toHaveNoViolations } from 'jest-axe';
-import fetchMock from 'jest-fetch-mock';
+import '@testing-library/jest-dom/vitest';
+import * as matchers from 'vitest-axe/matchers';
+import { expect, vi } from 'vitest';
 import { loadErrorMessages, loadDevMessages } from '@apollo/client/dev';
+
+expect.extend(matchers);
+
+vi.stubGlobal('fetch', vi.fn());
+// jsdom exposes Image on window but doesn't alias it to the Node global scope
+global.Image = window.Image;
+
 import { hideConsoleMessages } from './src/tests/hideConsoleMessages';
 
 hideConsoleMessages({
@@ -14,11 +21,6 @@ hideConsoleMessages({
     /Could not parse CSS stylesheet/,
   ],
 });
-
-fetchMock.enableMocks();
-
-// Extend except with jest-axe
-expect.extend(toHaveNoViolations);
 
 loadDevMessages();
 loadErrorMessages();
