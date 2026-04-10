@@ -66,11 +66,17 @@
       "hds-react/cookie": [
         "To fix https://github.com/City-of-Helsinki/react-helsinki-headless-cms/security/dependabot/28",
         "NOTE: This can be removed if hds-react starts to depend on >=v1 cookie"
+      ],
+      "minimatch": [
+        "To fix https://github.com/City-of-Helsinki/react-helsinki-headless-cms/security/dependabot/80,",
+        "https://github.com/City-of-Helsinki/react-helsinki-headless-cms/security/dependabot/77",
+        "https://github.com/City-of-Helsinki/react-helsinki-headless-cms/security/dependabot/76"
       ]
     }
   },
   "resolutions": {
-    "hds-react/cookie": "^0.7.2"
+    "hds-react/cookie": "^0.7.2",
+    "minimatch": ">=10.2.3"
   },
   "devDependencies": {
     "@apollo/client": "^3.14.0",
