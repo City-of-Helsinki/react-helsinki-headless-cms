@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { vi } from 'vitest';
 
 import { CarouselSliderPage } from '../CarouselSliderPage';
 import { CarouselContext } from '../../context/CarouselContext';

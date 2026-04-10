@@ -6,7 +6,6 @@ import {
   fireEvent,
   isInaccessible,
 } from '@testing-library/react';
-import { vi } from 'vitest';
 
 import { Carousel } from '../Carousel';
 import { MOBILE_WIDTH } from '../constants';

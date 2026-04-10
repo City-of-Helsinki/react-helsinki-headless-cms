@@ -1,5 +1,4 @@
 import React from 'react';
-import { vi } from 'vitest';
 
 import { recursiveMap } from '../recursiveMap';
 import { typeOfComponent } from '../getChildrenByType';
