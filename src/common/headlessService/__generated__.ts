@@ -22757,6 +22757,21 @@ export function useArticleLazyQuery(
     options,
   );
 }
+// @ts-ignore
+export function useArticleSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    ArticleQuery,
+    ArticleQueryVariables
+  >,
+): Apollo.UseSuspenseQueryResult<ArticleQuery, ArticleQueryVariables>;
+export function useArticleSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<ArticleQuery, ArticleQueryVariables>,
+): Apollo.UseSuspenseQueryResult<
+  ArticleQuery | undefined,
+  ArticleQueryVariables
+>;
 export function useArticleSuspenseQuery(
   baseOptions?:
     | Apollo.SkipToken
@@ -22855,6 +22870,18 @@ export function usePostsLazyQuery(
     options,
   );
 }
+// @ts-ignore
+export function usePostsSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    PostsQuery,
+    PostsQueryVariables
+  >,
+): Apollo.UseSuspenseQueryResult<PostsQuery, PostsQueryVariables>;
+export function usePostsSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<PostsQuery, PostsQueryVariables>,
+): Apollo.UseSuspenseQueryResult<PostsQuery | undefined, PostsQueryVariables>;
 export function usePostsSuspenseQuery(
   baseOptions?:
     | Apollo.SkipToken
@@ -22954,6 +22981,24 @@ export function useCategoriesLazyQuery(
     options,
   );
 }
+// @ts-ignore
+export function useCategoriesSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    CategoriesQuery,
+    CategoriesQueryVariables
+  >,
+): Apollo.UseSuspenseQueryResult<CategoriesQuery, CategoriesQueryVariables>;
+export function useCategoriesSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        CategoriesQuery,
+        CategoriesQueryVariables
+      >,
+): Apollo.UseSuspenseQueryResult<
+  CategoriesQuery | undefined,
+  CategoriesQueryVariables
+>;
 export function useCategoriesSuspenseQuery(
   baseOptions?:
     | Apollo.SkipToken
@@ -23041,6 +23086,21 @@ export function useCategoryLazyQuery(
     options,
   );
 }
+// @ts-ignore
+export function useCategorySuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    CategoryQuery,
+    CategoryQueryVariables
+  >,
+): Apollo.UseSuspenseQueryResult<CategoryQuery, CategoryQueryVariables>;
+export function useCategorySuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<CategoryQuery, CategoryQueryVariables>,
+): Apollo.UseSuspenseQueryResult<
+  CategoryQuery | undefined,
+  CategoryQueryVariables
+>;
 export function useCategorySuspenseQuery(
   baseOptions?:
     | Apollo.SkipToken
@@ -23131,6 +23191,24 @@ export function useLandingPageLazyQuery(
     options,
   );
 }
+// @ts-ignore
+export function useLandingPageSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    LandingPageQuery,
+    LandingPageQueryVariables
+  >,
+): Apollo.UseSuspenseQueryResult<LandingPageQuery, LandingPageQueryVariables>;
+export function useLandingPageSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        LandingPageQuery,
+        LandingPageQueryVariables
+      >,
+): Apollo.UseSuspenseQueryResult<
+  LandingPageQuery | undefined,
+  LandingPageQueryVariables
+>;
 export function useLandingPageSuspenseQuery(
   baseOptions?:
     | Apollo.SkipToken
@@ -23207,6 +23285,21 @@ export function useLanguagesLazyQuery(
     options,
   );
 }
+// @ts-ignore
+export function useLanguagesSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    LanguagesQuery,
+    LanguagesQueryVariables
+  >,
+): Apollo.UseSuspenseQueryResult<LanguagesQuery, LanguagesQueryVariables>;
+export function useLanguagesSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<LanguagesQuery, LanguagesQueryVariables>,
+): Apollo.UseSuspenseQueryResult<
+  LanguagesQuery | undefined,
+  LanguagesQueryVariables
+>;
 export function useLanguagesSuspenseQuery(
   baseOptions?:
     | Apollo.SkipToken
@@ -23279,6 +23372,15 @@ export function useMenuLazyQuery(
     options,
   );
 }
+// @ts-ignore
+export function useMenuSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<MenuQuery, MenuQueryVariables>,
+): Apollo.UseSuspenseQueryResult<MenuQuery, MenuQueryVariables>;
+export function useMenuSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<MenuQuery, MenuQueryVariables>,
+): Apollo.UseSuspenseQueryResult<MenuQuery | undefined, MenuQueryVariables>;
 export function useMenuSuspenseQuery(
   baseOptions?:
     | Apollo.SkipToken
@@ -23353,6 +23455,24 @@ export function useNotificationLazyQuery(
     options,
   );
 }
+// @ts-ignore
+export function useNotificationSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    NotificationQuery,
+    NotificationQueryVariables
+  >,
+): Apollo.UseSuspenseQueryResult<NotificationQuery, NotificationQueryVariables>;
+export function useNotificationSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        NotificationQuery,
+        NotificationQueryVariables
+      >,
+): Apollo.UseSuspenseQueryResult<
+  NotificationQuery | undefined,
+  NotificationQueryVariables
+>;
 export function useNotificationSuspenseQuery(
   baseOptions?:
     | Apollo.SkipToken
@@ -23424,6 +23544,15 @@ export function usePageLazyQuery(
     options,
   );
 }
+// @ts-ignore
+export function usePageSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<PageQuery, PageQueryVariables>,
+): Apollo.UseSuspenseQueryResult<PageQuery, PageQueryVariables>;
+export function usePageSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<PageQuery, PageQueryVariables>,
+): Apollo.UseSuspenseQueryResult<PageQuery | undefined, PageQueryVariables>;
 export function usePageSuspenseQuery(
   baseOptions?:
     | Apollo.SkipToken
@@ -23494,6 +23623,27 @@ export function usePageByTemplateLazyQuery(
     options,
   );
 }
+// @ts-ignore
+export function usePageByTemplateSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    PageByTemplateQuery,
+    PageByTemplateQueryVariables
+  >,
+): Apollo.UseSuspenseQueryResult<
+  PageByTemplateQuery,
+  PageByTemplateQueryVariables
+>;
+export function usePageByTemplateSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        PageByTemplateQuery,
+        PageByTemplateQueryVariables
+      >,
+): Apollo.UseSuspenseQueryResult<
+  PageByTemplateQuery | undefined,
+  PageByTemplateQueryVariables
+>;
 export function usePageByTemplateSuspenseQuery(
   baseOptions?:
     | Apollo.SkipToken
@@ -23604,6 +23754,27 @@ export function usePageChildrenSearchLazyQuery(
     PageChildrenSearchQueryVariables
   >(PageChildrenSearchDocument, options);
 }
+// @ts-ignore
+export function usePageChildrenSearchSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    PageChildrenSearchQuery,
+    PageChildrenSearchQueryVariables
+  >,
+): Apollo.UseSuspenseQueryResult<
+  PageChildrenSearchQuery,
+  PageChildrenSearchQueryVariables
+>;
+export function usePageChildrenSearchSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        PageChildrenSearchQuery,
+        PageChildrenSearchQueryVariables
+      >,
+): Apollo.UseSuspenseQueryResult<
+  PageChildrenSearchQuery | undefined,
+  PageChildrenSearchQueryVariables
+>;
 export function usePageChildrenSearchSuspenseQuery(
   baseOptions?:
     | Apollo.SkipToken
@@ -23700,6 +23871,18 @@ export function usePagesLazyQuery(
     options,
   );
 }
+// @ts-ignore
+export function usePagesSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    PagesQuery,
+    PagesQueryVariables
+  >,
+): Apollo.UseSuspenseQueryResult<PagesQuery, PagesQueryVariables>;
+export function usePagesSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<PagesQuery, PagesQueryVariables>,
+): Apollo.UseSuspenseQueryResult<PagesQuery | undefined, PagesQueryVariables>;
 export function usePagesSuspenseQuery(
   baseOptions?:
     | Apollo.SkipToken
@@ -23773,6 +23956,15 @@ export function useTagLazyQuery(
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<TagQuery, TagQueryVariables>(TagDocument, options);
 }
+// @ts-ignore
+export function useTagSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<TagQuery, TagQueryVariables>,
+): Apollo.UseSuspenseQueryResult<TagQuery, TagQueryVariables>;
+export function useTagSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<TagQuery, TagQueryVariables>,
+): Apollo.UseSuspenseQueryResult<TagQuery | undefined, TagQueryVariables>;
 export function useTagSuspenseQuery(
   baseOptions?:
     | Apollo.SkipToken
@@ -23857,6 +24049,15 @@ export function useTagsLazyQuery(
     options,
   );
 }
+// @ts-ignore
+export function useTagsSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<TagsQuery, TagsQueryVariables>,
+): Apollo.UseSuspenseQueryResult<TagsQuery, TagsQueryVariables>;
+export function useTagsSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<TagsQuery, TagsQueryVariables>,
+): Apollo.UseSuspenseQueryResult<TagsQuery | undefined, TagsQueryVariables>;
 export function useTagsSuspenseQuery(
   baseOptions?:
     | Apollo.SkipToken

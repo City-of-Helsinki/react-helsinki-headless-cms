@@ -280,6 +280,24 @@ export function useVenuesByIdsLazyQuery(
     options,
   );
 }
+// @ts-ignore
+export function useVenuesByIdsSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    VenuesByIdsQuery,
+    VenuesByIdsQueryVariables
+  >,
+): Apollo.UseSuspenseQueryResult<VenuesByIdsQuery, VenuesByIdsQueryVariables>;
+export function useVenuesByIdsSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        VenuesByIdsQuery,
+        VenuesByIdsQueryVariables
+      >,
+): Apollo.UseSuspenseQueryResult<
+  VenuesByIdsQuery | undefined,
+  VenuesByIdsQueryVariables
+>;
 export function useVenuesByIdsSuspenseQuery(
   baseOptions?:
     | Apollo.SkipToken
