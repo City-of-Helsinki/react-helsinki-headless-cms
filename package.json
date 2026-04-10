@@ -76,7 +76,7 @@
   },
   "resolutions": {
     "hds-react/cookie": "^0.7.2",
-    "minimatch": ">=10.2.3"
+    "minimatch": "^10.2.3"
   },
   "devDependencies": {
     "@apollo/client": "^3.14.0",
