@@ -7,9 +7,12 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: ['./vitest-setup.ts'],
-    alias: {
-      '\\.(css|less|scss|sss|styl)$': 'identity-obj-proxy',
-    },
+    alias: [
+      {
+        find: '\\.(css|less|scss|sss|styl)$',
+        replacement: 'identity-obj-proxy',
+      },
+    ],
     css: {
       modules: {
         classNameStrategy: 'non-scoped',
@@ -17,8 +20,13 @@ export default defineConfig({
     },
     coverage: {
       provider: 'v8',
-      exclude: [...coverageConfigDefaults.exclude, './(build|dist|temp)/'],
+      exclude: [
+        ...coverageConfigDefaults.exclude,
+        './build/**',
+        './dist/**',
+        './temp/**',
+      ],
     },
-    testTimeout: 1000000,
+    testTimeout: 60000,
   },
 });
