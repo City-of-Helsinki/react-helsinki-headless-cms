@@ -6,9 +6,12 @@ module.exports = {
 
   webpackFinal: async (config) => {
     config.resolve.fallback.crypto = require.resolve('crypto-browserify');
+    config.plugins ??= [];
     config.plugins.push(
-      new webpack.DefinePlugin({
-        'process.env': JSON.stringify(process.env),
+      new webpack.EnvironmentPlugin({
+        CMS_GRAPHQL_ENDPOINT: null,
+        EVENTS_GRAPHQL_ENDPOINT: null,
+        LINKED_EVENTS_ENDPOINT: null,
       }),
     );
     return config;

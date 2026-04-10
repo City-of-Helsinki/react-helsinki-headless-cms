@@ -7,12 +7,6 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: ['./vitest-setup.ts'],
-    alias: [
-      {
-        find: '\\.(css|less|scss|sss|styl)$',
-        replacement: 'identity-obj-proxy',
-      },
-    ],
     css: {
       modules: {
         classNameStrategy: 'non-scoped',
