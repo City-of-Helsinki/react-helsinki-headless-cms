@@ -18,6 +18,10 @@ export const parameters = {
   viewport: {
     options: INITIAL_VIEWPORTS,
   },
+  a11y: {
+    // 'error' causes a11y violations to fail tests in the test runner
+    test: 'error',
+  },
 };
 
 // Initialize MSW
