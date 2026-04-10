@@ -1,6 +1,7 @@
 import React from 'react';
 import { addDays, addYears, subDays, subYears } from 'date-fns';
 import { screen, waitFor } from '@testing-library/react';
+import { vi } from 'vitest';
 
 import { customRender as render } from '../../../common/utils/customRender';
 import { server } from '../../../mocks/server';
@@ -94,7 +95,7 @@ describe('event search module', () => {
   )(
     'replace the start-parameter past date-string value "%s" with "now"',
     async (dateInPast) => {
-      const convertDateStringInPastToNowSpy = jest.spyOn(
+      const convertDateStringInPastToNowSpy = vi.spyOn(
         CollectionUtils,
         'convertDateStringInPastToNow',
       );
@@ -121,7 +122,7 @@ describe('event search module', () => {
         expect(screen.getByText(event.name.fi)).toBeInTheDocument();
       });
 
-      expect(convertDateStringInPastToNowSpy).toBeCalledWith(dateInPast);
+      expect(convertDateStringInPastToNowSpy).toHaveBeenCalledWith(dateInPast);
       expect(convertDateStringInPastToNowSpy).toHaveReturnedWith('now');
     },
   );
@@ -142,7 +143,7 @@ describe('event search module', () => {
   )(
     'dont replace the start-parameter future date-string value "%s"',
     async (dateInFuture) => {
-      const convertDateStringInPastToNowSpy = jest.spyOn(
+      const convertDateStringInPastToNowSpy = vi.spyOn(
         CollectionUtils,
         'convertDateStringInPastToNow',
       );
@@ -169,7 +170,9 @@ describe('event search module', () => {
         expect(screen.getByText(event.name.fi)).toBeInTheDocument();
       });
 
-      expect(convertDateStringInPastToNowSpy).toBeCalledWith(dateInFuture);
+      expect(convertDateStringInPastToNowSpy).toHaveBeenCalledWith(
+        dateInFuture,
+      );
       expect(convertDateStringInPastToNowSpy).toHaveReturnedWith(dateInFuture);
     },
   );

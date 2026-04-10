@@ -6,14 +6,13 @@ import {
   fireEvent,
   isInaccessible,
 } from '@testing-library/react';
-import '@testing-library/jest-dom';
+import { vi } from 'vitest';
 
 import { Carousel } from '../Carousel';
 import { MOBILE_WIDTH } from '../constants';
 import type { CarouselProps } from '../types';
 
-jest.mock('../../configProvider/useConfig', () => ({
-  // eslint-disable-next-line @eslint-react/no-unnecessary-use-prefix
+vi.mock('../../configProvider/useConfig', () => ({
   useConfig: () => ({
     copy: {
       previous: 'Previous',
@@ -23,8 +22,7 @@ jest.mock('../../configProvider/useConfig', () => ({
 }));
 
 // Mock translation hook
-jest.mock('../../translation/useTranslationWithFallback', () => ({
-  // eslint-disable-next-line @eslint-react/no-unnecessary-use-prefix
+vi.mock('../../translation/useTranslationWithFallback', () => ({
   useTranslationWithFallback: () => ({
     t: (key: string) => {
       if (key === 'carouselRegionLabelText') {
@@ -184,7 +182,7 @@ describe('Carousel', () => {
     });
 
     it('calculates number of slides correctly with hasMore prop', () => {
-      const mockOnLoadMore = jest.fn();
+      const mockOnLoadMore = vi.fn();
       const loadMoreButtonLabelText = 'Load more';
       render(
         <Carousel

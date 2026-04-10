@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom';
 
 import {
   CarouselNextSlideButton,
@@ -11,15 +10,14 @@ import type { CarouselContextType } from '../../types';
 import { initialCarouselContextStateValues } from '../../constants';
 
 // Mock the Icon components from hds-react to isolate our button components
-jest.mock('hds-react', () => ({
-  ...jest.requireActual('hds-react'),
+vi.mock('hds-react', async () => ({
+  ...(await vi.importActual('hds-react')),
   IconAngleLeft: () => <div data-testid="icon-angle-left" />,
   IconAngleRight: () => <div data-testid="icon-angle-right" />,
 }));
 
 // Mock useConfig to provide translations
-jest.mock('../../../configProvider/useConfig', () => ({
-  // eslint-disable-next-line @eslint-react/no-unnecessary-use-prefix
+vi.mock('../../../configProvider/useConfig', () => ({
   useConfig: () => ({
     copy: {
       previous: 'Previous',
@@ -29,7 +27,7 @@ jest.mock('../../../configProvider/useConfig', () => ({
 }));
 
 describe('CarouselSlideButton', () => {
-  const mockHandleUpdateSlideProps = jest.fn();
+  const mockHandleUpdateSlideProps = vi.fn();
 
   // A helper function to render components with a mock context
   const renderWithContext = (
@@ -41,11 +39,11 @@ describe('CarouselSlideButton', () => {
         value={{
           ...initialCarouselContextStateValues,
           // Dummy functions for context fields that require them
-          setTransformValue: jest.fn(),
-          setNumberOfSlides: jest.fn(),
-          setItemsPerSlide: jest.fn(),
-          setCurrentSlide: jest.fn(),
-          setWidth: jest.fn(),
+          setTransformValue: vi.fn(),
+          setNumberOfSlides: vi.fn(),
+          setItemsPerSlide: vi.fn(),
+          setCurrentSlide: vi.fn(),
+          setWidth: vi.fn(),
           // Real mock and provided props
           handleUpdateSlideProps: mockHandleUpdateSlideProps,
           ...providerProps,
