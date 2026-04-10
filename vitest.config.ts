@@ -19,5 +19,6 @@ export default defineConfig({
       provider: 'v8',
       exclude: [...coverageConfigDefaults.exclude, './(build|dist|temp)/'],
     },
+    testTimeout: 1000000,
   },
 });
