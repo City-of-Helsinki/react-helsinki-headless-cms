@@ -342,6 +342,7 @@ export type QueryEventListArgs = {
   endsBefore?: InputMaybe<Scalars['String']['input']>;
   eventType?: InputMaybe<Array<InputMaybe<EventTypeId>>>;
   fullText?: InputMaybe<Scalars['String']['input']>;
+  fullTextLanguage?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   inLanguage?: InputMaybe<Scalars['String']['input']>;
   include?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1583,6 +1584,21 @@ export function useEventListLazyQuery(
     options,
   );
 }
+// @ts-ignore
+export function useEventListSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    EventListQuery,
+    EventListQueryVariables
+  >,
+): Apollo.UseSuspenseQueryResult<EventListQuery, EventListQueryVariables>;
+export function useEventListSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<EventListQuery, EventListQueryVariables>,
+): Apollo.UseSuspenseQueryResult<
+  EventListQuery | undefined,
+  EventListQueryVariables
+>;
 export function useEventListSuspenseQuery(
   baseOptions?:
     | Apollo.SkipToken
@@ -1693,6 +1709,24 @@ export function useEventsByIdsLazyQuery(
     options,
   );
 }
+// @ts-ignore
+export function useEventsByIdsSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    EventsByIdsQuery,
+    EventsByIdsQueryVariables
+  >,
+): Apollo.UseSuspenseQueryResult<EventsByIdsQuery, EventsByIdsQueryVariables>;
+export function useEventsByIdsSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        EventsByIdsQuery,
+        EventsByIdsQueryVariables
+      >,
+): Apollo.UseSuspenseQueryResult<
+  EventsByIdsQuery | undefined,
+  EventsByIdsQueryVariables
+>;
 export function useEventsByIdsSuspenseQuery(
   baseOptions?:
     | Apollo.SkipToken
