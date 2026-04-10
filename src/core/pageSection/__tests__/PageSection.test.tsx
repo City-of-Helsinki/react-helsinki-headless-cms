@@ -49,10 +49,13 @@ beforeEach(() => {
   window.Image = function () {
     return mockImage;
   };
+  // globalThis.Image is what `new Image()` resolves to in production code
+  globalThis.Image = window.Image;
 });
 
 afterEach(() => {
   window.Image = originalImage;
+  globalThis.Image = originalImage;
 });
 
 test('renders image url without accessiblity violations', async () => {
