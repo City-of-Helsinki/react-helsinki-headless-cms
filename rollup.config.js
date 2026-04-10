@@ -11,7 +11,9 @@ import typescript from 'rollup-plugin-typescript2';
 import dts from 'rollup-plugin-dts';
 import nodePolyfills from 'rollup-plugin-polyfill-node';
 import copy from 'rollup-plugin-copy';
-import del from 'rollup-plugin-delete';
+import _del from 'rollup-plugin-delete';
+// rollup-plugin-delete v3 is ESM-only; unwrap .default when bundled as CJS
+const del = _del?.default ?? _del;
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
