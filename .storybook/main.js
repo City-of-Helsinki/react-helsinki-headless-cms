@@ -1,10 +1,16 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
 
   webpackFinal: async (config) => {
     config.resolve.fallback.crypto = require.resolve('crypto-browserify');
+    config.plugins.push(
+      new webpack.DefinePlugin({
+        'process.env': JSON.stringify(process.env),
+      }),
+    );
     return config;
   },
 
