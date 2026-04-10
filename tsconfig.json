@@ -22,7 +22,8 @@
     "resolveJsonModule": true,
     "alwaysStrict": true,
     "skipLibCheck": true,
-    "strict": true
+    "strict": true,
+    "verbatimModuleSyntax": true
   },
   "include": [
     "src",

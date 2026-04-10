@@ -8,7 +8,7 @@ export const useArticleQuery = makeQueryWithApolloClientFromConfig<
 >(useArticleQueryWithoutClient);
 
 export {
-  ArticleQuery,
-  ArticleQueryVariables,
+  type ArticleQuery,
+  type ArticleQueryVariables,
   ArticleDocument,
 } from './__generated__';

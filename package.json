@@ -71,12 +71,18 @@
         "To fix https://github.com/City-of-Helsinki/react-helsinki-headless-cms/security/dependabot/80,",
         "https://github.com/City-of-Helsinki/react-helsinki-headless-cms/security/dependabot/77",
         "https://github.com/City-of-Helsinki/react-helsinki-headless-cms/security/dependabot/76"
+      ],
+      "picomatch": [
+        "To fix vulnerable picomatch@2.3.1 (no 2.3.2 exists on npm) and consolidate all",
+        "picomatch instances to a safe version. Overrides transitive 2.x requirements",
+        "from micromatch, anymatch, @rollup/pluginutils v4, and 4.0.2/4.0.3 requirements."
       ]
     }
   },
   "resolutions": {
     "hds-react/cookie": "^0.7.2",
-    "minimatch": "^10.2.3"
+    "minimatch": "^10.2.3",
+    "picomatch": "^4.0.4"
   },
   "devDependencies": {
     "@apollo/client": "^3.14.0",
