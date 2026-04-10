@@ -13,7 +13,7 @@ export function useEventsByIdsQuery(
 }
 
 export {
-  EventsByIdsQuery,
-  EventsByIdsQueryVariables,
+  type EventsByIdsQuery,
+  type EventsByIdsQueryVariables,
   EventsByIdsDocument,
 } from './__generated__';

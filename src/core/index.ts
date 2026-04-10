@@ -1,5 +1,5 @@
 export { ConfigProvider } from './configProvider/ConfigProvider';
-export { Config } from './configProvider/configContext';
+export type { Config } from './configProvider/configContext';
 export { defaultConfig } from './configProvider/defaultConfig';
 export { useConfig } from './configProvider/useConfig';
 export { useHeadlessCmsLink } from './configProvider/useHeadlessCmsLink';
