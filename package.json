@@ -13,7 +13,7 @@
     "lint": "yarn eslint src && yarn prettier ./src -c",
     "lint-fix": "yarn eslint src --fix && yarn prettier ./src -w",
     "test": "vitest",
-    "test:staged": "vitest run related --passWithNoTests",
+    "test:staged": "vitest related --passWithNoTests",
     "test-storybook": "test-storybook",
     "test:coverage": "vitest run --coverage",
     "build": "rollup -c --bundleConfigAsCjs",
