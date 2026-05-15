@@ -71,11 +71,6 @@
       flex-direction: column;
     }
   }
-
-  & svg {
-    height: 84px;
-    width: 84px;
-  }
 }
 
 .cardContent {
@@ -119,6 +114,11 @@
   align-items: center;
   margin-right: 0;
   margin-bottom: 16px;
+
+  & svg {
+    height: 84px;
+    width: 84px;
+  }
 
   &.horisontal {
     @include breakpoints.respond_above(s) {
