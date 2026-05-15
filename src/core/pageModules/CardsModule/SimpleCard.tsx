@@ -102,7 +102,7 @@ export function SimpleCard({
               variant={ButtonVariant.Secondary}
               theme={ButtonPresetTheme.Black}
               onClick={handleClick}
-              iconStart={
+              iconEnd={
                 <IconAngleRight aria-hidden="true" size={IconSize.Small} />
               }
             >
