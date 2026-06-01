@@ -27,19 +27,19 @@ jobs:
   build-stable:
     needs: release-please
     if: ${{ needs.release-please.outputs.release_created }}
-    uses: City-of-Helsinki/.github/.github/workflows/ci-node.yml@main
+    uses: City-of-Helsinki/.github/.github/workflows/ci-pnpm-node.yml@main
     secrets: inherit
     with:
-      node-version: '22'
-      upload_artifacts: true
-      skip_sonar: true
-  
+      node-version: '24'
+      upload-artifacts: true
+      skip-sonar: true
+
   publish:
     needs: build-stable
     secrets: inherit
     uses: City-of-Helsinki/.github/.github/workflows/ci-npm-publish.yml@main
     with:
-      node-version: '22'
+      node-version: '24'
       use-ci-build: true
 
   # 3. CANARY RELEASE FLOW (Runs on every push to main, EXCLUDING schedule)
@@ -48,12 +48,12 @@ jobs:
   build-canary:
     # This conditional ensures it runs ONLY when the workflow was triggered by a commit push.
     if: github.event_name == 'push'
-    uses: City-of-Helsinki/.github/.github/workflows/ci-node.yml@main
+    uses: City-of-Helsinki/.github/.github/workflows/ci-pnpm-node.yml@main
     secrets: inherit
     with:
-      node-version: '22'
-      upload_artifacts: true
-      skip_sonar: true
+      node-version: '24'
+      upload-artifacts: true
+      skip-sonar: true
 
   publish-npm-canary:
     # This conditional is redundant but good practice; it will only run if its dependency runs.
@@ -62,6 +62,6 @@ jobs:
     secrets: inherit
     uses: City-of-Helsinki/.github/.github/workflows/ci-npm-publish.yml@main
     with:
-      node-version: '22'
+      node-version: '24'
       use-ci-build: true
       canary: true

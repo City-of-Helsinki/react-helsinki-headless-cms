@@ -1,5 +1,10 @@
 {
   "name": "@city-of-helsinki/react-helsinki-headless-cms",
+  "engines": {
+    "node": ">=24.0.0",
+    "pnpm": ">=11.1.2"
+  },
+  "packageManager": "pnpm@11.1.2",
   "version": "3.0.3",
   "description": "React components for displaying Headless CMS content according to guidelines set by HDS",
   "main": "cjs/index.js",
@@ -7,11 +12,11 @@
   "types": "index.d.ts",
   "scripts": {
     "prepare": "husky",
-    "dev": "yarn storybook",
-    "dev:no-open": "yarn storybook --no-open",
+    "dev": "pnpm run storybook",
+    "dev:no-open": "pnpm run storybook --no-open",
     "typecheck": "tsc --project ./tsconfig.json --noEmit",
-    "lint": "yarn eslint src && yarn prettier ./src -c",
-    "lint-fix": "yarn eslint src --fix && yarn prettier ./src -w",
+    "lint": "eslint src && prettier ./src -c",
+    "lint-fix": "eslint src --fix && prettier ./src -w",
     "test": "vitest",
     "test:staged": "vitest related --passWithNoTests",
     "test-storybook": "test-storybook",
@@ -23,9 +28,6 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "generate:graphql": "cross-env DOTENV_CONFIG_PATH=./.env graphql-codegen -r dotenv/config --config codegen.yml"
-  },
-  "engines": {
-    "node": ">=22.11.0"
   },
   "files": [
     "dist/"
@@ -185,7 +187,7 @@
     "src/**/*.{js,jsx,ts,tsx,cjs,mjs}": [
       "eslint --fix",
       "prettier --write",
-      "yarn test:staged"
+      "pnpm run test:staged"
     ]
   }
 }

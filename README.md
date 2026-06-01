@@ -26,18 +26,17 @@ data using [Helsinki Design System](https://github.com/City-of-Helsinki/helsinki
   - [Use as a application dependency](#use-as-a-application-dependency)
     - [Folder-based links](#folder-based-links)
     - [Tarball-based links](#tarball-based-links)
-    - [Use portals (with monorepos and Yarn)](#use-portals-with-monorepos-and-yarn)
+    - [Use portals (with monorepos and pnpm)](#use-portals-with-monorepos-and-pnpm)
 - [Testing](#testing)
   - [Testing in IDE terminal](#testing-in-ide-terminal)
 - [Usage](#usage)
-- [Releases, changelogs and deployments](#releases-changelogs-and-deployments)
+- [Releases and changelogs](#releases-and-changelogs)
   - [Conventional Commits](#conventional-commits)
   - [Releasable units](#releasable-units)
   - [Configuration](#configuration)
   - [Troubleshooting release-please](#troubleshooting-release-please)
     - [Fix merge conflicts by running release-please -action manually](#fix-merge-conflicts-by-running-release-please--action-manually)
-  - [Deployments](#deployments)
-    - [Publishing new versions manually without release-please](#publishing-new-versions-manually-without-release-please)
+  - [Publishing new versions manually without release-please](#publishing-new-versions-manually-without-release-please)
 - [Known issues](#known-issues)
 - [Contributing](#contributing)
 - [Issues](#issues)
@@ -75,7 +74,7 @@ It provides:
 ## Installation
 
 ```bash
-yarn add @city-of-helsinki/react-helsinki-headless-cms
+pnpm add @city-of-helsinki/react-helsinki-headless-cms
 ```
 
 ## Development
@@ -96,16 +95,16 @@ The general requirements for new Component development:
 
 | Name                    | Purpose                                                                                                  | Useful Options                |
 | ----------------------- | -------------------------------------------------------------------------------------------------------- | ----------------------------- |
-| `yarn dev`              | Starts storybook environment that can be used for developing components.                                 |                               |
-| `yarn typecheck`        | Runs the ts type check in the project components.                                                        |                               |
-| `yarn lint`             | Lints the application to be according to quality standards (eslint) and formatting standards (prettier). | `--fix`: fix fixable problems |
-| `yarn test`             | Runs tests with jest.                                                                                    | `--watch`: enable watch mode  |
-| `yarn test-storybook`   | Runs storybook accessibility tests jest.                                                                 |                               |
-| `yarn build`            | Builds application with rollup.                                                                          |                               |
-| `yarn docker:dev`       | Runs the application with docker with Development target environment.                                    |                               |
-| `yarn docker:prod`      | Runs the application with docker with Production target environment.                                     |                               |
-| `yarn docker:down`      | Shuts down the docker environment.                                                                       |                               |
-| `yarn generate:graphql` | Generates / updates GraphQL schema for the project.                                                      |                               |
+| `pnpm dev`              | Starts storybook environment that can be used for developing components.                                 |                               |
+| `pnpm typecheck`        | Runs the ts type check in the project components.                                                        |                               |
+| `pnpm lint`             | Lints the application to be according to quality standards (eslint) and formatting standards (prettier). | `--fix`: fix fixable problems |
+| `pnpm test`             | Runs tests with jest.                                                                                    | `--watch`: enable watch mode  |
+| `pnpm test-storybook`   | Runs storybook accessibility tests jest.                                                                 |                               |
+| `pnpm build`            | Builds application with rollup.                                                                          |                               |
+| `pnpm docker:dev`       | Runs the application with docker with Development target environment.                                    |                               |
+| `pnpm docker:prod`      | Runs the application with docker with Production target environment.                                     |                               |
+| `pnpm docker:down`      | Shuts down the docker environment.                                                                       |                               |
+| `pnpm generate:graphql` | Generates / updates GraphQL schema for the project.                                                      |                               |
 
 **NOTE: To manually publish a new version to the NPM, you will need the credentials that can be found from the City of Helsinki Culture and Leisure's Vault-service.**
 
@@ -119,7 +118,7 @@ You can use docker local environment for development:
 
 Alternatively, the local environment can be used:
 
-`yarn dev`
+`pnpm dev`
 
 ### Module structure
 
@@ -138,12 +137,12 @@ This project uses [Husky](https://typicode.github.io/husky/#/) to manage Git hoo
 The pre-commit hook is configured to run the following commands:
 
 ```sh
-yarn doctoc .
-yarn lint-staged --relative
+pnpm exec doctoc .
+pnpm exec lint-staged --relative
 ```
 
-- `yarn doctoc .`: This command updates the table of contents in your markdown files.
-- `yarn lint-staged --relative`: This command runs linting on staged files to ensure they meet the project's coding standards. The lint-staged configuration can be found from [package.json](./package.json).
+- `pnpm exec doctoc .`: This command updates the table of contents in your markdown files.
+- `pnpm exec lint-staged --relative`: This command runs linting on staged files to ensure they meet the project's coding standards. The lint-staged configuration can be found from [package.json](./package.json).
   - Using `--relative` flag to reduce command line length,
     as the combined length of all the absolute paths for a large commit can get quite long
 
@@ -182,7 +181,7 @@ The project is using the Storybook 10.
 
 **NOTE: Storybook version 10 may require the `playwright-chromium` installation.**
 
-The `yarn dev` command will start `storybook` in port `6006`. When you make changes in `src`, they'll be automatically updated to `storybook`.
+The `pnpm dev` command will start `storybook` in port `6006`. When you make changes in `src`, they'll be automatically updated to `storybook`.
 
 ### Apollo
 
@@ -233,11 +232,11 @@ This project uses `rollup` for its final bundle.
 The easiest way to test the React Helsinki Headless CMS -library is to install it as a dependency of an application by using a local relative path:
 
 - https://docs.npmjs.com/cli/v9/configuring-npm/package-json#local-paths
-- https://yarnpkg.com/protocol/file
+- https://pnpm.io/cli/add#install-from-local-file-system (pnpm supports the same `file:` protocol)
 
 The steps to use the local relative path as a dependency:
 
-1. Build the React Helsinki Headless CMS -library with `yarn build`. You should now have a `/dist` -folder that contains the built library package.
+1. Build the React Helsinki Headless CMS -library with `pnpm build`. You should now have a `/dist` -folder that contains the built library package.
 2. Add the `/dist`-directory as a dependency. Remember to use the right relative local path:
 
 ```
@@ -250,12 +249,12 @@ The steps to use the local relative path as a dependency:
 
 #### Tarball-based links
 
-When file: points to a .tgz file, Yarn will transparently let you require files from within the archive. For the node_modules linker, it means that the archive will be unpacked into the generated node_modules folder.
+When file: points to a .tgz file, pnpm will transparently let you require files from within the archive. For the node_modules linker, it means that the archive will be unpacked into the generated node_modules folder.
 
 You can create a tarball by first building the package and then calling `pack`
 
-1. `yarn build`
-2. `yarn pack`
+1. `pnpm build`
+2. `pnpm pack`
 
 The steps to use the local tarball as a dependency:
 
@@ -267,9 +266,9 @@ The steps to use the local tarball as a dependency:
 }
 ```
 
-#### Use portals (with monorepos and Yarn)
+#### Use portals (with monorepos and pnpm)
 
-> See more: https://yarnpkg.com/protocol/portal
+> See more: https://pnpm.io/cli/link
 
 The `portal:` protocol is similar to the `link:` protocol (it must be a relative path to a folder which will be made available without copies), but the target is assumed to be a package instead.
 
@@ -290,7 +289,7 @@ The `portal:` protocol is specifically designed for linking local directories (o
 }
 ```
 
-3. Clean and Install: *If you have a conflicting dependency* in the root `package.json`, delete it and run yarn install from the monorepo root.
+3. Clean and Install: *If you have a conflicting dependency* in the root `package.json`, delete it and run pnpm install from the monorepo root.
 
 ## Testing
 
@@ -301,7 +300,7 @@ The test could be run from the Storybook UI (Accessibility tab of the Story) or 
 ### Testing in IDE terminal
 
 ```bash
-yarn test-storybook
+pnpm test-storybook
 ```
 
 After executing the script, you will get the Axe Accessibility testing report in the terminal window.
@@ -345,9 +344,7 @@ function App() {
 
 ```
 
-## Releases, changelogs and deployments
-
-The used environments are listed in [Service environments](#service-environments).
+## Releases and changelogs
 
 The application uses automatic semantic versions and is released using [Release Please](https://github.com/googleapis/release-please).
 
@@ -355,7 +352,7 @@ The application uses automatic semantic versions and is released using [Release 
 
 Each time you merge a "normal" pull request, the release-please-action will create or update a "Release PR" with the changelog and the version bump related to the changes (they're named like `release-please--branches--master--components--react-helsinki-headless-cms`).
 
-To create a new release for an app, this release PR is merged, which creates a new release with release notes and a new tag. This tag will be picked by Azure pipeline and trigger a new deployment to staging. From there, the release needs to be manually released to production.
+To create a new release, merge the release PR. This creates a new release with notes and a new tag. The release workflow then builds and publishes the package to npm.
 
 When merging release PRs, make sure to use the "Rebase and merge" (or "Squash and merge") option, so that Github doesn't create a merge commit. All the commits must follow the conventional commits format. This is important, because the release-please-action does not work correctly with merge commits (there's an open issue you can track: [Chronological commit sorting means that merged PRs can be ignored ](https://github.com/googleapis/release-please/issues/1533)).
 
@@ -407,27 +404,21 @@ Sometimes there might be a merge conflict in release PR - this should resolve it
 
 There's also a CLI for debugging and manually running releases available for release-please: [release-please-cli](https://github.com/googleapis/release-please/blob/main/docs/cli.md)
 
-### Deployments
+### Publishing new versions manually without release-please
 
-When a Release-Please pull request is merged and a version tag is created (or a proper tag name for a commit is manually created), this tag will be picked by Azure pipeline, which then triggers a new deployment to staging. From there, the deployment needs to be manually approved to allow it to proceed to the production environment.
+For canary release the naming convention is `x.y.z-canary-[gitcommithash]`. Running `pnpm publish` should ask for version number too, but a `version` property in `package.json` sets the version number.
 
-The tag name is defined in the [azure-pipelines-release.yml](./azure-pipelines-release.yml).
+1. Build package with `pnpm build`
+2. Publish package `pnpm publish`
 
-#### Publishing new versions manually without release-please
-
-For canary release the naming convention is `x.y.z-canary-[gitcommithash]`. Running `yarn publish` should ask for version number too, but a `version` property in `package.json` sets the version number.
-
-1. Build package with `yarn build`
-2. Publish package `yarn publish`
-
-**Note:** A local tarball of built package can be created with `yarn pack`. Just remember to build first.
+**Note:** A local tarball of built package can be created with `pnpm pack`. Just remember to build first.
 
 **Note:** There is an a known issue with publishing using Windows environment. If you have a Windows machine use Docker container to publish the package.An Apollo client linked to a graphql endpoint with a supported schema (headless CMS) must be provided in the `apolloClient` field of the `config` object.
 
 ## Known issues
 
 - Jest has difficulties loading this library. When this library is required in a test file, it's possible that some imports are cjs and some are esm. These two variants do not share a react context which can result in `useConfig` calls that return an empty config object even though `<ConfigProvider>` is declared correctly. I.e. `<ConfigProvider>` sets values for `context1` and `useConfig` reads `context2`.
-- Some of the built packages created with `yarn build` does some issues with some types. This leads to a situation where the application that uses the library cannot read all the exported types. Especially the exported enums inside a built package might be handled incorrectly (https://github.com/rollup/rollup/issues/4291), but there are other type related issues also, but not on every built package.
+- Some of the built packages created with `pnpm build` does some issues with some types. This leads to a situation where the application that uses the library cannot read all the exported types. Especially the exported enums inside a built package might be handled incorrectly (https://github.com/rollup/rollup/issues/4291), but there are other type related issues also, but not on every built package.
 
 ## Contributing
 

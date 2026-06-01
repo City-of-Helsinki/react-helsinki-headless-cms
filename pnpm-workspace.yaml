@@ -1,0 +1,9 @@
+# Block installation of dependencies released less than 1 week ago (supply-chain hardening)
+minimumReleaseAge: 10080
+
+allowBuilds:
+  '@parcel/watcher': true
+  '@swc/core': true
+  esbuild: true
+  msw: true
+  unrs-resolver: true
