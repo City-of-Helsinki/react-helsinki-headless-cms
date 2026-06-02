@@ -20,6 +20,7 @@ export function Icon({ name }: IconProps) {
   );
   return (
     <Suspense fallback={<div className={styles.fallbackIcon} />}>
+      {/* eslint-disable-next-line react-hooks/static-components */}
       <IconComponent />
     </Suspense>
   );
