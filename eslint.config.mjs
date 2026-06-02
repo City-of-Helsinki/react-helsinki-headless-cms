@@ -1,7 +1,6 @@
 import js from '@eslint/js';
 import stylisticPlugin from '@stylistic/eslint-plugin';
 import tseslint from 'typescript-eslint';
-import tsParser from '@typescript-eslint/parser';
 import importPlugin from 'eslint-plugin-import-x';
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 import prettierPlugin from 'eslint-plugin-prettier';
@@ -144,7 +143,7 @@ export default [
   {
     files,
     languageOptions: {
-      parser: tsParser,
+      parser: tseslint.parser,
       parserOptions: {
         ecmaVersion: 2018,
         ecmaFeatures: { jsx: true },
