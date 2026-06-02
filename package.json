@@ -14,7 +14,7 @@
     "prepare": "husky",
     "dev": "pnpm run storybook",
     "dev:no-open": "pnpm run storybook --no-open",
-    "typecheck": "tsc --project ./tsconfig.json --noEmit",
+    "typecheck": "tsc --project ./tsconfig.json --noEmit --declaration false",
     "lint": "eslint src && prettier ./src -c",
     "lint-fix": "eslint src --fix && prettier ./src -w",
     "test": "vitest",
