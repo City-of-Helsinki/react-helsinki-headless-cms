@@ -62,20 +62,6 @@
       "optional": true
     }
   },
-  "//": {
-    "Why are packages overridden?": {
-      "NOTE": "pnpm overrides live in pnpm-workspace.yaml (the 'overrides:' block), not here. pnpm ignores the npm/Yarn 'resolutions' field.",
-      "hds-react>cookie": [
-        "To fix https://github.com/City-of-Helsinki/react-helsinki-headless-cms/security/dependabot/28",
-        "NOTE: This can be removed if hds-react starts to depend on >=v1 cookie"
-      ],
-      "minimatch": [
-        "To fix https://github.com/City-of-Helsinki/react-helsinki-headless-cms/security/dependabot/80,",
-        "https://github.com/City-of-Helsinki/react-helsinki-headless-cms/security/dependabot/77",
-        "https://github.com/City-of-Helsinki/react-helsinki-headless-cms/security/dependabot/76"
-      ]
-    }
-  },
   "devDependencies": {
     "@apollo/client": "^3.14.0",
     "@babel/core": "^7.28.0",
