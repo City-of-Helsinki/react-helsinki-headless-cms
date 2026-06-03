@@ -101,4 +101,4 @@ export const defaultConfig = {
     allowedUnsafeTags: [],
     trustedOrigins: [],
   },
-} as const satisfies Config;
+} satisfies Config;
