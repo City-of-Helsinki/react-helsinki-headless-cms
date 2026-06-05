@@ -26,7 +26,7 @@ data using [Helsinki Design System](https://github.com/City-of-Helsinki/helsinki
   - [Use as a application dependency](#use-as-a-application-dependency)
     - [Folder-based links](#folder-based-links)
     - [Tarball-based links](#tarball-based-links)
-    - [Use portals (with monorepos and pnpm)](#use-portals-with-monorepos-and-pnpm)
+    - [Automated package smoke test](#automated-package-smoke-test)
 - [Testing](#testing)
   - [Testing in IDE terminal](#testing-in-ide-terminal)
 - [Usage](#usage)
@@ -98,8 +98,8 @@ The general requirements for new Component development:
 | `pnpm dev`              | Starts storybook environment that can be used for developing components.                                 |                               |
 | `pnpm typecheck`        | Runs the ts type check in the project components.                                                        |                               |
 | `pnpm lint`             | Lints the application to be according to quality standards (eslint) and formatting standards (prettier). | `--fix`: fix fixable problems |
-| `pnpm test`             | Runs tests with jest.                                                                                    | `--watch`: enable watch mode  |
-| `pnpm test-storybook`   | Runs storybook accessibility tests jest.                                                                 |                               |
+| `pnpm test`             | Runs tests with Vitest.                                                                                  | `--watch`: enable watch mode  |
+| `pnpm test-storybook`   | Runs Storybook tests using `test-storybook` (Storybook test runner / Playwright).                        |                               |
 | `pnpm build`            | Builds application with rollup.                                                                          |                               |
 | `pnpm docker:dev`       | Runs the application with docker with Development target environment.                                    |                               |
 | `pnpm docker:prod`      | Runs the application with docker with Production target environment.                                     |                               |
@@ -137,11 +137,11 @@ This project uses [Husky](https://typicode.github.io/husky/#/) to manage Git hoo
 The pre-commit hook is configured to run the following commands:
 
 ```sh
-pnpm exec doctoc .
+pnpm exec doctoc . -u
 pnpm exec lint-staged --relative
 ```
 
-- `pnpm exec doctoc .`: This command updates the table of contents in your markdown files.
+- `pnpm exec doctoc . -u`: This command updates the table of contents in your markdown files.
 - `pnpm exec lint-staged --relative`: This command runs linting on staged files to ensure they meet the project's coding standards. The lint-staged configuration can be found from [package.json](./package.json).
   - Using `--relative` flag to reduce command line length,
     as the combined length of all the absolute paths for a large commit can get quite long
@@ -266,30 +266,11 @@ The steps to use the local tarball as a dependency:
 }
 ```
 
-#### Use portals (with monorepos and pnpm)
 
-> See more: https://pnpm.io/cli/link
 
-The `portal:` protocol is similar to the `link:` protocol (it must be a relative path to a folder which will be made available without copies), but the target is assumed to be a package instead.
 
-The `portal:` protocol is specifically designed for linking local directories (often containing extracted tarballs) into the dependency graph while maintaining correct resolution and deduplication logic.
 
-**Portals vs links**: Links have to operate under the assumption that their target folder may not exist until the install is finished; this prevents them from reading the content of the folder, including any package.json files, and in turn preventing them from listing dependencies. Portals, on the other hand, must exist at resolution time or an error is thrown. This lets them read the content of the package.json file and be treated like any other package in the dependency tree - except that its content will be made directly available to the user, rather than copied like file: would do.
 
-**How to Use portal: for a Tarball**
-
-1. Extract the Tarball: The portal: protocol requires a folder. You must first extract your `.tgz` archive (e.g., `city-of-helsinki-react-helsinki-headless-cms-v2.1.0.tgz`) into a temporary staging folder (e.g., `./.hcrc-dev`). The temporary staging folder should be in same directory as the consuming app's `package.json` file, since the `portal:` protocol is relative to the `package.json` file.
-2. Update `package.json`: In the consuming app's `package.json`, reference the extracted folder using the portal: protocol:
-
-**⚠️ Security Tip:** Don't forget to add /.hcrc-dev to your .gitignore so you don't accidentally commit the extracted library code to your repository.
-
-```JSON
-"dependencies": {
-  "@city-of-helsinki/react-helsinki-headless-cms": "portal:../../.hcrc-dev/package"
-}
-```
-
-3. Clean and Install: *If you have a conflicting dependency* in the root `package.json`, delete it and run pnpm install from the monorepo root.
 
 ## Testing
 
@@ -413,12 +394,12 @@ For canary release the naming convention is `x.y.z-canary-[gitcommithash]`. Runn
 
 **Note:** A local tarball of built package can be created with `pnpm pack`. Just remember to build first.
 
-**Note:** There is an a known issue with publishing using Windows environment. If you have a Windows machine use Docker container to publish the package.An Apollo client linked to a graphql endpoint with a supported schema (headless CMS) must be provided in the `apolloClient` field of the `config` object.
+**Note:** There is a known issue with publishing using Windows environment. If you are using Windows, use a Docker container to publish the package.
 
 ## Known issues
 
 - Jest has difficulties loading this library. When this library is required in a test file, it's possible that some imports are cjs and some are esm. These two variants do not share a react context which can result in `useConfig` calls that return an empty config object even though `<ConfigProvider>` is declared correctly. I.e. `<ConfigProvider>` sets values for `context1` and `useConfig` reads `context2`.
-- Some of the built packages created with `pnpm build` does some issues with some types. This leads to a situation where the application that uses the library cannot read all the exported types. Especially the exported enums inside a built package might be handled incorrectly (https://github.com/rollup/rollup/issues/4291), but there are other type related issues also, but not on every built package.
+- Some of the built packages created with `pnpm build` have some issues with some types. This can cause consuming applications to fail to read all exported types. In particular, exported enums in built packages may be handled incorrectly (https://github.com/rollup/rollup/issues/4291), though other type-related issues may also occur.
 
 ## Contributing
 
