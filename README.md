@@ -26,7 +26,6 @@ data using [Helsinki Design System](https://github.com/City-of-Helsinki/helsinki
   - [Use as a application dependency](#use-as-a-application-dependency)
     - [Folder-based links](#folder-based-links)
     - [Tarball-based links](#tarball-based-links)
-    - [Automated package smoke test](#automated-package-smoke-test)
 - [Testing](#testing)
   - [Testing in IDE terminal](#testing-in-ide-terminal)
 - [Usage](#usage)
