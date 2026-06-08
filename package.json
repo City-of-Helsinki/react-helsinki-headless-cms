@@ -1,17 +1,21 @@
 {
   "name": "@city-of-helsinki/react-helsinki-headless-cms",
+  "engines": {
+    "node": ">=22.11.0"
+  },
+  "packageManager": "pnpm@11.1.2",
   "version": "3.0.3",
   "description": "React components for displaying Headless CMS content according to guidelines set by HDS",
-  "main": "cjs/index.js",
-  "module": "index.js",
-  "types": "index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "prepare": "husky",
-    "dev": "yarn storybook",
-    "dev:no-open": "yarn storybook --no-open",
-    "typecheck": "tsc --project ./tsconfig.json --noEmit",
-    "lint": "yarn eslint src && yarn prettier ./src -c",
-    "lint-fix": "yarn eslint src --fix && yarn prettier ./src -w",
+    "dev": "pnpm run storybook",
+    "dev:no-open": "pnpm run storybook --no-open",
+    "typecheck": "tsc --project ./tsconfig.json --noEmit --declaration false",
+    "lint": "eslint src && prettier ./src -c",
+    "lint-fix": "eslint src --fix && prettier ./src -w",
     "test": "vitest",
     "test:staged": "vitest related --passWithNoTests",
     "test-storybook": "test-storybook",
@@ -23,9 +27,6 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "generate:graphql": "cross-env DOTENV_CONFIG_PATH=./.env graphql-codegen -r dotenv/config --config codegen.yml"
-  },
-  "engines": {
-    "node": ">=22.11.0"
   },
   "files": [
     "dist/"
@@ -61,29 +62,6 @@
       "optional": true
     }
   },
-  "//": {
-    "Why are packages in resolutions?": {
-      "hds-react/cookie": [
-        "To fix https://github.com/City-of-Helsinki/react-helsinki-headless-cms/security/dependabot/28",
-        "NOTE: This can be removed if hds-react starts to depend on >=v1 cookie"
-      ],
-      "minimatch": [
-        "To fix https://github.com/City-of-Helsinki/react-helsinki-headless-cms/security/dependabot/80,",
-        "https://github.com/City-of-Helsinki/react-helsinki-headless-cms/security/dependabot/77",
-        "https://github.com/City-of-Helsinki/react-helsinki-headless-cms/security/dependabot/76"
-      ],
-      "picomatch": [
-        "To fix vulnerable picomatch@2.3.1 (no 2.3.2 exists on npm) and consolidate all",
-        "picomatch instances to a safe version. Overrides transitive 2.x requirements",
-        "from micromatch, anymatch, @rollup/pluginutils v4, and 4.0.2/4.0.3 requirements."
-      ]
-    }
-  },
-  "resolutions": {
-    "hds-react/cookie": "^0.7.2",
-    "minimatch": "^10.2.3",
-    "picomatch": "^4.0.4"
-  },
   "devDependencies": {
     "@apollo/client": "^3.14.0",
     "@babel/core": "^7.28.0",
@@ -117,11 +95,11 @@
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
     "@types/lodash-es": "^4.17.12",
+    "@types/node": "^24.12.4",
     "@types/react": "^18.3.27",
     "@types/react-dom": "18.3.7",
     "@vitejs/plugin-react": "^6.0.1",
     "@vitest/coverage-v8": "^4.1.4",
-    "axe-playwright": "^2.2.2",
     "babel-loader": "^9.2.1",
     "cross-env": "^7.0.3",
     "crypto-browserify": "^3.12.1",
@@ -137,11 +115,13 @@
     "git-rev-sync": "^3.0.2",
     "globals": "^17.4.0",
     "graphql": "^16.12.0",
+    "hds-core": "^4.8.1",
     "hds-react": "4.8.1",
     "husky": "^9.1.7",
     "jsdom": "^29.0.2",
     "lint-staged": "^16.2.7",
     "msw-storybook-addon": "^2.0.6",
+    "playwright": "^1.60.0",
     "postcss": "^8.5.6",
     "postcss-scss": "^4.0.9",
     "prettier": "3.7.4",
@@ -185,7 +165,7 @@
     "src/**/*.{js,jsx,ts,tsx,cjs,mjs}": [
       "eslint --fix",
       "prettier --write",
-      "yarn test:staged"
+      "pnpm run test:staged"
     ]
   }
 }

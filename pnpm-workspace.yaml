@@ -1,0 +1,21 @@
+# Block installation of dependencies released less than 1 week ago (supply-chain hardening)
+minimumReleaseAge: 10080
+
+# Dependency overrides (pnpm equivalent of Yarn's "resolutions" in package.json).
+# - hds-react>cookie: fixes cookie <0.7.0 advisory pulled in transitively by hds-react.
+#   See https://github.com/City-of-Helsinki/react-helsinki-headless-cms/security/dependabot/28
+#   Can be removed once hds-react depends on cookie >=0.7.0.
+# - minimatch: fixes ReDoS advisories in minimatch 9.0.x pulled in via eslint/typescript-estree.
+#   See https://github.com/City-of-Helsinki/react-helsinki-headless-cms/security/dependabot/80,
+#       https://github.com/City-of-Helsinki/react-helsinki-headless-cms/security/dependabot/77,
+#       https://github.com/City-of-Helsinki/react-helsinki-headless-cms/security/dependabot/76
+overrides:
+  hds-react>cookie: '^0.7.2'
+  minimatch: '^10.2.3'
+
+allowBuilds:
+  '@parcel/watcher': true
+  '@swc/core': true
+  esbuild: true
+  msw: true
+  unrs-resolver: true

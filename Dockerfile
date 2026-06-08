@@ -1,25 +1,15 @@
 # ===============================================
-FROM registry.access.redhat.com/ubi9/nodejs-22 AS appbase
+FROM helsinki.azurecr.io/ubi9/nodejs-24-pnpm-builder-base AS appbase
 # ===============================================
 
 # Set environment
 ARG PORT=3000
-ENV PORT $PORT
+ENV PORT=$PORT
 
 WORKDIR /app
 
-# Install yarn
-USER root
-RUN curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo && \
-    yum -y install yarn
-
-# Yarn version
-ENV YARN_VERSION 1.22.22
-RUN yarn policies set-version ${YARN_VERSION}
-
-
 # Set npm log verbosity level
-ENV NPM_CONFIG_LOGLEVEL warn
+ENV NPM_CONFIG_LOGLEVEL=warn
 
 # Global npm dependencies in a non-root user directory
 ENV NPM_CONFIG_PREFIX=/app/.npm-global
@@ -27,16 +17,16 @@ ENV PATH=$PATH:/app/.npm-global/bin
 
 # Set NODE_ENV to development in the development container
 ARG NODE_ENV=development
-ENV NODE_ENV $NODE_ENV
+ENV NODE_ENV=$NODE_ENV
 
-# Copy package.json and yarn.lock files
-COPY --chown=default:root package*.json *yarn* ./
+# Copy package.json and pnpm-lock.yaml files
+COPY --chown=default:root package*.json pnpm-lock.yaml ./
 
 # Make scripts in dependencies available through path
-ENV PATH /app/node_modules/.bin:$PATH
+ENV PATH=/app/node_modules/.bin:$PATH
 
 # Install dependencies including storybook addons
-RUN yarn && yarn cache clean
+RUN pnpm install --frozen-lockfile --ignore-scripts && pnpm store prune
 
 # =============================
 FROM appbase AS development
@@ -46,7 +36,7 @@ FROM appbase AS development
 COPY --chown=default:root . .
 
 # Start command for development
-CMD ["yarn", "dev:no-open"]
+CMD ["pnpm", "run", "dev:no-open"]
 
 # =============================
 FROM appbase AS staticbuilder
@@ -54,13 +44,13 @@ FROM appbase AS staticbuilder
 
 # Set NODE_ENV to production for build
 ARG NODE_ENV=production
-ENV NODE_ENV $NODE_ENV
+ENV NODE_ENV=$NODE_ENV
 
 # Copy all files, including .mdx stories
 COPY --chown=default:root . .
 
 # Build Storybook
-RUN yarn build-storybook --loglevel error
+RUN pnpm run build-storybook --loglevel error
 
 # =============================
 FROM appbase AS production
@@ -68,7 +58,7 @@ FROM appbase AS production
 
 # Set NODE_ENV to production in the production container
 ARG NODE_ENV=production
-ENV NODE_ENV $NODE_ENV
+ENV NODE_ENV=$NODE_ENV
 
 # Copy build folder
 COPY --from=staticbuilder --chown=default:root /app/storybook-static/ /app/storybook-static/
