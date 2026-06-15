@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [3.1.0](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/compare/react-helsinki-headless-cms-v3.0.3...react-helsinki-headless-cms-v3.1.0) (2026-06-15)
+
+
+### Features
+
+* Migrate yarn classic to pnpm HCRC-195 ([#263](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/issues/263)) ([10a7174](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/10a7174345b684fa68c2d4ee3333e0b677d931aa))
+
 ## [3.0.3](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/compare/react-helsinki-headless-cms-v3.0.2...react-helsinki-headless-cms-v3.0.3) (2026-05-25)
 
 
