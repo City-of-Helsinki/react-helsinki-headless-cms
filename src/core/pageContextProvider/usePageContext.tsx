@@ -1,7 +1,7 @@
-import { use } from 'react';
+import React from 'react';
 
 import { PageContext } from './PageContext';
 
 export function usePageContext() {
-  return use(PageContext);
+  return React.useContext(PageContext);
 }
