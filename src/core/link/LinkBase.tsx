@@ -10,7 +10,7 @@ import styles from './LinkBase.module.scss';
 // issue is created to hds: https://github.com/City-of-Helsinki/helsinki-design-system/issues/808
 
 export type LinkProps = Omit<
-  React.ComponentPropsWithoutRef<'a'>,
+  React.ComponentPropsWithRef<'a'>,
   'target' | 'href' | 'onPointerEnterCapture' | 'onPointerLeaveCapture'
 > & {
   /**
@@ -118,26 +118,24 @@ export const getTextFromReactChildren = (children: ReactNode): string => {
   ) as string;
 };
 
-function LinkBase(
-  {
-    children,
-    className,
-    disableVisitedStyles = true,
-    external = false,
-    showExternalIcon = true,
-    href,
-    iconLeft,
-    iconRight,
-    openInNewTab = false,
-    openInExternalDomainAriaLabel,
-    openInNewTabAriaLabel,
-    style = {},
-    size = 'M',
-    inlineIcons = false,
-    ...rest
-  }: LinkProps,
-  ref: React.Ref<HTMLAnchorElement>,
-) {
+function LinkBase({
+  children,
+  className,
+  disableVisitedStyles = true,
+  external = false,
+  showExternalIcon = true,
+  href,
+  iconLeft,
+  iconRight,
+  openInNewTab = false,
+  openInExternalDomainAriaLabel,
+  openInNewTabAriaLabel,
+  style = {},
+  size = 'M',
+  inlineIcons = false,
+  ref,
+  ...rest
+}: LinkProps) {
   const composeAriaLabel = () => {
     let childrenText = getTextFromReactChildren(children);
     const newTabText = openInNewTab
@@ -253,4 +251,4 @@ function LinkBase(
   );
 }
 
-export default React.forwardRef<HTMLAnchorElement, LinkProps>(LinkBase);
+export default LinkBase;

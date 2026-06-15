@@ -32,9 +32,5 @@ export function ImageGalleryProvider({ children }: ImageGalleryProviderProps) {
     [imageIndex, isLightboxVisible, selectedImageIndex, toggleLightbox],
   );
 
-  return (
-    <ImageGalleryContext.Provider value={config}>
-      {children}
-    </ImageGalleryContext.Provider>
-  );
+  return <ImageGalleryContext value={config}>{children}</ImageGalleryContext>;
 }

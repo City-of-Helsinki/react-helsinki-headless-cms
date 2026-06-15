@@ -77,9 +77,5 @@ export function CarouselContextProvider({
     }),
     [numberOfItems, carouselContext, backwardCompatibleProps],
   );
-  return (
-    <CarouselContext.Provider value={value}>
-      {children}
-    </CarouselContext.Provider>
-  );
+  return <CarouselContext value={value}>{children}</CarouselContext>;
 }
