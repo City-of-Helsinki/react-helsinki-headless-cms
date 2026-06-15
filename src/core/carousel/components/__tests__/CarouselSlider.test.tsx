@@ -23,7 +23,7 @@ const renderWithContext = (
   providerProps: Partial<CarouselContextType>,
 ) =>
   render(
-    <CarouselContext.Provider
+    <CarouselContext
       value={{
         ...initialCarouselContextStateValues,
         // Dummy functions for context fields that require them
@@ -37,7 +37,7 @@ const renderWithContext = (
       }}
     >
       {ui}
-    </CarouselContext.Provider>,
+    </CarouselContext>,
   );
 
 describe('CarouselSlider', () => {

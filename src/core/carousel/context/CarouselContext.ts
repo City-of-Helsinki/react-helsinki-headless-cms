@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { use } from 'react';
 
 import { initialCarouselContextStateValues } from '../constants';
 import type { CarouselContextType } from '../types';
@@ -32,7 +32,7 @@ export const CarouselContext = React.createContext<CarouselContextType>({
 });
 
 export function useCarouselContext() {
-  const context = React.useContext(CarouselContext);
+  const context = use(CarouselContext);
   if (!context) {
     throw new Error(
       `Carousel components cannot be rendered outside the CarouselContextProvider`,

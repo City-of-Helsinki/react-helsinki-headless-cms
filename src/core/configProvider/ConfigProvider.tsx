@@ -27,7 +27,5 @@ export function ConfigProvider({
     [userConfig],
   );
 
-  return (
-    <ConfigContext.Provider value={config}>{children}</ConfigContext.Provider>
-  );
+  return <ConfigContext value={config}>{children}</ConfigContext>;
 }

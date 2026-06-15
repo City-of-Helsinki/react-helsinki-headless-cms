@@ -16,7 +16,5 @@ export function PageContextProvider({
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [page?.id, page?.uri],
   );
-  return (
-    <PageContext.Provider value={context}>{children}</PageContext.Provider>
-  );
+  return <PageContext value={context}>{children}</PageContext>;
 }

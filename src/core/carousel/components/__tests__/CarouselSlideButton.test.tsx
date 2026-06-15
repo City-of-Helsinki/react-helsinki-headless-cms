@@ -35,7 +35,7 @@ describe('CarouselSlideButton', () => {
     providerProps: Partial<CarouselContextType>,
   ) =>
     render(
-      <CarouselContext.Provider
+      <CarouselContext
         value={{
           ...initialCarouselContextStateValues,
           // Dummy functions for context fields that require them
@@ -50,7 +50,7 @@ describe('CarouselSlideButton', () => {
         }}
       >
         {ui}
-      </CarouselContext.Provider>,
+      </CarouselContext>,
     );
 
   beforeEach(() => {
