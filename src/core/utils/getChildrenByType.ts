@@ -7,11 +7,11 @@ import React from 'react';
  */
 export const typeOfComponent = (component: React.ReactElement): string =>
   // eslint-disable-next-line no-underscore-dangle
-  component?.props?.__TYPE ||
+  (component?.props as { __TYPE?: string })?.__TYPE ||
   component?.type
     ?.toString()
     .replace('Symbol(react.fragment)', 'react.fragment') ||
-  undefined;
+  '';
 
 /**
  * Gets all children by specified type.

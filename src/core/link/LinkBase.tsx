@@ -237,7 +237,10 @@ function LinkBase(
     >
       {!inlineIcons && leftIcon}
       <span
-        className={classNames(styles.content, iconLeft && styles.withLeftIcon)}
+        className={classNames(
+          styles.content,
+          !!iconLeft && styles.withLeftIcon,
+        )}
       >
         {inlineIcons && leftIcon}
         {children}

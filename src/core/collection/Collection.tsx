@@ -150,7 +150,7 @@ export function Collection({
   const {
     copy: { loadMoreButtonLabelText, showAllText },
   } = useConfig();
-  const componentForType: Record<CollectionProps['type'], JSX.Element> = {
+  const componentForType: Record<CollectionProps['type'], React.JSX.Element> = {
     carousel: (
       <CollectionCarousel
         cards={cards}

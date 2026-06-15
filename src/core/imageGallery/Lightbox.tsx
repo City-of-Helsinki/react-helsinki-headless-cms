@@ -40,7 +40,7 @@ interface ActionsProps {
 export function Lightbox({
   images,
   lightboxUid,
-}: LightboxProps): JSX.Element | null {
+}: LightboxProps): React.JSX.Element | null {
   const lightboxRef = useRef<HTMLDivElement | null>(null);
   const barrierRef = useRef<HTMLHeadingElement | null>(null);
 
@@ -97,7 +97,7 @@ export function Lightbox({
   const imagePhotogrpher = images[imageIndex].photographer;
   const imageUrl = images[imageIndex].url;
 
-  const renderLightboxComponent = (): JSX.Element => (
+  const renderLightboxComponent = (): React.JSX.Element => (
     <div
       id={lightboxUid}
       role="dialog"

@@ -20,9 +20,9 @@ export function CarouselSliderPage({
   const styleWidth = `${100 / itemsPerSlide}%`;
   return (
     <li
-      ref={(node) =>
-        node && node.toggleAttribute('inert', itemSetIndex !== currentSlide)
-      }
+      ref={(node) => {
+        node?.toggleAttribute('inert', itemSetIndex !== currentSlide);
+      }}
       aria-hidden={itemSetIndex !== currentSlide}
       className={classNames(
         styles.slide,

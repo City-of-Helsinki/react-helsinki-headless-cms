@@ -86,12 +86,16 @@ export type Config = {
    * React component replacements for defined html elements.
    */
   components: {
-    A: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => JSX.Element;
-    Img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => JSX.Element;
+    A: (
+      props: React.AnchorHTMLAttributes<HTMLAnchorElement>,
+    ) => React.JSX.Element;
+    Img: (
+      props: React.ImgHTMLAttributes<HTMLImageElement>,
+    ) => React.JSX.Element;
     Link?: (
       props: React.AnchorHTMLAttributes<HTMLAnchorElement>,
-    ) => JSX.Element;
-    Head?: (props: { children: React.ReactNode }) => JSX.Element;
+    ) => React.JSX.Element;
+    Head?: (props: { children: React.ReactNode }) => React.JSX.Element;
     EventCardContent?: React.FC<Record<string, unknown>>;
     VenueCardContent?: React.FC<Record<string, unknown>>;
     ArticleCardContent?: React.FC<Record<string, unknown>>;

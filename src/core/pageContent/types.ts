@@ -1,3 +1,4 @@
+import type React from 'react';
 import type { BreadcrumbListItem, BreadcrumbProps, KorosType } from 'hds-react';
 
 import type { ArticleType, PageType } from '../../common/headlessService/types';
@@ -42,7 +43,7 @@ export type PageContentProps = {
     | ((
         page: PageType | ArticleType,
       ) => React.ReactElement<typeof Collection>[]);
-  heroContainer?: JSX.Element;
+  heroContainer?: React.JSX.Element;
   backUrl?: string;
   sidebarContentProps?: Partial<typeof SidebarContent>;
   PageContentLayoutComponent?: typeof PageContentLayout;

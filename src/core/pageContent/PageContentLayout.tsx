@@ -10,7 +10,7 @@ import type { HeroProps } from './types';
 export type PageContentLayoutProps = {
   id: string;
   breadcrumbs?: React.ReactNode;
-  heroContainer?: JSX.Element;
+  heroContainer?: React.JSX.Element;
   content: React.ReactNode;
   shareLinks?: React.ReactNode;
   collections?: React.ReactNode;
