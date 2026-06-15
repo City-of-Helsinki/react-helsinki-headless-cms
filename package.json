@@ -4,7 +4,7 @@
     "node": ">=22.11.0"
   },
   "packageManager": "pnpm@11.1.2",
-  "version": "3.0.3",
+  "version": "3.1.0",
   "description": "React components for displaying Headless CMS content according to guidelines set by HDS",
   "main": "dist/cjs/index.js",
   "module": "dist/index.js",
