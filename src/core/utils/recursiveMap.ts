@@ -23,11 +23,15 @@ export const recursiveMap = (
       return child;
     }
 
-    if (child.props.children) {
+    const element = child as React.ReactElement<{
+      children?: React.ReactNode;
+    }>;
+
+    if (element.props.children) {
       // Make a recursive call to find the last node
       return fn(
-        React.cloneElement(child as React.ReactElement, {
-          children: recursiveMap(child.props.children, fn),
+        React.cloneElement(element, {
+          children: recursiveMap(element.props.children, fn),
         }),
       );
     }

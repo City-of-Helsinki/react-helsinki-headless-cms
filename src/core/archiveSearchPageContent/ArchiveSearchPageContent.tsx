@@ -131,7 +131,7 @@ export interface SearchPageContentProps {
   /**
    * Custom content react components to be dispayed on the page.
    */
-  customContent?: string | JSX.Element;
+  customContent?: string | React.JSX.Element;
   /**
    * Archive collection items..
    */

@@ -125,9 +125,12 @@ describe('recursiveMap', () => {
     );
     const fn = (child: React.ReactNode) => {
       if (React.isValidElement(child)) {
-        return React.cloneElement(child, {
-          className: 'newTestClassInEveryElement',
-        });
+        return React.cloneElement(
+          child as React.ReactElement<{ className?: string }>,
+          {
+            className: 'newTestClassInEveryElement',
+          },
+        );
       }
       return child;
     };

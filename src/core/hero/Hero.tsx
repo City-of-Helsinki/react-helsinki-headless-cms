@@ -48,7 +48,7 @@ export type HeroComponentProps = {
   /**
    * Hero container wrapper component.
    */
-  container?: JSX.Element;
+  container?: React.JSX.Element;
 } & HeroProps;
 
 export default function Hero({

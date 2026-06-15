@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import styles from './list.module.scss';
 
-function getKey(...elements: JSX.Element[]): string {
+function getKey(...elements: React.JSX.Element[]): string {
   return elements.reduce((acc, element) => `${acc}${element.key}`, '');
 }
 
@@ -11,7 +11,7 @@ type ListProps = {
   /**
    * List item elements.
    */
-  items?: (JSX.Element | JSX.Element[] | null | false)[];
+  items?: (React.JSX.Element | React.JSX.Element[] | null | false)[];
   /**
    * List item variant options.
    */
