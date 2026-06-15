@@ -42,6 +42,9 @@ export default [
       '@eslint-react/prop-types': 'off',
       '@eslint-react/require-default-props': 'off',
       '@eslint-react/react-in-jsx-scope': 'off',
+      // `use()` is intended for conditional context access; for unconditional
+      // reads `useContext()` remains the simpler, preferred approach here.
+      '@eslint-react/no-use-context': 'off',
       // Extra
       '@eslint-react/jsx-no-useless-fragment': 'warn',
       '@eslint-react/no-array-index-key': 'error',

@@ -1,4 +1,4 @@
-import { use } from 'react';
+import { useContext } from 'react';
 
 import type { Config } from './configContext';
 import { ConfigContext } from './configContext';
@@ -13,7 +13,7 @@ const validateContext = (config?: Config) => {
 };
 
 export function useConfig() {
-  const config = use(ConfigContext);
+  const config = useContext(ConfigContext);
   validateContext(config);
 
   return config;

@@ -137,4 +137,28 @@ describe('recursiveMap', () => {
     const result = recursiveMap(children, fn);
     expect(result).toMatchSnapshot();
   });
+
+  it('calls the function for childless (void) elements', () => {
+    const {
+      props: { children },
+    } = (
+      <>
+        <br />
+        <img alt="" src="test.png" />
+        <hr />
+      </>
+    );
+    const fn = vi.fn((child: React.ReactNode) => child);
+    recursiveMap(children, fn);
+    expect(fn).toHaveBeenCalledTimes(3);
+  });
+
+  it.each([undefined, null])(
+    'returns undefined and does not call the function when children is %s',
+    (children) => {
+      const fn = vi.fn();
+      expect(recursiveMap(children, fn)).toBeUndefined();
+      expect(fn).not.toHaveBeenCalled();
+    },
+  );
 });
