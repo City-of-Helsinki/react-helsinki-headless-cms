@@ -12,6 +12,7 @@ minimumReleaseAge: 10080
 overrides:
   hds-react>cookie: '^0.7.2'
   minimatch: '^10.2.3'
+  'lodash@^4.17': '^4.18.1'
 
 allowBuilds:
   '@parcel/watcher': true
