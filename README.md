@@ -76,6 +76,8 @@ It provides:
 pnpm add @city-of-helsinki/react-helsinki-headless-cms
 ```
 
+**Requires React 19 and hds-react 6** as peer dependencies (since v4.0.0). For React 18 / hds-react 4–5, use the v3.x line.
+
 ## Development
 
 **NOTE: The library is for general use and should not be developed for a single application environment only!** Check [the known clients](#the-known-clients-that-are-using-this-library)
