@@ -53,7 +53,7 @@
   "homepage": "https://github.com/City-of-Helsinki/react-helsinki-headless-cms#readme",
   "peerDependencies": {
     "@apollo/client": "^3.14.0",
-    "hds-react": "^6.0.2",
+    "hds-react": "^6.0.5",
     "react": "^19",
     "react-dom": "^19"
   },
@@ -115,8 +115,8 @@
     "git-rev-sync": "^3.0.2",
     "globals": "^17.4.0",
     "graphql": "^16.12.0",
-    "hds-core": "^6.0.2",
-    "hds-react": "6.0.2",
+    "hds-core": "^6.0.5",
+    "hds-react": "^6.0.5",
     "husky": "^9.1.7",
     "jsdom": "^29.0.2",
     "lint-staged": "^16.2.7",
@@ -151,7 +151,7 @@
     "classnames": "^2.5.1",
     "date-fns": "^4.1.0",
     "doctoc": "^2.3.0",
-    "hds-design-tokens": "^6.0.2",
+    "hds-design-tokens": "^6.0.5",
     "html-entities": "^2.6.0",
     "html-react-parser": "^5.2.5",
     "isomorphic-dompurify": "^2.36.0",
