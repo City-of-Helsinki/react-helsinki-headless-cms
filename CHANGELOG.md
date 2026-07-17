@@ -4,6 +4,27 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [4.0.0](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/compare/react-helsinki-headless-cms-v3.1.0...react-helsinki-headless-cms-v4.0.0) (2026-07-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* react and react-dom peer dependencies now require ^19, and hds-react requires ^6. React 18 and hds-react 4-5 are no longer supported.
+
+### Features
+
+* Change node version to match hds ([5531636](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/55316364f069e203f5e909ac3872ecf010ba5afa))
+* Pr fixes ([2544d79](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/2544d792772aeb3c8553a05ed7b536f94b188340))
+* React19 linter warning updates ([e076251](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/e0762519aa6261a81094d11077d0a3b09469bc80))
+* React19 update ([bee4503](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/bee450361e47a9a30912a6b23dffd9f55832db9d))
+* Require React 19 and hds-react 6 as peer dependencies ([3665a27](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/3665a27dae0c37c36ecfbfa85ee46106add12139))
+
+
+### Bug Fixes
+
+* Stuck Dependabot workflows ([3280ed2](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/3280ed234ab1342815282fbde9ad265e977bbadb))
+* Update hds to 6.0.5 ([#270](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/issues/270)) ([133be81](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/133be819425f3b6a1d15ee843f506735178da227))
+
 ## [3.1.0](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/compare/react-helsinki-headless-cms-v3.0.3...react-helsinki-headless-cms-v3.1.0) (2026-06-15)
 
 
