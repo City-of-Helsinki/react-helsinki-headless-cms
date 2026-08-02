@@ -122,7 +122,7 @@
     "lint-staged": "^16.2.7",
     "msw-storybook-addon": "^2.0.6",
     "playwright": "^1.60.0",
-    "postcss": "^8.5.6",
+    "postcss": "^8.5.18",
     "postcss-scss": "^4.0.9",
     "prettier": "3.7.4",
     "react": "^19.2.0",
