@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [4.0.1](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/compare/react-helsinki-headless-cms-v4.0.0...react-helsinki-headless-cms-v4.0.1) (2026-08-12)
+
+
+### Dependencies
+
+* Bump postcss from 8.5.15 to 8.5.18 ([31b3728](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/31b3728fe440a5db711b5810a7f6a0cd79143d98))
+
 ## [4.0.0](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/compare/react-helsinki-headless-cms-v3.1.0...react-helsinki-headless-cms-v4.0.0) (2026-07-17)
 
 
