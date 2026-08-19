@@ -45,6 +45,7 @@ export const getTextFromHtml = (html: string): string => {
 
     const tagEnd = html.indexOf('>', tagStart);
     if (tagEnd === -1) {
+      text += html.slice(tagStart);
       break;
     }
     i = tagEnd + 1;

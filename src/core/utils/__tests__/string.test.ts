@@ -11,8 +11,8 @@ describe('getTextFromHtml', () => {
     expect(getTextFromHtml('Hello world')).toBe('Hello world');
   });
 
-  it('drops trailing unterminated tags', () => {
-    expect(getTextFromHtml('Hello <span')).toBe('Hello ');
+  it('preserves an unterminated trailing tag as text', () => {
+    expect(getTextFromHtml('Hello <span')).toBe('Hello <span');
   });
 
   it('completes in linear time for a long run of unmatched "<" characters', () => {
