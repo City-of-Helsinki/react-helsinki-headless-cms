@@ -96,7 +96,7 @@ const childToString = (child?: ReactNode): string => {
 };
 
 export const getTextFromReactChildren = (children: ReactNode): string => {
-  if (!(children instanceof Array) && !isValidElement(children)) {
+  if (!Array.isArray(children) && !isValidElement(children)) {
     return childToString(children);
   }
 

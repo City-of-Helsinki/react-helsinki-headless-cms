@@ -48,7 +48,7 @@ export function CarouselSlideDots() {
       aria-hidden={!navigateWithDots}
       data-testid="carousel-dots"
     >
-      {[...Array(numberOfSlides)].map((entry, slideIndex) => (
+      {[...new Array(numberOfSlides)].map((entry, slideIndex) => (
         <CarouselSlideDot
           key={getSlideDotKey(entry, slideIndex)}
           slideIndex={slideIndex}

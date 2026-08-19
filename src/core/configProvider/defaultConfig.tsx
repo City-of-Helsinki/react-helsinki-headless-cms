@@ -66,7 +66,7 @@ export const defaultConfig = {
     getLocationCardProps,
     getIsHrefExternal: (href: string) => {
       if (!window) {
-        throw Error(
+        throw new Error(
           'The default getIsLinkExternal implementation does not support server side rendering. Provide your custom implementation.',
         );
       }

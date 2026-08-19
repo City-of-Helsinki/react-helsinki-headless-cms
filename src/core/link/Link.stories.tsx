@@ -44,7 +44,7 @@ const TemplateAll: StoryFn<typeof Link> = (args) => (
           aria-label="External link with an image"
           href="https://hel.fi"
         >
-          External link with an image
+          External link with an image{' '}
           <span>
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/0/09/Helsinki_logo.svg"
@@ -80,7 +80,7 @@ const TemplateAll: StoryFn<typeof Link> = (args) => (
           aria-label="External SecondaryLink with an image"
           href="https://hel.fi"
         >
-          External secondary link with an image
+          External secondary link with an image{' '}
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/0/09/Helsinki_logo.svg"
             alt="City of Helsinki logo"
