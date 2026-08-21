@@ -24,13 +24,35 @@ export const getIconName = (name: string): string =>
 
 /**
  * Strips all HTML tags from a string and decodes HTML entities.
- * Uses a safe regex (/<[^>]*>/gi) to prevent ReDoS (Regular Expression Denial of Service).
+ * Scans the string linearly instead of using a regex, since an unanchored
+ * `/<[^>]*>/g` backtracks per start position and is O(n^2) on malformed
+ * input (e.g. a long run of `<` with no matching `>`).
  *
  * @param {string} html The input string containing HTML markup.
  * @returns {string} The resulting text string with all HTML tags removed and entities decoded.
  */
-export const getTextFromHtml = (html: string): string =>
-  decode(html.replace(/<[^>]*>/gi, ''));
+export const getTextFromHtml = (html: string): string => {
+  let text = '';
+  let i = 0;
+
+  while (i < html.length) {
+    const tagStart = html.indexOf('<', i);
+    if (tagStart === -1) {
+      text += html.slice(i);
+      break;
+    }
+    text += html.slice(i, tagStart);
+
+    const tagEnd = html.indexOf('>', tagStart);
+    if (tagEnd === -1) {
+      text += html.slice(tagStart);
+      break;
+    }
+    i = tagEnd + 1;
+  }
+
+  return decode(text);
+};
 
 /**
  * Checks if the text color should be white based on the background color.
