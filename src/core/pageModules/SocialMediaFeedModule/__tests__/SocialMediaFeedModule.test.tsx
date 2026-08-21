@@ -71,16 +71,26 @@ describe('SocialMediaFeedModule', () => {
   it('does not render or execute an inline script without crashing', () => {
     (window as unknown as { xssMarker?: boolean }).xssMarker = false;
 
-    expect(() =>
-      render(
+    let result: ReturnType<typeof render> | undefined;
+
+    // An inline script used to throw out of the origin check, so the render
+    // itself must stay safe.
+    expect(() => {
+      result = render(
         <SocialMediaFeedModule
           anchor="feed"
           script="<script>window.xssMarker = true;</script>"
         />,
         undefined,
         config,
-      ),
-    ).not.toThrow();
+      );
+    }).not.toThrow();
+
+    // The sanitizer has to strip the script outright. jsdom never executes
+    // inline scripts, so the xssMarker check below cannot prove that on its
+    // own and would still pass if 'script' were added back to ADD_TAGS.
+    expect(result).toBeDefined();
+    expect(result?.container.querySelector('script')).not.toBeInTheDocument();
 
     expect((window as unknown as { xssMarker?: boolean }).xssMarker).toBe(
       false,
