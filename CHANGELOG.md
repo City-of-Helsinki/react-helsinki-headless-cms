@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [4.0.2](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/compare/react-helsinki-headless-cms-v4.0.1...react-helsinki-headless-cms-v4.0.2) (2026-08-22)
+
+
+### Bug Fixes
+
+* Sonar issues HCRC-202 ([#273](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/issues/273)) ([a67bbbc](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/a67bbbc02261b57f5cf676f165ee9e415baa483e))
+
 ## [4.0.1](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/compare/react-helsinki-headless-cms-v4.0.0...react-helsinki-headless-cms-v4.0.1) (2026-08-12)
 
 
