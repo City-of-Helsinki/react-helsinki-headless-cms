@@ -11,7 +11,7 @@
 
 .mainContent {
   figure {
-    margin: 0;
+    margin: spacing.$spacing-m 0 spacing.$spacing-l 0;
     display: grid;
     img {
       height: auto;
@@ -36,6 +36,11 @@
       td {
         word-break: normal;
       }
+    }
+
+    figcaption {
+      margin: spacing.$spacing-s 0;
+      font-size: typography.$fontsize-body-m;
     }
   }
 
@@ -80,14 +85,6 @@
     margin: spacing.$spacing-m 0 spacing.$spacing-l 0;
     li {
       margin-bottom: spacing.$spacing-s;
-    }
-  }
-
-  figure {
-    margin: spacing.$spacing-m 0 spacing.$spacing-l 0;
-    figcaption {
-      margin: spacing.$spacing-s 0;
-      font-size: typography.$fontsize-body-m;
     }
   }
 }

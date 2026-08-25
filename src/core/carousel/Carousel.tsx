@@ -82,9 +82,8 @@ function CarouselWithContext({
   }, [itemsPerSlide, hasMore, onLoadMore, items.length, setNumberOfSlides]);
 
   return (
-    <div
+    <section
       className={classNames(styles.container, className)}
-      role="region"
       aria-label={carouselAriaLabel}
     >
       <div role="group" className={styles.carouselWrapper}>
@@ -108,7 +107,7 @@ function CarouselWithContext({
           </div>
         )}
       </div>
-    </div>
+    </section>
   );
 }
 

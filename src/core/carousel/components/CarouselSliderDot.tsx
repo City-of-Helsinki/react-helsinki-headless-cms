@@ -42,9 +42,8 @@ export function CarouselSlideDots() {
   const { numberOfSlides, navigateWithDots } = useCarouselContext();
 
   return (
-    <div
+    <nav
       className={styles.dotsContainer}
-      role="navigation"
       aria-hidden={!navigateWithDots}
       data-testid="carousel-dots"
     >
@@ -54,6 +53,6 @@ export function CarouselSlideDots() {
           slideIndex={slideIndex}
         />
       ))}
-    </div>
+    </nav>
   );
 }

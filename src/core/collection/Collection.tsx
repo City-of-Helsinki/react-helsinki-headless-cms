@@ -110,9 +110,9 @@ export function CollectionCarousel({
   ...rest
 }: {
   cards: React.ReactElement<typeof Card>[];
-  onLoadMore?: CollectionProps['onLoadMore'];
-  loading?: CollectionProps['loading'];
-  hasMore?: CollectionProps['hasNext'];
+  onLoadMore?: NonNullable<CollectionProps['onLoadMore']>;
+  loading?: NonNullable<CollectionProps['loading']>;
+  hasMore?: NonNullable<CollectionProps['hasNext']>;
   loadMoreButtonLabelText?: string;
   title?: string;
 }) {
