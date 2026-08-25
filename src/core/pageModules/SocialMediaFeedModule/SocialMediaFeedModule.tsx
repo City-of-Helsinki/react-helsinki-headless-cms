@@ -1,6 +1,5 @@
 import React, { useLayoutEffect, useMemo, useRef } from 'react';
 import DOMPurify from 'isomorphic-dompurify';
-import type { DOMNode } from 'html-react-parser';
 import parse from 'html-react-parser';
 
 import Text from '../../../common/components/text/Text';
@@ -12,6 +11,32 @@ export interface SocialMediaFeedModuleProps {
   anchor: string;
   title?: string;
   script?: string;
+}
+
+// Trusted script sources are read from the raw markup with DOMParser, which
+// never executes scripts or fetches resources. This keeps 'script' out of
+// DOMPurify's ADD_TAGS (see typescript:S8479) while still allowing embeds
+// from configured trusted origins to load, via a real <script> element
+// instead of re-executing sanitized markup.
+//
+// Browser-only: DOMParser does not exist in Node, so this must be called from
+// an effect and never during render, which also runs on the server.
+function getTrustedScriptSrcs(html: string, trustedOrigins: string[]) {
+  const { body } = new DOMParser().parseFromString(html, 'text/html');
+
+  return Array.from(body.querySelectorAll('script[src]'))
+    .map((scriptElement) => scriptElement.getAttribute('src'))
+    .filter((src): src is string => {
+      if (isTrustedOrigin(src ?? undefined, trustedOrigins)) {
+        return true;
+      }
+
+      // eslint-disable-next-line no-console
+      console.warn(
+        'The unsafe social media feed script is not allowed. Please enable it in hcrc library configs.',
+      );
+      return false;
+    });
 }
 
 export function SocialMediaFeedModule({
@@ -26,46 +51,35 @@ export function SocialMediaFeedModule({
   const scriptWrapperRef = useRef<HTMLDivElement>(null);
 
   const clean = useMemo(
-    () =>
-      DOMPurify.sanitize(script ?? '', {
-        FORCE_BODY: true,
-        ADD_TAGS: ['script', 'div'],
-      }),
+    () => DOMPurify.sanitize(script ?? '', { FORCE_BODY: true }),
     [script],
   );
 
+  // Consumers commonly pass an inline config literal, so trustedOrigins is a
+  // fresh array on every render. Key the effect on the values instead of the
+  // array identity, otherwise every re-render injects another copy.
+  const trustedOriginsKey = (trustedOrigins ?? []).join(',');
+
   useLayoutEffect(() => {
-    if (scriptWrapperRef.current?.innerHTML) {
-      const range = document.createRange();
-      range.selectNode(scriptWrapperRef.current);
-      const documentFragment = range.createContextualFragment(
-        scriptWrapperRef.current.innerHTML,
-      );
-      scriptWrapperRef.current.innerHTML = '';
-      scriptWrapperRef.current.append(documentFragment);
-    }
-  }, [clean, trustedOrigins]);
+    const wrapper = scriptWrapperRef.current;
 
-  const sanitizeScripts = (domNode: DOMNode) => {
-    if ('attribs' in domNode) {
-      if (
-        domNode.name === 'script' &&
-        !isTrustedOrigin(domNode.attribs.src, trustedOrigins ?? [])
-      ) {
-        // eslint-disable-next-line no-console
-        console.warn(
-          'The unsafe social media feed script is not allowed. Please enable it in hcrc library configs.',
-        );
-        return <div />;
-      }
+    if (!wrapper || !script) {
+      return undefined;
     }
 
-    return domNode;
-  };
+    const injected = getTrustedScriptSrcs(
+      script,
+      trustedOriginsKey ? trustedOriginsKey.split(',') : [],
+    ).map((src) => {
+      const scriptElement = document.createElement('script');
+      scriptElement.src = src;
+      scriptElement.async = true;
+      wrapper.append(scriptElement);
+      return scriptElement;
+    });
 
-  const htmlReactParserOptions = {
-    replace: (domNode: DOMNode) => sanitizeScripts(domNode),
-  };
+    return () => injected.forEach((scriptElement) => scriptElement.remove());
+  }, [script, trustedOriginsKey]);
 
   return (
     <div id={anchor} className={styles.pageModuleWrapper}>
@@ -74,7 +88,7 @@ export function SocialMediaFeedModule({
           {title}
         </Text>
       )}
-      <div ref={scriptWrapperRef}>{parse(clean, htmlReactParserOptions)}</div>
+      <div ref={scriptWrapperRef}>{parse(clean)}</div>
     </div>
   );
 }
