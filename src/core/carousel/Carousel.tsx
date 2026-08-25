@@ -86,7 +86,7 @@ function CarouselWithContext({
       className={classNames(styles.container, className)}
       aria-label={carouselAriaLabel}
     >
-      <div role="group" className={styles.carouselWrapper}>
+      <div className={styles.carouselWrapper}>
         {numberOfSlides > 1 && (
           <>
             <CarouselPreviousSlideButton />

@@ -66,7 +66,7 @@ describe('CarouselSlider', () => {
       itemsPerSlide: 1,
     });
 
-    const sliderList = screen.getByRole('presentation');
+    const sliderList = screen.getByRole('list');
     expect(sliderList).toHaveStyle('transform: translateX(-200%)');
   });
 
