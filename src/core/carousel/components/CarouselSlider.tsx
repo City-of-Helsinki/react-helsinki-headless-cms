@@ -61,6 +61,15 @@ export function CarouselSlider({
 
   return (
     <div className={styles.sliderWrapper} data-testid="carousel-slider">
+      {/*
+        Keep role="presentation" below. VoiceOver relies on it to announce each
+        card's position within the slide; without it the announcement is lost,
+        leaving cards that share an aria-label indistinguishable. Verified by
+        A/B test against VoiceOver -- the presentation role is honoured here,
+        despite the aria-label, so the ARIA presentational-roles conflict
+        resolution rule does NOT make it redundant. sonar typescript:S6819 is
+        accepted on that line.
+      */}
       <ul
         className={styles.sliderAnimated}
         style={{
