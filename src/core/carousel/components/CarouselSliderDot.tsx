@@ -42,8 +42,11 @@ export function CarouselSlideDots() {
   const { numberOfSlides, navigateWithDots } = useCarouselContext();
 
   return (
-    <nav
+    // Deliberate explicit role, not a redundant one -- see the note in
+    // Carousel.tsx (sonar typescript:S6819 accepted, HCRC-205).
+    <div
       className={styles.dotsContainer}
+      role="navigation"
       aria-hidden={!navigateWithDots}
       data-testid="carousel-dots"
     >
@@ -53,6 +56,6 @@ export function CarouselSlideDots() {
           slideIndex={slideIndex}
         />
       ))}
-    </nav>
+    </div>
   );
 }
