@@ -67,6 +67,7 @@ export function CarouselSlider({
           transform: `translateX(${transformValue})`,
         }}
         aria-label={ariaLabel}
+        role="presentation"
       >
         {itemSets.map((itemSet, itemSetIndex) => (
           <CarouselSliderPage
