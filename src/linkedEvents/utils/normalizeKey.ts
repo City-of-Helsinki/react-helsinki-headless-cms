@@ -7,13 +7,15 @@
  * event_end_date => eventEndDate
  */
 
-export default (snakecase: string) => {
+const normalizeKey = (snakecase: string) => {
   const str = snakecase.replace('@', 'internal_');
   return (
     str[0].toLowerCase() +
     str
-      .substr(1)
+      .slice(1)
       .toLowerCase()
       .replace(/(_[a-z])/g, ($1) => $1.toUpperCase().replace('_', ''))
   );
 };
+
+export default normalizeKey;
