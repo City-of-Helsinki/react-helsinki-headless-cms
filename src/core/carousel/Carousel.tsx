@@ -82,6 +82,11 @@ function CarouselWithContext({
   }, [itemsPerSlide, hasMore, onLoadMore, items.length, setNumberOfSlides]);
 
   return (
+    // The explicit ARIA roles in this subtree are deliberate (sonar
+    // typescript:S6819 accepted). Swapping them for native elements, or
+    // dropping them as redundant, changed VoiceOver behaviour once already and
+    // is untested against NVDA and JAWS -- see HCRC-205 and the note in
+    // CarouselSlider.tsx.
     <div
       className={classNames(styles.container, className)}
       role="region"

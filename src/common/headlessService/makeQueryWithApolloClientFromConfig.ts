@@ -5,10 +5,7 @@ import type { Exact } from './__generated__';
 
 type UseQuery<Q, V extends Apollo.OperationVariables> = (
   baseOptions: Apollo.QueryHookOptions<Q, V> &
-    (
-      | { variables: Exact<{ id: string }>; skip?: boolean | undefined }
-      | { skip: boolean }
-    ),
+    ({ variables: Exact<{ id: string }>; skip?: boolean } | { skip: boolean }),
 ) => Apollo.QueryResult<Q, V>;
 
 export default function makeQueryWithApolloClientFromConfig<

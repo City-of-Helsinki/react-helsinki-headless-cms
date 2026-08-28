@@ -138,7 +138,7 @@ function CardTitle({
   titleIcon,
 }: {
   readonly children: React.ReactNode;
-  readonly direction?: CardProps['direction'];
+  readonly direction?: NonNullable<CardProps['direction']>;
   readonly withTitleIcon: CardProps['withTitleIcon'];
   readonly titleIcon: CardProps['titleIcon'];
 }) {
@@ -159,7 +159,7 @@ function CardSubTitle({
   backgroundColor,
 }: {
   readonly children: React.ReactNode;
-  readonly backgroundColor?: CardProps['backgroundColor'];
+  readonly backgroundColor?: NonNullable<CardProps['backgroundColor']>;
 }): React.ReactElement | null {
   if (!children) {
     return null;

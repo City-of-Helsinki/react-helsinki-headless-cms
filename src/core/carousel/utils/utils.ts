@@ -9,10 +9,9 @@ export function splitArrayIntoChunksOfLen(
   len: number,
 ) {
   const chunks = [];
-  let i = 0;
   const n = arr.length;
-  while (i < n) {
-    chunks.push(arr.slice(i, (i += len)));
+  for (let i = 0; i < n; i += len) {
+    chunks.push(arr.slice(i, i + len));
   }
   return chunks;
 }

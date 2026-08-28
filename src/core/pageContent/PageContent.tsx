@@ -193,7 +193,8 @@ export const defaultCollections = ({
 }) =>
   getCollections(page?.modules ?? [], true)?.reduce(
     (collectionElements: React.JSX.Element[], collection) => {
-      const key = `collection-${btoa(`${collection?.id ?? ''}-${collection?.title ?? ''}-${collection?.description ?? ''}`)}`;
+      const collectionIdentity = `${collection?.id ?? ''}-${collection?.title ?? ''}-${collection?.description ?? ''}`;
+      const key = `collection-${btoa(collectionIdentity)}`;
       const commonCollectionProps = {
         title: collection.title,
         description: collection.description,

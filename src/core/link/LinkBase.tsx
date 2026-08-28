@@ -147,7 +147,7 @@ function LinkBase({
 
     if (
       childrenText &&
-      childrenText.slice(-1) !== '.' &&
+      !childrenText.endsWith('.') &&
       (newTabText || externalText)
     ) {
       childrenText = `${childrenText}.`;

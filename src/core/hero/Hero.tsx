@@ -51,6 +51,16 @@ export type HeroComponentProps = {
   container?: React.JSX.Element;
 } & HeroProps;
 
+function getKorosFill(imageUrl?: string, backgroundColor?: string): string {
+  if (imageUrl) {
+    return 'var(--color-white)';
+  }
+  if (backgroundColor) {
+    return `var(--color-${backgroundColor})`;
+  }
+  return 'var(--hcrc-color-hero-bg, --color-fog-light)';
+}
+
 export default function Hero({
   id,
   title,
@@ -183,14 +193,7 @@ export default function Hero({
             type={korosType}
             flipVertical={!imageUrl}
             style={{
-              fill: `var(--${
-                // eslint-disable-next-line no-nested-ternary
-                imageUrl
-                  ? 'color-white'
-                  : backgroundColor
-                    ? `color-${backgroundColor}`
-                    : 'hcrc-color-hero-bg, --color-fog-light'
-              })`,
+              fill: getKorosFill(imageUrl, backgroundColor),
             }}
           />
         )}

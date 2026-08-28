@@ -55,8 +55,8 @@ export type CarouselContextComponentPropsType = Pick<
   | 'loadMoreButtonLabelText'
   | 'title'
 > & {
-  itemsShownOnDesktop?: CarouselProps<unknown>['itemsDesktop'];
-  itemsShownOnMobile?: CarouselProps<unknown>['itemsMobile'];
+  itemsShownOnDesktop?: NonNullable<CarouselProps<unknown>['itemsDesktop']>;
+  itemsShownOnMobile?: NonNullable<CarouselProps<unknown>['itemsMobile']>;
 };
 
 export type CarouselContextStateType = {
