@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [4.0.2](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/compare/react-helsinki-headless-cms-v4.0.1...react-helsinki-headless-cms-v4.0.2) (2026-09-03)
+
+
+### Bug Fixes
+
+* Sonar issues HCRC-202 ([#273](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/issues/273)) ([a67bbbc](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/a67bbbc02261b57f5cf676f165ee9e415baa483e))
+* Sonar maintainability issues HCRC-205 ([#276](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/issues/276)) ([7ea6391](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/7ea63913aafc64fc8e490310044f6de56ae666f3))
+* Sonar security issue HCRC-204 ([0305e28](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/0305e2862e41288ac412896e68fa58b13e994b2f))
+* Sonar security issue HCRC-204 ([#275](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/issues/275)) ([0305e28](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/0305e2862e41288ac412896e68fa58b13e994b2f))
+
 ## [4.0.1](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/compare/react-helsinki-headless-cms-v4.0.0...react-helsinki-headless-cms-v4.0.1) (2026-08-12)
 
 
