@@ -13,7 +13,9 @@ permissions:
 
 jobs:
   # 1. THE CORE RELEASE-PLEASE JOB
-  # This job runs on push (to finalize release) and on schedule (to create/update PR).
+  # Runs on both push and schedule. It creates or updates the release PR, and
+  # when the release PR itself is merged it instead cuts the release (bumping
+  # the version, tagging, and setting release_created).
   release-please:
     runs-on: ubuntu-latest
     outputs:
@@ -24,6 +26,12 @@ jobs:
 
   # 2. STABLE RELEASE FLOW (Runs ONLY when a new tag is created by release-please)
   # This only runs when `release_created` is true (after a release PR is merged).
+  #
+  # Both release paths below set `skip-commitlint: true`. Commit messages are
+  # linted on pull requests, where they can still be amended. Once a commit is
+  # on main its message is immutable, so a failure here is not actionable by
+  # anyone, and it would fail the build and silently skip the npm publish while
+  # still leaving the git tag and the GitHub release in place.
   build-stable:
     needs: release-please
     if: ${{ needs.release-please.outputs.release_created }}
@@ -33,6 +41,7 @@ jobs:
       node-version: '24'
       upload-artifacts: true
       skip-sonar: true
+      skip-commitlint: true
 
   publish:
     needs: build-stable
@@ -42,22 +51,25 @@ jobs:
       node-version: '24'
       use-ci-build: true
 
-  # 3. CANARY RELEASE FLOW (Runs on every push to main, EXCLUDING schedule)
+  # 3. CANARY RELEASE FLOW (Runs on pushes to main that are NOT releases)
   # The event name is 'push' when a commit is pushed to main.
   # (FYI: The event name is 'schedule' when the cron runs.)
+  # A release push is handled by build-stable above, so skipping it here avoids
+  # publishing a redundant canary alongside the stable release.
+  # Sonar is deliberately NOT skipped: this is where main gets analysed.
+  # CI.yml triggers on pull requests and manual dispatch only.
   build-canary:
-    # This conditional ensures it runs ONLY when the workflow was triggered by a commit push.
-    if: github.event_name == 'push'
+    needs: release-please
+    if: ${{ github.event_name == 'push' && !needs.release-please.outputs.release_created }}
     uses: City-of-Helsinki/.github/.github/workflows/ci-pnpm-node.yml@main
     secrets: inherit
     with:
       node-version: '24'
       upload-artifacts: true
-      skip-sonar: true
+      skip-commitlint: true
 
   publish-npm-canary:
-    # This conditional is redundant but good practice; it will only run if its dependency runs.
-    if: github.event_name == 'push'
+    # No `if` needed: a skipped `needs` skips this job too.
     needs: build-canary
     secrets: inherit
     uses: City-of-Helsinki/.github/.github/workflows/ci-npm-publish.yml@main

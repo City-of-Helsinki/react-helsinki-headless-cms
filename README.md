@@ -336,7 +336,14 @@ Each time you merge a "normal" pull request, the release-please-action will crea
 
 To create a new release, merge the release PR. This creates a new release with notes and a new tag. The release workflow then builds and publishes the package to npm.
 
-When merging release PRs, make sure to use the "Rebase and merge" (or "Squash and merge") option, so that Github doesn't create a merge commit. All the commits must follow the conventional commits format. This is important, because the release-please-action does not work correctly with merge commits (there's an open issue you can track: [Chronological commit sorting means that merged PRs can be ignored ](https://github.com/googleapis/release-please/issues/1533)).
+When merging release PRs, always use the "Rebase and merge" option. Do **not** use "Squash and merge", and do not create a merge commit. All the commits must follow the conventional commits format.
+
+There are two reasons for this:
+
+- The release-please-action does not work correctly with merge commits (there's an open issue you can track: [Chronological commit sorting means that merged PRs can be ignored ](https://github.com/googleapis/release-please/issues/1533)).
+- Squashing rewrites the release commit message. Because the commits in a release PR are authored by `github-actions[bot]`, GitHub appends a `Co-authored-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>` trailer, which is 91 characters long and violates the 72-character `body-max-line-length` rule in [commitlint.config.mjs](./commitlint.config.mjs). The commitlint job then fails, which fails the build and **silently skips the npm publish** — while still leaving the git tag and the GitHub release in place, so the release looks successful when it is not.
+
+"Rebase and merge" replays release-please's own commit verbatim, which has no body at all, so commitlint passes.
 
 See [Release Please Implementation Design](https://github.com/googleapis/release-please/blob/main/docs/design.md) for more details.
 
