@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [4.0.3](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/compare/react-helsinki-headless-cms-v4.0.2...react-helsinki-headless-cms-v4.0.3) (2026-09-16)
+
+
+### Bug Fixes
+
+* **deps:** Resolve Dependabot security alerts ([37239f0](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/37239f00ae370a987a91d480e11b0d58b9aed643))
+* Release workflow does not publish to npm ([e7257c6](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/e7257c6920c95be2b7e167a1f6d400aac2c1bad0))
+
 ## [4.0.2](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/compare/react-helsinki-headless-cms-v4.0.1...react-helsinki-headless-cms-v4.0.2) (2026-09-03)
 
 
