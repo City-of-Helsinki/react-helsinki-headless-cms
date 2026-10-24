@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [4.1.0](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/compare/react-helsinki-headless-cms-v4.0.3...react-helsinki-headless-cms-v4.1.0) (2026-10-24)
+
+
+### Features
+
+* Nvmrc use lts Refs: HCRC-211 ([752046c](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/752046c30e01e381f02adf403f388d058e492916))
+
+
+### Dependencies
+
+* Bump storybook from 10.5.10 to 10.6.2 ([8108789](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/81087894b0b4369b8d106d9a20e9a54cded09126))
+
 ## [4.0.3](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/compare/react-helsinki-headless-cms-v4.0.2...react-helsinki-headless-cms-v4.0.3) (2026-09-16)
 
 
