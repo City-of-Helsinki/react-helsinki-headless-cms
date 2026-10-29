@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [4.1.0](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/compare/react-helsinki-headless-cms-v4.0.3...react-helsinki-headless-cms-v4.1.0) (2026-10-29)
+
+
+### Features
+
+* Nvmrc use lts Refs: HCRC-211 ([752046c](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/752046c30e01e381f02adf403f388d058e492916))
+
+
+### Dependencies
+
+* Bump deps ([c129d20](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/c129d20908baaa9c3d473fcace52bf5bfabb856e))
+* Bump dompurify from 3.4.14 to 3.4.17 ([41d8652](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/41d86522ee112a71c905ff7fb6f909ee405fbd8f))
+* Bump source-map-js from 1.2.1 to 1.2.2 ([e5629ca](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/e5629ca6e7e2cd5a6e673d8b7be1d8a760799e85))
+* Bump storybook from 10.5.10 to 10.6.2 ([8108789](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/81087894b0b4369b8d106d9a20e9a54cded09126))
+* Bump vite from 8.2.2 to 8.2.4 ([0f24e18](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/commit/0f24e188d24d09dd4af5db42453ff77fb5f6165e))
+
 ## [4.0.3](https://github.com/City-of-Helsinki/react-helsinki-headless-cms/compare/react-helsinki-headless-cms-v4.0.2...react-helsinki-headless-cms-v4.0.3) (2026-09-16)
 
 
