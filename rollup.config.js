@@ -93,6 +93,11 @@ export default [
       'isomorphic-dompurify',
       '@apollo/client',
       'date-fns',
+      // Runtime dependencies: the consuming app installs them, with their own
+      // licenses, and its bundler tree-shakes them.
+      'classnames',
+      'html-entities',
+      'lodash-es',
     ],
   },
   {
