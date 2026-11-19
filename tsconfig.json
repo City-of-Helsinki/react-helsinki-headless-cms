@@ -27,6 +27,7 @@
   },
   "include": [
     "src",
+    "scripts",
     "codegen.ts",
     "vitest-setup.ts"
   ],

@@ -419,4 +419,23 @@ If you notice a bug or want to request a feature, please [submit an issue](https
 
 ## License
 
-[MIT](./LICENSE)
+The source code in this repository is licensed under the MIT License; see
+[LICENSE](./LICENSE).
+
+The static Storybook build (`pnpm build-storybook`, served by the Docker
+image) bundles third-party code. Their licenses are listed in
+`third-party-licenses.txt`, which is generated during that build and served
+from the root of the deployed Storybook. The same information is emitted
+alongside it as `oss-licenses.json`, for license audit tooling.
+
+The MIT License covers source code only. The following files are **not**
+covered by it and remain with their respective rights holders:
+
+| Files            | Rights holder and terms                                                                                                                               |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `static/images/` | City of Helsinki. Placeholder images in the Helsinki visual identity, used by the default configuration; not offered for reuse under the MIT License. |
+
+The Helsinki Grotesk typeface used by Storybook is proprietary and licensed by
+Camelot Typefaces. No font files are stored in this repository; they are
+loaded at runtime from a City of Helsinki service. See
+[helsinkiGrotesk.css](./.storybook/helsinkiGrotesk.css).
